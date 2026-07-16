@@ -30,7 +30,7 @@ STATE_FILE = "bot_state.json"
 PROMOTION_INTERVAL = 7200  # 2 hours
 
 # Conversation states
-ADD_PHOTO, ADD_CAPTION, ADD_USERNAME, EDIT_SELECT, EDIT_CAPTION, EDIT_MEDIA, EDIT_USERNAME, DELETE_SELECT, INTERVAL_INPUT = range(9)
+ADD_PHOTO, ADD_CAPTION, ADD_USERNAME, INTERVAL_INPUT = range(4)
 
 # Setup logging
 logging.basicConfig(
@@ -371,6 +371,7 @@ async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     if query.data == "add_promo":
         await query.edit_message_text("📸 Por favor, envía una foto o un video para la promoción.")
+        context.user_data.clear()
         return ADD_PHOTO
 
     elif query.data == "view_promos":
@@ -464,17 +465,23 @@ async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def add_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Receive photo/video for new promotion."""
+    logger.info(f"add_photo called. Has photo: {bool(update.message.photo)}, Has video: {bool(update.message.video)}")
+    
     if update.message.photo:
+        # Get the highest resolution photo
         file_id = update.message.photo[-1].file_id
         context.user_data["media"] = [file_id]
+        logger.info(f"Photo received with file_id: {file_id}")
         await update.message.reply_text("📝 Ahora envía el texto de la promoción:")
         return ADD_CAPTION
     elif update.message.video:
         file_id = update.message.video.file_id
         context.user_data["media"] = [file_id]
+        logger.info(f"Video received with file_id: {file_id}")
         await update.message.reply_text("📝 Ahora envía el texto de la promoción:")
         return ADD_CAPTION
     else:
+        logger.warning("Invalid message type for add_photo")
         await update.message.reply_text("❌ Por favor envía una foto o un video.")
         return ADD_PHOTO
 
@@ -482,6 +489,7 @@ async def add_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def add_caption(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Receive caption for new promotion."""
     context.user_data["caption"] = update.message.text
+    logger.info(f"Caption received: {update.message.text}")
     await update.message.reply_text("👤 Escribe el usuario de Telegram del administrador (sin @):")
     return ADD_USERNAME
 
@@ -489,6 +497,7 @@ async def add_caption(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def add_username(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Receive username and save promotion."""
     context.user_data["admin_username"] = update.message.text
+    logger.info(f"Username received: {update.message.text}")
     
     manager = PromotionsManager()
     promos = manager.get_all()
@@ -502,6 +511,7 @@ async def add_username(update: Update, context: ContextTypes.DEFAULT_TYPE):
     }
     
     manager.add(new_promo)
+    logger.info(f"Promotion created: {next_id}")
     await update.message.reply_text(f"✅ Promoción `{next_id}` creada correctamente.", parse_mode="Markdown")
     context.user_data.clear()
     return ConversationHandler.END
@@ -552,6 +562,7 @@ async def interval_input(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 name="promotion_job",
             )
         
+        logger.info(f"Promotion interval updated to {interval}s")
         await update.message.reply_text(f"✅ Intervalo actualizado correctamente a {interval}s ({interval/3600}h)")
         return ConversationHandler.END
     except ValueError:
@@ -574,20 +585,22 @@ def main():
     # Add handlers
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CommandHandler("panel", admin_panel))
-    application.add_handler(CallbackQueryHandler(button_callback))
     
-    # Add conversation handler for adding promotions
+    # Add conversation handler for adding promotions and changing interval
     conv_handler = ConversationHandler(
-        entry_points=[],
+        entry_points=[CallbackQueryHandler(button_callback, pattern="^(add_promo|change_interval)$")],
         states={
             ADD_PHOTO: [MessageHandler(filters.PHOTO | filters.VIDEO, add_photo)],
             ADD_CAPTION: [MessageHandler(filters.TEXT & ~filters.COMMAND, add_caption)],
             ADD_USERNAME: [MessageHandler(filters.TEXT & ~filters.COMMAND, add_username)],
             INTERVAL_INPUT: [MessageHandler(filters.TEXT & ~filters.COMMAND, interval_input)],
         },
-        fallbacks=[],
+        fallbacks=[CallbackQueryHandler(button_callback, pattern="^cancel$")],
     )
     application.add_handler(conv_handler)
+    
+    # Add callback handler for other buttons
+    application.add_handler(CallbackQueryHandler(button_callback))
 
     # Start the Bot
     application.run_polling()
