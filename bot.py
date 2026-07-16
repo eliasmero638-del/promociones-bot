@@ -13,8 +13,8 @@ from datetime import datetime
 from typing import Optional, List
 
 from dotenv import load_dotenv
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup, InputMediaPhoto, InputMediaVideo
-from telegram.ext import Application, ContextTypes
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup, InputMediaPhoto, InputMediaVideo, Update
+from telegram.ext import Application, ContextTypes, CommandHandler
 from telegram.error import TelegramError
 
 from promotions_config import PROMOTIONS, PROMOTION_INTERVAL
@@ -291,6 +291,28 @@ async def post_init(application: Application):
     await schedule_promotions(application)
 
 
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Handle the /start command. Responds in private chat."""
+    logger.info(f"Received /start from chat_id={update.effective_chat.id} type={update.effective_chat.type}")
+
+    # Only respond in private chats to avoid cluttering groups
+    if update.effective_chat and update.effective_chat.type == "private":
+        try:
+            await update.message.reply_text(
+                "¡Hola! Soy el bot de promociones. Estoy en funcionamiento y publicaré promociones periódicamente."
+            )
+            logger.info("Replied to /start in private chat")
+        except Exception as e:
+            logger.error(f"Failed to reply to /start: {e}")
+    else:
+        # Optionally, inform in groups that users should message the bot privately
+        try:
+            await update.message.reply_text("Envíame un mensaje privado para recibir información.")
+        except Exception:
+            # If we can't send in the group (e.g., lack of permissions), just log
+            logger.debug("Could not send group reply for /start")
+
+
 def main():
     """Main function to start the bot."""
     # Validate configuration
@@ -306,8 +328,11 @@ def main():
     # Create the Application with job_queue enabled
     application = Application.builder().token(BOT_TOKEN).post_init(post_init).build()
 
+    # Register handlers - ensure they are added BEFORE run_polling()
+    application.add_handler(CommandHandler("start", start))
+
     # Start the Bot
-    application.run_polling(allowed_updates=[])
+    application.run_polling()
 
 
 if __name__ == "__main__":
