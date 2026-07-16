@@ -478,9 +478,73 @@ async def admin_panel(update: Update, context: ContextTypes.DEFAULT_TYPE):
         [InlineKeyboardButton("🚀 Publicar Ahora", callback_data="publish_now")],
         [InlineKeyboardButton("⏰ Cambiar Intervalo", callback_data="change_interval")],
         [InlineKeyboardButton("📊 Estado del Bot", callback_data="bot_status")],
+        [InlineKeyboardButton("🔧 Debug Storage", callback_data="debug_storage")],
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
     await update.message.reply_text("⚙️ **Panel de Administración**", reply_markup=reply_markup, parse_mode="Markdown")
+
+
+async def debug_storage(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Handle /debug_storage command and button callback."""
+    if update.effective_user.id != ADMIN_USER_ID:
+        if update.callback_query:
+            await update.callback_query.answer("❌ No tienes permiso.", show_alert=True)
+        else:
+            await update.message.reply_text("❌ No tienes permiso para ejecutar este comando.")
+        return
+
+    # Gather debug information
+    cwd = os.getcwd()
+    abs_path = os.path.abspath(PROMOTIONS_FILE)
+    file_exists = os.path.exists(abs_path)
+    file_size = os.path.getsize(abs_path) if file_exists else 0
+    
+    manager = PromotionsManager()
+    all_promos = manager.get_all()
+    num_promos = len(all_promos)
+    first_promo_id = all_promos[0].get("id") if all_promos else "N/A"
+    last_promo_id = all_promos[-1].get("id") if all_promos else "N/A"
+    
+    # Load raw file contents
+    try:
+        with open(abs_path, "r") as f:
+            raw_contents = f.read()
+    except Exception as e:
+        raw_contents = f"Error reading file: {e}"
+
+    # Format message for Telegram
+    debug_message = (
+        "🔧 **DEBUG STORAGE INFORMATION**\n\n"
+        f"📂 Current Working Directory:\n`{cwd}`\n\n"
+        f"📄 Absolute Path to promotions.json:\n`{abs_path}`\n\n"
+        f"✅ File Exists: {file_exists}\n\n"
+        f"📊 File Size: {file_size} bytes\n\n"
+        f"📦 Number of Promotions: {num_promos}\n\n"
+        f"🆔 First Promotion ID: `{first_promo_id}`\n\n"
+        f"🆔 Last Promotion ID: `{last_promo_id}`\n\n"
+        f"📋 **Raw File Contents:**\n"
+        f"```json\n{raw_contents}\n```"
+    )
+
+    # Log to Railway logs
+    logger.info("=" * 80)
+    logger.info("🔧 DEBUG STORAGE INFORMATION")
+    logger.info("=" * 80)
+    logger.info(f"Current Working Directory: {cwd}")
+    logger.info(f"Absolute Path to promotions.json: {abs_path}")
+    logger.info(f"File Exists: {file_exists}")
+    logger.info(f"File Size: {file_size} bytes")
+    logger.info(f"Number of Promotions: {num_promos}")
+    logger.info(f"First Promotion ID: {first_promo_id}")
+    logger.info(f"Last Promotion ID: {last_promo_id}")
+    logger.info(f"Raw File Contents:\n{raw_contents}")
+    logger.info("=" * 80)
+
+    # Send message
+    if update.callback_query:
+        await update.callback_query.edit_message_text(debug_message, parse_mode="Markdown")
+    else:
+        await update.message.reply_text(debug_message, parse_mode="Markdown")
 
 
 async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -567,6 +631,9 @@ async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         text += f"🔐 Grupo destino: `{GROUP_ID}`"
         
         await query.edit_message_text(text, parse_mode="Markdown")
+
+    elif query.data == "debug_storage":
+        await debug_storage(update, context)
 
     elif query.data.startswith("delete_"):
         promo_id = query.data.replace("delete_", "")
@@ -723,6 +790,7 @@ def main():
     # Add handlers
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CommandHandler("panel", admin_panel))
+    application.add_handler(CommandHandler("debug_storage", debug_storage))
     
     # Add conversation handler for adding promotions and changing interval
     conv_handler = ConversationHandler(
