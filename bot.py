@@ -251,10 +251,10 @@ async def publish_promotion(context: ContextTypes.DEFAULT_TYPE):
         media_list = promotion.get("media", [])
 
         if media_list:
-            # Separate photos and videos
+            # Send each media item with caption only on first
             album_messages = []
             
-            for file_id in media_list:
+            for idx, file_id in enumerate(media_list):
                 try:
                     # Determine media type by checking if it's stored with type info
                     # If file_id is a dict with type and id, use that; otherwise assume photo
@@ -262,22 +262,25 @@ async def publish_promotion(context: ContextTypes.DEFAULT_TYPE):
                         media_type = file_id.get("type", "photo")
                         media_id = file_id.get("file_id")
                     else:
-                        # Try to infer from file_id pattern or default to photo
+                        # Default to photo for plain string file_id
                         media_type = "photo"
                         media_id = file_id
+
+                    # Add caption only to first media item
+                    item_caption = caption if idx == 0 else ""
 
                     if media_type == "video":
                         msg = await context.bot.send_video(
                             chat_id=GROUP_ID,
                             video=media_id,
-                            caption=caption if not album_messages else "",
+                            caption=item_caption,
                             parse_mode="Markdown",
                         )
                     else:  # photo
                         msg = await context.bot.send_photo(
                             chat_id=GROUP_ID,
                             photo=media_id,
-                            caption=caption if not album_messages else "",
+                            caption=item_caption,
                             parse_mode="Markdown",
                         )
                     
@@ -310,6 +313,7 @@ async def publish_promotion(context: ContextTypes.DEFAULT_TYPE):
             state.set_last_album_message_id(text_message.message_id)
             logger.info("Published promotion as text (no media configured)")
 
+        # Send admin contact button
         admin_username = promotion.get("admin_username", "el593rm")
         keyboard = InlineKeyboardMarkup(
             [[InlineKeyboardButton("👤 Hablar con el administrador", url=f"https://t.me/{admin_username}")]]
@@ -322,6 +326,7 @@ async def publish_promotion(context: ContextTypes.DEFAULT_TYPE):
         logger.info(f"Button message published: {button_message.message_id}")
         state.set_last_button_message_id(button_message.message_id)
 
+        # Pin button message
         if button_message:
             try:
                 await context.bot.pin_chat_message(
@@ -333,6 +338,7 @@ async def publish_promotion(context: ContextTypes.DEFAULT_TYPE):
             except TelegramError as e:
                 logger.warning(f"Could not pin message: {e}")
 
+        # Update state for next promotion
         next_index = (promotion_index + 1) % len(promotions)
         state.set_current_promotion_index(next_index)
         state.set_last_published(datetime.now().isoformat())
@@ -454,10 +460,10 @@ async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await query.edit_message_text("❌ No hay promociones para publicar.")
             return
         
-        keyboard = [[InlineKeyboardButton(f"{p['id']}", callback_data=f"pub_{p['id']}")] for p in promos]
-        keyboard.append([InlineKeyboardButton("❌ Cancelar", callback_data="cancel")])
-        reply_markup = InlineKeyboardMarkup(keyboard)
-        await query.edit_message_text("Selecciona la promoción a publicar:", reply_markup=reply_markup)
+        # Publish immediately without selection dialog
+        await query.edit_message_text("🚀 Publicando promoción...")
+        await publish_promotion(context)
+        await query.edit_message_text("✅ Promoción publicada correctamente.")
 
     elif query.data == "change_interval":
         await query.edit_message_text("⏰ Envía el nuevo intervalo en segundos (ej: 7200 para 2 horas):")
@@ -486,12 +492,6 @@ async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await query.edit_message_text(f"✅ Promoción `{promo_id}` eliminada correctamente.", parse_mode="Markdown")
         else:
             await query.edit_message_text("❌ Error al eliminar la promoción.")
-
-    elif query.data.startswith("pub_"):
-        promo_id = query.data.replace("pub_", "")
-        await context.bot.send_message(chat_id=update.effective_chat.id, text="🚀 Publicando...")
-        await publish_promotion(context)
-        await query.edit_message_text("✅ Promoción publicada correctamente.")
 
     elif query.data == "cancel":
         await query.edit_message_text("❌ Operación cancelada.")
