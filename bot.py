@@ -88,7 +88,14 @@ class PromotionsManager:
             logger.info(f"[PromotionsManager.save] About to call json.dump() to write file")
             with open(self.file_path, "w") as f:
                 json.dump(self.data, f, indent=2)
-            logger.info(f"[PromotionsManager.save] json.dump() completed successfully")
+                logger.info(f"[PromotionsManager.save] json.dump() completed, now flushing buffer")
+                # CRITICAL FIX: Flush the file buffer to ensure data is written
+                f.flush()
+                logger.info(f"[PromotionsManager.save] f.flush() completed, now syncing to disk")
+                # CRITICAL FIX: Sync to disk at OS level to persist changes
+                os.fsync(f.fileno())
+                logger.info(f"[PromotionsManager.save] os.fsync() completed, write is now persisted to disk")
+            logger.info(f"[PromotionsManager.save] json.dump() + flush + fsync all completed successfully")
             
             # Debug log: after write
             promos_after = len(self.data.get("promotions", []))
@@ -206,6 +213,10 @@ class BotState:
         try:
             with open(self.state_file, "w") as f:
                 json.dump(self.data, f, indent=2)
+                logger.info("State file flushing buffer")
+                f.flush()
+                logger.info("State file syncing to disk")
+                os.fsync(f.fileno())
             logger.info("State saved successfully")
         except Exception as e:
             logger.error(f"Failed to save state: {e}")
