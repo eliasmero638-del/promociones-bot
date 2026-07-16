@@ -127,13 +127,13 @@ def get_media_input_objects(media_paths: List[str]) -> List:
         # Determine media type from extension
         ext = Path(path).suffix.lower()
         try:
-            with open(path, "rb") as f:
-                if ext in [".jpg", ".jpeg", ".png", ".gif", ".webp"]:
-                    media_objects.append(InputMediaPhoto(media=f))
-                elif ext in [".mp4", ".mov", ".avi", ".mkv"]:
-                    media_objects.append(InputMediaVideo(media=f))
-                else:
-                    logger.warning(f"Unsupported media format: {ext}")
+            # Use the file path directly (Telegram handles file reading)
+            if ext in [".jpg", ".jpeg", ".png", ".gif", ".webp"]:
+                media_objects.append(InputMediaPhoto(media=path))
+            elif ext in [".mp4", ".mov", ".avi", ".mkv"]:
+                media_objects.append(InputMediaVideo(media=path))
+            else:
+                logger.warning(f"Unsupported media format: {ext}")
         except Exception as e:
             logger.error(f"Failed to load media file {path}: {e}")
 
@@ -307,7 +307,7 @@ def main():
     logger.info(f"Number of promotions: {len(PROMOTIONS)}")
     logger.info(f"Promotion interval: {PROMOTION_INTERVAL} seconds ({PROMOTION_INTERVAL / 3600} hours)")
 
-    # Create the Application
+    # Create the Application using the modern API (compatible with v21.x)
     application = Application.builder().token(BOT_TOKEN).post_init(post_init).build()
 
     # Register /start command handler
