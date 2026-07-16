@@ -13,8 +13,8 @@ from datetime import datetime
 from typing import Optional, List
 
 from dotenv import load_dotenv
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup, InputMediaPhoto, InputMediaVideo, Update
-from telegram.ext import Application, ContextTypes, CommandHandler
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup, InputMediaPhoto, InputMediaVideo
+from telegram.ext import Application, ContextTypes
 from telegram.error import TelegramError
 
 from promotions_config import PROMOTIONS, PROMOTION_INTERVAL
@@ -258,6 +258,11 @@ async def publish_promotion(context: ContextTypes.DEFAULT_TYPE):
 
 async def schedule_promotions(context: ContextTypes.DEFAULT_TYPE):
     """Schedule periodic promotion publishing."""
+    # Verify that job_queue is available
+    if context.job_queue is None:
+        logger.error("JobQueue is not available. Make sure python-telegram-bot[job-queue] is installed.")
+        return
+    
     # Remove any existing jobs
     removed = context.job_queue.get_jobs_by_name("promotion_job")
     for job in removed:
@@ -286,15 +291,6 @@ async def post_init(application: Application):
     await schedule_promotions(application)
 
 
-async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Handler for the /start command."""
-    # Reply to the user confirming the bot is running
-    if update.message:
-        await update.message.reply_text(
-            "✅ EC Promociones Bot está funcionando correctamente."
-        )
-
-
 def main():
     """Main function to start the bot."""
     # Validate configuration
@@ -307,14 +303,11 @@ def main():
     logger.info(f"Number of promotions: {len(PROMOTIONS)}")
     logger.info(f"Promotion interval: {PROMOTION_INTERVAL} seconds ({PROMOTION_INTERVAL / 3600} hours)")
 
-    # Create the Application using the modern API (compatible with v21.x)
+    # Create the Application with job_queue enabled
     application = Application.builder().token(BOT_TOKEN).post_init(post_init).build()
 
-    # Register /start command handler
-    application.add_handler(CommandHandler("start", start))
-
     # Start the Bot
-    application.run_polling()
+    application.run_polling(allowed_updates=[])
 
 
 if __name__ == "__main__":
