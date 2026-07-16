@@ -9,6 +9,7 @@ import json
 import logging
 import os
 import sys
+import traceback
 from pathlib import Path
 from datetime import datetime
 from typing import Optional, List, Dict
@@ -57,14 +58,55 @@ class PromotionsManager:
                 logger.warning(f"Failed to load promotions file: {e}")
         return {"promotions": []}
 
-    def save(self):
-        """Save promotions to JSON file."""
+    def save(self) -> bool:
+        """Save promotions to JSON file.
+        
+        Returns:
+            bool: True on success, False on failure.
+        """
         try:
+            # Debug log: before write
+            abs_path = os.path.abspath(self.file_path)
+            cwd = os.getcwd()
+            promos_before = len(self.data.get("promotions", []))
+            
+            logger.info(f"[DEBUG] About to save promotions")
+            logger.info(f"[DEBUG] Absolute file path: {abs_path}")
+            logger.info(f"[DEBUG] Current working directory: {cwd}")
+            logger.info(f"[DEBUG] Number of promotions before save: {promos_before}")
+            
+            # Write file
             with open(self.file_path, "w") as f:
                 json.dump(self.data, f, indent=2)
-            logger.info("Promotions saved successfully")
+            
+            # Debug log: after write
+            promos_after = len(self.data.get("promotions", []))
+            logger.info(f"[DEBUG] Number of promotions after save: {promos_after}")
+            
+            # Verify: immediately reopen and check
+            try:
+                with open(self.file_path, "r") as f:
+                    verify_data = json.load(f)
+                verify_count = len(verify_data.get("promotions", []))
+                
+                if verify_count != promos_after:
+                    logger.error(f"VERIFY FAILED - Expected {promos_after} promotions, but found {verify_count} in file")
+                    return False
+                
+                logger.info(f"[DEBUG] Verification succeeded: {verify_count} promotions confirmed in file")
+            except Exception as verify_error:
+                logger.error(f"VERIFY FAILED - Could not reopen file for verification: {verify_error}")
+                logger.error(f"Verification traceback: {traceback.format_exc()}")
+                return False
+            
+            logger.info("✅ Promotions saved successfully")
+            return True
+            
         except Exception as e:
-            logger.error(f"Failed to save promotions: {e}")
+            logger.error(f"❌ Failed to save promotions: {e}")
+            logger.error(f"Exception type: {type(e).__name__}")
+            logger.error(f"Traceback:\n{traceback.format_exc()}")
+            return False
 
     def get_all(self) -> List[Dict]:
         """Get all promotions."""
@@ -77,10 +119,17 @@ class PromotionsManager:
                 return promo
         return None
 
-    def add(self, promotion: Dict):
-        """Add a new promotion."""
+    def add(self, promotion: Dict) -> bool:
+        """Add a new promotion.
+        
+        Args:
+            promotion: Dictionary containing promotion data.
+            
+        Returns:
+            bool: True if promotion was added and saved successfully, False otherwise.
+        """
         self.data["promotions"].append(promotion)
-        self.save()
+        return self.save()
 
     def update(self, promo_id: str, promotion: Dict):
         """Update an existing promotion."""
@@ -592,9 +641,16 @@ async def add_username(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "admin_username": admin_username
     }
     
-    manager.add(new_promo)
-    logger.info(f"Promotion created: {next_id} with {len(media)} media file(s)")
-    await update.message.reply_text(f"✅ Promoción `{next_id}` creada correctamente.", parse_mode="Markdown")
+    # Save and check result
+    if not manager.add(new_promo):
+        # Save failed
+        logger.error(f"❌ Failed to save promotion {next_id}")
+        await update.message.reply_text("❌ Failed to save promotion.", parse_mode="Markdown")
+    else:
+        # Save succeeded
+        logger.info(f"✅ Promotion created: {next_id} with {len(media)} media file(s)")
+        await update.message.reply_text(f"✅ Promoción `{next_id}` creada correctamente.", parse_mode="Markdown")
+    
     context.user_data.clear()
     return ConversationHandler.END
 
