@@ -224,24 +224,38 @@ async def delete_previous_messages(context: ContextTypes.DEFAULT_TYPE, state: Bo
 
 
 async def publish_promotion(context: ContextTypes.DEFAULT_TYPE):
-    """Publish the current promotion from promotions.json using Telegram file_id."""
+    """Publish the current valid promotion from promotions.json using Telegram file_id."""
     state = BotState()
     promotions_manager = PromotionsManager()
-    promotions = promotions_manager.get_all()
+    all_promotions = promotions_manager.get_all()
 
-    if not promotions:
-        logger.warning("No promotions available to publish")
+    # Build list of valid promotions: non-empty caption OR at least one media file
+    def _has_valid_media(promo: Dict) -> bool:
+        return any(
+            (m.get("file_id") if isinstance(m, dict) else m)
+            for m in promo.get("media", [])
+        )
+
+    valid_promotions = [
+        p for p in all_promotions
+        if p.get("caption", "").strip() or _has_valid_media(p)
+    ]
+
+    if not valid_promotions:
+        logger.warning("No valid promotions found.")
         return
 
     await delete_previous_messages(context, state)
 
     promotion_index = state.get_current_promotion_index()
-    if promotion_index >= len(promotions):
+    if promotion_index >= len(valid_promotions):
         promotion_index = 0
-    
-    promotion = promotions[promotion_index]
+        state.set_current_promotion_index(0)
+        state.save()
 
-    logger.info(f"Publishing promotion {promotion['id']} ({promotion_index + 1}/{len(promotions)})")
+    promotion = valid_promotions[promotion_index]
+
+    logger.info(f"Publishing promotion {promotion['id']} ({promotion_index + 1}/{len(valid_promotions)})")
 
     album_message = None
     button_message = None
@@ -338,8 +352,8 @@ async def publish_promotion(context: ContextTypes.DEFAULT_TYPE):
             except TelegramError as e:
                 logger.warning(f"Could not pin message: {e}")
 
-        # Update state for next promotion
-        next_index = (promotion_index + 1) % len(promotions)
+        # Update state for next valid promotion
+        next_index = (promotion_index + 1) % len(valid_promotions)
         state.set_current_promotion_index(next_index)
         state.set_last_published(datetime.now().isoformat())
         state.save()
