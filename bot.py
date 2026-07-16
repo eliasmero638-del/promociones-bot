@@ -46,16 +46,24 @@ class PromotionsManager:
 
     def __init__(self, file_path: str = PROMOTIONS_FILE):
         self.file_path = file_path
+        logger.info(f"[PromotionsManager.__init__] Creating manager with file_path: {self.file_path}")
         self.data = self._load()
+        logger.info(f"[PromotionsManager.__init__] Loaded {len(self.data.get('promotions', []))} promotions from file")
 
     def _load(self) -> dict:
         """Load promotions from JSON file."""
+        logger.info(f"[PromotionsManager._load] Starting load from: {self.file_path}")
         if Path(self.file_path).exists():
             try:
+                logger.info(f"[PromotionsManager._load] File exists, opening for reading")
                 with open(self.file_path, "r") as f:
-                    return json.load(f)
+                    data = json.load(f)
+                logger.info(f"[PromotionsManager._load] Successfully loaded JSON, contains {len(data.get('promotions', []))} promotions")
+                return data
             except Exception as e:
-                logger.warning(f"Failed to load promotions file: {e}")
+                logger.warning(f"[PromotionsManager._load] Failed to load promotions file: {e}")
+        else:
+            logger.warning(f"[PromotionsManager._load] File does not exist: {self.file_path}")
         return {"promotions": []}
 
     def save(self) -> bool:
@@ -70,42 +78,49 @@ class PromotionsManager:
             cwd = os.getcwd()
             promos_before = len(self.data.get("promotions", []))
             
-            logger.info(f"[DEBUG] About to save promotions")
-            logger.info(f"[DEBUG] Absolute file path: {abs_path}")
-            logger.info(f"[DEBUG] Current working directory: {cwd}")
-            logger.info(f"[DEBUG] Number of promotions before save: {promos_before}")
+            logger.info(f"[PromotionsManager.save] ========== SAVE START ==========")
+            logger.info(f"[PromotionsManager.save] Absolute file path: {abs_path}")
+            logger.info(f"[PromotionsManager.save] Current working directory: {cwd}")
+            logger.info(f"[PromotionsManager.save] Number of promotions before save: {promos_before}")
+            logger.info(f"[PromotionsManager.save] Data structure: {self.data}")
             
             # Write file
+            logger.info(f"[PromotionsManager.save] About to call json.dump() to write file")
             with open(self.file_path, "w") as f:
                 json.dump(self.data, f, indent=2)
+            logger.info(f"[PromotionsManager.save] json.dump() completed successfully")
             
             # Debug log: after write
             promos_after = len(self.data.get("promotions", []))
-            logger.info(f"[DEBUG] Number of promotions after save: {promos_after}")
+            logger.info(f"[PromotionsManager.save] Number of promotions after json.dump(): {promos_after}")
             
             # Verify: immediately reopen and check
             try:
+                logger.info(f"[PromotionsManager.save] Starting verification - reopening file to verify write")
                 with open(self.file_path, "r") as f:
                     verify_data = json.load(f)
                 verify_count = len(verify_data.get("promotions", []))
+                logger.info(f"[PromotionsManager.save] Verification read completed - found {verify_count} promotions in file")
+                logger.info(f"[PromotionsManager.save] Verify data structure: {verify_data}")
                 
                 if verify_count != promos_after:
-                    logger.error(f"VERIFY FAILED - Expected {promos_after} promotions, but found {verify_count} in file")
+                    logger.error(f"[PromotionsManager.save] VERIFY FAILED - Expected {promos_after} promotions, but found {verify_count} in file")
                     return False
                 
-                logger.info(f"[DEBUG] Verification succeeded: {verify_count} promotions confirmed in file")
+                logger.info(f"[PromotionsManager.save] Verification succeeded: {verify_count} promotions confirmed in file")
             except Exception as verify_error:
-                logger.error(f"VERIFY FAILED - Could not reopen file for verification: {verify_error}")
-                logger.error(f"Verification traceback: {traceback.format_exc()}")
+                logger.error(f"[PromotionsManager.save] VERIFY FAILED - Could not reopen file for verification: {verify_error}")
+                logger.error(f"[PromotionsManager.save] Verification traceback: {traceback.format_exc()}")
                 return False
             
-            logger.info("✅ Promotions saved successfully")
+            logger.info(f"[PromotionsManager.save] ========== SAVE SUCCESS ==========")
             return True
             
         except Exception as e:
-            logger.error(f"❌ Failed to save promotions: {e}")
-            logger.error(f"Exception type: {type(e).__name__}")
-            logger.error(f"Traceback:\n{traceback.format_exc()}")
+            logger.error(f"[PromotionsManager.save] ========== SAVE FAILED ==========")
+            logger.error(f"[PromotionsManager.save] Exception: {e}")
+            logger.error(f"[PromotionsManager.save] Exception type: {type(e).__name__}")
+            logger.error(f"[PromotionsManager.save] Traceback:\n{traceback.format_exc()}")
             return False
 
     def get_all(self) -> List[Dict]:
@@ -128,8 +143,21 @@ class PromotionsManager:
         Returns:
             bool: True if promotion was added and saved successfully, False otherwise.
         """
+        logger.info(f"[PromotionsManager.add] ========== ADD START ==========")
+        logger.info(f"[PromotionsManager.add] Adding promotion: {promotion}")
+        logger.info(f"[PromotionsManager.add] Current promotions count before append: {len(self.data.get('promotions', []))}")
+        
         self.data["promotions"].append(promotion)
-        return self.save()
+        
+        logger.info(f"[PromotionsManager.add] Promotion appended to memory, count now: {len(self.data.get('promotions', []))}")
+        logger.info(f"[PromotionsManager.add] Calling save() to persist to file")
+        
+        save_result = self.save()
+        
+        logger.info(f"[PromotionsManager.add] save() returned: {save_result}")
+        logger.info(f"[PromotionsManager.add] ========== ADD END ==========")
+        
+        return save_result
 
     def update(self, promo_id: str, promotion: Dict):
         """Update an existing promotion."""
@@ -649,7 +677,7 @@ async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def add_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Receive photo/video for new promotion."""
-    logger.info(f"add_photo called. Has photo: {bool(update.message.photo)}, Has video: {bool(update.message.video)}")
+    logger.info(f"[add_photo] called. Has photo: {bool(update.message.photo)}, Has video: {bool(update.message.video)}")
     
     if update.message.photo:
         # Get the highest resolution photo
@@ -657,7 +685,7 @@ async def add_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
         # Store as plain string - media type will be inferred as photo
         context.user_data["media"] = [file_id]
         context.user_data["media_type"] = "photo"
-        logger.info(f"Photo received with file_id: {file_id}")
+        logger.info(f"[add_photo] Photo received with file_id: {file_id}")
         await update.message.reply_text("📝 Ahora envía el texto de la promoción:")
         return ADD_CAPTION
     elif update.message.video:
@@ -665,11 +693,11 @@ async def add_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
         # Store as plain string - media type will be inferred as video
         context.user_data["media"] = [file_id]
         context.user_data["media_type"] = "video"
-        logger.info(f"Video received with file_id: {file_id}")
+        logger.info(f"[add_photo] Video received with file_id: {file_id}")
         await update.message.reply_text("📝 Ahora envía el texto de la promoción:")
         return ADD_CAPTION
     else:
-        logger.warning("Invalid message type for add_photo")
+        logger.warning("[add_photo] Invalid message type for add_photo")
         await update.message.reply_text("❌ Por favor envía una foto o un video.")
         return ADD_PHOTO
 
@@ -678,28 +706,38 @@ async def add_caption(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Receive caption for new promotion."""
     caption_text = update.message.text
     context.user_data["caption"] = caption_text
-    logger.info(f"Caption received: {caption_text}")
-    logger.info(f"Current user_data media: {context.user_data.get('media')}")
+    logger.info(f"[add_caption] Caption received: {caption_text}")
+    logger.info(f"[add_caption] Current user_data media: {context.user_data.get('media')}")
     await update.message.reply_text("👤 Escribe el usuario de Telegram del administrador (sin @):")
     return ADD_USERNAME
 
 
 async def add_username(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Receive username and save promotion."""
+    logger.info(f"[add_username] ========== ADD_USERNAME START ==========")
+    
     admin_username = update.message.text
     context.user_data["admin_username"] = admin_username
-    logger.info(f"Username received: {admin_username}")
-    logger.info(f"User data before saving: {context.user_data}")
+    logger.info(f"[add_username] Username received: {admin_username}")
+    logger.info(f"[add_username] User data before saving: {context.user_data}")
     
+    logger.info(f"[add_username] Creating new PromotionsManager instance")
     manager = PromotionsManager()
+    
+    logger.info(f"[add_username] Calling manager.get_all()")
     promos = manager.get_all()
+    logger.info(f"[add_username] Got {len(promos)} existing promotions")
+    
     next_id = f"promo_{str(len(promos) + 1).zfill(3)}"
+    logger.info(f"[add_username] Next promotion ID will be: {next_id}")
     
     # Get media from context.user_data
     media = context.user_data.get("media", [])
     caption = context.user_data.get("caption", "")
     
-    logger.info(f"Creating promotion with media: {media}, caption: {caption}")
+    logger.info(f"[add_username] Media: {media}")
+    logger.info(f"[add_username] Caption: {caption}")
+    logger.info(f"[add_username] Creating promotion with media: {media}, caption: {caption}")
     
     new_promo = {
         "id": next_id,
@@ -707,16 +745,23 @@ async def add_username(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "media": media,
         "admin_username": admin_username
     }
+    logger.info(f"[add_username] New promotion object: {new_promo}")
     
     # Save and check result
-    if not manager.add(new_promo):
+    logger.info(f"[add_username] Calling manager.add(new_promo)")
+    add_result = manager.add(new_promo)
+    logger.info(f"[add_username] manager.add() returned: {add_result}")
+    
+    if not add_result:
         # Save failed
-        logger.error(f"❌ Failed to save promotion {next_id}")
+        logger.error(f"[add_username] ❌ Failed to save promotion {next_id}")
         await update.message.reply_text("❌ Failed to save promotion.", parse_mode="Markdown")
     else:
         # Save succeeded
-        logger.info(f"✅ Promotion created: {next_id} with {len(media)} media file(s)")
+        logger.info(f"[add_username] ✅ Promotion created: {next_id} with {len(media)} media file(s)")
         await update.message.reply_text(f"✅ Promoción `{next_id}` creada correctamente.", parse_mode="Markdown")
+    
+    logger.info(f"[add_username] ========== ADD_USERNAME END ==========")
     
     context.user_data.clear()
     return ConversationHandler.END
