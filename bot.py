@@ -264,21 +264,32 @@ async def publish_promotion(context: ContextTypes.DEFAULT_TYPE):
         caption = promotion.get("caption", "")
         media_list = promotion.get("media", [])
 
+        logger.info(f"[DEBUG] Complete media object: {media_list}")
+        logger.info(f"[DEBUG] Media list type: {type(media_list)}, length: {len(media_list)}")
+
         if media_list:
             # Send each media item with caption only on first
             album_messages = []
             
-            for idx, file_id in enumerate(media_list):
+            for idx, media_item in enumerate(media_list):
                 try:
                     # Determine media type by checking if it's stored with type info
-                    # If file_id is a dict with type and id, use that; otherwise assume photo
-                    if isinstance(file_id, dict):
-                        media_type = file_id.get("type", "photo")
-                        media_id = file_id.get("file_id")
+                    # If media_item is a dict with type and id, use that; otherwise assume photo
+                    if isinstance(media_item, dict):
+                        media_type = media_item.get("type", "photo")
+                        file_id = media_item.get("file_id")
                     else:
-                        # Default to photo for plain string file_id
+                        # media_item is a plain string file_id
                         media_type = "photo"
-                        media_id = file_id
+                        file_id = media_item
+
+                    logger.info(f"[DEBUG] Media item #{idx}: {media_item}")
+                    logger.info(f"[DEBUG] Detected media type: {media_type}")
+                    logger.info(f"[DEBUG] Extracted file_id: {file_id}")
+
+                    if not file_id:
+                        logger.warning(f"[DEBUG] Skipping media item {idx}: no file_id found")
+                        continue
 
                     # Add caption only to first media item
                     item_caption = caption if idx == 0 else ""
@@ -286,23 +297,26 @@ async def publish_promotion(context: ContextTypes.DEFAULT_TYPE):
                     if media_type == "video":
                         msg = await context.bot.send_video(
                             chat_id=GROUP_ID,
-                            video=media_id,
+                            video=file_id,
                             caption=item_caption,
                             parse_mode="Markdown",
                         )
                     else:  # photo
                         msg = await context.bot.send_photo(
                             chat_id=GROUP_ID,
-                            photo=media_id,
+                            photo=file_id,
                             caption=item_caption,
                             parse_mode="Markdown",
                         )
                     
                     album_messages.append(msg)
-                    logger.info(f"Published {media_type} with file_id: {media_id}")
+                    logger.info(f"Published {media_type} with file_id: {file_id}")
                 
                 except TelegramError as e:
-                    logger.error(f"Failed to send media {file_id}: {e}")
+                    logger.error(f"[TELEGRAM ERROR] Failed to send media {media_item}: {e}")
+                    logger.error(f"[TRACEBACK] {type(e).__name__}: {str(e)}")
+                    import traceback
+                    logger.error(f"[FULL TRACEBACK] {traceback.format_exc()}")
                     continue
 
             if album_messages:
@@ -361,9 +375,15 @@ async def publish_promotion(context: ContextTypes.DEFAULT_TYPE):
         logger.info(f"Promotion published successfully. Next promotion index: {next_index}")
 
     except TelegramError as e:
-        logger.error(f"Failed to publish promotion: {e}")
+        logger.error(f"[TELEGRAM ERROR] Failed to publish promotion: {e}")
+        logger.error(f"[TRACEBACK] {type(e).__name__}: {str(e)}")
+        import traceback
+        logger.error(f"[FULL TRACEBACK] {traceback.format_exc()}")
     except Exception as e:
-        logger.error(f"Unexpected error while publishing promotion: {e}")
+        logger.error(f"[UNEXPECTED ERROR] Unexpected error while publishing promotion: {e}")
+        logger.error(f"[TRACEBACK] {type(e).__name__}: {str(e)}")
+        import traceback
+        logger.error(f"[FULL TRACEBACK] {traceback.format_exc()}")
 
 
 async def schedule_promotions(context: ContextTypes.DEFAULT_TYPE):
