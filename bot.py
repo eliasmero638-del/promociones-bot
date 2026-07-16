@@ -224,7 +224,7 @@ async def delete_previous_messages(context: ContextTypes.DEFAULT_TYPE, state: Bo
 
 
 async def publish_promotion(context: ContextTypes.DEFAULT_TYPE):
-    """Publish the current promotion from promotions.json."""
+    """Publish the current promotion from promotions.json using Telegram file_id."""
     state = BotState()
     promotions_manager = PromotionsManager()
     promotions = promotions_manager.get_all()
@@ -247,30 +247,64 @@ async def publish_promotion(context: ContextTypes.DEFAULT_TYPE):
     button_message = None
 
     try:
-        if promotion.get("media"):
-            media_objects = get_media_input_objects(promotion["media"])
-            if media_objects:
-                media_objects[0].caption = promotion.get("caption", "")
-                media_objects[0].parse_mode = "Markdown"
+        caption = promotion.get("caption", "")
+        media_list = promotion.get("media", [])
 
-                album_message = await context.bot.send_media_group(
-                    chat_id=GROUP_ID,
-                    media=media_objects,
-                )
-                logger.info(f"Album published with {len(album_message)} messages")
-                state.set_last_album_message_id(album_message[0].message_id)
+        if media_list:
+            # Separate photos and videos
+            album_messages = []
+            
+            for file_id in media_list:
+                try:
+                    # Determine media type by checking if it's stored with type info
+                    # If file_id is a dict with type and id, use that; otherwise assume photo
+                    if isinstance(file_id, dict):
+                        media_type = file_id.get("type", "photo")
+                        media_id = file_id.get("file_id")
+                    else:
+                        # Try to infer from file_id pattern or default to photo
+                        media_type = "photo"
+                        media_id = file_id
+
+                    if media_type == "video":
+                        msg = await context.bot.send_video(
+                            chat_id=GROUP_ID,
+                            video=media_id,
+                            caption=caption if not album_messages else "",
+                            parse_mode="Markdown",
+                        )
+                    else:  # photo
+                        msg = await context.bot.send_photo(
+                            chat_id=GROUP_ID,
+                            photo=media_id,
+                            caption=caption if not album_messages else "",
+                            parse_mode="Markdown",
+                        )
+                    
+                    album_messages.append(msg)
+                    logger.info(f"Published {media_type} with file_id: {media_id}")
+                
+                except TelegramError as e:
+                    logger.error(f"Failed to send media {file_id}: {e}")
+                    continue
+
+            if album_messages:
+                state.set_last_album_message_id(album_messages[0].message_id)
+                logger.info(f"Album published with {len(album_messages)} messages")
             else:
+                # No media could be sent, fall back to text
                 text_message = await context.bot.send_message(
                     chat_id=GROUP_ID,
-                    text=promotion.get("caption", ""),
+                    text=caption,
                     parse_mode="Markdown",
                 )
                 state.set_last_album_message_id(text_message.message_id)
                 logger.info("Published promotion as text (no valid media files)")
         else:
+            # No media configured, send as text only
             text_message = await context.bot.send_message(
                 chat_id=GROUP_ID,
-                text=promotion.get("caption", ""),
+                text=caption,
                 parse_mode="Markdown",
             )
             state.set_last_album_message_id(text_message.message_id)
