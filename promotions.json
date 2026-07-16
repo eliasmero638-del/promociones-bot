@@ -1,0 +1,40 @@
+{
+  "promotions": [
+    {
+      "id": "promo_001",
+      "caption": "",
+      "media": [],
+      "admin_username": "el593rm"
+    },
+    {
+      "id": "promo_002",
+      "caption": "",
+      "media": [],
+      "admin_username": "el593rm"
+    },
+    {
+      "id": "promo_003",
+      "caption": "",
+      "media": [],
+      "admin_username": "el593rm"
+    },
+    {
+      "id": "promo_004",
+      "caption": "",
+      "media": [],
+      "admin_username": "el593rm"
+    },
+    {
+      "id": "promo_005",
+      "caption": "",
+      "media": [],
+      "admin_username": "el593rm"
+    },
+    {
+      "id": "promo_006",
+      "caption": "",
+      "media": [],
+      "admin_username": "el593rm"
+    }
+  ]
+}
