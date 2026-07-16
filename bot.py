@@ -348,13 +348,13 @@ async def admin_panel(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return
 
     keyboard = [
-        [InlineKeyboardButton("➕ Add Promotion", callback_data="add_promo")],
-        [InlineKeyboardButton("📋 View Promotions", callback_data="view_promos")],
-        [InlineKeyboardButton("✏️ Edit Promotion", callback_data="edit_promo")],
-        [InlineKeyboardButton("🗑 Delete Promotion", callback_data="delete_promo")],
-        [InlineKeyboardButton("🚀 Publish Now", callback_data="publish_now")],
-        [InlineKeyboardButton("⏰ Change Interval", callback_data="change_interval")],
-        [InlineKeyboardButton("📊 Bot Status", callback_data="bot_status")],
+        [InlineKeyboardButton("➕ Agregar Promoción", callback_data="add_promo")],
+        [InlineKeyboardButton("📋 Ver Promociones", callback_data="view_promos")],
+        [InlineKeyboardButton("✏️ Editar Promoción", callback_data="edit_promo")],
+        [InlineKeyboardButton("🗑 Eliminar Promoción", callback_data="delete_promo")],
+        [InlineKeyboardButton("🚀 Publicar Ahora", callback_data="publish_now")],
+        [InlineKeyboardButton("⏰ Cambiar Intervalo", callback_data="change_interval")],
+        [InlineKeyboardButton("📊 Estado del Bot", callback_data="bot_status")],
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
     await update.message.reply_text("⚙️ **Panel de Administración**", reply_markup=reply_markup, parse_mode="Markdown")
@@ -370,33 +370,33 @@ async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return
 
     if query.data == "add_promo":
-        await query.edit_message_text("📸 Por favor, envía una foto o video para la promoción.")
+        await query.edit_message_text("📸 Por favor, envía una foto o un video para la promoción.")
         return ADD_PHOTO
 
     elif query.data == "view_promos":
         manager = PromotionsManager()
         promos = manager.get_all()
         if not promos:
-            await query.edit_message_text("No hay promociones almacenadas.")
+            await query.edit_message_text("❌ No hay promociones almacenadas.")
             return
         
         text = "📋 **Promociones Actuales:**\n\n"
         for i, promo in enumerate(promos, 1):
             text += f"{i}. **ID:** `{promo['id']}`\n"
-            text += f"   **Caption:** {promo.get('caption', 'Sin descripción')}\n"
+            text += f"   **Descripción:** {promo.get('caption', 'Sin descripción')}\n"
             text += f"   **Admin:** @{promo.get('admin_username', 'N/A')}\n"
-            text += f"   **Media:** {len(promo.get('media', []))} archivo(s)\n\n"
+            text += f"   **Archivos:** {len(promo.get('media', []))} archivo(s)\n\n"
         await query.edit_message_text(text, parse_mode="Markdown")
 
     elif query.data == "edit_promo":
         manager = PromotionsManager()
         promos = manager.get_all()
         if not promos:
-            await query.edit_message_text("No hay promociones para editar.")
+            await query.edit_message_text("❌ No hay promociones para editar.")
             return
         
         keyboard = [[InlineKeyboardButton(f"{p['id']}", callback_data=f"edit_{p['id']}")] for p in promos]
-        keyboard.append([InlineKeyboardButton("Cancelar", callback_data="cancel")])
+        keyboard.append([InlineKeyboardButton("❌ Cancelar", callback_data="cancel")])
         reply_markup = InlineKeyboardMarkup(keyboard)
         await query.edit_message_text("Selecciona la promoción a editar:", reply_markup=reply_markup)
 
@@ -404,11 +404,11 @@ async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         manager = PromotionsManager()
         promos = manager.get_all()
         if not promos:
-            await query.edit_message_text("No hay promociones para eliminar.")
+            await query.edit_message_text("❌ No hay promociones para eliminar.")
             return
         
         keyboard = [[InlineKeyboardButton(f"{p['id']}", callback_data=f"delete_{p['id']}")] for p in promos]
-        keyboard.append([InlineKeyboardButton("Cancelar", callback_data="cancel")])
+        keyboard.append([InlineKeyboardButton("❌ Cancelar", callback_data="cancel")])
         reply_markup = InlineKeyboardMarkup(keyboard)
         await query.edit_message_text("Selecciona la promoción a eliminar:", reply_markup=reply_markup)
 
@@ -416,11 +416,11 @@ async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         manager = PromotionsManager()
         promos = manager.get_all()
         if not promos:
-            await query.edit_message_text("No hay promociones para publicar.")
+            await query.edit_message_text("❌ No hay promociones para publicar.")
             return
         
         keyboard = [[InlineKeyboardButton(f"{p['id']}", callback_data=f"pub_{p['id']}")] for p in promos]
-        keyboard.append([InlineKeyboardButton("Cancelar", callback_data="cancel")])
+        keyboard.append([InlineKeyboardButton("❌ Cancelar", callback_data="cancel")])
         reply_markup = InlineKeyboardMarkup(keyboard)
         await query.edit_message_text("Selecciona la promoción a publicar:", reply_markup=reply_markup)
 
@@ -448,7 +448,7 @@ async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         promo_id = query.data.replace("delete_", "")
         manager = PromotionsManager()
         if manager.delete(promo_id):
-            await query.edit_message_text(f"✅ Promoción `{promo_id}` eliminada.", parse_mode="Markdown")
+            await query.edit_message_text(f"✅ Promoción `{promo_id}` eliminada correctamente.", parse_mode="Markdown")
         else:
             await query.edit_message_text("❌ Error al eliminar la promoción.")
 
@@ -456,10 +456,10 @@ async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         promo_id = query.data.replace("pub_", "")
         await context.bot.send_message(chat_id=update.effective_chat.id, text="🚀 Publicando...")
         await publish_promotion(context)
-        await query.edit_message_text("✅ Promoción publicada.")
+        await query.edit_message_text("✅ Promoción publicada correctamente.")
 
     elif query.data == "cancel":
-        await query.edit_message_text("Operación cancelada.")
+        await query.edit_message_text("❌ Operación cancelada.")
 
 
 async def add_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -467,22 +467,22 @@ async def add_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if update.message.photo:
         file_id = update.message.photo[-1].file_id
         context.user_data["media"] = [file_id]
-        await update.message.reply_text("📝 Ahora envía la descripción/caption:")
+        await update.message.reply_text("📝 Ahora envía el texto de la promoción:")
         return ADD_CAPTION
     elif update.message.video:
         file_id = update.message.video.file_id
         context.user_data["media"] = [file_id]
-        await update.message.reply_text("📝 Ahora envía la descripción/caption:")
+        await update.message.reply_text("📝 Ahora envía el texto de la promoción:")
         return ADD_CAPTION
     else:
-        await update.message.reply_text("❌ Por favor envía una foto o video.")
+        await update.message.reply_text("❌ Por favor envía una foto o un video.")
         return ADD_PHOTO
 
 
 async def add_caption(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Receive caption for new promotion."""
     context.user_data["caption"] = update.message.text
-    await update.message.reply_text("👤 Envía el nombre de usuario del administrador (sin @):")
+    await update.message.reply_text("👤 Escribe el usuario de Telegram del administrador (sin @):")
     return ADD_USERNAME
 
 
@@ -502,7 +502,7 @@ async def add_username(update: Update, context: ContextTypes.DEFAULT_TYPE):
     }
     
     manager.add(new_promo)
-    await update.message.reply_text(f"✅ Promoción `{next_id}` creada exitosamente.", parse_mode="Markdown")
+    await update.message.reply_text(f"✅ Promoción `{next_id}` creada correctamente.", parse_mode="Markdown")
     context.user_data.clear()
     return ConversationHandler.END
 
@@ -525,6 +525,38 @@ async def post_init(application: Application):
     """Called after the application is initialized."""
     logger.info("Bot started. Scheduling promotions...")
     await schedule_promotions(application)
+
+
+async def interval_input(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Handle interval input."""
+    try:
+        interval = int(update.message.text)
+        if interval < 60:
+            await update.message.reply_text("❌ El intervalo mínimo es 60 segundos.")
+            return INTERVAL_INPUT
+        
+        state = BotState()
+        state.set_promotion_interval(interval)
+        state.save()
+        
+        # Reschedule with new interval
+        if context.job_queue:
+            removed = context.job_queue.get_jobs_by_name("promotion_job")
+            for job in removed:
+                job.schedule_removal()
+            
+            context.job_queue.run_repeating(
+                publish_promotion,
+                interval=interval,
+                first=interval + 60,
+                name="promotion_job",
+            )
+        
+        await update.message.reply_text(f"✅ Intervalo actualizado correctamente a {interval}s ({interval/3600}h)")
+        return ConversationHandler.END
+    except ValueError:
+        await update.message.reply_text("❌ Por favor envía un número válido.")
+        return INTERVAL_INPUT
 
 
 def main():
@@ -559,38 +591,6 @@ def main():
 
     # Start the Bot
     application.run_polling()
-
-
-async def interval_input(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Handle interval input."""
-    try:
-        interval = int(update.message.text)
-        if interval < 60:
-            await update.message.reply_text("❌ El intervalo mínimo es 60 segundos.")
-            return INTERVAL_INPUT
-        
-        state = BotState()
-        state.set_promotion_interval(interval)
-        state.save()
-        
-        # Reschedule with new interval
-        if context.job_queue:
-            removed = context.job_queue.get_jobs_by_name("promotion_job")
-            for job in removed:
-                job.schedule_removal()
-            
-            context.job_queue.run_repeating(
-                publish_promotion,
-                interval=interval,
-                first=interval + 60,
-                name="promotion_job",
-            )
-        
-        await update.message.reply_text(f"✅ Intervalo actualizado a {interval}s ({interval/3600}h)")
-        return ConversationHandler.END
-    except ValueError:
-        await update.message.reply_text("❌ Por favor envía un número válido.")
-        return INTERVAL_INPUT
 
 
 if __name__ == "__main__":
