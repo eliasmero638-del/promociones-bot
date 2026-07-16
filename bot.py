@@ -504,13 +504,17 @@ async def add_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if update.message.photo:
         # Get the highest resolution photo
         file_id = update.message.photo[-1].file_id
+        # Store as plain string - media type will be inferred as photo
         context.user_data["media"] = [file_id]
+        context.user_data["media_type"] = "photo"
         logger.info(f"Photo received with file_id: {file_id}")
         await update.message.reply_text("📝 Ahora envía el texto de la promoción:")
         return ADD_CAPTION
     elif update.message.video:
         file_id = update.message.video.file_id
+        # Store as plain string - media type will be inferred as video
         context.user_data["media"] = [file_id]
+        context.user_data["media_type"] = "video"
         logger.info(f"Video received with file_id: {file_id}")
         await update.message.reply_text("📝 Ahora envía el texto de la promoción:")
         return ADD_CAPTION
@@ -522,30 +526,40 @@ async def add_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def add_caption(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Receive caption for new promotion."""
-    context.user_data["caption"] = update.message.text
-    logger.info(f"Caption received: {update.message.text}")
+    caption_text = update.message.text
+    context.user_data["caption"] = caption_text
+    logger.info(f"Caption received: {caption_text}")
+    logger.info(f"Current user_data media: {context.user_data.get('media')}")
     await update.message.reply_text("👤 Escribe el usuario de Telegram del administrador (sin @):")
     return ADD_USERNAME
 
 
 async def add_username(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Receive username and save promotion."""
-    context.user_data["admin_username"] = update.message.text
-    logger.info(f"Username received: {update.message.text}")
+    admin_username = update.message.text
+    context.user_data["admin_username"] = admin_username
+    logger.info(f"Username received: {admin_username}")
+    logger.info(f"User data before saving: {context.user_data}")
     
     manager = PromotionsManager()
     promos = manager.get_all()
     next_id = f"promo_{str(len(promos) + 1).zfill(3)}"
     
+    # Get media from context.user_data
+    media = context.user_data.get("media", [])
+    caption = context.user_data.get("caption", "")
+    
+    logger.info(f"Creating promotion with media: {media}, caption: {caption}")
+    
     new_promo = {
         "id": next_id,
-        "caption": context.user_data.get("caption", ""),
-        "media": context.user_data.get("media", []),
-        "admin_username": context.user_data.get("admin_username", "el593rm")
+        "caption": caption,
+        "media": media,
+        "admin_username": admin_username
     }
     
     manager.add(new_promo)
-    logger.info(f"Promotion created: {next_id}")
+    logger.info(f"Promotion created: {next_id} with {len(media)} media file(s)")
     await update.message.reply_text(f"✅ Promoción `{next_id}` creada correctamente.", parse_mode="Markdown")
     context.user_data.clear()
     return ConversationHandler.END
