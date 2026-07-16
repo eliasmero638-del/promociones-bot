@@ -319,14 +319,19 @@ async def publish_promotion(context: ContextTypes.DEFAULT_TYPE):
 
     # Build list of valid promotions: non-empty caption OR at least one media file
     def _has_valid_media(promo: Dict) -> bool:
+        media = promo.get("media", [])
+        if not isinstance(media, list):
+            return False
+
         return any(
-            (m.get("file_id") if isinstance(m, dict) else m)
-            for m in promo.get("media", [])
+            ((m.get("file_id") if isinstance(m, dict) else m) or "").strip()
+            for m in media
+            if isinstance(m, (dict, str))
         )
 
     valid_promotions = [
         p for p in all_promotions
-        if p.get("caption", "").strip() or _has_valid_media(p)
+        if str(p.get("caption", "") or "").strip() or _has_valid_media(p)
     ]
 
     if not valid_promotions:
