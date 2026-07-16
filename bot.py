@@ -13,8 +13,8 @@ from datetime import datetime
 from typing import Optional, List
 
 from dotenv import load_dotenv
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup, InputMediaPhoto, InputMediaVideo
-from telegram.ext import Application, ContextTypes
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup, InputMediaPhoto, InputMediaVideo, Update
+from telegram.ext import Application, ContextTypes, CommandHandler
 from telegram.error import TelegramError
 
 from promotions_config import PROMOTIONS, PROMOTION_INTERVAL
@@ -286,6 +286,15 @@ async def post_init(application: Application):
     await schedule_promotions(application)
 
 
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Handler for the /start command."""
+    # Reply to the user confirming the bot is running
+    if update.message:
+        await update.message.reply_text(
+            "✅ EC Promociones Bot está funcionando correctamente."
+        )
+
+
 def main():
     """Main function to start the bot."""
     # Validate configuration
@@ -301,8 +310,11 @@ def main():
     # Create the Application
     application = Application.builder().token(BOT_TOKEN).post_init(post_init).build()
 
+    # Register /start command handler
+    application.add_handler(CommandHandler("start", start))
+
     # Start the Bot
-    application.run_polling(allowed_updates=[])
+    application.run_polling()
 
 
 if __name__ == "__main__":
