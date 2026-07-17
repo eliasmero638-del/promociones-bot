@@ -11,6 +11,7 @@ from datetime import datetime
 from typing import Optional, List, Dict
 
 from dotenv import load_dotenv
+import requests
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, InputMediaPhoto, InputMediaVideo, Update
 from telegram.ext import Application, ContextTypes, CommandHandler, CallbackQueryHandler, MessageHandler, ConversationHandler, filters
 from telegram.error import TelegramError
@@ -22,8 +23,58 @@ load_dotenv()
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 GROUP_ID = int(os.getenv("GROUP_ID", 0))
 ADMIN_USER_ID = 8710301236
-PROMOTIONS_FILE = "promotions.json"
-STATE_FILE = "bot_state.json"
+# --- Phase 6: optional persistent storage location (Railway Volume) ---
+# Backward-compatible by design: if DATA_DIR is not set, promotions.json and
+# bot_state.json are stored exactly where they always were (the process's
+# working directory) - existing installs keep working unchanged. If DATA_DIR
+# is set (e.g. to a Railway Volume mount path), both files are stored there
+# instead, so they survive redeploys/restarts instead of resetting to
+# whatever promotions.json happens to be committed in git.
+DATA_DIR = os.getenv("DATA_DIR", "").strip()
+
+if DATA_DIR:
+    os.makedirs(DATA_DIR, exist_ok=True)
+    PROMOTIONS_FILE = os.path.join(DATA_DIR, "promotions.json")
+    STATE_FILE = os.path.join(DATA_DIR, "bot_state.json")
+else:
+    PROMOTIONS_FILE = "promotions.json"
+    STATE_FILE = "bot_state.json"
+
+# --- Phase 7: optional Upstash Redis storage (no new Railway resources) ---
+# Backward-compatible by design, same principle as DATA_DIR above: if these
+# two variables are not both set, PromotionsManager/BotState behave exactly
+# as before (local JSON file, optionally under DATA_DIR). If both are set,
+# they persist to Upstash Redis instead - an external, free-tier service
+# that needs no Railway Volume or database resource. Storage backend is
+# decided once per process (not per request) to avoid the two backends
+# ever silently drifting out of sync with each other.
+UPSTASH_REDIS_REST_URL = os.getenv("UPSTASH_REDIS_REST_URL", "").strip()
+UPSTASH_REDIS_REST_TOKEN = os.getenv("UPSTASH_REDIS_REST_TOKEN", "").strip()
+USE_UPSTASH = bool(UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN)
+
+# Redis keys used to store the whole promotions.json / bot_state.json
+# payload as a single JSON string each - mirrors the "one file, one blob"
+# shape the local-file backend already uses, so no data model changes.
+UPSTASH_PROMOTIONS_KEY = "promociones_bot:promotions"
+UPSTASH_STATE_KEY = "promociones_bot:bot_state"
+
+
+def _upstash_command(*parts) -> Optional[dict]:
+    """Execute a single Upstash Redis REST command (their documented "POST body = JSON array" call form: e.g. _upstash_command("GET", key)). Returns the parsed JSON response dict on success, or None on any network/HTTP error. Never raises - callers treat None the same way the local-file backend already treats a failed read/write (log + safe default), so a transient Upstash issue degrades gracefully instead of crashing the bot. """
+    if not USE_UPSTASH:
+        return None
+    try:
+        response = requests.post(
+            UPSTASH_REDIS_REST_URL,
+            headers={"Authorization": f"Bearer {UPSTASH_REDIS_REST_TOKEN}"},
+            json=list(parts),
+            timeout=10,
+        )
+        response.raise_for_status()
+        return response.json()
+    except Exception as e:
+        logger.error(f"[upstash] Command '{parts[0] if parts else '?'}' failed: {e}")
+        return None
 PROMOTION_INTERVAL = 7200  # 2 hours
 
 # Conversation states
@@ -71,17 +122,63 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+if USE_UPSTASH:
+    logger.info(
+        f"[storage] Upstash Redis configured. Using persistent storage in Upstash "
+        f"(keys '{UPSTASH_PROMOTIONS_KEY}' / '{UPSTASH_STATE_KEY}'). Local files are not used."
+    )
+elif DATA_DIR:
+    logger.info(
+        f"[storage] DATA_DIR is set ('{DATA_DIR}'). Using persistent storage: "
+        f"promotions='{PROMOTIONS_FILE}' state='{STATE_FILE}'."
+    )
+else:
+    logger.info(
+        f"[storage] Neither Upstash nor DATA_DIR is set. Using local, non-persistent storage: "
+        f"promotions='{PROMOTIONS_FILE}' state='{STATE_FILE}'. "
+        f"This will reset on the next redeploy/restart unless configured otherwise."
+    )
+
 
 class PromotionsManager:
-    """Manages promotions stored in JSON file."""
+    """Manages promotions, stored either in Upstash Redis (if configured) or in a local JSON file (fallback - identical to the original behavior)."""
 
     def __init__(self, file_path: str = PROMOTIONS_FILE):
         self.file_path = file_path
-        logger.info(f"[PromotionsManager.__init__] Creating manager with file_path: {self.file_path}")
+        self.use_upstash = USE_UPSTASH
+        backend = "Upstash Redis" if self.use_upstash else f"local file ({self.file_path})"
+        logger.info(f"[PromotionsManager.__init__] Creating manager. Storage backend: {backend}")
         self.data = self._load()
-        logger.info(f"[PromotionsManager.__init__] Loaded {len(self.data.get('promotions', []))} promotions from file")
+        logger.info(f"[PromotionsManager.__init__] Loaded {len(self.data.get('promotions', []))} promotions from {backend}")
 
     def _load(self) -> dict:
+        """Load promotions from the active backend (Upstash Redis or local file)."""
+        if self.use_upstash:
+            return self._load_from_upstash()
+        return self._load_from_file()
+
+    def _load_from_upstash(self) -> dict:
+        logger.info(f"[PromotionsManager._load] Starting load from Upstash Redis, key: {UPSTASH_PROMOTIONS_KEY}")
+        result = _upstash_command("GET", UPSTASH_PROMOTIONS_KEY)
+
+        if result is None:
+            logger.error("[PromotionsManager._load] Upstash Redis request failed; starting with an empty list for this session.")
+            return {"promotions": []}
+
+        raw = result.get("result")
+        if raw is None:
+            logger.info("[PromotionsManager._load] No promotions stored yet in Upstash Redis; starting empty.")
+            return {"promotions": []}
+
+        try:
+            data = json.loads(raw)
+            logger.info(f"[PromotionsManager._load] Successfully loaded from Upstash, contains {len(data.get('promotions', []))} promotions")
+            return data
+        except Exception as e:
+            logger.error(f"[PromotionsManager._load] Failed to parse JSON from Upstash: {e}")
+            return {"promotions": []}
+
+    def _load_from_file(self) -> dict:
         """Load promotions from JSON file."""
         logger.info(f"[PromotionsManager._load] Starting load from: {self.file_path}")
         if Path(self.file_path).exists():
@@ -98,6 +195,35 @@ class PromotionsManager:
         return {"promotions": []}
 
     def save(self) -> bool:
+        """Save promotions to the active backend (Upstash Redis or local file). Returns: bool: True on success, False on failure. """
+        if self.use_upstash:
+            return self._save_to_upstash()
+        return self._save_to_file()
+
+    def _save_to_upstash(self) -> bool:
+        promos_count = len(self.data.get("promotions", []))
+        logger.info(f"[PromotionsManager.save] ========== SAVE START (Upstash Redis) ==========")
+        logger.info(f"[PromotionsManager.save] Number of promotions to save: {promos_count}")
+
+        try:
+            payload = json.dumps(self.data)
+        except Exception as e:
+            logger.error(f"[PromotionsManager.save] ========== SAVE FAILED ==========")
+            logger.error(f"[PromotionsManager.save] Could not serialize data to JSON: {e}")
+            return False
+
+        result = _upstash_command("SET", UPSTASH_PROMOTIONS_KEY, payload)
+
+        if result is not None and result.get("result") == "OK":
+            logger.info(f"[PromotionsManager.save] Upstash SET confirmed OK for {promos_count} promotions.")
+            logger.info(f"[PromotionsManager.save] ========== SAVE SUCCESS ==========")
+            return True
+
+        logger.error(f"[PromotionsManager.save] ========== SAVE FAILED ==========")
+        logger.error(f"[PromotionsManager.save] Upstash SET did not confirm success. Response: {result}")
+        return False
+
+    def _save_to_file(self) -> bool:
         """Save promotions to JSON file. Returns: bool: True on success, False on failure. """
         try:
             # Debug log: before write
@@ -206,20 +332,16 @@ class PromotionsManager:
 
 
 class BotState:
-    """Manages the bot state (message IDs and current promotion)."""
+    """Manages the bot state (message IDs and current promotion), stored either in Upstash Redis (if configured) or in a local JSON file (fallback - identical to the original behavior)."""
 
     def __init__(self, state_file: str = STATE_FILE):
         self.state_file = state_file
+        self.use_upstash = USE_UPSTASH
+        backend = "Upstash Redis" if self.use_upstash else f"local file ({self.state_file})"
+        logger.info(f"[BotState.__init__] Creating state manager. Storage backend: {backend}")
         self.data = self._load()
 
-    def _load(self) -> dict:
-        """Load state from JSON file."""
-        if Path(self.state_file).exists():
-            try:
-                with open(self.state_file, "r") as f:
-                    return json.load(f)
-            except Exception as e:
-                logger.warning(f"Failed to load state file: {e}")
+    def _default_state(self) -> dict:
         return {
             "current_promotion_index": 0,
             "last_album_message_id": None,
@@ -228,7 +350,61 @@ class BotState:
             "promotion_interval": PROMOTION_INTERVAL,
         }
 
+    def _load(self) -> dict:
+        """Load state from the active backend (Upstash Redis or local file)."""
+        if self.use_upstash:
+            return self._load_from_upstash()
+        return self._load_from_file()
+
+    def _load_from_upstash(self) -> dict:
+        result = _upstash_command("GET", UPSTASH_STATE_KEY)
+
+        if result is None:
+            logger.error("[BotState._load] Upstash Redis request failed; starting with default state for this session.")
+            return self._default_state()
+
+        raw = result.get("result")
+        if raw is None:
+            logger.info("[BotState._load] No state stored yet in Upstash Redis; starting with default state.")
+            return self._default_state()
+
+        try:
+            return json.loads(raw)
+        except Exception as e:
+            logger.error(f"[BotState._load] Failed to parse JSON from Upstash: {e}")
+            return self._default_state()
+
+    def _load_from_file(self) -> dict:
+        """Load state from JSON file."""
+        if Path(self.state_file).exists():
+            try:
+                with open(self.state_file, "r") as f:
+                    return json.load(f)
+            except Exception as e:
+                logger.warning(f"Failed to load state file: {e}")
+        return self._default_state()
+
     def save(self):
+        """Save state to the active backend (Upstash Redis or local file)."""
+        if self.use_upstash:
+            self._save_to_upstash()
+        else:
+            self._save_to_file()
+
+    def _save_to_upstash(self):
+        try:
+            payload = json.dumps(self.data)
+        except Exception as e:
+            logger.error(f"[BotState.save] Could not serialize state to JSON: {e}")
+            return
+
+        result = _upstash_command("SET", UPSTASH_STATE_KEY, payload)
+        if result is not None and result.get("result") == "OK":
+            logger.info("[BotState.save] State saved successfully to Upstash Redis.")
+        else:
+            logger.error(f"[BotState.save] Upstash SET did not confirm success. Response: {result}")
+
+    def _save_to_file(self):
         """Save state to JSON file."""
         try:
             with open(self.state_file, "w") as f:
@@ -331,6 +507,33 @@ async def delete_previous_messages(context: ContextTypes.DEFAULT_TYPE, state: Bo
     return deleted_count > 0
 
 
+async def _send_promotion_media_item(context: ContextTypes.DEFAULT_TYPE, chat_id: int, media_type_hint: str, file_id: str, caption: str):
+    """Send one promotion media item (photo or video), robust to an incorrect/unknown type hint. Root cause of the "media never publishes, only the caption text does" bug: promotions created through the admin panel's original "Agregar Promoción" flow (add_photo/add_username) store media as a *plain string* file_id - the "photo" vs "video" distinction that add_photo() captures in context.user_data["media_type"] is never written into the saved promotion. publish_promotion() then has no reliable way to know the real type for those entries, so its old logic just assumed "photo" for every plain string. For a promotion whose media is actually a video, that made it call send_photo() with a video file_id, Telegram's Bot API rejects that (wrong file identifier for the endpoint), the per-item TelegramError was caught and the item was skipped - so with no media item left to send, publish_promotion() fell back to its "no media could be sent" branch and sent caption-only text. Promotions saved with an explicit {"type": ..., "file_id": ...} (channel ingestion, and the admin panel's edit flow) were unaffected, since their type is known up front. Per this phase's scope, publish_promotion()/the sending path is fixed here without touching how promotions are saved: this function tries the endpoint matching media_type_hint first and, only if Telegram rejects the file_id for that endpoint, retries with the other media endpoint before giving up. This covers legacy plain-string entries of either real type without needing to change their stored format. """
+    send_as_photo = lambda: context.bot.send_photo(
+        chat_id=chat_id, photo=file_id, caption=caption, parse_mode="Markdown"
+    )
+    send_as_video = lambda: context.bot.send_video(
+        chat_id=chat_id, video=file_id, caption=caption, parse_mode="Markdown"
+    )
+
+    attempts = [send_as_video, send_as_photo] if media_type_hint == "video" else [send_as_photo, send_as_video]
+
+    last_error = None
+    for attempt_index, send_attempt in enumerate(attempts):
+        try:
+            return await send_attempt()
+        except TelegramError as e:
+            last_error = e
+            if attempt_index == 0:
+                logger.warning(
+                    f"[publish_media] Sending file_id as '{media_type_hint}' failed ({e}); "
+                    f"retrying as the other media type before giving up."
+                )
+            continue
+
+    raise last_error
+
+
 async def publish_promotion(context: ContextTypes.DEFAULT_TYPE):
     """Publish the current valid promotion from promotions.json using Telegram file_id."""
     state = BotState()
@@ -408,18 +611,12 @@ async def publish_promotion(context: ContextTypes.DEFAULT_TYPE):
                     item_caption = caption if idx == 0 else ""
 
                     if media_type == "video":
-                        msg = await context.bot.send_video(
-                            chat_id=GROUP_ID,
-                            video=file_id,
-                            caption=item_caption,
-                            parse_mode="Markdown",
+                        msg = await _send_promotion_media_item(
+                            context, GROUP_ID, "video", file_id, item_caption
                         )
                     else:  # photo
-                        msg = await context.bot.send_photo(
-                            chat_id=GROUP_ID,
-                            photo=file_id,
-                            caption=item_caption,
-                            parse_mode="Markdown",
+                        msg = await _send_promotion_media_item(
+                            context, GROUP_ID, "photo", file_id, item_caption
                         )
                     
                     album_messages.append(msg)
