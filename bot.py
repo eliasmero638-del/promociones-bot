@@ -1,9 +1,5 @@
 #!/usr/bin/env python3
-"""
-Telegram Promotions Bot with Admin Panel
-Publishes rotating promotions with media albums and admin contact buttons.
-Features admin panel for managing promotions.
-"""
+""" Telegram Promotions Bot with Admin Panel Publishes rotating promotions with media albums and admin contact buttons. Features admin panel for managing promotions. """
 
 import json
 import logging
@@ -31,7 +27,42 @@ STATE_FILE = "bot_state.json"
 PROMOTION_INTERVAL = 7200  # 2 hours
 
 # Conversation states
-ADD_PHOTO, ADD_CAPTION, ADD_USERNAME, INTERVAL_INPUT = range(4)
+# Phase 4 note: EDIT_* states are appended at the end of the range so the
+# existing ADD_PHOTO/ADD_CAPTION/ADD_USERNAME/INTERVAL_INPUT values (0-3)
+# stay exactly the same as before.
+(
+    ADD_PHOTO,
+    ADD_CAPTION,
+    ADD_USERNAME,
+    INTERVAL_INPUT,
+    EDIT_MENU,
+    EDIT_CAPTION_INPUT,
+    EDIT_MEDIA_INPUT,
+    EDIT_USERNAME_INPUT,
+) = range(8)
+
+# --- Phase 2: channel post ingestion config ---
+# In-memory buffer to aggregate channel_post updates that belong to the same
+# Telegram media group (album). Telegram sends each item of an album as a
+# separate channel_post update sharing the same media_group_id, so we must
+# accumulate them before saving a single promotion. This is transient
+# runtime state only - it is never persisted to disk.
+pending_media_groups: Dict[str, Dict] = {}
+# How long to wait, after the last item of a media group arrives, before
+# assuming the album is complete and saving it as one promotion.
+MEDIA_GROUP_DEBOUNCE_SECONDS = 2.0
+# Default admin contact used for promotions created automatically from
+# channel posts (no admin_username is available from a channel post).
+DEFAULT_ADMIN_USERNAME = "el593rm"
+
+# --- Phase 3: integration safeguard against duplicate/split albums ---
+# Remembers which media_group_id values were already turned into a
+# promotion, and which promo_id they became, for a short window after
+# finalizing. If a stray item for that same album arrives late (e.g. slow
+# network pushed it past MEDIA_GROUP_DEBOUNCE_SECONDS), it gets appended to
+# the already-saved promotion instead of creating a second, duplicate one.
+recently_finalized_groups: Dict[str, Dict] = {}
+RECENTLY_FINALIZED_TTL_SECONDS = 60
 
 # Setup logging
 logging.basicConfig(
@@ -67,11 +98,7 @@ class PromotionsManager:
         return {"promotions": []}
 
     def save(self) -> bool:
-        """Save promotions to JSON file.
-        
-        Returns:
-            bool: True on success, False on failure.
-        """
+        """Save promotions to JSON file. Returns: bool: True on success, False on failure. """
         try:
             # Debug log: before write
             abs_path = os.path.abspath(self.file_path)
@@ -142,14 +169,7 @@ class PromotionsManager:
         return None
 
     def add(self, promotion: Dict) -> bool:
-        """Add a new promotion.
-        
-        Args:
-            promotion: Dictionary containing promotion data.
-            
-        Returns:
-            bool: True if promotion was added and saved successfully, False otherwise.
-        """
+        """Add a new promotion. Args: promotion: Dictionary containing promotion data. Returns: bool: True if promotion was added and saved successfully, False otherwise. """
         logger.info(f"[PromotionsManager.add] ========== ADD START ==========")
         logger.info(f"[PromotionsManager.add] Adding promotion: {promotion}")
         logger.info(f"[PromotionsManager.add] Current promotions count before append: {len(self.data.get('promotions', []))}")
@@ -615,9 +635,9 @@ async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         text = "📋 **Promociones Actuales:**\n\n"
         for i, promo in enumerate(promos, 1):
             text += f"{i}. **ID:** `{promo['id']}`\n"
-            text += f"   **Descripción:** {promo.get('caption', 'Sin descripción')}\n"
-            text += f"   **Admin:** @{promo.get('admin_username', 'N/A')}\n"
-            text += f"   **Archivos:** {len(promo.get('media', []))} archivo(s)\n\n"
+            text += f" **Descripción:** {promo.get('caption', 'Sin descripción')}\n"
+            text += f" **Admin:** @{promo.get('admin_username', 'N/A')}\n"
+            text += f" **Archivos:** {len(promo.get('media', []))} archivo(s)\n\n"
         await query.edit_message_text(text, parse_mode="Markdown")
 
     elif query.data == "edit_promo":
@@ -627,7 +647,7 @@ async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await query.edit_message_text("❌ No hay promociones para editar.")
             return
         
-        keyboard = [[InlineKeyboardButton(f"{p['id']}", callback_data=f"edit_{p['id']}")] for p in promos]
+        keyboard = [[InlineKeyboardButton(f"{p['id']}", callback_data=f"edit_select_{p['id']}")] for p in promos]
         keyboard.append([InlineKeyboardButton("❌ Cancelar", callback_data="cancel")])
         reply_markup = InlineKeyboardMarkup(keyboard)
         await query.edit_message_text("Selecciona la promoción a editar:", reply_markup=reply_markup)
@@ -688,7 +708,15 @@ async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await query.edit_message_text("❌ Error al eliminar la promoción.")
 
     elif query.data == "cancel":
+        # Integration fix (Phase 4): this branch is used as the fallback for
+        # conv_handler (add_promo / change_interval / edit_select_* flows).
+        # It previously returned None, which does not end a ConversationHandler
+        # conversation, leaving the user "stuck" in the last state after
+        # pressing Cancelar. Clearing user_data avoids leaking a half-finished
+        # edit/add into whatever conversation starts next.
+        context.user_data.clear()
         await query.edit_message_text("❌ Operación cancelada.")
+        return ConversationHandler.END
 
 
 async def add_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -783,6 +811,269 @@ async def add_username(update: Update, context: ContextTypes.DEFAULT_TYPE):
     return ConversationHandler.END
 
 
+# --- Phase 4: "✏️ Editar Promoción" flow ---
+#
+# Design: edit_select_promotion() is a new ConversationHandler entry point
+# (triggered by the "edit_select_<id>" buttons already listed by the
+# existing "edit_promo" branch in button_callback). It loads the promotion
+# via PromotionsManager.get_by_id() and stores a *working copy* of its
+# fields in context.user_data (edit_caption / edit_media /
+# edit_admin_username). From there, EDIT_MENU lets the admin pick which
+# field to change; each field has its own input state and always returns
+# back to EDIT_MENU so multiple fields can be edited in one session. Only
+# fields the admin actually changes differ from the working copy - anything
+# untouched is saved back exactly as it was, satisfying "conservar los
+# campos que no se quieran modificar". The actual save only happens once,
+# in _apply_promotion_edit(), when the admin presses "✅ Guardar Cambios",
+# and it uses PromotionsManager.get_by_id() / .update() exclusively.
+
+def _build_edit_menu_text(context: ContextTypes.DEFAULT_TYPE) -> str:
+    """Render the current (in-progress) state of the promotion being edited."""
+    promo_id = context.user_data.get("edit_promo_id", "?")
+    caption = context.user_data.get("edit_caption", "")
+    media = context.user_data.get("edit_media", [])
+    admin_username = context.user_data.get("edit_admin_username", DEFAULT_ADMIN_USERNAME)
+    caption_preview = caption if caption else "(vacío)"
+
+    return (
+        f"✏️ **Editando `{promo_id}`**\n\n"
+        f"📝 Caption actual: {caption_preview}\n"
+        f"🖼 Archivos: {len(media)} archivo(s)\n"
+        f"👤 Admin: @{admin_username}\n\n"
+        "¿Qué deseas modificar? Los campos que no toques se guardarán tal cual están."
+    )
+
+
+def _edit_menu_keyboard() -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton("📝 Cambiar Caption", callback_data="edit_field_caption")],
+            [InlineKeyboardButton("🖼 Reemplazar Archivos", callback_data="edit_field_media")],
+            [InlineKeyboardButton("👤 Cambiar Usuario Admin", callback_data="edit_field_username")],
+            [InlineKeyboardButton("✅ Guardar Cambios", callback_data="edit_done")],
+            [InlineKeyboardButton("❌ Cancelar", callback_data="cancel")],
+        ]
+    )
+
+
+async def edit_select_promotion(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Entry point: admin picked a specific promotion from the edit list (callback_data="edit_select_<id>")."""
+    query = update.callback_query
+    await query.answer()
+
+    if query.from_user.id != ADMIN_USER_ID:
+        await query.edit_message_text("❌ No tienes permiso.")
+        return ConversationHandler.END
+
+    promo_id = query.data.replace("edit_select_", "")
+    manager = PromotionsManager()
+    promo = manager.get_by_id(promo_id)
+
+    if not promo:
+        logger.warning(f"[panel_edit] Promotion {promo_id} not found when starting edit.")
+        await query.edit_message_text(f"❌ La promoción `{promo_id}` ya no existe.", parse_mode="Markdown")
+        return ConversationHandler.END
+
+    # Working copy: nothing is written to promotions.json until the admin
+    # explicitly presses "✅ Guardar Cambios".
+    context.user_data.clear()
+    context.user_data["edit_promo_id"] = promo_id
+    context.user_data["edit_caption"] = promo.get("caption", "")
+    context.user_data["edit_media"] = list(promo.get("media", []))
+    context.user_data["edit_admin_username"] = promo.get("admin_username", DEFAULT_ADMIN_USERNAME)
+
+    logger.info(f"[panel_edit] Admin started editing promotion {promo_id}.")
+
+    await query.edit_message_text(
+        _build_edit_menu_text(context), reply_markup=_edit_menu_keyboard(), parse_mode="Markdown"
+    )
+    return EDIT_MENU
+
+
+async def edit_menu_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Handle taps on the edit menu: choose a field to change, or save."""
+    query = update.callback_query
+    await query.answer()
+
+    if query.from_user.id != ADMIN_USER_ID:
+        await query.edit_message_text("❌ No tienes permiso.")
+        return ConversationHandler.END
+
+    if query.data == "edit_field_caption":
+        await query.edit_message_text("📝 Envía el nuevo texto (caption) para esta promoción:")
+        return EDIT_CAPTION_INPUT
+
+    if query.data == "edit_field_media":
+        # Separate buffer for newly-received items, so if the admin backs
+        # out without sending anything, the original media is untouched.
+        context.user_data["edit_media_buffer"] = []
+        keyboard = InlineKeyboardMarkup(
+            [[InlineKeyboardButton("✅ Terminar de reemplazar archivos", callback_data="edit_media_done")]]
+        )
+        await query.edit_message_text(
+            "🖼 Envía la(s) nueva(s) foto(s)/video(s) para esta promoción. Puedes enviar varias, una por una, "
+            "para formar un álbum. Cuando termines, pulsa 'Terminar'.",
+            reply_markup=keyboard,
+        )
+        return EDIT_MEDIA_INPUT
+
+    if query.data == "edit_field_username":
+        await query.edit_message_text("👤 Envía el nuevo usuario de Telegram del administrador (sin @):")
+        return EDIT_USERNAME_INPUT
+
+    if query.data == "edit_done":
+        await _apply_promotion_edit(query, context)
+        return ConversationHandler.END
+
+    return EDIT_MENU
+
+
+async def edit_receive_caption(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Receive the new caption text and return to the edit menu."""
+    new_caption = update.message.text
+    old_caption = context.user_data.get("edit_caption", "")
+    context.user_data["edit_caption"] = new_caption
+
+    logger.info(
+        f"[panel_edit] Caption updated in-session for {context.user_data.get('edit_promo_id')}: "
+        f"{old_caption!r} -> {new_caption!r}"
+    )
+
+    await update.message.reply_text(
+        _build_edit_menu_text(context), reply_markup=_edit_menu_keyboard(), parse_mode="Markdown"
+    )
+    return EDIT_MENU
+
+
+async def edit_receive_media_item(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Receive one photo/video while replacing a promotion's media. Stays in EDIT_MEDIA_INPUT so the admin can send several items to form an album."""
+    message = update.message
+
+    if message.photo:
+        item = {"type": "photo", "file_id": message.photo[-1].file_id}
+    elif message.video:
+        item = {"type": "video", "file_id": message.video.file_id}
+    else:
+        await message.reply_text("❌ Por favor envía una foto o un video.")
+        return EDIT_MEDIA_INPUT
+
+    buffer = context.user_data.setdefault("edit_media_buffer", [])
+    buffer.append(item)
+
+    logger.info(
+        f"[panel_edit] Media item added to replacement buffer for "
+        f"{context.user_data.get('edit_promo_id')}: {item}. Buffer size now {len(buffer)}."
+    )
+
+    keyboard = InlineKeyboardMarkup(
+        [[InlineKeyboardButton("✅ Terminar de reemplazar archivos", callback_data="edit_media_done")]]
+    )
+    await message.reply_text(
+        f"✅ Archivo agregado ({len(buffer)} en total). Envía más o pulsa 'Terminar'.",
+        reply_markup=keyboard,
+    )
+    return EDIT_MEDIA_INPUT
+
+
+async def edit_media_done(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Admin finished sending replacement media. If nothing was sent, the original media is kept unchanged."""
+    query = update.callback_query
+    await query.answer()
+
+    if query.from_user.id != ADMIN_USER_ID:
+        await query.edit_message_text("❌ No tienes permiso.")
+        return ConversationHandler.END
+
+    promo_id = context.user_data.get("edit_promo_id")
+    buffer = context.user_data.get("edit_media_buffer", [])
+
+    if buffer:
+        context.user_data["edit_media"] = buffer
+        logger.info(f"[panel_edit] Media replaced in-session for {promo_id}: {len(buffer)} new file(s).")
+    else:
+        logger.info(f"[panel_edit] No new media received for {promo_id}; keeping original media unchanged.")
+
+    context.user_data.pop("edit_media_buffer", None)
+
+    await query.edit_message_text(
+        _build_edit_menu_text(context), reply_markup=_edit_menu_keyboard(), parse_mode="Markdown"
+    )
+    return EDIT_MENU
+
+
+async def edit_receive_username(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Receive the new admin contact username and return to the edit menu."""
+    new_username = update.message.text
+    old_username = context.user_data.get("edit_admin_username", "")
+    context.user_data["edit_admin_username"] = new_username
+
+    logger.info(
+        f"[panel_edit] Admin username updated in-session for {context.user_data.get('edit_promo_id')}: "
+        f"{old_username!r} -> {new_username!r}"
+    )
+
+    await update.message.reply_text(
+        _build_edit_menu_text(context), reply_markup=_edit_menu_keyboard(), parse_mode="Markdown"
+    )
+    return EDIT_MENU
+
+
+async def _apply_promotion_edit(query, context: ContextTypes.DEFAULT_TYPE):
+    """Persist the working copy in context.user_data back into promotions.json, using PromotionsManager's public API exclusively (get_by_id + update)."""
+    promo_id = context.user_data.get("edit_promo_id")
+    manager = PromotionsManager()
+    original = manager.get_by_id(promo_id)
+
+    if not original:
+        logger.error(f"[panel_edit] Promotion {promo_id} not found at save time (may have been deleted meanwhile).")
+        await query.edit_message_text(f"❌ La promoción `{promo_id}` ya no existe.", parse_mode="Markdown")
+        context.user_data.clear()
+        return
+
+    new_caption = context.user_data.get("edit_caption", original.get("caption", ""))
+    new_media = context.user_data.get("edit_media", original.get("media", []))
+    new_username = context.user_data.get(
+        "edit_admin_username", original.get("admin_username", DEFAULT_ADMIN_USERNAME)
+    )
+
+    changed_fields = []
+    if new_caption != original.get("caption", ""):
+        changed_fields.append("caption")
+    if new_media != original.get("media", []):
+        changed_fields.append("media")
+    if new_username != original.get("admin_username", DEFAULT_ADMIN_USERNAME):
+        changed_fields.append("admin_username")
+
+    # Keep any other fields on the promotion untouched (dict copy + overwrite
+    # only the three editable fields), consistent with the project's existing
+    # promotion shape (id, caption, media, admin_username).
+    updated_promo = dict(original)
+    updated_promo["caption"] = new_caption
+    updated_promo["media"] = new_media
+    updated_promo["admin_username"] = new_username
+
+    logger.info("[panel_edit] ========== SAVING EDIT ==========")
+    logger.info(f"[panel_edit] Promotion edited: {promo_id}")
+    logger.info(f"[panel_edit] Changed fields: {changed_fields if changed_fields else 'ninguno'}")
+
+    success = manager.update(promo_id, updated_promo)
+
+    logger.info(f"[panel_edit] manager.update() result: {success}")
+    logger.info("[panel_edit] ========== EDIT END ==========")
+
+    if success:
+        fields_text = ", ".join(changed_fields) if changed_fields else "ninguno (sin cambios)"
+        await query.edit_message_text(
+            f"✅ Promoción `{promo_id}` actualizada correctamente.\nCampos modificados: {fields_text}",
+            parse_mode="Markdown",
+        )
+    else:
+        logger.error(f"[panel_edit] ❌ Failed to save edited promotion {promo_id}.")
+        await query.edit_message_text(f"❌ Error al actualizar la promoción `{promo_id}`.", parse_mode="Markdown")
+
+    context.user_data.clear()
+
+
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Handle the /start command."""
     logger.info(f"Received /start from chat_id={update.effective_chat.id} type={update.effective_chat.type}")
@@ -795,6 +1086,340 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
             logger.info("Replied to /start in private chat")
         except Exception as e:
             logger.error(f"Failed to reply to /start: {e}")
+
+
+def _describe_channel_message(message) -> dict:
+    """Extract loggable fields from a channel_post / edited_channel_post message. This is a pure helper (no I/O) so it can be reused by both the channel_post and edited_channel_post handlers without duplicating logic. """
+    channel_id = message.chat_id
+    message_id = message.message_id
+    media_group_id = message.media_group_id
+    caption = message.caption
+
+    photo_file_id = message.photo[-1].file_id if message.photo else None
+    video_file_id = message.video.file_id if message.video else None
+
+    if message.photo:
+        content_type = "photo"
+    elif message.video:
+        content_type = "video"
+    elif message.document:
+        content_type = "document"
+    elif message.animation:
+        content_type = "animation"
+    elif message.text:
+        content_type = "text"
+    else:
+        content_type = "other"
+
+    return {
+        "channel_id": channel_id,
+        "message_id": message_id,
+        "media_group_id": media_group_id,
+        "caption": caption,
+        "content_type": content_type,
+        "photo_file_id": photo_file_id,
+        "video_file_id": video_file_id,
+    }
+
+
+def _build_media_item(message) -> Optional[Dict]:
+    """Build a single media item (dict with type + file_id) from a channel message. Only photo and video are supported, matching what publish_promotion() and get_media_input_objects() already know how to send. Returns None if the message carries no supported media (e.g. plain text, document). """
+    if message.photo:
+        return {"type": "photo", "file_id": message.photo[-1].file_id}
+    if message.video:
+        return {"type": "video", "file_id": message.video.file_id}
+    return None
+
+
+def _extract_promotion_caption(message) -> str:
+    """Resolve the text to use as the promotion caption. Uses the media caption when present; falls back to the plain message text so that text-only channel posts (no photo/video) can also be captured as promotions, consistent with publish_promotion() supporting text-only promotions. """
+    if message.caption:
+        return message.caption
+    if message.text:
+        return message.text
+    return ""
+
+
+def _next_promotion_id(manager: PromotionsManager) -> str:
+    """Generate the next sequential, collision-free promotion ID. Uses the same "promo_XXX" format already used throughout the project (admin panel, PromotionsManager, publish_promotion), so it stays fully compatible everywhere an ID is displayed or matched. Phase 3 integration fix: the original scheme elsewhere in the project (see add_username()) derives the next ID from len(existing) + 1. That works only while IDs stay perfectly contiguous. If a promotion is ever deleted via the admin panel's "🗑 Eliminar Promoción", the list becomes shorter than the highest ID already in use, and a length-based ID can collide with a promotion that still exists (e.g. deleting promo_003 out of promo_001..promo_006 leaves 5 promotions, so len+1 would produce "promo_006" again). A duplicate ID breaks get_by_id()/update()/delete(), which all match on the first promotion with that ID. To keep automatically-ingested promotions safe from this, this function instead looks at the highest numeric suffix actually in use and adds 1 to it. add_username() itself is intentionally left untouched, per Phase 3 scope (no changes to the admin panel/conversations). """
+    highest = 0
+    for promo in manager.get_all():
+        promo_id = str(promo.get("id", ""))
+        if promo_id.startswith("promo_"):
+            suffix = promo_id[len("promo_"):]
+            if suffix.isdigit():
+                highest = max(highest, int(suffix))
+    return f"promo_{str(highest + 1).zfill(3)}"
+
+
+async def _notify_admin(context: ContextTypes.DEFAULT_TYPE, text: str) -> None:
+    """Send a private Telegram message to the admin. Best-effort: a failure here (e.g. the admin never opened a DM with the bot, or blocked it) must never interrupt the automatic promotion save/edit it reports on. """
+    try:
+        await context.bot.send_message(chat_id=ADMIN_USER_ID, text=text, parse_mode="Markdown")
+    except Exception as e:
+        logger.warning(f"[channel_ingest] Could not send admin notification: {e}")
+
+
+async def _notify_admin_new_promotion(context: ContextTypes.DEFAULT_TYPE, promo_id: str, caption: str, media: List[Dict]) -> None:
+    """Phase 5: tell the admin a promotion was just created automatically from a channel post, so they know to review it without having to stumble on it in /panel."""
+    caption_preview = caption.strip() if caption and caption.strip() else "(sin texto)"
+    if len(caption_preview) > 120:
+        caption_preview = caption_preview[:120] + "…"
+    media_types = ", ".join(m.get("type", "?") for m in media) if media else "ninguno"
+
+    text = (
+        "🆕 *Nueva promoción creada automáticamente*\n\n"
+        f"ID: `{promo_id}`\n"
+        f"Caption: {caption_preview}\n"
+        f"Archivos: {len(media)} ({media_types})\n\n"
+        "Puedes revisarla o editarla con /panel."
+    )
+    await _notify_admin(context, text)
+
+
+async def _notify_admin_promotion_updated(context: ContextTypes.DEFAULT_TYPE, promo_id: str, media_count: int) -> None:
+    """Phase 5: tell the admin a promotion was updated automatically (a late-arriving album item was appended to it after the fact)."""
+    text = (
+        "✏️ *Promoción actualizada automáticamente*\n\n"
+        f"ID: `{promo_id}`\n"
+        "Llegó un archivo tardío de un álbum y se agregó a la promoción ya guardada.\n"
+        f"Ahora tiene {media_count} archivo(s) en total."
+    )
+    await _notify_admin(context, text)
+
+
+async def _notify_admin_error(context: ContextTypes.DEFAULT_TYPE, text: str) -> None:
+    """Phase 5: tell the admin an automatic save/edit failed, so a silent data-loss doesn't go unnoticed (mirrors the existing logger.error calls right before each of these are invoked)."""
+    await _notify_admin(context, f"❌ {text}\n\nRevisa los logs del bot para más detalle.")
+
+
+async def _save_new_promotion( caption: str, media: List[Dict], source_channel_id: int, context: ContextTypes.DEFAULT_TYPE ) -> Optional[str]:
+    """Persist a new promotion built from a channel post using PromotionsManager. Uses the exact same storage format PromotionsManager already works with (id, caption, media, admin_username), so it stays fully compatible with publish_promotion(), the admin panel, and promotions.json. Returns the new promotion ID on success, or None if saving failed. """
+    manager = PromotionsManager()
+    promo_id = _next_promotion_id(manager)
+
+    new_promo = {
+        "id": promo_id,
+        "caption": caption,
+        "media": media,
+        "admin_username": DEFAULT_ADMIN_USERNAME,
+    }
+
+    logger.info(
+        f"[channel_ingest] Saving promotion {promo_id} from channel {source_channel_id} "
+        f"with {len(media)} media file(s)"
+    )
+
+    if manager.add(new_promo):
+        logger.info(f"[channel_ingest] ✅ Promotion {promo_id} saved successfully from channel post.")
+        await _notify_admin_new_promotion(context, promo_id, caption, media)
+        return promo_id
+
+    logger.error(f"[channel_ingest] ❌ Failed to save promotion {promo_id} from channel post.")
+    await _notify_admin_error(context, f"No se pudo guardar la promoción automática `{promo_id}`.")
+    return None
+
+
+def _prune_recently_finalized_groups() -> None:
+    """Drop entries from recently_finalized_groups older than the TTL. Keeps this small in-memory dict from growing unbounded over a long bot uptime. Called opportunistically whenever a new album item comes in, so no separate scheduled job is needed for cleanup. """
+    now = datetime.now()
+    expired = [
+        gid
+        for gid, info in recently_finalized_groups.items()
+        if (now - info["finalized_at"]).total_seconds() > RECENTLY_FINALIZED_TTL_SECONDS
+    ]
+    for gid in expired:
+        recently_finalized_groups.pop(gid, None)
+
+
+async def _append_media_to_existing_promotion( promo_id: str, media_item: Optional[Dict], caption: str, context: ContextTypes.DEFAULT_TYPE ) -> None:
+    """Append a late-arriving album item to an already-saved promotion. Used when a media group finished its debounce window and was saved, but one more item for that same media_group_id shows up afterward (e.g. slow network). Appends to the existing promotion via PromotionsManager.update() rather than creating a second, duplicate promotion for the same album. """
+    manager = PromotionsManager()
+    promo = manager.get_by_id(promo_id)
+
+    if not promo:
+        logger.error(
+            f"[channel_ingest] Could not find promotion {promo_id} to append a late album item to "
+            f"(it may have been deleted from the admin panel)."
+        )
+        await _notify_admin_error(
+            context, f"Llegó un archivo tardío para la promoción `{promo_id}`, pero ya no existe."
+        )
+        return
+
+    if media_item:
+        promo.setdefault("media", []).append(media_item)
+    if caption and not promo.get("caption"):
+        promo["caption"] = caption
+
+    if manager.update(promo_id, promo):
+        media_count = len(promo.get("media", []))
+        logger.info(
+            f"[channel_ingest] ✅ Late album item appended to promotion {promo_id}. "
+            f"media_count={media_count}"
+        )
+        await _notify_admin_promotion_updated(context, promo_id, media_count)
+    else:
+        logger.error(f"[channel_ingest] ❌ Failed to append late album item to promotion {promo_id}.")
+        await _notify_admin_error(
+            context, f"No se pudo agregar un archivo tardío a la promoción `{promo_id}`."
+        )
+
+
+async def _finalize_media_group(context: ContextTypes.DEFAULT_TYPE):
+    """JobQueue callback: runs once no new items have arrived for a media group for MEDIA_GROUP_DEBOUNCE_SECONDS, and saves everything buffered for that album as a single promotion."""
+    media_group_id = context.job.data
+    group = pending_media_groups.pop(media_group_id, None)
+
+    if not group:
+        logger.warning(
+            f"[channel_ingest] Media group {media_group_id} had no buffered data at finalize time."
+        )
+        return
+
+    media = group["media"]
+    caption = group["caption"]
+    channel_id = group["channel_id"]
+
+    logger.info(
+        f"[channel_ingest] Finalizing album. media_group_id={media_group_id} "
+        f"channel_id={channel_id} media_count={len(media)}"
+    )
+
+    if not media and not caption.strip():
+        logger.warning(
+            f"[channel_ingest] Media group {media_group_id} has no usable caption or media, skipping save."
+        )
+        return
+
+    promo_id = await _save_new_promotion(caption=caption, media=media, source_channel_id=channel_id, context=context)
+
+    if promo_id:
+        # Remember this group as finalized so a late-arriving item (network
+        # delay pushed it past the debounce window) gets appended to this
+        # same promotion instead of creating a duplicate one. See
+        # _ingest_channel_post_as_promotion() and _prune_recently_finalized_groups().
+        recently_finalized_groups[media_group_id] = {
+            "promo_id": promo_id,
+            "finalized_at": datetime.now(),
+        }
+
+
+async def _ingest_channel_post_as_promotion(message, context: ContextTypes.DEFAULT_TYPE):
+    """Turn a channel_post message into a saved promotion (Phase 2). Single posts (no media_group_id) are saved immediately. Posts that are part of an album (shared media_group_id) are buffered in pending_media_groups and merged into a single promotion once no new items arrive for MEDIA_GROUP_DEBOUNCE_SECONDS (debounced via JobQueue), so an album never becomes multiple promotions. """
+    media_group_id = message.media_group_id
+    media_item = _build_media_item(message)
+    caption = _extract_promotion_caption(message)
+    channel_id = message.chat_id
+
+    if media_group_id:
+        logger.info(
+            f"[channel_ingest] Detected ALBUM item. media_group_id={media_group_id} "
+            f"message_id={message.message_id}"
+        )
+
+        _prune_recently_finalized_groups()
+
+        # Integration fix (Phase 3): if this media_group_id was already
+        # finalized into a promotion and this item is simply arriving late
+        # (e.g. slow network pushed it past the debounce window), append it
+        # to that existing promotion instead of starting a new buffer -
+        # otherwise the same album would end up split into two promotions.
+        late_info = recently_finalized_groups.get(media_group_id)
+        if late_info and media_group_id not in pending_media_groups:
+            logger.warning(
+                f"[channel_ingest] Item for media_group_id={media_group_id} arrived after its album "
+                f"was already saved as {late_info['promo_id']}. Appending instead of duplicating."
+            )
+            await _append_media_to_existing_promotion(late_info["promo_id"], media_item, caption, context)
+            return
+
+        group = pending_media_groups.setdefault(
+            media_group_id,
+            {"channel_id": channel_id, "caption": "", "media": []},
+        )
+
+        if media_item:
+            group["media"].append(media_item)
+        if caption and not group["caption"]:
+            group["caption"] = caption
+
+        if context.job_queue:
+            # Reset the debounce timer: cancel any pending finalize job for
+            # this group and schedule a new one, so we keep waiting until
+            # the album stops sending items before saving it.
+            job_name = f"media_group_finalize_{media_group_id}"
+            for job in context.job_queue.get_jobs_by_name(job_name):
+                job.schedule_removal()
+            context.job_queue.run_once(
+                _finalize_media_group,
+                when=MEDIA_GROUP_DEBOUNCE_SECONDS,
+                data=media_group_id,
+                name=job_name,
+            )
+        else:
+            logger.error(
+                "[channel_ingest] JobQueue not available, cannot debounce media group. "
+                "Saving immediately with items buffered so far."
+            )
+            pending_group = pending_media_groups.pop(media_group_id, None)
+            if pending_group:
+                await _save_new_promotion(
+                    caption=pending_group["caption"],
+                    media=pending_group["media"],
+                    source_channel_id=pending_group["channel_id"],
+                    context=context,
+                )
+    else:
+        logger.info(f"[channel_ingest] Detected INDIVIDUAL post. message_id={message.message_id}")
+        media = [media_item] if media_item else []
+
+        if not media and not caption.strip():
+            logger.warning(
+                f"[channel_ingest] Channel post {message.message_id} has no usable caption or media, skipping save."
+            )
+            return
+
+        await _save_new_promotion(caption=caption, media=media, source_channel_id=channel_id, context=context)
+
+
+async def handle_channel_post(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Log new posts published directly in a channel (channel_post update)."""
+    message = update.channel_post
+    if message is None:
+        return
+
+    info = _describe_channel_message(message)
+    logger.info("[channel_post] ========== NEW CHANNEL POST ==========")
+    logger.info(f"[channel_post] Channel ID: {info['channel_id']}")
+    logger.info(f"[channel_post] Message ID: {info['message_id']}")
+    logger.info(f"[channel_post] media_group_id: {info['media_group_id']}")
+    logger.info(f"[channel_post] Caption: {info['caption']}")
+    logger.info(f"[channel_post] Content type: {info['content_type']}")
+    logger.info(f"[channel_post] Photo file_id: {info['photo_file_id']}")
+    logger.info(f"[channel_post] Video file_id: {info['video_file_id']}")
+    logger.info("[channel_post] ========================================")
+
+    # Phase 2: automatically save this new channel post as a promotion.
+    await _ingest_channel_post_as_promotion(message, context)
+
+
+async def handle_edited_channel_post(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Log edits to existing channel posts (edited_channel_post update)."""
+    message = update.edited_channel_post
+    if message is None:
+        return
+
+    info = _describe_channel_message(message)
+    logger.info("[edited_channel_post] ========== EDITED CHANNEL POST ==========")
+    logger.info(f"[edited_channel_post] Channel ID: {info['channel_id']}")
+    logger.info(f"[edited_channel_post] Message ID: {info['message_id']}")
+    logger.info(f"[edited_channel_post] media_group_id: {info['media_group_id']}")
+    logger.info(f"[edited_channel_post] Caption: {info['caption']}")
+    logger.info(f"[edited_channel_post] Content type: {info['content_type']}")
+    logger.info(f"[edited_channel_post] Photo file_id: {info['photo_file_id']}")
+    logger.info(f"[edited_channel_post] Video file_id: {info['video_file_id']}")
+    logger.info("[edited_channel_post] ============================================")
 
 
 async def post_init(application: Application):
@@ -855,12 +1480,27 @@ def main():
     
     # Add conversation handler for adding promotions and changing interval
     conv_handler = ConversationHandler(
-        entry_points=[CallbackQueryHandler(button_callback, pattern="^(add_promo|change_interval)$")],
+        entry_points=[
+            CallbackQueryHandler(button_callback, pattern="^(add_promo|change_interval)$"),
+            CallbackQueryHandler(edit_select_promotion, pattern="^edit_select_.+$"),
+        ],
         states={
             ADD_PHOTO: [MessageHandler(filters.PHOTO | filters.VIDEO, add_photo)],
             ADD_CAPTION: [MessageHandler(filters.TEXT & ~filters.COMMAND, add_caption)],
             ADD_USERNAME: [MessageHandler(filters.TEXT & ~filters.COMMAND, add_username)],
             INTERVAL_INPUT: [MessageHandler(filters.TEXT & ~filters.COMMAND, interval_input)],
+            EDIT_MENU: [
+                CallbackQueryHandler(
+                    edit_menu_callback,
+                    pattern="^(edit_field_caption|edit_field_media|edit_field_username|edit_done)$",
+                )
+            ],
+            EDIT_CAPTION_INPUT: [MessageHandler(filters.TEXT & ~filters.COMMAND, edit_receive_caption)],
+            EDIT_MEDIA_INPUT: [
+                MessageHandler(filters.PHOTO | filters.VIDEO, edit_receive_media_item),
+                CallbackQueryHandler(edit_media_done, pattern="^edit_media_done$"),
+            ],
+            EDIT_USERNAME_INPUT: [MessageHandler(filters.TEXT & ~filters.COMMAND, edit_receive_username)],
         },
         fallbacks=[CallbackQueryHandler(button_callback, pattern="^cancel$")],
     )
@@ -868,6 +1508,10 @@ def main():
     
     # Add callback handler for other buttons
     application.add_handler(CallbackQueryHandler(button_callback))
+
+    # Detect posts published/edited directly in Telegram channels
+    application.add_handler(MessageHandler(filters.UpdateType.CHANNEL_POST, handle_channel_post))
+    application.add_handler(MessageHandler(filters.UpdateType.EDITED_CHANNEL_POST, handle_edited_channel_post))
 
     # Start the Bot
     application.run_polling()
