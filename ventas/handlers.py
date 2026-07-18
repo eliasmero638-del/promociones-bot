@@ -1,36 +1,7 @@
-"""
-Handlers de Telegram del sistema de ventas (Fase 7).
-
-Este módulo define su PROPIO ConversationHandler, con sus propios estados
-(números enteros locales a este handler - no colisionan con los estados
-usados en bot.py para promociones/bienvenida, ya que cada ConversationHandler
-mantiene su propia máquina de estados independiente).
-
-Flujo:
-  /start venta (deep-link desde el botón del canal)
-    -> send_sales_welcome(): "🎁 Iniciar prueba gratis" / "💳 Comprar VIP" / "❓ FAQ"
-       -> ventas_demo_callback(): enlace al grupo de demostración
-       -> ventas_vip_callback(): precio + datos bancarios + PayPal + "✅ Ya pagué"
-          -> ventas_paid_entry() [entra a la conversación]: pide nombre del titular
-             -> ventas_receive_payer_name(): pide método de pago (botones)
-                -> ventas_receive_payment_method(): guarda la solicitud, notifica al admin, fin
-
-  Admin (mensaje privado recibido):
-    sale_approve_callback() / sale_reject_callback(): resuelven la solicitud
-    y notifican al comprador.
-
-NOTA (primera versión de producción, sin panel de configuración todavía):
-la configuración del módulo (precio, bancos, PayPal, enlaces, FAQ) se
-edita directamente en ventas/config.py (los valores por defecto en
-_default_config()) o cargando un valor a Upstash manualmente. El menú
-"🛍️ Configurar Ventas" desde el panel se agregará en una fase posterior,
-una vez validado el flujo completo de venta en producción.
-
-Todo lo que este módulo necesita de bot.py (ADMIN_USER_ID) se importa de
-forma diferida dentro de las funciones - ver docstring de ventas/config.py.
-"""
+""" Handlers de Telegram del sistema de ventas (Fase 7). Este módulo define su PROPIO ConversationHandler, con sus propios estados (números enteros locales a este handler - no colisionan con los estados usados en bot.py para promociones/bienvenida, ya que cada ConversationHandler mantiene su propia máquina de estados independiente). Flujo: /start venta (deep-link desde el botón del canal) -> send_sales_welcome(): "🎁 Iniciar prueba gratis" / "💳 Comprar VIP" / "❓ FAQ" 🎁 Iniciar prueba gratis: -> ventas_demo_callback(): entrega el enlace configurado del grupo de prueba (SALES_DEMO_GROUP_LINK). -> handle_trial_group_new_member() [MessageHandler sobre NEW_CHAT_MEMBERS, registrado en un "group" de manejo distinto al de bot.py para no interferir con el sistema de bienvenida]: detecta cualquier ingreso al grupo de prueba (SALES_TRIAL_GROUP_ID) y programa su expulsión automática exactamente 1 minuto después. -> _kick_trial_member() [job de JobQueue]: expulsa (ban + unban) al usuario del grupo de prueba. Esto SOLO aplica al grupo identificado por SALES_TRIAL_GROUP_ID - nunca al grupo VIP ni a ningún otro. 💳 Comprar acceso VIP: -> ventas_vip_callback(): muestra el MENÚ de métodos de pago (sin datos financieros todavía). -> ventas_method_detail_callback(): al elegir un método, muestra ÚNICAMENTE los datos de ESE método. -> ventas_paid_entry() [entra a la conversación]: el método ya viaja en el callback_data ("ventas_paid_<method>"), así que solo pide el nombre + inicial del apellido del titular. -> ventas_receive_payer_name(): guarda la solicitud con el método ya elegido, notifica al admin, fin. Admin (mensaje privado recibido): sale_approve_callback() / sale_reject_callback(): resuelven la solicitud y notifican al comprador. NOTA (primera versión de producción, sin panel de configuración todavía): la configuración del módulo (precio, bancos, PayPal, enlaces, FAQ) se edita directamente en ventas/config.py (los valores por defecto en _default_config()) o cargando un valor a Upstash manualmente. El menú "🛍️ Configurar Ventas" desde el panel se agregará en una fase posterior, una vez validado el flujo completo de venta en producción. Todo lo que este módulo necesita de bot.py (ADMIN_USER_ID) se importa de forma diferida dentro de las funciones - ver docstring de ventas/config.py. """
 
 import logging
+import time
 from datetime import datetime
 
 from telegram import Update
@@ -43,14 +14,21 @@ from telegram.ext import (
     filters,
 )
 
-from .config import SalesConfigManager
+from .config import SalesConfigManager, TrialKicksStore
 from .storage import SalesRequestsManager
 from . import keyboards
 
 logger = logging.getLogger("bot")
 
-# Estados propios de este ConversationHandler (independientes de los de bot.py).
-VENTAS_PAYER_NAME, VENTAS_PAYMENT_METHOD = range(2)
+# Estado propio de este ConversationHandler (independiente de los de bot.py).
+# El método de pago ya no es un estado: se elige ANTES de entrar a la
+# conversación (en el menú de VIP), y viaja en el callback_data de
+# "✅ Ya realicé el pago" - así que solo hace falta un estado: el nombre.
+(VENTAS_PAYER_NAME,) = range(1)
+
+# Cuánto puede permanecer un usuario en el grupo de prueba antes de ser
+# expulsado automáticamente. Fijo en 1 minuto, tal como se pidió.
+TRIAL_DURATION_SECONDS = 60
 
 WELCOME_TEXT = (
     "👋 ¡Bienvenido!\n\n"
@@ -67,18 +45,13 @@ def _get_admin_user_id():
 # --- Bienvenida del embudo de ventas (entrada vía deep-link /start venta) ---
 
 async def send_sales_welcome(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Muestra el menú de bienvenida de ventas. Llamado desde bot.py's
-    start() cuando detecta el payload de deep-link ?start=venta."""
+    """Muestra el menú de bienvenida de ventas. Llamado desde bot.py's start() cuando detecta el payload de deep-link ?start=venta."""
     logger.info(f"[ventas] Sales welcome shown to user {update.effective_user.id}")
     await update.message.reply_text(WELCOME_TEXT, reply_markup=keyboards.welcome_keyboard())
 
 
 async def _safe_edit_message(query, text, reply_markup=None, parse_mode=None):
-    """Wraps query.edit_message_text with error handling. Quality audit fix:
-    these simple callbacks had no protection against a TelegramError (e.g.
-    the message is too old to edit, or its content didn't actually change);
-    logging and swallowing it here matches the defensive style already
-    used elsewhere in the project for Telegram API calls."""
+    """Wraps query.edit_message_text with error handling. Quality audit fix: these simple callbacks had no protection against a TelegramError (e.g. the message is too old to edit, or its content didn't actually change); logging and swallowing it here matches the defensive style already used elsewhere in the project for Telegram API calls."""
     try:
         await query.edit_message_text(text, reply_markup=reply_markup, parse_mode=parse_mode)
     except TelegramError as e:
@@ -94,36 +67,146 @@ async def ventas_back_to_welcome_callback(update: Update, context: ContextTypes.
 # --- "🎁 Iniciar prueba gratis" ---
 
 async def ventas_demo_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Entrega el enlace configurado del grupo de prueba. El seguimiento de quién debe ser expulsado y cuándo ocurre por completo en handle_trial_group_new_member()."""
     query = update.callback_query
     await query.answer()
     config = SalesConfigManager()
-    text = "📂 ¡Perfecto! Aquí tienes el acceso a nuestro grupo de demostración."
+    admin_id = _get_admin_user_id()
+    text = (
+        "📂 ¡Perfecto! Aquí tienes el acceso a nuestro grupo de demostración.\n\n"
+        "Podrás permanecer 1 minuto; pasado ese tiempo, el bot te retirará automáticamente."
+    )
     if not config.get_demo_group_link():
         text = "El enlace de demostración aún no está configurado. Contacta al administrador."
-    await _safe_edit_message(query, text, reply_markup=keyboards.demo_keyboard(config))
+    await _safe_edit_message(query, text, reply_markup=keyboards.demo_keyboard(config, admin_id))
 
 
-# --- "💳 Comprar acceso VIP" ---
+async def handle_trial_group_new_member(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Detecta cualquier ingreso al grupo de prueba (SALES_TRIAL_GROUP_ID) y programa su expulsión automática 1 minuto después. Aislamiento estricto: si SALES_TRIAL_GROUP_ID no está configurada, o si el chat donde ocurrió el ingreso no coincide EXACTAMENTE con ese ID, la función no hace nada - nunca actúa sobre el grupo VIP, el grupo principal de promociones, ni ningún otro chat donde el bot esté presente."""
+    message = update.message
+    if message is None or message.new_chat_members is None:
+        return
+
+    config = SalesConfigManager()
+    trial_group_id = config.get_trial_group_id()
+    if not trial_group_id or message.chat_id != trial_group_id:
+        return
+
+    for member in message.new_chat_members:
+        if member.is_bot:
+            continue
+        logger.info(
+            f"[ventas] User {member.id} joined the trial group ({trial_group_id}); "
+            f"will be removed in {TRIAL_DURATION_SECONDS}s."
+        )
+        # Se registra de forma persistente ANTES de programar el job en
+        # memoria, para que si el bot se reinicia durante este minuto,
+        # _reschedule_pending_trial_kicks() pueda recuperarlo al arrancar.
+        kick_at = time.time() + TRIAL_DURATION_SECONDS
+        TrialKicksStore().add_pending_kick(trial_group_id, member.id, kick_at)
+
+        if context.job_queue:
+            context.job_queue.run_once(
+                _kick_trial_member,
+                when=TRIAL_DURATION_SECONDS,
+                data={"chat_id": trial_group_id, "user_id": member.id},
+                name=f"trial_kick_{trial_group_id}_{member.id}",
+            )
+        else:
+            logger.error("[ventas] No job_queue available; cannot schedule automatic trial removal.")
+
+
+async def _kick_trial_member(context: ContextTypes.DEFAULT_TYPE):
+    """JobQueue callback: expulsa (ban + unban) a un usuario del grupo de prueba cuando se cumple su minuto. unban con only_if_banned=True hace que sea una expulsión, no un baneo permanente - la persona podría volver a entrar con el enlace en el futuro si el admin lo permite."""
+    data = context.job.data
+    chat_id, user_id = data["chat_id"], data["user_id"]
+    try:
+        await context.bot.ban_chat_member(chat_id=chat_id, user_id=user_id)
+        await context.bot.unban_chat_member(chat_id=chat_id, user_id=user_id, only_if_banned=True)
+        logger.info(f"[ventas] Removed user {user_id} from the trial group {chat_id} after the trial period ended.")
+    except TelegramError as e:
+        logger.warning(f"[ventas] Could not remove user {user_id} from the trial group (may have already left): {e}")
+    finally:
+        # Se limpia el registro persistido en ambos casos (éxito o error) -
+        # si falló porque ya no está en el grupo, reintentar por siempre
+        # en cada reinicio no tendría sentido.
+        TrialKicksStore().remove_pending_kick(chat_id, user_id)
+
+
+async def _reschedule_pending_trial_kicks(context: ContextTypes.DEFAULT_TYPE):
+    """Se ejecuta UNA SOLA VEZ, poco después de que el bot arranca (ver register_ventas_handlers). Recupera cualquier expulsión del grupo de prueba que haya quedado pendiente de un reinicio anterior (redeploy de Railway, crash, etc. durante la ventana de 1 minuto): si ya se cumplió la hora, expulsa de inmediato; si no, reprograma el tiempo restante en JobQueue. Así la expulsión automática sobrevive a un reinicio del bot."""
+    pending = TrialKicksStore().get_all_pending_kicks()
+    if not pending:
+        return
+
+    logger.info(f"[ventas] Reconciling {len(pending)} pending trial kick(s) after startup.")
+    now = time.time()
+    for kick in pending:
+        chat_id = kick.get("chat_id")
+        user_id = kick.get("user_id")
+        kick_at = kick.get("kick_at", now)
+        remaining = max(0, kick_at - now)
+
+        if not context.job_queue:
+            logger.error("[ventas] No job_queue available; cannot reschedule pending trial kicks.")
+            return
+
+        context.job_queue.run_once(
+            _kick_trial_member,
+            when=remaining,
+            data={"chat_id": chat_id, "user_id": user_id},
+            name=f"trial_kick_{chat_id}_{user_id}",
+        )
+        logger.info(
+            f"[ventas] Rescheduled pending kick for user {user_id} in chat {chat_id} "
+            f"(in {remaining:.0f}s, after bot restart)."
+        )
+
+
+# --- "💳 Comprar acceso VIP" -> menú de métodos de pago ---
 
 async def ventas_vip_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Muestra el menú de métodos de pago disponibles (sin datos financieros todavía - eso se muestra al elegir uno específico)."""
     query = update.callback_query
     await query.answer()
     config = SalesConfigManager()
+    admin_id = _get_admin_user_id()
 
-    lines = [f"💳 *Acceso VIP* — {config.get_vip_price()}", ""]
-    if config.get_bank_guayaquil_details():
-        lines.append(f"🏦 *Banco Guayaquil*\n{config.get_bank_guayaquil_details()}")
-        lines.append("")
-    if config.get_bank_pichincha_details():
-        lines.append(f"🏦 *Banco Pichincha*\n{config.get_bank_pichincha_details()}")
-        lines.append("")
-    if config.get_paypal_details():
-        lines.append(f"💳 *PayPal*\n{config.get_paypal_details()}")
-        lines.append("")
-    lines.append("Cuando hayas realizado el pago, pulsa el botón de abajo.")
+    text = f"💳 *Acceso VIP* — {config.get_vip_price()}\n\nElige tu método de pago preferido:"
+    await _safe_edit_message(
+        query, text, reply_markup=keyboards.vip_menu_keyboard(admin_id), parse_mode="Markdown"
+    )
+
+
+_METHOD_DETAIL_GETTERS = {
+    "bank_guayaquil": lambda c: c.get_bank_guayaquil_details(),
+    "bank_pichincha": lambda c: c.get_bank_pichincha_details(),
+    "paypal": lambda c: c.get_paypal_details(),
+}
+
+
+async def ventas_method_detail_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Al elegir un método de pago específico, muestra ÚNICAMENTE la información de ESE método (nunca los otros)."""
+    query = update.callback_query
+    await query.answer()
+
+    method_key = query.data[len("ventas_method_"):]
+    if method_key not in keyboards.PAYMENT_METHOD_LABELS:
+        return
+
+    config = SalesConfigManager()
+    admin_id = _get_admin_user_id()
+    label = keyboards.PAYMENT_METHOD_LABELS[method_key]
+    details = _METHOD_DETAIL_GETTERS[method_key](config)
+
+    if details:
+        text = f"{label}\n\n{details}"
+    else:
+        logger.warning(f"[ventas] Method '{method_key}' selected but has no configured details.")
+        text = f"{label}\n\nEste método aún no está configurado. Contacta al administrador."
 
     await _safe_edit_message(
-        query, "\n".join(lines), reply_markup=keyboards.vip_purchase_keyboard(), parse_mode="Markdown"
+        query, text, reply_markup=keyboards.method_detail_keyboard(method_key, admin_id), parse_mode="Markdown"
     )
 
 
@@ -136,19 +219,16 @@ async def ventas_faq_callback(update: Update, context: ContextTypes.DEFAULT_TYPE
     await _safe_edit_message(query, config.get_faq_text(), reply_markup=keyboards.welcome_keyboard())
 
 
-# --- "✅ Ya realicé el pago" -> pedir titular + método ---
+# --- "✅ Ya realicé el pago" -> pedir SOLO el titular (el método ya se conoce) ---
 
 async def ventas_paid_entry(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Entry point de la conversación: pide el nombre del titular del pago.
-
-    Antes de iniciar, verifica que el usuario no tenga ya una solicitud
-    "pending" en curso - así se evita que un doble tap (o que el usuario
-    repita el proceso mientras espera respuesta) genere una segunda
-    solicitud duplicada y, con ella, un segundo aviso duplicado al admin
-    por el mismo pago.
-    """
+    """Entry point de la conversación: el método de pago viaja en el callback_data (ventas_paid_<method_key>), así que solo hace falta pedir el nombre del titular del pago. Antes de iniciar, verifica que el usuario no tenga ya una solicitud "pending" en curso - así se evita que un doble tap (o que el usuario repita el proceso mientras espera respuesta) genere una segunda solicitud duplicada y, con ella, un segundo aviso duplicado al admin por el mismo pago. """
     query = update.callback_query
     await query.answer()
+
+    method_key = query.data[len("ventas_paid_"):]
+    if method_key not in keyboards.PAYMENT_METHOD_LABELS:
+        return ConversationHandler.END
 
     user_id = update.effective_user.id
     manager = SalesRequestsManager()
@@ -164,6 +244,7 @@ async def ventas_paid_entry(update: Update, context: ContextTypes.DEFAULT_TYPE):
         )
         return ConversationHandler.END
 
+    context.user_data["ventas_payment_method_key"] = method_key
     context.user_data.pop("ventas_payer_name", None)
     await query.edit_message_text(
         "✍️ Por favor, envía el nombre y la inicial del apellido del titular del pago.\n\n"
@@ -173,29 +254,17 @@ async def ventas_paid_entry(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 async def ventas_receive_payer_name(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Recibe el nombre del titular y pide el método de pago (por botones)."""
+    """Recibe el nombre del titular, guarda la solicitud (el método ya se conoce desde ventas_paid_entry) y notifica al administrador."""
     payer_name = update.message.text.strip()
-    context.user_data["ventas_payer_name"] = payer_name
-    logger.info(f"[ventas] Payer name received from user {update.effective_user.id}: {payer_name!r}")
-    await update.message.reply_text(
-        "¿Qué método de pago utilizaste?", reply_markup=keyboards.payment_method_keyboard()
-    )
-    return VENTAS_PAYMENT_METHOD
+    method_key = context.user_data.pop("ventas_payment_method_key", None)
 
-
-async def ventas_receive_payment_method(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Recibe el método de pago (botón), guarda la solicitud y notifica al admin."""
-    query = update.callback_query
-    await query.answer()
-
-    method_key = query.data[len("ventas_method_"):]
-    method_label = keyboards.PAYMENT_METHOD_LABELS.get(method_key, method_key)
-
-    payer_name = context.user_data.pop("ventas_payer_name", None)
-    if not payer_name:
+    if not method_key or method_key not in keyboards.PAYMENT_METHOD_LABELS:
         # Estado inesperado (p. ej. el proceso se reinició a mitad de camino).
-        await query.edit_message_text("❌ Ocurrió un problema, por favor comienza de nuevo con /start.")
+        await update.message.reply_text("❌ Ocurrió un problema, por favor comienza de nuevo con /start.")
         return ConversationHandler.END
+
+    method_label = keyboards.PAYMENT_METHOD_LABELS[method_key]
+    logger.info(f"[ventas] Payer name received from user {update.effective_user.id}: {payer_name!r} ({method_label})")
 
     user = update.effective_user
     manager = SalesRequestsManager()
@@ -213,12 +282,12 @@ async def ventas_receive_payment_method(update: Update, context: ContextTypes.DE
 
     if not request_id:
         logger.error(f"[ventas] Failed to save payment request for user {user.id}.")
-        await query.edit_message_text(
+        await update.message.reply_text(
             "❌ Ocurrió un error al registrar tu información. Por favor contacta al administrador directamente."
         )
         return ConversationHandler.END
 
-    await query.edit_message_text(
+    await update.message.reply_text(
         "✅ ¡Gracias! Recibimos tu información:\n\n"
         f"{payer_name}\n{method_label}.\n\n"
         "Un administrador revisará tu pago pronto y te notificaremos aquí mismo."
@@ -342,9 +411,9 @@ VENTAS_CONVERSATION_TIMEOUT_SECONDS = 300  # 5 minutes
 
 
 async def ventas_conversation_timeout_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Fires when the payment conversation times out. Clears any partial
-    state and lets the buyer know they can start over."""
+    """Fires when the payment conversation times out. Clears any partial state and lets the buyer know they can start over."""
     context.user_data.pop("ventas_payer_name", None)
+    context.user_data.pop("ventas_payment_method_key", None)
     try:
         if update.callback_query:
             await update.callback_query.edit_message_text(
@@ -359,16 +428,13 @@ async def ventas_conversation_timeout_handler(update: Update, context: ContextTy
 
 
 def build_ventas_conversation_handler():
-    """Construye el ConversationHandler del módulo de ventas (solo el flujo
-    de pago en esta primera versión), completamente independiente del
-    ConversationHandler de bot.py."""
+    """Construye el ConversationHandler del módulo de ventas (solo el flujo de pago), completamente independiente del ConversationHandler de bot.py. El método de pago ya no es un estado propio: se elige antes de entrar aquí, así que solo hay un estado (el nombre del titular)."""
     return ConversationHandler(
         entry_points=[
-            CallbackQueryHandler(ventas_paid_entry, pattern="^ventas_paid$"),
+            CallbackQueryHandler(ventas_paid_entry, pattern="^ventas_paid_(bank_guayaquil|bank_pichincha|paypal)$"),
         ],
         states={
             VENTAS_PAYER_NAME: [MessageHandler(filters.TEXT & ~filters.COMMAND, ventas_receive_payer_name)],
-            VENTAS_PAYMENT_METHOD: [CallbackQueryHandler(ventas_receive_payment_method, pattern="^ventas_method_.+$")],
             ConversationHandler.TIMEOUT: [
                 MessageHandler(filters.ALL, ventas_conversation_timeout_handler),
                 CallbackQueryHandler(ventas_conversation_timeout_handler),
@@ -382,15 +448,39 @@ def build_ventas_conversation_handler():
 
 
 def register_ventas_handlers(application):
-    """Punto único de integración con bot.py: registra todos los handlers
-    del módulo de ventas en la Application. Debe llamarse ANTES del
-    CallbackQueryHandler "catch-all" de bot.py (button_callback sin
-    patrón), para que los callback_data de ventas no queden atrapados ahí."""
+    """Punto único de integración con bot.py: registra todos los handlers del módulo de ventas en la Application. Los CallbackQueryHandler deben llamarse ANTES del catch-all de bot.py (button_callback sin patrón), para que los callback_data de ventas no queden atrapados ahí."""
     application.add_handler(build_ventas_conversation_handler())
     application.add_handler(CallbackQueryHandler(ventas_demo_callback, pattern="^ventas_demo$"))
     application.add_handler(CallbackQueryHandler(ventas_vip_callback, pattern="^ventas_vip$"))
+    application.add_handler(
+        CallbackQueryHandler(ventas_method_detail_callback, pattern="^ventas_method_(bank_guayaquil|bank_pichincha|paypal)$")
+    )
     application.add_handler(CallbackQueryHandler(ventas_faq_callback, pattern="^ventas_faq$"))
     application.add_handler(CallbackQueryHandler(ventas_back_to_welcome_callback, pattern="^ventas_back_to_welcome$"))
     application.add_handler(CallbackQueryHandler(sale_approve_callback, pattern="^sale_approve_.+$"))
     application.add_handler(CallbackQueryHandler(sale_reject_callback, pattern="^sale_reject_.+$"))
-    logger.info("[ventas] All sales-system handlers registered (payment flow only; panel config deferred).")
+    # Detecta ingresos al grupo de prueba para expulsar automáticamente al
+    # cumplirse 1 minuto. Se registra en group=1 (distinto del group=0 por
+    # defecto que usa bot.py para su propio detector de NEW_CHAT_MEMBERS,
+    # el de la bienvenida). python-telegram-bot solo invoca al primer
+    # handler que matchea un filtro DENTRO de un mismo group; si este
+    # handler compartiera el group con el de bot.py, cualquiera que se
+    # registrara primero "consumiría" el evento y el otro dejaría de
+    # funcionar. Con groups distintos, ambos evalúan cada ingreso de forma
+    # independiente y cada uno decide por su cuenta (por chat_id) si le
+    # corresponde actuar. No requiere ningún cambio en bot.py.
+    application.add_handler(
+        MessageHandler(filters.StatusUpdate.NEW_CHAT_MEMBERS, handle_trial_group_new_member), group=1
+    )
+
+    # Recupera, al arrancar, cualquier expulsión del grupo de prueba que
+    # haya quedado pendiente de un reinicio anterior. Se programa aquí
+    # (usando application.job_queue directamente, ya disponible desde que
+    # se llamó a Application.builder()...build() en bot.py) en vez de en
+    # post_init() de bot.py, precisamente para no tener que tocar bot.py.
+    if application.job_queue:
+        application.job_queue.run_once(_reschedule_pending_trial_kicks, when=1)
+    else:
+        logger.error("[ventas] No job_queue available at startup; cannot reconcile pending trial kicks.")
+
+    logger.info("[ventas] All sales-system handlers registered.")
