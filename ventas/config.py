@@ -1,4 +1,18 @@
-""" Configuración del sistema de ventas: precio VIP, datos bancarios, PayPal, enlaces (grupo demo / grupo VIP) y texto de preguntas frecuentes. Sigue exactamente el mismo patrón dual (Upstash Redis si está configurado, si no un archivo JSON local) que ya usan PromotionsManager/BotState/ WelcomeConfigManager en bot.py - así el módulo de ventas hereda las mismas garantías de persistencia sin inventar un mecanismo nuevo. Todo lo que este archivo necesita de bot.py (el cliente HTTP de Upstash, si está activado, y la ruta de archivo respetando DATA_DIR) se importa de forma DIFERIDA dentro de las funciones, nunca a nivel de módulo, para que este paquete pueda importarse en cualquier momento sin riesgo de import circular con bot.py. """
+"""
+ConfiguraciÃ³n del sistema de ventas: precio VIP, datos bancarios, PayPal,
+enlaces (grupo demo / grupo VIP) y texto de preguntas frecuentes.
+
+Sigue exactamente el mismo patrÃ³n dual (Upstash Redis si estÃ¡ configurado,
+si no un archivo JSON local) que ya usan PromotionsManager/BotState/
+WelcomeConfigManager en bot.py - asÃ­ el mÃ³dulo de ventas hereda las mismas
+garantÃ­as de persistencia sin inventar un mecanismo nuevo.
+
+Todo lo que este archivo necesita de bot.py (el cliente HTTP de Upstash,
+si estÃ¡ activado, y la ruta de archivo respetando DATA_DIR) se importa de
+forma DIFERIDA dentro de las funciones, nunca a nivel de mÃ³dulo, para que
+este paquete pueda importarse en cualquier momento sin riesgo de import
+circular con bot.py.
+"""
 
 import json
 import logging
@@ -8,7 +22,7 @@ from typing import Optional
 
 logger = logging.getLogger("bot")
 
-# Deep-link payload que el botón del canal debe usar:
+# Deep-link payload que el botÃ³n del canal debe usar:
 # https://t.me/<tu_bot>?start=venta
 SALES_DEEP_LINK_PAYLOAD = "venta"
 
@@ -17,34 +31,70 @@ SALES_CONFIG_LOCAL_FILENAME = "ventas_config.json"
 
 
 def _default_trial_group_id() -> Optional[int]:
-    """Lee SALES_TRIAL_GROUP_ID (el ID numérico del grupo de prueba, por ejemplo -1001234567890) como entero. Si no está definida o no es un número válido, devuelve None - en ese caso, la prueba gratuita sigue entregando el enlace configurado, pero la expulsión automática no se activa (ver handle_trial_group_new_member en handlers.py)."""
+    """Lee SALES_TRIAL_GROUP_ID (el ID numÃ©rico del grupo de prueba, por
+    ejemplo -1001234567890) como entero. Si no estÃ¡ definida o no es un
+    nÃºmero vÃ¡lido, devuelve None - en ese caso, la prueba gratuita sigue
+    entregando el enlace configurado, pero la expulsiÃ³n automÃ¡tica no se
+    activa (ver handle_trial_group_new_member en handlers.py)."""
     raw = os.getenv("SALES_TRIAL_GROUP_ID", "").strip()
     if not raw:
         return None
     try:
         return int(raw)
     except ValueError:
-        logger.error(f"[ventas.config] SALES_TRIAL_GROUP_ID='{raw}' no es un ID de chat numérico válido; se ignora.")
+        logger.error(f"[ventas.config] SALES_TRIAL_GROUP_ID='{raw}' no es un ID de chat numÃ©rico vÃ¡lido; se ignora.")
         return None
 
 
 def _default_config() -> dict:
     return {
-        "vip_price": "Consultar precio",
-        "bank_guayaquil_details": "",
-        "bank_pichincha_details": "",
-        "paypal_details": "",
+        "vip_price": "$8 permanente",
+        "bank_guayaquil_details": (
+            "Cuenta de ahorros: 0013991214\n"
+            "Titular: Ricardo.m\n\n"
+            "âš ï¸ IMPORTANTE\n\n"
+            "â€¢ Realiza la transferencia Ãºnicamente a los datos mostrados.\n"
+            "â€¢ No es necesario enviar captura de pantalla ni comprobante.\n"
+            "â€¢ Solo presiona \"âœ… Ya realicÃ© el pago\" y escribe el nombre del "
+            "titular desde el que realizaste la transferencia.\n"
+            "â€¢ Un administrador verificarÃ¡ el pago y, una vez confirmado, "
+            "recibirÃ¡s automÃ¡ticamente el enlace de acceso VIP."
+        ),
+        "bank_pichincha_details": (
+            "Cuenta: 2206103888\n"
+            "Titular: Ricardo.m\n\n"
+            "âš ï¸ IMPORTANTE\n\n"
+            "â€¢ Realiza la transferencia Ãºnicamente a los datos mostrados.\n"
+            "â€¢ No es necesario enviar captura de pantalla ni comprobante.\n"
+            "â€¢ Solo presiona \"âœ… Ya realicÃ© el pago\" y escribe el nombre del "
+            "titular desde el que realizaste la transferencia.\n"
+            "â€¢ Un administrador verificarÃ¡ el pago y, una vez confirmado, "
+            "recibirÃ¡s automÃ¡ticamente el enlace de acceso VIP."
+        ),
+        "paypal_details": (
+            "Ridmerwtf@gmail.com\n"
+            "Titular: Ricardo.m\n\n"
+            "âš ï¸ IMPORTANTE\n\n"
+            "â€¢ Realiza el pago Ãºnicamente a los datos mostrados.\n"
+            "â€¢ No es necesario enviar captura de pantalla ni comprobante.\n"
+            "â€¢ Solo presiona \"âœ… Ya realicÃ© el pago\" y escribe el nombre del "
+            "titular desde el que realizaste el pago.\n"
+            "â€¢ Un administrador verificarÃ¡ el pago y, una vez confirmado, "
+            "recibirÃ¡s automÃ¡ticamente el enlace de acceso VIP."
+        ),
         "demo_group_link": "",
         "vip_group_link": "",
-        "faq_text": "Aún no se ha configurado el texto de preguntas frecuentes.",
+        "faq_text": "AÃºn no se ha configurado el texto de preguntas frecuentes.",
         "trial_group_id": _default_trial_group_id(),
     }
 
 
 def _resolve_local_path() -> str:
-    """Resuelve dónde vive el archivo local de respaldo, respetando DATA_DIR de bot.py si está definida (mismo criterio que promotions.json/bot_state.json/welcome_config.json)."""
+    """Resuelve dÃ³nde vive el archivo local de respaldo, respetando
+    DATA_DIR de bot.py si estÃ¡ definida (mismo criterio que
+    promotions.json/bot_state.json/welcome_config.json)."""
     try:
-        from bot import DATA_DIR  # import diferido, ver docstring del módulo
+        from bot import DATA_DIR  # import diferido, ver docstring del mÃ³dulo
     except Exception:
         DATA_DIR = ""
     if DATA_DIR:
@@ -54,7 +104,7 @@ def _resolve_local_path() -> str:
 
 
 class SalesConfigManager:
-    """Administra la configuración del sistema de ventas."""
+    """Administra la configuraciÃ³n del sistema de ventas."""
 
     def __init__(self):
         self.file_path = _resolve_local_path()
@@ -211,7 +261,17 @@ def _resolve_trial_kicks_local_path() -> str:
 
 
 class TrialKicksStore:
-    """Registra, de forma persistente (mismo patrón dual Upstash/archivo que el resto del proyecto), qué usuarios del grupo de prueba tienen una expulsión pendiente y a qué hora exacta (timestamp Unix) debe ocurrir. Por qué existe: JobQueue de python-telegram-bot solo guarda los jobs programados EN MEMORIA. Si el proceso se reinicia (un redeploy de Railway, un crash) durante la ventana de 1 minuto de la prueba gratuita, ese job se pierde sin más - el usuario nunca sería expulsado. Este registro permite que, al arrancar de nuevo, el bot recupere cualquier expulsión que haya quedado pendiente (ver handlers.py::_reschedule_pending_trial_kicks)."""
+    """Registra, de forma persistente (mismo patrÃ³n dual Upstash/archivo que
+    el resto del proyecto), quÃ© usuarios del grupo de prueba tienen una
+    expulsiÃ³n pendiente y a quÃ© hora exacta (timestamp Unix) debe ocurrir.
+
+    Por quÃ© existe: JobQueue de python-telegram-bot solo guarda los jobs
+    programados EN MEMORIA. Si el proceso se reinicia (un redeploy de
+    Railway, un crash) durante la ventana de 1 minuto de la prueba
+    gratuita, ese job se pierde sin mÃ¡s - el usuario nunca serÃ­a expulsado.
+    Este registro permite que, al arrancar de nuevo, el bot recupere
+    cualquier expulsiÃ³n que haya quedado pendiente (ver
+    handlers.py::_reschedule_pending_trial_kicks)."""
 
     def __init__(self):
         self.file_path = _resolve_trial_kicks_local_path()
