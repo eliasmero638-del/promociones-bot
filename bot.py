@@ -1834,14 +1834,40 @@ async def _apply_promotion_edit(query, context: ContextTypes.DEFAULT_TYPE):
     context.user_data.clear()
 
 
+START_WELCOME_TEXT = (
+    "🚀 ¡Bienvenido a EC Promociones VIP! 👋\n\n"
+    "🔥 Accede a nuestros grupos exclusivos con contenido actualizado todos los días.\n\n"
+    "✨ ¿Qué obtendrás?\n\n"
+    "✅ Acceso inmediato al VIP.\n"
+    "✅ Contenido exclusivo y actualizado.\n"
+    "✅ Compra rápida y segura.\n"
+    "✅ Soporte cuando lo necesites.\n\n"
+    "👇 Presiona el botón para conocer los planes y comenzar ahora."
+)
+
+
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Handle the /start command."""
     logger.info(f"Received /start from chat_id={update.effective_chat.id} type={update.effective_chat.type}")
 
-    # Phase 7: sales-funnel entry point. Both plain "/start" and deep-link
-    # "/start venta" open the sales welcome menu directly. Any other
-    # deep-link payload is forwarded to send_sales_welcome as well so that
-    # future payloads can be handled there without touching this function.
+    # Deep-link "/start venta" (el botón del canal) sigue abriendo el menú
+    # de ventas directamente, sin pasar por este mensaje de bienvenida.
+    from ventas.config import SALES_DEEP_LINK_PAYLOAD
+    if context.args and context.args[0] == SALES_DEEP_LINK_PAYLOAD:
+        from ventas.handlers import send_sales_welcome
+        await send_sales_welcome(update, context)
+        return
+
+    keyboard = InlineKeyboardMarkup([[InlineKeyboardButton("👑 Quiero ser VIP", callback_data="start_enter_vip")]])
+    await update.message.reply_text(START_WELCOME_TEXT, reply_markup=keyboard)
+
+
+async def start_enter_vip_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Botón "👑 Quiero ser VIP" del mensaje de /start: abre exactamente el
+    mismo flujo que /start venta, reutilizando send_sales_welcome() sin
+    duplicar su lógica."""
+    query = update.callback_query
+    await query.answer()
     from ventas.handlers import send_sales_welcome
     await send_sales_welcome(update, context)
 
@@ -2286,102 +2312,4 @@ async def interval_input(update: Update, context: ContextTypes.DEFAULT_TYPE):
             )
         
         logger.info(f"Promotion interval updated to {interval}s")
-        await update.message.reply_text(f"✅ Intervalo actualizado correctamente a {interval}s ({interval/3600}h)")
-        return ConversationHandler.END
-    except ValueError:
-        await update.message.reply_text("❌ Por favor envía un número válido.")
-        return INTERVAL_INPUT
-
-
-def main():
-    """Main function to start the bot."""
-    if not validate_configuration():
-        logger.error("Configuration validation failed. Exiting.")
-        sys.exit(1)
-
-    logger.info("Starting Telegram Promotions Bot with Admin Panel...")
-    logger.info(f"Target group ID: {GROUP_ID}")
-    logger.info(f"Admin user ID: {ADMIN_USER_ID}")
-
-    application = Application.builder().token(BOT_TOKEN).post_init(post_init).build()
-
-    # Add handlers
-    application.add_handler(CommandHandler("start", start))
-    application.add_handler(CommandHandler("panel", admin_panel))
-    application.add_handler(CommandHandler("debug_storage", debug_storage))
-    
-    # Add conversation handler for adding promotions and changing interval
-    conv_handler = ConversationHandler(
-        entry_points=[
-            CallbackQueryHandler(button_callback, pattern="^(add_promo|change_interval)$"),
-            CallbackQueryHandler(edit_select_promotion, pattern="^edit_select_.+$"),
-            CallbackQueryHandler(welcome_config_entry, pattern="^welcome_config$"),
-        ],
-        states={
-            ADD_PHOTO: [MessageHandler(filters.PHOTO | filters.VIDEO, add_photo)],
-            ADD_CAPTION: [MessageHandler(filters.TEXT & ~filters.COMMAND, add_caption)],
-            ADD_USERNAME: [MessageHandler(filters.TEXT & ~filters.COMMAND, add_username)],
-            INTERVAL_INPUT: [MessageHandler(filters.TEXT & ~filters.COMMAND, interval_input)],
-            EDIT_MENU: [
-                CallbackQueryHandler(
-                    edit_menu_callback,
-                    pattern="^(edit_field_caption|edit_field_media|edit_field_username|edit_done)$",
-                )
-            ],
-            EDIT_CAPTION_INPUT: [MessageHandler(filters.TEXT & ~filters.COMMAND, edit_receive_caption)],
-            EDIT_MEDIA_INPUT: [
-                MessageHandler(filters.PHOTO | filters.VIDEO, edit_receive_media_item),
-                CallbackQueryHandler(edit_media_done, pattern="^edit_media_done$"),
-            ],
-            EDIT_USERNAME_INPUT: [MessageHandler(filters.TEXT & ~filters.COMMAND, edit_receive_username)],
-            WELCOME_MENU: [
-                CallbackQueryHandler(
-                    welcome_menu_callback,
-                    pattern="^(welcome_toggle|welcome_edit_text|welcome_edit_image|welcome_edit_button_.+|welcome_edit_delete_seconds|welcome_done)$",
-                )
-            ],
-            WELCOME_TEXT_INPUT: [MessageHandler(filters.TEXT & ~filters.COMMAND, welcome_receive_text)],
-            WELCOME_IMAGE_INPUT: [MessageHandler(filters.PHOTO, welcome_receive_image)],
-            WELCOME_BUTTON_INPUT: [MessageHandler(filters.TEXT & ~filters.COMMAND, welcome_receive_button_url)],
-            WELCOME_DELETE_SECONDS_INPUT: [MessageHandler(filters.TEXT & ~filters.COMMAND, welcome_receive_delete_seconds)],
-            # Quality audit fix: without a timeout, an admin who abandons any
-            # of the flows above mid-way (e.g. taps "Cambiar Caption" and
-            # never sends the text) stays stuck in that state forever - no
-            # other button in /panel would work for them until they either
-            # finish or hit "❌ Cancelar". conversation_timeout below causes
-            # PTB to auto-fire this TIMEOUT state after inactivity, which
-            # clears user_data and lets them use /panel normally again.
-            ConversationHandler.TIMEOUT: [
-                MessageHandler(filters.ALL, conversation_timeout_handler),
-                CallbackQueryHandler(conversation_timeout_handler),
-            ],
-        },
-        fallbacks=[CallbackQueryHandler(button_callback, pattern="^cancel$")],
-        conversation_timeout=CONVERSATION_TIMEOUT_SECONDS,
-    )
-    application.add_handler(conv_handler)
-
-    # Phase 7: sales system - registered before the catch-all button_callback
-    # below, so its callback_data (ventas_*, sale_approve_*, sale_reject_*)
-    # is claimed by ventas' own handlers first. Deferred import: by the time
-    # main() runs, bot.py is fully loaded, so ventas' own lazy
-    # "from bot import ..." calls (inside its functions) work safely.
-    from ventas.handlers import register_ventas_handlers
-    register_ventas_handlers(application)
-
-    # Add callback handler for other buttons
-    application.add_handler(CallbackQueryHandler(button_callback))
-
-    # Detect posts published/edited directly in Telegram channels
-    application.add_handler(MessageHandler(filters.UpdateType.CHANNEL_POST, handle_channel_post))
-    application.add_handler(MessageHandler(filters.UpdateType.EDITED_CHANNEL_POST, handle_edited_channel_post))
-
-    # Phase 6: welcome new members of the promotions group
-    application.add_handler(MessageHandler(filters.StatusUpdate.NEW_CHAT_MEMBERS, handle_new_chat_member))
-
-    # Start the Bot
-    application.run_polling()
-
-
-if __name__ == "__main__":
-    main()
+        await update.message.reply_text(f"✅ Intervalo actualizado correctamente a {interval}s ({in
