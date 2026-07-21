@@ -46,6 +46,22 @@ def _default_trial_group_id() -> Optional[int]:
         return None
 
 
+def _default_vip_group_id() -> Optional[int]:
+    """Lee SALES_VIP_GROUP_ID (el ID numérico del grupo VIP, por ejemplo
+    -1001234567890) como entero. Si no está definida o no es un número
+    válido, devuelve None - en ese caso, no se pueden crear enlaces
+    dinámicos, pero el sistema sigue usando el enlace configurado como
+    respaldo (ver sale_approve_callback en handlers.py)."""
+    raw = os.getenv("SALES_VIP_GROUP_ID", "").strip()
+    if not raw:
+        return None
+    try:
+        return int(raw)
+    except ValueError:
+        logger.error(f"[ventas.config] SALES_VIP_GROUP_ID='{raw}' no es un ID de chat numérico válido; se ignora.")
+        return None
+
+
 def _default_config() -> dict:
     return {
         "vip_price": "$8 permanente",
@@ -86,6 +102,7 @@ def _default_config() -> dict:
         "vip_group_link": "",
         "faq_text": "Aún no se ha configurado el texto de preguntas frecuentes.",
         "trial_group_id": _default_trial_group_id(),
+        "vip_group_id": _default_vip_group_id(),
     }
 
 
@@ -243,6 +260,12 @@ class SalesConfigManager:
 
     def set_trial_group_id(self, value: Optional[int]):
         self.data["trial_group_id"] = value
+
+    def get_vip_group_id(self) -> Optional[int]:
+        return self.data.get("vip_group_id")
+
+    def set_vip_group_id(self, value: Optional[int]):
+        self.data["vip_group_id"] = value
 
 
 UPSTASH_TRIAL_KICKS_KEY = "ventas_bot:trial_kicks"

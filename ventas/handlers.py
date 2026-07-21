@@ -407,9 +407,52 @@ async def _notify_admin_new_sale_request(context: ContextTypes.DEFAULT_TYPE, req
         logger.error(f"[ventas] Failed to notify admin about payment request {request_id}: {e}")
 
 
+async def _create_vip_invite_link(context: ContextTypes.DEFAULT_TYPE, vip_group_id: int) -> str:
+    """Intenta crear un enlace de invitación dinámico con member_limit=1
+    para el grupo VIP. Devuelve el enlace generado, o None si falla.
+    
+    Validaciones:
+    - Verifica que vip_group_id sea un número válido
+    - Detecta errores de permisos y los registra claramente
+    - Nunca levanta excepciones (log + fallback silencioso)
+    """
+    if not vip_group_id:
+        logger.error("[ventas] Cannot create VIP invite link: vip_group_id is not configured.")
+        return None
+
+    try:
+        link_obj = await context.bot.create_chat_invite_link(
+            chat_id=vip_group_id,
+            member_limit=1,
+        )
+        generated_link = link_obj.invite_link
+        logger.info(
+            f"[ventas] Successfully created dynamic VIP invite link with member_limit=1: {generated_link}"
+        )
+        return generated_link
+    except TelegramError as e:
+        error_msg = str(e)
+        if "not enough rights" in error_msg or "CHAT_ADMIN_REQUIRED" in error_msg:
+            logger.error(
+                f"[ventas] Bot does not have permission to create invite links in VIP group {vip_group_id}. "
+                f"Error: {e}. Falling back to configured link."
+            )
+        else:
+            logger.error(
+                f"[ventas] Failed to create VIP invite link for group {vip_group_id}: {e}. "
+                f"Falling back to configured link."
+            )
+        return None
+
+
 # --- Aprobar / Rechazar (acciones del admin, fuera de la conversación) ---
 
 async def sale_approve_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Aprueba un pago y entrega el acceso VIP al usuario mediante:
+    1. Intento de crear un enlace dinámico con member_limit=1
+    2. Si falla, usar el enlace configurado como respaldo
+    3. Enviar SOLO un botón inline con el enlace, nunca mostrar la URL
+    """
     query = update.callback_query
     await query.answer()
 
@@ -431,21 +474,46 @@ async def sale_approve_callback(update: Update, context: ContextTypes.DEFAULT_TY
     logger.info(f"[ventas] Payment request {request_id} approved by admin.")
 
     config = SalesConfigManager()
-    vip_link = config.get_vip_group_link()
+    user_id = request["user_id"]
+    vip_group_id = config.get_vip_group_id()
+    
+    # Intenta crear enlace dinámico; si falla, usa el configurado
+    vip_link = None
+    if vip_group_id:
+        vip_link = await _create_vip_invite_link(context, vip_group_id)
+    
+    # Si la creación dinámica falló (o no está configurado), usar fallback
+    if not vip_link:
+        vip_link = config.get_vip_group_link()
+        if vip_link:
+            logger.info(f"[ventas] Using fallback configured VIP link for user {user_id}.")
+        else:
+            logger.warning(
+                f"[ventas] No VIP link available (neither dynamic creation nor fallback configured) "
+                f"for user {user_id}."
+            )
+
+    # Notificar al usuario
     try:
         if vip_link:
+            # Enviar SOLO el botón con el enlace (no mostrar URL como texto)
             await context.bot.send_message(
-                chat_id=request["user_id"],
-                text=f"✅ ¡Tu pago fue aprobado! Este es tu acceso al grupo VIP:\n{vip_link}",
+                chat_id=user_id,
+                text="✅ ¡Tu pago fue aprobado! Ya tienes acceso al grupo VIP.",
+                reply_markup=keyboards.vip_access_keyboard(vip_link),
             )
+            logger.info(f"[ventas] Sent VIP access button to user {user_id}.")
         else:
+            # Fallback: si no hay enlace de ningún tipo, mensaje genérico
             await context.bot.send_message(
-                chat_id=request["user_id"],
+                chat_id=user_id,
                 text="✅ Tu pago fue aprobado. El administrador te contactará pronto con el acceso al grupo VIP.",
             )
+            logger.warning(f"[ventas] Sent generic approval message to user {user_id} (no VIP link available).")
     except TelegramError as e:
-        logger.error(f"[ventas] Could not notify user {request['user_id']} of approval: {e}")
+        logger.error(f"[ventas] Could not notify user {user_id} of approval: {e}")
 
+    # Confirmar en el mensaje al admin
     await query.edit_message_text(
         f"✅ Aprobado — {request['payer_name']} ({request['payment_method']}). Se notificó al usuario."
     )

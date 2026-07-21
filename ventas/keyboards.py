@@ -83,3 +83,14 @@ def admin_approval_keyboard(request_id: str) -> InlineKeyboardMarkup:
             ]
         ]
     )
+
+
+def vip_access_keyboard(vip_link: str) -> InlineKeyboardMarkup:
+    """Teclado para el mensaje de aprobación: solo un botón "🔓 Unirse al
+    grupo VIP" con el enlace (dinámico o fallback). El enlace nunca se
+    muestra como texto en el mensaje, solo como URL del botón."""
+    return InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton("🔓 Unirse al grupo VIP", url=vip_link)]
+        ]
+    )
