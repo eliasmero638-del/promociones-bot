@@ -94,9 +94,15 @@ def _get_admin_user_id():
 
 async def send_sales_welcome(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Muestra el menú de bienvenida de ventas. Llamado desde bot.py's
-    start() cuando detecta el payload de deep-link ?start=venta."""
+    start() cuando detecta el payload de deep-link ?start=venta, y también
+    desde el botón "👑 Quiero ser VIP" del nuevo mensaje de /start. Se usa
+    update.effective_message (en vez de update.message) para que funcione
+    en ambos casos: un comando tiene update.message poblado, pero un botón
+    presionado solo trae update.callback_query - effective_message resuelve
+    a la que corresponda en cada caso, sin cambiar el comportamiento
+    existente para /start venta."""
     logger.info(f"[ventas] Sales welcome shown to user {update.effective_user.id}")
-    await update.message.reply_text(WELCOME_TEXT, reply_markup=keyboards.welcome_keyboard())
+    await update.effective_message.reply_text(WELCOME_TEXT, reply_markup=keyboards.welcome_keyboard())
 
 
 async def _safe_edit_message(query, text, reply_markup=None, parse_mode=None):
