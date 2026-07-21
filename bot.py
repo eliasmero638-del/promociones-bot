@@ -20,11 +20,6 @@ from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import Application, ContextTypes, CommandHandler, CallbackQueryHandler, MessageHandler, ConversationHandler, filters
 from telegram.error import TelegramError
 
-# Phase 7: sales-system deep-link payload ("?start=venta"). Safe to import
-# here (not deferred) because ventas/config.py has zero module-level
-# dependency on bot.py - see ventas/__init__.py docstring for details.
-from ventas.config import SALES_DEEP_LINK_PAYLOAD
-
 # Load environment variables
 load_dotenv()
 
@@ -1843,24 +1838,12 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Handle the /start command."""
     logger.info(f"Received /start from chat_id={update.effective_chat.id} type={update.effective_chat.type}")
 
-    # Phase 7: sales-funnel deep-link entry point. The channel's
-    # "🎁 Iniciar prueba gratis" button links to
-    # https://t.me/<bot_username>?start=venta - Telegram delivers that as
-    # "/start venta", parsed by PTB into context.args. Plain "/start" (no
-    # argument) is untouched below, exactly as before this phase.
-    if context.args and context.args[0] == SALES_DEEP_LINK_PAYLOAD:
-        from ventas.handlers import send_sales_welcome
-        await send_sales_welcome(update, context)
-        return
-
-    if update.effective_chat and update.effective_chat.type == "private":
-        try:
-            await update.message.reply_text(
-                "¡Hola! Soy el bot de promociones. Estoy en funcionamiento y publicaré promociones periódicamente."
-            )
-            logger.info("Replied to /start in private chat")
-        except Exception as e:
-            logger.error(f"Failed to reply to /start: {e}")
+    # Phase 7: sales-funnel entry point. Both plain "/start" and deep-link
+    # "/start venta" open the sales welcome menu directly. Any other
+    # deep-link payload is forwarded to send_sales_welcome as well so that
+    # future payloads can be handled there without touching this function.
+    from ventas.handlers import send_sales_welcome
+    await send_sales_welcome(update, context)
 
 
 def _describe_channel_message(message) -> dict:
