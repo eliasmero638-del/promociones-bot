@@ -1740,8 +1740,8 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await send_sales_welcome(update, context)
         return
 
-    keyboard = InlineKeyboardMarkup([[InlineKeyboardButton("Quiero ser VIP", callback_data="start_enter_vip")]])
-    await update.message.reply_text(START_WELCOME_TEXT, reply_markup=keyboard)
+    from start_keyboard import start_keyboard
+    await update.message.reply_text(START_WELCOME_TEXT, reply_markup=start_keyboard())
 
 
 async def start_enter_vip_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
