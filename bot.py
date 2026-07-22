@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# verificacion final
 """
 Telegram Promotions Bot with Admin Panel
 Publishes rotating promotions with media albums and admin contact buttons.
