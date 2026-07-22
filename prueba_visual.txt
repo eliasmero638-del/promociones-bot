@@ -1,0 +1,4 @@
+LINEA 1 (solo texto normal, sin acentos ni simbolos): Hola bienvenido a la prueba
+LINEA 2 (con acentos y enies del espanol): áéíóúñÁÉÍÓÚÑ ¡Bienvenido! ¿Qué tal?
+LINEA 3 (con emoji): 🚀 👋 ✅ ❌ 🔥
+LINEA 4 (con comillas especiales): «esto» — así — así
