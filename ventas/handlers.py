@@ -101,7 +101,10 @@ async def send_sales_welcome(update: Update, context: ContextTypes.DEFAULT_TYPE)
     presionado solo trae update.callback_query - effective_message resuelve
     a la que corresponda en cada caso, sin cambiar el comportamiento
     existente para /start venta."""
-    logger.info(f"[ventas] Sales welcome shown to user {update.effective_user.id}")
+    logger.info(f"[ventas] Sales welcome shown to user {update.effective_user.id}") 
+    logger.info("WELCOME_TEXT repr:") 
+    logger.info(repr(WELCOME_TEXT)) 
+    await update.effective_message.reply_text(WELCOME_TEXT, reply_markup=keyboards.welcome_keyboard(),)
     await update.effective_message.reply_text(WELCOME_TEXT, reply_markup=keyboards.welcome_keyboard())
 
 
