@@ -101,10 +101,6 @@ async def send_sales_welcome(update: Update, context: ContextTypes.DEFAULT_TYPE)
     presionado solo trae update.callback_query - effective_message resuelve
     a la que corresponda en cada caso, sin cambiar el comportamiento
     existente para /start venta."""
-    logger.info(f"[ventas] Sales welcome shown to user {update.effective_user.id}") 
-    logger.info("WELCOME_TEXT repr:") 
-    logger.info(repr(WELCOME_TEXT)) 
-    await update.effective_message.reply_text(WELCOME_TEXT, reply_markup=keyboards.welcome_keyboard(),)
     await update.effective_message.reply_text(WELCOME_TEXT, reply_markup=keyboards.welcome_keyboard())
 
 
@@ -279,7 +275,6 @@ async def ventas_method_detail_callback(update: Update, context: ContextTypes.DE
     admin_id = _get_admin_user_id()
     label = keyboards.PAYMENT_METHOD_LABELS[method_key]
     details = _METHOD_DETAIL_GETTERS[method_key](config)
-    logger.error(f"[ENCODING_CHECK] details={details!r} | utf8_bytes={details.encode('utf-8')!r}")
 
     if details:
         text = f"{label}\n\n{details}"
