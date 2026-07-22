@@ -7,6 +7,7 @@ Features admin panel for managing promotions.
 
 import json
 import logging
+import locale
 import os
 import sys
 import traceback
@@ -2321,98 +2322,4 @@ async def interval_input(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 def main():
     """Main function to start the bot."""
-    if not validate_configuration():
-        logger.error("Configuration validation failed. Exiting.")
-        sys.exit(1)
-
-    logger.info("Starting Telegram Promotions Bot with Admin Panel...")
-    logger.info(f"Target group ID: {GROUP_ID}")
-    logger.info(f"Admin user ID: {ADMIN_USER_ID}")
-
-    application = Application.builder().token(BOT_TOKEN).post_init(post_init).build()
-
-    # Add handlers
-    application.add_handler(CommandHandler("start", start))
-    application.add_handler(CommandHandler("panel", admin_panel))
-    application.add_handler(CommandHandler("debug_storage", debug_storage))
-    
-    # Add conversation handler for adding promotions and changing interval
-    conv_handler = ConversationHandler(
-        entry_points=[
-            CallbackQueryHandler(button_callback, pattern="^(add_promo|change_interval)$"),
-            CallbackQueryHandler(edit_select_promotion, pattern="^edit_select_.+$"),
-            CallbackQueryHandler(welcome_config_entry, pattern="^welcome_config$"),
-        ],
-        states={
-            ADD_PHOTO: [MessageHandler(filters.PHOTO | filters.VIDEO, add_photo)],
-            ADD_CAPTION: [MessageHandler(filters.TEXT & ~filters.COMMAND, add_caption)],
-            ADD_USERNAME: [MessageHandler(filters.TEXT & ~filters.COMMAND, add_username)],
-            INTERVAL_INPUT: [MessageHandler(filters.TEXT & ~filters.COMMAND, interval_input)],
-            EDIT_MENU: [
-                CallbackQueryHandler(
-                    edit_menu_callback,
-                    pattern="^(edit_field_caption|edit_field_media|edit_field_username|edit_done)$",
-                )
-            ],
-            EDIT_CAPTION_INPUT: [MessageHandler(filters.TEXT & ~filters.COMMAND, edit_receive_caption)],
-            EDIT_MEDIA_INPUT: [
-                MessageHandler(filters.PHOTO | filters.VIDEO, edit_receive_media_item),
-                CallbackQueryHandler(edit_media_done, pattern="^edit_media_done$"),
-            ],
-            EDIT_USERNAME_INPUT: [MessageHandler(filters.TEXT & ~filters.COMMAND, edit_receive_username)],
-            WELCOME_MENU: [
-                CallbackQueryHandler(
-                    welcome_menu_callback,
-                    pattern="^(welcome_toggle|welcome_edit_text|welcome_edit_image|welcome_edit_button_.+|welcome_edit_delete_seconds|welcome_done)$",
-                )
-            ],
-            WELCOME_TEXT_INPUT: [MessageHandler(filters.TEXT & ~filters.COMMAND, welcome_receive_text)],
-            WELCOME_IMAGE_INPUT: [MessageHandler(filters.PHOTO, welcome_receive_image)],
-            WELCOME_BUTTON_INPUT: [MessageHandler(filters.TEXT & ~filters.COMMAND, welcome_receive_button_url)],
-            WELCOME_DELETE_SECONDS_INPUT: [MessageHandler(filters.TEXT & ~filters.COMMAND, welcome_receive_delete_seconds)],
-            # Quality audit fix: without a timeout, an admin who abandons any
-            # of the flows above mid-way (e.g. taps "Cambiar Caption" and
-            # never sends the text) stays stuck in that state forever - no
-            # other button in /panel would work for them until they either
-            # finish or hit "❌ Cancelar". conversation_timeout below causes
-            # PTB to auto-fire this TIMEOUT state after inactivity, which
-            # clears user_data and lets them use /panel normally again.
-            ConversationHandler.TIMEOUT: [
-                MessageHandler(filters.ALL, conversation_timeout_handler),
-                CallbackQueryHandler(conversation_timeout_handler),
-            ],
-        },
-        fallbacks=[CallbackQueryHandler(button_callback, pattern="^cancel$")],
-        conversation_timeout=CONVERSATION_TIMEOUT_SECONDS,
-    )
-    application.add_handler(conv_handler)
-
-    # Phase 7: sales system - registered before the catch-all button_callback
-    # below, so its callback_data (ventas_*, sale_approve_*, sale_reject_*)
-    # is claimed by ventas' own handlers first. Deferred import: by the time
-    # main() runs, bot.py is fully loaded, so ventas' own lazy
-    # "from bot import ..." calls (inside its functions) work safely.
-    from ventas.handlers import register_ventas_handlers
-    register_ventas_handlers(application)
-
-    # Botón "👑 Quiero ser VIP" del mensaje de /start (ver start_enter_vip_callback).
-    # Registrado antes del catch-all de abajo para que este callback_data
-    # específico no caiga en button_callback.
-    application.add_handler(CallbackQueryHandler(start_enter_vip_callback, pattern="^start_enter_vip$"))
-
-    # Add callback handler for other buttons
-    application.add_handler(CallbackQueryHandler(button_callback))
-
-    # Detect posts published/edited directly in Telegram channels
-    application.add_handler(MessageHandler(filters.UpdateType.CHANNEL_POST, handle_channel_post))
-    application.add_handler(MessageHandler(filters.UpdateType.EDITED_CHANNEL_POST, handle_edited_channel_post))
-
-    # Phase 6: welcome new members of the promotions group
-    application.add_handler(MessageHandler(filters.StatusUpdate.NEW_CHAT_MEMBERS, handle_new_chat_member))
-
-    # Start the Bot
-    application.run_polling()
-
-
-if __name__ == "__main__":
-    main()
+    # --- [DIAG-ENCODING] Diagnostico t
