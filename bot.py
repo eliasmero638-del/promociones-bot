@@ -667,65 +667,40 @@ async def _unpin_previous_promotion_message(context: ContextTypes.DEFAULT_TYPE, 
     """Unpin the bot's own previous promotion message - and ONLY the bot's
     own message, never a message an admin pinned manually.
 
-    Design (explicit requirement): the previous approach used
-    unpin_all_chat_messages(), which clears every pinned message in the
-    chat regardless of who pinned it - simple and robust against
-    accumulation, but it could also wipe out a message an admin pinned by
-    hand. That trade-off is no longer acceptable, so this asks Telegram
-    what is CURRENTLY pinned via get_chat() and compares it against
-    BotState's last_pinned_message_id - which is only ever set after a
-    pin_chat_message() call is confirmed successful (see publish_promotion()
-    below), never merely "the last button message sent". That distinction
-    matters: if a previous pin attempt failed (e.g. the bot temporarily
-    lacked permission), last_pinned_message_id still correctly points at
-    whatever the bot last *actually* pinned, rather than a message that
-    was never really pinned - so this stays accurate even across failed
-    attempts, not just successful ones.
+    Fix: la versión anterior primero le preguntaba a Telegram (get_chat())
+    qué mensaje estaba fijado ACTUALMENTE, y solo desfijaba si coincidía
+    exactamente con lo que el bot recordaba - si por cualquier motivo
+    (una carrera de tiempos, un reinicio, etc.) ese chequeo no coincidía,
+    la función se rendía y dejaba el mensaje viejo fijado, mientras que el
+    ciclo de publicación igual fijaba uno nuevo más abajo - eso es lo que
+    causaba la acumulación de "Mensaje fijado".
 
-    - If the currently pinned message matches the bot's own last
-      confirmed pin -> unpin it, and the new promotion below gets pinned
-      in its place (the intended "exactly one bot-managed pin" behavior).
-    - If the currently pinned message is anything else (including
-      nothing, or a message an admin pinned by hand) -> leave it
-      completely untouched. The new promotion is still published, and
-      still gets a pin attempt below, but nothing already pinned is
-      removed. In that case the chat may end up with the admin's pin
-      plus the bot's new one - a deliberate trade-off in favor of never
-      touching content the admin placed there themselves.
-    - If get_chat() itself fails (network error, etc.), we can't verify
-      what's currently pinned, so - to stay on the safe side of "never
-      touch an admin's pin without confirmation" - this falls back to not
-      unpinning anything for this cycle.
-    """
+    La corrección: en vez de verificar primero, se intenta desfijar
+    DIRECTAMENTE el message_id que el bot mismo fijó la última vez
+    (guardado en BotState). Sigue siendo seguro para los pines de un
+    admin, porque nunca se apunta a "lo que esté fijado ahora" sino
+    únicamente al ID específico que el propio bot pinneó - si ese mensaje
+    ya no está fijado (o ya no existe), Telegram simplemente devuelve un
+    error inofensivo que se registra, sin tocar nada más."""
     last_pinned_by_bot = state.get_last_pinned_message_id()
+    logger.info(f"[pin][debug] Ciclo de publicación: last_pinned_by_bot={last_pinned_by_bot}")
     if not last_pinned_by_bot:
+        logger.info("[pin][debug] El bot no tiene registrado ningún mensaje propio fijado; nada que desfijar.")
         return  # the bot has never confirmed pinning anything - nothing of ours to consider unpinning
 
     try:
-        chat = await context.bot.get_chat(chat_id=GROUP_ID)
-        currently_pinned = getattr(chat, "pinned_message", None)
-        currently_pinned_id = currently_pinned.message_id if currently_pinned else None
+        await context.bot.unpin_chat_message(chat_id=GROUP_ID, message_id=last_pinned_by_bot)
+        logger.info(f"[pin][debug] Desfijado OK: {last_pinned_by_bot}")
     except TelegramError as e:
         logger.warning(
-            f"[pin] Could not check the chat's current pin via get_chat() ({e}); "
-            f"leaving any existing pin untouched this cycle to be safe."
+            f"[pin][debug] unpin_chat_message FALLÓ para {last_pinned_by_bot} "
+            f"(puede que ya estuviera desfijado o borrado): {e}"
         )
-        return
-
-    if currently_pinned_id != last_pinned_by_bot:
-        logger.info(
-            f"[pin] Currently pinned message ({currently_pinned_id}) is not the bot's own last "
-            f"pinned promotion ({last_pinned_by_bot}) - likely pinned manually by an admin. "
-            f"Leaving it untouched; the new promotion will still be published and pinned."
-        )
-        return
-
-    try:
-        await context.bot.unpin_chat_message(chat_id=GROUP_ID, message_id=last_pinned_by_bot)
-        logger.info(f"[pin] Unpinned the bot's own previous promotion message: {last_pinned_by_bot}")
+    finally:
+        # Se limpia el registro en ambos casos - éxito o error - para que
+        # el próximo ciclo siempre parta desde el mensaje que está a punto
+        # de fijarse, sin arrastrar un ID viejo.
         state.set_last_pinned_message_id(None)
-    except TelegramError as e:
-        logger.warning(f"[pin] Could not unpin previous message {last_pinned_by_bot} (may already be unpinned/deleted): {e}")
 
 
 async def delete_previous_messages(context: ContextTypes.DEFAULT_TYPE, state: BotState):
