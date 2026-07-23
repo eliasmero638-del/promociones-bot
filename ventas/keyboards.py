@@ -14,6 +14,14 @@ PAYMENT_METHOD_LABELS = {
     "paypal": "💳 PayPal",
 }
 
+# Grupos VIP disponibles para la venta. El "Volver" de la pantalla de
+# métodos de pago sigue yendo al menú principal (sin cambios); estos
+# grupos solo agregan un paso de selección ANTES de esa pantalla.
+GROUP_LABELS = {
+    "portoviejo": "🔥 Portoviejo Caliente",
+    "ecuatorianas": "🇪🇨 Ecuatorianas Calientes",
+}
+
 
 def welcome_keyboard() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(
@@ -21,6 +29,30 @@ def welcome_keyboard() -> InlineKeyboardMarkup:
             [InlineKeyboardButton("🎁 Iniciar prueba gratis", callback_data="ventas_demo")],
             [InlineKeyboardButton("💳 Comprar acceso VIP", callback_data="ventas_vip")],
             [InlineKeyboardButton("❓ Preguntas frecuentes", callback_data="ventas_faq")],
+        ]
+    )
+
+
+def vip_group_selection_keyboard() -> InlineKeyboardMarkup:
+    """Pantalla nueva: elegir a qué grupo se quiere comprar acceso, ANTES
+    de mostrar los métodos de pago. El "Volver" regresa al menú principal,
+    igual que ya hacía el "Volver" del menú de métodos de pago."""
+    rows = [
+        [InlineKeyboardButton(label, callback_data=f"ventas_group_{key}")]
+        for key, label in GROUP_LABELS.items()
+    ]
+    rows.append([InlineKeyboardButton("⬅️ Volver", callback_data="ventas_back_to_welcome")])
+    return InlineKeyboardMarkup(rows)
+
+
+def group_detail_keyboard(group_key: str) -> InlineKeyboardMarkup:
+    """Pantalla de detalle de UN grupo específico. "Comprar ahora" recién
+    ahí lleva al menú de métodos de pago existente (sin cambios en ese
+    menú); "Volver" regresa a la selección de grupo."""
+    return InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton("💳 Comprar ahora", callback_data=f"ventas_buy_{group_key}")],
+            [InlineKeyboardButton("⬅️ Volver", callback_data="ventas_vip")],
         ]
     )
 
