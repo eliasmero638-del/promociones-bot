@@ -26,9 +26,21 @@ GROUP_LABELS = {
 def welcome_keyboard() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(
         [
+            [InlineKeyboardButton("🔥 QUIERO SER VIP 🔥", callback_data="ventas_vip")],
             [InlineKeyboardButton("🎁 Iniciar prueba gratis", callback_data="ventas_demo")],
-            [InlineKeyboardButton("💳 Comprar acceso VIP", callback_data="ventas_vip")],
             [InlineKeyboardButton("❓ Preguntas frecuentes", callback_data="ventas_faq")],
+            [InlineKeyboardButton("💰 Quiero vender contenido", callback_data="ventas_sell_content")],
+        ]
+    )
+
+
+def sell_content_keyboard() -> InlineKeyboardMarkup:
+    """Pantalla de "💰 Quiero vender contenido": un único botón para
+    contactar directamente al administrador (enlace fijo, no tg://user?id=,
+    a pedido explícito)."""
+    return InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton("👤 Hablar con el administrador", url="https://t.me/el593rm")],
         ]
     )
 
