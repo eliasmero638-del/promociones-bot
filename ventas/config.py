@@ -62,6 +62,20 @@ def _default_vip_group_id() -> Optional[int]:
         return None
 
 
+def _default_group_id(env_var_name: str) -> Optional[int]:
+    """Igual que _default_vip_group_id(), pero genérico para los grupos
+    de venta por nombre (Portoviejo Caliente / Ecuatorianas Calientes),
+    cada uno con su propia variable de entorno."""
+    raw = os.getenv(env_var_name, "").strip()
+    if not raw:
+        return None
+    try:
+        return int(raw)
+    except ValueError:
+        logger.error(f"[ventas.config] {env_var_name}='{raw}' no es un ID de chat numérico válido; se ignora.")
+        return None
+
+
 def _default_config() -> dict:
     return {
         "vip_price": "$8 permanente",
@@ -103,6 +117,10 @@ def _default_config() -> dict:
         "faq_text": "Aún no se ha configurado el texto de preguntas frecuentes.",
         "trial_group_id": _default_trial_group_id(),
         "vip_group_id": _default_vip_group_id(),
+        "portoviejo_group_id": _default_group_id("SALES_PORTOVIEJO_GROUP_ID"),
+        "portoviejo_group_link": "",
+        "ecuatorianas_group_id": _default_group_id("SALES_ECUATORIANAS_GROUP_ID"),
+        "ecuatorianas_group_link": "",
     }
 
 
@@ -266,6 +284,30 @@ class SalesConfigManager:
 
     def set_vip_group_id(self, value: Optional[int]):
         self.data["vip_group_id"] = value
+
+    def get_portoviejo_group_id(self) -> Optional[int]:
+        return self.data.get("portoviejo_group_id")
+
+    def set_portoviejo_group_id(self, value: Optional[int]):
+        self.data["portoviejo_group_id"] = value
+
+    def get_portoviejo_group_link(self) -> str:
+        return self.data.get("portoviejo_group_link", "")
+
+    def set_portoviejo_group_link(self, value: str):
+        self.data["portoviejo_group_link"] = value
+
+    def get_ecuatorianas_group_id(self) -> Optional[int]:
+        return self.data.get("ecuatorianas_group_id")
+
+    def set_ecuatorianas_group_id(self, value: Optional[int]):
+        self.data["ecuatorianas_group_id"] = value
+
+    def get_ecuatorianas_group_link(self) -> str:
+        return self.data.get("ecuatorianas_group_link", "")
+
+    def set_ecuatorianas_group_link(self, value: str):
+        self.data["ecuatorianas_group_link"] = value
 
 
 UPSTASH_TRIAL_KICKS_KEY = "ventas_bot:trial_kicks"
