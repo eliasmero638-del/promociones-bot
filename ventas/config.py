@@ -118,9 +118,9 @@ def _default_config() -> dict:
         "trial_group_id": _default_trial_group_id(),
         "vip_group_id": _default_vip_group_id(),
         "portoviejo_group_id": _default_group_id("SALES_PORTOVIEJO_GROUP_ID"),
-        "portoviejo_group_link": "",
+        "portoviejo_group_link": "https://t.me/+dU5quBApPLpiM2Vl",
         "ecuatorianas_group_id": _default_group_id("SALES_ECUATORIANAS_GROUP_ID"),
-        "ecuatorianas_group_link": "",
+        "ecuatorianas_group_link": "https://t.me/+gYgEWaCBMxc2MGJl",
     }
 
 
