@@ -31,14 +31,15 @@ SALES_CONFIG_LOCAL_FILENAME = "ventas_config.json"
 
 
 def _default_trial_group_id() -> Optional[int]:
-    """Lee SALES_TRIAL_GROUP_ID (el ID numérico del grupo de prueba, por
-    ejemplo -1001234567890) como entero. Si no está definida o no es un
-    número válido, devuelve None - en ese caso, la prueba gratuita sigue
-    entregando el enlace configurado, pero la expulsión automática no se
-    activa (ver handle_trial_group_new_member en handlers.py)."""
+    """Lee SALES_TRIAL_GROUP_ID (el ID numérico del grupo de prueba). Si no
+    está definida o no es un número válido, usa el ID del grupo de prueba
+    ya conocido como valor por defecto, para que la expulsión automática
+    de 1 minuto funcione sin necesidad de configurar nada en Railway (ver
+    handle_trial_group_new_member en handlers.py). Se puede seguir
+    sobreescribiendo con la variable de entorno si el grupo cambia."""
     raw = os.getenv("SALES_TRIAL_GROUP_ID", "").strip()
     if not raw:
-        return None
+        return -1003754652912
     try:
         return int(raw)
     except ValueError:
@@ -112,9 +113,23 @@ def _default_config() -> dict:
             "• Un administrador verificará el pago y, una vez confirmado, "
             "recibirás automáticamente el enlace de acceso VIP."
         ),
-        "demo_group_link": "",
+        "demo_group_link": "https://t.me/+-YMJIf9MZd84MzU1",
         "vip_group_link": "",
-        "faq_text": "Aún no se ha configurado el texto de preguntas frecuentes.",
+        "faq_text": (
+            "❓ PREGUNTAS FRECUENTES\n\n"
+            "1. ¿Cómo funciona la prueba gratis?\n\n"
+            "Obtendrás acceso al grupo de prueba durante 1 minuto para que conozcas el contenido.\n\n"
+            "2. ¿Cuánto cuesta el acceso VIP?\n\n"
+            "El acceso VIP cuesta únicamente $8 USD.\n\n"
+            "3. ¿Qué incluye el acceso VIP?\n\n"
+            "• Acceso inmediato.\n"
+            "• Contenido actualizado diariamente.\n"
+            "• Acceso exclusivo para miembros VIP.\n\n"
+            "4. ¿Cómo recibo el acceso?\n\n"
+            "Una vez aprobado tu pago, el bot enviará automáticamente el botón para ingresar al grupo que compraste.\n\n"
+            "5. ¿Necesito hablar con un administrador?\n\n"
+            "Solo si tienes algún inconveniente con tu compra o con el acceso."
+        ),
         "trial_group_id": _default_trial_group_id(),
         "vip_group_id": _default_vip_group_id(),
         "portoviejo_group_id": _default_group_id("SALES_PORTOVIEJO_GROUP_ID"),
