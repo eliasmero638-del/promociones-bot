@@ -1823,8 +1823,23 @@ START_WELCOME_TEXT = (
 )
 
 
+def _start_welcome_keyboard() -> InlineKeyboardMarkup:
+    """Teclado de la pantalla de bienvenida de /start: dos opciones
+    independientes, cada una con su propio flujo (ver start_enter_vip_callback
+    y start_sell_content_callback)."""
+    return InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton("🔥 QUIERO SER VIP 🔥", callback_data="start_enter_vip")],
+            [InlineKeyboardButton("💰 QUIERO VENDER CONTENIDO 💰", callback_data="start_sell_content")],
+        ]
+    )
+
+
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Handle the /start command."""
+    """Handle the /start command. Muestra la pantalla de bienvenida con
+    dos opciones independientes: "Quiero ser VIP" (abre el flujo VIP
+    existente) y "Quiero vender contenido" (pantalla de contacto, ver
+    start_sell_content_callback)."""
     logger.info(f"Received /start from chat_id={update.effective_chat.id} type={update.effective_chat.type}")
 
     # Deep-link "/start venta" (el botón del canal) sigue abriendo el menú
@@ -1835,18 +1850,47 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await send_sales_welcome(update, context)
         return
 
-    keyboard = InlineKeyboardMarkup([[InlineKeyboardButton("Quiero ser VIP", callback_data="start_enter_vip")]])
-    await update.message.reply_text(START_WELCOME_TEXT, reply_markup=keyboard)
+    await update.message.reply_text(START_WELCOME_TEXT, reply_markup=_start_welcome_keyboard())
 
 
 async def start_enter_vip_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Botón "👑 Quiero ser VIP" del mensaje de /start: abre exactamente el
+    """Botón "🔥 QUIERO SER VIP 🔥" del mensaje de /start: abre exactamente el
     mismo flujo que /start venta, reutilizando send_sales_welcome() sin
     duplicar su lógica."""
     query = update.callback_query
     await query.answer()
     from ventas.handlers import send_sales_welcome
     await send_sales_welcome(update, context)
+
+
+async def start_sell_content_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Botón "💰 QUIERO VENDER CONTENIDO 💰" del mensaje de /start: muestra
+    la pantalla de contacto para vender contenido. "Volver" regresa a esta
+    misma pantalla de bienvenida (no al menú de ventas de 4 botones, que
+    es una pantalla distinta accesible por /start venta o el botón VIP)."""
+    query = update.callback_query
+    await query.answer()
+    text = (
+        "💰 ¿Quieres vender tu contenido?\n\n"
+        "Si deseas vender contenido propio o administras un grupo de Telegram con contenido exclusivo, "
+        "ponte en contacto con el administrador.\n\n"
+        "Presiona el botón de abajo y con gusto revisaremos tu propuesta."
+    )
+    keyboard = InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton("👤 Hablar con el administrador", url="https://t.me/el593rm")],
+            [InlineKeyboardButton("⬅️ Volver", callback_data="start_back_to_welcome")],
+        ]
+    )
+    await query.edit_message_text(text, reply_markup=keyboard)
+
+
+async def start_back_to_welcome_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """"⬅️ Volver" desde la pantalla de "Quiero vender contenido": regresa
+    a la pantalla de bienvenida de /start con sus dos botones."""
+    query = update.callback_query
+    await query.answer()
+    await query.edit_message_text(START_WELCOME_TEXT, reply_markup=_start_welcome_keyboard())
 
 
 def _describe_channel_message(message) -> dict:
@@ -2402,6 +2446,8 @@ def main():
     # Registrado antes del catch-all de abajo para que este callback_data
     # específico no caiga en button_callback.
     application.add_handler(CallbackQueryHandler(start_enter_vip_callback, pattern="^start_enter_vip$"))
+    application.add_handler(CallbackQueryHandler(start_sell_content_callback, pattern="^start_sell_content$"))
+    application.add_handler(CallbackQueryHandler(start_back_to_welcome_callback, pattern="^start_back_to_welcome$"))
 
     # Add callback handler for other buttons
     application.add_handler(CallbackQueryHandler(button_callback))
