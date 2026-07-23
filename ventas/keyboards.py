@@ -117,12 +117,14 @@ def admin_approval_keyboard(request_id: str) -> InlineKeyboardMarkup:
     )
 
 
-def vip_access_keyboard(vip_link: str) -> InlineKeyboardMarkup:
-    """Teclado para el mensaje de aprobación: solo un botón "🔓 Unirse al
-    grupo VIP" con el enlace (dinámico o fallback). El enlace nunca se
-    muestra como texto en el mensaje, solo como URL del botón."""
+def vip_access_keyboard(vip_link: str, admin_user_id: int) -> InlineKeyboardMarkup:
+    """Teclado para el mensaje de aprobación: "🚪 Unirme al grupo" (el
+    enlace, dinámico o fallback, nunca se muestra como texto - solo como
+    URL del botón) + "👤 Contactar al administrador", igual que en el
+    resto del flujo de ventas."""
     return InlineKeyboardMarkup(
         [
-            [InlineKeyboardButton("🔓 Unirse al grupo VIP", url=vip_link)]
+            [InlineKeyboardButton("🚪 Unirme al grupo", url=vip_link)],
+            [_contact_admin_button(admin_user_id)],
         ]
     )
