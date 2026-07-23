@@ -33,6 +33,17 @@ def welcome_keyboard() -> InlineKeyboardMarkup:
     )
 
 
+def faq_keyboard() -> InlineKeyboardMarkup:
+    """Pantalla de preguntas frecuentes: un único botón para volver al
+    menú principal (a diferencia de welcome_keyboard(), que repite las
+    3 opciones completas)."""
+    return InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton("⬅️ Volver", callback_data="ventas_back_to_welcome")],
+        ]
+    )
+
+
 def vip_group_selection_keyboard() -> InlineKeyboardMarkup:
     """Pantalla nueva: elegir a qué grupo se quiere comprar acceso, ANTES
     de mostrar los métodos de pago. El "Volver" regresa al menú principal,
@@ -65,7 +76,7 @@ def demo_keyboard(config: SalesConfigManager, admin_user_id: int) -> InlineKeybo
     demo_link = config.get_demo_group_link()
     rows = []
     if demo_link:
-        rows.append([InlineKeyboardButton("📂 Entrar al grupo de demostración", url=demo_link)])
+        rows.append([InlineKeyboardButton("🚪 Entrar a la prueba gratis", url=demo_link)])
     else:
         rows.append([_contact_admin_button(admin_user_id)])
     rows.append([InlineKeyboardButton("⬅️ Volver al menú", callback_data="ventas_back_to_welcome")])
