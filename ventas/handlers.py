@@ -334,7 +334,7 @@ async def ventas_faq_callback(update: Update, context: ContextTypes.DEFAULT_TYPE
     query = update.callback_query
     await query.answer()
     config = SalesConfigManager()
-  await _safe_edit_message(query, config.get_faq_text(), reply_markup=keyboards.faq_keyboard())
+    await _safe_edit_message(query, config.get_faq_text(), reply_markup=keyboards.faq_keyboard())
 
 
 # --- "✅ Ya realicé el pago" -> pedir SOLO el titular (el método ya se conoce) ---
@@ -535,4 +535,184 @@ async def sale_approve_callback(update: Update, context: ContextTypes.DEFAULT_TY
         vip_group_id = config.get_portoviejo_group_id()
         configured_link = config.get_portoviejo_group_link()
     elif group_key == "ecuatorianas":
-        vip_group_id = config.get_ecuatorianas_group_id
+        vip_group_id = config.get_ecuatorianas_group_id()
+        configured_link = config.get_ecuatorianas_group_link()
+    else:
+        vip_group_id = config.get_vip_group_id()
+        configured_link = config.get_vip_group_link()
+
+    # Intenta crear enlace dinámico; si falla, usa el configurado
+    vip_link = None
+    if vip_group_id:
+        vip_link = await _create_vip_invite_link(context, vip_group_id)
+
+    # Si la creación dinámica falló (o no está configurado), usar fallback
+    if not vip_link:
+        vip_link = configured_link
+        if vip_link:
+            logger.info(f"[ventas] Using fallback configured VIP link for user {user_id}.")
+        else:
+            logger.warning(
+                f"[ventas] No VIP link available (neither dynamic creation nor fallback configured) "
+                f"for user {user_id}."
+            )
+
+    # Notificar al usuario
+    try:
+        if vip_link:
+            # Enviar SOLO el botón con el enlace (no mostrar URL como texto)
+            await context.bot.send_message(
+                chat_id=user_id,
+                text=(
+                    "✅ Tu pago fue aprobado.\n\n"
+                    "Tu acceso está listo.\n\n"
+                    "Presiona el botón para ingresar al grupo."
+                ),
+                reply_markup=keyboards.vip_access_keyboard(vip_link, _get_admin_user_id()),
+            )
+            logger.info(f"[ventas] Sent VIP access button to user {user_id}.")
+        else:
+            # Fallback: si no hay enlace de ningún tipo, mensaje genérico
+            await context.bot.send_message(
+                chat_id=user_id,
+                text="✅ Tu pago fue aprobado. El administrador te contactará pronto con el acceso al grupo VIP.",
+            )
+            logger.warning(f"[ventas] Sent generic approval message to user {user_id} (no VIP link available).")
+    except TelegramError as e:
+        logger.error(f"[ventas] Could not notify user {user_id} of approval: {e}")
+
+    # Confirmar en el mensaje al admin
+    await query.edit_message_text(
+        f"✅ Aprobado — {request['payer_name']} ({request['payment_method']}). Se notificó al usuario."
+    )
+
+
+async def sale_reject_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    await query.answer()
+
+    if query.from_user.id != _get_admin_user_id():
+        await query.answer("❌ No tienes permiso.", show_alert=True)
+        return
+
+    request_id = query.data[len("sale_reject_"):]
+    manager = SalesRequestsManager()
+    request = manager.get_by_id(request_id)
+
+    if not request:
+        await query.edit_message_text("❌ Esta solicitud ya no existe.")
+        return
+
+    request["status"] = "rejected"
+    request["resolved_at"] = datetime.now().isoformat()
+    manager.update(request_id, request)
+    logger.info(f"[ventas] Payment request {request_id} rejected by admin.")
+
+    try:
+        await context.bot.send_message(
+            chat_id=request["user_id"],
+            text="❌ No pudimos verificar tu pago. Por favor contacta al administrador para resolverlo.",
+        )
+    except TelegramError as e:
+        logger.error(f"[ventas] Could not notify user {request['user_id']} of rejection: {e}")
+
+    await query.edit_message_text(
+        f"❌ Rechazado — {request['payer_name']} ({request['payment_method']}). Se notificó al usuario."
+    )
+
+
+# Quality audit fix: how long (seconds) a buyer can be inactive mid-way
+# through "Ya realicé el pago" (name -> method) before it auto-cancels.
+# Without this, abandoning the flow left them stuck: entry_points are
+# bypassed while a conversation is already active for that user, so
+# tapping "✅ Ya realicé el pago" again would silently do nothing.
+VENTAS_CONVERSATION_TIMEOUT_SECONDS = 300  # 5 minutes
+
+
+async def ventas_conversation_timeout_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Fires when the payment conversation times out. Clears any partial
+    state and lets the buyer know they can start over."""
+    context.user_data.pop("ventas_payer_name", None)
+    context.user_data.pop("ventas_payment_method_key", None)
+    try:
+        if update.callback_query:
+            await update.callback_query.edit_message_text(
+                "⏱️ Se agotó el tiempo de espera. Si deseas continuar, pulsa /start de nuevo."
+            )
+        elif update.message:
+            await update.message.reply_text(
+                "⏱️ Se agotó el tiempo de espera. Si deseas continuar, pulsa /start de nuevo."
+            )
+    except TelegramError as e:
+        logger.warning(f"[ventas] Could not notify user of conversation timeout: {e}")
+
+
+def build_ventas_conversation_handler():
+    """Construye el ConversationHandler del módulo de ventas (solo el flujo
+    de pago), completamente independiente del ConversationHandler de
+    bot.py. El método de pago ya no es un estado propio: se elige antes de
+    entrar aquí, así que solo hay un estado (el nombre del titular)."""
+    return ConversationHandler(
+        entry_points=[
+            CallbackQueryHandler(ventas_paid_entry, pattern="^ventas_paid_(bank_guayaquil|bank_pichincha|paypal)$"),
+        ],
+        states={
+            VENTAS_PAYER_NAME: [MessageHandler(filters.TEXT & ~filters.COMMAND, ventas_receive_payer_name)],
+            ConversationHandler.TIMEOUT: [
+                MessageHandler(filters.ALL, ventas_conversation_timeout_handler),
+                CallbackQueryHandler(ventas_conversation_timeout_handler),
+            ],
+        },
+        fallbacks=[],
+        name="ventas_conversation",
+        persistent=False,
+        conversation_timeout=VENTAS_CONVERSATION_TIMEOUT_SECONDS,
+    )
+
+
+def register_ventas_handlers(application):
+    """Punto único de integración con bot.py: registra todos los handlers
+    del módulo de ventas en la Application. Los CallbackQueryHandler deben
+    llamarse ANTES del catch-all de bot.py (button_callback sin patrón),
+    para que los callback_data de ventas no queden atrapados ahí."""
+    application.add_handler(build_ventas_conversation_handler())
+    application.add_handler(CallbackQueryHandler(ventas_demo_callback, pattern="^ventas_demo$"))
+    application.add_handler(CallbackQueryHandler(ventas_vip_callback, pattern="^ventas_vip$"))
+    application.add_handler(
+        CallbackQueryHandler(ventas_group_detail_callback, pattern="^ventas_group_(portoviejo|ecuatorianas)$")
+    )
+    application.add_handler(
+        CallbackQueryHandler(ventas_buy_group_callback, pattern="^ventas_buy_(portoviejo|ecuatorianas)$")
+    )
+    application.add_handler(
+        CallbackQueryHandler(ventas_method_detail_callback, pattern="^ventas_method_(bank_guayaquil|bank_pichincha|paypal)$")
+    )
+    application.add_handler(CallbackQueryHandler(ventas_faq_callback, pattern="^ventas_faq$"))
+    application.add_handler(CallbackQueryHandler(ventas_back_to_welcome_callback, pattern="^ventas_back_to_welcome$"))
+    application.add_handler(CallbackQueryHandler(sale_approve_callback, pattern="^sale_approve_.+$"))
+    application.add_handler(CallbackQueryHandler(sale_reject_callback, pattern="^sale_reject_.+$"))
+    # Detecta ingresos al grupo de prueba para expulsar automáticamente al
+    # cumplirse 1 minuto. Se registra en group=1 (distinto del group=0 por
+    # defecto que usa bot.py para su propio detector de NEW_CHAT_MEMBERS,
+    # el de la bienvenida). python-telegram-bot solo invoca al primer
+    # handler que matchea un filtro DENTRO de un mismo group; si este
+    # handler compartiera el group con el de bot.py, cualquiera que se
+    # registrara primero "consumiría" el evento y el otro dejaría de
+    # funcionar. Con groups distintos, ambos evalúan cada ingreso de forma
+    # independiente y cada uno decide por su cuenta (por chat_id) si le
+    # corresponde actuar. No requiere ningún cambio en bot.py.
+    application.add_handler(
+        MessageHandler(filters.StatusUpdate.NEW_CHAT_MEMBERS, handle_trial_group_new_member), group=1
+    )
+
+    # Recupera, al arrancar, cualquier expulsión del grupo de prueba que
+    # haya quedado pendiente de un reinicio anterior. Se programa aquí
+    # (usando application.job_queue directamente, ya disponible desde que
+    # se llamó a Application.builder()...build() en bot.py) en vez de en
+    # post_init() de bot.py, precisamente para no tener que tocar bot.py.
+    if application.job_queue:
+        application.job_queue.run_once(_reschedule_pending_trial_kicks, when=1)
+    else:
+        logger.error("[ventas] No job_queue available at startup; cannot reconcile pending trial kicks.")
+
+    logger.info("[ventas] All sales-system handlers registered.")
