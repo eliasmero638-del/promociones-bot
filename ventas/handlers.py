@@ -225,7 +225,7 @@ async def _reschedule_pending_trial_kicks(context: ContextTypes.DEFAULT_TYPE):
         if not context.job_queue:
             logger.error("[ventas] No job_queue available; cannot reschedule pending trial kicks.")
             return
-
+          
         context.job_queue.run_once(
             _kick_trial_member,
             when=remaining,
@@ -241,13 +241,54 @@ async def _reschedule_pending_trial_kicks(context: ContextTypes.DEFAULT_TYPE):
 # --- "💳 Comprar acceso VIP" -> menú de métodos de pago ---
 
 async def ventas_vip_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Muestra el menú de métodos de pago disponibles (sin datos
-    financieros todavía - eso se muestra al elegir uno específico)."""
+    """Muestra la pantalla de selección de grupo (nuevo paso previo). Los
+    métodos de pago ya no se muestran aquí directamente - eso ocurre
+    recién en ventas_buy_group_callback(), después de elegir un grupo."""
     query = update.callback_query
     await query.answer()
+    await _safe_edit_message(
+        query, "¿Qué grupo deseas adquirir?", reply_markup=keyboards.vip_group_selection_keyboard()
+    )
+
+
+async def ventas_group_detail_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Muestra el detalle de UN grupo específico (nombre, beneficios,
+    precio - el mismo precio ya configurado, sin uno distinto por grupo)."""
+    query = update.callback_query
+    await query.answer()
+
+    group_key = query.data[len("ventas_group_"):]
+    if group_key not in keyboards.GROUP_LABELS:
+        return
+
+    config = SalesConfigManager()
+    label = keyboards.GROUP_LABELS[group_key]
+    text = (
+        f"{label}\n\n"
+        "✅ Acceso inmediato.\n"
+        "✅ Contenido actualizado diariamente.\n"
+        "✅ Acceso exclusivo para miembros VIP.\n\n"
+        f"💰 Precio: {config.get_vip_price()}\n\n"
+        "Presiona \"Comprar ahora\" para continuar."
+    )
+    await _safe_edit_message(query, text, reply_markup=keyboards.group_detail_keyboard(group_key))
+
+
+async def ventas_buy_group_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Guarda el grupo elegido (se usará al guardar la solicitud de pago y,
+    más adelante, al aprobarla) y recién aquí muestra el menú de métodos
+    de pago - EXACTAMENTE el mismo texto/teclado que ya existía."""
+    query = update.callback_query
+    await query.answer()
+
+    group_key = query.data[len("ventas_buy_"):]
+    if group_key not in keyboards.GROUP_LABELS:
+        return
+
+    context.user_data["ventas_selected_group"] = group_key
+
     config = SalesConfigManager()
     admin_id = _get_admin_user_id()
-
     text = f"💳 *Acceso VIP* — {config.get_vip_price()}\n\nElige tu método de pago preferido:"
     await _safe_edit_message(
         query, text, reply_markup=keyboards.vip_menu_keyboard(admin_id), parse_mode="Markdown"
@@ -285,9 +326,7 @@ async def ventas_method_detail_callback(update: Update, context: ContextTypes.DE
     await _safe_edit_message(
         query, text, reply_markup=keyboards.method_detail_keyboard(method_key, admin_id), parse_mode="Markdown"
     )
-
-
-# --- "❓ Preguntas frecuentes" ---
+    # --- "❓ Preguntas frecuentes" ---
 
 async def ventas_faq_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
@@ -361,6 +400,7 @@ async def ventas_receive_payer_name(update: Update, context: ContextTypes.DEFAUL
         "user_username": user.username,
         "payer_name": payer_name,
         "payment_method": method_label,
+        "group_key": context.user_data.pop("ventas_selected_group", None),
         "status": "pending",
         "created_at": datetime.now().isoformat(),
         "admin_message_id": None,
@@ -388,9 +428,12 @@ async def _notify_admin_new_sale_request(context: ContextTypes.DEFAULT_TYPE, req
     """Envía al admin los datos de la solicitud con botones Aprobar/Rechazar."""
     admin_id = _get_admin_user_id()
     username_part = f"@{request['user_username']}" if request.get("user_username") else f"id {request['user_id']}"
+    group_key = request.get("group_key")
+    group_line = f"Grupo: {keyboards.GROUP_LABELS[group_key]}\n" if group_key in keyboards.GROUP_LABELS else ""
     text = (
         "🛒 *Nueva solicitud de pago VIP*\n\n"
         f"Usuario: {request['user_first_name']} ({username_part})\n"
+        f"{group_line}"
         f"Titular del pago: {request['payer_name']}\n"
         f"Método: {request['payment_method']}"
     )
@@ -479,16 +522,31 @@ async def sale_approve_callback(update: Update, context: ContextTypes.DEFAULT_TY
 
     config = SalesConfigManager()
     user_id = request["user_id"]
-    vip_group_id = config.get_vip_group_id()
-    
+    group_key = request.get("group_key")
+
+    # Identifica qué grupo compró el usuario y usa el ID/enlace de ESE
+    # grupo. Si la solicitud no tiene group_key (creada antes de este
+    # cambio), se mantiene el comportamiento anterior exactamente igual,
+    # usando el grupo VIP único configurado - así ninguna solicitud ya en
+    # curso se ve afectada.
+    if group_key == "portoviejo":
+        vip_group_id = config.get_portoviejo_group_id()
+        configured_link = config.get_portoviejo_group_link()
+    elif group_key == "ecuatorianas":
+        vip_group_id = config.get_ecuatorianas_group_id()
+        configured_link = config.get_ecuatorianas_group_link()
+    else:
+        vip_group_id = config.get_vip_group_id()
+        configured_link = config.get_vip_group_link()
+
     # Intenta crear enlace dinámico; si falla, usa el configurado
     vip_link = None
     if vip_group_id:
         vip_link = await _create_vip_invite_link(context, vip_group_id)
-    
+
     # Si la creación dinámica falló (o no está configurado), usar fallback
     if not vip_link:
-        vip_link = config.get_vip_group_link()
+        vip_link = configured_link
         if vip_link:
             logger.info(f"[ventas] Using fallback configured VIP link for user {user_id}.")
         else:
@@ -614,6 +672,12 @@ def register_ventas_handlers(application):
     application.add_handler(build_ventas_conversation_handler())
     application.add_handler(CallbackQueryHandler(ventas_demo_callback, pattern="^ventas_demo$"))
     application.add_handler(CallbackQueryHandler(ventas_vip_callback, pattern="^ventas_vip$"))
+    application.add_handler(
+        CallbackQueryHandler(ventas_group_detail_callback, pattern="^ventas_group_(portoviejo|ecuatorianas)$")
+    )
+    application.add_handler(
+        CallbackQueryHandler(ventas_buy_group_callback, pattern="^ventas_buy_(portoviejo|ecuatorianas)$")
+    )
     application.add_handler(
         CallbackQueryHandler(ventas_method_detail_callback, pattern="^ventas_method_(bank_guayaquil|bank_pichincha|paypal)$")
     )
