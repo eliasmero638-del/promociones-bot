@@ -382,6 +382,19 @@ async def ventas_faq_callback(update: Update, context: ContextTypes.DEFAULT_TYPE
     await _safe_edit_message(query, config.get_faq_text(), reply_markup=keyboards.faq_keyboard())
 
 
+# --- "💰 Quiero vender contenido" ---
+
+async def ventas_sell_content_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    await query.answer()
+    text = (
+        "¿Quieres vender tu contenido o grupo?\n\n"
+        "El administrador revisará tu solicitud.\n\n"
+        "Presiona el botón de abajo para hablar directamente con el administrador."
+    )
+    await _safe_edit_message(query, text, reply_markup=keyboards.sell_content_keyboard())
+
+
 # --- "✅ Ya realicé el pago" -> pedir SOLO el titular (el método ya se conoce) ---
 
 async def ventas_paid_entry(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -571,6 +584,11 @@ async def sale_approve_callback(update: Update, context: ContextTypes.DEFAULT_TY
     user_id = request["user_id"]
     group_key = request.get("group_key")
 
+    logger.info(
+        f"[ventas][approve_debug] request_id={request_id} group_key={group_key!r} "
+        f"(request completa: {request})"
+    )
+
     # Identifica qué grupo compró el usuario y usa el ID/enlace de ESE
     # grupo. Si la solicitud no tiene group_key (creada antes de este
     # cambio), se mantiene el comportamiento anterior exactamente igual,
@@ -585,11 +603,21 @@ async def sale_approve_callback(update: Update, context: ContextTypes.DEFAULT_TY
     else:
         vip_group_id = config.get_vip_group_id()
         configured_link = config.get_vip_group_link()
+        logger.warning(
+            f"[ventas][approve_debug] group_key={group_key!r} no es 'portoviejo' ni 'ecuatorianas' "
+            f"(solicitud probablemente creada antes de tener grupos); usando el respaldo genérico "
+            f"vip_group_id={vip_group_id!r} vip_group_link={configured_link!r}."
+        )
+
+    logger.info(
+        f"[ventas][approve_debug] vip_group_id={vip_group_id!r} configured_link={configured_link!r}"
+    )
 
     # Intenta crear enlace dinámico; si falla, usa el configurado
     vip_link = None
     if vip_group_id:
         vip_link = await _create_vip_invite_link(context, vip_group_id)
+        logger.info(f"[ventas][approve_debug] Enlace dinámico creado: {vip_link!r}")
 
     # Si la creación dinámica falló (o no está configurado), usar fallback
     if not vip_link:
@@ -733,6 +761,7 @@ def register_ventas_handlers(application):
         CallbackQueryHandler(ventas_method_detail_callback, pattern="^ventas_method_(bank_guayaquil|bank_pichincha|paypal)$")
     )
     application.add_handler(CallbackQueryHandler(ventas_faq_callback, pattern="^ventas_faq$"))
+    application.add_handler(CallbackQueryHandler(ventas_sell_content_callback, pattern="^ventas_sell_content$"))
     application.add_handler(CallbackQueryHandler(ventas_back_to_welcome_callback, pattern="^ventas_back_to_welcome$"))
     application.add_handler(CallbackQueryHandler(sale_approve_callback, pattern="^sale_approve_.+$"))
     application.add_handler(CallbackQueryHandler(sale_reject_callback, pattern="^sale_reject_.+$"))
