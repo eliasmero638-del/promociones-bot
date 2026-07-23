@@ -388,9 +388,10 @@ async def ventas_sell_content_callback(update: Update, context: ContextTypes.DEF
     query = update.callback_query
     await query.answer()
     text = (
-        "¿Quieres vender tu contenido o grupo?\n\n"
-        "El administrador revisará tu solicitud.\n\n"
-        "Presiona el botón de abajo para hablar directamente con el administrador."
+        "💰 ¿Quieres vender tu contenido?\n\n"
+        "Si deseas vender contenido propio o administras un grupo de Telegram con contenido exclusivo, "
+        "ponte en contacto con el administrador.\n\n"
+        "Presiona el botón de abajo y con gusto revisaremos tu propuesta."
     )
     await _safe_edit_message(query, text, reply_markup=keyboards.sell_content_keyboard())
 
