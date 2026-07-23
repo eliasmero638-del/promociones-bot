@@ -156,11 +156,34 @@ async def handle_trial_group_new_member(update: Update, context: ContextTypes.DE
 
     config = SalesConfigManager()
     trial_group_id = config.get_trial_group_id()
-    if not trial_group_id or message.chat_id != trial_group_id:
+
+    logger.info(
+        f"[ventas][trial_debug] NEW_CHAT_MEMBERS event received. "
+        f"message.chat_id={message.chat_id} configured_trial_group_id={trial_group_id}"
+    )
+
+    if not trial_group_id:
+        logger.warning(
+            "[ventas][trial_debug] trial_group_id no está configurado (None); "
+            "se ignora el evento. La expulsión automática no puede activarse sin este valor."
+        )
         return
+
+    if message.chat_id != trial_group_id:
+        logger.info(
+            f"[ventas][trial_debug] Ingreso ignorado: este chat ({message.chat_id}) "
+            f"no coincide con el grupo de prueba configurado ({trial_group_id})."
+        )
+        return
+
+    logger.info(
+        f"[ventas][trial_debug] chat_id coincide con el grupo de prueba. "
+        f"Procesando {len(message.new_chat_members)} nuevo(s) miembro(s)."
+    )
 
     for member in message.new_chat_members:
         if member.is_bot:
+            logger.info(f"[ventas][trial_debug] Ignorando ingreso de bot: {member.id}")
             continue
         logger.info(
             f"[ventas] User {member.id} joined the trial group ({trial_group_id}); "
@@ -179,6 +202,10 @@ async def handle_trial_group_new_member(update: Update, context: ContextTypes.DE
                 data={"chat_id": trial_group_id, "user_id": member.id},
                 name=f"trial_kick_{trial_group_id}_{member.id}",
             )
+            logger.info(
+                f"[ventas][trial_debug] Job de expulsión programado correctamente para "
+                f"user_id={member.id} en {TRIAL_DURATION_SECONDS}s (job name=trial_kick_{trial_group_id}_{member.id})."
+            )
         else:
             logger.error("[ventas] No job_queue available; cannot schedule automatic trial removal.")
 
@@ -190,17 +217,35 @@ async def _kick_trial_member(context: ContextTypes.DEFAULT_TYPE):
     volver a entrar con el enlace en el futuro si el admin lo permite."""
     data = context.job.data
     chat_id, user_id = data["chat_id"], data["user_id"]
+
+    logger.info(f"[ventas][trial_debug] Job de expulsión disparado para user_id={user_id} en chat_id={chat_id}.")
+
+    ban_ok = False
     try:
         await context.bot.ban_chat_member(chat_id=chat_id, user_id=user_id)
-        await context.bot.unban_chat_member(chat_id=chat_id, user_id=user_id, only_if_banned=True)
-        logger.info(f"[ventas] Removed user {user_id} from the trial group {chat_id} after the trial period ended.")
+        ban_ok = True
+        logger.info(f"[ventas][trial_debug] ban_chat_member OK para user_id={user_id} en chat_id={chat_id}.")
     except TelegramError as e:
-        logger.warning(f"[ventas] Could not remove user {user_id} from the trial group (may have already left): {e}")
-    finally:
-        # Se limpia el registro persistido en ambos casos (éxito o error) -
-        # si falló porque ya no está en el grupo, reintentar por siempre
-        # en cada reinicio no tendría sentido.
-        TrialKicksStore().remove_pending_kick(chat_id, user_id)
+        logger.error(
+            f"[ventas][trial_debug] ban_chat_member FALLÓ para user_id={user_id} en chat_id={chat_id}: {e}"
+        )
+
+    if ban_ok:
+        try:
+            await context.bot.unban_chat_member(chat_id=chat_id, user_id=user_id, only_if_banned=True)
+            logger.info(
+                f"[ventas][trial_debug] unban_chat_member OK para user_id={user_id} en chat_id={chat_id}."
+            )
+            logger.info(f"[ventas] Removed user {user_id} from the trial group {chat_id} after the trial period ended.")
+        except TelegramError as e:
+            logger.error(
+                f"[ventas][trial_debug] unban_chat_member FALLÓ para user_id={user_id} en chat_id={chat_id}: {e}"
+            )
+
+    # Se limpia el registro persistido en ambos casos (éxito o error) -
+    # si falló porque ya no está en el grupo, reintentar por siempre
+    # en cada reinicio no tendría sentido.
+    TrialKicksStore().remove_pending_kick(chat_id, user_id)
 
 
 async def _reschedule_pending_trial_kicks(context: ContextTypes.DEFAULT_TYPE):
