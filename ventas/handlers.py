@@ -225,7 +225,7 @@ async def _reschedule_pending_trial_kicks(context: ContextTypes.DEFAULT_TYPE):
         if not context.job_queue:
             logger.error("[ventas] No job_queue available; cannot reschedule pending trial kicks.")
             return
-          
+
         context.job_queue.run_once(
             _kick_trial_member,
             when=remaining,
@@ -326,8 +326,9 @@ async def ventas_method_detail_callback(update: Update, context: ContextTypes.DE
     await _safe_edit_message(
         query, text, reply_markup=keyboards.method_detail_keyboard(method_key, admin_id), parse_mode="Markdown"
     )
-    # --- "❓ Preguntas frecuentes" ---
 
+
+# --- "❓ Preguntas frecuentes" ---
 async def ventas_faq_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     await query.answer()
@@ -561,8 +562,12 @@ async def sale_approve_callback(update: Update, context: ContextTypes.DEFAULT_TY
             # Enviar SOLO el botón con el enlace (no mostrar URL como texto)
             await context.bot.send_message(
                 chat_id=user_id,
-                text="✅ ¡Tu pago fue aprobado! Ya tienes acceso al grupo VIP.",
-                reply_markup=keyboards.vip_access_keyboard(vip_link),
+                text=(
+                    "✅ Tu pago fue aprobado.\n\n"
+                    "Tu acceso está listo.\n\n"
+                    "Presiona el botón para ingresar al grupo."
+                ),
+                reply_markup=keyboards.vip_access_keyboard(vip_link, _get_admin_user_id()),
             )
             logger.info(f"[ventas] Sent VIP access button to user {user_id}.")
         else:
