@@ -1593,6 +1593,7 @@ async def edit_select_promotion(update: Update, context: ContextTypes.DEFAULT_TY
     """Entry point: admin picked a specific promotion from the edit list
     (callback_data="edit_select_<id>")."""
     query = update.callback_query
+    logger.info(f"[panel_edit][debug] edit_select_promotion invocado. callback_data={query.data!r}")
     await query.answer()
 
     if query.from_user.id != ADMIN_USER_ID:
@@ -1619,7 +1620,7 @@ async def edit_select_promotion(update: Update, context: ContextTypes.DEFAULT_TY
     logger.info(f"[panel_edit] Admin started editing promotion {promo_id}.")
 
     await query.edit_message_text(
-        _build_edit_menu_text(context), reply_markup=_edit_menu_keyboard(), parse_mode="Markdown"
+        _build_edit_menu_text(context), reply_markup=_edit_menu_keyboard()
     )
     return EDIT_MENU
 
@@ -1627,6 +1628,10 @@ async def edit_select_promotion(update: Update, context: ContextTypes.DEFAULT_TY
 async def edit_menu_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Handle taps on the edit menu: choose a field to change, or save."""
     query = update.callback_query
+    logger.info(
+        f"[panel_edit][debug] edit_menu_callback invocado. callback_data={query.data!r} "
+        f"edit_promo_id={context.user_data.get('edit_promo_id')!r}"
+    )
     await query.answer()
 
     if query.from_user.id != ADMIN_USER_ID:
@@ -1635,6 +1640,7 @@ async def edit_menu_callback(update: Update, context: ContextTypes.DEFAULT_TYPE)
 
     if query.data == "edit_field_caption":
         await query.edit_message_text("Envía el nuevo texto (caption) para esta promoción:")
+        logger.info("[panel_edit][debug] Transición de estado -> EDIT_CAPTION_INPUT")
         return EDIT_CAPTION_INPUT
 
     if query.data == "edit_field_media":
@@ -1649,14 +1655,17 @@ async def edit_menu_callback(update: Update, context: ContextTypes.DEFAULT_TYPE)
             "para formar un álbum. Cuando termines, pulsa 'Terminar'.",
             reply_markup=keyboard,
         )
+        logger.info("[panel_edit][debug] Transición de estado -> EDIT_MEDIA_INPUT")
         return EDIT_MEDIA_INPUT
 
     if query.data == "edit_field_username":
-        await query.edit_message_text("Envía el nuevo usuario de Telegram del administrador (sin @):")
+        await query.edit_message_text("Envía el nuevo usuario de Telegram del administrador (con o sin @):")
+        logger.info("[panel_edit][debug] Transición de estado -> EDIT_USERNAME_INPUT")
         return EDIT_USERNAME_INPUT
 
     if query.data == "edit_done":
         await _apply_promotion_edit(query, context)
+        logger.info("[panel_edit][debug] edit_done -> ConversationHandler.END")
         return ConversationHandler.END
 
     return EDIT_MENU
@@ -1674,7 +1683,7 @@ async def edit_receive_caption(update: Update, context: ContextTypes.DEFAULT_TYP
     )
 
     await update.message.reply_text(
-        _build_edit_menu_text(context), reply_markup=_edit_menu_keyboard(), parse_mode="Markdown"
+        _build_edit_menu_text(context), reply_markup=_edit_menu_keyboard()
     )
     return EDIT_MENU
 
@@ -1732,13 +1741,20 @@ async def edit_media_done(update: Update, context: ContextTypes.DEFAULT_TYPE):
     context.user_data.pop("edit_media_buffer", None)
 
     await query.edit_message_text(
-        _build_edit_menu_text(context), reply_markup=_edit_menu_keyboard(), parse_mode="Markdown"
+        _build_edit_menu_text(context), reply_markup=_edit_menu_keyboard()
     )
     return EDIT_MENU
 
 
 async def edit_receive_username(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Receive the new admin contact username and return to the edit menu."""
+    logger.info(
+        f"[panel_edit][debug] edit_receive_username invocado. texto recibido={update.message.text!r} "
+        f"edit_promo_id={context.user_data.get('edit_promo_id')!r}"
+    )
+    # Normaliza el username tanto si viene con "@" como sin él, para que
+    # nunca quede guardado con arroba de más (evita "Admin: @@usuario" en
+    # la vista previa y enlaces "https://t.me/@usuario" inválidos).
     new_username = update.message.text.strip().lstrip("@")
     old_username = context.user_data.get("edit_admin_username", "")
     context.user_data["edit_admin_username"] = new_username
@@ -1749,8 +1765,9 @@ async def edit_receive_username(update: Update, context: ContextTypes.DEFAULT_TY
     )
 
     await update.message.reply_text(
-        _build_edit_menu_text(context), reply_markup=_edit_menu_keyboard(), parse_mode="Markdown"
+        _build_edit_menu_text(context), reply_markup=_edit_menu_keyboard()
     )
+    logger.info("[panel_edit][debug] edit_receive_username completado, permanece en EDIT_MENU.")
     return EDIT_MENU
 
 
@@ -2430,6 +2447,17 @@ def main():
             ],
         },
         fallbacks=[CallbackQueryHandler(button_callback, pattern="^cancel$")],
+        # Fix (Problema 1): sin esto, si el admin quedaba "atascado" en
+        # cualquier estado de esta conversación (por ejemplo tras abandonar
+        # una edición a medias), los entry_points (incluido
+        # edit_select_promotion) dejaban de reclamar nuevos callbacks hasta
+        # que la conversación anterior expirara por conversation_timeout -
+        # el callback caía entonces en el CallbackQueryHandler(button_callback)
+        # genérico, que lo responde pero no continúa el flujo ("no pasa
+        # nada"). allow_reentry=True permite que un entry_point SIEMPRE
+        # pueda arrancar una conversación nueva, incluso si había una
+        # activa, sin esperar el timeout.
+        allow_reentry=True,
         conversation_timeout=CONVERSATION_TIMEOUT_SECONDS,
     )
     application.add_handler(conv_handler)
