@@ -124,6 +124,20 @@ async def ventas_back_to_welcome_callback(update: Update, context: ContextTypes.
 
 # --- "🎁 Iniciar prueba gratis" ---
 
+def _demo_screen_content(config: SalesConfigManager, admin_id: int):
+    """Texto + teclado de la pantalla de prueba gratis. Función compartida
+    para que ventas_demo_callback() (llega tocando el botón del menú) y
+    send_demo_directly() (llega por deep-link desde una promoción) usen
+    exactamente el mismo contenido, sin duplicar la lógica."""
+    text = (
+        "📂 ¡Perfecto! Aquí tienes el acceso a nuestro grupo de demostración.\n\n"
+        "Podrás permanecer 1 minuto; pasado ese tiempo, el bot te retirará automáticamente."
+    )
+    if not config.get_demo_group_link():
+        text = "El enlace de demostración aún no está configurado. Contacta al administrador."
+    return text, keyboards.demo_keyboard(config, admin_id)
+
+
 async def ventas_demo_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Entrega el enlace configurado del grupo de prueba. El seguimiento de
     quién debe ser expulsado y cuándo ocurre por completo en
@@ -132,13 +146,23 @@ async def ventas_demo_callback(update: Update, context: ContextTypes.DEFAULT_TYP
     await query.answer()
     config = SalesConfigManager()
     admin_id = _get_admin_user_id()
-    text = (
-        "📂 ¡Perfecto! Aquí tienes el acceso a nuestro grupo de demostración.\n\n"
-        "Podrás permanecer 1 minuto; pasado ese tiempo, el bot te retirará automáticamente."
-    )
-    if not config.get_demo_group_link():
-        text = "El enlace de demostración aún no está configurado. Contacta al administrador."
-    await _safe_edit_message(query, text, reply_markup=keyboards.demo_keyboard(config, admin_id))
+    text, keyboard = _demo_screen_content(config, admin_id)
+    await _safe_edit_message(query, text, reply_markup=keyboard)
+
+
+async def send_demo_directly(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Envía la pantalla de prueba gratis como mensaje NUEVO (en vez de
+    editar uno existente) - para cuando el usuario llega por deep-link
+    desde el botón "🎁 Solicitar prueba gratis" de una promoción, en vez
+    de tocar el botón dentro del menú de ventas. Reutiliza exactamente el
+    mismo contenido que ventas_demo_callback() vía _demo_screen_content();
+    la expulsión automática tras 1 minuto sigue funcionando igual, porque
+    depende únicamente de a qué grupo entra el usuario, no de cómo llegó
+    a ese enlace."""
+    config = SalesConfigManager()
+    admin_id = _get_admin_user_id()
+    text, keyboard = _demo_screen_content(config, admin_id)
+    await update.effective_message.reply_text(text, reply_markup=keyboard)
 
 
 async def handle_trial_group_new_member(update: Update, context: ContextTypes.DEFAULT_TYPE):
