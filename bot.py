@@ -900,9 +900,29 @@ async def publish_promotion(context: ContextTypes.DEFAULT_TYPE):
 
         # Send admin contact button
         admin_username = promotion.get("admin_username", "el593rm")
-        keyboard = InlineKeyboardMarkup(
-            [[InlineKeyboardButton("Hablar con el administrador", url=f"https://t.me/{admin_username}")]]
-        )
+        keyboard_rows = [[InlineKeyboardButton("Hablar con el administrador", url=f"https://t.me/{admin_username}")]]
+
+        # Botón "🎁 Solicitar prueba gratis" (deep-link a /start demo, ver
+        # send_demo_directly en ventas/handlers.py). Se usa context.bot.username
+        # -no se escribe a mano- porque ya está disponible en este punto:
+        # Application.run_polling() llama a bot.initialize() (que a su vez
+        # llama a get_me() y cachea el username) antes de arrancar el
+        # scheduler, y publish_promotion() solo se ejecuta después de eso
+        # (el primer job está programado 60s después del arranque). Si por
+        # cualquier motivo no estuviera disponible, se omite este botón sin
+        # afectar el resto de la publicación.
+        bot_username = (context.bot.username or "").strip().lstrip("@")
+        if bot_username:
+            keyboard_rows.append(
+                [InlineKeyboardButton("🎁 Solicitar prueba gratis", url=f"https://t.me/{bot_username}?start=demo")]
+            )
+        else:
+            logger.warning(
+                "[publish_promotion] context.bot.username no disponible; "
+                "se omite el botón de prueba gratis en esta publicación."
+            )
+
+        keyboard = InlineKeyboardMarkup(keyboard_rows)
         button_message = await context.bot.send_message(
             chat_id=GROUP_ID,
             text="Para más información:",
@@ -1300,6 +1320,29 @@ def _build_welcome_keyboard(config: WelcomeConfigManager) -> Optional[InlineKeyb
         if url:
             rows.append([InlineKeyboardButton(label, url=url)])
     return InlineKeyboardMarkup(rows) if rows else None
+
+
+async def handle_pinned_message_notice(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Borra automáticamente el mensaje de sistema "X fijó un mensaje" que
+    Telegram genera cada vez que se fija algo - SOLO dentro de GROUP_ID
+    (el grupo de promociones), nunca en ningún otro chat. No toca la
+    lógica de fijado/desfijado en sí (ver _unpin_previous_promotion_message
+    y publish_promotion) - esto solo limpia el aviso visual que queda en
+    el historial del chat. Protegido con try/except: si Telegram no
+    permite borrar ese aviso por cualquier motivo (permisos, ya borrado,
+    etc.), se registra en los logs y no se propaga ninguna excepción que
+    pueda afectar a otros handlers."""
+    message = update.message
+    if message is None:
+        return
+    if message.chat_id != GROUP_ID:
+        return
+
+    try:
+        await context.bot.delete_message(chat_id=GROUP_ID, message_id=message.message_id)
+        logger.info(f"[pin][debug] Aviso de sistema de fijado eliminado: {message.message_id}")
+    except TelegramError as e:
+        logger.warning(f"[pin][debug] No se pudo eliminar el aviso de sistema de fijado {message.message_id}: {e}")
 
 
 async def handle_new_chat_member(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -1861,10 +1904,18 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     # Deep-link "/start venta" (el botón del canal) sigue abriendo el menú
     # de ventas directamente, sin pasar por este mensaje de bienvenida.
-    from ventas.config import SALES_DEEP_LINK_PAYLOAD
+    from ventas.config import SALES_DEEP_LINK_PAYLOAD, SALES_DEMO_DEEP_LINK_PAYLOAD
     if context.args and context.args[0] == SALES_DEEP_LINK_PAYLOAD:
         from ventas.handlers import send_sales_welcome
         await send_sales_welcome(update, context)
+        return
+
+    # Deep-link "/start demo" (botón "🎁 Solicitar prueba gratis" de las
+    # promociones): lleva directo a la pantalla de prueba gratis, sin
+    # pasar por el menú de 4 opciones.
+    if context.args and context.args[0] == SALES_DEMO_DEEP_LINK_PAYLOAD:
+        from ventas.handlers import send_demo_directly
+        await send_demo_directly(update, context)
         return
 
     await update.message.reply_text(START_WELCOME_TEXT, reply_markup=_start_welcome_keyboard())
@@ -2486,10 +2537,10 @@ def main():
 
     # Phase 6: welcome new members of the promotions group
     application.add_handler(MessageHandler(filters.StatusUpdate.NEW_CHAT_MEMBERS, handle_new_chat_member))
+    application.add_handler(MessageHandler(filters.StatusUpdate.PINNED_MESSAGE, handle_pinned_message_notice))
 
     # Start the Bot
     application.run_polling()
-
 
 if __name__ == "__main__":
     main()
