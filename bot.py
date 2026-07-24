@@ -1224,7 +1224,7 @@ async def add_username(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Receive username and save promotion."""
     logger.info(f"[add_username] ========== ADD_USERNAME START ==========")
     
-    admin_username = update.message.text
+    admin_username = update.message.text.strip().lstrip("@")
     context.user_data["admin_username"] = admin_username
     logger.info(f"[add_username] Username received: {admin_username}")
     logger.info(f"[add_username] User data before saving: {context.user_data}")
@@ -1739,7 +1739,7 @@ async def edit_media_done(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def edit_receive_username(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Receive the new admin contact username and return to the edit menu."""
-    new_username = update.message.text
+    new_username = update.message.text.strip().lstrip("@")
     old_username = context.user_data.get("edit_admin_username", "")
     context.user_data["edit_admin_username"] = new_username
 
