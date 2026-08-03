@@ -14,9 +14,7 @@ PAYMENT_METHOD_LABELS = {
     "paypal": "💳 PayPal",
 }
 
-# Grupos VIP disponibles para la venta. El "Volver" de la pantalla de
-# métodos de pago sigue yendo al menú principal (sin cambios); estos
-# grupos solo agregan un paso de selección ANTES de esa pantalla.
+# Grupos VIP disponibles para la venta.
 GROUP_LABELS = {
     "portoviejo": "🔥 Portoviejo Caliente",
     "ecuatorianas": "🇪🇨 Ecuatorianas Calientes",
@@ -44,12 +42,13 @@ def welcome_keyboard() -> InlineKeyboardMarkup:
 
 
 def sell_content_keyboard() -> InlineKeyboardMarkup:
-    """Pantalla de "💰 Quiero vender contenido": un único botón para
-    contactar directamente al administrador (enlace fijo, no tg://user?id=,
-    a pedido explícito)."""
+    """Pantalla de "💰 Quiero vender contenido": contactar directamente al
+    administrador (enlace fijo, no tg://user?id=, a pedido explícito) +
+    Volver al menú principal (su único nivel superior)."""
     return InlineKeyboardMarkup(
         [
             [InlineKeyboardButton("👤 Hablar con el administrador", url="https://t.me/el593rm")],
+            [InlineKeyboardButton("⬅️ Volver", callback_data="ventas_back_to_welcome")],
         ]
     )
 
@@ -100,7 +99,7 @@ def demo_keyboard(config: SalesConfigManager, admin_user_id: int) -> InlineKeybo
         rows.append([InlineKeyboardButton("🚪 Entrar a la prueba gratis", url=demo_link)])
     else:
         rows.append([_contact_admin_button(admin_user_id)])
-    rows.append([InlineKeyboardButton("⬅️ Volver al menú", callback_data="ventas_back_to_welcome")])
+    rows.append([InlineKeyboardButton("⬅️ Volver", callback_data="ventas_back_to_welcome")])
     return InlineKeyboardMarkup(rows)
 
 
@@ -113,27 +112,31 @@ def _contact_admin_button(admin_user_id: int) -> InlineKeyboardButton:
     return InlineKeyboardButton("👤 Contactar al administrador", url=f"tg://user?id={admin_user_id}")
 
 
-def vip_menu_keyboard(admin_user_id: int) -> InlineKeyboardMarkup:
+def vip_menu_keyboard(admin_user_id: int, group_key: str) -> InlineKeyboardMarkup:
     """Menú de métodos de pago. Cada método se elige primero; sus datos
-    específicos se muestran recién en method_detail_keyboard()."""
+    específicos se muestran recién en method_detail_keyboard(). "Volver"
+    regresa al nivel inmediatamente anterior: el detalle del grupo elegido
+    (no al menú principal)."""
     rows = [
         [InlineKeyboardButton(label, callback_data=f"ventas_method_{key}")]
         for key, label in PAYMENT_METHOD_LABELS.items()
     ]
     rows.append([_contact_admin_button(admin_user_id)])
-    rows.append([InlineKeyboardButton("⬅️ Volver", callback_data="ventas_back_to_welcome")])
+    rows.append([InlineKeyboardButton("⬅️ Volver", callback_data=f"ventas_group_{group_key}")])
     return InlineKeyboardMarkup(rows)
 
 
-def method_detail_keyboard(method_key: str, admin_user_id: int) -> InlineKeyboardMarkup:
+def method_detail_keyboard(method_key: str, admin_user_id: int, group_key: str) -> InlineKeyboardMarkup:
     """Botones de la pantalla de detalle de UN método de pago específico.
     "Ya realicé el pago" lleva el método codificado en el callback_data,
-    así la conversación de pago ya no necesita volver a preguntarlo."""
+    así la conversación de pago ya no necesita volver a preguntarlo.
+    "Volver" regresa al menú de métodos de pago (reutiliza
+    ventas_buy_group_callback, que ya reconstruye esa pantalla completa)."""
     return InlineKeyboardMarkup(
         [
             [InlineKeyboardButton("✅ Ya realicé el pago", callback_data=f"ventas_paid_{method_key}")],
             [_contact_admin_button(admin_user_id)],
-            [InlineKeyboardButton("⬅️ Volver", callback_data="ventas_vip")],
+            [InlineKeyboardButton("⬅️ Volver", callback_data=f"ventas_buy_{group_key}")],
         ]
     )
 
@@ -166,38 +169,52 @@ def _buy_exclusive_access_button() -> InlineKeyboardButton:
 
 
 def vip_exclusive_keyboard() -> InlineKeyboardMarkup:
-    """Pantalla "🔒 Acceso exclusivo a grupos VIP": únicamente los dos
-    botones pedidos (sin botón de compra directa ni "Volver")."""
+    """Pantalla "🔒 Acceso exclusivo a grupos VIP": los dos botones pedidos
+    + Volver al menú principal (su nivel superior)."""
     return InlineKeyboardMarkup(
         [
             [InlineKeyboardButton("🧪 INICIAR PRUEBA GRATUITA", callback_data="ventas_vip_exclusive_trial")],
             [_buy_exclusive_access_button()],
+            [InlineKeyboardButton("⬅️ Volver", callback_data="ventas_back_to_welcome")],
         ]
     )
 
 
 def vip_exclusive_trial_used_keyboard() -> InlineKeyboardMarkup:
-    """Cuando el usuario ya usó su única prueba gratuita: únicamente el
-    botón de contactar al administrador, tal como se pidió."""
-    return InlineKeyboardMarkup([[_contact_admin_el593re_button()]])
+    """Cuando el usuario ya usó su única prueba gratuita: el botón de
+    contactar al administrador + Volver a la pantalla de acceso exclusivo
+    (de donde se llega a esta pantalla)."""
+    return InlineKeyboardMarkup(
+        [
+            [_contact_admin_el593re_button()],
+            [InlineKeyboardButton("⬅️ Volver", callback_data="ventas_vip_exclusive")],
+        ]
+    )
 
 
 def vip_exclusive_trial_link_keyboard(trial_link: str) -> InlineKeyboardMarkup:
     """Entrega el enlace del Grupo de Prueba como botón (nunca como texto
-    plano, siguiendo la convención ya usada en el resto del proyecto)."""
+    plano, siguiendo la convención ya usada en el resto del proyecto).
+    Volver regresa a la pantalla de acceso exclusivo."""
+    rows = []
     if trial_link:
-        return InlineKeyboardMarkup(
-            [[InlineKeyboardButton("🚪 Entrar a la prueba gratuita", url=trial_link)]]
-        )
-    return InlineKeyboardMarkup([[_contact_admin_el593re_button()]])
+        rows.append([InlineKeyboardButton("🚪 Entrar a la prueba gratuita", url=trial_link)])
+    else:
+        rows.append([_contact_admin_el593re_button()])
+    rows.append([InlineKeyboardButton("⬅️ Volver", callback_data="ventas_vip_exclusive")])
+    return InlineKeyboardMarkup(rows)
 
 
 def free_group_keyboard(free_link: str, admin_user_id: int) -> InlineKeyboardMarkup:
     """Entrega el enlace del grupo Free (independiente del grupo de
-    prueba)."""
+    prueba). Volver regresa al menú principal (su nivel superior)."""
+    rows = []
     if free_link:
-        return InlineKeyboardMarkup([[InlineKeyboardButton("🚪 Entrar al grupo Free", url=free_link)]])
-    return InlineKeyboardMarkup([[_contact_admin_button(admin_user_id)]])
+        rows.append([InlineKeyboardButton("🚪 Entrar al grupo Free", url=free_link)])
+    else:
+        rows.append([_contact_admin_button(admin_user_id)])
+    rows.append([InlineKeyboardButton("⬅️ Volver", callback_data="ventas_back_to_welcome")])
+    return InlineKeyboardMarkup(rows)
 
 
 def vip_access_keyboard(vip_link: str, admin_user_id: int) -> InlineKeyboardMarkup:
