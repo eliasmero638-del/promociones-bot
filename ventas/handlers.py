@@ -117,11 +117,7 @@ VIP_EXCLUSIVE_TEXT = (
     "prueba solo podrá utilizarse una sola vez por usuario."
 )
 
-WELCOME_TEXT = (
-    "👋 ¡Bienvenido!\n\n"
-    "Antes de adquirir el acceso VIP, puedes probar una demostración "
-    "gratuita para comprobar la calidad del contenido."
-)
+WELCOME_TEXT = "👋 ¡Bienvenido! Elige una opción para continuar:"
 
 
 def _get_admin_user_id():
@@ -555,7 +551,7 @@ async def ventas_buy_group_callback(update: Update, context: ContextTypes.DEFAUL
     admin_id = _get_admin_user_id()
     text = f"💳 *Acceso VIP* — {config.get_vip_price()}\n\nElige tu método de pago preferido:"
     await _safe_edit_message(
-        query, text, reply_markup=keyboards.vip_menu_keyboard(admin_id), parse_mode="Markdown"
+        query, text, reply_markup=keyboards.vip_menu_keyboard(admin_id, group_key), parse_mode="Markdown"
     )
 
 
@@ -578,6 +574,7 @@ async def ventas_method_detail_callback(update: Update, context: ContextTypes.DE
 
     config = SalesConfigManager()
     admin_id = _get_admin_user_id()
+    group_key = context.user_data.get("ventas_selected_group")
     label = keyboards.PAYMENT_METHOD_LABELS[method_key]
     details = _METHOD_DETAIL_GETTERS[method_key](config)
 
@@ -588,7 +585,7 @@ async def ventas_method_detail_callback(update: Update, context: ContextTypes.DE
         text = f"{label}\n\nEste método aún no está configurado. Contacta al administrador."
 
     await _safe_edit_message(
-        query, text, reply_markup=keyboards.method_detail_keyboard(method_key, admin_id), parse_mode="Markdown"
+        query, text, reply_markup=keyboards.method_detail_keyboard(method_key, admin_id, group_key), parse_mode="Markdown"
     )
 
 
