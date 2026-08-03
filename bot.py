@@ -1925,7 +1925,16 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await send_demo_directly(update, context)
         return
 
-    await update.message.reply_text(START_WELCOME_TEXT, reply_markup=_start_welcome_keyboard())
+    # /start (sin deep-link) va directo al menú principal de ventas
+    # (ventas.keyboards.welcome_keyboard: Acceso exclusivo a grupos VIP /
+    # Obtener grupo Free / Quiero vender contenido), a pedido explícito.
+    # La pantalla vieja (START_WELCOME_TEXT + _start_welcome_keyboard, con
+    # "🔥 QUIERO SER VIP 🔥" / "💰 QUIERO VENDER CONTENIDO 💰") y sus
+    # callbacks (start_enter_vip_callback, start_sell_content_callback,
+    # start_back_to_welcome_callback) quedan intactos y registrados, solo
+    # dejan de mostrarse automáticamente aquí.
+    from ventas.handlers import send_sales_welcome
+    await send_sales_welcome(update, context)
 
 
 async def start_enter_vip_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
