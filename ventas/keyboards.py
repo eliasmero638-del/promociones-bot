@@ -24,18 +24,21 @@ GROUP_LABELS = {
 
 
 def welcome_keyboard() -> InlineKeyboardMarkup:
+    """Menú principal mostrado directamente en /start. Solo estos 3 botones
+    son visibles a pedido explícito; los del menú antiguo (QUIERO SER VIP,
+    Iniciar prueba gratis, Preguntas frecuentes) quedan ocultos pero sus
+    handlers siguen registrados e intactos (ventas_vip_callback,
+    ventas_demo_callback / send_demo_directly vía deep-link ?start=demo,
+    ventas_faq_callback) - para volver a mostrarlos en este menú alcanza
+    con descomentar sus líneas."""
     return InlineKeyboardMarkup(
         [
-            # "🔥 QUIERO SER VIP 🔥" oculto a pedido explícito. Su lógica
-            # (ventas_vip_callback y todo el flujo de métodos de pago que
-            # depende de ella) sigue intacta y registrada; para reactivarlo
-            # solo hace falta descomentar esta línea:
-            # [InlineKeyboardButton("🔥 QUIERO SER VIP 🔥", callback_data="ventas_vip")],
             [InlineKeyboardButton("🔒 ACCESO EXCLUSIVO A GRUPOS VIP", callback_data="ventas_vip_exclusive")],
             [InlineKeyboardButton("🆓 OBTENER GRUPO FREE", callback_data="ventas_free_group")],
-            [InlineKeyboardButton("🎁 Iniciar prueba gratis", callback_data="ventas_demo")],
-            [InlineKeyboardButton("❓ Preguntas frecuentes", callback_data="ventas_faq")],
             [InlineKeyboardButton("💰 Quiero vender contenido", callback_data="ventas_sell_content")],
+            # [InlineKeyboardButton("🔥 QUIERO SER VIP 🔥", callback_data="ventas_vip")],
+            # [InlineKeyboardButton("🎁 Iniciar prueba gratis", callback_data="ventas_demo")],
+            # [InlineKeyboardButton("❓ Preguntas frecuentes", callback_data="ventas_faq")],
         ]
     )
 
@@ -147,11 +150,19 @@ def admin_approval_keyboard(request_id: str) -> InlineKeyboardMarkup:
 
 
 def _contact_admin_el593re_button() -> InlineKeyboardButton:
-    """Botón "Contactar al administrador" específico de la pantalla "🔒
-    Acceso exclusivo a grupos VIP": a pedido explícito, abre directamente
+    """Botón "Contactar al administrador" específico del flujo "🔒 Acceso
+    exclusivo a grupos VIP" (pantalla de "prueba ya utilizada" y respaldo
+    sin enlace configurado): a pedido explícito, abre directamente
     @El593re (en vez de tg://user?id=ADMIN_USER_ID, como el resto del
     flujo de ventas)."""
     return InlineKeyboardButton("👤 CONTACTAR AL ADMINISTRADOR", url="https://t.me/El593re")
+
+
+def _buy_exclusive_access_button() -> InlineKeyboardButton:
+    """Botón "💎 Comprar acceso exclusivo" de la pantalla principal "🔒
+    Acceso exclusivo a grupos VIP": mismo destino que
+    _contact_admin_el593re_button() (@El593re), solo cambia el texto."""
+    return InlineKeyboardButton("💎 COMPRAR ACCESO EXCLUSIVO", url="https://t.me/El593re")
 
 
 def vip_exclusive_keyboard() -> InlineKeyboardMarkup:
@@ -160,7 +171,7 @@ def vip_exclusive_keyboard() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(
         [
             [InlineKeyboardButton("🧪 INICIAR PRUEBA GRATUITA", callback_data="ventas_vip_exclusive_trial")],
-            [_contact_admin_el593re_button()],
+            [_buy_exclusive_access_button()],
         ]
     )
 
