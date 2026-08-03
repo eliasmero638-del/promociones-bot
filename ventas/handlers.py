@@ -117,7 +117,15 @@ VIP_EXCLUSIVE_TEXT = (
     "prueba solo podrá utilizarse una sola vez por usuario."
 )
 
-WELCOME_TEXT = "👋 ¡Bienvenido! Elige una opción para continuar:"
+WELCOME_TEXT = (
+    "👋 ¡Bienvenido a EC Promociones VIP!\n\n"
+    "Aquí encontrarás acceso a contenido exclusivo actualizado todos los días.\n\n"
+    "¿Qué puedes hacer dentro del bot?\n\n"
+    "🔒 Acceder a nuestros 3 grupos VIP con contenido exclusivo y actualizado diariamente.\n\n"
+    "🆓 Obtener acceso a nuestro Grupo Free para conocer parte del contenido disponible.\n\n"
+    "💰 Si eres creador(a), también puedes vender tu contenido y llegar a miles de personas.\n\n"
+    "👇 Selecciona una opción para comenzar."
+)
 
 
 def _get_admin_user_id():
