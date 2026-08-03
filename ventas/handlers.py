@@ -500,7 +500,13 @@ async def ventas_free_group_callback(update: Update, context: ContextTypes.DEFAU
     admin_id = _get_admin_user_id()
     free_link = config.get_free_group_link()
     if free_link:
-        text = "🆓 ¡Aquí tienes el acceso al grupo Free!\n\nDisfruta del contenido disponible."
+        text = (
+            "🆓 ¡Aquí tienes el acceso al Grupo Free!\n\n"
+            "Disfruta del contenido disponible.\n\n"
+            "⚠️ Importante:\n\n"
+            "Si no compartiste previamente el grupo, tu solicitud de ingreso no será aceptada por el administrador.\n\n"
+            "👇 Pulsa el botón de abajo para ingresar."
+        )
     else:
         text = "El enlace del grupo Free aún no está configurado. Contacta al administrador."
     await _safe_edit_message(query, text, reply_markup=keyboards.free_group_keyboard(free_link, admin_id))

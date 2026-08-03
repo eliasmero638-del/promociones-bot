@@ -210,7 +210,7 @@ def free_group_keyboard(free_link: str, admin_user_id: int) -> InlineKeyboardMar
     prueba). Volver regresa al menú principal (su nivel superior)."""
     rows = []
     if free_link:
-        rows.append([InlineKeyboardButton("🚪 Entrar al grupo Free", url=free_link)])
+        rows.append([InlineKeyboardButton("📂 Entrar al Grupo Free", url=free_link)])
     else:
         rows.append([_contact_admin_button(admin_user_id)])
     rows.append([InlineKeyboardButton("⬅️ Volver", callback_data="ventas_back_to_welcome")])
