@@ -26,7 +26,13 @@ GROUP_LABELS = {
 def welcome_keyboard() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(
         [
-            [InlineKeyboardButton("🔥 QUIERO SER VIP 🔥", callback_data="ventas_vip")],
+            # "🔥 QUIERO SER VIP 🔥" oculto a pedido explícito. Su lógica
+            # (ventas_vip_callback y todo el flujo de métodos de pago que
+            # depende de ella) sigue intacta y registrada; para reactivarlo
+            # solo hace falta descomentar esta línea:
+            # [InlineKeyboardButton("🔥 QUIERO SER VIP 🔥", callback_data="ventas_vip")],
+            [InlineKeyboardButton("🔒 ACCESO EXCLUSIVO A GRUPOS VIP", callback_data="ventas_vip_exclusive")],
+            [InlineKeyboardButton("🆓 OBTENER GRUPO FREE", callback_data="ventas_free_group")],
             [InlineKeyboardButton("🎁 Iniciar prueba gratis", callback_data="ventas_demo")],
             [InlineKeyboardButton("❓ Preguntas frecuentes", callback_data="ventas_faq")],
             [InlineKeyboardButton("💰 Quiero vender contenido", callback_data="ventas_sell_content")],
@@ -138,6 +144,49 @@ def admin_approval_keyboard(request_id: str) -> InlineKeyboardMarkup:
             ]
         ]
     )
+
+
+def _contact_admin_el593re_button() -> InlineKeyboardButton:
+    """Botón "Contactar al administrador" específico de la pantalla "🔒
+    Acceso exclusivo a grupos VIP": a pedido explícito, abre directamente
+    @El593re (en vez de tg://user?id=ADMIN_USER_ID, como el resto del
+    flujo de ventas)."""
+    return InlineKeyboardButton("👤 CONTACTAR AL ADMINISTRADOR", url="https://t.me/El593re")
+
+
+def vip_exclusive_keyboard() -> InlineKeyboardMarkup:
+    """Pantalla "🔒 Acceso exclusivo a grupos VIP": únicamente los dos
+    botones pedidos (sin botón de compra directa ni "Volver")."""
+    return InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton("🧪 INICIAR PRUEBA GRATUITA", callback_data="ventas_vip_exclusive_trial")],
+            [_contact_admin_el593re_button()],
+        ]
+    )
+
+
+def vip_exclusive_trial_used_keyboard() -> InlineKeyboardMarkup:
+    """Cuando el usuario ya usó su única prueba gratuita: únicamente el
+    botón de contactar al administrador, tal como se pidió."""
+    return InlineKeyboardMarkup([[_contact_admin_el593re_button()]])
+
+
+def vip_exclusive_trial_link_keyboard(trial_link: str) -> InlineKeyboardMarkup:
+    """Entrega el enlace del Grupo de Prueba como botón (nunca como texto
+    plano, siguiendo la convención ya usada en el resto del proyecto)."""
+    if trial_link:
+        return InlineKeyboardMarkup(
+            [[InlineKeyboardButton("🚪 Entrar a la prueba gratuita", url=trial_link)]]
+        )
+    return InlineKeyboardMarkup([[_contact_admin_el593re_button()]])
+
+
+def free_group_keyboard(free_link: str, admin_user_id: int) -> InlineKeyboardMarkup:
+    """Entrega el enlace del grupo Free (independiente del grupo de
+    prueba)."""
+    if free_link:
+        return InlineKeyboardMarkup([[InlineKeyboardButton("🚪 Entrar al grupo Free", url=free_link)]])
+    return InlineKeyboardMarkup([[_contact_admin_button(admin_user_id)]])
 
 
 def vip_access_keyboard(vip_link: str, admin_user_id: int) -> InlineKeyboardMarkup:
