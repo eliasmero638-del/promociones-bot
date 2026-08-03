@@ -142,6 +142,18 @@ def _default_config() -> dict:
         "portoviejo_group_link": "https://t.me/+dU5quBApPLpiM2Vl",
         "ecuatorianas_group_id": _default_group_id("SALES_ECUATORIANAS_GROUP_ID"),
         "ecuatorianas_group_link": "https://t.me/+gYgEWaCBMxc2MGJl",
+        # "🆓 Obtener grupo Free": acceso permanente, completamente
+        # independiente del grupo de prueba de 2 minutos de abajo.
+        "free_group_link": "https://t.me/+wmj40b-lTIBlMWIx",
+        # "🔒 Acceso exclusivo a grupos VIP" -> "🧪 Iniciar prueba gratuita":
+        # grupo de prueba NUEVO (distinto de demo_group_link/trial_group_id
+        # de arriba), con expulsión a los 2 minutos y un solo uso por
+        # usuario (ver VipExclusiveTrialUsageStore). El ID se completa solo
+        # cuando el bot es agregado como administrador a este grupo (ver
+        # handle_bot_added_as_admin en handlers.py) - no requiere ningún
+        # comando manual.
+        "vip_exclusive_trial_group_link": "https://t.me/+5BScBaOZrmw2NGMx",
+        "vip_exclusive_trial_group_id": _default_group_id("SALES_VIP_EXCLUSIVE_TRIAL_GROUP_ID"),
     }
 
 
@@ -330,6 +342,24 @@ class SalesConfigManager:
     def set_ecuatorianas_group_link(self, value: str):
         self.data["ecuatorianas_group_link"] = value
 
+    def get_free_group_link(self) -> str:
+        return self.data.get("free_group_link", "")
+
+    def set_free_group_link(self, value: str):
+        self.data["free_group_link"] = value
+
+    def get_vip_exclusive_trial_group_link(self) -> str:
+        return self.data.get("vip_exclusive_trial_group_link", "")
+
+    def set_vip_exclusive_trial_group_link(self, value: str):
+        self.data["vip_exclusive_trial_group_link"] = value
+
+    def get_vip_exclusive_trial_group_id(self) -> Optional[int]:
+        return self.data.get("vip_exclusive_trial_group_id")
+
+    def set_vip_exclusive_trial_group_id(self, value: Optional[int]):
+        self.data["vip_exclusive_trial_group_id"] = value
+
 
 UPSTASH_TRIAL_KICKS_KEY = "ventas_bot:trial_kicks"
 TRIAL_KICKS_LOCAL_FILENAME = "ventas_trial_kicks.json"
@@ -449,3 +479,111 @@ class TrialKicksStore:
 
     def get_all_pending_kicks(self) -> list:
         return list(self.data.get("kicks", []))
+
+
+UPSTASH_VIP_EXCLUSIVE_TRIAL_USAGE_KEY = "ventas_bot:vip_exclusive_trial_usage"
+VIP_EXCLUSIVE_TRIAL_USAGE_LOCAL_FILENAME = "ventas_vip_exclusive_trial_usage.json"
+
+
+def _resolve_vip_exclusive_trial_usage_local_path() -> str:
+    try:
+        from bot import DATA_DIR
+    except Exception:
+        DATA_DIR = ""
+    if DATA_DIR:
+        os.makedirs(DATA_DIR, exist_ok=True)
+        return os.path.join(DATA_DIR, VIP_EXCLUSIVE_TRIAL_USAGE_LOCAL_FILENAME)
+    return VIP_EXCLUSIVE_TRIAL_USAGE_LOCAL_FILENAME
+
+
+class VipExclusiveTrialUsageStore:
+    """Registra, de forma persistente (mismo patrón dual Upstash/archivo que
+    el resto del proyecto), qué usuarios ya utilizaron la prueba gratuita de
+    "🔒 Acceso exclusivo a grupos VIP" (grupo distinto e independiente del
+    grupo de prueba/demo original) - una sola vez por usuario, para
+    siempre. Completamente separado de TrialKicksStore (que solo sabe de
+    expulsiones PENDIENTES, no de quién ya usó su única prueba)."""
+
+    def __init__(self):
+        self.file_path = _resolve_vip_exclusive_trial_usage_local_path()
+        try:
+            from bot import USE_UPSTASH
+            self.use_upstash = USE_UPSTASH
+        except Exception:
+            self.use_upstash = False
+        self.data = self._load()
+
+    def _load(self) -> dict:
+        if self.use_upstash:
+            return self._load_from_upstash()
+        return self._load_from_file()
+
+    def _load_from_upstash(self) -> dict:
+        try:
+            from bot import _upstash_command
+        except Exception as e:
+            logger.error(f"[ventas.config] Could not import Upstash client from bot: {e}")
+            return {"used_user_ids": []}
+
+        result = _upstash_command("GET", UPSTASH_VIP_EXCLUSIVE_TRIAL_USAGE_KEY)
+        if result is None:
+            logger.error("[ventas.config] Upstash request failed loading VIP-exclusive trial usage; starting empty.")
+            return {"used_user_ids": []}
+
+        raw = result.get("result")
+        if raw is None:
+            return {"used_user_ids": []}
+
+        try:
+            return json.loads(raw)
+        except Exception as e:
+            logger.error(f"[ventas.config] Failed to parse VIP-exclusive trial usage JSON: {e}")
+            return {"used_user_ids": []}
+
+    def _load_from_file(self) -> dict:
+        if Path(self.file_path).exists():
+            try:
+                with open(self.file_path, "r") as f:
+                    return json.load(f)
+            except Exception as e:
+                logger.warning(f"[ventas.config] Failed to load local VIP-exclusive trial usage file: {e}")
+        return {"used_user_ids": []}
+
+    def _save(self) -> bool:
+        if self.use_upstash:
+            return self._save_to_upstash()
+        return self._save_to_file()
+
+    def _save_to_upstash(self) -> bool:
+        try:
+            from bot import _upstash_command
+        except Exception as e:
+            logger.error(f"[ventas.config] Could not import Upstash client from bot: {e}")
+            return False
+        try:
+            payload = json.dumps(self.data)
+        except Exception as e:
+            logger.error(f"[ventas.config] Could not serialize VIP-exclusive trial usage: {e}")
+            return False
+        result = _upstash_command("SET", UPSTASH_VIP_EXCLUSIVE_TRIAL_USAGE_KEY, payload)
+        return bool(result is not None and result.get("result") == "OK")
+
+    def _save_to_file(self) -> bool:
+        try:
+            with open(self.file_path, "w") as f:
+                json.dump(self.data, f, indent=2)
+                f.flush()
+                os.fsync(f.fileno())
+            return True
+        except Exception as e:
+            logger.error(f"[ventas.config] Failed to save local VIP-exclusive trial usage file: {e}")
+            return False
+
+    def has_used(self, user_id: int) -> bool:
+        return user_id in self.data.get("used_user_ids", [])
+
+    def mark_used(self, user_id: int) -> None:
+        used = self.data.setdefault("used_user_ids", [])
+        if user_id not in used:
+            used.append(user_id)
+            self._save()

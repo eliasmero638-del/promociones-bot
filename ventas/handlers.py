@@ -53,16 +53,18 @@ import time
 from datetime import datetime
 
 from telegram import Update
+from telegram.constants import ChatMemberStatus, ChatType
 from telegram.error import TelegramError
 from telegram.ext import (
     CallbackQueryHandler,
+    ChatMemberHandler,
     ContextTypes,
     ConversationHandler,
     MessageHandler,
     filters,
 )
 
-from .config import SalesConfigManager, TrialKicksStore
+from .config import SalesConfigManager, TrialKicksStore, VipExclusiveTrialUsageStore
 from .storage import SalesRequestsManager
 from . import keyboards
 
@@ -77,6 +79,43 @@ logger = logging.getLogger("bot")
 # Cuánto puede permanecer un usuario en el grupo de prueba antes de ser
 # expulsado automáticamente. Fijo en 1 minuto, tal como se pidió.
 TRIAL_DURATION_SECONDS = 60
+
+# Prueba gratuita de "🔒 Acceso exclusivo a grupos VIP": grupo NUEVO e
+# independiente del de arriba, expulsión a los 2 minutos, un solo uso por
+# usuario (ver VipExclusiveTrialUsageStore).
+VIP_EXCLUSIVE_TRIAL_DURATION_SECONDS = 120
+
+VIP_EXCLUSIVE_TEXT = (
+    "🔒 <b>ACCESO EXCLUSIVO A GRUPOS VIP</b>\n\n"
+    "Actualmente contamos con 3 grupos exclusivos con contenido actualizado diariamente.\n\n"
+    "📍 <b>Portoviejo Exclusivo</b>\n\n"
+    "Disfruta de contenido 100% exclusivo de la capital manabita, Portoviejo, "
+    "con publicaciones y perfiles actualizados.\n\n"
+    "🇪🇨 <b>Ecuatorianas Caliente</b>\n\n"
+    "Accede a contenido 100% exclusivo de todas las provincias del Ecuador, "
+    "con perfiles de diferentes ciudades y contenido actualizado constantemente.\n\n"
+    "🔥 <b>VIPS</b>\n\n"
+    "Encuentra contenido 100% casero con una gran variedad de estilos y "
+    "categorías, actualizado todos los días.\n\n"
+    "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+    "💎 <b>Tu membresía incluye</b>\n\n"
+    "✅ Acceso a los 3 grupos VIP.\n"
+    "📅 Contenido actualizado diariamente.\n"
+    "⚡ Acceso inmediato tras confirmar el pago.\n"
+    "🔐 Acceso exclusivo a todos los grupos.\n\n"
+    "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+    "💵 <b>PROMOCIÓN ESPECIAL</b>\n\n"
+    "<s>Precio normal: $25 USD</s>\n"
+    "🔥 Solo por este mes: $10 USD.\n"
+    "Acceso completo a los 3 grupos VIP.\n\n"
+    "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+    "🎁 <b>¿Aún no estás seguro?</b>\n\n"
+    "Puedes ingresar a una prueba gratuita para conocer el tipo de contenido "
+    "que encontrarás en nuestros grupos VIP.\n\n"
+    "⏳ La prueba dura 2 minutos.\n\n"
+    "Después de ese tiempo el acceso será revocado automáticamente y la "
+    "prueba solo podrá utilizarse una sola vez por usuario."
+)
 
 WELCOME_TEXT = (
     "👋 ¡Bienvenido!\n\n"
@@ -305,6 +344,162 @@ async def _reschedule_pending_trial_kicks(context: ContextTypes.DEFAULT_TYPE):
             f"[ventas] Rescheduled pending kick for user {user_id} in chat {chat_id} "
             f"(in {remaining:.0f}s, after bot restart)."
         )
+
+
+# --- "🔒 Acceso exclusivo a grupos VIP" (nuevo, independiente del "🔥
+# Quiero ser VIP" oculto arriba) ---
+
+async def ventas_vip_exclusive_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    await query.answer()
+    await _safe_edit_message(
+        query, VIP_EXCLUSIVE_TEXT, reply_markup=keyboards.vip_exclusive_keyboard(), parse_mode="HTML"
+    )
+
+
+async def ventas_vip_exclusive_trial_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """"🧪 Iniciar prueba gratuita": si el usuario ya usó su única prueba
+    (VipExclusiveTrialUsageStore), se lo informa y se le muestra ÚNICAMENTE
+    el botón de contactar al administrador. Si no, entrega el enlace del
+    Grupo de Prueba (nunca como texto plano)."""
+    query = update.callback_query
+    await query.answer()
+
+    user_id = update.effective_user.id
+    if VipExclusiveTrialUsageStore().has_used(user_id):
+        logger.info(f"[ventas] User {user_id} tried to reuse the VIP-exclusive trial; already used.")
+        await _safe_edit_message(
+            query,
+            "🚫 Ya utilizaste tu prueba gratuita anteriormente.\n\n"
+            "Solo puede usarse una vez por usuario. Si deseas más información, contacta al administrador.",
+            reply_markup=keyboards.vip_exclusive_trial_used_keyboard(),
+        )
+        return
+
+    config = SalesConfigManager()
+    trial_link = config.get_vip_exclusive_trial_group_link()
+    if trial_link:
+        text = (
+            "🧪 ¡Perfecto! Aquí tienes el acceso al Grupo de Prueba.\n\n"
+            "Podrás permanecer 2 minutos; pasado ese tiempo, el bot te retirará automáticamente "
+            "y no podrás volver a usar la prueba gratuita."
+        )
+    else:
+        text = "El enlace de la prueba gratuita aún no está configurado. Contacta al administrador."
+    await _safe_edit_message(query, text, reply_markup=keyboards.vip_exclusive_trial_link_keyboard(trial_link))
+
+
+async def handle_vip_exclusive_trial_group_new_member(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Detecta cualquier ingreso al Grupo de Prueba de "🔒 Acceso exclusivo a
+    grupos VIP" (vip_exclusive_trial_group_id - distinto del trial_group_id
+    original) y: 1) marca al usuario como que ya usó su prueba (para
+    siempre, aunque la expulsión fallara), 2) programa su expulsión
+    automática 2 minutos después, reutilizando el mismo job/registro
+    persistente (_kick_trial_member / TrialKicksStore) que ya usa el grupo
+    de prueba original - ambos operan de forma genérica por (chat_id,
+    user_id), así que _reschedule_pending_trial_kicks() ya cubre este
+    grupo nuevo también, sin ningún cambio adicional.
+
+    Aislamiento estricto: igual que handle_trial_group_new_member(), si el
+    chat no coincide EXACTAMENTE con vip_exclusive_trial_group_id, no hace
+    nada."""
+    message = update.message
+    if message is None or message.new_chat_members is None:
+        return
+
+    config = SalesConfigManager()
+    trial_group_id = config.get_vip_exclusive_trial_group_id()
+    if not trial_group_id or message.chat_id != trial_group_id:
+        return
+
+    usage_store = VipExclusiveTrialUsageStore()
+    for member in message.new_chat_members:
+        if member.is_bot:
+            continue
+
+        usage_store.mark_used(member.id)
+        logger.info(
+            f"[ventas] User {member.id} joined the VIP-exclusive trial group ({trial_group_id}); "
+            f"marked as used and will be removed in {VIP_EXCLUSIVE_TRIAL_DURATION_SECONDS}s."
+        )
+
+        kick_at = time.time() + VIP_EXCLUSIVE_TRIAL_DURATION_SECONDS
+        TrialKicksStore().add_pending_kick(trial_group_id, member.id, kick_at)
+
+        if context.job_queue:
+            context.job_queue.run_once(
+                _kick_trial_member,
+                when=VIP_EXCLUSIVE_TRIAL_DURATION_SECONDS,
+                data={"chat_id": trial_group_id, "user_id": member.id},
+                name=f"trial_kick_{trial_group_id}_{member.id}",
+            )
+        else:
+            logger.error("[ventas] No job_queue available; cannot schedule automatic VIP-exclusive trial removal.")
+
+
+async def handle_bot_added_as_admin(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Obtiene el chat_id del Grupo de Prueba de la forma más simple posible
+    y sin ningún comando manual: cuando el bot es promovido a administrador
+    en un grupo y vip_exclusive_trial_group_id todavía no está configurado,
+    lo guarda automáticamente. Solo actúa la PRIMERA vez (mientras el valor
+    siga sin configurar), así que agregar el bot a cualquier otro grupo
+    después de esto ya no lo sobreescribe."""
+    my_member = update.my_chat_member
+    if my_member is None:
+        return
+
+    if my_member.new_chat_member.status != ChatMemberStatus.ADMINISTRATOR:
+        return
+    if my_member.old_chat_member.status == ChatMemberStatus.ADMINISTRATOR:
+        return  # ya era admin; esto no es una promoción nueva.
+
+    chat = my_member.chat
+    if chat.type not in (ChatType.GROUP, ChatType.SUPERGROUP):
+        return
+
+    config = SalesConfigManager()
+    if config.get_vip_exclusive_trial_group_id():
+        logger.info(
+            f"[ventas] Bot promovido a admin en chat {chat.id} ({chat.title!r}), pero el Grupo de "
+            f"Prueba ya estaba configurado; se ignora."
+        )
+        return
+
+    config.set_vip_exclusive_trial_group_id(chat.id)
+    if not config.save():
+        logger.error(f"[ventas] Failed to save auto-detected VIP-exclusive trial group id {chat.id}.")
+        return
+
+    logger.info(
+        f"[ventas] Grupo de Prueba (VIP exclusivo) detectado y guardado automáticamente: "
+        f"chat_id={chat.id} ({chat.title!r})."
+    )
+    try:
+        await context.bot.send_message(
+            chat_id=_get_admin_user_id(),
+            text=(
+                "✅ Grupo de Prueba detectado y configurado automáticamente.\n\n"
+                f"Chat: {chat.title}\nID: {chat.id}"
+            ),
+        )
+    except TelegramError as e:
+        logger.warning(f"[ventas] Could not notify admin about detected trial group: {e}")
+
+
+# --- "🆓 Obtener grupo Free" ---
+
+async def ventas_free_group_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    await query.answer()
+
+    config = SalesConfigManager()
+    admin_id = _get_admin_user_id()
+    free_link = config.get_free_group_link()
+    if free_link:
+        text = "🆓 ¡Aquí tienes el acceso al grupo Free!\n\nDisfruta del contenido disponible."
+    else:
+        text = "El enlace del grupo Free aún no está configurado. Contacta al administrador."
+    await _safe_edit_message(query, text, reply_markup=keyboards.free_group_keyboard(free_link, admin_id))
 
 
 # --- "💳 Comprar acceso VIP" -> menú de métodos de pago ---
@@ -790,6 +985,13 @@ def register_ventas_handlers(application):
     application.add_handler(CallbackQueryHandler(ventas_back_to_welcome_callback, pattern="^ventas_back_to_welcome$"))
     application.add_handler(CallbackQueryHandler(sale_approve_callback, pattern="^sale_approve_.+$"))
     application.add_handler(CallbackQueryHandler(sale_reject_callback, pattern="^sale_reject_.+$"))
+    # "🔒 Acceso exclusivo a grupos VIP" (nuevo, independiente del "🔥 Quiero
+    # ser VIP" oculto) y "🆓 Obtener grupo Free".
+    application.add_handler(CallbackQueryHandler(ventas_vip_exclusive_callback, pattern="^ventas_vip_exclusive$"))
+    application.add_handler(
+        CallbackQueryHandler(ventas_vip_exclusive_trial_callback, pattern="^ventas_vip_exclusive_trial$")
+    )
+    application.add_handler(CallbackQueryHandler(ventas_free_group_callback, pattern="^ventas_free_group$"))
     # Detecta ingresos al grupo de prueba para expulsar automáticamente al
     # cumplirse 1 minuto. Se registra en group=1 (distinto del group=0 por
     # defecto que usa bot.py para su propio detector de NEW_CHAT_MEMBERS,
@@ -803,6 +1005,19 @@ def register_ventas_handlers(application):
     application.add_handler(
         MessageHandler(filters.StatusUpdate.NEW_CHAT_MEMBERS, handle_trial_group_new_member), group=1
     )
+    # Mismo motivo que el comentario de arriba: el Grupo de Prueba de "🔒
+    # Acceso exclusivo a grupos VIP" necesita SU PROPIO group (2), distinto
+    # de group=0 (bienvenida en bot.py) y group=1 (grupo de prueba
+    # original) - de lo contrario, dentro de un mismo group, PTB solo
+    # invoca al primer MessageHandler cuyo filtro matchee, y este nunca
+    # llegaría a ejecutarse.
+    application.add_handler(
+        MessageHandler(filters.StatusUpdate.NEW_CHAT_MEMBERS, handle_vip_exclusive_trial_group_new_member), group=2
+    )
+    # Detecta cuando el bot es agregado como administrador a un grupo, para
+    # obtener automáticamente el chat_id del Grupo de Prueba (VIP exclusivo)
+    # sin necesitar ningún comando manual (ver handle_bot_added_as_admin).
+    application.add_handler(ChatMemberHandler(handle_bot_added_as_admin, ChatMemberHandler.MY_CHAT_MEMBER))
 
     # Recupera, al arrancar, cualquier expulsión del grupo de prueba que
     # haya quedado pendiente de un reinicio anterior. Se programa aquí
