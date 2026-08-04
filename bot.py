@@ -29,6 +29,12 @@ load_dotenv()
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 GROUP_ID = int(os.getenv("GROUP_ID", 0))
 ADMIN_USER_ID = 8710301236
+# Administradores autorizados (panel, aprobación de pagos, notificaciones).
+# ADMIN_USER_ID se mantiene como el admin "principal" (usado en los botones
+# de contacto tg://user?id= que ven los compradores); ADMIN_USER_IDS es el
+# conjunto completo con acceso a /panel, /debug_storage y las acciones de
+# administración - agregar un ID acá le da el mismo nivel de acceso.
+ADMIN_USER_IDS = {ADMIN_USER_ID, 8862610368}
 # --- Phase 6: optional persistent storage location (Railway Volume) ---
 # Backward-compatible by design: if DATA_DIR is not set, promotions.json and
 # bot_state.json are stored exactly where they always were (the process's
@@ -1020,7 +1026,7 @@ async def conversation_timeout_handler(update: Update, context: ContextTypes.DEF
 
 async def admin_panel(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Show admin panel to authorized users."""
-    if update.effective_user.id != ADMIN_USER_ID:
+    if update.effective_user.id not in ADMIN_USER_IDS:
         await update.message.reply_text("No tienes permiso para acceder al panel de administración.")
         return
 
@@ -1041,7 +1047,7 @@ async def admin_panel(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def debug_storage(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Handle /debug_storage command and button callback."""
-    if update.effective_user.id != ADMIN_USER_ID:
+    if update.effective_user.id not in ADMIN_USER_IDS:
         if update.callback_query:
             await update.callback_query.answer("No tienes permiso.", show_alert=True)
         else:
@@ -1107,7 +1113,7 @@ async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     await query.answer()
 
-    if query.from_user.id != ADMIN_USER_ID:
+    if query.from_user.id not in ADMIN_USER_IDS:
         await query.edit_message_text("No tienes permiso.")
         return
 
@@ -1460,7 +1466,7 @@ async def welcome_config_entry(update: Update, context: ContextTypes.DEFAULT_TYP
     query = update.callback_query
     await query.answer()
 
-    if query.from_user.id != ADMIN_USER_ID:
+    if query.from_user.id not in ADMIN_USER_IDS:
         await query.edit_message_text("No tienes permiso.")
         return ConversationHandler.END
 
@@ -1478,7 +1484,7 @@ async def welcome_menu_callback(update: Update, context: ContextTypes.DEFAULT_TY
     query = update.callback_query
     await query.answer()
 
-    if query.from_user.id != ADMIN_USER_ID:
+    if query.from_user.id not in ADMIN_USER_IDS:
         await query.edit_message_text("No tienes permiso.")
         return ConversationHandler.END
 
@@ -1646,7 +1652,7 @@ async def edit_select_promotion(update: Update, context: ContextTypes.DEFAULT_TY
     logger.info(f"[panel_edit][debug] edit_select_promotion invocado. callback_data={query.data!r}")
     await query.answer()
 
-    if query.from_user.id != ADMIN_USER_ID:
+    if query.from_user.id not in ADMIN_USER_IDS:
         await query.edit_message_text("No tienes permiso.")
         return ConversationHandler.END
 
@@ -1684,7 +1690,7 @@ async def edit_menu_callback(update: Update, context: ContextTypes.DEFAULT_TYPE)
     )
     await query.answer()
 
-    if query.from_user.id != ADMIN_USER_ID:
+    if query.from_user.id not in ADMIN_USER_IDS:
         await query.edit_message_text("No tienes permiso.")
         return ConversationHandler.END
 
@@ -1775,7 +1781,7 @@ async def edit_media_done(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     await query.answer()
 
-    if query.from_user.id != ADMIN_USER_ID:
+    if query.from_user.id not in ADMIN_USER_IDS:
         await query.edit_message_text("No tienes permiso.")
         return ConversationHandler.END
 
@@ -2076,14 +2082,16 @@ def _next_promotion_id(manager: PromotionsManager) -> str:
 
 
 async def _notify_admin(context: ContextTypes.DEFAULT_TYPE, text: str) -> None:
-    """Send a private Telegram message to the admin. Best-effort: a failure
-    here (e.g. the admin never opened a DM with the bot, or blocked it)
-    must never interrupt the automatic promotion save/edit it reports on.
+    """Send a private Telegram message to every admin. Best-effort per
+    recipient: a failure for one admin (e.g. never opened a DM with the
+    bot, or blocked it) must never interrupt the automatic promotion
+    save/edit it reports on, nor block the notification to the others.
     """
-    try:
-        await context.bot.send_message(chat_id=ADMIN_USER_ID, text=text, parse_mode="Markdown")
-    except Exception as e:
-        logger.warning(f"[channel_ingest] Could not send admin notification: {e}")
+    for admin_id in ADMIN_USER_IDS:
+        try:
+            await context.bot.send_message(chat_id=admin_id, text=text, parse_mode="Markdown")
+        except Exception as e:
+            logger.warning(f"[channel_ingest] Could not send admin notification to {admin_id}: {e}")
 
 
 async def _notify_admin_new_promotion(context: ContextTypes.DEFAULT_TYPE, promo_id: str, caption: str, media: List[Dict]) -> None:
@@ -2458,7 +2466,7 @@ def main():
 
     logger.info("Starting Telegram Promotions Bot with Admin Panel...")
     logger.info(f"Target group ID: {GROUP_ID}")
-    logger.info(f"Admin user ID: {ADMIN_USER_ID}")
+    logger.info(f"Admin user IDs: {ADMIN_USER_IDS}")
 
     application = Application.builder().token(BOT_TOKEN).post_init(post_init).build()
 
