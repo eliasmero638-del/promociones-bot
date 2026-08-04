@@ -129,8 +129,17 @@ WELCOME_TEXT = (
 
 
 def _get_admin_user_id():
+    """ID del admin "principal", usado en los botones de contacto
+    tg://user?id= que ven los compradores (sin cambios)."""
     from bot import ADMIN_USER_ID
     return ADMIN_USER_ID
+
+
+def _get_admin_user_ids():
+    """Conjunto completo de administradores autorizados (aprobar/rechazar
+    pagos, notificaciones) - ver ADMIN_USER_IDS en bot.py."""
+    from bot import ADMIN_USER_IDS
+    return ADMIN_USER_IDS
 
 
 # --- Bienvenida del embudo de ventas (entrada vía deep-link /start venta) ---
@@ -478,16 +487,17 @@ async def handle_bot_added_as_admin(update: Update, context: ContextTypes.DEFAUL
         f"[ventas] Grupo de Prueba (VIP exclusivo) detectado y guardado automáticamente: "
         f"chat_id={chat.id} ({chat.title!r})."
     )
-    try:
-        await context.bot.send_message(
-            chat_id=_get_admin_user_id(),
-            text=(
-                "✅ Grupo de Prueba detectado y configurado automáticamente.\n\n"
-                f"Chat: {chat.title}\nID: {chat.id}"
-            ),
-        )
-    except TelegramError as e:
-        logger.warning(f"[ventas] Could not notify admin about detected trial group: {e}")
+    for admin_id in _get_admin_user_ids():
+        try:
+            await context.bot.send_message(
+                chat_id=admin_id,
+                text=(
+                    "✅ Grupo de Prueba detectado y configurado automáticamente.\n\n"
+                    f"Chat: {chat.title}\nID: {chat.id}"
+                ),
+            )
+        except TelegramError as e:
+            logger.warning(f"[ventas] Could not notify admin {admin_id} about detected trial group: {e}")
 
 
 # --- "🆓 Obtener grupo Free" ---
@@ -716,8 +726,10 @@ async def ventas_receive_payer_name(update: Update, context: ContextTypes.DEFAUL
 
 
 async def _notify_admin_new_sale_request(context: ContextTypes.DEFAULT_TYPE, request_id: str, request: dict):
-    """Envía al admin los datos de la solicitud con botones Aprobar/Rechazar."""
-    admin_id = _get_admin_user_id()
+    """Envía a TODOS los administradores los datos de la solicitud con
+    botones Aprobar/Rechazar (cualquiera puede resolverla; sale_approve_callback
+    / sale_reject_callback ya son idempotentes si dos admins responden a la
+    vez)."""
     username_part = f"@{request['user_username']}" if request.get("user_username") else f"id {request['user_id']}"
     group_key = request.get("group_key")
     group_line = f"Grupo: {keyboards.GROUP_LABELS[group_key]}\n" if group_key in keyboards.GROUP_LABELS else ""
@@ -728,21 +740,26 @@ async def _notify_admin_new_sale_request(context: ContextTypes.DEFAULT_TYPE, req
         f"Titular del pago: {request['payer_name']}\n"
         f"Método: {request['payment_method']}"
     )
-    try:
-        sent = await context.bot.send_message(
-            chat_id=admin_id,
-            text=text,
-            reply_markup=keyboards.admin_approval_keyboard(request_id),
-            parse_mode="Markdown",
-        )
+    sent_message_id = None
+    for admin_id in _get_admin_user_ids():
+        try:
+            sent = await context.bot.send_message(
+                chat_id=admin_id,
+                text=text,
+                reply_markup=keyboards.admin_approval_keyboard(request_id),
+                parse_mode="Markdown",
+            )
+            sent_message_id = sent_message_id or sent.message_id
+            logger.info(f"[ventas] Notified admin {admin_id} about new payment request {request_id}.")
+        except TelegramError as e:
+            logger.error(f"[ventas] Failed to notify admin {admin_id} about payment request {request_id}: {e}")
+
+    if sent_message_id is not None:
         manager = SalesRequestsManager()
         stored = manager.get_by_id(request_id)
         if stored:
-            stored["admin_message_id"] = sent.message_id
+            stored["admin_message_id"] = sent_message_id
             manager.update(request_id, stored)
-        logger.info(f"[ventas] Notified admin about new payment request {request_id}.")
-    except TelegramError as e:
-        logger.error(f"[ventas] Failed to notify admin about payment request {request_id}: {e}")
 
 
 async def _create_vip_invite_link(context: ContextTypes.DEFAULT_TYPE, vip_group_id: int) -> str:
@@ -794,7 +811,7 @@ async def sale_approve_callback(update: Update, context: ContextTypes.DEFAULT_TY
     query = update.callback_query
     await query.answer()
 
-    if query.from_user.id != _get_admin_user_id():
+    if query.from_user.id not in _get_admin_user_ids():
         await query.answer("❌ No tienes permiso.", show_alert=True)
         return
 
@@ -804,6 +821,14 @@ async def sale_approve_callback(update: Update, context: ContextTypes.DEFAULT_TY
 
     if not request:
         await query.edit_message_text("❌ Esta solicitud ya no existe.")
+        return
+
+    if request.get("status") != "pending":
+        # Con más de un admin, ambos reciben el aviso: si el otro ya la
+        # resolvió, se avisa en vez de volver a procesar el pago.
+        await query.edit_message_text(
+            f"ℹ️ Esta solicitud ya fue resuelta ({request.get('status')})."
+        )
         return
 
     request["status"] = "approved"
@@ -895,7 +920,7 @@ async def sale_reject_callback(update: Update, context: ContextTypes.DEFAULT_TYP
     query = update.callback_query
     await query.answer()
 
-    if query.from_user.id != _get_admin_user_id():
+    if query.from_user.id not in _get_admin_user_ids():
         await query.answer("❌ No tienes permiso.", show_alert=True)
         return
 
@@ -905,6 +930,12 @@ async def sale_reject_callback(update: Update, context: ContextTypes.DEFAULT_TYP
 
     if not request:
         await query.edit_message_text("❌ Esta solicitud ya no existe.")
+        return
+
+    if request.get("status") != "pending":
+        await query.edit_message_text(
+            f"ℹ️ Esta solicitud ya fue resuelta ({request.get('status')})."
+        )
         return
 
     request["status"] = "rejected"
