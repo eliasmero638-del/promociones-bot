@@ -922,17 +922,10 @@ async def publish_promotion(context: ContextTypes.DEFAULT_TYPE):
             keyboard_rows.append(
                 [InlineKeyboardButton("🎁 Solicitar prueba gratis", url=f"https://t.me/{bot_username}?start=demo")]
             )
-            # Botón "💳 Comprar VIP" (deep-link a /start venta, reutiliza
-            # exactamente el mismo mecanismo que ya usa el botón del canal
-            # y que abre send_sales_welcome() directamente - no se agregó
-            # ninguna función nueva, solo este botón adicional).
-            keyboard_rows.append(
-                [InlineKeyboardButton("💳 Comprar VIP", url=f"https://t.me/{bot_username}?start=venta")]
-            )
         else:
             logger.warning(
                 "[publish_promotion] context.bot.username no disponible; "
-                "se omiten los botones de prueba gratis y comprar VIP en esta publicación."
+                "se omite el botón de prueba gratis en esta publicación."
             )
 
         keyboard = InlineKeyboardMarkup(keyboard_rows)
