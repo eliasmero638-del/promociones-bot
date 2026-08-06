@@ -526,9 +526,9 @@ class BotState:
 
 # --- Phase 6: welcome-system configuration ---
 DEFAULT_WELCOME_TEXT = (
-    "¡Bienvenido(a), {nombre}!\n\n"
-    "Gracias por unirte al grupo.\n\n"
-    "Lee las reglas y disfruta del contenido."
+    "¡Bienvenido(a), {nombre}! 🔥\n\n"
+    "Entra al Grupo Free desde el botón de abajo. 👇\n\n"
+    "No abandones Ecuador 593; aquí publicaremos nuevos accesos, promociones y contenido exclusivo. 🚀"
 )
 
 # Order here also defines the order of the "edit button" menu options.
