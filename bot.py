@@ -403,6 +403,7 @@ class BotState:
             "last_pinned_message_id": None,
             "last_published": None,
             "promotion_interval": PROMOTION_INTERVAL,
+            "last_welcome_message_id": None,
         }
 
     def _load(self) -> dict:
@@ -490,6 +491,15 @@ class BotState:
     def set_last_button_message_id(self, message_id: Optional[int]):
         self.data["last_button_message_id"] = message_id
 
+    def get_last_welcome_message_id(self) -> Optional[int]:
+        """El welcome message que sigue pendiente de borrar (si lo hay) -
+        se usa para nunca dejar más de un mensaje de bienvenida a la vez
+        en el chat (ver handle_new_chat_member)."""
+        return self.data.get("last_welcome_message_id")
+
+    def set_last_welcome_message_id(self, message_id: Optional[int]):
+        self.data["last_welcome_message_id"] = message_id
+
     def get_last_pinned_message_id(self) -> Optional[int]:
         """The message_id the bot last *confirmed* pinning successfully -
         distinct from last_button_message_id (which is set whenever a
@@ -548,7 +558,7 @@ class WelcomeConfigManager:
             "enabled": True,
             "welcome_text": DEFAULT_WELCOME_TEXT,
             "welcome_image_file_id": None,
-            "delete_after_seconds": 60,
+            "delete_after_seconds": 10,
             "buttons": {
                 "free_url": "https://t.me/+YPCqH5B8Q8MyY2Q1",
             },
@@ -1378,10 +1388,35 @@ async def handle_pinned_message_notice(update: Update, context: ContextTypes.DEF
         logger.warning(f"[pin][debug] No se pudo eliminar el aviso de sistema de fijado {message.message_id}: {e}")
 
 
+async def _clear_pending_welcome_message(context: ContextTypes.DEFAULT_TYPE, state: BotState):
+    """Borra el mensaje de bienvenida anterior (si todavía sigue pendiente
+    de borrarse) y cancela su job de borrado programado. Se llama justo
+    antes de enviar un mensaje de bienvenida nuevo, para que nunca haya
+    más de uno visible al mismo tiempo en el chat - si entran varias
+    personas seguidas, cada una "reemplaza" el aviso de la anterior en
+    vez de acumularse."""
+    if context.job_queue:
+        for job in context.job_queue.get_jobs_by_name("welcome_delete_pending"):
+            job.schedule_removal()
+
+    previous_id = state.get_last_welcome_message_id()
+    if not previous_id:
+        return
+    try:
+        await context.bot.delete_message(chat_id=GROUP_ID, message_id=previous_id)
+        logger.info(f"[welcome] Deleted previous welcome message {previous_id} (superseded by a new member).")
+    except TelegramError as e:
+        logger.warning(f"[welcome] Could not delete previous welcome message {previous_id}: {e}")
+    state.set_last_welcome_message_id(None)
+
+
 async def handle_new_chat_member(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Welcome new members of the promotions group (GROUP_ID) with a
     configurable image + text + buttons, auto-deleted after a configurable
-    delay. Bots (including this one being (re)added) are skipped."""
+    delay. Bots (including this one being (re)added) are skipped. Only one
+    welcome message is ever left visible at a time: sending a new one
+    immediately deletes whichever previous one was still pending (see
+    _clear_pending_welcome_message)."""
     message = update.message
     if message is None or message.new_chat_members is None:
         return
@@ -1396,10 +1431,13 @@ async def handle_new_chat_member(update: Update, context: ContextTypes.DEFAULT_T
     keyboard = _build_welcome_keyboard(config)
     image_file_id = config.get_welcome_image_file_id()
     delete_after = config.get_delete_after_seconds()
+    state = BotState()
 
     for member in message.new_chat_members:
         if member.is_bot:
             continue
+
+        await _clear_pending_welcome_message(context, state)
 
         display_name = member.full_name or member.first_name or "nuevo miembro"
         mention = f"[{display_name}](tg://user?id={member.id})"
@@ -1426,23 +1464,34 @@ async def handle_new_chat_member(update: Update, context: ContextTypes.DEFAULT_T
             logger.error(f"[welcome] Failed to send welcome message to {member.id}: {e}")
             continue
 
+        state.set_last_welcome_message_id(sent.message_id)
+        state.save()
+
         if delete_after and delete_after > 0 and context.job_queue:
             context.job_queue.run_once(
                 _delete_welcome_message,
                 when=delete_after,
                 data={"chat_id": GROUP_ID, "message_id": sent.message_id},
-                name=f"welcome_delete_{sent.message_id}",
+                name="welcome_delete_pending",
             )
 
 
 async def _delete_welcome_message(context: ContextTypes.DEFAULT_TYPE):
-    """JobQueue callback: deletes a welcome message after its configured delay."""
+    """JobQueue callback: deletes a welcome message after its configured
+    delay (unless it was already deleted early by a newer member joining -
+    see _clear_pending_welcome_message, which cancels this job in that
+    case)."""
     data = context.job.data
     try:
         await context.bot.delete_message(chat_id=data["chat_id"], message_id=data["message_id"])
         logger.info(f"[welcome] Deleted welcome message {data['message_id']}")
     except TelegramError as e:
         logger.warning(f"[welcome] Could not delete welcome message {data['message_id']}: {e}")
+
+    state = BotState()
+    if state.get_last_welcome_message_id() == data["message_id"]:
+        state.set_last_welcome_message_id(None)
+        state.save()
 
 
 def _build_welcome_menu_text(config: WelcomeConfigManager) -> str:
@@ -2413,9 +2462,29 @@ async def handle_edited_channel_post(update: Update, context: ContextTypes.DEFAU
     logger.info("[edited_channel_post] ============================================")
 
 
+async def _reconcile_pending_welcome_message(application: Application):
+    """Al arrancar, borra cualquier mensaje de bienvenida que haya quedado
+    pendiente de un reinicio anterior (redeploy de Railway, crash, etc.)
+    durante la ventana de borrado de 10s - así nunca queda un mensaje de
+    bienvenida "huérfano" en el chat, incluso si el proceso se reinició
+    justo en ese momento."""
+    state = BotState()
+    message_id = state.get_last_welcome_message_id()
+    if not message_id:
+        return
+    try:
+        await application.bot.delete_message(chat_id=GROUP_ID, message_id=message_id)
+        logger.info(f"[welcome] Deleted leftover welcome message {message_id} after restart.")
+    except TelegramError as e:
+        logger.warning(f"[welcome] Could not delete leftover welcome message {message_id} after restart: {e}")
+    state.set_last_welcome_message_id(None)
+    state.save()
+
+
 async def post_init(application: Application):
     """Called after the application is initialized."""
     logger.info("Bot started. Scheduling promotions...")
+    await _reconcile_pending_welcome_message(application)
     await schedule_promotions(application)
 
 
