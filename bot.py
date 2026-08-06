@@ -1108,6 +1108,20 @@ async def debug_storage(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text(debug_message, parse_mode="Markdown")
 
 
+def _escape_markdown_legacy(text: str) -> str:
+    """Bug fix: "Ver Promociones" builds its listing with parse_mode=
+    "Markdown" (legacy), but promotion captions/usernames are free-form
+    admin input - an unmatched '_', '*', '`' or '[' in any of them (e.g. a
+    caption like "2x1 en contenido *exclusivo*") makes Telegram reject the
+    whole message with "Can't parse entities", so the screen never updates
+    and looks frozen. Escaping the four characters legacy Markdown treats
+    as formatting (backslash first, so escaping itself isn't undone) fixes
+    this without changing how the listing looks for normal captions."""
+    for char in ("\\", "_", "*", "`", "["):
+        text = text.replace(char, f"\\{char}")
+    return text
+
+
 async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Handle button clicks from admin panel."""
     query = update.callback_query
@@ -1131,9 +1145,12 @@ async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         
         text = "**Promociones Actuales:**\n\n"
         for i, promo in enumerate(promos, 1):
-            text += f"{i}. **ID:** `{promo['id']}`\n"
-            text += f"   **Descripción:** {promo.get('caption', 'Sin descripción')}\n"
-            text += f"   **Admin:** @{promo.get('admin_username', 'N/A')}\n"
+            promo_id = _escape_markdown_legacy(str(promo['id']))
+            caption = _escape_markdown_legacy(str(promo.get('caption') or 'Sin descripción'))
+            admin_username = _escape_markdown_legacy(str(promo.get('admin_username', 'N/A')))
+            text += f"{i}. **ID:** `{promo_id}`\n"
+            text += f"   **Descripción:** {caption}\n"
+            text += f"   **Admin:** @{admin_username}\n"
             text += f"   **Archivos:** {len(promo.get('media', []))} archivo(s)\n\n"
         await query.edit_message_text(text, parse_mode="Markdown")
 
