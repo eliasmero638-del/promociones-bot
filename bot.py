@@ -522,11 +522,11 @@ DEFAULT_WELCOME_TEXT = (
 )
 
 # Order here also defines the order of the "edit button" menu options.
+# A pedido explícito, el mensaje de bienvenida muestra ÚNICAMENTE este
+# botón (los anteriores - Comprar VIP, Contactar Administrador, Reglas,
+# Canal Oficial - ya no se muestran ahí).
 WELCOME_BUTTON_LABELS = {
-    "sell_url": "Comprar VIP",
-    "contact_url": "Contactar Administrador",
-    "rules_url": "Reglas",
-    "channel_url": "Canal Oficial",
+    "free_url": "Únete al Grupo Free",
 }
 
 
@@ -550,10 +550,7 @@ class WelcomeConfigManager:
             "welcome_image_file_id": None,
             "delete_after_seconds": 60,
             "buttons": {
-                "sell_url": f"https://t.me/{DEFAULT_ADMIN_USERNAME}",
-                "contact_url": f"https://t.me/{DEFAULT_ADMIN_USERNAME}",
-                "rules_url": "",
-                "channel_url": "",
+                "free_url": "https://t.me/+YPCqH5B8Q8MyY2Q1",
             },
         }
 
