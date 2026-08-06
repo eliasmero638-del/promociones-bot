@@ -1045,6 +1045,19 @@ async def admin_panel(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("**Panel de Administración**", reply_markup=reply_markup, parse_mode="Markdown")
 
 
+async def chat_id_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """/chatid: responde con el chat_id del chat donde se envía el comando.
+    Forma más simple de identificar el ID de un grupo (p. ej. para
+    configurar GROUP_ID) sin depender de bots externos - basta con
+    enviarlo dentro del grupo ya con el bot agregado como administrador.
+    Solo responde a administradores; también lo deja en los logs."""
+    if update.effective_user.id not in ADMIN_USER_IDS:
+        return
+    chat = update.effective_chat
+    logger.info(f"[chatid] Solicitado por admin {update.effective_user.id} en chat {chat.id} ({chat.title!r}, type={chat.type}).")
+    await update.message.reply_text(f"Chat: {chat.title or chat.type}\nID: `{chat.id}`", parse_mode="Markdown")
+
+
 async def debug_storage(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Handle /debug_storage command and button callback."""
     if update.effective_user.id not in ADMIN_USER_IDS:
@@ -2491,6 +2504,7 @@ def main():
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CommandHandler("panel", admin_panel))
     application.add_handler(CommandHandler("debug_storage", debug_storage))
+    application.add_handler(CommandHandler("chatid", chat_id_command))
     
     # Add conversation handler for adding promotions and changing interval
     conv_handler = ConversationHandler(
