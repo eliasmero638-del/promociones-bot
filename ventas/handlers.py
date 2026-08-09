@@ -1068,7 +1068,31 @@ def register_ventas_handlers(application):
     # post_init() de bot.py, precisamente para no tener que tocar bot.py.
     if application.job_queue:
         application.job_queue.run_once(_reschedule_pending_trial_kicks, when=1)
+        application.job_queue.run_once(_fix_expired_demo_group_link, when=1)
     else:
         logger.error("[ventas] No job_queue available at startup; cannot reconcile pending trial kicks.")
 
     logger.info("[ventas] All sales-system handlers registered.")
+
+
+# Enlace viejo (caducado) del grupo de prueba de "🎁 Solicitar prueba
+# gratis" en las promociones - distinto del nuevo grupo de prueba de "🔒
+# Acceso exclusivo a grupos VIP".
+_EXPIRED_DEMO_GROUP_LINK = "https://t.me/+-YMJIf9MZd84MzU1"
+
+
+async def _fix_expired_demo_group_link(context: ContextTypes.DEFAULT_TYPE):
+    """Corrección puntual al arrancar: la configuración de ventas ya se
+    había guardado en Upstash Redis con el enlace viejo (caducado) del
+    grupo de prueba, así que solo cambiar el valor por defecto en
+    _default_config() no alcanza (el valor guardado tiene prioridad). Si
+    el enlace guardado todavía es exactamente el viejo, se actualiza al
+    nuevo - no toca nada si un admin ya lo cambió por otro motivo."""
+    config = SalesConfigManager()
+    if config.get_demo_group_link() != _EXPIRED_DEMO_GROUP_LINK:
+        return
+    config.set_demo_group_link("https://t.me/+FNAYL9Pr_0AzMjY5")
+    if config.save():
+        logger.info("[ventas] Enlace caducado del grupo de prueba (demo_group_link) actualizado automáticamente.")
+    else:
+        logger.error("[ventas] Failed to save updated demo_group_link.")

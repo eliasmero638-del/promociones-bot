@@ -119,7 +119,7 @@ def _default_config() -> dict:
             "• Un administrador verificará el pago y, una vez confirmado, "
             "recibirás automáticamente el enlace de acceso VIP."
         ),
-        "demo_group_link": "https://t.me/+-YMJIf9MZd84MzU1",
+        "demo_group_link": "https://t.me/+FNAYL9Pr_0AzMjY5",
         "vip_group_link": "",
         "faq_text": (
             "❓ PREGUNTAS FRECUENTES\n\n"
