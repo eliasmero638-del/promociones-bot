@@ -22,6 +22,15 @@ Escenarios cubiertos:
      source="panel", aunque reutilicen los handlers genéricos compartidos
      con /panel (edit_select_{id} / delete_{id}). Y /panel sigue pudiendo
      editar/eliminar cualquier promoción, sin ninguna restricción nueva.
+  8. Regresión: promo_panel() (comando /promo) no debe volver a romperse
+     por Markdown sin escapar. Bug real visto en producción: el mensaje
+     de bienvenida de /promo se enviaba con parse_mode="Markdown" y el
+     texto incluía "/desactivar_panel" - el "_" sin pareja hacía que
+     Telegram rechazara el mensaje completo con "Can't parse entities",
+     dejando /promo sin responder (sin ningún error visible para el
+     admin). Este escenario llama a promo_panel() de verdad y valida que,
+     si en el futuro se vuelve a usar parse_mode="Markdown" ahí, el texto
+     tenga los caracteres especiales balanceados.
 
 Existe para evitar que una futura modificación rompa /desactivar_panel (o
 el aislamiento de /promo) sin que nadie lo note.
@@ -147,6 +156,19 @@ async def run_scenario(name, promotions, panel_enabled, expect_published_ids):
         detail = f"esperaba alguno de {expect_published_ids} publicado, textos enviados={sent_texts}"
 
     record(name, ok, detail)
+
+
+def markdown_legacy_balanced(text):
+    """Chequeo básico (no un parser completo) de Markdown legacy de
+    Telegram: "_", "*" y "`" deben aparecer en cantidad par, porque cada
+    uno abre/cierra una entidad. No cubre todos los casos que Telegram
+    valida, pero SÍ hubiera detectado el bug real de promo_panel(): un
+    único "_" sin pareja dentro de "/desactivar_panel" que hacía fallar
+    el envío completo con "Can't parse entities"."""
+    for ch in ("_", "*", "`"):
+        if text.count(ch) % 2 != 0:
+            return False, ch
+    return True, None
 
 
 def manager_reloaded_promo(_manager, promo_id):
@@ -351,6 +373,39 @@ async def main():
         ok_edit and ok_delete,
         f"ok_edit={ok_edit} ok_delete={ok_delete} textos={query._edited_texts}",
     )
+
+    # 8. Regresión: /promo (promo_panel) no debe reintroducir el bug de
+    # Markdown sin escapar que lo dejó sin responder en producción.
+    sent = []
+
+    async def fake_reply_text(text, **kwargs):
+        sent.append((text, kwargs))
+        return MagicMock()
+
+    update = MagicMock()
+    update.effective_user.id = bot.ADMIN_USER_ID
+    update.message.reply_text = AsyncMock(side_effect=fake_reply_text)
+    ctx = MagicMock()
+    ctx.user_data = {}
+
+    await bot.promo_panel(update, ctx)
+
+    if len(sent) != 1:
+        record(
+            "8. /promo no reintroduce el bug de Markdown sin escapar",
+            False,
+            f"promo_panel() debía responder con exactamente 1 mensaje, envió {len(sent)}",
+        )
+    else:
+        text, kwargs = sent[0]
+        uses_markdown = kwargs.get("parse_mode") in ("Markdown", "MarkdownV2")
+        balanced, bad_char = markdown_legacy_balanced(text) if uses_markdown else (True, None)
+        ok = (not uses_markdown) or balanced
+        record(
+            "8. /promo no reintroduce el bug de Markdown sin escapar",
+            ok,
+            f"parse_mode={kwargs.get('parse_mode')!r} balanced={balanced} caracter_desbalanceado={bad_char!r} texto={text!r}",
+        )
 
     print("\n=== RESULTADOS ===")
     for line in PASS:
