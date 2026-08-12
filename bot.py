@@ -1272,24 +1272,31 @@ async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await query.edit_message_text(text, parse_mode="Markdown")
 
     elif query.data == "edit_promo":
+        # Sin restricción de source (flujo /panel: puede editar cualquier
+        # promoción). Limpia cualquier "promo_scope" que hubiera quedado
+        # de una navegación anterior por /promo, para no bloquear por
+        # error una promoción del panel antiguo.
+        context.user_data.pop("promo_scope", None)
         manager = PromotionsManager()
         promos = manager.get_all()
         if not promos:
             await query.edit_message_text("No hay promociones para editar.")
             return
-        
+
         keyboard = [[InlineKeyboardButton(f"{p['id']}", callback_data=f"edit_select_{p['id']}")] for p in promos]
         keyboard.append([InlineKeyboardButton("Cancelar", callback_data="cancel")])
         reply_markup = InlineKeyboardMarkup(keyboard)
         await query.edit_message_text("Selecciona la promoción a editar:", reply_markup=reply_markup)
 
     elif query.data == "delete_promo":
+        # Mismo motivo que en "edit_promo" arriba.
+        context.user_data.pop("promo_scope", None)
         manager = PromotionsManager()
         promos = manager.get_all()
         if not promos:
             await query.edit_message_text("No hay promociones para eliminar.")
             return
-        
+
         keyboard = [[InlineKeyboardButton(f"{p['id']}", callback_data=f"delete_{p['id']}")] for p in promos]
         keyboard.append([InlineKeyboardButton("Cancelar", callback_data="cancel")])
         reply_markup = InlineKeyboardMarkup(keyboard)
@@ -1314,6 +1321,12 @@ async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await query.edit_message_text(text, parse_mode="Markdown")
 
     elif query.data == "edit_promo_new":
+        # Aislamiento /promo: marca el "scope" ANTES de mostrar la lista.
+        # edit_select_promotion() lo lee (antes de su propio user_data.clear())
+        # y rechaza la edición si la promoción elegida no es promo_cmd -
+        # así reutilizar el handler compartido no permite editar por
+        # accidente (ni a propósito) una promoción del /panel antiguo.
+        context.user_data["promo_scope"] = "promo_cmd"
         manager = PromotionsManager()
         promos = [p for p in manager.get_all() if p.get("source", "panel") == "promo_cmd"]
         if not promos:
@@ -1329,6 +1342,10 @@ async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await query.edit_message_text("Selecciona la promoción nueva a editar:", reply_markup=reply_markup)
 
     elif query.data == "delete_promo_new":
+        # Aislamiento /promo: mismo "scope" que en "edit_promo_new" -
+        # el handler genérico "delete_" (más abajo) lo lee y verifica
+        # source antes de borrar.
+        context.user_data["promo_scope"] = "promo_cmd"
         manager = PromotionsManager()
         promos = [p for p in manager.get_all() if p.get("source", "panel") == "promo_cmd"]
         if not promos:
@@ -1386,6 +1403,21 @@ async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     elif query.data.startswith("delete_"):
         promo_id = query.data.replace("delete_", "")
         manager = PromotionsManager()
+
+        # Aislamiento /promo: si se llegó acá desde "delete_promo_new"
+        # (promo_scope == "promo_cmd"), verifica que la promoción elegida
+        # realmente sea promo_cmd antes de borrar - así reutilizar este
+        # handler genérico (compartido con /panel) nunca permite que
+        # /promo borre una promoción del panel antiguo por accidente.
+        scope = context.user_data.pop("promo_scope", None)
+        if scope == "promo_cmd":
+            target = manager.get_by_id(promo_id)
+            if not target or target.get("source", "panel") != "promo_cmd":
+                await query.edit_message_text(
+                    "Esta promoción no pertenece a /promo; no se eliminó."
+                )
+                return
+
         if manager.delete(promo_id):
             await query.edit_message_text(f"Promoción `{promo_id}` eliminada correctamente.", parse_mode="Markdown")
         else:
@@ -1896,6 +1928,22 @@ async def edit_select_promotion(update: Update, context: ContextTypes.DEFAULT_TY
         await query.edit_message_text(f"La promoción `{promo_id}` ya no existe.", parse_mode="Markdown")
         return ConversationHandler.END
 
+    # Aislamiento /promo: si se entró desde "edit_promo_new" (scope
+    # "promo_cmd", fijado en button_callback ANTES de esta llamada), la
+    # promoción elegida debe ser realmente promo_cmd. Se lee acá porque
+    # el user_data.clear() de abajo borraría este flag. Bloquea tanto un
+    # id manipulado a mano como cualquier futuro bug que mezcle las
+    # listas de /panel y /promo.
+    promo_scope = context.user_data.get("promo_scope")
+    if promo_scope == "promo_cmd" and promo.get("source", "panel") != "promo_cmd":
+        logger.warning(
+            f"[panel_edit] Bloqueado: intento de editar {promo_id} (source={promo.get('source', 'panel')}) "
+            f"desde el scope restringido de /promo."
+        )
+        await query.edit_message_text("Esta promoción no pertenece a /promo; no se editó.")
+        context.user_data.clear()
+        return ConversationHandler.END
+
     # Working copy: nothing is written to promotions.json until the admin
     # explicitly presses "✅ Guardar Cambios".
     context.user_data.clear()
@@ -1903,6 +1951,9 @@ async def edit_select_promotion(update: Update, context: ContextTypes.DEFAULT_TY
     context.user_data["edit_caption"] = promo.get("caption", "")
     context.user_data["edit_media"] = list(promo.get("media", []))
     context.user_data["edit_admin_username"] = promo.get("admin_username", DEFAULT_ADMIN_USERNAME)
+    # Se preserva para que _apply_promotion_edit() pueda re-verificar el
+    # scope justo antes de guardar (defensa en profundidad).
+    context.user_data["edit_scope"] = promo_scope
 
     logger.info(f"[panel_edit] Admin started editing promotion {promo_id}.")
 
@@ -2068,6 +2119,19 @@ async def _apply_promotion_edit(query, context: ContextTypes.DEFAULT_TYPE):
     if not original:
         logger.error(f"[panel_edit] Promotion {promo_id} not found at save time (may have been deleted meanwhile).")
         await query.edit_message_text(f"La promoción `{promo_id}` ya no existe.", parse_mode="Markdown")
+        context.user_data.clear()
+        return
+
+    # Defensa en profundidad: re-verifica el aislamiento /promo justo
+    # antes de guardar (edit_select_promotion ya lo verificó al elegir la
+    # promoción; esto cubre el caso de que algo cambiara su source mientras
+    # el admin completaba el formulario).
+    if context.user_data.get("edit_scope") == "promo_cmd" and original.get("source", "panel") != "promo_cmd":
+        logger.warning(
+            f"[panel_edit] Bloqueado al guardar: {promo_id} (source={original.get('source', 'panel')}) "
+            f"ya no es promo_cmd; no se aplicó la edición iniciada desde /promo."
+        )
+        await query.edit_message_text("Esta promoción ya no pertenece a /promo; no se guardaron los cambios.")
         context.user_data.clear()
         return
 

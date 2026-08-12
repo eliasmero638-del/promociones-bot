@@ -17,9 +17,14 @@ Escenarios cubiertos:
   5. Panel ON  + antiguas + nuevas                -> ambas pueden publicarse
   6. "Publicar Ahora" (pre-chequeo en button_callback) respeta el mismo
      filtro que publish_promotion(), tanto con panel ON como OFF.
+  7. Aislamiento /promo: "Editar/Eliminar Promoción Nueva" (edit_promo_new /
+     delete_promo_new) NUNCA pueden editar ni eliminar una promoción con
+     source="panel", aunque reutilicen los handlers genéricos compartidos
+     con /panel (edit_select_{id} / delete_{id}). Y /panel sigue pudiendo
+     editar/eliminar cualquier promoción, sin ninguna restricción nueva.
 
-Existe para evitar que una futura modificación rompa /desactivar_panel
-sin que nadie lo note.
+Existe para evitar que una futura modificación rompa /desactivar_panel (o
+el aislamiento de /promo) sin que nadie lo note.
 """
 import asyncio
 import os
@@ -90,6 +95,32 @@ def record(name, ok, detail):
     (PASS if ok else FAIL).append(f"{name}: {'OK' if ok else 'FALLÓ'} ({detail})")
 
 
+def make_query(data, user_data):
+    """Fake CallbackQuery + Update para ejercitar button_callback() /
+    edit_select_promotion() directamente, como si un admin real hubiera
+    tocado ese botón. user_data es el dict que se pasa como
+    context.user_data (mutable, compartido con el caller para poder
+    inspeccionarlo después)."""
+    query = MagicMock()
+    query.data = data
+    query.from_user.id = bot.ADMIN_USER_ID
+    query.answer = AsyncMock()
+    edited_texts = []
+
+    async def fake_edit_message_text(text, **kwargs):
+        edited_texts.append(text)
+
+    query.edit_message_text = AsyncMock(side_effect=fake_edit_message_text)
+    query._edited_texts = edited_texts
+
+    update = MagicMock()
+    update.callback_query = query
+
+    ctx = MagicMock()
+    ctx.user_data = user_data
+    return update, ctx, query
+
+
 async def run_scenario(name, promotions, panel_enabled, expect_published_ids):
     reset_storage()
 
@@ -116,6 +147,14 @@ async def run_scenario(name, promotions, panel_enabled, expect_published_ids):
         detail = f"esperaba alguno de {expect_published_ids} publicado, textos enviados={sent_texts}"
 
     record(name, ok, detail)
+
+
+def manager_reloaded_promo(_manager, promo_id):
+    """Relee desde el backend (archivo temporal) en una instancia nueva de
+    PromotionsManager, para reflejar exactamente lo que quedó persistido
+    por el código real de bot.py (que siempre crea su propia instancia),
+    en vez de confiar en el objeto `_manager` ya usado por el test."""
+    return bot.PromotionsManager().get_by_id(promo_id)
 
 
 def publish_now_precheck(all_promos, panel_enabled):
@@ -196,6 +235,121 @@ async def main():
         "6b. Publicar Ahora - panel OFF solo deja pasar promo_cmd",
         ok_off,
         f"ids resultantes={sorted(p['id'] for p in result_off)}",
+    )
+
+    # 7. Aislamiento /promo (edit + delete), ejercitando el código real de
+    # button_callback() y edit_select_promotion() con datos mixtos.
+    reset_storage()
+    manager = bot.PromotionsManager()
+    manager.data["promotions"] = [
+        promo("old_1", "panel"),
+        promo("legacy_1", source=None),
+        promo("new_1", "promo_cmd"),
+    ]
+    manager.save()
+
+    # 7a. "Editar Promoción Nueva" -> intentar editar old_1 (panel) debe
+    # ser rechazado, sin modificar la promoción.
+    user_data = {}
+    update, ctx, query = make_query("edit_promo_new", user_data)
+    await bot.button_callback(update, ctx)
+    assert user_data.get("promo_scope") == "promo_cmd", "edit_promo_new debería fijar promo_scope=promo_cmd"
+
+    update, ctx, query = make_query("edit_select_old_1", user_data)
+    result_state = await bot.edit_select_promotion(update, ctx)
+    blocked = result_state == bot.ConversationHandler.END and "no pertenece a /promo" in (query._edited_texts[0] if query._edited_texts else "")
+    unchanged = manager_reloaded_promo(manager, "old_1")["caption"] == "CAPTION::old_1"
+    record(
+        "7a. /promo no puede editar una promoción 'panel'",
+        blocked and unchanged,
+        f"result_state={result_state!r} textos={query._edited_texts} unchanged={unchanged}",
+    )
+
+    # 7b. Mismo escenario pero con legacy_1 (sin campo source) - debe
+    # bloquearse igual, no colarse por defecto.
+    user_data = {}
+    update, ctx, query = make_query("edit_promo_new", user_data)
+    await bot.button_callback(update, ctx)
+    update, ctx, query = make_query("edit_select_legacy_1", user_data)
+    result_state = await bot.edit_select_promotion(update, ctx)
+    blocked = result_state == bot.ConversationHandler.END and "no pertenece a /promo" in (query._edited_texts[0] if query._edited_texts else "")
+    record(
+        "7b. /promo no puede editar una promoción antigua sin source",
+        blocked,
+        f"result_state={result_state!r} textos={query._edited_texts}",
+    )
+
+    # 7c. "Editar Promoción Nueva" -> editar new_1 (promo_cmd) SÍ debe
+    # funcionar (entra a EDIT_MENU con normalidad).
+    user_data = {}
+    update, ctx, query = make_query("edit_promo_new", user_data)
+    await bot.button_callback(update, ctx)
+    update, ctx, query = make_query("edit_select_new_1", user_data)
+    result_state = await bot.edit_select_promotion(update, ctx)
+    ok = result_state == bot.EDIT_MENU and user_data.get("edit_promo_id") == "new_1"
+    record(
+        "7c. /promo SÍ puede editar una promoción propia (promo_cmd)",
+        ok,
+        f"result_state={result_state!r} edit_promo_id={user_data.get('edit_promo_id')!r}",
+    )
+
+    # 7d. "Eliminar Promoción Nueva" -> intentar eliminar old_1 (panel)
+    # debe ser rechazado, sin borrar nada.
+    user_data = {}
+    update, ctx, query = make_query("delete_promo_new", user_data)
+    await bot.button_callback(update, ctx)
+    assert user_data.get("promo_scope") == "promo_cmd", "delete_promo_new debería fijar promo_scope=promo_cmd"
+    update, ctx, query = make_query("delete_old_1", user_data)
+    await bot.button_callback(update, ctx)
+    still_exists = manager_reloaded_promo(manager, "old_1") is not None
+    blocked = still_exists and "no pertenece a /promo" in (query._edited_texts[0] if query._edited_texts else "")
+    record(
+        "7d. /promo no puede eliminar una promoción 'panel'",
+        blocked,
+        f"textos={query._edited_texts} still_exists={still_exists}",
+    )
+
+    # 7e. "Eliminar Promoción Nueva" -> eliminar new_1 (promo_cmd) SÍ debe
+    # funcionar.
+    user_data = {}
+    update, ctx, query = make_query("delete_promo_new", user_data)
+    await bot.button_callback(update, ctx)
+    update, ctx, query = make_query("delete_new_1", user_data)
+    await bot.button_callback(update, ctx)
+    deleted = manager_reloaded_promo(manager, "new_1") is None
+    ok = deleted and "eliminada correctamente" in (query._edited_texts[0] if query._edited_texts else "")
+    record(
+        "7e. /promo SÍ puede eliminar una promoción propia (promo_cmd)",
+        ok,
+        f"textos={query._edited_texts} deleted={deleted}",
+    )
+
+    # 7f. Regresión: /panel (sin scope) sigue pudiendo editar y eliminar
+    # CUALQUIER promoción, sin ninguna restricción nueva.
+    reset_storage()
+    manager = bot.PromotionsManager()
+    manager.data["promotions"] = [promo("old_1", "panel")]
+    manager.save()
+
+    user_data = {}
+    update, ctx, query = make_query("edit_promo", user_data)
+    await bot.button_callback(update, ctx)
+    assert "promo_scope" not in user_data, "edit_promo (/panel) no debería fijar promo_scope"
+    update, ctx, query = make_query("edit_select_old_1", user_data)
+    result_state = await bot.edit_select_promotion(update, ctx)
+    ok_edit = result_state == bot.EDIT_MENU
+
+    user_data = {}
+    update, ctx, query = make_query("delete_promo", user_data)
+    await bot.button_callback(update, ctx)
+    update, ctx, query = make_query("delete_old_1", user_data)
+    await bot.button_callback(update, ctx)
+    ok_delete = manager_reloaded_promo(manager, "old_1") is None and "eliminada correctamente" in (query._edited_texts[0] if query._edited_texts else "")
+
+    record(
+        "7f. /panel sigue pudiendo editar y eliminar cualquier promoción (sin regresión)",
+        ok_edit and ok_delete,
+        f"ok_edit={ok_edit} ok_delete={ok_delete} textos={query._edited_texts}",
     )
 
     print("\n=== RESULTADOS ===")
