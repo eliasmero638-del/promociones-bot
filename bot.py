@@ -1087,12 +1087,16 @@ async def promo_panel(update: Update, context: ContextTypes.DEFAULT_TYPE):
         [InlineKeyboardButton("Eliminar Promoción Nueva", callback_data="delete_promo_new")],
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
+    # Texto plano (sin parse_mode): el mensaje menciona "/desactivar_panel",
+    # cuyo guion bajo Telegram interpretaría como cursiva sin cerrar bajo
+    # Markdown legacy, rompiendo el envío completo con
+    # "Can't parse entities" - el mismo bug que ya se corrigió una vez en
+    # "Ver Promociones" (ver _escape_markdown_legacy).
     await update.message.reply_text(
-        "**Promociones Nuevas (/promo)**\n\n"
+        "Promociones Nuevas (/promo)\n\n"
         "Estas promociones siempre se publican, sin importar el estado del "
         "panel antiguo (/desactivar_panel).",
         reply_markup=reply_markup,
-        parse_mode="Markdown",
     )
 
 
