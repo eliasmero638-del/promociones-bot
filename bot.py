@@ -404,6 +404,7 @@ class BotState:
             "last_published": None,
             "promotion_interval": PROMOTION_INTERVAL,
             "last_welcome_message_id": None,
+            "panel_enabled": True,
         }
 
     def _load(self) -> dict:
@@ -522,6 +523,21 @@ class BotState:
 
     def set_promotion_interval(self, interval: int):
         self.data["promotion_interval"] = interval
+
+    def get_panel_enabled(self) -> bool:
+        """Interruptor global del sistema antiguo de /panel (incluye el
+        ingest automático de canal). True = las promociones con
+        source="panel" (o sin el campo "source") participan en la
+        rotación automática y en "Publicar Ahora", igual que siempre.
+        False = quedan excluidas de ambas; solo se publican las
+        promociones nuevas (source="promo_cmd"). Ver publish_promotion().
+        Persiste en el mismo backend que el resto de BotState, así que
+        sobrevive reinicios, redeploys y sacar/re-agregar el bot del
+        grupo - solo /activar_panel puede volver a ponerlo en True."""
+        return bool(self.data.get("panel_enabled", True))
+
+    def set_panel_enabled(self, enabled: bool):
+        self.data["panel_enabled"] = enabled
 
 
 # --- Phase 6: welcome-system configuration ---
@@ -818,6 +834,15 @@ async def publish_promotion(context: ContextTypes.DEFAULT_TYPE):
         if str(p.get("caption", "") or "").strip() or _has_valid_media(p)
     ]
 
+    # Interruptor global /desactivar_panel /activar_panel: cuando el panel
+    # antiguo está desactivado, las promociones con source="panel" (o sin
+    # el campo, por compatibilidad con datos guardados antes de esta
+    # función) quedan fuera tanto de la rotación automática como de
+    # "Publicar Ahora" - ambas pasan por esta misma lista. Las promociones
+    # nuevas (source="promo_cmd", creadas con /promo) nunca se filtran acá.
+    if not state.get_panel_enabled():
+        valid_promotions = [p for p in valid_promotions if p.get("source", "panel") == "promo_cmd"]
+
     if not valid_promotions:
         logger.warning("No valid promotions found.")
         return
@@ -1045,6 +1070,78 @@ async def admin_panel(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("**Panel de Administración**", reply_markup=reply_markup, parse_mode="Markdown")
 
 
+async def promo_panel(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Panel separado para administrar únicamente las promociones nuevas
+    (creadas acá, con source="promo_cmd"). Estas SIEMPRE se publican,
+    sin importar el estado del interruptor /desactivar_panel /
+    /activar_panel, que solo afecta a las promociones del /panel
+    antiguo (ver publish_promotion())."""
+    if update.effective_user.id not in ADMIN_USER_IDS:
+        await update.message.reply_text("No tienes permiso para acceder a este comando.")
+        return
+
+    keyboard = [
+        [InlineKeyboardButton("Agregar Promoción Nueva", callback_data="add_promo_new")],
+        [InlineKeyboardButton("Ver Promociones Nuevas", callback_data="view_promos_new")],
+        [InlineKeyboardButton("Editar Promoción Nueva", callback_data="edit_promo_new")],
+        [InlineKeyboardButton("Eliminar Promoción Nueva", callback_data="delete_promo_new")],
+    ]
+    reply_markup = InlineKeyboardMarkup(keyboard)
+    await update.message.reply_text(
+        "**Promociones Nuevas (/promo)**\n\n"
+        "Estas promociones siempre se publican, sin importar el estado del "
+        "panel antiguo (/desactivar_panel).",
+        reply_markup=reply_markup,
+        parse_mode="Markdown",
+    )
+
+
+async def desactivar_panel_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """🔴 Apaga globalmente el sistema antiguo de /panel (incluido el
+    ingest automático de canal): deja de publicarse tanto en la rotación
+    automática como en "Publicar Ahora", sin eliminar ni modificar
+    ninguna promoción. Las promociones nuevas de /promo no se ven
+    afectadas. Persistente vía BotState - sobrevive reinicios, redeploys
+    y sacar/re-agregar el bot del grupo."""
+    if update.effective_user.id not in ADMIN_USER_IDS:
+        await update.message.reply_text("No tienes permiso para ejecutar este comando.")
+        return
+
+    state = BotState()
+    state.set_panel_enabled(False)
+    state.save()
+    logger.info(f"[panel_toggle] Panel antiguo DESACTIVADO por admin {update.effective_user.id}.")
+    await update.message.reply_text(
+        "🔴 Panel antiguo DESACTIVADO\n\n"
+        "Las promociones del sistema antiguo (/panel, incluido el ingest "
+        "automático de canal) dejaron de publicarse, tanto en la rotación "
+        "automática como en \"Publicar Ahora\".\n"
+        "No se eliminó ni modificó ninguna promoción.\n\n"
+        "Las promociones nuevas creadas con /promo siguen publicándose con "
+        "normalidad.\n\n"
+        "Usa /activar_panel para reactivarlo."
+    )
+
+
+async def activar_panel_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """🟢 Reactiva el sistema antiguo de /panel, restaurando el
+    comportamiento normal (panel + promo_cmd publican juntos)."""
+    if update.effective_user.id not in ADMIN_USER_IDS:
+        await update.message.reply_text("No tienes permiso para ejecutar este comando.")
+        return
+
+    state = BotState()
+    state.set_panel_enabled(True)
+    state.save()
+    logger.info(f"[panel_toggle] Panel antiguo ACTIVADO por admin {update.effective_user.id}.")
+    await update.message.reply_text(
+        "🟢 Panel antiguo ACTIVADO\n\n"
+        "Las promociones del sistema antiguo (/panel) vuelven a "
+        "participar en la rotación automática y en \"Publicar Ahora\", "
+        "junto con las promociones nuevas de /promo."
+    )
+
+
 async def chat_id_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """/chatid: responde con el chat_id del chat donde se envía el comando.
     Forma más simple de identificar el ID de un grupo (p. ej. para
@@ -1147,6 +1244,13 @@ async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if query.data == "add_promo":
         await query.edit_message_text("Por favor, envía una foto o un video para la promoción.")
         context.user_data.clear()
+        context.user_data["promo_source"] = "panel"
+        return ADD_PHOTO
+
+    elif query.data == "add_promo_new":
+        await query.edit_message_text("Por favor, envía una foto o un video para la promoción nueva.")
+        context.user_data.clear()
+        context.user_data["promo_source"] = "promo_cmd"
         return ADD_PHOTO
 
     elif query.data == "view_promos":
@@ -1191,13 +1295,66 @@ async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         reply_markup = InlineKeyboardMarkup(keyboard)
         await query.edit_message_text("Selecciona la promoción a eliminar:", reply_markup=reply_markup)
 
+    elif query.data == "view_promos_new":
+        manager = PromotionsManager()
+        promos = [p for p in manager.get_all() if p.get("source", "panel") == "promo_cmd"]
+        if not promos:
+            await query.edit_message_text("No hay promociones nuevas almacenadas.")
+            return
+
+        text = "**Promociones Nuevas (/promo):**\n\n"
+        for i, promo in enumerate(promos, 1):
+            promo_id = _escape_markdown_legacy(str(promo['id']))
+            caption = _escape_markdown_legacy(str(promo.get('caption') or 'Sin descripción'))
+            admin_username = _escape_markdown_legacy(str(promo.get('admin_username', 'N/A')))
+            text += f"{i}. **ID:** `{promo_id}`\n"
+            text += f"   **Descripción:** {caption}\n"
+            text += f"   **Admin:** @{admin_username}\n"
+            text += f"   **Archivos:** {len(promo.get('media', []))} archivo(s)\n\n"
+        await query.edit_message_text(text, parse_mode="Markdown")
+
+    elif query.data == "edit_promo_new":
+        manager = PromotionsManager()
+        promos = [p for p in manager.get_all() if p.get("source", "panel") == "promo_cmd"]
+        if not promos:
+            await query.edit_message_text("No hay promociones nuevas para editar.")
+            return
+
+        # Reutiliza edit_select_{id} tal cual - ya registrado como
+        # entry_point del conv_handler (pattern="^edit_select_.+$"), así
+        # que no hace falta ningún handler nuevo para esto.
+        keyboard = [[InlineKeyboardButton(f"{p['id']}", callback_data=f"edit_select_{p['id']}")] for p in promos]
+        keyboard.append([InlineKeyboardButton("Cancelar", callback_data="cancel")])
+        reply_markup = InlineKeyboardMarkup(keyboard)
+        await query.edit_message_text("Selecciona la promoción nueva a editar:", reply_markup=reply_markup)
+
+    elif query.data == "delete_promo_new":
+        manager = PromotionsManager()
+        promos = [p for p in manager.get_all() if p.get("source", "panel") == "promo_cmd"]
+        if not promos:
+            await query.edit_message_text("No hay promociones nuevas para eliminar.")
+            return
+
+        # Reutiliza delete_{id} tal cual - ya manejado más abajo en esta
+        # misma función (elif query.data.startswith("delete_")).
+        keyboard = [[InlineKeyboardButton(f"{p['id']}", callback_data=f"delete_{p['id']}")] for p in promos]
+        keyboard.append([InlineKeyboardButton("Cancelar", callback_data="cancel")])
+        reply_markup = InlineKeyboardMarkup(keyboard)
+        await query.edit_message_text("Selecciona la promoción nueva a eliminar:", reply_markup=reply_markup)
+
     elif query.data == "publish_now":
         manager = PromotionsManager()
         promos = manager.get_all()
+        # Refleja aquí el mismo filtro del interruptor /desactivar_panel
+        # que aplica publish_promotion(), para no mostrar "publicando..."
+        # cuando en realidad no hay nada publicable (p. ej. panel OFF y
+        # ninguna promoción nueva de /promo todavía).
+        if not BotState().get_panel_enabled():
+            promos = [p for p in promos if p.get("source", "panel") == "promo_cmd"]
         if not promos:
-            await query.edit_message_text("No hay promociones para publicar.")
+            await query.edit_message_text("No hay promociones disponibles para publicar.")
             return
-        
+
         # Publish immediately without selection dialog
         await query.edit_message_text("Publicando promoción...")
         await publish_promotion(context)
@@ -1314,7 +1471,12 @@ async def add_username(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "id": next_id,
         "caption": caption,
         "media": media,
-        "admin_username": admin_username
+        "admin_username": admin_username,
+        # "panel" = flujo /panel "Agregar Promoción" (default); "promo_cmd"
+        # = flujo /promo "Agregar Promoción Nueva" (ver promo_panel /
+        # button_callback "add_promo_new", que fija promo_source antes de
+        # entrar a este mismo estado ADD_PHOTO/ADD_CAPTION/ADD_USERNAME).
+        "source": context.user_data.get("promo_source", "panel"),
     }
     logger.info(f"[add_username] New promotion object: {new_promo}")
     
@@ -2220,6 +2382,10 @@ async def _save_new_promotion(
         "caption": caption,
         "media": media,
         "admin_username": DEFAULT_ADMIN_USERNAME,
+        # El ingest automático de canal es parte del sistema antiguo del
+        # /panel - lo afecta /desactivar_panel igual que las promociones
+        # agregadas manualmente desde ahí.
+        "source": "panel",
     }
 
     logger.info(
@@ -2562,13 +2728,16 @@ def main():
     # Add handlers
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CommandHandler("panel", admin_panel))
+    application.add_handler(CommandHandler("promo", promo_panel))
+    application.add_handler(CommandHandler("desactivar_panel", desactivar_panel_command))
+    application.add_handler(CommandHandler("activar_panel", activar_panel_command))
     application.add_handler(CommandHandler("debug_storage", debug_storage))
     application.add_handler(CommandHandler("chatid", chat_id_command))
     
     # Add conversation handler for adding promotions and changing interval
     conv_handler = ConversationHandler(
         entry_points=[
-            CallbackQueryHandler(button_callback, pattern="^(add_promo|change_interval)$"),
+            CallbackQueryHandler(button_callback, pattern="^(add_promo|add_promo_new|change_interval)$"),
             CallbackQueryHandler(edit_select_promotion, pattern="^edit_select_.+$"),
             CallbackQueryHandler(welcome_config_entry, pattern="^welcome_config$"),
         ],
