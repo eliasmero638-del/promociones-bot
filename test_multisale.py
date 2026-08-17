@@ -239,15 +239,31 @@ async def main():
         f"when={interbancario_job.when} texto={query._edited[-1]['text'][-60:]!r}",
     )
 
+    # A pedido explícito: los datos se pueden ver hasta 2 veces por
+    # (usuario, método) - pensado para reintentos legítimos (ej. se cortó
+    # el internet) - y solo se bloquean a partir de la 3ra vez.
     update, query = make_query("ms_method_bank_pichincha", buyer_id, message_id=43)
     state2 = await h.ms_method_selected(update, ctx)
-    ok = state2 == bot.ConversationHandler.END and "ya fueron mostrados" in query._edited[-1]["text"]
-    record("9. Segunda vez que pide Banco Pichincha: bloqueado", ok, query._edited[-1]["text"][:50])
+    ok = state2 == h.MS_WAITING_RECEIPT and "BANCO PICHINCHA" in query._edited[-1]["text"].upper()
+    record("9a. Segunda vez que pide Banco Pichincha: SÍ se muestran los datos otra vez", ok, query._edited[-1]["text"][:50])
+
+    update, query = make_query("ms_method_bank_pichincha", buyer_id, message_id=46)
+    state2b = await h.ms_method_selected(update, ctx)
+    ok = state2b == bot.ConversationHandler.END and "ya fueron mostrados" in query._edited[-1]["text"]
+    record("9b. Tercera vez que pide Banco Pichincha: recién ahí bloqueado", ok, query._edited[-1]["text"][:50])
 
     update, query = make_query("ms_method_paypal", buyer_id, message_id=44)
     state3 = await h.ms_method_selected(update, ctx)
     ok = state3 == h.MS_WAITING_RECEIPT and "PAYPAL" in query._edited[-1]["text"].upper()
     record("10. Un método nunca visto (PayPal) sigue disponible", ok, query._edited[-1]["text"][:50])
+
+    # El administrador está exento del límite: puede ver los datos las
+    # veces que quiera, para comprobar que todo funciona.
+    for i in range(3):
+        update, query = make_query("ms_method_bank_pichincha", admin_id, message_id=50 + i)
+        state_admin = await h.ms_method_selected(update, ctx)
+        ok_admin_i = state_admin == h.MS_WAITING_RECEIPT and "BANCO PICHINCHA" in query._edited[-1]["text"].upper()
+        record(f"El administrador nunca queda bloqueado (intento {i + 1})", ok_admin_i, query._edited[-1]["text"][:50])
 
     # --- 11. Borrado de datos de pago (ejecuta el job real) ---
     job = next(j for j in ctx.job_queue._scheduled_jobs if j.name == "ms_delete_paydata_555_42")
