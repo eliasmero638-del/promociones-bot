@@ -21,13 +21,14 @@ Flujo:
        context.user_data["ms_locked_groups"] y muestra la confirmación.
     -> ms_confirm_pay(): muestra los métodos de pago.
     -> ms_method_selected() [entry point de la conversación]: si el
-       usuario ya vio ese método MAX_PAYMENT_DATA_VIEWS veces (2, ver
-       PaymentDataSeenStore - permanente, pensado para reintentos
-       legítimos como que se corte el internet), muestra el aviso y
-       termina; si no, muestra los datos, cuenta una vista más, programa
-       su borrado según el método (interbancario = 5 min, el resto = 20
-       min - ver get_payment_data_lifetime_seconds()) con recuperación
-       tras reinicio vía PendingPaymentDataDeletionsStore, y pasa al
+       usuario ya vio ese método el máximo de veces permitido (2, salvo
+       interbancario que es 1 por mostrar la cédula del titular - ver
+       get_max_payment_data_views()/PaymentDataSeenStore, permanente,
+       pensado para reintentos legítimos como que se corte el internet),
+       muestra el aviso y termina; si no, muestra los datos, cuenta una
+       vista más, programa su borrado según el método (interbancario =
+       5 min, el resto = 20 min - ver get_payment_data_lifetime_seconds())
+       con recuperación tras reinicio vía PendingPaymentDataDeletionsStore, y pasa al
        estado MS_WAITING_RECEIPT. El administrador está exento de este
        límite (siempre puede volver a verlos, para comprobar que todo
        funciona).
@@ -474,11 +475,12 @@ async def ms_send_receipt_hint(update: Update, context: ContextTypes.DEFAULT_TYP
 
 async def ms_method_selected(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Entry point de la conversación. Si el usuario (no-admin) ya vio
-    este método MAX_PAYMENT_DATA_VIEWS veces (para siempre, ver
-    PaymentDataSeenStore), muestra el aviso y termina sin re-mostrar los
-    datos. Si no, los muestra, cuenta una vista más, programa su borrado
-    (persistente) con la duración según el método - ver
-    get_payment_data_lifetime_seconds() - y pasa a esperar el
+    este método el máximo de veces permitido (2, salvo interbancario que
+    es 1 por mostrar la cédula del titular - para siempre, ver
+    get_max_payment_data_views()/PaymentDataSeenStore), muestra el aviso y
+    termina sin re-mostrar los datos. Si no, los muestra, cuenta una vista
+    más, programa su borrado (persistente) con la duración según el
+    método - ver get_payment_data_lifetime_seconds() - y pasa a esperar el
     comprobante. El administrador está exento del límite: siempre puede
     volver a ver los datos, para comprobar que todo funciona."""
     query = update.callback_query

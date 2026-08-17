@@ -357,16 +357,26 @@ class RecentPaymentsStore:
 
 # Máximo de veces que un cliente (no-admin) puede ver los datos de un
 # mismo método de pago, a pedido explícito - pensado para reintentos
-# legítimos (ej. se cortó internet a mitad del pago). El administrador
-# nunca cuenta contra este límite (ver ms_method_selected en
-# multisale_handlers.py, que lo exime por completo).
-MAX_PAYMENT_DATA_VIEWS = 2
+# legítimos (ej. se cortó internet a mitad del pago). "Pago interbancario"
+# es la excepción: muestra la cédula del titular, así que se queda en 1
+# sola vez por motivos de privacidad; el resto de métodos permite 2. El
+# administrador nunca cuenta contra este límite en ningún método (ver
+# ms_method_selected en multisale_handlers.py, que lo exime por completo).
+MAX_PAYMENT_DATA_VIEWS_DEFAULT = 2
+MAX_PAYMENT_DATA_VIEWS_BY_METHOD = {
+    "interbancario": 1,  # muestra la cédula del titular
+}
+
+
+def get_max_payment_data_views(method_key: str) -> int:
+    return MAX_PAYMENT_DATA_VIEWS_BY_METHOD.get(method_key, MAX_PAYMENT_DATA_VIEWS_DEFAULT)
 
 
 class PaymentDataSeenStore:
     """Registra, de forma PERMANENTE, cuántas veces (user_id, método_de_pago)
-    ya vio los datos bancarios de ese método - hasta MAX_PAYMENT_DATA_VIEWS
-    veces, luego queda bloqueado para siempre. Independiente por método:
+    ya vio los datos bancarios de ese método - hasta get_max_payment_data_views()
+    veces (2, salvo "Pago interbancario" que es 1 por mostrar la cédula del
+    titular), luego queda bloqueado para siempre. Independiente por método:
     haber visto Banco Pichincha no bloquea ver PayPal. Nunca se resetea
     automáticamente - solo un administrador puede volver a mostrar los
     datos manualmente por fuera del bot."""
@@ -458,7 +468,7 @@ class PaymentDataSeenStore:
         return self.data.get("seen", {}).get(self._key(user_id, method_key), 0)
 
     def has_reached_limit(self, user_id: int, method_key: str) -> bool:
-        return self.get_view_count(user_id, method_key) >= MAX_PAYMENT_DATA_VIEWS
+        return self.get_view_count(user_id, method_key) >= get_max_payment_data_views(method_key)
 
     def mark_seen(self, user_id: int, method_key: str) -> None:
         seen = self.data.setdefault("seen", {})
