@@ -867,8 +867,21 @@ async def ms_agregar_pago_reciente_command(update: Update, context: ContextTypes
         return
     context.user_data["ms_awaiting_recent_payment"] = True
     await update.message.reply_text(
-        "📎 Envía ahora la foto o el documento que quieres agregar como comprobante de muestra."
+        "📎 Envía ahora las fotos o documentos que quieras agregar (una por una, cuantas quieras).\n\n"
+        "Cuando termines, escribe /listo_pagos_recientes."
     )
+
+
+async def ms_listo_pagos_recientes_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    if update.effective_user.id not in _get_admin_user_ids():
+        await update.message.reply_text("No tienes permiso para ejecutar este comando.")
+        return
+    was_awaiting = context.user_data.pop("ms_awaiting_recent_payment", False)
+    added = context.user_data.pop("ms_recent_payment_count", 0)
+    if was_awaiting:
+        await update.message.reply_text(f"✅ Listo. Se agregaron {added} comprobante(s) de muestra nuevo(s).")
+    else:
+        await update.message.reply_text("No había ninguna carga en curso (usa /agregar_pago_reciente para empezar).")
 
 
 async def ms_ver_pagos_recientes_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -909,8 +922,14 @@ async def ms_admin_receive_recent_payment_photo(update: Update, context: Context
     """MessageHandler registrado en su propio group (independiente del
     group=0 que usa la conversación de compra) para poder evaluar CADA
     foto/documento sin interferir con ms_receive_receipt: si el
-    remitente no es admin, o no ejecutó /agregar_pago_reciente
-    justo antes, no hace nada."""
+    remitente no es admin, o no ejecutó /agregar_pago_reciente antes, no
+    hace nada.
+
+    Fix: antes apagaba ms_awaiting_recent_payment después de la PRIMERA
+    foto, así que enviar varias seguidas (p. ej. 5) solo guardaba la
+    primera y el resto se ignoraba en silencio. Ahora se mantiene
+    encendido y acepta todas las que el admin quiera enviar, hasta que
+    ejecuta /listo_pagos_recientes."""
     if not context.user_data.get("ms_awaiting_recent_payment"):
         return
     if update.effective_user.id not in _get_admin_user_ids():
@@ -924,9 +943,12 @@ async def ms_admin_receive_recent_payment_photo(update: Update, context: Context
     else:
         return
 
-    context.user_data["ms_awaiting_recent_payment"] = False
     if RecentPaymentsStore().add(file_id, file_type, update.effective_user.id):
-        await message.reply_text("✅ Comprobante de muestra agregado correctamente.")
+        context.user_data["ms_recent_payment_count"] = context.user_data.get("ms_recent_payment_count", 0) + 1
+        count = context.user_data["ms_recent_payment_count"]
+        await message.reply_text(
+            f"✅ Agregado ({count} en esta carga). Envía otra foto/documento o escribe /listo_pagos_recientes para terminar."
+        )
     else:
         await message.reply_text("❌ No se pudo guardar el comprobante de muestra.")
 
@@ -973,6 +995,7 @@ def register_multisale_handlers(application):
     application.add_handler(CallbackQueryHandler(ms_reject_callback, pattern="^ms_reject_.+$"))
 
     application.add_handler(CommandHandler("agregar_pago_reciente", ms_agregar_pago_reciente_command))
+    application.add_handler(CommandHandler("listo_pagos_recientes", ms_listo_pagos_recientes_command))
     application.add_handler(CommandHandler("ver_pagos_recientes", ms_ver_pagos_recientes_command))
     application.add_handler(CommandHandler("quitar_pago_reciente", ms_quitar_pago_reciente_command))
 

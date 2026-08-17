@@ -401,14 +401,66 @@ async def main():
     ok_reconciled = "ms_auto_approve_venta_99999" in scheduled_names and "ms_delete_paydata_555_42" in scheduled_names
     record("19. Tras un 'reinicio', los timers pendientes se reprograman", ok_reconciled, str(scheduled_names))
 
-    # --- 7. Pagos recientes: agregar/ver/quitar ---
+    # --- 7. Pagos recientes: agregar VARIAS seguidas / ver / quitar ---
+    # Regresión: bug real reportado en producción - enviar 5 fotos
+    # seguidas tras /agregar_pago_reciente solo guardaba la primera,
+    # porque ms_awaiting_recent_payment se apagaba después de la
+    # primera foto. Este escenario ejercita el flujo real completo
+    # (comando -> 5 fotos -> /listo_pagos_recientes), no solo el store.
     reset_storage()
-    store = RecentPaymentsStore()
-    ok1 = store.add("FILEID_A", "photo", admin_id)
-    ok2 = store.add("FILEID_B", "document", admin_id)
-    ok_added = ok1 and ok2 and len(store.get_all()) == 2
-    record("7. /agregar_pago_reciente agrega comprobantes de muestra", ok_added)
-    ok_removed = RecentPaymentsStore().remove_at(0) and len(RecentPaymentsStore().get_all()) == 1
+    admin_user_data = {}
+    admin_ctx = make_context(admin_user_data)
+
+    def make_admin_message_update(text=None, photo=False):
+        update = MagicMock()
+        update.effective_user.id = admin_id
+        message = MagicMock()
+        replies = []
+
+        async def fake_reply(t, **kwargs):
+            replies.append(t)
+
+        message.reply_text = AsyncMock(side_effect=fake_reply)
+        if photo:
+            photo_size = MagicMock()
+            photo_size.file_id = f"FILEID_{len(replies)}_{id(message)}"
+            message.photo = [photo_size]
+            message.document = None
+        message.args = None
+        update.message = message
+        update._replies = replies
+        return update
+
+    cmd_update = make_admin_message_update()
+    cmd_update.message.text = "/agregar_pago_reciente"
+    await h.ms_agregar_pago_reciente_command(cmd_update, admin_ctx)
+    ok_started = admin_user_data.get("ms_awaiting_recent_payment") is True
+    record("/agregar_pago_reciente activa la espera de fotos", ok_started)
+
+    for _ in range(5):
+        photo_update = make_admin_message_update(photo=True)
+        await h.ms_admin_receive_recent_payment_photo(photo_update, admin_ctx)
+
+    ok_5_saved = len(RecentPaymentsStore().get_all()) == 5
+    record(
+        "7. Enviar 5 fotos seguidas guarda las 5 (no solo la primera)",
+        ok_5_saved,
+        f"guardadas={len(RecentPaymentsStore().get_all())}",
+    )
+
+    listo_update = make_admin_message_update()
+    await h.ms_listo_pagos_recientes_command(listo_update, admin_ctx)
+    ok_stopped = admin_user_data.get("ms_awaiting_recent_payment") is None
+    ok_confirmed = any("Se agregaron 5" in r for r in listo_update._replies)
+    record("/listo_pagos_recientes apaga la espera y confirma el total", ok_stopped and ok_confirmed, listo_update._replies)
+
+    # Tras /listo, una foto adicional NO debe guardarse (ya no está esperando).
+    stray_photo_update = make_admin_message_update(photo=True)
+    await h.ms_admin_receive_recent_payment_photo(stray_photo_update, admin_ctx)
+    ok_no_stray = len(RecentPaymentsStore().get_all()) == 5
+    record("Una foto después de /listo ya no se agrega", ok_no_stray)
+
+    ok_removed = RecentPaymentsStore().remove_at(0) and len(RecentPaymentsStore().get_all()) == 4
     record("/quitar_pago_reciente elimina el correcto", ok_removed)
 
     # --- 24. Los deep-links ?start=venta y ?start=demo no cambian ---
