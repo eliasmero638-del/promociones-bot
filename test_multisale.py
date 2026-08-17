@@ -239,6 +239,14 @@ async def main():
         f"when={interbancario_job.when} texto={query._edited[-1]['text'][-60:]!r}",
     )
 
+    # Excepción a pedido explícito: interbancario muestra la cédula del
+    # titular, así que se queda en el límite viejo de 1 sola vista (el
+    # resto de métodos sí permite 2, ver más abajo).
+    update, query = make_query("ms_method_interbancario", buyer_id, message_id=47)
+    state_interbancario2 = await h.ms_method_selected(update, ctx)
+    ok = state_interbancario2 == bot.ConversationHandler.END and "ya fueron mostrados" in query._edited[-1]["text"]
+    record("Interbancario: segunda vez YA bloqueado (límite de 1, por la cédula)", ok, query._edited[-1]["text"][:50])
+
     # A pedido explícito: los datos se pueden ver hasta 2 veces por
     # (usuario, método) - pensado para reintentos legítimos (ej. se cortó
     # el internet) - y solo se bloquean a partir de la 3ra vez.
