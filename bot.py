@@ -785,21 +785,47 @@ async def _send_promotion_media_item(context: ContextTypes.DEFAULT_TYPE, chat_id
     rejects the file_id for that endpoint, retries with the other media
     endpoint before giving up. This covers legacy plain-string entries of
     either real type without needing to change their stored format.
-    """
-    send_as_photo = lambda: context.bot.send_photo(
-        chat_id=chat_id, photo=file_id, caption=caption, parse_mode="Markdown"
-    )
-    send_as_video = lambda: context.bot.send_video(
-        chat_id=chat_id, video=file_id, caption=caption, parse_mode="Markdown"
-    )
 
-    attempts = [send_as_video, send_as_photo] if media_type_hint == "video" else [send_as_photo, send_as_video]
+    Second fix (promo_003 permanently stuck): a caption with malformed
+    Markdown (e.g. an unmatched "_"/"*"/"[") makes send_photo/send_video
+    raise "Can't parse entities" regardless of media type, so the
+    photo<->video fallback above never helps - both attempts fail
+    identically and the whole promotion (and, since the index only
+    advances after a successful send, every promotion after it in the
+    rotation) gets stuck retrying forever. If a send fails specifically
+    with a Markdown parse error, retry that same endpoint once more
+    without parse_mode instead of giving up, so a bad caption degrades to
+    plain text instead of jamming the rotation.
+    """
+    async def _send_photo(use_markdown: bool):
+        return await context.bot.send_photo(
+            chat_id=chat_id, photo=file_id, caption=caption,
+            parse_mode="Markdown" if use_markdown else None,
+        )
+
+    async def _send_video(use_markdown: bool):
+        return await context.bot.send_video(
+            chat_id=chat_id, video=file_id, caption=caption,
+            parse_mode="Markdown" if use_markdown else None,
+        )
+
+    senders = [_send_video, _send_photo] if media_type_hint == "video" else [_send_photo, _send_video]
 
     last_error = None
-    for attempt_index, send_attempt in enumerate(attempts):
+    for attempt_index, send_fn in enumerate(senders):
         try:
-            return await send_attempt()
+            return await send_fn(True)
         except TelegramError as e:
+            if _is_markdown_parse_error(e):
+                logger.warning(
+                    f"[publish_media] Caption has malformed Markdown ({e}); "
+                    f"retrying this send without parse_mode."
+                )
+                try:
+                    return await send_fn(False)
+                except TelegramError as e2:
+                    last_error = e2
+                    continue
             last_error = e
             if attempt_index == 0:
                 logger.warning(
@@ -809,6 +835,28 @@ async def _send_promotion_media_item(context: ContextTypes.DEFAULT_TYPE, chat_id
             continue
 
     raise last_error
+
+
+def _is_markdown_parse_error(error: TelegramError) -> bool:
+    """True for Telegram's "Can't parse entities" BadRequest, raised when a
+    caption/text has malformed Markdown (unmatched _*[ etc.)."""
+    return "can't parse entities" in str(error).lower()
+
+
+async def _send_promotion_text(context: ContextTypes.DEFAULT_TYPE, chat_id: int, text: str):
+    """Send promotion text with Markdown, falling back to plain text if the
+    caption has malformed Markdown - same fallback as
+    _send_promotion_media_item(), applied to the text-only publish paths."""
+    try:
+        return await context.bot.send_message(chat_id=chat_id, text=text, parse_mode="Markdown")
+    except TelegramError as e:
+        if _is_markdown_parse_error(e):
+            logger.warning(
+                f"[publish_text] Caption has malformed Markdown ({e}); "
+                f"retrying without parse_mode."
+            )
+            return await context.bot.send_message(chat_id=chat_id, text=text, parse_mode=None)
+        raise
 
 
 async def publish_promotion(context: ContextTypes.DEFAULT_TYPE):
@@ -919,20 +967,12 @@ async def publish_promotion(context: ContextTypes.DEFAULT_TYPE):
                 logger.info(f"Album published with {len(album_messages)} messages")
             else:
                 # No media could be sent, fall back to text
-                text_message = await context.bot.send_message(
-                    chat_id=GROUP_ID,
-                    text=caption,
-                    parse_mode="Markdown",
-                )
+                text_message = await _send_promotion_text(context, GROUP_ID, caption)
                 state.set_last_album_message_id(text_message.message_id)
                 logger.info("Published promotion as text (no valid media files)")
         else:
             # No media configured, send as text only
-            text_message = await context.bot.send_message(
-                chat_id=GROUP_ID,
-                text=caption,
-                parse_mode="Markdown",
-            )
+            text_message = await _send_promotion_text(context, GROUP_ID, caption)
             state.set_last_album_message_id(text_message.message_id)
             logger.info("Published promotion as text (no media configured)")
 
