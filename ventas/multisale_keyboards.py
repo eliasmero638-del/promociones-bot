@@ -16,11 +16,20 @@ from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from .multisale_config import GROUP_KEYS, PAYMENT_METHOD_KEYS, MultiSaleConfigManager
 
 
+# Fix de producción: los botones url="tg://user?id=..." fallan en Telegram
+# con "Button_user_invalid" (confirmado en los logs de Railway - rompía
+# CADA /start, porque este botón está en la primera pantalla). Se
+# reemplaza por un enlace público normal a @El593re, el mismo mecanismo
+# ya usado con éxito en ventas/keyboards.py::_contact_admin_el593re_button
+# (flujo "🔒 Acceso exclusivo a grupos VIP") - nunca fallado ahí.
+ADMIN_CONTACT_USERNAME = "El593re"
+
+
 def admin_button(admin_user_id: int) -> InlineKeyboardButton:
     """Botón "👨‍💼 Hablar con el administrador", presente en todo el flujo.
-    Usa tg://user?id= (mismo mecanismo ya usado en el resto del proyecto)
-    para abrir un chat directo sin depender de un @usuario público."""
-    return InlineKeyboardButton("👨‍💼 Hablar con el administrador", url=f"tg://user?id={admin_user_id}")
+    Recibe admin_user_id por compatibilidad con todos los call sites
+    existentes, pero ya no se usa - ver el comentario de arriba."""
+    return InlineKeyboardButton("👨‍💼 Hablar con el administrador", url=f"https://t.me/{ADMIN_CONTACT_USERNAME}")
 
 
 def menu_keyboard(config: MultiSaleConfigManager, selected: set, admin_user_id: int) -> InlineKeyboardMarkup:
@@ -89,7 +98,7 @@ def payment_data_keyboard(admin_user_id: int) -> InlineKeyboardMarkup:
 def payment_already_seen_keyboard(admin_user_id: int) -> InlineKeyboardMarkup:
     """Pantalla de "los datos ya fueron mostrados": a pedido explícito,
     ÚNICAMENTE el botón de contactar al administrador."""
-    return InlineKeyboardMarkup([[InlineKeyboardButton("👨‍💼 Contactar al administrador", url=f"tg://user?id={admin_user_id}")]])
+    return InlineKeyboardMarkup([[admin_button(admin_user_id)]])
 
 
 def admin_approval_keyboard(request_id: str) -> InlineKeyboardMarkup:
