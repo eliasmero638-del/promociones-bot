@@ -31,6 +31,16 @@ Escenarios cubiertos:
      admin). Este escenario llama a promo_panel() de verdad y valida que,
      si en el futuro se vuelve a usar parse_mode="Markdown" ahí, el texto
      tenga los caracteres especiales balanceados.
+  9. Regresión: una promoción con Markdown mal formado en su caption
+     (bug real de producción: promo_003 se quedó atascada para siempre)
+     no debe volver a trabar la rotación. Antes, send_photo/send_video Y
+     el fallback de texto reusaban el mismo caption roto con
+     parse_mode="Markdown", los tres fallaban igual con "Can't parse
+     entities", la excepción no se capturaba antes del código que avanza
+     el índice, y esa misma promoción se reintentaba en cada ciclo para
+     siempre (bloqueando también las promociones siguientes y "Publicar
+     Ahora"). Ahora debe publicarse en texto plano (sin Markdown) y el
+     índice debe avanzar a la siguiente promoción.
 
 Existe para evitar que una futura modificación rompa /desactivar_panel (o
 el aislamiento de /promo) sin que nadie lo note.
@@ -406,6 +416,93 @@ async def main():
             ok,
             f"parse_mode={kwargs.get('parse_mode')!r} balanced={balanced} caracter_desbalanceado={bad_char!r} texto={text!r}",
         )
+
+    # 9a. Promoción SIN media con caption Markdown roto: el fallback de
+    # texto debe reintentar sin parse_mode y publicarse en texto plano.
+    reset_storage()
+    manager = bot.PromotionsManager()
+    broken_caption = "Oferta especial_ solo hoy"  # "_" sin pareja
+    manager.data["promotions"] = [promo("broken_1", "promo_cmd")]
+    manager.data["promotions"][0]["caption"] = broken_caption
+    manager.save()
+    state = bot.BotState()
+    state.set_panel_enabled(True)
+    state.save()
+
+    ctx = make_context()
+
+    async def fake_send_message_markdown_breaks(chat_id, text, parse_mode=None, **kwargs):
+        if parse_mode == "Markdown":
+            raise bot.TelegramError("Can't parse entities: can't find end of the entity starting at byte offset 5")
+        msg = MagicMock()
+        msg.message_id = 222
+        return msg
+
+    ctx.bot.send_message = AsyncMock(side_effect=fake_send_message_markdown_breaks)
+    await bot.publish_promotion(ctx)
+
+    calls = [c for c in ctx.bot.send_message.call_args_list if c.kwargs.get("text") == broken_caption]
+    retried_then_succeeded = (
+        len(calls) == 2
+        and calls[0].kwargs.get("parse_mode") == "Markdown"
+        and calls[1].kwargs.get("parse_mode") is None
+    )
+    published_successfully = bot.BotState().get_last_published() is not None
+    record(
+        "9a. Caption con Markdown roto (sin media) se publica en texto plano en vez de fallar",
+        retried_then_succeeded and published_successfully,
+        f"llamadas={calls} last_published={bot.BotState().get_last_published()!r}",
+    )
+
+    # 9b. Promoción CON media (foto) y caption Markdown roto: el mismo
+    # fallback debe aplicarse dentro de _send_promotion_media_item(), la
+    # rotación no debe quedar atascada, y debe avanzar a la promoción
+    # siguiente en el próximo ciclo.
+    reset_storage()
+    manager = bot.PromotionsManager()
+    manager.data["promotions"] = [
+        {
+            "id": "promo_003",
+            "caption": broken_caption,
+            "media": [{"type": "photo", "file_id": "FILEID123"}],
+            "admin_username": "el593rm",
+        },
+        promo("promo_004", "promo_cmd"),
+    ]
+    manager.save()
+    state = bot.BotState()
+    state.set_panel_enabled(True)
+    state.save()
+
+    ctx = make_context()
+
+    async def fake_send_photo_markdown_breaks(chat_id, photo, caption=None, parse_mode=None, **kwargs):
+        if parse_mode == "Markdown":
+            raise bot.TelegramError("Can't parse entities: can't find end of the entity starting at byte offset 5")
+        msg = MagicMock()
+        msg.message_id = 333
+        return msg
+
+    ctx.bot.send_photo = AsyncMock(side_effect=fake_send_photo_markdown_breaks)
+    await bot.publish_promotion(ctx)
+
+    photo_sent_plain = any(
+        call.kwargs.get("parse_mode") is None for call in ctx.bot.send_photo.call_args_list
+    )
+    index_after_first = bot.BotState().get_current_promotion_index()
+
+    # Un segundo ciclo debe publicar promo_004 (la rotación ya no está
+    # atascada en promo_003).
+    await bot.publish_promotion(ctx)
+    sent_texts_second = ctx.bot._sent_texts
+    reached_next = any("CAPTION::promo_004" in t for t in sent_texts_second)
+
+    record(
+        "9b. Promoción con media y Markdown roto (promo_003) ya no traba la rotación",
+        photo_sent_plain and index_after_first == 1 and reached_next,
+        f"photo_calls={ctx.bot.send_photo.call_args_list} index_after_first={index_after_first} "
+        f"reached_next={reached_next} sent_texts_second={sent_texts_second}",
+    )
 
     print("\n=== RESULTADOS ===")
     for line in PASS:
