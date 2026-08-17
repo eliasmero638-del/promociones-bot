@@ -132,18 +132,22 @@ def _pluralize_grupo(count: int) -> str:
 # --- Textos ---
 
 def _menu_text(config: MultiSaleConfigManager) -> str:
-    lines = [
-        "🔥 BIENVENIDO/A",
-        "",
-        "Tenemos 5 grupos exclusivos, cada uno con un tipo de contenido diferente:",
-        "",
-    ]
+    count = len(GROUP_KEYS)
+    lines = ["🔥 BIENVENIDO/A", ""]
+    if count == 1:
+        lines.append("Tenemos un contenido exclusivo para ti:")
+    else:
+        lines.append(f"Tenemos {count} grupos exclusivos, cada uno con un tipo de contenido diferente:")
+    lines.append("")
     for key in GROUP_KEYS:
         lines.append(config.get_group_label(key))
         lines.append(config.get_group_description(key))
         lines.append("")
-    lines.append("👇 Selecciona los grupos que te interesan:")
-    lines.append("Puedes seleccionar uno, varios o los cinco.")
+    if count == 1:
+        lines.append("👇 Presiona el grupo para seleccionarlo:")
+    else:
+        lines.append("👇 Selecciona los grupos que te interesan:")
+        lines.append(f"Puedes seleccionar uno, varios o los {count}.")
     return "\n".join(lines)
 
 

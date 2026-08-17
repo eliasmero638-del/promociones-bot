@@ -27,10 +27,39 @@ RECENT_PAYMENTS_LOCAL_FILENAME = "multisale_recent_payments.json"
 UPSTASH_PAYMENT_DATA_SEEN_KEY = "multisale_bot:payment_data_seen"
 PAYMENT_DATA_SEEN_LOCAL_FILENAME = "multisale_payment_data_seen.json"
 
-# Orden fijo de los 5 grupos - se usa en todos los listados/resúmenes para
-# que el orden mostrado sea siempre el mismo, sin depender del orden de
-# iteración de un dict.
-GROUP_KEYS = ["portoviejo", "manta", "ecuatorianas", "vipec", "azules"]
+# Las 5 claves internas posibles, en orden fijo. Son solo identificadores
+# internos (callback_data, nombres de variable de entorno) - el nombre que
+# ve el cliente es siempre config.get_group_label(key), configurable por
+# variable de entorno, nunca esta clave.
+_ALL_GROUP_KEYS = ["portoviejo", "manta", "ecuatorianas", "vipec", "azules"]
+
+
+def _active_group_keys() -> List[str]:
+    """Qué claves de _ALL_GROUP_KEYS están activas en esta instalación,
+    configurable via MULTISALE_ACTIVE_GROUPS (subconjunto separado por
+    coma, ej. "portoviejo" para vender un solo grupo, o
+    "portoviejo,manta" para vender 2 de los 5). Si no está definida, se
+    usan las 5 - comportamiento histórico sin cambios. El resto de la UI
+    (menú, textos, selección múltiple, tabla de precios) se ajusta solo a
+    la cantidad de grupos activos, sin tocar código."""
+    raw = os.getenv("MULTISALE_ACTIVE_GROUPS", "").strip()
+    if not raw:
+        return list(_ALL_GROUP_KEYS)
+    requested = [k.strip() for k in raw.split(",") if k.strip()]
+    active = [k for k in requested if k in _ALL_GROUP_KEYS]
+    if not active:
+        logger.error(
+            f"[multisale.config] MULTISALE_ACTIVE_GROUPS='{raw}' no contiene ninguna clave válida "
+            f"(de {_ALL_GROUP_KEYS}); se usan las 5 por defecto."
+        )
+        return list(_ALL_GROUP_KEYS)
+    return active
+
+
+# Orden fijo de los grupos REALMENTE activos en esta instalación - se usa
+# en todos los listados/resúmenes/menús para que el orden mostrado sea
+# siempre el mismo, sin depender del orden de iteración de un dict.
+GROUP_KEYS = _active_group_keys()
 
 # Orden fijo de los 4 métodos de pago.
 PAYMENT_METHOD_KEYS = ["interbancario", "bank_pichincha", "bank_guayaquil", "paypal"]
