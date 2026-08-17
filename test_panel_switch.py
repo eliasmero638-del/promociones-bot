@@ -504,14 +504,12 @@ async def main():
         f"reached_next={reached_next} sent_texts_second={sent_texts_second}",
     )
 
-    # 10. Regresión: el botón "Hablar con el administrador" de las
-    # promociones debe ser un deep-link a ESTE bot (?start=promo), no un
-    # link simple a un @usuario externo. Bug real reportado: un link
-    # simple solo dispara "INICIAR" la primera vez que alguien le escribe
-    # a esa cuenta - quien ya le escribió antes no ve nada al volver a
-    # abrirlo y tiene que escribir el comando a mano. El deep-link fuerza
-    # que Telegram siempre muestre "INICIAR" y lleve directo al menú de
-    # ventas ya configurado (send_multisale_welcome, ver bot.start()).
+    # 10. Regresión: estructura final de los 3 botones de las promociones,
+    # a pedido explícito. En este orden exacto:
+    #   1. "Contactar al administrador" -> https://t.me/El593re (fijo)
+    #   2. "⚡ Acceso rápido y fácil" -> https://t.me/VentasEcua_bot?start=promo (fijo)
+    #   3. "🎁 Solicitar prueba gratis" -> deep-link a este bot (?start=demo),
+    #      sin cambios de función/destino respecto a como ya funcionaba.
     reset_storage()
     manager = bot.PromotionsManager()
     manager.data["promotions"] = [promo("promo_1", "promo_cmd")]
@@ -527,17 +525,22 @@ async def main():
         c for c in ctx.bot.send_message.call_args_list
         if c.kwargs.get("text") == "Para más información:"
     ]
-    admin_button_url = None
+    rows = []
     if button_calls:
         markup = button_calls[-1].kwargs.get("reply_markup")
         if markup and markup.inline_keyboard:
-            admin_button_url = markup.inline_keyboard[0][0].url
+            rows = [(row[0].text, row[0].url) for row in markup.inline_keyboard]
 
-    ok = admin_button_url == "https://t.me/test_bot?start=promo"
+    expected = [
+        ("Contactar al administrador", "https://t.me/El593re"),
+        ("⚡ Acceso rápido y fácil", "https://t.me/VentasEcua_bot?start=promo"),
+        ("🎁 Solicitar prueba gratis", "https://t.me/test_bot?start=demo"),
+    ]
+    ok = rows == expected
     record(
-        "10. 'Hablar con el administrador' es un deep-link a este bot (?start=promo), no a un @usuario externo",
+        "10. Estructura final de los 3 botones de la promoción (administrador / acceso rápido / prueba gratis)",
         ok,
-        f"admin_button_url={admin_button_url!r}",
+        f"rows={rows} expected={expected}",
     )
 
     print("\n=== RESULTADOS ===")
