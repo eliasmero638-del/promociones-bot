@@ -104,12 +104,14 @@ def demo_keyboard(config: SalesConfigManager, admin_user_id: int) -> InlineKeybo
 
 
 def _contact_admin_button(admin_user_id: int) -> InlineKeyboardButton:
-    """Botón "Contactar al administrador" mediante tg://user?id=, que abre
-    un chat directo sin necesitar un @usuario público configurado. Recibe
-    el ID como parámetro (en vez de importarlo aquí desde bot.py) para que
-    este archivo siga siendo solo funciones puras, tal como indica el
-    docstring del módulo."""
-    return InlineKeyboardButton("👤 Contactar al administrador", url=f"tg://user?id={admin_user_id}")
+    """Botón "Contactar al administrador". Fix de producción: url="tg://user?id=..."
+    lo rechaza Telegram con "Button_user_invalid" (confirmado en logs de
+    Railway - rompía /start en el sistema nuevo; este botón usa el mismo
+    esquema, así que tiene el mismo problema latente). Se usa un enlace
+    público normal en su lugar, igual que _contact_admin_el593re_button()
+    de este mismo archivo (nunca reportado roto). Se mantiene el parámetro
+    admin_user_id sin usar para no tener que tocar cada call site."""
+    return InlineKeyboardButton("👤 Contactar al administrador", url="https://t.me/El593re")
 
 
 def vip_menu_keyboard(admin_user_id: int, group_key: str) -> InlineKeyboardMarkup:
