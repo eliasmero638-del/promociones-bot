@@ -14,7 +14,7 @@ Cubre los escenarios pedidos en la especificación:
   7.    Pagos recientes: agregar/ver/quitar, conserva la selección.
   8-10. Datos de pago vistos una vez por (usuario, método); otro método
         nunca visto sigue disponible.
-  11.   Borrado de datos de pago (job real, sin esperar 5 min).
+  11.   Borrado de datos de pago (job real, sin esperar 20 min).
   12-14. Comprobante: se crea la venta, se reenvía a TODOS los admins, se
          borra del chat del cliente, NO se borra del chat de los admins.
   15-16. Aprobación / rechazo manual.
@@ -213,7 +213,7 @@ async def main():
     record("8. Primera vez que ve Banco Pichincha: se muestran los datos", ok, query._edited[-1]["text"][:50])
 
     ok_scheduled = any(j.name == "ms_delete_paydata_555_42" for j in ctx.job_queue._scheduled_jobs)
-    record("Se programa el auto-borrado de los datos de pago (5 min)", ok_scheduled)
+    record("Se programa el auto-borrado de los datos de pago (20 min)", ok_scheduled)
 
     update, query = make_query("ms_method_bank_pichincha", buyer_id, message_id=43)
     state2 = await h.ms_method_selected(update, ctx)
