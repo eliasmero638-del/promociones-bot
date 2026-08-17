@@ -399,6 +399,26 @@ async def main():
     )
     record("24. bot.start() sigue usando send_sales_welcome/send_demo_directly para los deep-links", ok_deep_links)
 
+    # --- Regresión: ningún botón usa el esquema "tg://user?id=" ---
+    # Telegram lo rechaza con "Button_user_invalid" (confirmado en
+    # producción: rompía CADA /start, porque este botón vive en la
+    # primera pantalla). Los mocks de este test no golpean la API real de
+    # Telegram, así que no hubieran detectado esto directamente - pero sí
+    # podemos verificar que ningún botón construido por este módulo use
+    # ese esquema de URL nunca más.
+    admin_kb = kb.admin_button(admin_id)
+    ok_admin_button = not (admin_kb.url or "").startswith("tg://user")
+    record("El botón de administrador no usa tg://user?id= (Button_user_invalid)", ok_admin_button, admin_kb.url)
+
+    already_seen_kb = kb.payment_already_seen_keyboard(admin_id)
+    all_urls_ok = all(
+        not (btn.url or "").startswith("tg://user")
+        for row in already_seen_kb.inline_keyboard
+        for btn in row
+        if btn.url
+    )
+    record("payment_already_seen_keyboard tampoco usa tg://user?id=", all_urls_ok)
+
     print("\n=== RESULTADOS ===")
     for line in PASS:
         print("✅", line)
