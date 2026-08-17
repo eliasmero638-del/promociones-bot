@@ -167,7 +167,7 @@ def _buy_exclusive_access_button() -> InlineKeyboardButton:
     """Botón "💎 Comprar acceso exclusivo" de la pantalla principal "🔒
     Acceso exclusivo a grupos VIP": mismo destino que
     _contact_admin_el593re_button() (@El593re), solo cambia el texto."""
-    return InlineKeyboardButton("💎 COMPRAR ACCESO EXCLUSIVO", url="https://t.me/El593re")
+    return InlineKeyboardButton("⚡ Acceso rápido", url="https://t.me/VentasEcua_bot")
 
 
 def vip_exclusive_keyboard() -> InlineKeyboardMarkup:
