@@ -1201,16 +1201,51 @@ async def activar_panel_command(update: Update, context: ContextTypes.DEFAULT_TY
 
 
 async def chat_id_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """/chatid: responde con el chat_id del chat donde se envía el comando.
-    Forma más simple de identificar el ID de un grupo (p. ej. para
-    configurar GROUP_ID) sin depender de bots externos - basta con
-    enviarlo dentro del grupo ya con el bot agregado como administrador.
-    Solo responde a administradores; también lo deja en los logs."""
+    """/chatid: herramienta de diagnóstico - responde con TODOS los IDs y
+    datos disponibles del chat/mensaje/usuario donde se envía el comando
+    (chat_id, chat_type, chat_title, username del chat, message_id,
+    user_id y username de quien lo envía, y el propio id/username del
+    bot). Sirve para configurar cualquier bot nuevo (o este mismo en un
+    grupo nuevo) sin tener que buscar los IDs a mano con herramientas
+    externas - basta con agregar el bot al chat y enviar /chatid ahí.
+    Solo responde a administradores; también lo deja en los logs.
+    Puramente informativo: no cambia ni afecta nada del bot actual."""
     if update.effective_user.id not in ADMIN_USER_IDS:
         return
     chat = update.effective_chat
-    logger.info(f"[chatid] Solicitado por admin {update.effective_user.id} en chat {chat.id} ({chat.title!r}, type={chat.type}).")
-    await update.message.reply_text(f"Chat: {chat.title or chat.type}\nID: `{chat.id}`", parse_mode="Markdown")
+    user = update.effective_user
+    message = update.effective_message
+    bot_user = context.bot
+
+    logger.info(
+        f"[chatid] Solicitado por admin {user.id} en chat {chat.id} "
+        f"({chat.title!r}, type={chat.type})."
+    )
+
+    lines = [
+        "🔎 *Diagnóstico del chat*",
+        "",
+        f"*Chat ID:* `{chat.id}`",
+        f"*Chat type:* `{chat.type}`",
+    ]
+    if chat.title:
+        lines.append(f"*Chat title:* {_escape_markdown_legacy(chat.title)}")
+    if chat.username:
+        lines.append(f"*Chat username:* @{chat.username}")
+    if message is not None:
+        lines.append(f"*Message ID:* `{message.message_id}`")
+    lines.append("")
+    lines.append(f"*User ID:* `{user.id}`")
+    if user.username:
+        lines.append(f"*User username:* @{user.username}")
+    if user.first_name:
+        lines.append(f"*User name:* {_escape_markdown_legacy(user.first_name)}")
+    lines.append("")
+    lines.append(f"*Bot ID:* `{bot_user.id}`")
+    if bot_user.username:
+        lines.append(f"*Bot username:* @{bot_user.username}")
+
+    await update.message.reply_text("\n".join(lines), parse_mode="Markdown")
 
 
 async def debug_storage(update: Update, context: ContextTypes.DEFAULT_TYPE):

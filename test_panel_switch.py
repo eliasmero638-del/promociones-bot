@@ -543,6 +543,48 @@ async def main():
         f"rows={rows} expected={expected}",
     )
 
+    # 11. /chatid: herramienta de diagnóstico para configurar bots nuevos
+    # sin buscar los IDs a mano. Debe mostrar chat_id, chat_type,
+    # chat_title, message_id, user_id y los datos del propio bot; y no
+    # debe responder a un usuario que no sea administrador.
+    def make_chatid_update(user_id, chat_id=-100999888777, chat_type="supergroup", chat_title="Grupo de prueba", message_id=321):
+        update = MagicMock()
+        update.effective_user.id = user_id
+        update.effective_chat.id = chat_id
+        update.effective_chat.type = chat_type
+        update.effective_chat.title = chat_title
+        update.effective_chat.username = None
+        update.effective_message.message_id = message_id
+        update.effective_user.username = "admin_test"
+        update.effective_user.first_name = "Admin"
+        update.message.reply_text = AsyncMock()
+        ctx = MagicMock()
+        ctx.bot.id = 987654321
+        ctx.bot.username = "nuevo_bot_test"
+        return update, ctx
+
+    # 11a. Administrador: recibe el diagnóstico completo.
+    update, ctx = make_chatid_update(bot.ADMIN_USER_ID)
+    await bot.chat_id_command(update, ctx)
+    ok_admin = update.message.reply_text.await_count == 1
+    sent_text = update.message.reply_text.call_args.args[0] if ok_admin else ""
+    expected_fragments = [
+        "-100999888777", "supergroup", "Grupo de prueba", "321",
+        str(bot.ADMIN_USER_ID), "admin_test", "Admin", "987654321", "nuevo_bot_test",
+    ]
+    ok_content = ok_admin and all(fragment in sent_text for fragment in expected_fragments)
+    record(
+        "11a. /chatid (admin) muestra chat_id, chat_type, chat_title, message_id, user_id y datos del bot",
+        ok_content,
+        f"texto={sent_text!r}",
+    )
+
+    # 11b. No-administrador: no debe recibir ninguna respuesta.
+    update, ctx = make_chatid_update(999999999)
+    await bot.chat_id_command(update, ctx)
+    ok_no_admin = update.message.reply_text.await_count == 0
+    record("11b. /chatid no responde a un usuario que no es administrador", ok_no_admin, f"await_count={update.message.reply_text.await_count}")
+
     print("\n=== RESULTADOS ===")
     for line in PASS:
         print("✅", line)
