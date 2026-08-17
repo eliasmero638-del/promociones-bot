@@ -182,7 +182,7 @@ def _payment_data_text(config: MultiSaleConfigManager, method_key: str, price: f
         f"{label.upper()}\n\n"
         f"{details}\n\n"
         f"💵 Valor a pagar: ${price:.2f}\n\n"
-        f"⏱️ Estos datos estarán disponibles durante {minutes} minutos.\n\n"
+        f"⏱️ Cuentas con {minutes} minutos para completar el pago. ¿Necesitas más tiempo? Contacta al administrador.\n\n"
         "Una vez realizado el pago, envía tu comprobante."
     )
 
