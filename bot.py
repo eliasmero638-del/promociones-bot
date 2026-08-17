@@ -2230,16 +2230,17 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await send_demo_directly(update, context)
         return
 
-    # /start (sin deep-link) va directo al menú principal de ventas
-    # (ventas.keyboards.welcome_keyboard: Acceso exclusivo a grupos VIP /
-    # Obtener grupo Free / Quiero vender contenido), a pedido explícito.
-    # La pantalla vieja (START_WELCOME_TEXT + _start_welcome_keyboard, con
-    # "🔥 QUIERO SER VIP 🔥" / "💰 QUIERO VENDER CONTENIDO 💰") y sus
-    # callbacks (start_enter_vip_callback, start_sell_content_callback,
-    # start_back_to_welcome_callback) quedan intactos y registrados, solo
-    # dejan de mostrarse automáticamente aquí.
-    from ventas.handlers import send_sales_welcome
-    await send_sales_welcome(update, context)
+    # /start (sin deep-link) va directo al menú NUEVO de 5 grupos
+    # (ventas.multisale_handlers.send_multisale_welcome), a pedido
+    # explícito. El menú viejo (ventas.keyboards.welcome_keyboard: Acceso
+    # exclusivo a grupos VIP / Obtener grupo Free / Quiero vender
+    # contenido) y la pantalla más antigua (START_WELCOME_TEXT +
+    # _start_welcome_keyboard) quedan intactos y registrados - siguen
+    # siendo alcanzables por los deep-links de arriba (?start=venta,
+    # ?start=demo) y por sus propios callbacks - solo dejan de mostrarse
+    # automáticamente acá.
+    from ventas.multisale_handlers import send_multisale_welcome
+    await send_multisale_welcome(update, context)
 
 
 async def start_enter_vip_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -2871,6 +2872,14 @@ def main():
     # "from bot import ..." calls (inside its functions) work safely.
     from ventas.handlers import register_ventas_handlers
     register_ventas_handlers(application)
+
+    # Sistema NUEVO de venta multi-grupo (5 grupos, selección múltiple,
+    # comprobante, aprobación automática) - módulo separado e independiente
+    # del de arriba, con su propio prefijo de callback_data ("ms_"), sin
+    # tocar ventas/handlers.py. Registrado antes del catch-all por el mismo
+    # motivo que register_ventas_handlers().
+    from ventas.multisale_handlers import register_multisale_handlers
+    register_multisale_handlers(application)
 
     # Botón "👑 Quiero ser VIP" del mensaje de /start (ver start_enter_vip_callback).
     # Registrado antes del catch-all de abajo para que este callback_data
