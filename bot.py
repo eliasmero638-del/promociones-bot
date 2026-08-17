@@ -1209,18 +1209,25 @@ async def chat_id_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     grupo nuevo) sin tener que buscar los IDs a mano con herramientas
     externas - basta con agregar el bot al chat y enviar /chatid ahí.
     Solo responde a administradores; también lo deja en los logs.
-    Puramente informativo: no cambia ni afecta nada del bot actual."""
-    if update.effective_user.id not in ADMIN_USER_IDS:
-        return
+    Puramente informativo: no cambia ni afecta nada del bot actual.
+
+    El intento se loguea SIEMPRE, incluso si quien lo envía no es
+    administrador (sin responderle nada a esa persona) - así, si el
+    comando "no responde", se puede confirmar en los logs de Railway si
+    el mensaje llegó y de qué user_id, para descartar que sea justamente
+    un problema de permisos (ser admin del grupo de Telegram no es lo
+    mismo que estar en ADMIN_USER_IDS, la lista que reconoce este bot)."""
     chat = update.effective_chat
     user = update.effective_user
     message = update.effective_message
-    bot_user = context.bot
-
     logger.info(
-        f"[chatid] Solicitado por admin {user.id} en chat {chat.id} "
-        f"({chat.title!r}, type={chat.type})."
+        f"[chatid] Comando recibido: user_id={user.id} username={user.username!r} "
+        f"chat_id={chat.id} chat_title={chat.title!r} chat_type={chat.type} "
+        f"es_admin_reconocido={user.id in ADMIN_USER_IDS}."
     )
+    if user.id not in ADMIN_USER_IDS:
+        return
+    bot_user = context.bot
 
     lines = [
         "🔎 *Diagnóstico del chat*",
