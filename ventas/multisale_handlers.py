@@ -276,19 +276,35 @@ async def send_multisale_welcome(update: Update, context: ContextTypes.DEFAULT_T
 
 async def ms_toggle_group(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
-    await query.answer()
 
     group_key = query.data[len("ms_toggle_"):]
     if group_key not in GROUP_KEYS:
+        await query.answer()
         return
 
+    config = MultiSaleConfigManager()
     selected = _selected_set(context)
     if group_key in selected:
         selected.discard(group_key)
+        now_selected = False
     else:
         selected.add(group_key)
+        now_selected = True
 
-    config = MultiSaleConfigManager()
+    # Toast de confirmación en cada toque (antes era silencioso): así el
+    # comprador ve de inmediato si quedó marcado o desmarcado, en vez de
+    # depender únicamente de que el mensaje se vuelva a dibujar - reduce
+    # el riesgo de un doble-toque accidental por duda ("¿sí funcionó?").
+    label = config.get_group_label(group_key)
+    mark = "✅ Agregado" if now_selected else "⬜ Quitado"
+    await query.answer(f"{mark}: {label}")
+
+    logger.info(
+        f"[multisale] user={update.effective_user.id} toggled '{group_key}' "
+        f"-> {'seleccionado' if now_selected else 'deseleccionado'}. "
+        f"Selección actual: {sorted(selected)}"
+    )
+
     admin_id = _get_admin_user_id()
     await _safe_edit_message(query, _menu_text(config), reply_markup=kb.menu_keyboard(config, selected, admin_id))
 
@@ -347,6 +363,7 @@ async def ms_continue(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     selected = _selected_set(context)
     if not selected:
+        logger.info(f"[multisale] user={update.effective_user.id} presionó Continuar sin ningún grupo seleccionado.")
         await query.answer("Selecciona al menos un grupo antes de continuar.", show_alert=True)
         return
     await query.answer()
@@ -354,6 +371,7 @@ async def ms_continue(update: Update, context: ContextTypes.DEFAULT_TYPE):
     config = MultiSaleConfigManager()
     admin_id = _get_admin_user_id()
     ordered_selection = [key for key in GROUP_KEYS if key in selected]
+    logger.info(f"[multisale] user={update.effective_user.id} continúa con selección: {ordered_selection}")
     await _safe_edit_message(query, _offer_text(config, ordered_selection), reply_markup=kb.offer_keyboard(admin_id))
 
 
