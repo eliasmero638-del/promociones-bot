@@ -976,20 +976,41 @@ async def publish_promotion(context: ContextTypes.DEFAULT_TYPE):
             state.set_last_album_message_id(text_message.message_id)
             logger.info("Published promotion as text (no media configured)")
 
-        # Send admin contact button
-        admin_username = promotion.get("admin_username", "el593rm")
-        keyboard_rows = [[InlineKeyboardButton("Hablar con el administrador", url=f"https://t.me/{admin_username}")]]
+        # bot_username se usa en los dos botones de abajo. Se lee de
+        # context.bot.username -no se escribe a mano- porque ya está
+        # disponible en este punto: Application.run_polling() llama a
+        # bot.initialize() (que a su vez llama a get_me() y cachea el
+        # username) antes de arrancar el scheduler, y publish_promotion()
+        # solo se ejecuta después de eso (el primer job está programado 60s
+        # después del arranque).
+        bot_username = (context.bot.username or "").strip().lstrip("@")
+
+        # "Hablar con el administrador": a pedido explícito, deep-link a
+        # ESTE bot (con ?start=promo) en vez de a un @usuario externo. Un
+        # link simple (https://t.me/usuario) solo dispara el botón nativo
+        # "INICIAR" de Telegram la primera vez que alguien le escribe a esa
+        # cuenta - quien ya le escribió antes no ve nada nuevo al volver a
+        # abrirlo y tiene que escribir el comando a mano. Un deep-link con
+        # parámetro (?start=xxx) sí dispara "INICIAR" siempre, sin importar
+        # si el usuario ya usó el bot antes - mismo mecanismo que ya usa el
+        # botón de prueba gratis de abajo (?start=demo). "promo" no es
+        # "venta" ni "demo", así que start() lo manda directo al menú de
+        # ventas ya configurado (send_multisale_welcome, ver start()).
+        if bot_username:
+            keyboard_rows = [[InlineKeyboardButton("Hablar con el administrador", url=f"https://t.me/{bot_username}?start=promo")]]
+        else:
+            admin_username = promotion.get("admin_username", "el593rm")
+            keyboard_rows = [[InlineKeyboardButton("Hablar con el administrador", url=f"https://t.me/{admin_username}")]]
+            logger.warning(
+                "[publish_promotion] context.bot.username no disponible; "
+                "se usa el enlace a admin_username como respaldo para "
+                "'Hablar con el administrador'."
+            )
 
         # Botón "🎁 Solicitar prueba gratis" (deep-link a /start demo, ver
-        # send_demo_directly en ventas/handlers.py). Se usa context.bot.username
-        # -no se escribe a mano- porque ya está disponible en este punto:
-        # Application.run_polling() llama a bot.initialize() (que a su vez
-        # llama a get_me() y cachea el username) antes de arrancar el
-        # scheduler, y publish_promotion() solo se ejecuta después de eso
-        # (el primer job está programado 60s después del arranque). Si por
-        # cualquier motivo no estuviera disponible, se omite este botón sin
-        # afectar el resto de la publicación.
-        bot_username = (context.bot.username or "").strip().lstrip("@")
+        # send_demo_directly en ventas/handlers.py). Si por cualquier
+        # motivo bot_username no estuviera disponible, se omite este botón
+        # sin afectar el resto de la publicación.
         if bot_username:
             keyboard_rows.append(
                 [InlineKeyboardButton("🎁 Solicitar prueba gratis", url=f"https://t.me/{bot_username}?start=demo")]
