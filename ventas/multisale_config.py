@@ -355,10 +355,19 @@ class RecentPaymentsStore:
         return self._save()
 
 
+# Máximo de veces que un cliente (no-admin) puede ver los datos de un
+# mismo método de pago, a pedido explícito - pensado para reintentos
+# legítimos (ej. se cortó internet a mitad del pago). El administrador
+# nunca cuenta contra este límite (ver ms_method_selected en
+# multisale_handlers.py, que lo exime por completo).
+MAX_PAYMENT_DATA_VIEWS = 2
+
+
 class PaymentDataSeenStore:
-    """Registra, de forma PERMANENTE (user_id, método_de_pago) -> ya vio
-    los datos bancarios de ese método. Independiente por método: haber
-    visto Banco Pichincha no bloquea ver PayPal. Nunca se resetea
+    """Registra, de forma PERMANENTE, cuántas veces (user_id, método_de_pago)
+    ya vio los datos bancarios de ese método - hasta MAX_PAYMENT_DATA_VIEWS
+    veces, luego queda bloqueado para siempre. Independiente por método:
+    haber visto Banco Pichincha no bloquea ver PayPal. Nunca se resetea
     automáticamente - solo un administrador puede volver a mostrar los
     datos manualmente por fuera del bot."""
 
@@ -372,9 +381,17 @@ class PaymentDataSeenStore:
         self.data = self._load()
 
     def _load(self) -> dict:
-        if self.use_upstash:
-            return self._load_from_upstash()
-        return self._load_from_file()
+        data = self._load_from_upstash() if self.use_upstash else self._load_from_file()
+        # Compatibilidad con el formato viejo (lista de claves "vistas una
+        # única vez"): cada entrada se migra a count=1, para no resetear a
+        # 0 vistas a quienes ya habían visto los datos bajo el límite
+        # anterior (de 1 vez).
+        seen = data.get("seen")
+        if isinstance(seen, list):
+            data["seen"] = {key: 1 for key in seen}
+        elif not isinstance(seen, dict):
+            data["seen"] = {}
+        return data
 
     def _load_from_upstash(self) -> dict:
         try:
@@ -437,12 +454,14 @@ class PaymentDataSeenStore:
     def _key(user_id: int, method_key: str) -> str:
         return f"{user_id}:{method_key}"
 
-    def has_seen(self, user_id: int, method_key: str) -> bool:
-        return self._key(user_id, method_key) in self.data.get("seen", [])
+    def get_view_count(self, user_id: int, method_key: str) -> int:
+        return self.data.get("seen", {}).get(self._key(user_id, method_key), 0)
+
+    def has_reached_limit(self, user_id: int, method_key: str) -> bool:
+        return self.get_view_count(user_id, method_key) >= MAX_PAYMENT_DATA_VIEWS
 
     def mark_seen(self, user_id: int, method_key: str) -> None:
-        seen = self.data.setdefault("seen", [])
+        seen = self.data.setdefault("seen", {})
         key = self._key(user_id, method_key)
-        if key not in seen:
-            seen.append(key)
-            self._save()
+        seen[key] = seen.get(key, 0) + 1
+        self._save()

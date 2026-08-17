@@ -21,12 +21,16 @@ Flujo:
        context.user_data["ms_locked_groups"] y muestra la confirmación.
     -> ms_confirm_pay(): muestra los métodos de pago.
     -> ms_method_selected() [entry point de la conversación]: si el
-       usuario ya vio ese método antes (PaymentDataSeenStore, permanente),
-       muestra el aviso y termina; si no, muestra los datos, los marca
-       como vistos, programa su borrado según el método (interbancario =
-       5 min, el resto = 20 min - ver get_payment_data_lifetime_seconds())
-       con recuperación tras reinicio vía PendingPaymentDataDeletionsStore,
-       y pasa al estado MS_WAITING_RECEIPT.
+       usuario ya vio ese método MAX_PAYMENT_DATA_VIEWS veces (2, ver
+       PaymentDataSeenStore - permanente, pensado para reintentos
+       legítimos como que se corte el internet), muestra el aviso y
+       termina; si no, muestra los datos, cuenta una vista más, programa
+       su borrado según el método (interbancario = 5 min, el resto = 20
+       min - ver get_payment_data_lifetime_seconds()) con recuperación
+       tras reinicio vía PendingPaymentDataDeletionsStore, y pasa al
+       estado MS_WAITING_RECEIPT. El administrador está exento de este
+       límite (siempre puede volver a verlos, para comprobar que todo
+       funciona).
     -> ms_receive_receipt(): guarda la venta, reenvía el comprobante a
        TODOS los administradores (con botones Aprobar/Rechazar), borra el
        comprobante del chat del cliente, programa la aprobación
@@ -469,12 +473,14 @@ async def ms_send_receipt_hint(update: Update, context: ContextTypes.DEFAULT_TYP
 # --- Métodos de pago / datos de pago ---
 
 async def ms_method_selected(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Entry point de la conversación. Si el usuario ya vio este método
-    antes (para siempre, ver PaymentDataSeenStore), muestra el aviso y
-    termina sin re-mostrar los datos. Si no, los muestra, los marca como
-    vistos, programa su borrado (persistente) con la duración según el
-    método - ver get_payment_data_lifetime_seconds() - y pasa a esperar
-    el comprobante."""
+    """Entry point de la conversación. Si el usuario (no-admin) ya vio
+    este método MAX_PAYMENT_DATA_VIEWS veces (para siempre, ver
+    PaymentDataSeenStore), muestra el aviso y termina sin re-mostrar los
+    datos. Si no, los muestra, cuenta una vista más, programa su borrado
+    (persistente) con la duración según el método - ver
+    get_payment_data_lifetime_seconds() - y pasa a esperar el
+    comprobante. El administrador está exento del límite: siempre puede
+    volver a ver los datos, para comprobar que todo funciona."""
     query = update.callback_query
     await query.answer()
 
@@ -491,11 +497,12 @@ async def ms_method_selected(update: Update, context: ContextTypes.DEFAULT_TYPE)
         return ConversationHandler.END
 
     user_id = update.effective_user.id
+    is_admin = user_id in _get_admin_user_ids()
     seen_store = PaymentDataSeenStore()
     admin_id = _get_admin_user_id()
 
-    if seen_store.has_seen(user_id, method_key):
-        logger.info(f"[multisale] User {user_id} tried to re-view payment data for '{method_key}'; already seen.")
+    if not is_admin and seen_store.has_reached_limit(user_id, method_key):
+        logger.info(f"[multisale] User {user_id} tried to re-view payment data for '{method_key}'; limit reached.")
         await _safe_edit_message(query, ALREADY_SEEN_TEXT, reply_markup=kb.payment_already_seen_keyboard(admin_id))
         return ConversationHandler.END
 
@@ -505,7 +512,8 @@ async def ms_method_selected(update: Update, context: ContextTypes.DEFAULT_TYPE)
     await _safe_edit_message(
         query, _payment_data_text(config, method_key, price), reply_markup=kb.payment_data_keyboard(admin_id)
     )
-    seen_store.mark_seen(user_id, method_key)
+    if not is_admin:
+        seen_store.mark_seen(user_id, method_key)
     context.user_data["ms_payment_method"] = method_key
 
     # Programa el auto-borrado del mensaje de datos de pago, con
