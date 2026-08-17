@@ -23,7 +23,7 @@ Flujo:
     -> ms_method_selected() [entry point de la conversación]: si el
        usuario ya vio ese método antes (PaymentDataSeenStore, permanente),
        muestra el aviso y termina; si no, muestra los datos, los marca
-       como vistos, programa su borrado a los 5 minutos (con
+       como vistos, programa su borrado a los 20 minutos (con
        recuperación tras reinicio vía PendingPaymentDataDeletionsStore) y
        pasa al estado MS_WAITING_RECEIPT.
     -> ms_receive_receipt(): guarda la venta, reenvía el comprobante a
@@ -82,7 +82,7 @@ logger = logging.getLogger("bot")
 # máquina de estados, sin colisión posible entre ellas).
 (MS_WAITING_RECEIPT,) = range(1)
 
-PAYMENT_DATA_LIFETIME_SECONDS = 300  # 5 minutos
+PAYMENT_DATA_LIFETIME_SECONDS = 1200  # 20 minutos
 AUTO_APPROVAL_SECONDS = 300  # 5 minutos
 # Cuánto puede esperar un comprador, tras ver los datos de pago, antes de
 # que la conversación se cierre por inactividad. Más largo que el resto
@@ -169,7 +169,7 @@ def _payment_data_text(config: MultiSaleConfigManager, method_key: str, price: f
         f"{label.upper()}\n\n"
         f"{details}\n\n"
         f"💵 Valor a pagar: ${price:.2f}\n\n"
-        "⏱️ Estos datos estarán disponibles durante 5 minutos.\n\n"
+        "⏱️ Estos datos estarán disponibles durante 20 minutos.\n\n"
         "Una vez realizado el pago, envía tu comprobante."
     )
 
@@ -441,7 +441,7 @@ async def ms_method_selected(update: Update, context: ContextTypes.DEFAULT_TYPE)
     """Entry point de la conversación. Si el usuario ya vio este método
     antes (para siempre, ver PaymentDataSeenStore), muestra el aviso y
     termina sin re-mostrar los datos. Si no, los muestra, los marca como
-    vistos, programa su borrado a los 5 minutos (persistente) y pasa a
+    vistos, programa su borrado a los 20 minutos (persistente) y pasa a
     esperar el comprobante."""
     query = update.callback_query
     await query.answer()
@@ -478,7 +478,7 @@ async def ms_method_selected(update: Update, context: ContextTypes.DEFAULT_TYPE)
 
     # Programa el auto-borrado del mensaje de datos de pago, con
     # recuperación persistente por si el bot se reinicia antes de que se
-    # cumplan los 5 minutos.
+    # cumplan los 20 minutos.
     chat_id = query.message.chat_id
     message_id = query.message.message_id
     delete_at = time.time() + PAYMENT_DATA_LIFETIME_SECONDS
@@ -626,7 +626,7 @@ async def ms_conversation_timeout_handler(update: Update, context: ContextTypes.
     MS_CONVERSATION_TIMEOUT_SECONDS. No cancela la venta (todavía no existe
     ninguna) ni borra ms_locked_groups/ms_payment_method a propósito - así,
     si vuelve más tarde y aún no se le borraron los datos de pago (siguen
-    en pantalla hasta los 5 minutos), su compra en curso sigue siendo
+    en pantalla hasta los 20 minutos), su compra en curso sigue siendo
     válida para recibir el comprobante; el timeout solo libera el estado
     de conversación de PTB."""
     try:
