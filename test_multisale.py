@@ -107,6 +107,7 @@ def make_context(user_data=None):
         job.name = name
         job.callback = callback
         job.data = data
+        job.when = when
         scheduled_jobs.append(job)
         return job
 
@@ -214,6 +215,29 @@ async def main():
 
     ok_scheduled = any(j.name == "ms_delete_paydata_555_42" for j in ctx.job_queue._scheduled_jobs)
     record("Se programa el auto-borrado de los datos de pago (20 min)", ok_scheduled)
+
+    pichincha_job = next(j for j in ctx.job_queue._scheduled_jobs if j.name == "ms_delete_paydata_555_42")
+    ok_20min = pichincha_job.when == 1200 and "20 minutos" in query._edited[-1]["text"]
+    record(
+        "Banco Pichincha: datos de pago duran 20 minutos",
+        ok_20min,
+        f"when={pichincha_job.when}",
+    )
+
+    # Pago interbancario: mismo mecanismo, pero 5 minutos en vez de 20.
+    update, query = make_query("ms_method_interbancario", buyer_id, message_id=45)
+    state_interbancario = await h.ms_method_selected(update, ctx)
+    interbancario_job = next(j for j in ctx.job_queue._scheduled_jobs if j.name == "ms_delete_paydata_555_45")
+    ok_5min = (
+        state_interbancario == h.MS_WAITING_RECEIPT
+        and interbancario_job.when == 300
+        and "5 minutos" in query._edited[-1]["text"]
+    )
+    record(
+        "Pago interbancario: datos de pago duran 5 minutos (el resto sigue en 20)",
+        ok_5min,
+        f"when={interbancario_job.when} texto={query._edited[-1]['text'][-60:]!r}",
+    )
 
     update, query = make_query("ms_method_bank_pichincha", buyer_id, message_id=43)
     state2 = await h.ms_method_selected(update, ctx)

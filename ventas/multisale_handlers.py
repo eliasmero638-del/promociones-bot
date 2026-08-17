@@ -23,9 +23,10 @@ Flujo:
     -> ms_method_selected() [entry point de la conversación]: si el
        usuario ya vio ese método antes (PaymentDataSeenStore, permanente),
        muestra el aviso y termina; si no, muestra los datos, los marca
-       como vistos, programa su borrado a los 20 minutos (con
-       recuperación tras reinicio vía PendingPaymentDataDeletionsStore) y
-       pasa al estado MS_WAITING_RECEIPT.
+       como vistos, programa su borrado según el método (interbancario =
+       5 min, el resto = 20 min - ver get_payment_data_lifetime_seconds())
+       con recuperación tras reinicio vía PendingPaymentDataDeletionsStore,
+       y pasa al estado MS_WAITING_RECEIPT.
     -> ms_receive_receipt(): guarda la venta, reenvía el comprobante a
        TODOS los administradores (con botones Aprobar/Rechazar), borra el
        comprobante del chat del cliente, programa la aprobación
@@ -82,8 +83,19 @@ logger = logging.getLogger("bot")
 # máquina de estados, sin colisión posible entre ellas).
 (MS_WAITING_RECEIPT,) = range(1)
 
-PAYMENT_DATA_LIFETIME_SECONDS = 1200  # 20 minutos
+# Tiempo que quedan visibles los datos de pago antes de auto-borrarse, por
+# método: "Pago interbancario" queda en 5 minutos, el resto (Pichincha,
+# Guayaquil, PayPal) en 20. get_payment_data_lifetime_seconds() resuelve
+# cuál aplica en cada caso.
+PAYMENT_DATA_LIFETIME_SECONDS_DEFAULT = 1200  # 20 minutos
+PAYMENT_DATA_LIFETIME_SECONDS_BY_METHOD = {
+    "interbancario": 300,  # 5 minutos
+}
 AUTO_APPROVAL_SECONDS = 300  # 5 minutos
+
+
+def get_payment_data_lifetime_seconds(method_key: str) -> int:
+    return PAYMENT_DATA_LIFETIME_SECONDS_BY_METHOD.get(method_key, PAYMENT_DATA_LIFETIME_SECONDS_DEFAULT)
 # Cuánto puede esperar un comprador, tras ver los datos de pago, antes de
 # que la conversación se cierre por inactividad. Más largo que el resto
 # del proyecto a propósito: acá se espera a que la persona complete una
@@ -165,11 +177,12 @@ def _confirm_text(config: MultiSaleConfigManager, selected_keys, price: float) -
 def _payment_data_text(config: MultiSaleConfigManager, method_key: str, price: float) -> str:
     label = config.get_payment_method_label(method_key)
     details = config.get_payment_method_details(method_key)
+    minutes = get_payment_data_lifetime_seconds(method_key) // 60
     return (
         f"{label.upper()}\n\n"
         f"{details}\n\n"
         f"💵 Valor a pagar: ${price:.2f}\n\n"
-        "⏱️ Estos datos estarán disponibles durante 20 minutos.\n\n"
+        f"⏱️ Estos datos estarán disponibles durante {minutes} minutos.\n\n"
         "Una vez realizado el pago, envía tu comprobante."
     )
 
@@ -441,8 +454,9 @@ async def ms_method_selected(update: Update, context: ContextTypes.DEFAULT_TYPE)
     """Entry point de la conversación. Si el usuario ya vio este método
     antes (para siempre, ver PaymentDataSeenStore), muestra el aviso y
     termina sin re-mostrar los datos. Si no, los muestra, los marca como
-    vistos, programa su borrado a los 20 minutos (persistente) y pasa a
-    esperar el comprobante."""
+    vistos, programa su borrado (persistente) con la duración según el
+    método - ver get_payment_data_lifetime_seconds() - y pasa a esperar
+    el comprobante."""
     query = update.callback_query
     await query.answer()
 
@@ -478,15 +492,17 @@ async def ms_method_selected(update: Update, context: ContextTypes.DEFAULT_TYPE)
 
     # Programa el auto-borrado del mensaje de datos de pago, con
     # recuperación persistente por si el bot se reinicia antes de que se
-    # cumplan los 20 minutos.
+    # cumpla el plazo. Duración según el método (interbancario = 5 min,
+    # el resto = 20 min - ver get_payment_data_lifetime_seconds()).
+    lifetime_seconds = get_payment_data_lifetime_seconds(method_key)
     chat_id = query.message.chat_id
     message_id = query.message.message_id
-    delete_at = time.time() + PAYMENT_DATA_LIFETIME_SECONDS
+    delete_at = time.time() + lifetime_seconds
     PendingPaymentDataDeletionsStore().add_pending(chat_id, message_id, delete_at)
     if context.job_queue:
         context.job_queue.run_once(
             _ms_delete_payment_data_job,
-            when=PAYMENT_DATA_LIFETIME_SECONDS,
+            when=lifetime_seconds,
             data={"chat_id": chat_id, "message_id": message_id},
             name=f"ms_delete_paydata_{chat_id}_{message_id}",
         )
@@ -625,8 +641,9 @@ async def ms_conversation_timeout_handler(update: Update, context: ContextTypes.
     """Si el comprador no envía el comprobante dentro de
     MS_CONVERSATION_TIMEOUT_SECONDS. No cancela la venta (todavía no existe
     ninguna) ni borra ms_locked_groups/ms_payment_method a propósito - así,
-    si vuelve más tarde y aún no se le borraron los datos de pago (siguen
-    en pantalla hasta los 20 minutos), su compra en curso sigue siendo
+    si vuelve más tarde y aún no se le borraron los datos de pago (el
+    plazo depende del método, ver get_payment_data_lifetime_seconds()),
+    su compra en curso sigue siendo
     válida para recibir el comprobante; el timeout solo libera el estado
     de conversación de PTB."""
     try:
