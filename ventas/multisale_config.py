@@ -101,14 +101,10 @@ def _default_config() -> dict:
                     "Cédula: 1315531515"
                 ),
             },
-            # Estos 3 métodos reutilizan como valor inicial los mismos
-            # datos bancarios ya usados en el sistema de ventas viejo
-            # (ventas/config.py, sin tocar ese archivo) porque son la misma
-            # cuenta real - se pueden editar independientemente desde acá
-            # sin afectar al sistema viejo.
+            # Datos reales confirmados por el admin (imagen "DATOS DE PAGO").
             "bank_pichincha": {
                 "label": "🏦 Banco Pichincha",
-                "details": "Cuenta: 2206103888\nTitular: Ricardo.m",
+                "details": "Cuenta de ahorro transaccional: 2214437107\nTitular: Ricardo.m",
             },
             "bank_guayaquil": {
                 "label": "🏦 Banco Guayaquil",
