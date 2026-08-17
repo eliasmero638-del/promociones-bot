@@ -28,13 +28,57 @@ load_dotenv()
 # Configuration
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 GROUP_ID = int(os.getenv("GROUP_ID", 0))
-ADMIN_USER_ID = 8710301236
+
+
+def _parse_admin_user_ids(raw: str, default_ids: List[int]) -> List[int]:
+    """Parses a comma-separated list of numeric Telegram user IDs (e.g.
+    "111,222,333"). Falls back to `default_ids` if the env var is unset or
+    contains no valid numbers, so an installation that hasn't configured
+    ADMIN_USER_IDS yet still behaves exactly as before."""
+    raw = (raw or "").strip()
+    if not raw:
+        return list(default_ids)
+    ids = []
+    for part in raw.split(","):
+        part = part.strip()
+        if not part:
+            continue
+        try:
+            ids.append(int(part))
+        except ValueError:
+            logger.error(f"[config] ADMIN_USER_IDS contains a non-numeric value: '{part}' - ignored.")
+    return ids or list(default_ids)
+
+
 # Administradores autorizados (panel, aprobación de pagos, notificaciones).
-# ADMIN_USER_ID se mantiene como el admin "principal" (usado en los botones
-# de contacto tg://user?id= que ven los compradores); ADMIN_USER_IDS es el
-# conjunto completo con acceso a /panel, /debug_storage y las acciones de
-# administración - agregar un ID acá le da el mismo nivel de acceso.
-ADMIN_USER_IDS = {ADMIN_USER_ID, 8862610368}
+# Configurable via la variable de entorno ADMIN_USER_IDS (IDs numéricos de
+# Telegram separados por coma, ej. "111111111,222222222"). Si no está
+# configurada, se usan los IDs históricos de esta instalación como default -
+# así una instalación existente que nunca configuró la variable sigue
+# funcionando exactamente igual.
+# ADMIN_USER_ID es el admin "principal" (el primero de la lista - usado en
+# los botones de contacto tg://user?id= que ven los compradores);
+# ADMIN_USER_IDS es el conjunto completo con acceso a /panel,
+# /debug_storage y las acciones de administración.
+ADMIN_USER_IDS = set(_parse_admin_user_ids(os.getenv("ADMIN_USER_IDS", ""), [8710301236, 8862610368]))
+ADMIN_USER_ID = _parse_admin_user_ids(os.getenv("ADMIN_USER_IDS", ""), [8710301236, 8862610368])[0]
+
+# Username de Telegram (sin @) mostrado por defecto como contacto del
+# administrador en las promociones nuevas y en la pantalla "Quiero vender
+# contenido". Configurable via DEFAULT_ADMIN_USERNAME.
+DEFAULT_ADMIN_USERNAME = os.getenv("DEFAULT_ADMIN_USERNAME", "el593rm").strip().lstrip("@")
+
+# Username de Telegram (sin @) usado como contacto fijo del administrador
+# en el flujo de ventas (botón "Contactar al administrador" en las
+# promociones publicadas, y en todo ventas/keyboards.py y
+# ventas/multisale_keyboards.py). Puede ser el mismo que
+# DEFAULT_ADMIN_USERNAME o uno distinto - configurable via
+# SALES_ADMIN_CONTACT_USERNAME.
+SALES_ADMIN_CONTACT_USERNAME = os.getenv("SALES_ADMIN_CONTACT_USERNAME", "El593re").strip().lstrip("@")
+
+# Nombre de marca mostrado en la pantalla de bienvenida antigua de /start
+# (START_WELCOME_TEXT, más abajo). Configurable via BRAND_NAME.
+BRAND_NAME = os.getenv("BRAND_NAME", "EC Promociones VIP").strip()
 # --- Phase 6: optional persistent storage location (Railway Volume) ---
 # Backward-compatible by design: if DATA_DIR is not set, promotions.json and
 # bot_state.json are stored exactly where they always were (the process's
@@ -138,9 +182,9 @@ pending_media_groups: Dict[str, Dict] = {}
 # How long to wait, after the last item of a media group arrives, before
 # assuming the album is complete and saving it as one promotion.
 MEDIA_GROUP_DEBOUNCE_SECONDS = 2.0
-# Default admin contact used for promotions created automatically from
-# channel posts (no admin_username is available from a channel post).
-DEFAULT_ADMIN_USERNAME = "el593rm"
+# DEFAULT_ADMIN_USERNAME (used for promotions created automatically from
+# channel posts, where no admin_username is available) is defined near the
+# top of this file, read from the DEFAULT_ADMIN_USERNAME env var.
 
 # --- Phase 3: integration safeguard against duplicate/split albums ---
 # Remembers which media_group_id values were already turned into a
@@ -544,7 +588,7 @@ class BotState:
 DEFAULT_WELCOME_TEXT = (
     "¡Bienvenido(a), {nombre}! 🔥\n\n"
     "Entra al Grupo Free desde el botón de abajo. 👇\n\n"
-    "No abandones Ecuador 593; aquí publicaremos nuevos accesos, promociones y contenido exclusivo. 🚀"
+    f"No abandones {BRAND_NAME}; aquí publicaremos nuevos accesos, promociones y contenido exclusivo. 🚀"
 )
 
 # Order here also defines the order of the "edit button" menu options.
@@ -576,7 +620,7 @@ class WelcomeConfigManager:
             "welcome_image_file_id": None,
             "delete_after_seconds": 10,
             "buttons": {
-                "free_url": "https://t.me/+YPCqH5B8Q8MyY2Q1",
+                "free_url": os.getenv("WELCOME_FREE_GROUP_URL", "https://t.me/+YPCqH5B8Q8MyY2Q1").strip(),
             },
         }
 
@@ -979,31 +1023,38 @@ async def publish_promotion(context: ContextTypes.DEFAULT_TYPE):
         # Estructura final de botones a pedido explícito (3 botones fijos,
         # en este orden):
         #   1. "Contactar al administrador" -> contacto humano fijo
-        #      (@El593re), no depende de bot_username.
-        #   2. "⚡ Acceso rápido y fácil" -> bot de ventas fijo
-        #      (@VentasEcua_bot), con ?start=promo para que Telegram
-        #      siempre muestre "INICIAR" sin importar si el usuario ya usó
-        #      ese bot antes (mismo mecanismo verificado en el botón 3).
+        #      (SALES_ADMIN_CONTACT_USERNAME), no depende de bot_username.
+        #   2. "⚡ Acceso rápido y fácil" -> este mismo bot (es el bot de
+        #      ventas: ventas/ está registrado en esta misma Application),
+        #      con ?start=promo para que Telegram siempre muestre "INICIAR"
+        #      sin importar si el usuario ya usó el bot antes (mismo
+        #      mecanismo verificado en el botón 3).
         #   3. "🎁 Solicitar prueba gratis" -> SIN cambios de función ni
         #      destino, solo cambia de posición (era el único botón extra,
         #      ahora es el tercero).
-        keyboard_rows = [
-            [InlineKeyboardButton("Contactar al administrador", url="https://t.me/El593re")],
-            [InlineKeyboardButton("⚡ Acceso rápido y fácil", url="https://t.me/VentasEcua_bot?start=promo")],
-        ]
-
-        # Botón "🎁 Solicitar prueba gratis" (deep-link a /start demo, ver
-        # send_demo_directly en ventas/handlers.py). Se usa
+        # bot_username se calcula una sola vez para los botones 2 y 3. Se usa
         # context.bot.username -no se escribe a mano- porque ya está
         # disponible en este punto: Application.run_polling() llama a
         # bot.initialize() (que a su vez llama a get_me() y cachea el
         # username) antes de arrancar el scheduler, y publish_promotion()
         # solo se ejecuta después de eso (el primer job está programado 60s
         # después del arranque). Si por cualquier motivo no estuviera
-        # disponible, se omite este botón sin afectar el resto de la
-        # publicación (los otros dos botones fijos de arriba no dependen
-        # de esto).
+        # disponible, se omiten ambos botones sin afectar el resto de la
+        # publicación (el botón 1 no depende de esto).
         bot_username = (context.bot.username or "").strip().lstrip("@")
+        keyboard_rows = [
+            [InlineKeyboardButton("Contactar al administrador", url=f"https://t.me/{SALES_ADMIN_CONTACT_USERNAME}")],
+        ]
+        if bot_username:
+            keyboard_rows.append(
+                [InlineKeyboardButton("⚡ Acceso rápido y fácil", url=f"https://t.me/{bot_username}?start=promo")]
+            )
+        else:
+            logger.warning(
+                "[publish_promotion] context.bot.username no disponible; "
+                "se omite el botón de acceso rápido en esta publicación."
+            )
+
         if bot_username:
             keyboard_rows.append(
                 [InlineKeyboardButton("🎁 Solicitar prueba gratis", url=f"https://t.me/{bot_username}?start=demo")]
@@ -2238,7 +2289,7 @@ async def _apply_promotion_edit(query, context: ContextTypes.DEFAULT_TYPE):
 
 
 START_WELCOME_TEXT = (
-    "¡Bienvenido a EC Promociones VIP!\n\n"
+    f"¡Bienvenido a {BRAND_NAME}!\n\n"
     "Accede a nuestros grupos exclusivos con contenido actualizado todos los días.\n\n"
     "¿Qué obtendrás?\n\n"
     "Acceso inmediato al VIP.\n"
@@ -2322,7 +2373,7 @@ async def start_sell_content_callback(update: Update, context: ContextTypes.DEFA
     )
     keyboard = InlineKeyboardMarkup(
         [
-            [InlineKeyboardButton("👤 Hablar con el administrador", url="https://t.me/el593rm")],
+            [InlineKeyboardButton("👤 Hablar con el administrador", url=f"https://t.me/{DEFAULT_ADMIN_USERNAME}")],
             [InlineKeyboardButton("⬅️ Volver", callback_data="start_back_to_welcome")],
         ]
     )

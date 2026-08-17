@@ -9,6 +9,7 @@ para no colisionar con ningún callback_data ya registrado en el resto del
 proyecto (ventas_*, sale_*, add_promo, panel*, etc.).
 """
 
+import os
 from typing import Dict, List
 
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
@@ -19,10 +20,14 @@ from .multisale_config import GROUP_KEYS, PAYMENT_METHOD_KEYS, MultiSaleConfigMa
 # Fix de producción: los botones url="tg://user?id=..." fallan en Telegram
 # con "Button_user_invalid" (confirmado en los logs de Railway - rompía
 # CADA /start, porque este botón está en la primera pantalla). Se
-# reemplaza por un enlace público normal a @El593re, el mismo mecanismo
-# ya usado con éxito en ventas/keyboards.py::_contact_admin_el593re_button
-# (flujo "🔒 Acceso exclusivo a grupos VIP") - nunca fallado ahí.
-ADMIN_CONTACT_USERNAME = "El593re"
+# reemplaza por un enlace público normal, el mismo mecanismo ya usado con
+# éxito en ventas/keyboards.py::_contact_admin_el593re_button (flujo "🔒
+# Acceso exclusivo a grupos VIP") - nunca fallado ahí. Mismo default
+# histórico de esta instalación ("El593re"), configurable via
+# SALES_ADMIN_CONTACT_USERNAME (la misma variable que usa bot.py y
+# ventas/keyboards.py) para que una instalación nueva use su propio
+# contacto sin tocar el código.
+ADMIN_CONTACT_USERNAME = os.getenv("SALES_ADMIN_CONTACT_USERNAME", "El593re").strip().lstrip("@")
 
 
 def admin_button(admin_user_id: int) -> InlineKeyboardButton:

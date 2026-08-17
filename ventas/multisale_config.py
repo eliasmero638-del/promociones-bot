@@ -35,16 +35,31 @@ GROUP_KEYS = ["portoviejo", "manta", "ecuatorianas", "vipec", "azules"]
 # Orden fijo de los 4 métodos de pago.
 PAYMENT_METHOD_KEYS = ["interbancario", "bank_pichincha", "bank_guayaquil", "paypal"]
 
+def _env_float(name: str, default: float) -> float:
+    """Lee una variable de entorno numérica (precio); si no está definida
+    o no es un número válido, devuelve `default`."""
+    raw = os.getenv(name, "").strip()
+    if not raw:
+        return default
+    try:
+        return float(raw)
+    except ValueError:
+        logger.error(f"[multisale.config] {name}='{raw}' no es un número válido; se usa el valor por defecto.")
+        return default
+
+
 # Tabla de precios por cantidad de grupos seleccionados. El precio "de
 # lista" (para el cálculo de "precio individual" en la pantalla de oferta)
 # es siempre PRICE_TABLE[1] * cantidad - nunca una combinación escrita a
-# mano.
+# mano. Cada precio es configurable via MULTISALE_PRICE_<n> (ej.
+# MULTISALE_PRICE_1=6.99) para que una instalación nueva pueda tener su
+# propia tabla de precios sin tocar el código.
 PRICE_TABLE = {
-    1: 6.99,
-    2: 9.99,
-    3: 12.99,
-    4: 16.99,
-    5: 19.99,
+    1: _env_float("MULTISALE_PRICE_1", 6.99),
+    2: _env_float("MULTISALE_PRICE_2", 9.99),
+    3: _env_float("MULTISALE_PRICE_3", 12.99),
+    4: _env_float("MULTISALE_PRICE_4", 16.99),
+    5: _env_float("MULTISALE_PRICE_5", 19.99),
 }
 
 
@@ -59,61 +74,89 @@ def get_individual_total(count: int) -> float:
     return round(PRICE_TABLE[1] * count, 2)
 
 
+def _env(name: str, default: str) -> str:
+    """Lee una variable de entorno de texto; si no está definida (o está
+    vacía), devuelve `default`. Ver el mismo helper en ventas/config.py -
+    permite que cada grupo/método de pago sea propio de cada instalación."""
+    value = os.getenv(name)
+    return value if value else default
+
+
+# Valores por defecto de esta instalación (los de la cuenta que ya está en
+# producción). Una instalación nueva los sobreescribe por completo
+# definiendo las variables de entorno MULTISALE_GROUP_<key>_LABEL /
+# _DESCRIPTION / _LINK y MULTISALE_PAYMENT_<key>_LABEL / _DETAILS - no hace
+# falta tocar este archivo.
+_GROUP_DEFAULTS = {
+    "portoviejo": {
+        "label": "1️⃣ Portoviejo Exclusivo",
+        "description": "Contenido relacionado con chicas y material exclusivo de Portoviejo.",
+        "link": "https://t.me/+VX6lOT4YfnEwYTE5",
+    },
+    "manta": {
+        "label": "2️⃣ Exclusivas de Manta",
+        "description": "Contenido relacionado con chicas de Manta y sus alrededores.",
+        "link": "https://t.me/+VEc0aYafQ1VhMTlh",
+    },
+    "ecuatorianas": {
+        "label": "3️⃣ Ecuatorianas VIP",
+        "description": "Contenido de diferentes provincias y ciudades del Ecuador.",
+        "link": "https://t.me/+-dNUyLEaCU04Nzgx",
+    },
+    "vipec": {
+        "label": "4️⃣ VIP EC",
+        "description": "Contenido casero ecuatoriano y material compartido dentro de la comunidad.",
+        "link": "https://t.me/+B58R7JG2NgtlMTYx",
+    },
+    "azules": {
+        "label": "5️⃣ Azules EC",
+        "description": "Famosas y modelos de Ecuador.",
+        "link": "https://t.me/+6TweKM1ROMMyNTNh",
+    },
+}
+
+_PAYMENT_METHOD_DEFAULTS = {
+    "interbancario": {
+        "label": "🏦 Pago interbancario",
+        "details": (
+            "Banco: Banco Pichincha\n"
+            "Tipo de cuenta: Ahorros\n"
+            "Número de cuenta: [lo configuraré]\n"
+            "Titular: Ricardo Elías Mero Mieles\n"
+            "Cédula: 1315531515"
+        ),
+    },
+    "bank_pichincha": {
+        "label": "🏦 Banco Pichincha",
+        "details": "Cuenta de ahorro transaccional: 2214437107\nTitular: Ricardo.m",
+    },
+    "bank_guayaquil": {
+        "label": "🏦 Banco Guayaquil",
+        "details": "Cuenta de ahorros: 0013991214\nTitular: Ricardo.m",
+    },
+    "paypal": {
+        "label": "💙 PayPal",
+        "details": "Ridmerwtf@gmail.com\nTitular: Ricardo.m",
+    },
+}
+
+
 def _default_config() -> dict:
     return {
         "groups": {
-            "portoviejo": {
-                "label": "1️⃣ Portoviejo Exclusivo",
-                "description": "Contenido relacionado con chicas y material exclusivo de Portoviejo.",
-                "link": "https://t.me/+VX6lOT4YfnEwYTE5",
-            },
-            "manta": {
-                "label": "2️⃣ Exclusivas de Manta",
-                "description": "Contenido relacionado con chicas de Manta y sus alrededores.",
-                "link": "https://t.me/+VEc0aYafQ1VhMTlh",
-            },
-            "ecuatorianas": {
-                "label": "3️⃣ Ecuatorianas VIP",
-                "description": "Contenido de diferentes provincias y ciudades del Ecuador.",
-                "link": "https://t.me/+-dNUyLEaCU04Nzgx",
-            },
-            "vipec": {
-                "label": "4️⃣ VIP EC",
-                "description": "Contenido casero ecuatoriano y material compartido dentro de la comunidad.",
-                "link": "https://t.me/+B58R7JG2NgtlMTYx",
-            },
-            "azules": {
-                "label": "5️⃣ Azules EC",
-                "description": "Famosas y modelos de Ecuador.",
-                "link": "https://t.me/+6TweKM1ROMMyNTNh",
-            },
+            key: {
+                "label": _env(f"MULTISALE_GROUP_{key.upper()}_LABEL", defaults["label"]),
+                "description": _env(f"MULTISALE_GROUP_{key.upper()}_DESCRIPTION", defaults["description"]),
+                "link": _env(f"MULTISALE_GROUP_{key.upper()}_LINK", defaults["link"]),
+            }
+            for key, defaults in _GROUP_DEFAULTS.items()
         },
         "payment_methods": {
-            "interbancario": {
-                "label": "🏦 Pago interbancario",
-                # Igual que pidió el admin - se deja como placeholder
-                # explícito hasta que configure el número de cuenta real.
-                "details": (
-                    "Banco: Banco Pichincha\n"
-                    "Tipo de cuenta: Ahorros\n"
-                    "Número de cuenta: [lo configuraré]\n"
-                    "Titular: Ricardo Elías Mero Mieles\n"
-                    "Cédula: 1315531515"
-                ),
-            },
-            # Datos reales confirmados por el admin (imagen "DATOS DE PAGO").
-            "bank_pichincha": {
-                "label": "🏦 Banco Pichincha",
-                "details": "Cuenta de ahorro transaccional: 2214437107\nTitular: Ricardo.m",
-            },
-            "bank_guayaquil": {
-                "label": "🏦 Banco Guayaquil",
-                "details": "Cuenta de ahorros: 0013991214\nTitular: Ricardo.m",
-            },
-            "paypal": {
-                "label": "💙 PayPal",
-                "details": "Ridmerwtf@gmail.com\nTitular: Ricardo.m",
-            },
+            key: {
+                "label": _env(f"MULTISALE_PAYMENT_{key.upper()}_LABEL", defaults["label"]),
+                "details": _env(f"MULTISALE_PAYMENT_{key.upper()}_DETAILS", defaults["details"]),
+            }
+            for key, defaults in _PAYMENT_METHOD_DEFAULTS.items()
         },
     }
 

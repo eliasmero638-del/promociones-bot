@@ -365,8 +365,9 @@ async def _reschedule_pending_trial_kicks(context: ContextTypes.DEFAULT_TYPE):
 async def ventas_vip_exclusive_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     await query.answer()
+    bot_username = (context.bot.username or "").strip().lstrip("@")
     await _safe_edit_message(
-        query, VIP_EXCLUSIVE_TEXT, reply_markup=keyboards.vip_exclusive_keyboard(), parse_mode="HTML"
+        query, VIP_EXCLUSIVE_TEXT, reply_markup=keyboards.vip_exclusive_keyboard(bot_username), parse_mode="HTML"
     )
 
 

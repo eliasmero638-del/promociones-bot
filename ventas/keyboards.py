@@ -4,9 +4,22 @@ Funciones puras (reciben datos, devuelven un InlineKeyboardMarkup) para
 mantener handlers.py enfocado en la lógica de conversación con Telegram.
 """
 
+import os
+
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 
 from .config import SalesConfigManager
+
+# Username de Telegram (sin @) usado como contacto fijo del administrador
+# en todo este flujo de ventas. Mismo default histórico de esta
+# instalación ("El593re") - configurable via SALES_ADMIN_CONTACT_USERNAME
+# (la misma variable que usa bot.py) para que una instalación nueva use su
+# propio contacto sin tocar el código.
+_ADMIN_CONTACT_USERNAME = os.getenv("SALES_ADMIN_CONTACT_USERNAME", "El593re").strip().lstrip("@")
+# Username de Telegram (sin @) usado en la pantalla "Quiero vender
+# contenido" (mismo default histórico "el593rm" - normalmente el mismo que
+# bot.py::DEFAULT_ADMIN_USERNAME). Configurable via DEFAULT_ADMIN_USERNAME.
+_SELL_CONTENT_ADMIN_USERNAME = os.getenv("DEFAULT_ADMIN_USERNAME", "el593rm").strip().lstrip("@")
 
 PAYMENT_METHOD_LABELS = {
     "bank_guayaquil": "🏦 Banco Guayaquil",
@@ -47,7 +60,7 @@ def sell_content_keyboard() -> InlineKeyboardMarkup:
     Volver al menú principal (su único nivel superior)."""
     return InlineKeyboardMarkup(
         [
-            [InlineKeyboardButton("👤 Hablar con el administrador", url="https://t.me/el593rm")],
+            [InlineKeyboardButton("👤 Hablar con el administrador", url=f"https://t.me/{_SELL_CONTENT_ADMIN_USERNAME}")],
             [InlineKeyboardButton("⬅️ Volver", callback_data="ventas_back_to_welcome")],
         ]
     )
@@ -111,7 +124,7 @@ def _contact_admin_button(admin_user_id: int) -> InlineKeyboardButton:
     público normal en su lugar, igual que _contact_admin_el593re_button()
     de este mismo archivo (nunca reportado roto). Se mantiene el parámetro
     admin_user_id sin usar para no tener que tocar cada call site."""
-    return InlineKeyboardButton("👤 Contactar al administrador", url="https://t.me/El593re")
+    return InlineKeyboardButton("👤 Contactar al administrador", url=f"https://t.me/{_ADMIN_CONTACT_USERNAME}")
 
 
 def vip_menu_keyboard(admin_user_id: int, group_key: str) -> InlineKeyboardMarkup:
@@ -160,23 +173,29 @@ def _contact_admin_el593re_button() -> InlineKeyboardButton:
     sin enlace configurado): a pedido explícito, abre directamente
     @El593re (en vez de tg://user?id=ADMIN_USER_ID, como el resto del
     flujo de ventas)."""
-    return InlineKeyboardButton("👤 CONTACTAR AL ADMINISTRADOR", url="https://t.me/El593re")
+    return InlineKeyboardButton("👤 CONTACTAR AL ADMINISTRADOR", url=f"https://t.me/{_ADMIN_CONTACT_USERNAME}")
 
 
-def _buy_exclusive_access_button() -> InlineKeyboardButton:
-    """Botón "💎 Comprar acceso exclusivo" de la pantalla principal "🔒
-    Acceso exclusivo a grupos VIP": mismo destino que
-    _contact_admin_el593re_button() (@El593re), solo cambia el texto."""
-    return InlineKeyboardButton("⚡ Acceso rápido", url="https://t.me/VentasEcua_bot")
+def _buy_exclusive_access_button(bot_username: str = "") -> InlineKeyboardButton:
+    """Botón "⚡ Acceso rápido" de la pantalla principal "🔒 Acceso
+    exclusivo a grupos VIP": abre este mismo bot (es el bot de ventas).
+    `bot_username` se calcula dinámicamente (context.bot.username) en el
+    call site en vez de escribirse a mano, así funciona igual sin importar
+    con qué @username de Telegram esté corriendo esta instalación. Si por
+    algún motivo no está disponible, cae de vuelta al contacto del
+    administrador."""
+    if bot_username:
+        return InlineKeyboardButton("⚡ Acceso rápido", url=f"https://t.me/{bot_username}")
+    return _contact_admin_el593re_button()
 
 
-def vip_exclusive_keyboard() -> InlineKeyboardMarkup:
+def vip_exclusive_keyboard(bot_username: str = "") -> InlineKeyboardMarkup:
     """Pantalla "🔒 Acceso exclusivo a grupos VIP": los dos botones pedidos
     + Volver al menú principal (su nivel superior)."""
     return InlineKeyboardMarkup(
         [
             [InlineKeyboardButton("🧪 INICIAR PRUEBA GRATUITA", callback_data="ventas_vip_exclusive_trial")],
-            [_buy_exclusive_access_button()],
+            [_buy_exclusive_access_button(bot_username)],
             [InlineKeyboardButton("⬅️ Volver", callback_data="ventas_back_to_welcome")],
         ]
     )

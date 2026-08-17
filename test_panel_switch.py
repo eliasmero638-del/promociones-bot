@@ -506,8 +506,11 @@ async def main():
 
     # 10. Regresión: estructura final de los 3 botones de las promociones,
     # a pedido explícito. En este orden exacto:
-    #   1. "Contactar al administrador" -> https://t.me/El593re (fijo)
-    #   2. "⚡ Acceso rápido y fácil" -> https://t.me/VentasEcua_bot?start=promo (fijo)
+    #   1. "Contactar al administrador" -> https://t.me/El593re (fijo,
+    #      SALES_ADMIN_CONTACT_USERNAME)
+    #   2. "⚡ Acceso rápido y fácil" -> deep-link a este mismo bot
+    #      (?start=promo), calculado dinámicamente via context.bot.username
+    #      -igual mecanismo que el botón 3-, no un @username escrito a mano.
     #   3. "🎁 Solicitar prueba gratis" -> deep-link a este bot (?start=demo),
     #      sin cambios de función/destino respecto a como ya funcionaba.
     reset_storage()
@@ -533,7 +536,7 @@ async def main():
 
     expected = [
         ("Contactar al administrador", "https://t.me/El593re"),
-        ("⚡ Acceso rápido y fácil", "https://t.me/VentasEcua_bot?start=promo"),
+        ("⚡ Acceso rápido y fácil", "https://t.me/test_bot?start=promo"),
         ("🎁 Solicitar prueba gratis", "https://t.me/test_bot?start=demo"),
     ]
     ok = rows == expected

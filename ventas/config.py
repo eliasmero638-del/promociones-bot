@@ -38,14 +38,13 @@ SALES_CONFIG_LOCAL_FILENAME = "ventas_config.json"
 
 def _default_trial_group_id() -> Optional[int]:
     """Lee SALES_TRIAL_GROUP_ID (el ID numérico del grupo de prueba). Si no
-    está definida o no es un número válido, usa el ID del grupo de prueba
-    ya conocido como valor por defecto, para que la expulsión automática
-    de 1 minuto funcione sin necesidad de configurar nada en Railway (ver
-    handle_trial_group_new_member en handlers.py). Se puede seguir
-    sobreescribiendo con la variable de entorno si el grupo cambia."""
+    está definida o no es un número válido, devuelve None - en ese caso la
+    prueba gratuita sigue entregando el enlace configurado, pero la
+    expulsión automática no se activa (ver handle_trial_group_new_member en
+    handlers.py) hasta que se configure la variable."""
     raw = os.getenv("SALES_TRIAL_GROUP_ID", "").strip()
     if not raw:
-        return -1003754652912
+        return None
     try:
         return int(raw)
     except ValueError:
@@ -83,10 +82,21 @@ def _default_group_id(env_var_name: str) -> Optional[int]:
         return None
 
 
+def _env(name: str, default: str) -> str:
+    """Lee una variable de entorno de texto; si no está definida (o está
+    vacía), devuelve `default`. Usado para que cada dato específico de una
+    instalación (cuentas bancarias, enlaces de grupos, textos, precio) sea
+    configurable sin tocar el código - una instalación nueva solo necesita
+    definir estas variables en Railway con sus propios datos."""
+    value = os.getenv(name)
+    return value if value else default
+
+
 def _default_config() -> dict:
     return {
-        "vip_price": "$8 permanente",
-        "bank_guayaquil_details": (
+        "vip_price": _env("SALES_VIP_PRICE", "$8 permanente"),
+        "bank_guayaquil_details": _env(
+            "SALES_BANK_GUAYAQUIL_DETAILS",
             "Cuenta de ahorros: 0013991214\n"
             "Titular: Ricardo.m\n\n"
             "⚠️ IMPORTANTE\n\n"
@@ -95,9 +105,10 @@ def _default_config() -> dict:
             "• Solo presiona \"✅ Ya realicé el pago\" y escribe el nombre del "
             "titular desde el que realizaste la transferencia.\n"
             "• Un administrador verificará el pago y, una vez confirmado, "
-            "recibirás automáticamente el enlace de acceso VIP."
+            "recibirás automáticamente el enlace de acceso VIP.",
         ),
-        "bank_pichincha_details": (
+        "bank_pichincha_details": _env(
+            "SALES_BANK_PICHINCHA_DETAILS",
             "Cuenta: 2206103888\n"
             "Titular: Ricardo.m\n\n"
             "⚠️ IMPORTANTE\n\n"
@@ -106,9 +117,10 @@ def _default_config() -> dict:
             "• Solo presiona \"✅ Ya realicé el pago\" y escribe el nombre del "
             "titular desde el que realizaste la transferencia.\n"
             "• Un administrador verificará el pago y, una vez confirmado, "
-            "recibirás automáticamente el enlace de acceso VIP."
+            "recibirás automáticamente el enlace de acceso VIP.",
         ),
-        "paypal_details": (
+        "paypal_details": _env(
+            "SALES_PAYPAL_DETAILS",
             "Ridmerwtf@gmail.com\n"
             "Titular: Ricardo.m\n\n"
             "⚠️ IMPORTANTE\n\n"
@@ -117,11 +129,12 @@ def _default_config() -> dict:
             "• Solo presiona \"✅ Ya realicé el pago\" y escribe el nombre del "
             "titular desde el que realizaste el pago.\n"
             "• Un administrador verificará el pago y, una vez confirmado, "
-            "recibirás automáticamente el enlace de acceso VIP."
+            "recibirás automáticamente el enlace de acceso VIP.",
         ),
-        "demo_group_link": "https://t.me/+FNAYL9Pr_0AzMjY5",
-        "vip_group_link": "",
-        "faq_text": (
+        "demo_group_link": _env("SALES_DEMO_GROUP_LINK", "https://t.me/+FNAYL9Pr_0AzMjY5"),
+        "vip_group_link": _env("SALES_VIP_GROUP_LINK", ""),
+        "faq_text": _env(
+            "SALES_FAQ_TEXT",
             "❓ PREGUNTAS FRECUENTES\n\n"
             "1. ¿Cómo funciona la prueba gratis?\n\n"
             "Obtendrás acceso al grupo de prueba durante 1 minuto para que conozcas el contenido.\n\n"
@@ -134,17 +147,17 @@ def _default_config() -> dict:
             "4. ¿Cómo recibo el acceso?\n\n"
             "Una vez aprobado tu pago, el bot enviará automáticamente el botón para ingresar al grupo que compraste.\n\n"
             "5. ¿Necesito hablar con un administrador?\n\n"
-            "Solo si tienes algún inconveniente con tu compra o con el acceso."
+            "Solo si tienes algún inconveniente con tu compra o con el acceso.",
         ),
         "trial_group_id": _default_trial_group_id(),
         "vip_group_id": _default_vip_group_id(),
         "portoviejo_group_id": _default_group_id("SALES_PORTOVIEJO_GROUP_ID"),
-        "portoviejo_group_link": "https://t.me/+dU5quBApPLpiM2Vl",
+        "portoviejo_group_link": _env("SALES_PORTOVIEJO_GROUP_LINK", "https://t.me/+dU5quBApPLpiM2Vl"),
         "ecuatorianas_group_id": _default_group_id("SALES_ECUATORIANAS_GROUP_ID"),
-        "ecuatorianas_group_link": "https://t.me/+gYgEWaCBMxc2MGJl",
+        "ecuatorianas_group_link": _env("SALES_ECUATORIANAS_GROUP_LINK", "https://t.me/+gYgEWaCBMxc2MGJl"),
         # "🆓 Obtener grupo Free": acceso permanente, completamente
         # independiente del grupo de prueba de 2 minutos de abajo.
-        "free_group_link": "https://t.me/+wmj40b-lTIBlMWIx",
+        "free_group_link": _env("SALES_FREE_GROUP_LINK", "https://t.me/+wmj40b-lTIBlMWIx"),
         # "🔒 Acceso exclusivo a grupos VIP" -> "🧪 Iniciar prueba gratuita":
         # grupo de prueba NUEVO (distinto de demo_group_link/trial_group_id
         # de arriba), con expulsión a los 2 minutos y un solo uso por
@@ -152,7 +165,7 @@ def _default_config() -> dict:
         # cuando el bot es agregado como administrador a este grupo (ver
         # handle_bot_added_as_admin en handlers.py) - no requiere ningún
         # comando manual.
-        "vip_exclusive_trial_group_link": "https://t.me/+5BScBaOZrmw2NGMx",
+        "vip_exclusive_trial_group_link": _env("SALES_VIP_EXCLUSIVE_TRIAL_GROUP_LINK", "https://t.me/+5BScBaOZrmw2NGMx"),
         "vip_exclusive_trial_group_id": _default_group_id("SALES_VIP_EXCLUSIVE_TRIAL_GROUP_ID"),
     }
 
