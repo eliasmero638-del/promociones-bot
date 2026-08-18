@@ -976,7 +976,7 @@ async def publish_promotion(context: ContextTypes.DEFAULT_TYPE):
             state.set_last_album_message_id(text_message.message_id)
             logger.info("Published promotion as text (no media configured)")
 
-        # Estructura final de botones a pedido explícito (3 botones fijos,
+        # Estructura final de botones a pedido explícito (4 botones fijos,
         # en este orden):
         #   1. "Contactar al administrador" -> contacto humano fijo
         #      (@El593re), no depende de bot_username.
@@ -987,6 +987,8 @@ async def publish_promotion(context: ContextTypes.DEFAULT_TYPE):
         #   3. "🎁 Solicitar prueba gratis" -> SIN cambios de función ni
         #      destino, solo cambia de posición (era el único botón extra,
         #      ahora es el tercero).
+        #   4. "🆓 Únete al grupo free" -> enlace de invitación fijo, va
+        #      hasta abajo de todo.
         keyboard_rows = [
             [InlineKeyboardButton("Contactar al administrador", url="https://t.me/El593re")],
             [InlineKeyboardButton("⚡ Acceso rápido y fácil", url="https://t.me/VentasEcua_bot?start=promo")],
@@ -1013,6 +1015,12 @@ async def publish_promotion(context: ContextTypes.DEFAULT_TYPE):
                 "[publish_promotion] context.bot.username no disponible; "
                 "se omite el botón de prueba gratis en esta publicación."
             )
+
+        # Botón "🆓 Únete al grupo free": último de todos, enlace de
+        # invitación fijo (a pedido explícito).
+        keyboard_rows.append(
+            [InlineKeyboardButton("🆓 Únete al grupo free", url="https://t.me/+csiPLI___58zMWQx")]
+        )
 
         keyboard = InlineKeyboardMarkup(keyboard_rows)
         button_message = await context.bot.send_message(

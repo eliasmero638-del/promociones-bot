@@ -504,12 +504,13 @@ async def main():
         f"reached_next={reached_next} sent_texts_second={sent_texts_second}",
     )
 
-    # 10. Regresión: estructura final de los 3 botones de las promociones,
+    # 10. Regresión: estructura final de los 4 botones de las promociones,
     # a pedido explícito. En este orden exacto:
     #   1. "Contactar al administrador" -> https://t.me/El593re (fijo)
     #   2. "⚡ Acceso rápido y fácil" -> https://t.me/VentasEcua_bot?start=promo (fijo)
     #   3. "🎁 Solicitar prueba gratis" -> deep-link a este bot (?start=demo),
     #      sin cambios de función/destino respecto a como ya funcionaba.
+    #   4. "🆓 Únete al grupo free" -> enlace de invitación fijo.
     reset_storage()
     manager = bot.PromotionsManager()
     manager.data["promotions"] = [promo("promo_1", "promo_cmd")]
@@ -535,10 +536,11 @@ async def main():
         ("Contactar al administrador", "https://t.me/El593re"),
         ("⚡ Acceso rápido y fácil", "https://t.me/VentasEcua_bot?start=promo"),
         ("🎁 Solicitar prueba gratis", "https://t.me/test_bot?start=demo"),
+        ("🆓 Únete al grupo free", "https://t.me/+csiPLI___58zMWQx"),
     ]
     ok = rows == expected
     record(
-        "10. Estructura final de los 3 botones de la promoción (administrador / acceso rápido / prueba gratis)",
+        "10. Estructura final de los 4 botones de la promoción (administrador / acceso rápido / prueba gratis / grupo free)",
         ok,
         f"rows={rows} expected={expected}",
     )
