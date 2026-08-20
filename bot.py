@@ -877,9 +877,15 @@ async def publish_promotion(context: ContextTypes.DEFAULT_TYPE):
             if isinstance(m, (dict, str))
         )
 
+    # Activar/desactivar promociones individualmente (/panel -> "📋 Estado
+    # de Promociones"): active=False las saca de la rotación y de
+    # "Publicar Ahora" sin eliminarlas ni tocar ningún otro dato. El
+    # default True hace que las promociones existentes (sin este campo
+    # todavía) se sigan publicando exactamente igual que antes.
     valid_promotions = [
         p for p in all_promotions
-        if str(p.get("caption", "") or "").strip() or _has_valid_media(p)
+        if (str(p.get("caption", "") or "").strip() or _has_valid_media(p))
+        and p.get("active", True)
     ]
 
     # Interruptor global /desactivar_panel /activar_panel: cuando el panel
@@ -1111,24 +1117,31 @@ async def conversation_timeout_handler(update: Update, context: ContextTypes.DEF
         logger.warning(f"[conversation_timeout] Could not notify admin of timeout: {e}")
 
 
-async def admin_panel(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Show admin panel to authorized users."""
-    if update.effective_user.id not in ADMIN_USER_IDS:
-        await update.message.reply_text("No tienes permiso para acceder al panel de administración.")
-        return
-
-    keyboard = [
+def _build_admin_panel_keyboard():
+    """Teclado del /panel clásico, factorizado para poder redibujarlo tanto
+    al abrir /panel como al volver desde "📋 Estado de Promociones" (botón
+    "⬅️ Volver al Panel")."""
+    return [
         [InlineKeyboardButton("Agregar Promoción", callback_data="add_promo")],
         [InlineKeyboardButton("Ver Promociones", callback_data="view_promos")],
         [InlineKeyboardButton("Editar Promoción", callback_data="edit_promo")],
         [InlineKeyboardButton("Eliminar Promoción", callback_data="delete_promo")],
+        [InlineKeyboardButton("📋 Estado de Promociones", callback_data="promo_active_menu")],
         [InlineKeyboardButton("Publicar Ahora", callback_data="publish_now")],
         [InlineKeyboardButton("Cambiar Intervalo", callback_data="change_interval")],
         [InlineKeyboardButton("Configurar Bienvenida", callback_data="welcome_config")],
         [InlineKeyboardButton("Estado del Bot", callback_data="bot_status")],
         [InlineKeyboardButton("Debug Storage", callback_data="debug_storage")],
     ]
-    reply_markup = InlineKeyboardMarkup(keyboard)
+
+
+async def admin_panel(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Show admin panel to authorized users."""
+    if update.effective_user.id not in ADMIN_USER_IDS:
+        await update.message.reply_text("No tienes permiso para acceder al panel de administración.")
+        return
+
+    reply_markup = InlineKeyboardMarkup(_build_admin_panel_keyboard())
     await update.message.reply_text("**Panel de Administración**", reply_markup=reply_markup, parse_mode="Markdown")
 
 
@@ -1340,6 +1353,43 @@ def _escape_markdown_legacy(text: str) -> str:
     return text
 
 
+async def _render_promo_active_menu(query):
+    """Dibuja "📋 Estado de Promociones": una fila 🟢/🔴 por cada promoción
+    (de cualquier source, igual criterio que "Ver Promociones") con un
+    botón para alternar su estado, más ACTIVAR/DESACTIVAR TODAS y volver
+    al panel. Solo lee/escribe el campo 'active' - nunca crea, borra ni
+    modifica ningún otro dato de la promoción."""
+    manager = PromotionsManager()
+    promos = manager.get_all()
+
+    if not promos:
+        keyboard = [[InlineKeyboardButton("⬅️ Volver al Panel", callback_data="back_to_admin_panel")]]
+        await query.edit_message_text(
+            "No hay promociones almacenadas.", reply_markup=InlineKeyboardMarkup(keyboard)
+        )
+        return
+
+    keyboard = [
+        [
+            InlineKeyboardButton(
+                f"{'🟢' if promo.get('active', True) else '🔴'} {promo['id']}",
+                callback_data=f"toggle_active_{promo['id']}",
+            )
+        ]
+        for promo in promos
+    ]
+    keyboard.append([InlineKeyboardButton("✅ ACTIVAR TODAS", callback_data="activate_all_promos")])
+    keyboard.append([InlineKeyboardButton("❌ DESACTIVAR TODAS", callback_data="deactivate_all_promos")])
+    keyboard.append([InlineKeyboardButton("⬅️ Volver al Panel", callback_data="back_to_admin_panel")])
+
+    text = (
+        "📋 *Panel de Promociones*\n\n"
+        "Toca una promoción para activarla o desactivarla.\n"
+        "Las desactivadas no se publican, pero no se eliminan."
+    )
+    await query.edit_message_text(text, reply_markup=InlineKeyboardMarkup(keyboard), parse_mode="Markdown")
+
+
 async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Handle button clicks from admin panel."""
     query = update.callback_query
@@ -1530,6 +1580,36 @@ async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await query.edit_message_text(f"Promoción `{promo_id}` eliminada correctamente.", parse_mode="Markdown")
         else:
             await query.edit_message_text("Error al eliminar la promoción.")
+
+    elif query.data == "promo_active_menu":
+        await _render_promo_active_menu(query)
+
+    elif query.data.startswith("toggle_active_"):
+        promo_id = query.data.replace("toggle_active_", "")
+        manager = PromotionsManager()
+        promo = manager.get_by_id(promo_id)
+        if promo is not None:
+            promo["active"] = not promo.get("active", True)
+            manager.update(promo_id, promo)
+        await _render_promo_active_menu(query)
+
+    elif query.data == "activate_all_promos":
+        manager = PromotionsManager()
+        for promo in manager.get_all():
+            promo["active"] = True
+            manager.update(promo["id"], promo)
+        await _render_promo_active_menu(query)
+
+    elif query.data == "deactivate_all_promos":
+        manager = PromotionsManager()
+        for promo in manager.get_all():
+            promo["active"] = False
+            manager.update(promo["id"], promo)
+        await _render_promo_active_menu(query)
+
+    elif query.data == "back_to_admin_panel":
+        reply_markup = InlineKeyboardMarkup(_build_admin_panel_keyboard())
+        await query.edit_message_text("**Panel de Administración**", reply_markup=reply_markup, parse_mode="Markdown")
 
     elif query.data == "cancel":
         # Integration fix (Phase 4): this branch is used as the fallback for
