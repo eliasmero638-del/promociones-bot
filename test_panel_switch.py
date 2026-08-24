@@ -536,7 +536,7 @@ async def main():
         ("Contactar al administrador", "https://t.me/El593re"),
         ("⚡ Acceso rápido y fácil", "https://t.me/VentasEcua_bot?start=promo"),
         ("🎁 Solicitar prueba gratis", "https://t.me/test_bot?start=demo"),
-        ("🆓 Únete al grupo free", "https://t.me/+csiPLI___58zMWQx"),
+        ("🆓 Únete al grupo free", "https://t.me/+1zPQA0UlIdg2OWYx"),
     ]
     ok = rows == expected
     record(

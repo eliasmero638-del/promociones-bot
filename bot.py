@@ -1019,7 +1019,7 @@ async def publish_promotion(context: ContextTypes.DEFAULT_TYPE):
         # Botón "🆓 Únete al grupo free": último de todos, enlace de
         # invitación fijo (a pedido explícito).
         keyboard_rows.append(
-            [InlineKeyboardButton("🆓 Únete al grupo free", url="https://t.me/+csiPLI___58zMWQx")]
+            [InlineKeyboardButton("🆓 Únete al grupo free", url="https://t.me/+1zPQA0UlIdg2OWYx")]
         )
 
         keyboard = InlineKeyboardMarkup(keyboard_rows)
