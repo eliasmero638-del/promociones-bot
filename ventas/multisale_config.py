@@ -27,10 +27,11 @@ RECENT_PAYMENTS_LOCAL_FILENAME = "multisale_recent_payments.json"
 UPSTASH_PAYMENT_DATA_SEEN_KEY = "multisale_bot:payment_data_seen"
 PAYMENT_DATA_SEEN_LOCAL_FILENAME = "multisale_payment_data_seen.json"
 
-# Orden fijo de los 5 grupos - se usa en todos los listados/resúmenes para
+# Orden fijo de los 6 grupos - se usa en todos los listados/resúmenes para
 # que el orden mostrado sea siempre el mismo, sin depender del orden de
-# iteración de un dict.
-GROUP_KEYS = ["portoviejo", "manta", "ecuatorianas", "vipec", "azules"]
+# iteración de un dict. "universitarias" agregado a pedido explícito -
+# nunca reordenar los ya existentes, solo se agrega al final.
+GROUP_KEYS = ["portoviejo", "manta", "ecuatorianas", "vipec", "azules", "universitarias"]
 
 # Orden fijo de los 4 métodos de pago.
 PAYMENT_METHOD_KEYS = ["interbancario", "bank_pichincha", "bank_guayaquil", "paypal"]
@@ -38,24 +39,51 @@ PAYMENT_METHOD_KEYS = ["interbancario", "bank_pichincha", "bank_guayaquil", "pay
 # Tabla de precios por cantidad de grupos seleccionados. El precio "de
 # lista" (para el cálculo de "precio individual" en la pantalla de oferta)
 # es siempre PRICE_TABLE[1] * cantidad - nunca una combinación escrita a
-# mano.
+# mano. El tope de 6 grupos se deja IGUAL al de 5 (a pedido explícito: el
+# precio de "seleccionar todo" no sube al agregar Universitarias EC).
 PRICE_TABLE = {
     1: 6.99,
     2: 9.99,
     3: 12.99,
     4: 16.99,
     5: 19.99,
+    6: 19.99,
+}
+
+# Precio propio para comprar UN SOLO grupo específico, distinto del
+# genérico PRICE_TABLE[1] (a pedido explícito: solo Universitarias EC
+# cambia de precio comprado suelto; el resto de los grupos, y cualquier
+# combinación de 2 o más grupos que incluya a Universitarias EC, siguen
+# usando exactamente la misma PRICE_TABLE de siempre, sin cambios).
+SOLO_GROUP_PRICE_OVERRIDES = {
+    "universitarias": 8.00,
 }
 
 
-def get_offer_price(count: int) -> float:
-    """Precio de oferta para `count` grupos (1-5)."""
+def _solo_override(count: int, selected_keys) -> Optional[float]:
+    if count != 1 or not selected_keys:
+        return None
+    only_key = next(iter(selected_keys))
+    return SOLO_GROUP_PRICE_OVERRIDES.get(only_key)
+
+
+def get_offer_price(count: int, selected_keys=None) -> float:
+    """Precio de oferta para `count` grupos (1-6). Si se compra UN solo
+    grupo con precio propio (ver SOLO_GROUP_PRICE_OVERRIDES), ese precio
+    manda en vez de PRICE_TABLE[1]."""
+    override = _solo_override(count, selected_keys)
+    if override is not None:
+        return override
     return PRICE_TABLE.get(count, PRICE_TABLE[len(GROUP_KEYS)])
 
 
-def get_individual_total(count: int) -> float:
+def get_individual_total(count: int, selected_keys=None) -> float:
     """Precio "de lista" con el que se compara la oferta: precio de 1 grupo
-    multiplicado por la cantidad seleccionada."""
+    multiplicado por la cantidad seleccionada (o el precio propio del
+    grupo, si se compra uno solo con override - ver get_offer_price)."""
+    override = _solo_override(count, selected_keys)
+    if override is not None:
+        return round(override, 2)
     return round(PRICE_TABLE[1] * count, 2)
 
 
@@ -86,6 +114,11 @@ def _default_config() -> dict:
                 "label": "5️⃣ Azules EC",
                 "description": "Famosas y modelos de Ecuador.",
                 "link": "https://t.me/+6TweKM1ROMMyNTNh",
+            },
+            "universitarias": {
+                "label": "6️⃣ Universitarias EC",
+                "description": "Contenido de universitarias ecuatorianas.",
+                "link": "https://t.me/+q6pq0vhqj1plYTFh",
             },
         },
         "payment_methods": {

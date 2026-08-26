@@ -172,6 +172,23 @@ async def main():
     ok_individual = get_individual_total(3) == 20.97 and round(get_individual_total(3) - get_offer_price(3), 2) == 7.98
     record("Precio individual y ahorro (ejemplo de 3 grupos)", ok_individual, f"individual={get_individual_total(3)} ahorro={round(get_individual_total(3) - get_offer_price(3), 2)}")
 
+    # --- Universitarias EC (6to grupo, a pedido explícito): precio propio
+    # de $8 SOLO cuando se compra ella sola; cualquier combo de 2+ grupos
+    # (la incluya o no) sigue usando la MISMA PRICE_TABLE de siempre, sin
+    # cambios, y "los 6 grupos" cuesta igual que "los 5" costaba antes. ---
+    ok_solo = get_offer_price(1, ["universitarias"]) == 8.00 and get_individual_total(1, ["universitarias"]) == 8.00
+    record("Universitarias EC sola: $8 (precio propio, no el genérico de 1 grupo)", ok_solo, str(get_offer_price(1, ["universitarias"])))
+
+    ok_otro_solo_sin_cambios = get_offer_price(1, ["azules"]) == 6.99
+    record("Otro grupo solo sigue en $6.99 (sin cambios)", ok_otro_solo_sin_cambios, str(get_offer_price(1, ["azules"])))
+
+    combo = ["portoviejo", "universitarias"]
+    ok_combo_sin_cambios = get_offer_price(2, combo) == 9.99
+    record("Combo de 2 grupos con Universitarias EC sigue en $9.99 (sin override)", ok_combo_sin_cambios, str(get_offer_price(2, combo)))
+
+    ok_seis = get_offer_price(6, GROUP_KEYS) == 19.99
+    record("Seleccionar los 6 grupos cuesta $19.99 (mismo tope que 5 antes)", ok_seis, str(get_offer_price(6, GROUP_KEYS)))
+
     # --- 6. Toggle de selección (elegir, deseleccionar, cambiar) ---
     reset_storage()
     user_data = {}

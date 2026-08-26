@@ -135,7 +135,7 @@ def _menu_text(config: MultiSaleConfigManager) -> str:
     lines = [
         "🔥 BIENVENIDO/A",
         "",
-        "Tenemos 5 grupos exclusivos, cada uno con un tipo de contenido diferente:",
+        "Tenemos 6 grupos exclusivos, cada uno con un tipo de contenido diferente:",
         "",
     ]
     for key in GROUP_KEYS:
@@ -143,14 +143,14 @@ def _menu_text(config: MultiSaleConfigManager) -> str:
         lines.append(config.get_group_description(key))
         lines.append("")
     lines.append("👇 Selecciona los grupos que te interesan:")
-    lines.append("Puedes seleccionar uno, varios o los cinco.")
+    lines.append("Puedes seleccionar uno, varios o los seis.")
     return "\n".join(lines)
 
 
 def _offer_text(config: MultiSaleConfigManager, selected_keys) -> str:
     count = len(selected_keys)
-    individual_total = get_individual_total(count)
-    offer_price = get_offer_price(count)
+    individual_total = get_individual_total(count, selected_keys)
+    offer_price = get_offer_price(count, selected_keys)
     savings = round(individual_total - offer_price, 2)
     lines = [
         "🔥 OFERTA ESPECIAL",
@@ -405,7 +405,7 @@ async def ms_offer_continue(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return
 
     context.user_data["ms_locked_groups"] = ordered_selection
-    price = get_offer_price(len(ordered_selection))
+    price = get_offer_price(len(ordered_selection), ordered_selection)
     context.user_data["ms_locked_price"] = price
 
     config = MultiSaleConfigManager()
@@ -455,7 +455,7 @@ async def ms_methods_back(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await _safe_edit_message(query, _menu_text(config), reply_markup=kb.menu_keyboard(config, selected, admin_id))
         return
 
-    price = context.user_data.get("ms_locked_price", get_offer_price(len(locked_groups)))
+    price = context.user_data.get("ms_locked_price", get_offer_price(len(locked_groups), locked_groups))
     await _safe_edit_message(
         query, _confirm_text(config, locked_groups, price), reply_markup=kb.confirm_keyboard(admin_id)
     )
@@ -509,7 +509,7 @@ async def ms_method_selected(update: Update, context: ContextTypes.DEFAULT_TYPE)
         return ConversationHandler.END
 
     config = MultiSaleConfigManager()
-    price = context.user_data.get("ms_locked_price", get_offer_price(len(locked_groups)))
+    price = context.user_data.get("ms_locked_price", get_offer_price(len(locked_groups), locked_groups))
 
     await _safe_edit_message(
         query, _payment_data_text(config, method_key, price), reply_markup=kb.payment_data_keyboard(admin_id)
@@ -576,7 +576,7 @@ async def ms_receive_receipt(update: Update, context: ContextTypes.DEFAULT_TYPE)
 
     config = MultiSaleConfigManager()
     user = update.effective_user
-    price = context.user_data.get("ms_locked_price", get_offer_price(len(locked_groups)))
+    price = context.user_data.get("ms_locked_price", get_offer_price(len(locked_groups), locked_groups))
     method_label = config.get_payment_method_label(method_key)
 
     request = {
