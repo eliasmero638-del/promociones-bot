@@ -506,8 +506,8 @@ async def main():
 
     # 10. Regresión: estructura final de los 4 botones de las promociones,
     # a pedido explícito. En este orden exacto:
-    #   1. "Contactar al administrador" -> https://t.me/EcuaAccessBot (fijo,
-    #      asistente de ventas del otro bot, ya no el contacto humano)
+    #   1. "Contactar al administrador" -> https://t.me/EcuaAccessBot?start=ventas
+    #      (fijo, asistente de ventas del otro bot, ya no el contacto humano)
     #   2. "⚡ Acceso rápido y fácil" -> https://t.me/VentasEcua_bot?start=promo (fijo)
     #   3. "🎁 Solicitar prueba gratis" -> deep-link a este bot (?start=demo),
     #      sin cambios de función/destino respecto a como ya funcionaba.
@@ -534,7 +534,7 @@ async def main():
             rows = [(row[0].text, row[0].url) for row in markup.inline_keyboard]
 
     expected = [
-        ("Contactar al administrador", "https://t.me/EcuaAccessBot"),
+        ("Contactar al administrador", "https://t.me/EcuaAccessBot?start=ventas"),
         ("⚡ Acceso rápido y fácil", "https://t.me/VentasEcua_bot?start=promo"),
         ("🎁 Solicitar prueba gratis", "https://t.me/test_bot?start=demo"),
         ("🆓 Únete al grupo free", "https://t.me/+1zPQA0UlIdg2OWYx"),
