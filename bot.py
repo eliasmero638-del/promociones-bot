@@ -978,19 +978,23 @@ async def publish_promotion(context: ContextTypes.DEFAULT_TYPE):
 
         # Estructura final de botones a pedido explícito (4 botones fijos,
         # en este orden):
-        #   1. "Contactar al administrador" -> contacto humano fijo
-        #      (@El593re), no depende de bot_username.
+        #   1. "Contactar al administrador" -> ya NO abre el contacto
+        #      humano fijo (@El593re): ahora redirige al asistente de
+        #      ventas conversacional (con IA) del bot @EcuaAccessBot, para
+        #      que el cliente hable directo con el bot en vez de esperar
+        #      a un admin. Cambio a pedido explícito.
         #   2. "⚡ Acceso rápido y fácil" -> bot de ventas fijo
         #      (@VentasEcua_bot), con ?start=promo para que Telegram
         #      siempre muestre "INICIAR" sin importar si el usuario ya usó
         #      ese bot antes (mismo mecanismo verificado en el botón 3).
+        #      SIN cambios: sigue siendo el flujo de compra directo.
         #   3. "🎁 Solicitar prueba gratis" -> SIN cambios de función ni
         #      destino, solo cambia de posición (era el único botón extra,
         #      ahora es el tercero).
         #   4. "🆓 Únete al grupo free" -> enlace de invitación fijo, va
         #      hasta abajo de todo.
         keyboard_rows = [
-            [InlineKeyboardButton("Contactar al administrador", url="https://t.me/El593re")],
+            [InlineKeyboardButton("Contactar al administrador", url="https://t.me/EcuaAccessBot")],
             [InlineKeyboardButton("⚡ Acceso rápido y fácil", url="https://t.me/VentasEcua_bot?start=promo")],
         ]
 
