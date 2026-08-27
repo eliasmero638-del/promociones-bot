@@ -986,9 +986,11 @@ async def publish_promotion(context: ContextTypes.DEFAULT_TYPE):
         # en este orden):
         #   1. "Contactar al administrador" -> ya NO abre el contacto
         #      humano fijo (@El593re): ahora redirige al asistente de
-        #      ventas conversacional (con IA) del bot @EcuaAccessBot, para
-        #      que el cliente hable directo con el bot en vez de esperar
-        #      a un admin. Cambio a pedido explícito.
+        #      ventas conversacional (con IA) del bot @EcuaAccessBot, con
+        #      ?start=ventas para que salude y muestre el menú de grupos
+        #      automáticamente apenas se abre el chat (ver handlers/start.py
+        #      en bot-desbloqueo-telegram), en vez de esperar a un admin.
+        #      Cambio a pedido explícito.
         #   2. "⚡ Acceso rápido y fácil" -> bot de ventas fijo
         #      (@VentasEcua_bot), con ?start=promo para que Telegram
         #      siempre muestre "INICIAR" sin importar si el usuario ya usó
@@ -1000,7 +1002,7 @@ async def publish_promotion(context: ContextTypes.DEFAULT_TYPE):
         #   4. "🆓 Únete al grupo free" -> enlace de invitación fijo, va
         #      hasta abajo de todo.
         keyboard_rows = [
-            [InlineKeyboardButton("Contactar al administrador", url="https://t.me/EcuaAccessBot")],
+            [InlineKeyboardButton("Contactar al administrador", url="https://t.me/EcuaAccessBot?start=ventas")],
             [InlineKeyboardButton("⚡ Acceso rápido y fácil", url="https://t.me/VentasEcua_bot?start=promo")],
         ]
 
