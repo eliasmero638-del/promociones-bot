@@ -76,6 +76,8 @@ async function iniciarBot() {
       const remoteJid = msg.key.remoteJid;
       if (!remoteJid || remoteJid.endsWith('@g.us')) continue; // ignorar grupos
 
+      console.log('DEBUG_MSG_KEY:', JSON.stringify(msg.key));
+
       const senderNumber = remoteJid.split('@')[0];
       if (ALLOWED_SENDER && senderNumber !== ALLOWED_SENDER) continue;
 
