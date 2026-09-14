@@ -11,6 +11,7 @@ const AUTH_DIR = process.env.AUTH_DIR || './auth_info';
 const ALLOWED_SENDER = process.env.ALLOWED_SENDER
   ? process.env.ALLOWED_SENDER.replace(/\D/g, '')
   : null;
+const PROFILE_NAME = process.env.PROFILE_NAME || null;
 
 async function iniciarBot() {
   const { state, saveCreds } = await useMultiFileAuthState(AUTH_DIR);
@@ -44,6 +45,11 @@ async function iniciarBot() {
       }
     } else if (connection === 'open') {
       console.log('✅ Bot de WhatsApp conectado.');
+      if (PROFILE_NAME) {
+        sock.updateProfileName(PROFILE_NAME).catch((err) => {
+          console.error('No se pudo actualizar el nombre de perfil:', err);
+        });
+      }
     }
   });
 
