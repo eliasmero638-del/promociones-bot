@@ -1,0 +1,68 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { parseMensaje } from './parser.js';
+
+test('venta: cantidad, producto y monto simples', () => {
+  assert.deepEqual(parseMensaje('1 Relay 5$'), {
+    tipo: 'venta',
+    cantidad: 1,
+    producto: 'Relay',
+    monto: 5,
+  });
+});
+
+test('venta: producto con varias palabras', () => {
+  assert.deepEqual(parseMensaje('1 filtro de aceite 8$'), {
+    tipo: 'venta',
+    cantidad: 1,
+    producto: 'filtro de aceite',
+    monto: 8,
+  });
+});
+
+test('venta: cantidad mayor a uno', () => {
+  assert.deepEqual(parseMensaje('3 rulimanes 15$'), {
+    tipo: 'venta',
+    cantidad: 3,
+    producto: 'rulimanes',
+    monto: 15,
+  });
+});
+
+test('venta: monto con decimales y coma', () => {
+  assert.deepEqual(parseMensaje('2 bujias 12,50$'), {
+    tipo: 'venta',
+    cantidad: 2,
+    producto: 'bujias',
+    monto: 12.5,
+  });
+});
+
+test('total: hoy/semana/mes, sin distinguir mayúsculas', () => {
+  assert.deepEqual(parseMensaje('Total hoy'), { tipo: 'total', periodo: 'hoy' });
+  assert.deepEqual(parseMensaje('total semana'), { tipo: 'total', periodo: 'semana' });
+  assert.deepEqual(parseMensaje('TOTAL MES'), { tipo: 'total', periodo: 'mes' });
+});
+
+test('deuda: nombre simple y compuesto', () => {
+  assert.deepEqual(parseMensaje('Debe Juan 30'), {
+    tipo: 'deuda',
+    cliente: 'Juan',
+    monto: 30,
+  });
+  assert.deepEqual(parseMensaje('debe Juan Perez 30.50'), {
+    tipo: 'deuda',
+    cliente: 'Juan Perez',
+    monto: 30.5,
+  });
+});
+
+test('quien debe: con y sin tilde', () => {
+  assert.deepEqual(parseMensaje('Quién debe'), { tipo: 'quien_debe' });
+  assert.deepEqual(parseMensaje('quien debe'), { tipo: 'quien_debe' });
+});
+
+test('mensaje no reconocido', () => {
+  assert.deepEqual(parseMensaje('hola'), { tipo: 'desconocido' });
+  assert.deepEqual(parseMensaje('1 Relay'), { tipo: 'desconocido' });
+});
