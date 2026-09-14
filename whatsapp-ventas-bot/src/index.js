@@ -11,6 +11,24 @@ const ALLOWED_SENDER = process.env.ALLOWED_SENDER
   : null;
 const PROFILE_NAME = process.env.PROFILE_NAME || null;
 
+// Justo después de conectar, las claves de app-state (necesarias para
+// updateProfileName) todavía pueden no estar sincronizadas, así que se
+// reintenta con espera en vez de fallar directo.
+async function actualizarNombrePerfil(sock, nombre, intentos = 5, esperaMs = 4000) {
+  for (let i = 0; i < intentos; i++) {
+    try {
+      await sock.updateProfileName(nombre);
+      return;
+    } catch (err) {
+      if (i === intentos - 1) {
+        console.error('No se pudo actualizar el nombre de perfil tras varios intentos:', err);
+      } else {
+        await new Promise((resolve) => setTimeout(resolve, esperaMs));
+      }
+    }
+  }
+}
+
 async function iniciarBot() {
   const { state, saveCreds } = await useMultiFileAuthState(AUTH_DIR);
 
@@ -28,7 +46,6 @@ async function iniciarBot() {
     if (qr) {
       console.log('Escanea este código QR desde WhatsApp > Dispositivos vinculados:');
       qrcode.generate(qr, { small: true });
-      console.log(`QR_RAW_DATA_START${qr}QR_RAW_DATA_END`);
     }
 
     if (connection === 'close') {
@@ -45,9 +62,7 @@ async function iniciarBot() {
     } else if (connection === 'open') {
       console.log('✅ Bot de WhatsApp conectado.');
       if (PROFILE_NAME) {
-        sock.updateProfileName(PROFILE_NAME).catch((err) => {
-          console.error('No se pudo actualizar el nombre de perfil:', err);
-        });
+        actualizarNombrePerfil(sock, PROFILE_NAME);
       }
     }
   });
