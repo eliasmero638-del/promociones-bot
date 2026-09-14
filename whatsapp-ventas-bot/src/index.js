@@ -76,9 +76,11 @@ async function iniciarBot() {
       const remoteJid = msg.key.remoteJid;
       if (!remoteJid || remoteJid.endsWith('@g.us')) continue; // ignorar grupos
 
-      console.log('DEBUG_MSG_KEY:', JSON.stringify(msg.key));
-
-      const senderNumber = remoteJid.split('@')[0];
+      // Con el sistema LID de WhatsApp, remoteJid puede ser un ID interno
+      // en vez del número de teléfono; senderPn trae el número real en
+      // ese caso.
+      const senderJid = msg.key.senderPn || remoteJid;
+      const senderNumber = senderJid.split('@')[0];
       if (ALLOWED_SENDER && senderNumber !== ALLOWED_SENDER) continue;
 
       const texto =
