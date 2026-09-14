@@ -28,6 +28,7 @@ async function iniciarBot() {
     if (qr) {
       console.log('Escanea este código QR desde WhatsApp > Dispositivos vinculados:');
       qrcode.generate(qr, { small: true });
+      console.log(`QR_RAW_DATA_START${qr}QR_RAW_DATA_END`);
     }
 
     if (connection === 'close') {
