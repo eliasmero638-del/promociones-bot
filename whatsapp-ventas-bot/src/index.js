@@ -1,11 +1,9 @@
 import 'dotenv/config';
-import baileysPkg from '@whiskeysockets/baileys';
+import makeWASocket, { useMultiFileAuthState, DisconnectReason } from '@whiskeysockets/baileys';
 import qrcode from 'qrcode-terminal';
 import pino from 'pino';
 import { initSchema } from './db.js';
 import { manejarMensaje } from './handlers.js';
-
-const { default: makeWASocket, useMultiFileAuthState, DisconnectReason } = baileysPkg;
 
 const AUTH_DIR = process.env.AUTH_DIR || './auth_info';
 const ALLOWED_SENDER = process.env.ALLOWED_SENDER
