@@ -10,7 +10,9 @@ const RE_VENTA = /^(\d+)\s+(.+?)\s+(\d+(?:[.,]\d+)?)\s*\$$/i;
 const RE_VENTA_CATALOGO = /^venta\s+(?:(\d+)\s+)?(.+)$/i;
 const RE_TOTAL = /^total\s+(hoy|semana|mes)$/i;
 const RE_QUIEN_DEBE = /^quien\s+debe$/i;
+const RE_VENTAS_HOY = /^ventas\s+hoy$/i;
 const RE_CORREGIR_VENTA = /^corregir\s+(la\s+)?[uú]ltima\s+venta\s+(\d+)\s+(.+?)\s+(\d+(?:[.,]\d+)?)\s*\$$/i;
+const RE_CORREGIR_VENTA_N = /^corregir\s+venta\s+(\d+)\s+(\d+)\s+(.+?)\s+(\d+(?:[.,]\d+)?)\s*\$$/i;
 const RE_QUITAR_ALIAS = /^quitar\s+alias\s+(\S+)\s+(.+)$/i;
 const RE_ALIAS = /^alias\s+(\S+)\s+(.+)$/i;
 const RE_PRECIO = /^precio\s+(\S+)\s+(\d+(?:[.,]\d+)?)\s*\$$/i;
@@ -52,11 +54,27 @@ export function parseMensaje(textoOriginal) {
     return { tipo: 'quien_debe' };
   }
 
+  if (RE_VENTAS_HOY.test(normalizarTexto(texto))) {
+    return { tipo: 'ventas_hoy' };
+  }
+
   const corregirMatch = texto.match(RE_CORREGIR_VENTA);
   if (corregirMatch) {
     const [, , cantidad, producto, monto] = corregirMatch;
     return {
       tipo: 'corregir_venta',
+      cantidad: parseInt(cantidad, 10),
+      producto: producto.trim(),
+      monto: parseMonto(monto),
+    };
+  }
+
+  const corregirNMatch = texto.match(RE_CORREGIR_VENTA_N);
+  if (corregirNMatch) {
+    const [, posicion, cantidad, producto, monto] = corregirNMatch;
+    return {
+      tipo: 'corregir_venta_n',
+      posicion: parseInt(posicion, 10),
       cantidad: parseInt(cantidad, 10),
       producto: producto.trim(),
       monto: parseMonto(monto),

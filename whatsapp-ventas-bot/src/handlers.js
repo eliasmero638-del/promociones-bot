@@ -3,6 +3,8 @@ import {
   registrarVenta,
   totalVentas,
   corregirUltimaVenta,
+  listarVentasHoy,
+  corregirVentaPorId,
   registrarDeuda,
   deudasPendientes,
   crearProducto,
@@ -22,6 +24,11 @@ const AYUDA = `No entendí ese mensaje 🤔 Formatos disponibles:
 
 ✏️ Corregir la última venta: "Corregir última venta [cantidad] [producto] [monto]$"
    Ej: Corregir última venta 1 Relay 5$
+
+📋 Ver ventas de hoy numeradas: "Ventas hoy"
+
+✏️ Corregir una venta de hoy por número: "Corregir venta [número] [cantidad] [producto] [monto]$"
+   Ej: Corregir venta 2 1 Relay 0$
 
 🗂️ Agregar producto al catálogo: "#AgregarProducto [stock] [nombre] [precio]$ #[código]"
    Ej: #AgregarProducto 10 Relay 5 patas 100$ #RL01
@@ -125,6 +132,29 @@ export async function manejarMensaje(texto, chatId) {
         return '⚠️ No hay ninguna venta registrada para corregir.';
       }
       return `✏️ Última venta corregida: ${corregida.cantidad} ${corregida.producto} - ${money(corregida.monto)}`;
+    }
+
+    case 'ventas_hoy': {
+      const ventas = await listarVentasHoy();
+      if (ventas.length === 0) {
+        return '📋 Todavía no hay ventas registradas hoy.';
+      }
+      let respuesta = '📋 Ventas de hoy:';
+      ventas.forEach((v, i) => {
+        respuesta += `\n${i + 1}. ${v.cantidad} ${v.producto} - ${money(v.monto)}`;
+      });
+      respuesta += '\n\nPara corregir alguna: "Corregir venta [número] [cantidad] [producto] [monto]$"';
+      return respuesta;
+    }
+
+    case 'corregir_venta_n': {
+      const ventas = await listarVentasHoy();
+      const venta = ventas[accion.posicion - 1];
+      if (!venta) {
+        return `⚠️ No encontré la venta número ${accion.posicion} de hoy. Escribe "Ventas hoy" para ver la lista.`;
+      }
+      const corregida = await corregirVentaPorId(venta.id, accion.producto, accion.cantidad, accion.monto);
+      return `✏️ Venta #${accion.posicion} corregida: ${corregida.cantidad} ${corregida.producto} - ${money(corregida.monto)}`;
     }
 
     case 'agregar_producto': {

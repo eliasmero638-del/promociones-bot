@@ -12,6 +12,8 @@ de WhatsApp secundario, escaneando un código QR una sola vez.
 |---|---|---|
 | Registrar venta | `[cantidad] [producto] [monto]$` | `1 Relay 5$` |
 | Corregir la última venta | `Corregir última venta [cantidad] [producto] [monto]$` | `Corregir última venta 1 Relay 5$` |
+| Ver ventas de hoy numeradas | `Ventas hoy` | |
+| Corregir una venta de hoy por número | `Corregir venta [número] [cantidad] [producto] [monto]$` | `Corregir venta 2 1 Relay 0$` |
 | Total del día | `Total hoy` | |
 | Total de la semana | `Total semana` | |
 | Total del mes | `Total mes` | |
@@ -26,8 +28,10 @@ de WhatsApp secundario, escaneando un código QR una sola vez.
 
 "Corregir última venta" reemplaza cantidad, producto y monto de la venta más
 reciente (útil cuando una venta se anula o se cobra distinto a lo registrado).
-Solo corrige la última; si ya se registraron ventas después, hay que corregirla
-antes de que eso pase.
+Solo corrige la última; si ya se registraron ventas después, usa
+`Ventas hoy` para ver la lista numerada del día y `Corregir venta [número]
+...` para corregir cualquiera de ellas por esa posición (poner el monto en
+`0$` la anula sin borrar el registro, para dejar rastro de que se anuló).
 
 ### Catálogo de productos, alias y venta con stock
 

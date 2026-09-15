@@ -114,6 +114,41 @@ export async function corregirUltimaVenta(producto, cantidad, monto) {
   };
 }
 
+// Ventas de hoy en orden cronológico, para poder mostrarlas numeradas y
+// corregir cualquiera (no solo la última) por esa posición.
+export async function listarVentasHoy() {
+  const { rows } = await pool.query(
+    `SELECT id, producto, cantidad, monto
+     FROM ventas
+     WHERE ${RANGO_WHERE}
+     ORDER BY id ASC`,
+    ['day', TIMEZONE],
+  );
+
+  return rows.map((r) => ({
+    id: r.id,
+    producto: r.producto,
+    cantidad: Number(r.cantidad),
+    monto: Number(r.monto),
+  }));
+}
+
+export async function corregirVentaPorId(id, producto, cantidad, monto) {
+  const { rows } = await pool.query(
+    `UPDATE ventas SET producto = $1, cantidad = $2, monto = $3
+     WHERE id = $4
+     RETURNING producto, cantidad, monto`,
+    [producto, cantidad, monto, id],
+  );
+
+  if (rows.length === 0) return null;
+  return {
+    producto: rows[0].producto,
+    cantidad: Number(rows[0].cantidad),
+    monto: Number(rows[0].monto),
+  };
+}
+
 export async function registrarDeuda(cliente, monto) {
   await pool.query(
     'INSERT INTO deudas (cliente, monto) VALUES ($1, $2)',

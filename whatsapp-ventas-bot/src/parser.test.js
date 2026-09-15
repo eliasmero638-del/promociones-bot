@@ -100,6 +100,21 @@ test('alias: agregar y quitar', () => {
   });
 });
 
+test('ventas hoy: con y sin tilde', () => {
+  assert.deepEqual(parseMensaje('Ventas hoy'), { tipo: 'ventas_hoy' });
+  assert.deepEqual(parseMensaje('ventas hoy'), { tipo: 'ventas_hoy' });
+});
+
+test('corregir venta por numero', () => {
+  assert.deepEqual(parseMensaje('Corregir venta 2 1 Relay 0$'), {
+    tipo: 'corregir_venta_n',
+    posicion: 2,
+    cantidad: 1,
+    producto: 'Relay',
+    monto: 0,
+  });
+});
+
 test('actualizar precio y stock de un producto', () => {
   assert.deepEqual(parseMensaje('Precio RL01 120$'), {
     tipo: 'actualizar_precio',
