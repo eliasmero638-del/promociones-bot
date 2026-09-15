@@ -144,6 +144,26 @@ export async function crearProducto(codigo, nombre, precio, stock) {
   return mapProducto(rows[0]);
 }
 
+export async function actualizarPrecio(codigo, precio) {
+  const { rows } = await pool.query(
+    `UPDATE productos SET precio = $1
+     WHERE LOWER(codigo) = LOWER($2)
+     RETURNING id, codigo, nombre, precio, stock`,
+    [precio, codigo],
+  );
+  return rows.length === 0 ? null : mapProducto(rows[0]);
+}
+
+export async function actualizarStock(codigo, stock) {
+  const { rows } = await pool.query(
+    `UPDATE productos SET stock = $1
+     WHERE LOWER(codigo) = LOWER($2)
+     RETURNING id, codigo, nombre, precio, stock`,
+    [stock, codigo],
+  );
+  return rows.length === 0 ? null : mapProducto(rows[0]);
+}
+
 function mapProducto(row) {
   return {
     id: row.id,

@@ -20,6 +20,8 @@ de WhatsApp secundario, escaneando un código QR una sola vez.
 | Agregar producto al catálogo | `#AgregarProducto [stock] [nombre] [precio]$ #[código]` | `#AgregarProducto 10 Relay 5 patas 100$ #RL01` |
 | Agregar alias a un producto | `Alias [código] [alias]` | `Alias RL01 relay chiquito` |
 | Quitar alias de un producto | `Quitar alias [código] [alias]` | `Quitar alias RL01 relay chiquito` |
+| Actualizar precio de un producto | `Precio [código] [nuevo precio]$` | `Precio RL01 120$` |
+| Actualizar stock de un producto | `Stock [código] [nueva cantidad]` | `Stock RL01 20` |
 | Vender del catálogo | `Venta [cantidad] [nombre, alias o código]` (cantidad opcional, por defecto 1) | `Venta relay chiquito` |
 
 "Corregir última venta" reemplaza cantidad, producto y monto de la venta más
@@ -44,6 +46,10 @@ precio de catálogo (queda reflejada también en `Total hoy/semana/mes`). Si el
 texto coincide con más de un producto, el bot pregunta cuál es y espera que se
 responda con el número de la opción antes de registrar nada; cualquier otro
 mensaje mientras tanto cancela esa venta pendiente y se procesa normal.
+
+`Precio [código] [nuevo precio]$` y `Stock [código] [nueva cantidad]` actualizan
+esos campos de un producto ya creado; `Stock` fija la cantidad exacta (no suma
+ni resta), útil tanto para corregir como para reabastecer.
 
 Este catálogo es independiente del formato libre `[cantidad] [producto]
 [monto]$`: ese sigue sirviendo para ventas puntuales de productos que no están

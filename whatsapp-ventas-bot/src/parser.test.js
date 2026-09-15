@@ -100,6 +100,19 @@ test('alias: agregar y quitar', () => {
   });
 });
 
+test('actualizar precio y stock de un producto', () => {
+  assert.deepEqual(parseMensaje('Precio RL01 120$'), {
+    tipo: 'actualizar_precio',
+    codigo: 'RL01',
+    precio: 120,
+  });
+  assert.deepEqual(parseMensaje('Stock RL01 20'), {
+    tipo: 'actualizar_stock',
+    codigo: 'RL01',
+    stock: 20,
+  });
+});
+
 test('venta por catalogo: con y sin cantidad', () => {
   assert.deepEqual(parseMensaje('Venta relay mini'), {
     tipo: 'venta_catalogo',

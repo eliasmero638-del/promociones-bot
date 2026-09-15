@@ -13,6 +13,8 @@ const RE_QUIEN_DEBE = /^quien\s+debe$/i;
 const RE_CORREGIR_VENTA = /^corregir\s+(la\s+)?[uú]ltima\s+venta\s+(\d+)\s+(.+?)\s+(\d+(?:[.,]\d+)?)\s*\$$/i;
 const RE_QUITAR_ALIAS = /^quitar\s+alias\s+(\S+)\s+(.+)$/i;
 const RE_ALIAS = /^alias\s+(\S+)\s+(.+)$/i;
+const RE_PRECIO = /^precio\s+(\S+)\s+(\d+(?:[.,]\d+)?)\s*\$$/i;
+const RE_STOCK = /^stock\s+(\S+)\s+(\d+)$/i;
 const RE_DEUDA = /^debe\s+(.+?)\s+(\d+(?:[.,]\d+)?)$/i;
 
 export function parseMensaje(textoOriginal) {
@@ -71,6 +73,18 @@ export function parseMensaje(textoOriginal) {
   if (aliasMatch) {
     const [, codigo, alias] = aliasMatch;
     return { tipo: 'agregar_alias', codigo: codigo.trim(), alias: alias.trim() };
+  }
+
+  const precioMatch = texto.match(RE_PRECIO);
+  if (precioMatch) {
+    const [, codigo, precio] = precioMatch;
+    return { tipo: 'actualizar_precio', codigo: codigo.trim(), precio: parseMonto(precio) };
+  }
+
+  const stockMatch = texto.match(RE_STOCK);
+  if (stockMatch) {
+    const [, codigo, stock] = stockMatch;
+    return { tipo: 'actualizar_stock', codigo: codigo.trim(), stock: parseInt(stock, 10) };
   }
 
   const deudaMatch = texto.match(RE_DEUDA);

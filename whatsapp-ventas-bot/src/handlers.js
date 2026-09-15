@@ -9,6 +9,8 @@ import {
   agregarAliasBatch,
   agregarAlias,
   quitarAlias,
+  actualizarPrecio,
+  actualizarStock,
   buscarProductosPorTexto,
   registrarVentaCatalogo,
 } from './db.js';
@@ -26,6 +28,12 @@ const AYUDA = `No entendí ese mensaje 🤔 Formatos disponibles:
 
 🏷️ Alias de un producto: "Alias [código] [alias]" / "Quitar alias [código] [alias]"
    Ej: Alias RL01 relay chiquito
+
+💲 Actualizar precio: "Precio [código] [nuevo precio]$"
+   Ej: Precio RL01 120$
+
+📦 Actualizar stock: "Stock [código] [nueva cantidad]"
+   Ej: Stock RL01 20
 
 🛒 Vender del catálogo: "Venta [cantidad] [nombre, alias o código]"
    Ej: Venta relay chiquito
@@ -160,6 +168,22 @@ export async function manejarMensaje(texto, chatId) {
         return `⚠️ "${accion.alias}" no era un alias de ${accion.codigo}.`;
       }
       return `🗑️ Alias quitado: "${accion.alias}" ya no identifica a ${textoProducto(resultado)}.`;
+    }
+
+    case 'actualizar_precio': {
+      const producto = await actualizarPrecio(accion.codigo, accion.precio);
+      if (!producto) {
+        return `⚠️ No encontré ningún producto con el código "${accion.codigo}".`;
+      }
+      return `✅ Precio actualizado: ${textoProducto(producto)}.`;
+    }
+
+    case 'actualizar_stock': {
+      const producto = await actualizarStock(accion.codigo, accion.stock);
+      if (!producto) {
+        return `⚠️ No encontré ningún producto con el código "${accion.codigo}".`;
+      }
+      return `✅ Stock actualizado: ${producto.codigo} - ${producto.nombre}, stock ${producto.stock}.`;
     }
 
     case 'venta_catalogo': {
