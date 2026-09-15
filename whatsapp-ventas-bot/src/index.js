@@ -133,7 +133,7 @@ async function iniciarBot() {
       if (!texto.trim()) continue;
 
       try {
-        const respuesta = await manejarMensaje(texto);
+        const respuesta = await manejarMensaje(texto, remoteJid);
         await sock.sendMessage(remoteJid, { text: respuesta });
       } catch (err) {
         console.error('Error procesando mensaje:', err);

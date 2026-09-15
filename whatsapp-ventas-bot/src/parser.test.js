@@ -77,6 +77,42 @@ test('quien debe: con y sin tilde', () => {
   assert.deepEqual(parseMensaje('quien debe'), { tipo: 'quien_debe' });
 });
 
+test('agregar producto al catalogo', () => {
+  assert.deepEqual(parseMensaje('#AgregarProducto 10 Relay 5 patas 100$ #RL01'), {
+    tipo: 'agregar_producto',
+    stock: 10,
+    nombre: 'Relay 5 patas',
+    precio: 100,
+    codigo: 'RL01',
+  });
+});
+
+test('alias: agregar y quitar', () => {
+  assert.deepEqual(parseMensaje('Alias RL01 relay chiquito'), {
+    tipo: 'agregar_alias',
+    codigo: 'RL01',
+    alias: 'relay chiquito',
+  });
+  assert.deepEqual(parseMensaje('Quitar alias RL01 relay chiquito'), {
+    tipo: 'quitar_alias',
+    codigo: 'RL01',
+    alias: 'relay chiquito',
+  });
+});
+
+test('venta por catalogo: con y sin cantidad', () => {
+  assert.deepEqual(parseMensaje('Venta relay mini'), {
+    tipo: 'venta_catalogo',
+    cantidad: 1,
+    texto: 'relay mini',
+  });
+  assert.deepEqual(parseMensaje('venta 2 relay mini'), {
+    tipo: 'venta_catalogo',
+    cantidad: 2,
+    texto: 'relay mini',
+  });
+});
+
 test('mensaje no reconocido', () => {
   assert.deepEqual(parseMensaje('hola'), { tipo: 'desconocido' });
   assert.deepEqual(parseMensaje('1 Relay'), { tipo: 'desconocido' });

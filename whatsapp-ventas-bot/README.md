@@ -17,11 +17,37 @@ de WhatsApp secundario, escaneando un código QR una sola vez.
 | Total del mes | `Total mes` | |
 | Registrar deuda | `Debe [nombre] [monto]` | `Debe Juan 30` |
 | Ver deudas pendientes | `Quién debe` | |
+| Agregar producto al catálogo | `#AgregarProducto [stock] [nombre] [precio]$ #[código]` | `#AgregarProducto 10 Relay 5 patas 100$ #RL01` |
+| Agregar alias a un producto | `Alias [código] [alias]` | `Alias RL01 relay chiquito` |
+| Quitar alias de un producto | `Quitar alias [código] [alias]` | `Quitar alias RL01 relay chiquito` |
+| Vender del catálogo | `Venta [cantidad] [nombre, alias o código]` (cantidad opcional, por defecto 1) | `Venta relay chiquito` |
 
 "Corregir última venta" reemplaza cantidad, producto y monto de la venta más
 reciente (útil cuando una venta se anula o se cobra distinto a lo registrado).
 Solo corrige la última; si ya se registraron ventas después, hay que corregirla
 antes de que eso pase.
+
+### Catálogo de productos, alias y venta con stock
+
+`#AgregarProducto` crea un producto en el catálogo (tabla `productos`) con un
+código único, y sugiere automáticamente 2-3 alias a partir del nombre (primera
+palabra, primeras dos palabras, todas menos la última — una heurística simple
+sobre el texto, no una IA generando sinónimos creativos). Esos alias quedan
+guardados de inmediato; para ajustarlos después (agregar o quitar cualquiera,
+incluidos los sugeridos) se usa `Alias [código] [alias]` o
+`Quitar alias [código] [alias]` en cualquier momento.
+
+`Venta [cantidad] [texto]` busca el texto contra el nombre, el código o
+cualquier alias de los productos (sin distinguir mayúsculas ni acentos). Si
+coincide con un solo producto, descuenta el stock y registra la venta al
+precio de catálogo (queda reflejada también en `Total hoy/semana/mes`). Si el
+texto coincide con más de un producto, el bot pregunta cuál es y espera que se
+responda con el número de la opción antes de registrar nada; cualquier otro
+mensaje mientras tanto cancela esa venta pendiente y se procesa normal.
+
+Este catálogo es independiente del formato libre `[cantidad] [producto]
+[monto]$`: ese sigue sirviendo para ventas puntuales de productos que no están
+en el catálogo, sin tocar stock.
 
 El monto de una venta es siempre el **total** de esa línea, no el precio unitario.
 Un mensaje que no calce con ninguno de estos formatos recibe una respuesta de ayuda
@@ -111,6 +137,9 @@ runner nativo de Node.
 - Conexión a WhatsApp vía Baileys y QR.
 - Registro de ventas (`ventas`) y deudas (`deudas`).
 - Corrección de la última venta registrada.
+- Catálogo de productos con código, precio y stock (`productos`), alias
+  (`producto_alias`) y venta con descuento de stock, incluyendo manejo de
+  ambigüedad cuando un alias coincide con más de un producto.
 - Consultas de totales de ventas por día/semana/mes, con desglose por producto.
 - Consulta de deudas pendientes agrupadas por cliente.
 - Cierre de caja automático diario (opcional, vía `CIERRE_HORA`).

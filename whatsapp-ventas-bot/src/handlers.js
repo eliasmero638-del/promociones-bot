@@ -5,6 +5,12 @@ import {
   corregirUltimaVenta,
   registrarDeuda,
   deudasPendientes,
+  crearProducto,
+  agregarAliasBatch,
+  agregarAlias,
+  quitarAlias,
+  buscarProductosPorTexto,
+  registrarVentaCatalogo,
 } from './db.js';
 
 const AYUDA = `No entendí ese mensaje 🤔 Formatos disponibles:
@@ -14,6 +20,15 @@ const AYUDA = `No entendí ese mensaje 🤔 Formatos disponibles:
 
 ✏️ Corregir la última venta: "Corregir última venta [cantidad] [producto] [monto]$"
    Ej: Corregir última venta 1 Relay 5$
+
+🗂️ Agregar producto al catálogo: "#AgregarProducto [stock] [nombre] [precio]$ #[código]"
+   Ej: #AgregarProducto 10 Relay 5 patas 100$ #RL01
+
+🏷️ Alias de un producto: "Alias [código] [alias]" / "Quitar alias [código] [alias]"
+   Ej: Alias RL01 relay chiquito
+
+🛒 Vender del catálogo: "Venta [cantidad] [nombre, alias o código]"
+   Ej: Venta relay chiquito
 
 📊 Consultar ventas: "Total hoy", "Total semana" o "Total mes"
 
@@ -26,7 +41,56 @@ function money(valor) {
   return `$${Number(valor).toFixed(2)}`;
 }
 
-export async function manejarMensaje(texto) {
+// Sugiere 2-3 alias razonables a partir del nombre del producto (primera
+// palabra, primeras dos palabras, todas menos la última). Es una heurística
+// simple basada en el texto, no una IA que invente sinónimos.
+function sugerirAlias(nombre) {
+  const palabras = nombre.trim().split(/\s+/);
+  const sugerencias = new Set();
+
+  if (palabras.length > 1) {
+    sugerencias.add(palabras[0]);
+    sugerencias.add(palabras.slice(0, -1).join(' '));
+  }
+  if (palabras.length > 2) {
+    sugerencias.add(palabras.slice(0, 2).join(' '));
+  }
+
+  sugerencias.delete(nombre.trim());
+  return [...sugerencias].slice(0, 3);
+}
+
+function textoProducto(producto) {
+  return `${producto.codigo} - ${producto.nombre} (${money(producto.precio)})`;
+}
+
+async function ejecutarVentaCatalogo(producto, cantidad) {
+  const { montoTotal, stockRestante } = await registrarVentaCatalogo(producto, cantidad);
+  return `✅ Venta registrada: ${cantidad} ${producto.nombre} (${producto.codigo}) - ${money(montoTotal)}\nStock restante: ${stockRestante}`;
+}
+
+// Cuando "Venta ..." coincide con más de un producto, se guarda aquí la
+// consulta pendiente por chat hasta que la persona responde con el número
+// de la opción correcta.
+const pendientesVenta = new Map();
+
+export async function manejarMensaje(texto, chatId) {
+  if (chatId && pendientesVenta.has(chatId)) {
+    const pendiente = pendientesVenta.get(chatId);
+    pendientesVenta.delete(chatId);
+
+    const seleccion = texto.trim().match(/^(\d+)$/);
+    if (seleccion) {
+      const producto = pendiente.candidatos[parseInt(seleccion[1], 10) - 1];
+      if (producto) {
+        return ejecutarVentaCatalogo(producto, pendiente.cantidad);
+      }
+      return '⚠️ Ese número no corresponde a ninguna opción. Escribe de nuevo la venta.';
+    }
+    // No fue una selección: se descarta la venta pendiente y se procesa
+    // este mensaje como uno nuevo, normal.
+  }
+
   const accion = parseMensaje(texto);
 
   switch (accion.tipo) {
@@ -53,6 +117,70 @@ export async function manejarMensaje(texto) {
         return '⚠️ No hay ninguna venta registrada para corregir.';
       }
       return `✏️ Última venta corregida: ${corregida.cantidad} ${corregida.producto} - ${money(corregida.monto)}`;
+    }
+
+    case 'agregar_producto': {
+      let producto;
+      try {
+        producto = await crearProducto(accion.codigo, accion.nombre, accion.precio, accion.stock);
+      } catch (err) {
+        if (err.code === '23505') {
+          return `⚠️ Ya existe un producto con el código "${accion.codigo}".`;
+        }
+        throw err;
+      }
+
+      const sugerencias = sugerirAlias(accion.nombre);
+      if (sugerencias.length > 0) {
+        await agregarAliasBatch(producto.id, sugerencias);
+      }
+
+      let respuesta = `✅ Registrado: ${producto.codigo} = "${producto.nombre}", ${money(producto.precio)}, stock ${producto.stock}.`;
+      if (sugerencias.length > 0) {
+        respuesta += `\nTambién lo voy a reconocer si escribes: ${sugerencias.map((s) => `"${s}"`).join(', ')}.`;
+      }
+      respuesta += `\nPara agregar o quitar un alias: "Alias ${producto.codigo} [alias]" o "Quitar alias ${producto.codigo} [alias]".`;
+      return respuesta;
+    }
+
+    case 'agregar_alias': {
+      const producto = await agregarAlias(accion.codigo, accion.alias);
+      if (!producto) {
+        return `⚠️ No encontré ningún producto con el código "${accion.codigo}".`;
+      }
+      return `✅ Alias agregado: "${accion.alias}" ahora identifica a ${textoProducto(producto)}.`;
+    }
+
+    case 'quitar_alias': {
+      const resultado = await quitarAlias(accion.codigo, accion.alias);
+      if (resultado === null) {
+        return `⚠️ No encontré ningún producto con el código "${accion.codigo}".`;
+      }
+      if (!resultado) {
+        return `⚠️ "${accion.alias}" no era un alias de ${accion.codigo}.`;
+      }
+      return `🗑️ Alias quitado: "${accion.alias}" ya no identifica a ${textoProducto(resultado)}.`;
+    }
+
+    case 'venta_catalogo': {
+      const candidatos = await buscarProductosPorTexto(accion.texto);
+
+      if (candidatos.length === 0) {
+        return `⚠️ No encontré ningún producto que coincida con "${accion.texto}".`;
+      }
+
+      if (candidatos.length > 1) {
+        if (chatId) {
+          pendientesVenta.set(chatId, { candidatos, cantidad: accion.cantidad });
+        }
+        let respuesta = `🤔 Encontré varios productos que coinciden con "${accion.texto}", ¿cuál es? Responde con el número:`;
+        candidatos.forEach((p, i) => {
+          respuesta += `\n${i + 1}. ${textoProducto(p)}`;
+        });
+        return respuesta;
+      }
+
+      return ejecutarVentaCatalogo(candidatos[0], accion.cantidad);
     }
 
     case 'deuda': {
