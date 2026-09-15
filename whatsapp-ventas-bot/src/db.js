@@ -78,6 +78,23 @@ export async function totalVentas(periodo) {
   };
 }
 
+export async function corregirUltimaVenta(producto, cantidad, monto) {
+  const { rows } = await pool.query(
+    `UPDATE ventas
+     SET producto = $1, cantidad = $2, monto = $3
+     WHERE id = (SELECT id FROM ventas ORDER BY id DESC LIMIT 1)
+     RETURNING producto, cantidad, monto`,
+    [producto, cantidad, monto],
+  );
+
+  if (rows.length === 0) return null;
+  return {
+    producto: rows[0].producto,
+    cantidad: Number(rows[0].cantidad),
+    monto: Number(rows[0].monto),
+  };
+}
+
 export async function registrarDeuda(cliente, monto) {
   await pool.query(
     'INSERT INTO deudas (cliente, monto) VALUES ($1, $2)',

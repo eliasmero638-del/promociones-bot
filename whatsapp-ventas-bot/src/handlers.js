@@ -2,6 +2,7 @@ import { parseMensaje } from './parser.js';
 import {
   registrarVenta,
   totalVentas,
+  corregirUltimaVenta,
   registrarDeuda,
   deudasPendientes,
 } from './db.js';
@@ -10,6 +11,9 @@ const AYUDA = `No entendí ese mensaje 🤔 Formatos disponibles:
 
 📦 Registrar venta: "[cantidad] [producto] [monto]$"
    Ej: 1 Relay 5$
+
+✏️ Corregir la última venta: "Corregir última venta [cantidad] [producto] [monto]$"
+   Ej: Corregir última venta 1 Relay 5$
 
 📊 Consultar ventas: "Total hoy", "Total semana" o "Total mes"
 
@@ -43,6 +47,14 @@ export async function manejarMensaje(texto) {
       return respuesta;
     }
 
+    case 'corregir_venta': {
+      const corregida = await corregirUltimaVenta(accion.producto, accion.cantidad, accion.monto);
+      if (!corregida) {
+        return '⚠️ No hay ninguna venta registrada para corregir.';
+      }
+      return `✏️ Última venta corregida: ${corregida.cantidad} ${corregida.producto} - ${money(corregida.monto)}`;
+    }
+
     case 'deuda': {
       await registrarDeuda(accion.cliente, accion.monto);
       return `✅ Deuda registrada: ${accion.cliente} debe ${money(accion.monto)}`;
@@ -63,4 +75,16 @@ export async function manejarMensaje(texto) {
     default:
       return AYUDA;
   }
+}
+
+export async function cierreDeCajaTexto() {
+  const { total, desglose } = await totalVentas('hoy');
+  let respuesta = `🌙 Cierre de caja: ${money(total)}`;
+  if (desglose.length > 0) {
+    respuesta += '\n\nDesglose:';
+    for (const item of desglose) {
+      respuesta += `\n- ${item.producto}: ${item.cantidad} u. - ${money(item.monto)}`;
+    }
+  }
+  return respuesta;
 }

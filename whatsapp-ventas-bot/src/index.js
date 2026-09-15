@@ -3,13 +3,53 @@ import makeWASocket, { useMultiFileAuthState, DisconnectReason } from '@whiskeys
 import qrcode from 'qrcode-terminal';
 import pino from 'pino';
 import { initSchema } from './db.js';
-import { manejarMensaje } from './handlers.js';
+import { manejarMensaje, cierreDeCajaTexto } from './handlers.js';
 
 const AUTH_DIR = process.env.AUTH_DIR || './auth_info';
 const ALLOWED_SENDER = process.env.ALLOWED_SENDER
   ? process.env.ALLOWED_SENDER.replace(/\D/g, '')
   : null;
 const PROFILE_NAME = process.env.PROFILE_NAME || null;
+const TIMEZONE = process.env.TIMEZONE || 'America/Guayaquil';
+const CIERRE_HORA = process.env.CIERRE_HORA || null; // formato "HH:MM", 24h
+
+let sockActivo = null;
+let ultimaFechaCierreEnviado = null;
+
+function horaLocalActual() {
+  return new Intl.DateTimeFormat('en-GB', {
+    timeZone: TIMEZONE,
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false,
+  }).format(new Date());
+}
+
+function fechaLocalActual() {
+  return new Intl.DateTimeFormat('en-CA', { timeZone: TIMEZONE }).format(new Date());
+}
+
+// Revisa cada minuto si ya es la hora configurada de cierre de caja (hora
+// local del negocio) y, si no se ha enviado hoy, manda el resumen del día
+// al número autorizado sin que nadie tenga que pedirlo.
+function iniciarSchedulerCierreDeCaja() {
+  if (!CIERRE_HORA || !ALLOWED_SENDER) return;
+
+  setInterval(async () => {
+    if (!sockActivo) return;
+
+    const fechaActual = fechaLocalActual();
+    if (horaLocalActual() !== CIERRE_HORA || ultimaFechaCierreEnviado === fechaActual) return;
+
+    ultimaFechaCierreEnviado = fechaActual;
+    try {
+      const texto = await cierreDeCajaTexto();
+      await sockActivo.sendMessage(`${ALLOWED_SENDER}@s.whatsapp.net`, { text: texto });
+    } catch (err) {
+      console.error('Error enviando el cierre de caja:', err);
+    }
+  }, 60 * 1000);
+}
 
 // Justo después de conectar, las claves de app-state (necesarias para
 // updateProfileName) todavía pueden no estar sincronizadas, así que se
@@ -37,6 +77,8 @@ async function iniciarBot() {
     logger: pino({ level: 'silent' }),
     printQRInTerminal: false,
   });
+
+  sockActivo = sock;
 
   sock.ev.on('creds.update', saveCreds);
 
@@ -106,6 +148,7 @@ async function iniciarBot() {
 async function main() {
   await initSchema();
   await iniciarBot();
+  iniciarSchedulerCierreDeCaja();
 }
 
 main().catch((err) => {

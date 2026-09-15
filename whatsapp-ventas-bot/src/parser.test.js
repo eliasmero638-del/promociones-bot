@@ -57,6 +57,21 @@ test('deuda: nombre simple y compuesto', () => {
   });
 });
 
+test('corregir ultima venta: con y sin tilde', () => {
+  assert.deepEqual(parseMensaje('Corregir última venta 1 Relay 5$'), {
+    tipo: 'corregir_venta',
+    cantidad: 1,
+    producto: 'Relay',
+    monto: 5,
+  });
+  assert.deepEqual(parseMensaje('corregir la ultima venta 3 rulimanes 15$'), {
+    tipo: 'corregir_venta',
+    cantidad: 3,
+    producto: 'rulimanes',
+    monto: 15,
+  });
+});
+
 test('quien debe: con y sin tilde', () => {
   assert.deepEqual(parseMensaje('Quién debe'), { tipo: 'quien_debe' });
   assert.deepEqual(parseMensaje('quien debe'), { tipo: 'quien_debe' });

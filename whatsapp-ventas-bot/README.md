@@ -11,11 +11,17 @@ de WhatsApp secundario, escaneando un código QR una sola vez.
 | Acción | Formato | Ejemplo |
 |---|---|---|
 | Registrar venta | `[cantidad] [producto] [monto]$` | `1 Relay 5$` |
+| Corregir la última venta | `Corregir última venta [cantidad] [producto] [monto]$` | `Corregir última venta 1 Relay 5$` |
 | Total del día | `Total hoy` | |
 | Total de la semana | `Total semana` | |
 | Total del mes | `Total mes` | |
 | Registrar deuda | `Debe [nombre] [monto]` | `Debe Juan 30` |
 | Ver deudas pendientes | `Quién debe` | |
+
+"Corregir última venta" reemplaza cantidad, producto y monto de la venta más
+reciente (útil cuando una venta se anula o se cobra distinto a lo registrado).
+Solo corrige la última; si ya se registraron ventas después, hay que corregirla
+antes de que eso pase.
 
 El monto de una venta es siempre el **total** de esa línea, no el precio unitario.
 Un mensaje que no calce con ninguno de estos formatos recibe una respuesta de ayuda
@@ -58,6 +64,11 @@ el bot solo responderá a mensajes de ese número. Se recomienda configurarlo, y
 que cualquiera que le escriba al número secundario puede registrar ventas o
 deudas si se deja sin restricción.
 
+`CIERRE_HORA` es opcional: si se define (formato 24h `"HH:MM"`, hora local según
+`TIMEZONE`) y `ALLOWED_SENDER` también está configurado, el bot manda solo, cada
+día a esa hora, el resumen de ventas del día (mismo contenido que "Total hoy")
+al número autorizado, sin que nadie tenga que pedirlo.
+
 ## Despliegue en Railway
 
 Este bot vive en el subdirectorio `whatsapp-ventas-bot/` de un repositorio que
@@ -99,8 +110,10 @@ runner nativo de Node.
 
 - Conexión a WhatsApp vía Baileys y QR.
 - Registro de ventas (`ventas`) y deudas (`deudas`).
+- Corrección de la última venta registrada.
 - Consultas de totales de ventas por día/semana/mes, con desglose por producto.
 - Consulta de deudas pendientes agrupadas por cliente.
+- Cierre de caja automático diario (opcional, vía `CIERRE_HORA`).
 - Mensaje de ayuda ante formatos no reconocidos.
 
 Marcar una deuda como pagada (`pagado = true`) todavía no tiene un comando de
