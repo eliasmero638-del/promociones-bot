@@ -143,14 +143,21 @@ async function iniciarBot() {
 
       if (!texto.trim()) continue;
 
+      console.log(`RECIBIDO: "${texto}"`);
+
       try {
         const respuesta = await manejarMensaje(texto, remoteJid);
         await sock.sendMessage(remoteJid, { text: respuesta });
+        console.log('RESPUESTA ENVIADA OK');
       } catch (err) {
         console.error('Error procesando mensaje:', err);
-        await sock.sendMessage(remoteJid, {
-          text: '⚠️ Ocurrió un error al procesar tu mensaje. Intenta de nuevo.',
-        });
+        try {
+          await sock.sendMessage(remoteJid, {
+            text: '⚠️ Ocurrió un error al procesar tu mensaje. Intenta de nuevo.',
+          });
+        } catch (err2) {
+          console.error('Error también al enviar el aviso de error:', err2);
+        }
       }
     }
   });
