@@ -13,6 +13,8 @@ console.warn = () => {};
 import makeWASocket, { useMultiFileAuthState, DisconnectReason } from '@whiskeysockets/baileys';
 import qrcode from 'qrcode-terminal';
 import pino from 'pino';
+import { readdirSync, unlinkSync } from 'fs';
+import { join } from 'path';
 import { initSchema } from './db.js';
 import { manejarMensaje, cierreDeCajaTexto } from './handlers.js';
 
@@ -75,6 +77,34 @@ async function actualizarNombrePerfil(sock, nombre, intentos = 5, esperaMs = 400
         console.error('No se pudo actualizar el nombre de perfil tras varios intentos:', err);
       } else {
         await new Promise((resolve) => setTimeout(resolve, esperaMs));
+      }
+    }
+  }
+}
+
+// Arreglo puntual: la sesión de cifrado con ALLOWED_SENDER quedó
+// corrupta (errores "Bad MAC" / "MessageCounterError" en los logs), por lo
+// que las respuestas se enviaban sin error pero el teléfono del usuario no
+// podía descifrarlas. Al borrar los archivos de sesión de ese número,
+// Baileys negocia una sesión nueva desde cero la próxima vez que le
+// escriba o le respondamos.
+function reiniciarSesionCorrupta(numero) {
+  if (!numero) return;
+  let archivos;
+  try {
+    archivos = readdirSync(AUTH_DIR);
+  } catch (err) {
+    console.error('No se pudo leer AUTH_DIR para reiniciar la sesión:', err);
+    return;
+  }
+
+  for (const archivo of archivos) {
+    if (archivo.startsWith('session-') && archivo.includes(numero)) {
+      try {
+        unlinkSync(join(AUTH_DIR, archivo));
+        console.log(`Sesión corrupta eliminada: ${archivo}`);
+      } catch (err) {
+        console.error(`No se pudo eliminar ${archivo}:`, err);
       }
     }
   }
@@ -169,6 +199,7 @@ async function iniciarBot() {
 
 async function main() {
   await initSchema();
+  reiniciarSesionCorrupta(ALLOWED_SENDER);
   await iniciarBot();
   iniciarSchedulerCierreDeCaja();
 }
