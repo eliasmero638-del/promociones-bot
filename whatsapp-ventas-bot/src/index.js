@@ -13,6 +13,8 @@ console.warn = () => {};
 import makeWASocket, { useMultiFileAuthState, DisconnectReason } from '@whiskeysockets/baileys';
 import qrcode from 'qrcode-terminal';
 import pino from 'pino';
+import { readdirSync, unlinkSync } from 'fs';
+import { join } from 'path';
 import { initSchema } from './db.js';
 import { manejarMensaje, cierreDeCajaTexto } from './handlers.js';
 
@@ -23,6 +25,48 @@ const ALLOWED_SENDER = process.env.ALLOWED_SENDER
 const PROFILE_NAME = process.env.PROFILE_NAME || null;
 const TIMEZONE = process.env.TIMEZONE || 'America/Guayaquil';
 const CIERRE_HORA = process.env.CIERRE_HORA || null; // formato "HH:MM", 24h
+
+// La sesión de cifrado con un contacto a veces se corrompe (errores "Bad
+// MAC" / "MessageCounterError" de libsignal, en ráfaga) y desde ahí las
+// respuestas se mandan sin error pero el destinatario ya no las puede
+// descifrar. Se detecta el patrón en console.error y se borra el archivo
+// de sesión de ese número para que Baileys negocie una sesión nueva sola,
+// sin tener que intervenir a mano cada vez que pasa.
+let ultimoReinicioSesion = 0;
+function reiniciarSesionSiCorrupta(numero) {
+  if (!numero) return;
+  const ahora = Date.now();
+  if (ahora - ultimoReinicioSesion < 10_000) return; // evita repetir por cada línea de una misma ráfaga
+  ultimoReinicioSesion = ahora;
+
+  let archivos;
+  try {
+    archivos = readdirSync(AUTH_DIR);
+  } catch (err) {
+    console.error('No se pudo leer AUTH_DIR para reiniciar la sesión:', err);
+    return;
+  }
+
+  for (const archivo of archivos) {
+    if (archivo.startsWith('session-') && archivo.includes(numero)) {
+      try {
+        unlinkSync(join(AUTH_DIR, archivo));
+        console.log(`Sesión reiniciada automáticamente por error de cifrado: ${archivo}`);
+      } catch (err) {
+        console.error(`No se pudo eliminar ${archivo}:`, err);
+      }
+    }
+  }
+}
+
+const consoleErrorOriginal = console.error.bind(console);
+console.error = (...args) => {
+  consoleErrorOriginal(...args);
+  const texto = args.map((a) => (a && a.message) || String(a)).join(' ');
+  if (texto.includes('Bad MAC') || texto.includes('MessageCounterError')) {
+    reiniciarSesionSiCorrupta(ALLOWED_SENDER);
+  }
+};
 
 let sockActivo = null;
 let ultimaFechaCierreEnviado = null;
