@@ -145,14 +145,18 @@ async function iniciarBot() {
 
       console.log(`RECIBIDO: "${texto}"`);
 
+      // Responder a senderJid (el número real) en vez de remoteJid: cuando
+      // WhatsApp usa un LID, remoteJid es un ID interno y contestarle ahí
+      // manda la respuesta a un hilo "fantasma" que el teléfono del usuario
+      // no asocia con la conversación que tiene abierta.
       try {
-        const respuesta = await manejarMensaje(texto, remoteJid);
-        await sock.sendMessage(remoteJid, { text: respuesta });
+        const respuesta = await manejarMensaje(texto, senderJid);
+        await sock.sendMessage(senderJid, { text: respuesta });
         console.log('RESPUESTA ENVIADA OK');
       } catch (err) {
         console.error('Error procesando mensaje:', err);
         try {
-          await sock.sendMessage(remoteJid, {
+          await sock.sendMessage(senderJid, {
             text: '⚠️ Ocurrió un error al procesar tu mensaje. Intenta de nuevo.',
           });
         } catch (err2) {
