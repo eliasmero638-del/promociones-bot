@@ -1,4 +1,15 @@
 import 'dotenv/config';
+
+// La dependencia libsignal (usada internamente por Baileys) imprime por
+// console.info/console.warn el estado completo de cada sesión de cifrado al
+// abrirla o cerrarla -- incluyendo llaves privadas -- sin pasar por el
+// logger que se le configura a Baileys. Nuestro propio código nunca usa
+// console.info/console.warn, así que se silencian por completo para no
+// filtrar material criptográfico a los logs. console.log y console.error
+// quedan intactos.
+console.info = () => {};
+console.warn = () => {};
+
 import makeWASocket, { useMultiFileAuthState, DisconnectReason } from '@whiskeysockets/baileys';
 import qrcode from 'qrcode-terminal';
 import pino from 'pino';
