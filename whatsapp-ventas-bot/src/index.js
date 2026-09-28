@@ -26,15 +26,19 @@ const PROFILE_NAME = process.env.PROFILE_NAME || null;
 const TIMEZONE = process.env.TIMEZONE || 'America/Guayaquil';
 const CIERRE_HORA = process.env.CIERRE_HORA || null; // formato "HH:MM", 24h
 
-// La sesión de cifrado con un contacto a veces se corrompe (errores "Bad
-// MAC" / "MessageCounterError" de libsignal, en ráfaga) y desde ahí las
-// respuestas se mandan sin error pero el destinatario ya no las puede
-// descifrar. Se detecta el patrón en console.error y se borra el archivo
-// de sesión de ese número para que Baileys negocie una sesión nueva sola,
-// sin tener que intervenir a mano cada vez que pasa.
+// La sesión de cifrado con un contacto a veces se corrompe (libsignal tira
+// "Bad MAC", "MessageCounterError" o "SessionError: Over N messages into
+// the future", entre otras -- siempre logueadas como "Session error:...")
+// y desde ahí los mensajes ya no se pueden descifrar en uno de los dos
+// lados. Se detecta el prefijo común en console.error y se borran los
+// archivos de sesión guardados para que Baileys negocie sesiones nuevas
+// solo, sin intervención manual. Como WhatsApp puede identificar el mismo
+// chat con un LID (id interno) en vez del número de teléfono, no siempre
+// se puede saber de antemano qué archivo corresponde al número
+// autorizado -- como el bot solo le hace caso a ALLOWED_SENDER de todos
+// modos, es seguro borrar todas las sesiones guardadas.
 let ultimoReinicioSesion = 0;
-function reiniciarSesionSiCorrupta(numero) {
-  if (!numero) return;
+function reiniciarSesionesSiCorruptas() {
   const ahora = Date.now();
   if (ahora - ultimoReinicioSesion < 10_000) return; // evita repetir por cada línea de una misma ráfaga
   ultimoReinicioSesion = ahora;
@@ -43,12 +47,12 @@ function reiniciarSesionSiCorrupta(numero) {
   try {
     archivos = readdirSync(AUTH_DIR);
   } catch (err) {
-    console.error('No se pudo leer AUTH_DIR para reiniciar la sesión:', err);
+    console.error('No se pudo leer AUTH_DIR para reiniciar las sesiones:', err);
     return;
   }
 
   for (const archivo of archivos) {
-    if (archivo.startsWith('session-') && archivo.includes(numero)) {
+    if (archivo.startsWith('session-')) {
       try {
         unlinkSync(join(AUTH_DIR, archivo));
         console.log(`Sesión reiniciada automáticamente por error de cifrado: ${archivo}`);
@@ -63,8 +67,8 @@ const consoleErrorOriginal = console.error.bind(console);
 console.error = (...args) => {
   consoleErrorOriginal(...args);
   const texto = args.map((a) => (a && a.message) || String(a)).join(' ');
-  if (texto.includes('Bad MAC') || texto.includes('MessageCounterError')) {
-    reiniciarSesionSiCorrupta(ALLOWED_SENDER);
+  if (texto.includes('Session error:')) {
+    reiniciarSesionesSiCorruptas();
   }
 };
 
