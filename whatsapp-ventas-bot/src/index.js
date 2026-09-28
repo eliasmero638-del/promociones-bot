@@ -72,6 +72,29 @@ console.error = (...args) => {
   }
 };
 
+// TEMPORAL: fuerza un relink completo borrando toda la identidad de WhatsApp
+// (no solo las sesiones por contacto) para descartar corrupción a nivel de
+// credenciales tras varios episodios de "Session error" no resueltos por el
+// auto-heal normal. Quitar esta función y su llamada en main() una vez
+// confirmado que el bot vuelve a responder de forma estable.
+function borrarTodaLaAutenticacion() {
+  let archivos;
+  try {
+    archivos = readdirSync(AUTH_DIR);
+  } catch (err) {
+    console.error('No se pudo leer AUTH_DIR para el reinicio completo:', err);
+    return;
+  }
+  for (const archivo of archivos) {
+    try {
+      unlinkSync(join(AUTH_DIR, archivo));
+    } catch (err) {
+      console.error(`No se pudo eliminar ${archivo}:`, err);
+    }
+  }
+  console.log(`Reinicio completo: se borraron ${archivos.length} archivos de AUTH_DIR.`);
+}
+
 let sockActivo = null;
 let ultimaFechaCierreEnviado = null;
 
@@ -147,6 +170,10 @@ async function iniciarBot() {
     if (qr) {
       console.log('Escanea este código QR desde WhatsApp > Dispositivos vinculados:');
       qrcode.generate(qr, { small: true });
+      // TEMPORAL: imprime el string crudo del QR para poder regenerarlo como
+      // imagen fuera de la terminal (los logs de Railway no muestran bien el
+      // QR ascii). Quitar junto con borrarTodaLaAutenticacion().
+      console.log(`QR_RAW_DATA_START${qr}QR_RAW_DATA_END`);
     }
 
     if (connection === 'close') {
@@ -217,6 +244,7 @@ async function iniciarBot() {
 
 async function main() {
   await initSchema();
+  borrarTodaLaAutenticacion();
   await iniciarBot();
   iniciarSchedulerCierreDeCaja();
 }
