@@ -571,6 +571,10 @@ async def main():
     ok = state == bot.ConversationHandler.END and "no están disponibles" in query._edited[-1]["text"]
     record("Datos apagados: un cliente ya NO ve los datos de Banco Pichincha", ok, query._edited[-1]["text"][:50])
 
+    silenced_button = query._edited[-1]["kwargs"]["reply_markup"].inline_keyboard[0][0]
+    ok = silenced_button.url == "https://t.me/jtp2801" and silenced_button.text == "Contactar al administrador"
+    record("Datos apagados: el botón de contacto apunta a @jtp2801", ok, silenced_button.url)
+
     update, query = make_query("ms_method_bank_pichincha", admin_id, message_id=602)
     state_admin = await h.ms_method_selected(update, ctx)
     ok = state_admin == h.MS_WAITING_RECEIPT and "BANCO PICHINCHA" in query._edited[-1]["text"].upper()

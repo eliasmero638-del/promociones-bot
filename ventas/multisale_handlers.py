@@ -516,7 +516,7 @@ async def ms_method_selected(update: Update, context: ContextTypes.DEFAULT_TYPE)
     if not is_admin and config.is_payment_data_silenced():
         logger.info(f"[multisale] Payment data silenced; not showing '{method_key}' to user {user_id}.")
         await _safe_edit_message(
-            query, PAYMENT_DATA_SILENCED_TEXT, reply_markup=kb.payment_already_seen_keyboard(admin_id)
+            query, PAYMENT_DATA_SILENCED_TEXT, reply_markup=kb.payment_data_silenced_keyboard()
         )
         return ConversationHandler.END
 

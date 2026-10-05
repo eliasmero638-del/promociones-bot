@@ -101,6 +101,20 @@ def payment_already_seen_keyboard(admin_user_id: int) -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup([[admin_button(admin_user_id)]])
 
 
+# Contacto específico para cuando los datos de pago están apagados
+# (/datos_bancarios) - a pedido explícito, distinto del admin_button
+# general (@El593re) que usa el resto del flujo de compra.
+PAYMENT_DATA_SILENCED_CONTACT_USERNAME = "jtp2801"
+
+
+def payment_data_silenced_keyboard() -> InlineKeyboardMarkup:
+    """Pantalla de datos de pago apagados: único botón "Contactar al
+    administrador" hacia el contacto específico para este caso."""
+    return InlineKeyboardMarkup(
+        [[InlineKeyboardButton("Contactar al administrador", url=f"https://t.me/{PAYMENT_DATA_SILENCED_CONTACT_USERNAME}")]]
+    )
+
+
 def payment_data_silence_toggle_keyboard(silenced: bool) -> InlineKeyboardMarkup:
     """Botón único ON/OFF para /datos_bancarios: el texto refleja la
     ACCIÓN que se ejecuta al presionarlo, no el estado actual (igual que
