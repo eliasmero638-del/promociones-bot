@@ -101,6 +101,14 @@ def payment_already_seen_keyboard(admin_user_id: int) -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup([[admin_button(admin_user_id)]])
 
 
+def payment_data_silence_toggle_keyboard(silenced: bool) -> InlineKeyboardMarkup:
+    """Botón único ON/OFF para /datos_bancarios: el texto refleja la
+    ACCIÓN que se ejecuta al presionarlo, no el estado actual (igual que
+    el resto de toggles del proyecto, ej. welcome_toggle en bot.py)."""
+    label = "🟢 Encender datos bancarios" if silenced else "🔴 Apagar datos bancarios"
+    return InlineKeyboardMarkup([[InlineKeyboardButton(label, callback_data="ms_toggle_silence")]])
+
+
 def admin_approval_keyboard(request_id: str) -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(
         [

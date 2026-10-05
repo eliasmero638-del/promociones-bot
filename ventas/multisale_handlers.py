@@ -197,6 +197,11 @@ ALREADY_SEEN_TEXT = (
     "Para solicitar nuevamente los datos de pago debes comunicarte con el administrador."
 )
 
+PAYMENT_DATA_SILENCED_TEXT = (
+    "🔒 Los datos de pago no están disponibles por el momento.\n\n"
+    "Contacta al administrador para continuar con tu compra."
+)
+
 RECEIPT_RECEIVED_TEXT = (
     "⏳ PAGO EN PROCESO\n\n"
     "Hemos recibido tu comprobante correctamente.\n\n"
@@ -502,13 +507,24 @@ async def ms_method_selected(update: Update, context: ContextTypes.DEFAULT_TYPE)
     is_admin = user_id in _get_admin_user_ids()
     seen_store = PaymentDataSeenStore()
     admin_id = _get_admin_user_id()
+    config = MultiSaleConfigManager()
+
+    # Interruptor manual /datos_bancarios: con esto encendido, ningún
+    # cliente (el admin queda exento, igual que con el límite de vistas de
+    # abajo) puede ver los datos de ningún método de pago hasta que el
+    # admin lo vuelva a activar.
+    if not is_admin and config.is_payment_data_silenced():
+        logger.info(f"[multisale] Payment data silenced; not showing '{method_key}' to user {user_id}.")
+        await _safe_edit_message(
+            query, PAYMENT_DATA_SILENCED_TEXT, reply_markup=kb.payment_already_seen_keyboard(admin_id)
+        )
+        return ConversationHandler.END
 
     if not is_admin and seen_store.has_reached_limit(user_id, method_key):
         logger.info(f"[multisale] User {user_id} tried to re-view payment data for '{method_key}'; limit reached.")
         await _safe_edit_message(query, ALREADY_SEEN_TEXT, reply_markup=kb.payment_already_seen_keyboard(admin_id))
         return ConversationHandler.END
 
-    config = MultiSaleConfigManager()
     price = context.user_data.get("ms_locked_price", get_offer_price(len(locked_groups), locked_groups))
 
     await _safe_edit_message(
@@ -928,6 +944,57 @@ async def ms_quitar_pago_reciente_command(update: Update, context: ContextTypes.
         await update.message.reply_text("❌ No existe un comprobante con ese número.")
 
 
+def _payment_data_silence_status_text(silenced: bool) -> str:
+    estado = "🔴 DESACTIVADOS" if silenced else "🟢 ACTIVADOS"
+    return (
+        f"💳 Datos de pago: {estado}\n\n"
+        + (
+            "Ningún cliente puede ver los datos de pago (Pichincha, Guayaquil, "
+            "PayPal, interbancario); en su lugar ven un aviso para contactarte."
+            if silenced
+            else "Los clientes pueden ver los datos de pago normalmente."
+        )
+    )
+
+
+async def ms_datos_bancarios_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """/datos_bancarios: muestra el estado actual y un botón único para
+    prender/apagar la visibilidad de los datos de pago para los clientes,
+    a cualquier hora que el admin quiera (ver payment_data_silenced en
+    MultiSaleConfigManager)."""
+    if update.effective_user.id not in _get_admin_user_ids():
+        await update.message.reply_text("No tienes permiso para ejecutar este comando.")
+        return
+
+    config = MultiSaleConfigManager()
+    silenced = config.is_payment_data_silenced()
+    await update.message.reply_text(
+        _payment_data_silence_status_text(silenced),
+        reply_markup=kb.payment_data_silence_toggle_keyboard(silenced),
+    )
+
+
+async def ms_toggle_payment_silence(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    await query.answer()
+
+    if query.from_user.id not in _get_admin_user_ids():
+        await query.edit_message_text("No tienes permiso.")
+        return
+
+    config = MultiSaleConfigManager()
+    nuevo_estado = not config.is_payment_data_silenced()
+    config.set_payment_data_silenced(nuevo_estado)
+    saved = config.save()
+    logger.info(f"[multisale] Admin {query.from_user.id} set payment_data_silenced -> {nuevo_estado} (save()={saved})")
+
+    await _safe_edit_message(
+        query,
+        _payment_data_silence_status_text(nuevo_estado),
+        reply_markup=kb.payment_data_silence_toggle_keyboard(nuevo_estado),
+    )
+
+
 async def ms_admin_receive_recent_payment_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """MessageHandler registrado en su propio group (independiente del
     group=0 que usa la conversación de compra) para poder evaluar CADA
@@ -1003,11 +1070,13 @@ def register_multisale_handlers(application):
     application.add_handler(CallbackQueryHandler(ms_send_receipt_hint, pattern="^ms_send_receipt_hint$"))
     application.add_handler(CallbackQueryHandler(ms_approve_callback, pattern="^ms_approve_.+$"))
     application.add_handler(CallbackQueryHandler(ms_reject_callback, pattern="^ms_reject_.+$"))
+    application.add_handler(CallbackQueryHandler(ms_toggle_payment_silence, pattern="^ms_toggle_silence$"))
 
     application.add_handler(CommandHandler("agregar_pago_reciente", ms_agregar_pago_reciente_command))
     application.add_handler(CommandHandler("listo_pagos_recientes", ms_listo_pagos_recientes_command))
     application.add_handler(CommandHandler("ver_pagos_recientes", ms_ver_pagos_recientes_command))
     application.add_handler(CommandHandler("quitar_pago_reciente", ms_quitar_pago_reciente_command))
+    application.add_handler(CommandHandler("datos_bancarios", ms_datos_bancarios_command))
 
     # group=3: distinto de group=0 (bot.py + esta misma conversación),
     # group=1/2 (grupos de prueba de ventas/handlers.py) - así esta foto se

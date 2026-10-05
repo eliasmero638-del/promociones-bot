@@ -536,6 +536,56 @@ async def main():
     )
     record("payment_already_seen_keyboard tampoco usa tg://user?id=", all_urls_ok)
 
+    # --- /datos_bancarios: interruptor manual ON/OFF de los datos de pago ---
+    reset_storage()
+    user_data = {"ms_locked_groups": ["portoviejo"], "ms_locked_price": 6.99}
+    ctx = make_context(user_data)
+
+    command_update = MagicMock()
+    command_update.effective_user.id = buyer_id
+    command_update.message.reply_text = AsyncMock()
+    await h.ms_datos_bancarios_command(command_update, ctx)
+    ok = "No tienes permiso" in command_update.message.reply_text.call_args.args[0]
+    record("/datos_bancarios: un no-admin no puede ejecutarlo", ok)
+
+    command_update = MagicMock()
+    command_update.effective_user.id = admin_id
+    command_update.message.reply_text = AsyncMock()
+    await h.ms_datos_bancarios_command(command_update, ctx)
+    sent_text = command_update.message.reply_text.call_args.args[0]
+    ok = "ACTIVADOS" in sent_text
+    record("/datos_bancarios: estado inicial ACTIVADOS (nadie los apagó todavía)", ok, sent_text[:40])
+
+    update, query = make_query("ms_toggle_silence", buyer_id)
+    await h.ms_toggle_payment_silence(update, ctx)
+    ok = "No tienes permiso" in query._edited[-1]["text"] if query._edited else False
+    record("ms_toggle_silence: un no-admin no puede apagarlos", ok)
+
+    update, query = make_query("ms_toggle_silence", admin_id)
+    await h.ms_toggle_payment_silence(update, ctx)
+    ok = "DESACTIVADOS" in query._edited[-1]["text"] and "Encender" in query._edited[-1]["kwargs"]["reply_markup"].inline_keyboard[0][0].text
+    record("ms_toggle_silence: el admin los apaga y el botón pasa a 'Encender'", ok, query._edited[-1]["text"][:40])
+
+    update, query = make_query("ms_method_bank_pichincha", buyer_id, message_id=601)
+    state = await h.ms_method_selected(update, ctx)
+    ok = state == bot.ConversationHandler.END and "no están disponibles" in query._edited[-1]["text"]
+    record("Datos apagados: un cliente ya NO ve los datos de Banco Pichincha", ok, query._edited[-1]["text"][:50])
+
+    update, query = make_query("ms_method_bank_pichincha", admin_id, message_id=602)
+    state_admin = await h.ms_method_selected(update, ctx)
+    ok = state_admin == h.MS_WAITING_RECEIPT and "BANCO PICHINCHA" in query._edited[-1]["text"].upper()
+    record("Datos apagados: el administrador SÍ sigue viéndolos (para probar)", ok, query._edited[-1]["text"][:50])
+
+    update, query = make_query("ms_toggle_silence", admin_id)
+    await h.ms_toggle_payment_silence(update, ctx)
+    ok = "ACTIVADOS" in query._edited[-1]["text"] and "Apagar" in query._edited[-1]["kwargs"]["reply_markup"].inline_keyboard[0][0].text
+    record("ms_toggle_silence: el admin los vuelve a encender", ok, query._edited[-1]["text"][:40])
+
+    update, query = make_query("ms_method_paypal", buyer_id, message_id=603)
+    state = await h.ms_method_selected(update, ctx)
+    ok = state == h.MS_WAITING_RECEIPT and "PAYPAL" in query._edited[-1]["text"].upper()
+    record("Datos reencendidos: el cliente vuelve a ver los datos (PayPal)", ok, query._edited[-1]["text"][:50])
+
     print("\n=== RESULTADOS ===")
     for line in PASS:
         print("✅", line)

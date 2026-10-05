@@ -148,6 +148,12 @@ def _default_config() -> dict:
                 "details": "Ridmerwtf@gmail.com\nTitular: Ricardo.m",
             },
         },
+        # Interruptor manual del admin (ver /datos_bancarios en
+        # multisale_handlers.py): con esto en True, ms_method_selected deja
+        # de mostrar los datos de cualquier método de pago a los clientes
+        # (no al admin, que sigue viéndolos para probar que todo funciona)
+        # y muestra en su lugar un aviso para contactar al administrador.
+        "payment_data_silenced": False,
     }
 
 
@@ -287,6 +293,13 @@ class MultiSaleConfigManager:
     def get_payment_method_details(self, method_key: str) -> str:
         method = self.get_payment_method(method_key)
         return method.get("details", "") if method else ""
+
+    # --- Interruptor de datos bancarios ---
+    def is_payment_data_silenced(self) -> bool:
+        return bool(self.data.get("payment_data_silenced", False))
+
+    def set_payment_data_silenced(self, value: bool):
+        self.data["payment_data_silenced"] = value
 
 
 class RecentPaymentsStore:
