@@ -10,14 +10,18 @@ Corre como script plano (no requiere pytest):
 
 Escenarios cubiertos:
   1. normalize_phrase() quita tildes y pasa a minúsculas.
-  2-8. classify_text() reconoce cada intent por palabras clave, y
-       devuelve None si no reconoce nada.
+  2-13. classify_text() reconoce cada intent por palabras clave -
+        incluye "INF"/"información"/"info" y "agregame al grupo" (pedido
+        explícito) - y devuelve None si no reconoce nada.
+  13c-13f. is_emoji_only() reconoce un mensaje compuesto solo de emoji.
   9-14. _dispatch_intent() ejecuta la acción real de cada intent
-        (greeting/ack responden texto fijo; groups/payment muestran el
-        menú multisale; free/sell/faq reusan el texto+teclado real).
+        (greeting/ack responden texto fijo; groups/payment/info muestran
+        el menú multisale - info además con los precios REALES de
+        PRICE_TABLE; free/sell/faq reusan el texto+teclado real).
   15. handle_free_text_fallback() con una palabra clave: resuelve por
       palabras clave y NUNCA llama a la IA (ni para clasificar ni para
       redactar) - el punto central de este cambio: ahorrar créditos.
+  15b. Un mensaje de solo emoji se trata como "info", también sin IA.
   16. handle_free_text_fallback() sin palabra clave y la IA deshabilitada:
       muestra el menú principal - nunca se queda en silencio.
   17. handle_free_text_fallback() sin palabra clave, IA habilitada,
@@ -89,7 +93,7 @@ async def main():
         f"resultado={sales_ai.normalize_phrase('¿CUÁNTO CUESTA?')!r}",
     )
 
-    # 2-8. classify_text() por palabras clave.
+    # 2-13. classify_text() por palabras clave.
     cases = [
         ("hola buenas", "greeting"),
         ("muchas gracias", "ack"),
@@ -98,16 +102,27 @@ async def main():
         ("tienen preguntas frecuentes?", "faq"),
         ("como puedo pagar", "payment"),
         ("que grupos tienen", "groups"),
-        ("cuanto cuesta", "groups"),  # precio -> mismo intent "groups" (el precio depende de la selección)
+        ("agregame al grupo", "groups"),
+        ("como me uno?", "groups"),
+        ("cuanto cuesta", "info"),  # precio -> "info" (responde con la lista real de precios)
+        ("INF", "info"),
+        ("información", "info"),
+        ("info porfa", "info"),
     ]
     for i, (text, expected) in enumerate(cases, start=2):
         got = sales_ai.classify_text(sales_ai.normalize_phrase(text))
         record(f"{i}. classify_text({text!r}) == {expected!r}", got == expected, f"got={got!r}")
 
     record(
-        "8b. classify_text() devuelve None si no reconoce nada",
+        "13b. classify_text() devuelve None si no reconoce nada",
         sales_ai.classify_text(sales_ai.normalize_phrase("asdkjaslkdj qwe")) is None,
     )
+
+    # Detección de mensajes compuestos solo de emoji.
+    record("13c. is_emoji_only('😍') es True", sales_ai.is_emoji_only("😍") is True)
+    record("13d. is_emoji_only('🔥🔥🔥') es True", sales_ai.is_emoji_only("🔥🔥🔥") is True)
+    record("13e. is_emoji_only('hola 😍') es False (tiene texto)", sales_ai.is_emoji_only("hola 😍") is False)
+    record("13f. is_emoji_only('hola') es False", sales_ai.is_emoji_only("hola") is False)
 
     # 9-14. _dispatch_intent() ejecuta la acción real de cada intent.
     with patch.object(multisale_handlers, "send_multisale_welcome", new=AsyncMock()) as mock_welcome:
@@ -130,6 +145,18 @@ async def main():
         record(
             "12. payment avisa que primero hay que elegir grupos y llama a send_multisale_welcome()",
             message.reply_text.await_count == 1 and mock_welcome.await_count == 1,
+        )
+
+        mock_welcome.reset_mock()
+        update, message = make_update("info")
+        await sales_ai._dispatch_intent("info", update, ctx)
+        from ventas.multisale_config import GROUP_KEYS, PRICE_TABLE
+        sent_text = message.reply_text.call_args.args[0]
+        ok_prices = all(f"${PRICE_TABLE[c]:.2f}" in sent_text for c in range(1, len(GROUP_KEYS) + 1))
+        record(
+            "12b. info responde con los precios REALES de PRICE_TABLE y llama a send_multisale_welcome()",
+            ok_prices and mock_welcome.await_count == 1,
+            f"text={sent_text!r}",
         )
 
     with patch.object(ventas_config, "SalesConfigManager", new=lambda: FakeSalesConfig(free_link="https://t.me/+freegroup")):
@@ -161,6 +188,23 @@ async def main():
             "15. Con palabra clave reconocida, nunca se llama a la IA",
             mock_welcome.await_count == 1 and sales_ai._client.messages.create.await_count == 0,
             f"welcome_calls={mock_welcome.await_count}, ai_calls={sales_ai._client.messages.create.await_count}",
+        )
+    os.environ.pop("ANTHROPIC_API_KEY", None)
+    sales_ai._client = None
+
+    # 15b. Un mensaje de SOLO emoji se trata como "info" directamente, sin
+    #      pasar nunca por la IA (ni para clasificar ni para redactar).
+    os.environ["ANTHROPIC_API_KEY"] = "sk-ant-dummy"
+    sales_ai._client = MagicMock()
+    sales_ai._client.messages.create = AsyncMock(side_effect=AssertionError("la IA NO debía llamarse"))
+    with patch.object(multisale_handlers, "send_multisale_welcome", new=AsyncMock()) as mock_welcome:
+        update, message = make_update("🔥😍")
+        await sales_ai.handle_free_text_fallback(update, MagicMock())
+        sent_text = message.reply_text.call_args.args[0] if message.reply_text.await_count else ""
+        record(
+            "15b. Un emoji solo se trata como 'info' (precios) sin llamar a la IA",
+            "precios" in sent_text.lower() and mock_welcome.await_count == 1 and sales_ai._client.messages.create.await_count == 0,
+            f"text={sent_text!r}",
         )
     os.environ.pop("ANTHROPIC_API_KEY", None)
     sales_ai._client = None

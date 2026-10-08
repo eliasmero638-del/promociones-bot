@@ -12,8 +12,11 @@ puede resolver gratis:
 
   1. Palabras clave (classify_text, determinista, sin costo): reconoce
      saludo, agradecimiento, "grupo free", "vender contenido", preguntas
-     frecuentes, cómo pagar, o que quiere ver los grupos/precios - y
-     responde con el mismo contenido real de siempre (texto + botones).
+     frecuentes, cómo pagar, "info"/"INF"/"información" (responde con los
+     precios reales), que quiere unirse/ver los grupos, o un mensaje
+     compuesto ÚNICAMENTE de emoji (is_emoji_only - se trata igual que
+     "info") - y responde con el mismo contenido real de siempre (texto +
+     botones), nunca texto inventado.
   2. Solo si NINGUNA palabra clave matcheó, y ANTHROPIC_API_KEY está
      configurada: la IA (Claude) intenta primero clasificar el mensaje
      en una de esas mismas etiquetas (classify_intent_ai) - si lo logra,
@@ -30,6 +33,7 @@ import asyncio
 import logging
 import os
 import random
+import re
 import unicodedata
 from typing import Optional
 
@@ -86,7 +90,14 @@ _PAYMENT_PHRASES = (
 _GROUPS_PHRASES = (
     "grupos", "que grupos", "cuales grupos", "lista", "listado", "catalogo",
     "que tienen", "que hay", "contenido", "vip",
+    "agregame", "agregame al grupo", "unirme al grupo", "como me uno",
+    "como entro", "quiero unirme", "quiero entrar", "añademe",
 )
+# "info"/"INF"/"información" (pedido explícito): responde con los precios
+# reales (ver _dispatch_intent) - "inf" matchea como substring tanto a
+# "info" como a "información" ya normalizada, sin tener que listar cada
+# variante. Las preguntas de precio tienen la misma respuesta.
+_INFO_PHRASES = ("informacion", "info", "inf")
 _PRICE_PHRASES = ("precio", "precios", "cuanto cuesta", "costo", "cuesta", "vale", "cuanto vale", "cuanto sale")
 
 # Orden de chequeo: de más específico a más genérico (igual criterio que
@@ -97,13 +108,14 @@ _INTENT_TABLE = (
     ("sell", _SELL_PHRASES),
     ("faq", _FAQ_PHRASES),
     ("payment", _PAYMENT_PHRASES),
+    ("info", _INFO_PHRASES),
+    ("info", _PRICE_PHRASES),
     ("groups", _GROUPS_PHRASES),
-    ("groups", _PRICE_PHRASES),
     ("greeting", _GREETING_PHRASES),
     ("ack", _ACK_PHRASES),
 )
 
-_KNOWN_INTENTS = ("greeting", "ack", "free", "sell", "faq", "payment", "groups")
+_KNOWN_INTENTS = ("greeting", "ack", "free", "sell", "faq", "payment", "groups", "info")
 
 
 def classify_text(normalized_text: str) -> Optional[str]:
@@ -116,6 +128,32 @@ def classify_text(normalized_text: str) -> Optional[str]:
             if phrase in normalized_text:
                 return intent
     return None
+
+
+# Rango Unicode de los emojis más comunes (pictogramas, emoticones,
+# transporte, banderas, dingbats) + separador ZWJ y selector de variación,
+# para reconocer un mensaje compuesto ÚNICAMENTE de emoji(s) - sin pretender
+# cubrir cada emoji que exista, alcanza para el caso real: alguien que
+# solo manda "😍" o "🔥🔥" en vez de escribir una palabra.
+_EMOJI_PATTERN = re.compile(
+    "["
+    "\U0001F300-\U0001FAFF"
+    "\U00002600-\U000027BF"
+    "\U0001F1E6-\U0001F1FF"
+    "\U00002190-\U000021FF"
+    "‍️"
+    "]+",
+    flags=re.UNICODE,
+)
+
+
+def is_emoji_only(text: str) -> bool:
+    """True si, al quitarle los emojis (y espacios), no queda ninguna
+    palabra - es decir, el mensaje es solo emoji(s)."""
+    stripped = text.strip()
+    if not stripped:
+        return False
+    return _EMOJI_PATTERN.sub("", stripped).strip() == ""
 
 
 _GREETING_REPLIES = (
@@ -148,6 +186,22 @@ async def _dispatch_intent(intent: str, update: Update, context: ContextTypes.DE
 
     if intent == "groups":
         from ventas.multisale_handlers import send_multisale_welcome
+        await send_multisale_welcome(update, context)
+        return True
+
+    if intent == "info":
+        from ventas.multisale_config import GROUP_KEYS, PRICE_TABLE
+        from ventas.multisale_handlers import send_multisale_welcome
+
+        max_count = len(GROUP_KEYS)
+        lines = ["💰 Estos son nuestros precios:", ""]
+        for count in range(1, max_count + 1):
+            price = PRICE_TABLE.get(count, PRICE_TABLE[max_count])
+            plural = "grupo" if count == 1 else "grupos"
+            lines.append(f"{count} {plural}: ${price:.2f}")
+        lines.append("")
+        lines.append("👇 Elegí los grupos que te interesan:")
+        await message.reply_text("\n".join(lines))
         await send_multisale_welcome(update, context)
         return True
 
@@ -216,7 +270,8 @@ _CLASSIFY_SYSTEM = (
     "sell: quiere vender su propio contenido.\n"
     "faq: pregunta algo general sobre cómo funciona el servicio.\n"
     "payment: pregunta cómo o dónde pagar.\n"
-    "groups: quiere ver los grupos disponibles o pregunta precios.\n"
+    "groups: quiere ver los grupos disponibles, o unirse a uno.\n"
+    "info: pregunta precios, o pide información general.\n"
     "fallback: cualquier otra cosa - charla, algo ajeno al negocio, o no "
     "queda claro qué quiere."
 )
@@ -303,6 +358,13 @@ async def handle_free_text_fallback(update: Update, context: ContextTypes.DEFAUL
     queda en silencio."""
     message = update.effective_message
     if message is None or not message.text:
+        return
+
+    if is_emoji_only(message.text):
+        # Un emoji solo (ej. "😍" o "🔥🔥") es señal de interés, igual que
+        # preguntar precios - se trata como "info" directamente, sin
+        # gastar IA en algo que ninguna palabra clave podría reconocer.
+        await _dispatch_intent("info", update, context)
         return
 
     normalized = normalize_phrase(message.text)
