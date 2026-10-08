@@ -1061,6 +1061,16 @@ def register_ventas_handlers(application):
     # sin necesitar ningún comando manual (ver handle_bot_added_as_admin).
     application.add_handler(ChatMemberHandler(handle_bot_added_as_admin, ChatMemberHandler.MY_CHAT_MEMBER))
 
+    # Catch-all de texto libre en privado (pedido explícito: agregar una
+    # capa de IA sin tocar el flujo de compra por botones). Se registra
+    # al FINAL de este módulo y DESPUÉS del ConversationHandler de ventas
+    # (ya añadido arriba) para que solo capture mensajes que nadie más
+    # estaba esperando - ver docstring de handle_free_text_fallback.
+    from .sales_ai import handle_free_text_fallback
+    application.add_handler(
+        MessageHandler(filters.ChatType.PRIVATE & filters.TEXT & ~filters.COMMAND, handle_free_text_fallback)
+    )
+
     # Recupera, al arrancar, cualquier expulsión del grupo de prueba que
     # haya quedado pendiente de un reinicio anterior. Se programa aquí
     # (usando application.job_queue directamente, ya disponible desde que
