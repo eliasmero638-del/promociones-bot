@@ -1063,32 +1063,17 @@ async def publish_promotion(context: ContextTypes.DEFAULT_TYPE):
 
 
 async def schedule_promotions(context: ContextTypes.DEFAULT_TYPE):
-    """Schedule periodic promotion publishing."""
-    if context.job_queue is None:
-        logger.error("JobQueue is not available. Make sure python-telegram-bot[job-queue] is installed.")
-        return
-    
-    removed = context.job_queue.get_jobs_by_name("promotion_job")
-    for job in removed:
-        job.schedule_removal()
-
-    state = BotState()
-    interval = state.get_promotion_interval()
-
-    context.job_queue.run_once(
-        publish_promotion,
-        when=60,
-        name="promotion_job_initial",
-    )
-    logger.info("Initial promotion scheduled in 60 seconds")
-
-    context.job_queue.run_repeating(
-        publish_promotion,
-        interval=interval,
-        first=interval + 60,
-        name="promotion_job",
-    )
-    logger.info(f"Promotions scheduled to repeat every {interval} seconds ({interval / 3600} hours)")
+    """Publicación automática de promociones - DESACTIVADA a pedido
+    explícito: GROUP_ID apunta a un grupo del que el bot no es miembro (ni
+    admin ni miembro normal), y nunca puede volver a serlo porque la
+    cuenta propietaria del grupo fue eliminada - sin propietario, nadie
+    puede agregar ni promover a nadie ahí. No era un typo de
+    configuración: cada reinicio del bot intentaba publicar igual y
+    fallaba con "Chat not found", sin que nada se publicara nunca. Si en
+    el futuro se consigue un grupo nuevo donde el bot sí sea miembro,
+    restaurar este archivo desde el commit anterior a este cambio y
+    actualizar GROUP_ID."""
+    logger.info("Publicación automática de promociones desactivada (GROUP_ID inalcanzable, ver docstring).")
 
 
 async def conversation_timeout_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -2852,20 +2837,11 @@ async def interval_input(update: Update, context: ContextTypes.DEFAULT_TYPE):
         state = BotState()
         state.set_promotion_interval(interval)
         state.save()
-        
-        # Reschedule with new interval
-        if context.job_queue:
-            removed = context.job_queue.get_jobs_by_name("promotion_job")
-            for job in removed:
-                job.schedule_removal()
-            
-            context.job_queue.run_repeating(
-                publish_promotion,
-                interval=interval,
-                first=interval + 60,
-                name="promotion_job",
-            )
-        
+
+        # No se reprograma ningún job acá: la publicación automática está
+        # desactivada (ver schedule_promotions) porque GROUP_ID es
+        # inalcanzable. El valor queda guardado para cuando se reactive.
+
         logger.info(f"Promotion interval updated to {interval}s")
         await update.message.reply_text(f"Intervalo actualizado correctamente a {interval}s ({interval/3600}h)")
         return ConversationHandler.END
