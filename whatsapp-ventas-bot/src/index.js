@@ -72,29 +72,6 @@ console.error = (...args) => {
   }
 };
 
-// TEMPORAL: fuerza un relink completo borrando toda la identidad de WhatsApp
-// (no solo las sesiones por contacto) para descartar corrupción a nivel de
-// credenciales tras varios episodios de "Session error" no resueltos por el
-// auto-heal normal. Quitar esta función y su llamada en main() una vez
-// confirmado que el bot vuelve a responder de forma estable.
-function borrarTodaLaAutenticacion() {
-  let archivos;
-  try {
-    archivos = readdirSync(AUTH_DIR);
-  } catch (err) {
-    console.error('No se pudo leer AUTH_DIR para el reinicio completo:', err);
-    return;
-  }
-  for (const archivo of archivos) {
-    try {
-      unlinkSync(join(AUTH_DIR, archivo));
-    } catch (err) {
-      console.error(`No se pudo eliminar ${archivo}:`, err);
-    }
-  }
-  console.log(`Reinicio completo: se borraron ${archivos.length} archivos de AUTH_DIR.`);
-}
-
 let sockActivo = null;
 let ultimaFechaCierreEnviado = null;
 
@@ -244,7 +221,6 @@ async function iniciarBot() {
 
 async function main() {
   await initSchema();
-  borrarTodaLaAutenticacion();
   await iniciarBot();
   iniciarSchedulerCierreDeCaja();
 }
