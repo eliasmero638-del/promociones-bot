@@ -2298,6 +2298,18 @@ START_WELCOME_TEXT = (
     "Presiona el botón para conocer los planes y comenzar ahora."
 )
 
+# Pedido explícito: primer mensaje que recibe cualquiera que le escriba a
+# este bot con /start (sin deep-link), ANTES del menú de grupos - recién
+# después de este mensaje entra en juego el asistente de palabras clave/IA
+# (ver ventas/sales_ai.py) para lo que la persona escriba a continuación.
+SALES_PITCH_INTRO_TEXT = (
+    "Los grupos están desde $7 cada uno, y si llevas más de uno hay oferta.\n"
+    "Es un solo pago, sin mensualidad.\n\n"
+    "Si no tienes dinero ahora, tranquilo, aquí tienes otros grupos gratis:\n\n"
+    "👉 Grupos de aportes: @GrupoFreeacc_bot\n"
+    "👇 Grupos Free: https://t.me/+W4j7mWhmmkEwMmU9"
+)
+
 
 def _start_welcome_keyboard() -> InlineKeyboardMarkup:
     """Teclado de la pantalla de bienvenida de /start: dos opciones
@@ -2343,6 +2355,8 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # siendo alcanzables por los deep-links de arriba (?start=venta,
     # ?start=demo) y por sus propios callbacks - solo dejan de mostrarse
     # automáticamente acá.
+    await update.effective_message.reply_text(SALES_PITCH_INTRO_TEXT)
+
     from ventas.multisale_handlers import send_multisale_welcome
     await send_multisale_welcome(update, context)
 
