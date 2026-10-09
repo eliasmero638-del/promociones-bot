@@ -588,6 +588,19 @@ async def main():
     ok_no_admin = update.message.reply_text.await_count == 0
     record("11b. /chatid no responde a un usuario que no es administrador", ok_no_admin, f"await_count={update.message.reply_text.await_count}")
 
+    # 12. Regresión: schedule_promotions() está desactivada (GROUP_ID
+    # inalcanzable - el bot no es miembro de ese grupo y nunca puede
+    # volver a serlo porque su propietario fue eliminado). No debe
+    # programar ningún job de JobQueue.
+    ctx_sched = make_context()
+    await bot.schedule_promotions(ctx_sched)
+    ok_no_scheduling = not ctx_sched.job_queue.run_once.called and not ctx_sched.job_queue.run_repeating.called
+    record(
+        "12. schedule_promotions() no programa ningún job (publicación automática desactivada)",
+        ok_no_scheduling,
+        f"run_once.called={ctx_sched.job_queue.run_once.called}, run_repeating.called={ctx_sched.job_queue.run_repeating.called}",
+    )
+
     print("\n=== RESULTADOS ===")
     for line in PASS:
         print("✅", line)
