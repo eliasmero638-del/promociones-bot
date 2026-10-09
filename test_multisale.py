@@ -29,7 +29,7 @@ import os
 import shutil
 import sys
 import tempfile
-from unittest.mock import AsyncMock, MagicMock
+from unittest.mock import AsyncMock, MagicMock, patch
 
 REPO_ROOT = os.path.dirname(os.path.abspath(__file__))
 
@@ -515,6 +515,38 @@ async def main():
         and "send_multisale_welcome" in start_src
     )
     record("24. bot.start() sigue usando send_sales_welcome/send_demo_directly para los deep-links", ok_deep_links)
+
+    # --- 25. /start (sin deep-link) manda primero el mensaje de ventas
+    #     (precios, "sin mensualidad", y los grupos gratis de respaldo),
+    #     ANTES del menú de grupos - pedido explícito. ---
+    plain_start_update = MagicMock()
+    plain_start_update.effective_chat.id = 777888
+    plain_start_update.effective_chat.type = "private"
+    plain_start_replies = []
+
+    async def fake_plain_reply(text, **kwargs):
+        plain_start_replies.append(text)
+
+    plain_start_update.effective_message.reply_text = AsyncMock(side_effect=fake_plain_reply)
+    plain_start_ctx = MagicMock()
+    plain_start_ctx.args = []
+
+    with patch("ventas.multisale_handlers.send_multisale_welcome", new=AsyncMock()) as mock_ms_welcome:
+        await bot.start(plain_start_update, plain_start_ctx)
+        ok_pitch_first = (
+            len(plain_start_replies) == 1
+            and plain_start_replies[0] == bot.SALES_PITCH_INTRO_TEXT
+            and mock_ms_welcome.await_count == 1
+        )
+    record(
+        "25. /start sin deep-link manda el mensaje de ventas (precios/sin mensualidad/grupos gratis) antes del menú",
+        ok_pitch_first,
+        f"replies={plain_start_replies}, menu_calls={mock_ms_welcome.await_count}",
+    )
+    record(
+        "25b. El mensaje de ventas incluye los 2 enlaces de respaldo gratis",
+        "@GrupoFreeacc_bot" in bot.SALES_PITCH_INTRO_TEXT and "https://t.me/+W4j7mWhmmkEwMmU9" in bot.SALES_PITCH_INTRO_TEXT,
+    )
 
     # --- Regresión: ningún botón usa el esquema "tg://user?id=" ---
     # Telegram lo rechaza con "Button_user_invalid" (confirmado en
