@@ -992,7 +992,10 @@ async def publish_promotion(context: ContextTypes.DEFAULT_TYPE):
         #      en bot-desbloqueo-telegram), en vez de esperar a un admin.
         #      Cambio a pedido explícito.
         #   2. "⚡ Acceso rápido y fácil" -> bot de ventas fijo
-        #      (@VentasEcua_bot), con ?start=promo para que Telegram
+        #      (@El593ventasec_bot - el bot que realmente corre este código;
+        #      @VentasEcua_bot es una cuenta de Telegram distinta, sin nada
+        #      desplegado, a la que este botón apuntaba por error), con
+        #      ?start=promo para que Telegram
         #      siempre muestre "INICIAR" sin importar si el usuario ya usó
         #      ese bot antes (mismo mecanismo verificado en el botón 3).
         #      SIN cambios: sigue siendo el flujo de compra directo.
@@ -1003,7 +1006,7 @@ async def publish_promotion(context: ContextTypes.DEFAULT_TYPE):
         #      hasta abajo de todo.
         keyboard_rows = [
             [InlineKeyboardButton("Contactar al administrador", url="https://t.me/EcuaAccessBot?start=ventas")],
-            [InlineKeyboardButton("⚡ Acceso rápido y fácil", url="https://t.me/VentasEcua_bot?start=promo")],
+            [InlineKeyboardButton("⚡ Acceso rápido y fácil", url="https://t.me/El593ventasec_bot?start=promo")],
         ]
 
         # Botón "🎁 Solicitar prueba gratis" (deep-link a /start demo, ver
