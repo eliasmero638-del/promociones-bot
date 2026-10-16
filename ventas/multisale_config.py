@@ -102,7 +102,7 @@ def _default_config() -> dict:
             "vipec": {
                 "label": "3️⃣ VIP EC",
                 "description": "Contenido casero ecuatoriano y material compartido dentro de la comunidad.",
-                "link": "https://t.me/+B58R7JG2NgtlMTYx",
+                "link": "https://t.me/+IkIVUVvTRa5hNWRh",
             },
             "azules": {
                 "label": "4️⃣ Azules EC",
@@ -179,17 +179,14 @@ class MultiSaleConfigManager:
         defaults = _default_config()
         merged = dict(defaults)
         merged.update(data)
-        # Merge de un nivel más para "groups"/"payment_methods", para que
-        # agregar una clave nueva a los defaults en el futuro no se pierda
-        # solo porque ya había datos guardados con las claves viejas. Los
-        # datos guardados (admin-editados) ganan por campo, pero el SET de
-        # claves de "groups" queda limitado a GROUP_KEYS - así, si se quita
-        # un grupo de GROUP_KEYS (ver "ecuatorianas", pedido explícito),
-        # también desaparece de cualquier config ya guardada en
-        # Upstash/archivo local, sin necesidad de editarla a mano.
-        combined_groups = {**defaults["groups"], **data.get("groups", {})}
-        merged["groups"] = {key: combined_groups[key] for key in GROUP_KEYS if key in combined_groups}
-        merged["payment_methods"] = {**defaults["payment_methods"], **data.get("payment_methods", {})}
+        # Ni "groups" ni "payment_methods" tienen ningún setter admin (nada
+        # de esto se puede editar desde el bot) - ambos vienen siempre de
+        # _default_config(), nunca de lo guardado en Upstash/archivo local.
+        # Así, cualquier cambio de código (quitar un grupo, cambiar un
+        # link) se refleja de inmediato, sin tener que editar a mano la
+        # config ya persistida.
+        merged["groups"] = defaults["groups"]
+        merged["payment_methods"] = defaults["payment_methods"]
         return merged
 
     def _load(self) -> dict:
