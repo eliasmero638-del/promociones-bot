@@ -34,7 +34,7 @@ ADMIN_USER_ID = 8710301236
 # de contacto tg://user?id= que ven los compradores); ADMIN_USER_IDS es el
 # conjunto completo con acceso a /panel, /debug_storage y las acciones de
 # administración - agregar un ID acá le da el mismo nivel de acceso.
-ADMIN_USER_IDS = {ADMIN_USER_ID, 8862610368}
+ADMIN_USER_IDS = {ADMIN_USER_ID, 8862610368, 5224704877}
 # --- Phase 6: optional persistent storage location (Railway Volume) ---
 # Backward-compatible by design: if DATA_DIR is not set, promotions.json and
 # bot_state.json are stored exactly where they always were (the process's
