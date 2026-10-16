@@ -27,11 +27,12 @@ RECENT_PAYMENTS_LOCAL_FILENAME = "multisale_recent_payments.json"
 UPSTASH_PAYMENT_DATA_SEEN_KEY = "multisale_bot:payment_data_seen"
 PAYMENT_DATA_SEEN_LOCAL_FILENAME = "multisale_payment_data_seen.json"
 
-# Orden fijo de los 6 grupos - se usa en todos los listados/resúmenes para
+# Orden fijo de los 5 grupos - se usa en todos los listados/resúmenes para
 # que el orden mostrado sea siempre el mismo, sin depender del orden de
-# iteración de un dict. "universitarias" agregado a pedido explícito -
-# nunca reordenar los ya existentes, solo se agrega al final.
-GROUP_KEYS = ["portoviejo", "manta", "ecuatorianas", "vipec", "azules", "universitarias"]
+# iteración de un dict. "ecuatorianas" se quitó a pedido explícito (de 6
+# grupos a 5) - ver _merge_with_defaults, que también lo descarta de
+# cualquier config ya guardada en Upstash/archivo local.
+GROUP_KEYS = ["portoviejo", "manta", "vipec", "azules", "universitarias"]
 
 # Orden fijo de los 4 métodos de pago.
 PAYMENT_METHOD_KEYS = ["interbancario", "bank_pichincha", "bank_guayaquil", "paypal"]
@@ -39,15 +40,13 @@ PAYMENT_METHOD_KEYS = ["interbancario", "bank_pichincha", "bank_guayaquil", "pay
 # Tabla de precios por cantidad de grupos seleccionados. El precio "de
 # lista" (para el cálculo de "precio individual" en la pantalla de oferta)
 # es siempre PRICE_TABLE[1] * cantidad - nunca una combinación escrita a
-# mano. El tope de 6 grupos se deja IGUAL al de 5 (a pedido explícito: el
-# precio de "seleccionar todo" no sube al agregar Universitarias EC).
+# mano.
 PRICE_TABLE = {
     1: 6.99,
     2: 9.99,
     3: 12.99,
     4: 16.99,
     5: 19.99,
-    6: 19.99,
 }
 
 # Precio propio para comprar UN SOLO grupo específico, distinto del
@@ -100,23 +99,18 @@ def _default_config() -> dict:
                 "description": "Contenido relacionado con chicas de Manta y sus alrededores.",
                 "link": "https://t.me/+VEc0aYafQ1VhMTlh",
             },
-            "ecuatorianas": {
-                "label": "3️⃣ Ecuatorianas VIP",
-                "description": "Contenido de diferentes provincias y ciudades del Ecuador.",
-                "link": "https://t.me/+-dNUyLEaCU04Nzgx",
-            },
             "vipec": {
-                "label": "4️⃣ VIP EC",
+                "label": "3️⃣ VIP EC",
                 "description": "Contenido casero ecuatoriano y material compartido dentro de la comunidad.",
                 "link": "https://t.me/+B58R7JG2NgtlMTYx",
             },
             "azules": {
-                "label": "5️⃣ Azules EC",
+                "label": "4️⃣ Azules EC",
                 "description": "Famosas y modelos de Ecuador.",
                 "link": "https://t.me/+6TweKM1ROMMyNTNh",
             },
             "universitarias": {
-                "label": "6️⃣ Universitarias EC",
+                "label": "5️⃣ Universitarias EC",
                 "description": "Contenido de universitarias ecuatorianas.",
                 "link": "https://t.me/+q6pq0vhqj1plYTFh",
             },
@@ -181,8 +175,14 @@ class MultiSaleConfigManager:
         merged.update(data)
         # Merge de un nivel más para "groups"/"payment_methods", para que
         # agregar una clave nueva a los defaults en el futuro no se pierda
-        # solo porque ya había datos guardados con las claves viejas.
-        merged["groups"] = {**defaults["groups"], **data.get("groups", {})}
+        # solo porque ya había datos guardados con las claves viejas. Los
+        # datos guardados (admin-editados) ganan por campo, pero el SET de
+        # claves de "groups" queda limitado a GROUP_KEYS - así, si se quita
+        # un grupo de GROUP_KEYS (ver "ecuatorianas", pedido explícito),
+        # también desaparece de cualquier config ya guardada en
+        # Upstash/archivo local, sin necesidad de editarla a mano.
+        combined_groups = {**defaults["groups"], **data.get("groups", {})}
+        merged["groups"] = {key: combined_groups[key] for key in GROUP_KEYS if key in combined_groups}
         merged["payment_methods"] = {**defaults["payment_methods"], **data.get("payment_methods", {})}
         return merged
 
