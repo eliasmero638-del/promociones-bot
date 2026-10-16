@@ -2286,17 +2286,32 @@ START_WELCOME_TEXT = (
     "Presiona el botón para conocer los planes y comenzar ahora."
 )
 
-# Pedido explícito: primer mensaje que recibe cualquiera que le escriba a
-# este bot con /start (sin deep-link), ANTES del menú de grupos - recién
-# después de este mensaje entra en juego el asistente de palabras clave/IA
-# (ver ventas/sales_ai.py) para lo que la persona escriba a continuación.
-SALES_PITCH_INTRO_TEXT = (
-    "Los grupos están desde $7 cada uno, y si llevas más de uno hay oferta.\n"
-    "Es un solo pago, sin mensualidad.\n\n"
-    "Si no tienes dinero ahora, tranquilo, aquí tienes otros grupos gratis:\n\n"
-    "👉 Grupos de aportes: @GrupoFreeacc_bot\n"
-    "👇 Grupos Free: https://t.me/+W4j7mWhmmkEwMmU9"
-)
+# Pedido explícito: único mensaje que recibe cualquiera que le escriba a
+# este bot con /start (sin deep-link). Ya NO se manda el menú completo de
+# grupos (descripciones/botones) de una vez - solo un saludo breve con los
+# NOMBRES de los 5 grupos VIP, invitando a preguntar por precios/detalles.
+# El menú completo (ventas.multisale_handlers.send_multisale_welcome) solo
+# se muestra si la persona lo pide, vía el asistente de palabras clave/IA
+# (ver ventas/sales_ai.py, intents "grupos"/"info").
+def build_sales_pitch_intro_text() -> str:
+    """Arma el mensaje de bienvenida de /start listando los nombres de los
+    grupos VIP a partir de GROUP_KEYS, para que no quede desincronizado si
+    el catálogo cambia (se quitó/agregó un grupo)."""
+    from ventas.multisale_config import GROUP_KEYS, MultiSaleConfigManager
+    config = MultiSaleConfigManager()
+    group_lines = "\n".join(f"• {config.get_group_label(key)}" for key in GROUP_KEYS)
+    return (
+        "¡Hola! 👋 Tenemos 5 grupos VIP disponibles:\n\n"
+        f"{group_lines}\n\n"
+        "Los grupos están desde $7 cada uno, y si llevas más de uno hay "
+        "oferta. Es un solo pago, sin mensualidad.\n\n"
+        "¿Te interesa alguno? Dime y te muestro los precios y qué incluye "
+        "cada uno.\n\n"
+        "Si no tienes dinero ahora, tranquilo, aquí tienes otros grupos "
+        "gratis:\n\n"
+        "👉 Grupos de aportes: @GrupoFreeacc_bot\n"
+        "👇 Grupos Free: https://t.me/+W4j7mWhmmkEwMmU9"
+    )
 
 
 def _start_welcome_keyboard() -> InlineKeyboardMarkup:
@@ -2334,19 +2349,17 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await send_demo_directly(update, context)
         return
 
-    # /start (sin deep-link) va directo al menú NUEVO de 5 grupos
-    # (ventas.multisale_handlers.send_multisale_welcome), a pedido
-    # explícito. El menú viejo (ventas.keyboards.welcome_keyboard: Acceso
-    # exclusivo a grupos VIP / Obtener grupo Free / Quiero vender
-    # contenido) y la pantalla más antigua (START_WELCOME_TEXT +
-    # _start_welcome_keyboard) quedan intactos y registrados - siguen
-    # siendo alcanzables por los deep-links de arriba (?start=venta,
-    # ?start=demo) y por sus propios callbacks - solo dejan de mostrarse
-    # automáticamente acá.
-    await update.effective_message.reply_text(SALES_PITCH_INTRO_TEXT)
-
-    from ventas.multisale_handlers import send_multisale_welcome
-    await send_multisale_welcome(update, context)
+    # /start (sin deep-link) manda un solo mensaje breve (nombres de los 5
+    # grupos VIP + invitación a preguntar por precios/detalles) - a pedido
+    # explícito, YA NO se manda de una el menú completo con descripciones.
+    # El menú completo (ventas.multisale_handlers.send_multisale_welcome)
+    # solo se muestra si la persona pide más info, vía el asistente de
+    # palabras clave/IA (ver ventas/sales_ai.py). El menú viejo
+    # (ventas.keyboards.welcome_keyboard) y la pantalla más antigua
+    # (START_WELCOME_TEXT + _start_welcome_keyboard) quedan intactos y
+    # registrados - siguen siendo alcanzables por los deep-links de arriba
+    # (?start=venta, ?start=demo) y por sus propios callbacks.
+    await update.effective_message.reply_text(build_sales_pitch_intro_text())
 
 
 async def start_enter_vip_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
