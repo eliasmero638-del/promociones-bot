@@ -135,7 +135,7 @@ def _menu_text(config: MultiSaleConfigManager) -> str:
     lines = [
         "🔥 BIENVENIDO/A",
         "",
-        "Tenemos 6 grupos exclusivos, cada uno con un tipo de contenido diferente:",
+        "Tenemos 5 grupos exclusivos, cada uno con un tipo de contenido diferente:",
         "",
     ]
     for key in GROUP_KEYS:
@@ -143,7 +143,7 @@ def _menu_text(config: MultiSaleConfigManager) -> str:
         lines.append(config.get_group_description(key))
         lines.append("")
     lines.append("👇 Selecciona los grupos que te interesan:")
-    lines.append("Puedes seleccionar uno, varios o los seis.")
+    lines.append("Puedes seleccionar uno, varios o los cinco.")
     return "\n".join(lines)
 
 
