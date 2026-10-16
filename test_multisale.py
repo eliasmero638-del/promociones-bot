@@ -512,13 +512,14 @@ async def main():
         and "send_sales_welcome" in start_src
         and "SALES_DEMO_DEEP_LINK_PAYLOAD" in start_src
         and "send_demo_directly" in start_src
-        and "send_multisale_welcome" in start_src
     )
     record("24. bot.start() sigue usando send_sales_welcome/send_demo_directly para los deep-links", ok_deep_links)
 
-    # --- 25. /start (sin deep-link) manda primero el mensaje de ventas
-    #     (precios, "sin mensualidad", y los grupos gratis de respaldo),
-    #     ANTES del menú de grupos - pedido explícito. ---
+    # --- 25. /start (sin deep-link) manda UN SOLO mensaje breve (nombres
+    #     de los 5 grupos VIP + invitación a preguntar por precios), SIN
+    #     mandar de una el menú completo - pedido explícito. El menú
+    #     completo solo debe aparecer si la persona lo pide (eso lo cubre
+    #     el asistente de palabras clave/IA, no bot.start()). ---
     plain_start_update = MagicMock()
     plain_start_update.effective_chat.id = 777888
     plain_start_update.effective_chat.type = "private"
@@ -533,19 +534,25 @@ async def main():
 
     with patch("ventas.multisale_handlers.send_multisale_welcome", new=AsyncMock()) as mock_ms_welcome:
         await bot.start(plain_start_update, plain_start_ctx)
+        pitch_text = bot.build_sales_pitch_intro_text()
         ok_pitch_first = (
             len(plain_start_replies) == 1
-            and plain_start_replies[0] == bot.SALES_PITCH_INTRO_TEXT
-            and mock_ms_welcome.await_count == 1
+            and plain_start_replies[0] == pitch_text
+            and mock_ms_welcome.await_count == 0
         )
     record(
-        "25. /start sin deep-link manda el mensaje de ventas (precios/sin mensualidad/grupos gratis) antes del menú",
+        "25. /start sin deep-link manda un solo mensaje breve (sin el menú completo de una)",
         ok_pitch_first,
         f"replies={plain_start_replies}, menu_calls={mock_ms_welcome.await_count}",
     )
     record(
-        "25b. El mensaje de ventas incluye los 2 enlaces de respaldo gratis",
-        "@GrupoFreeacc_bot" in bot.SALES_PITCH_INTRO_TEXT and "https://t.me/+W4j7mWhmmkEwMmU9" in bot.SALES_PITCH_INTRO_TEXT,
+        "25b. El mensaje de bienvenida lista los 5 grupos e incluye los 2 enlaces de respaldo gratis",
+        "@GrupoFreeacc_bot" in pitch_text
+        and "https://t.me/+W4j7mWhmmkEwMmU9" in pitch_text
+        and all(
+            MultiSaleConfigManager().get_group_label(key) in pitch_text
+            for key in GROUP_KEYS
+        ),
     )
 
     # --- Regresión: ningún botón usa el esquema "tg://user?id=" ---
