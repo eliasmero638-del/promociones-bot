@@ -204,7 +204,7 @@ async def main():
 
     # --- Flujo completo: selección -> oferta -> confirmación -> métodos ---
     reset_storage()
-    user_data = {"ms_selected": {"portoviejo", "manta", "ecuatorianas"}}
+    user_data = {"ms_selected": {"portoviejo", "manta", "universitarias"}}
     ctx = make_context(user_data)
     update, query = make_query("ms_continue", buyer_id)
     await h.ms_continue(update, ctx)
@@ -213,7 +213,7 @@ async def main():
 
     update, query = make_query("ms_offer_continue", buyer_id)
     await h.ms_offer_continue(update, ctx)
-    ok = user_data.get("ms_locked_groups") == ["portoviejo", "manta", "ecuatorianas"] and user_data.get("ms_locked_price") == 12.99
+    ok = user_data.get("ms_locked_groups") == ["portoviejo", "manta", "universitarias"] and user_data.get("ms_locked_price") == 12.99
     record("Confirmación fija (snapshot) la selección", ok, str(user_data.get("ms_locked_groups")))
 
     update, query = make_query("ms_confirm_pay", buyer_id)
@@ -397,7 +397,7 @@ async def main():
 
     # --- 17-18. Aprobación automática tras 5 minutos ---
     reset_storage()
-    user_data = {"ms_locked_groups": ["ecuatorianas", "vipec", "azules"], "ms_locked_price": 12.99, "ms_payment_method": "interbancario"}
+    user_data = {"ms_locked_groups": ["universitarias", "vipec", "azules"], "ms_locked_price": 12.99, "ms_payment_method": "interbancario"}
     ctx = make_context(user_data)
     receipt_update = make_receipt_update(buyer_id, chat_id=buyer_id, message_id=99)
     await h.ms_receive_receipt(receipt_update, ctx)
@@ -421,7 +421,7 @@ async def main():
             for btn in row:
                 if getattr(btn, "url", None):
                     auto_urls.add(btn.url)
-    expected_auto_urls = {config.get_group_link(k) for k in ["ecuatorianas", "vipec", "azules"]}
+    expected_auto_urls = {config.get_group_link(k) for k in ["universitarias", "vipec", "azules"]}
     record("20-21. Aprobación automática entrega exactamente los 3 grupos", auto_urls == expected_auto_urls, str(auto_urls))
 
     # Si el job dispara sobre una venta YA resuelta manualmente, no debe hacer nada raro.
