@@ -92,12 +92,12 @@ def _default_config() -> dict:
             "portoviejo": {
                 "label": "1️⃣ Portoviejo Exclusivo",
                 "description": "Contenido relacionado con chicas y material exclusivo de Portoviejo.",
-                "link": "https://t.me/+VX6lOT4YfnEwYTE5",
+                "link": "https://t.me/+hKtJQjS7xqE0ZWMx",
             },
             "manta": {
                 "label": "2️⃣ Exclusivas de Manta",
                 "description": "Contenido relacionado con chicas de Manta y sus alrededores.",
-                "link": "https://t.me/+VEc0aYafQ1VhMTlh",
+                "link": "https://t.me/+aDtd7HOhyAZmZDZh",
             },
             "vipec": {
                 "label": "3️⃣ VIP EC",
@@ -107,12 +107,12 @@ def _default_config() -> dict:
             "azules": {
                 "label": "4️⃣ Azules EC",
                 "description": "Famosas y modelos de Ecuador.",
-                "link": "https://t.me/+6TweKM1ROMMyNTNh",
+                "link": "https://t.me/+J-Yx3ht7fLg4N2Ix",
             },
             "universitarias": {
                 "label": "5️⃣ Universitarias EC",
                 "description": "Contenido de universitarias ecuatorianas.",
-                "link": "https://t.me/+q6pq0vhqj1plYTFh",
+                "link": "https://t.me/+FWxEYinp4rMxNzFh",
             },
         },
         "payment_methods": {
