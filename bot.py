@@ -82,14 +82,54 @@ def mb(tam):
 
 
 # ====================================================================== guardar
+LIMITE_ENVIO_TELEGRAM = 50 * 1024 * 1024  # máximo que un bot puede enviar
+
+
+class SubidaError(Exception):
+    def __init__(self, nombre, causa):
+        super().__init__(str(causa))
+        self.nombre = nombre
+        self.causa = causa
+
+
 async def guardar(ruta_local: str, etiqueta: str) -> tuple[str, str]:
-    """Numera y sube el archivo. Devuelve (nombre, 'repo'|'release')."""
+    """Numera y sube el archivo. Devuelve (nombre, 'repo'|'release').
+
+    Si falla lanza SubidaError con el nombre que iba a tener el archivo."""
     proyecto = estado["proyecto"]
+    nombre = nombre_final(0, etiqueta, ruta_local).replace("00_", "XX_", 1)
     async with candado:
-        numero = await asyncio.to_thread(store.siguiente_numero, proyecto)
-        nombre = nombre_final(numero, etiqueta, ruta_local)
-        donde = await asyncio.to_thread(store.subir_archivo, proyecto, ruta_local, nombre)
+        try:
+            numero = await asyncio.to_thread(store.siguiente_numero, proyecto)
+            nombre = nombre_final(numero, etiqueta, ruta_local)
+            donde = await asyncio.to_thread(store.subir_archivo, proyecto, ruta_local, nombre)
+        except Exception as e:
+            log.exception("Falló la subida de %s a GitHub", nombre)
+            raise SubidaError(nombre, e)
     return nombre, donde
+
+
+async def plan_b(update: Update, aviso, ruta: str, error: SubidaError):
+    """Si GitHub falla, manda el archivo por Telegram para no perderlo."""
+    motivo = str(error.causa)[:300] or type(error.causa).__name__
+    tam = os.path.getsize(ruta)
+    if tam > LIMITE_ENVIO_TELEGRAM:
+        await responder(aviso, f"❌ Se descargó pero falló la subida a GitHub: {motivo}\n\n"
+                               f"Tampoco te lo puedo mandar por aquí: pesa {mb(tam)} y Telegram "
+                               "no deja a los bots enviar más de 50 MB. Vuelve a mandar el enlace "
+                               "en un rato para reintentar.")
+        return
+    await responder(aviso, f"⚠️ Se descargó pero falló la subida a GitHub: {motivo}\n\n"
+                           f"📤 Te lo envío aquí para que no se pierda: {error.nombre}")
+    try:
+        with open(ruta, "rb") as fh:
+            await update.message.reply_document(
+                fh, filename=error.nombre, caption=f"📎 {error.nombre} (no se subió a GitHub)",
+                read_timeout=600, write_timeout=600, connect_timeout=60)
+    except Exception as e:
+        log.exception("Tampoco pude enviar %s por Telegram", error.nombre)
+        await update.message.reply_text(f"❌ Tampoco pude enviártelo por Telegram: {e}\n"
+                                        "Vuelve a mandar el enlace para reintentar.")
 
 
 def texto_ok(nombre, donde, ruta):
@@ -205,8 +245,8 @@ async def procesar_enlace(update: Update, etiqueta: str, url: str):
         await responder(aviso, f"{e}\n\nEnlace: {url}")
     except downloader.DescargaError as e:
         await responder(aviso, f"❌ No pude descargar: {e}\n\nEnlace: {url}")
-    except GitHubError as e:
-        await responder(aviso, f"❌ Se descargó pero falló la subida a GitHub: {e}")
+    except SubidaError as e:
+        await plan_b(update, aviso, res.ruta, e)
     except Exception as e:
         log.exception("Error procesando %s", url)
         await responder(aviso, f"❌ Error inesperado: {type(e).__name__}: {e}\n\nEnlace: {url}")
@@ -259,8 +299,10 @@ async def al_recibir_archivo(update: Update, context: ContextTypes.DEFAULT_TYPE)
         await responder(aviso, f"⬆️ Subiendo a GitHub ({mb(os.path.getsize(res.ruta))})…")
         nombre, donde = await guardar(res.ruta, etiqueta)
         await responder(aviso, texto_ok(nombre, donde, res.ruta))
-    except GitHubError as e:
-        await responder(aviso, f"❌ Falló la subida a GitHub: {e}")
+    except SubidaError as e:
+        await responder(aviso, f"❌ Falló la subida a GitHub: {e}\n"
+                               f"Iba a llamarse {e.nombre}. El archivo sigue en este chat; "
+                               "reenvíamelo para reintentar.")
     except Exception as e:
         log.exception("Error con archivo de Telegram")
         await responder(aviso, f"❌ Error: {type(e).__name__}: {e}")

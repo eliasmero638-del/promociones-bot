@@ -46,7 +46,24 @@ class GitHubStore:
         if not url.startswith("http"):
             url = f"{API}/repos/{self.repo}{url}"
         kw.setdefault("timeout", 120)
-        r = self.s.request(method, url, **kw)
+        # Reintenta cortes de conexión y errores temporales de GitHub (5xx, 429)
+        for intento in range(4):
+            if intento:
+                time.sleep(3 * intento)
+                if hasattr(kw.get("data"), "seek"):
+                    kw["data"].seek(0)
+            try:
+                r = self.s.request(method, url, **kw)
+            except requests.RequestException as e:
+                log.warning("GitHub %s %s: %s (intento %d)", method, url, e, intento + 1)
+                error = GitHubError(f"No pude conectar con GitHub: {e}")
+                continue
+            if r.status_code in ok or not (r.status_code >= 500 or r.status_code == 429):
+                break
+            log.warning("GitHub %s %s -> %s (intento %d)", method, url, r.status_code, intento + 1)
+            error = GitHubError(f"GitHub {r.status_code}: {r.text[:200]}")
+        else:
+            raise error
         if r.status_code not in ok:
             msg = r.text[:300]
             if r.status_code == 401:
@@ -161,13 +178,13 @@ class GitHubStore:
     # ------------------------------------------------------------ subidas
     def subir_bytes(self, ruta: str, data: bytes, mensaje: str):
         """Crea o reemplaza un archivo en el repo con un commit."""
-        for intento in range(4):
+        for intento in range(6):
             try:
                 return self._commit_git_data(ruta, data, mensaje)
             except _RepoVacio:
                 return self._commit_contents(ruta, data, mensaje)
             except _Conflicto:
-                time.sleep(1 + intento)
+                time.sleep(2 * (intento + 1))
         raise GitHubError("No pude hacer el commit (conflicto repetido).")
 
     def _commit_git_data(self, ruta, data, mensaje):
