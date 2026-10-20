@@ -14,6 +14,7 @@ from telegram.ext import (Application, CommandHandler, ContextTypes, MessageHand
                           filters)
 
 import downloader
+from envio_grande import LIMITE_MB as LIMITE_GRANDE_MB, EnvioGrande
 from github_store import GitHubStore, GitHubError, LIMITE_REPO_MB, tag_de
 
 logging.basicConfig(format="%(asctime)s %(levelname)s %(name)s: %(message)s",
@@ -40,13 +41,23 @@ GITHUB_BRANCH = _env("GITHUB_BRANCH", obligatoria=False) or None
 _id = _env("ALLOWED_USER_ID", obligatoria=False)
 ALLOWED_USER_ID = int(_id) if _id.isdigit() else None
 YTDLP_COOKIES = _env("YTDLP_COOKIES", obligatoria=False) or None
+# Opcionales, de my.telegram.org: permiten enviar/recibir archivos de hasta 2 GB
+_api_id = _env("TELEGRAM_API_ID", obligatoria=False)
+TELEGRAM_API_HASH = _env("TELEGRAM_API_HASH", obligatoria=False)
 
 FALTAN = [n for n, v in (("ALLOWED_USER_ID", ALLOWED_USER_ID), ("GITHUB_TOKEN", GITHUB_TOKEN),
                          ("GITHUB_REPO", GITHUB_REPO)) if not v]
 
 store = GitHubStore(GITHUB_TOKEN, GITHUB_REPO, GITHUB_BRANCH) if not FALTAN else None
-estado = {"proyecto": PROYECTO_POR_DEFECTO}
+grande = (EnvioGrande(int(_api_id), TELEGRAM_API_HASH, TELEGRAM_TOKEN)
+          if _api_id.isdigit() and TELEGRAM_API_HASH else None)
+estado = {"proyecto": PROYECTO_POR_DEFECTO, "numeros": {}}
 candado = asyncio.Lock()
+
+
+def grande_limite():
+    """Lo máximo que el bot puede enviarte por Telegram."""
+    return (LIMITE_GRANDE_MB if grande and grande.activo else 50) * 1024 * 1024
 
 
 # ====================================================================== nombres
@@ -82,14 +93,33 @@ def mb(tam):
 
 
 # ====================================================================== guardar
-LIMITE_ENVIO_TELEGRAM = 50 * 1024 * 1024  # máximo que un bot puede enviar
-
-
 class SubidaError(Exception):
     def __init__(self, nombre, causa):
         super().__init__(str(causa))
         self.nombre = nombre
         self.causa = causa
+
+
+async def siguiente_numero(proyecto: str) -> int:
+    """Número siguiente según GitHub y los archivos que solo se enviaron por Telegram."""
+    reservado = estado.setdefault("numeros", {}).get(proyecto, 0)
+    try:
+        en_github = await asyncio.to_thread(store.siguiente_numero, proyecto)
+    except Exception:
+        if not reservado:
+            raise
+        en_github = 0
+    numero = max(en_github, reservado + 1)
+    estado["numeros"][proyecto] = numero
+    return numero
+
+
+async def guardar_numeros():
+    """Recuerda en GitHub los números de los archivos que no están en GitHub."""
+    try:
+        await asyncio.to_thread(store.guardar_estado, dict(estado))
+    except Exception as e:
+        log.warning("No pude guardar la numeración en GitHub: %s", e)
 
 
 async def guardar(ruta_local: str, etiqueta: str) -> tuple[str, str]:
@@ -100,8 +130,7 @@ async def guardar(ruta_local: str, etiqueta: str) -> tuple[str, str]:
     nombre = nombre_final(0, etiqueta, ruta_local).replace("00_", "XX_", 1)
     async with candado:
         try:
-            numero = await asyncio.to_thread(store.siguiente_numero, proyecto)
-            nombre = nombre_final(numero, etiqueta, ruta_local)
+            nombre = nombre_final(await siguiente_numero(proyecto), etiqueta, ruta_local)
             donde = await asyncio.to_thread(store.subir_archivo, proyecto, ruta_local, nombre)
         except Exception as e:
             log.exception("Falló la subida de %s a GitHub", nombre)
@@ -109,23 +138,52 @@ async def guardar(ruta_local: str, etiqueta: str) -> tuple[str, str]:
     return nombre, donde
 
 
+async def entregar(update: Update, aviso, ruta: str, etiqueta: str):
+    """Sube a GitHub; si pesa más de LIMITE_REPO_MB y está activado el envío
+    grande, te lo manda por Telegram en vez de subirlo al Release."""
+    tam = os.path.getsize(ruta)
+    if tam >= LIMITE_REPO_MB * 1024 * 1024 and grande and grande.activo:
+        async with candado:
+            nombre = nombre_final(await siguiente_numero(estado["proyecto"]), etiqueta, ruta)
+            await guardar_numeros()
+        await responder(aviso, f"📤 Pesa {mb(tam)}, te lo envío por aquí: {nombre}")
+        try:
+            await grande.enviar(update.effective_chat.id, ruta, nombre,
+                                f"📎 {nombre} ({mb(tam)}) — proyecto {estado['proyecto']}", aviso)
+            await responder(aviso, f"✅ Descargado y enviado por Telegram: {nombre}\n"
+                                   f"(Pesa {mb(tam)}; no se subió a GitHub.)")
+            return
+        except Exception as e:
+            log.exception("No pude enviar %s por Telegram", nombre)
+            await update.message.reply_text(f"⚠️ No pude enviártelo por Telegram ({e}). "
+                                            "Lo subo al Release de GitHub.")
+    await responder(aviso, f"⬆️ Subiendo a GitHub ({mb(tam)})…")
+    nombre, donde = await guardar(ruta, etiqueta)
+    await responder(aviso, texto_ok(nombre, donde, ruta))
+
+
 async def plan_b(update: Update, aviso, ruta: str, error: SubidaError):
     """Si GitHub falla, manda el archivo por Telegram para no perderlo."""
     motivo = str(error.causa)[:300] or type(error.causa).__name__
     tam = os.path.getsize(ruta)
-    if tam > LIMITE_ENVIO_TELEGRAM:
+    limite = grande_limite()
+    if tam > limite:
         await responder(aviso, f"❌ Se descargó pero falló la subida a GitHub: {motivo}\n\n"
-                               f"Tampoco te lo puedo mandar por aquí: pesa {mb(tam)} y Telegram "
-                               "no deja a los bots enviar más de 50 MB. Vuelve a mandar el enlace "
-                               "en un rato para reintentar.")
+                               f"Tampoco te lo puedo mandar por aquí: pesa {mb(tam)} y el límite "
+                               f"es {mb(limite)}. Vuelve a mandar el enlace en un rato.")
         return
     await responder(aviso, f"⚠️ Se descargó pero falló la subida a GitHub: {motivo}\n\n"
                            f"📤 Te lo envío aquí para que no se pierda: {error.nombre}")
+    await guardar_numeros()
+    texto = f"📎 {error.nombre} (no se subió a GitHub)"
     try:
-        with open(ruta, "rb") as fh:
-            await update.message.reply_document(
-                fh, filename=error.nombre, caption=f"📎 {error.nombre} (no se subió a GitHub)",
-                read_timeout=600, write_timeout=600, connect_timeout=60)
+        if grande and grande.activo:
+            await grande.enviar(update.effective_chat.id, ruta, error.nombre, texto)
+        else:
+            with open(ruta, "rb") as fh:
+                await update.message.reply_document(
+                    fh, filename=error.nombre, caption=texto,
+                    read_timeout=600, write_timeout=600, connect_timeout=60)
     except Exception as e:
         log.exception("Tampoco pude enviar %s por Telegram", error.nombre)
         await update.message.reply_text(f"❌ Tampoco pude enviártelo por Telegram: {e}\n"
@@ -238,9 +296,7 @@ async def procesar_enlace(update: Update, etiqueta: str, url: str):
     carpeta = tempfile.mkdtemp(prefix="dl_")
     try:
         res = await asyncio.to_thread(downloader.descargar, url, carpeta, YTDLP_COOKIES)
-        await responder(aviso, f"⬆️ Subiendo a GitHub ({mb(os.path.getsize(res.ruta))})…")
-        nombre, donde = await guardar(res.ruta, etiqueta or res.titulo)
-        await responder(aviso, texto_ok(nombre, donde, res.ruta))
+        await entregar(update, aviso, res.ruta, etiqueta or res.titulo)
     except downloader.BloqueoError as e:
         await responder(aviso, f"{e}\n\nEnlace: {url}")
     except downloader.DescargaError as e:
@@ -284,16 +340,18 @@ async def al_recibir_archivo(update: Update, context: ContextTypes.DEFAULT_TYPE)
     aviso = await m.reply_text("⏳ Recibiendo archivo…")
     carpeta = tempfile.mkdtemp(prefix="tg_")
     try:
+        ruta = os.path.join(carpeta, "archivo" + (ext or ".bin"))
         try:
             archivo = await adjunto.get_file()
+            await archivo.download_to_drive(ruta)
         except BadRequest as e:
-            if "too big" in str(e).lower():
+            if "too big" not in str(e).lower():
+                raise
+            if not (grande and grande.activo):
                 await responder(aviso, "❌ Telegram no deja a los bots bajar archivos de más "
                                        "de 20 MB. Súbelo a Google Drive y mándame el enlace.")
                 return
-            raise
-        ruta = os.path.join(carpeta, "archivo" + (ext or ".bin"))
-        await archivo.download_to_drive(ruta)
+            await grande.descargar(m.chat_id, m.message_id, ruta, aviso)
         res = await asyncio.to_thread(downloader.normalizar,
                                       downloader.Resultado(ruta, etiqueta))
         await responder(aviso, f"⬆️ Subiendo a GitHub ({mb(os.path.getsize(res.ruta))})…")
@@ -346,10 +404,19 @@ async def al_iniciar(app: Application):
         guardado = await asyncio.to_thread(store.leer_estado)
         if guardado.get("proyecto"):
             estado["proyecto"] = guardado["proyecto"]
+        estado["numeros"].update(guardado.get("numeros") or {})
         aviso = f"🤖 Bot en línea. 📁 Proyecto actual: {estado['proyecto']}"
     except GitHubError as e:
         log.error("Problema con GitHub: %s", e)
         aviso = f"🤖 Bot en línea, pero ⚠️ hay un problema con GitHub:\n{e}"
+    if grande:
+        try:
+            await grande.iniciar()
+            aviso += f"\n📤 Archivos grandes: te los envío por aquí (hasta {LIMITE_GRANDE_MB} MB)."
+        except Exception as e:
+            log.exception("No pude activar el envío de archivos grandes")
+            aviso += (f"\n⚠️ No pude activar el envío de archivos grandes ({e}). "
+                      "Revisa TELEGRAM_API_ID y TELEGRAM_API_HASH.")
     log.info(aviso)
     try:
         await app.bot.send_message(ALLOWED_USER_ID, aviso)

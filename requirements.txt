@@ -3,3 +3,5 @@ yt-dlp[default]>=2026.8.19
 gdown==6.4.2
 requests==2.34.2
 Pillow==12.3.0
+telethon==1.45.0
+cryptg==0.5.2
