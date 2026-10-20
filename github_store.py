@@ -29,8 +29,9 @@ class GitHubError(Exception):
 
 
 class GitHubStore:
-    def __init__(self, token: str, repo: str):
+    def __init__(self, token: str, repo: str, branch: str | None = None):
         self.repo = repo.strip().strip("/")
+        self._rama_pedida = (branch or "").strip() or None
         self.s = requests.Session()
         self.s.headers.update({
             "Authorization": f"Bearer {token.strip()}",
@@ -62,8 +63,30 @@ class GitHubStore:
     @property
     def branch(self):
         if self._branch is None:
-            self._branch = self._req("GET", "").json().get("default_branch") or "main"
+            if self._rama_pedida:
+                self._asegurar_rama(self._rama_pedida)
+                self._branch = self._rama_pedida
+            else:
+                self._branch = self._req("GET", "").json().get("default_branch") or "main"
         return self._branch
+
+    def _asegurar_rama(self, rama):
+        """Si la rama no existe, la crea vacía (sin el código de la rama principal)."""
+        r = self._req("GET", f"/git/ref/heads/{rama}", ok=(200, 404, 409))
+        if r.status_code == 200:
+            return
+        log.info("Creando la rama '%s' en %s", rama, self.repo)
+        texto = (f"# Material\n\nArchivos descargados por el bot de Telegram.\n"
+                 f"Cada carpeta es un proyecto. Los archivos de más de {LIMITE_REPO_MB} MB "
+                 "están en la pestaña Releases.\n")
+        blob = self._req("POST", "/git/blobs", json={"content": texto,
+                                                      "encoding": "utf-8"}).json()["sha"]
+        tree = self._req("POST", "/git/trees", json={"tree": [
+            {"path": "README.md", "mode": "100644", "type": "blob", "sha": blob}]}).json()["sha"]
+        commit = self._req("POST", "/git/commits", json={
+            "message": "Crear rama de material", "tree": tree, "parents": []}).json()["sha"]
+        self._req("POST", "/git/refs", json={"ref": f"refs/heads/{rama}", "sha": commit},
+                  ok=(201, 422))
 
     def check(self):
         """Comprueba que el repo existe y que el token puede escribir."""
@@ -75,7 +98,8 @@ class GitHubStore:
 
     # ------------------------------------------------------------ estado
     def leer_estado(self) -> dict:
-        r = self._req("GET", f"/contents/{ARCHIVO_ESTADO}", ok=(200, 404))
+        r = self._req("GET", f"/contents/{ARCHIVO_ESTADO}",
+                      params={"ref": self.branch}, ok=(200, 404))
         if r.status_code == 404:
             return {}
         try:
@@ -172,11 +196,12 @@ class GitHubStore:
         """Para repos vacíos (sin ningún commit) la API Git Data no funciona."""
         url = f"/contents/{urllib.parse.quote(ruta)}"
         body = {"message": mensaje, "content": base64.b64encode(data).decode()}
-        prev = self._req("GET", url, ok=(200, 404))
+        if self._rama_pedida:
+            body["branch"] = self._rama_pedida
+        prev = self._req("GET", url, params={"ref": body.get("branch")}, ok=(200, 404))
         if prev.status_code == 200 and isinstance(prev.json(), dict):
             body["sha"] = prev.json()["sha"]
         self._req("PUT", url, json=body, timeout=600)
-        self._branch = None
 
     def subir_archivo(self, proyecto: str, ruta_local: str, nombre: str) -> str:
         """Sube un archivo local. Devuelve 'repo' o 'release'."""

@@ -34,12 +34,17 @@ def _env(nombre, obligatoria=True):
 
 
 TELEGRAM_TOKEN = _env("TELEGRAM_TOKEN")
-GITHUB_TOKEN = _env("GITHUB_TOKEN")
-GITHUB_REPO = _env("GITHUB_REPO")
-ALLOWED_USER_ID = int(_env("ALLOWED_USER_ID"))
+GITHUB_TOKEN = _env("GITHUB_TOKEN", obligatoria=False)
+GITHUB_REPO = _env("GITHUB_REPO", obligatoria=False)
+GITHUB_BRANCH = _env("GITHUB_BRANCH", obligatoria=False) or None
+_id = _env("ALLOWED_USER_ID", obligatoria=False)
+ALLOWED_USER_ID = int(_id) if _id.isdigit() else None
 YTDLP_COOKIES = _env("YTDLP_COOKIES", obligatoria=False) or None
 
-store = GitHubStore(GITHUB_TOKEN, GITHUB_REPO)
+FALTAN = [n for n, v in (("ALLOWED_USER_ID", ALLOWED_USER_ID), ("GITHUB_TOKEN", GITHUB_TOKEN),
+                         ("GITHUB_REPO", GITHUB_REPO)) if not v]
+
+store = GitHubStore(GITHUB_TOKEN, GITHUB_REPO, GITHUB_BRANCH) if not FALTAN else None
 estado = {"proyecto": PROYECTO_POR_DEFECTO}
 candado = asyncio.Lock()
 
@@ -147,7 +152,7 @@ async def cmd_estado(update: Update, context: ContextTypes.DEFAULT_TYPE):
              f"📄 Archivos: {len(archivos)}")
     if en_release:
         texto += f" ({en_release} en el Release por ser grandes)"
-    texto += f"\n🗂 Repositorio: {GITHUB_REPO}"
+    texto += f"\n🗂 Repositorio: {GITHUB_REPO}" + (f" (rama {GITHUB_BRANCH})" if GITHUB_BRANCH else "")
     texto += "\n🍪 Cookies: " + ("configuradas" if YTDLP_COOKIES else "no configuradas")
     await update.message.reply_text(texto)
 
@@ -273,8 +278,27 @@ async def al_error(update, context: ContextTypes.DEFAULT_TYPE):
     log.error("Error no controlado", exc_info=context.error)
 
 
+# ====================================================================== configuración
+async def modo_configuracion(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Mientras falten variables, el bot solo explica qué falta (y nada más)."""
+    u = update.effective_user
+    if not u or not update.effective_message:
+        return
+    if ALLOWED_USER_ID is None:
+        log.warning("Modo configuración: mensaje de id=%s @%s", u.id, u.username)
+        await update.effective_message.reply_text(
+            f"🔧 El bot aún no está configurado.\n\nTu ID de Telegram es: {u.id}\n\n"
+            "Ponlo en Railway en la variable ALLOWED_USER_ID.")
+    elif u.id == ALLOWED_USER_ID:
+        await update.effective_message.reply_text(
+            "🔧 Falta configurar en Railway: " + ", ".join(FALTAN))
+
+
 # ====================================================================== arranque
 async def al_iniciar(app: Application):
+    if FALTAN:
+        log.warning("Modo configuración. Faltan las variables: %s", ", ".join(FALTAN))
+        return
     try:
         await asyncio.to_thread(store.check)
         guardado = await asyncio.to_thread(store.leer_estado)
@@ -293,6 +317,10 @@ async def al_iniciar(app: Application):
 
 def main():
     app = Application.builder().token(TELEGRAM_TOKEN).post_init(al_iniciar).build()
+    if FALTAN:
+        app.add_handler(MessageHandler(filters.ALL, modo_configuracion))
+        app.run_polling(allowed_updates=Update.ALL_TYPES)
+        return
     yo = filters.User(user_id=ALLOWED_USER_ID)
 
     app.add_handler(CommandHandler(["start", "ayuda", "help"], cmd_start, filters=yo))

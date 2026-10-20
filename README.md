@@ -32,6 +32,7 @@ guarda en un repositorio **privado** de GitHub, numerados en orden de llegada.
 | `GITHUB_TOKEN` | `github_pat_...` | Token con permiso de escritura en el repo de material |
 | `GITHUB_REPO` | `usuario/ridmer-material` | Repo donde se guardan los archivos |
 | `ALLOWED_USER_ID` | `123456789` | Tu ID de Telegram; el bot ignora a cualquier otra persona |
+| `GITHUB_BRANCH` | `material` | *(opcional)* Rama donde guardar; si no existe, el bot la crea vacía |
 | `YTDLP_COOKIES` | *(opcional)* | Contenido de `cookies.txt` para cuando YouTube/TikTok bloquean |
 
 ## Cookies (si YouTube/TikTok/Instagram bloquean)
