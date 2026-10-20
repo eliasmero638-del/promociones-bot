@@ -1,9 +1,11 @@
 """Guardar archivos en un repositorio de GitHub.
 
-- Archivos pequeños (< LIMITE_REPO_MB) se suben como archivos normales del repo
-  usando la API Git Data (blob -> tree -> commit), que acepta hasta 100 MB.
-- Archivos grandes se suben como "asset" de un Release cuyo tag es el nombre
-  del proyecto.
+- Archivos pequeños (< LIMITE_API_MB) se suben con la API Git Data
+  (blob -> tree -> commit).
+- Archivos medianos (< LIMITE_REPO_MB) se suben con git push, porque la API de
+  blobs rechaza los archivos grandes ("input was too large to process").
+- Archivos más grandes (o si git push falla) se suben como "asset" de un
+  Release cuyo tag es el nombre del proyecto.
 """
 
 import base64
@@ -11,6 +13,8 @@ import json
 import logging
 import os
 import re
+import subprocess
+import tempfile
 import time
 import urllib.parse
 
@@ -20,6 +24,7 @@ log = logging.getLogger(__name__)
 
 API = "https://api.github.com"
 UPLOADS = "https://uploads.github.com"
+LIMITE_API_MB = 20
 LIMITE_REPO_MB = 90
 ARCHIVO_ESTADO = "_estado_bot.json"
 
@@ -32,9 +37,10 @@ class GitHubStore:
     def __init__(self, token: str, repo: str, branch: str | None = None):
         self.repo = repo.strip().strip("/")
         self._rama_pedida = (branch or "").strip() or None
+        self._token = token.strip()
         self.s = requests.Session()
         self.s.headers.update({
-            "Authorization": f"Bearer {token.strip()}",
+            "Authorization": f"Bearer {self._token}",
             "Accept": "application/vnd.github+json",
             "X-GitHub-Api-Version": "2022-11-28",
             "User-Agent": "descargas-bot",
@@ -223,13 +229,58 @@ class GitHubStore:
     def subir_archivo(self, proyecto: str, ruta_local: str, nombre: str) -> str:
         """Sube un archivo local. Devuelve 'repo' o 'release'."""
         tam = os.path.getsize(ruta_local)
-        if tam < LIMITE_REPO_MB * 1024 * 1024:
+        ruta, mensaje = f"{proyecto}/{nombre}", f"{proyecto}: {nombre}"
+        if tam < LIMITE_API_MB * 1024 * 1024:
             with open(ruta_local, "rb") as fh:
-                data = fh.read()
-            self.subir_bytes(f"{proyecto}/{nombre}", data, f"{proyecto}: {nombre}")
+                self.subir_bytes(ruta, fh.read(), mensaje)
             return "repo"
+        if tam < LIMITE_REPO_MB * 1024 * 1024:
+            try:
+                self._commit_git_push(ruta, ruta_local, mensaje)
+                return "repo"
+            except GitHubError as e:
+                log.warning("git push falló (%s); lo subo al Release", e)
         self.subir_a_release(proyecto, ruta_local, nombre)
         return "release"
+
+    def _commit_git_push(self, ruta, ruta_local, mensaje):
+        """La API de blobs no acepta archivos grandes; para esos se usa git push.
+
+        No descarga el repo: trae solo el último commit sin archivos
+        (--filter=blob:none) y crea el commit nuevo encima."""
+        rama = self.branch
+        url = f"https://x-access-token:{self._token}@github.com/{self.repo}.git"
+        with tempfile.TemporaryDirectory() as d:
+            env = dict(os.environ, GIT_DIR=d, GIT_INDEX_FILE=os.path.join(d, "indice"),
+                       GIT_TERMINAL_PROMPT="0", GIT_AUTHOR_NAME="descargas-bot",
+                       GIT_AUTHOR_EMAIL="bot@descargas", GIT_COMMITTER_NAME="descargas-bot",
+                       GIT_COMMITTER_EMAIL="bot@descargas")
+
+            def git(*args):
+                r = subprocess.run(["git", *args], env=env, capture_output=True, text=True,
+                                   timeout=900)
+                if r.returncode != 0:
+                    detalle = (r.stderr or r.stdout).replace(self._token, "***")[-300:]
+                    raise GitHubError(f"git {args[0]} falló: {detalle.strip()}")
+                return r.stdout.strip()
+
+            git("init", "-q", "--bare", d)
+            blob = git("hash-object", "-w", ruta_local)
+            for intento in range(4):
+                git("fetch", "-q", "--depth=1", "--filter=blob:none", url,
+                    f"+refs/heads/{rama}:refs/remotes/origen")
+                git("read-tree", "refs/remotes/origen")
+                git("update-index", "--add", "--cacheinfo", f"100644,{blob},{ruta}")
+                arbol = git("write-tree", "--missing-ok")
+                commit = git("commit-tree", arbol, "-p", "refs/remotes/origen", "-m", mensaje)
+                try:
+                    git("push", "-q", url, f"{commit}:refs/heads/{rama}")
+                    return commit
+                except GitHubError as e:
+                    if "rejected" not in str(e) and "fetch first" not in str(e):
+                        raise
+                    time.sleep(2 * (intento + 1))  # alguien subió algo a la vez
+            raise GitHubError("git push rechazado repetidamente.")
 
     def subir_a_release(self, proyecto, ruta_local, nombre):
         rel = self._release(tag_de(proyecto), crear=True)

@@ -1,8 +1,8 @@
 FROM python:3.12-slim
 
-# ffmpeg: une audio+video y convierte a MP4
+# ffmpeg: une audio+video y convierte a MP4. git: sube archivos grandes al repo
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends ffmpeg ca-certificates \
+    && apt-get install -y --no-install-recommends ffmpeg git ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
 # Deno: yt-dlp lo necesita para resolver los videos de YouTube
