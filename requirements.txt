@@ -1,0 +1,5 @@
+python-telegram-bot==22.5
+yt-dlp[default]>=2026.8.19
+gdown==6.4.2
+requests==2.34.2
+Pillow==12.3.0
