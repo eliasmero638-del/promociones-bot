@@ -226,10 +226,15 @@ class GitHubStore:
             body["sha"] = prev.json()["sha"]
         self._req("PUT", url, json=body, timeout=600)
 
-    def subir_archivo(self, proyecto: str, ruta_local: str, nombre: str) -> str:
-        """Sube un archivo local. Devuelve 'repo' o 'release'."""
+    def subir_archivo(self, proyecto: str, ruta_local: str, nombre: str,
+                      carpeta: str | None = None) -> str:
+        """Sube un archivo local. Devuelve 'repo' o 'release'.
+
+        Va a la carpeta del proyecto, o a `carpeta` si se indica ("" = raíz)."""
         tam = os.path.getsize(ruta_local)
-        ruta, mensaje = f"{proyecto}/{nombre}", f"{proyecto}: {nombre}"
+        carpeta = proyecto if carpeta is None else carpeta
+        ruta = f"{carpeta}/{nombre}" if carpeta else nombre
+        mensaje = f"{proyecto}: {nombre}"
         if tam < LIMITE_API_MB * 1024 * 1024:
             with open(ruta_local, "rb") as fh:
                 self.subir_bytes(ruta, fh.read(), mensaje)
@@ -281,6 +286,14 @@ class GitHubStore:
                         raise
                     time.sleep(2 * (intento + 1))  # alguien subió algo a la vez
             raise GitHubError("git push rechazado repetidamente.")
+
+    def url_publica(self, nombre: str, donde: str, proyecto: str) -> str:
+        """Enlace de descarga directa (solo funciona sin sesión si el repo es público)."""
+        if donde == "release":
+            return (f"https://github.com/{self.repo}/releases/download/"
+                    f"{tag_de(proyecto)}/{urllib.parse.quote(nombre)}")
+        return (f"https://raw.githubusercontent.com/{self.repo}/{self.branch}/"
+                f"{urllib.parse.quote(nombre)}")
 
     def subir_a_release(self, proyecto, ruta_local, nombre):
         rel = self._release(tag_de(proyecto), crear=True)

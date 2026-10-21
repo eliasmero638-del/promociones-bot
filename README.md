@@ -15,6 +15,7 @@ guarda en un repositorio **privado** de GitHub, numerados en orden de llegada.
 | Foto / video / audio | Lo guarda (si tiene texto al pie, se usa como nombre) |
 | `/lista` | Lista los archivos del proyecto actual |
 | `/estado` | Proyecto actual y cuántos archivos tiene |
+| `/redes` | Lo siguiente va a la rama PÚBLICA y el bot responde con el enlace directo (para Metricool). `/proyecto NOMBRE` vuelve al modo normal |
 
 - Archivos de menos de 90 MB → carpeta del proyecto en el repositorio.
 - Archivos más grandes → *asset* del Release con el nombre del proyecto
@@ -34,6 +35,7 @@ guarda en un repositorio **privado** de GitHub, numerados en orden de llegada.
 | `ALLOWED_USER_ID` | `123456789` | Tu ID de Telegram; el bot ignora a cualquier otra persona |
 | `GITHUB_BRANCH` | `material` | *(opcional)* Rama donde guardar; si no existe, el bot la crea vacía |
 | `YTDLP_COOKIES` | *(opcional)* | Contenido de `cookies.txt` para cuando YouTube/TikTok bloquean |
+| `REDES_REPO` / `REDES_BRANCH` | *(opcional)* | Repo PÚBLICO y rama para `/redes` (por defecto `eliasmero638-del/promociones-bot`, rama `ridmer-videos`) |
 | `TELEGRAM_API_ID` | *(opcional)* `12345678` | De my.telegram.org. Con esto y el siguiente, los archivos de más de 90 MB te llegan por Telegram (hasta 2 GB) y puedes mandarle al bot archivos de más de 20 MB |
 | `TELEGRAM_API_HASH` | *(opcional)* `0123abcd...` | De my.telegram.org |
 

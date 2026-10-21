@@ -41,6 +41,9 @@ GITHUB_BRANCH = _env("GITHUB_BRANCH", obligatoria=False) or None
 _id = _env("ALLOWED_USER_ID", obligatoria=False)
 ALLOWED_USER_ID = int(_id) if _id.isdigit() else None
 YTDLP_COOKIES = _env("YTDLP_COOKIES", obligatoria=False) or None
+# Repo PÚBLICO para /redes (enlaces directos para Metricool)
+REDES_REPO = _env("REDES_REPO", obligatoria=False) or "eliasmero638-del/promociones-bot"
+REDES_BRANCH = _env("REDES_BRANCH", obligatoria=False) or "ridmer-videos"
 # Opcionales, de my.telegram.org: permiten enviar/recibir archivos de hasta 2 GB
 _api_id = _env("TELEGRAM_API_ID", obligatoria=False)
 TELEGRAM_API_HASH = _env("TELEGRAM_API_HASH", obligatoria=False)
@@ -49,6 +52,7 @@ FALTAN = [n for n, v in (("ALLOWED_USER_ID", ALLOWED_USER_ID), ("GITHUB_TOKEN", 
                          ("GITHUB_REPO", GITHUB_REPO)) if not v]
 
 store = GitHubStore(GITHUB_TOKEN, GITHUB_REPO, GITHUB_BRANCH) if not FALTAN else None
+redes = GitHubStore(GITHUB_TOKEN, REDES_REPO, REDES_BRANCH) if not FALTAN else None
 grande = (EnvioGrande(int(_api_id), TELEGRAM_API_HASH, TELEGRAM_TOKEN)
           if _api_id.isdigit() and TELEGRAM_API_HASH else None)
 estado = {"proyecto": PROYECTO_POR_DEFECTO, "numeros": {}}
@@ -138,9 +142,35 @@ async def guardar(ruta_local: str, etiqueta: str) -> tuple[str, str]:
     return nombre, donde
 
 
+async def guardar_redes(aviso, ruta: str, etiqueta: str):
+    """Modo /redes: sube a la rama pública y responde con el enlace directo."""
+    tam = os.path.getsize(ruta)
+    await responder(aviso, f"⬆️ Subiendo a la carpeta pública de redes ({mb(tam)})…")
+    ext = os.path.splitext(ruta)[1].lower() or ".bin"
+    base = limpiar_nombre(etiqueta) or "video"
+    async with candado:
+        try:
+            existentes = {f["name"] for f in await asyncio.to_thread(redes.listar_carpeta, "")}
+            existentes |= {f["name"] for f in await asyncio.to_thread(redes.listar_release,
+                                                                       REDES_BRANCH)}
+            nombre, n = f"{base}{ext}", 2
+            while nombre in existentes:
+                nombre, n = f"{base}_{n}{ext}", n + 1
+            donde = await asyncio.to_thread(redes.subir_archivo, REDES_BRANCH, ruta, nombre, "")
+        except Exception as e:
+            log.exception("Falló la subida de %s a redes", base)
+            raise SubidaError(f"{base}{ext}", e)
+    enlace = redes.url_publica(nombre, donde, REDES_BRANCH)
+    await responder(aviso, f"✅ Subido para redes: {nombre}\n\n🔗 Enlace directo para Metricool:\n"
+                           f"{enlace}")
+
+
 async def entregar(update: Update, aviso, ruta: str, etiqueta: str):
     """Sube a GitHub; si pesa más de LIMITE_REPO_MB y está activado el envío
     grande, te lo manda por Telegram en vez de subirlo al Release."""
+    if estado.get("modo") == "redes":
+        await guardar_redes(aviso, ruta, etiqueta)
+        return
     tam = os.path.getsize(ruta)
     if tam >= LIMITE_REPO_MB * 1024 * 1024 and grande and grande.activo:
         async with candado:
@@ -213,7 +243,8 @@ async def cmd_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "y los guardo en GitHub.\n\n"
         "• /proyecto NOMBRE — elegir carpeta\n"
         "• /estado — proyecto actual y cuántos archivos tiene\n"
-        "• /lista — ver los archivos del proyecto\n\n"
+        "• /lista — ver los archivos del proyecto\n"
+        "• /redes — subir a la carpeta pública y darte el enlace para Metricool\n\n"
         "Para ponerle nombre: «R1 https://...»\n"
         f"📁 Proyecto actual: {estado['proyecto']}")
 
@@ -226,6 +257,7 @@ async def cmd_proyecto(update: Update, context: ContextTypes.DEFAULT_TYPE):
             "Para cambiarlo: /proyecto NOMBRE (ejemplo: /proyecto peter_bergmann)")
         return
     estado["proyecto"] = nombre
+    estado["modo"] = None
     try:
         await asyncio.to_thread(store.guardar_estado, dict(estado))
         cantidad = len(await asyncio.to_thread(store.listar_proyecto, nombre))
@@ -238,7 +270,22 @@ async def cmd_proyecto(update: Update, context: ContextTypes.DEFAULT_TYPE):
                                     "Todo lo que mandes ahora se guarda ahí.")
 
 
+async def cmd_redes(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    estado["modo"] = "redes"
+    await guardar_numeros()
+    await update.message.reply_text(
+        "🌐 Modo redes activado. Lo que mandes ahora se sube a la carpeta PÚBLICA "
+        f"({REDES_REPO}, rama {REDES_BRANCH}) y te respondo con el enlace directo para "
+        "Metricool.\n\n⚠️ Cualquiera con el enlace podrá verlo.\n"
+        f"Para volver al material privado: /proyecto {estado['proyecto']}")
+
+
 async def cmd_estado(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    if estado.get("modo") == "redes":
+        await update.message.reply_text(
+            f"🌐 Modo redes: lo que mandes va a {REDES_REPO} (rama {REDES_BRANCH}), público.\n"
+            f"Para volver al material privado: /proyecto {estado['proyecto']}")
+        return
     proyecto = estado["proyecto"]
     try:
         archivos = await asyncio.to_thread(store.listar_proyecto, proyecto)
@@ -354,6 +401,9 @@ async def al_recibir_archivo(update: Update, context: ContextTypes.DEFAULT_TYPE)
             await grande.descargar(m.chat_id, m.message_id, ruta, aviso)
         res = await asyncio.to_thread(downloader.normalizar,
                                       downloader.Resultado(ruta, etiqueta))
+        if estado.get("modo") == "redes":
+            await guardar_redes(aviso, res.ruta, etiqueta)
+            return
         await responder(aviso, f"⬆️ Subiendo a GitHub ({mb(os.path.getsize(res.ruta))})…")
         nombre, donde = await guardar(res.ruta, etiqueta)
         await responder(aviso, texto_ok(nombre, donde, res.ruta))
@@ -405,7 +455,14 @@ async def al_iniciar(app: Application):
         if guardado.get("proyecto"):
             estado["proyecto"] = guardado["proyecto"]
         estado["numeros"].update(guardado.get("numeros") or {})
+        estado["modo"] = guardado.get("modo")
         aviso = f"🤖 Bot en línea. 📁 Proyecto actual: {estado['proyecto']}"
+        if estado["modo"] == "redes":
+            aviso += "\n🌐 Modo redes activo (carpeta pública). Para salir: /proyecto NOMBRE"
+        try:
+            await asyncio.to_thread(redes.check)
+        except GitHubError as e:
+            aviso += f"\n⚠️ /redes no funcionará: el token no puede escribir en {REDES_REPO} ({e})"
     except GitHubError as e:
         log.error("Problema con GitHub: %s", e)
         aviso = f"🤖 Bot en línea, pero ⚠️ hay un problema con GitHub:\n{e}"
@@ -436,6 +493,7 @@ def main():
     app.add_handler(CommandHandler("proyecto", cmd_proyecto, filters=yo))
     app.add_handler(CommandHandler("estado", cmd_estado, filters=yo))
     app.add_handler(CommandHandler("lista", cmd_lista, filters=yo))
+    app.add_handler(CommandHandler("redes", cmd_redes, filters=yo))
     app.add_handler(MessageHandler(
         yo & (filters.PHOTO | filters.VIDEO | filters.AUDIO | filters.VOICE
               | filters.ANIMATION | filters.VIDEO_NOTE | filters.Document.ALL),
