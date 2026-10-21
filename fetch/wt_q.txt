@@ -1,3 +1,0 @@
-wt_q1.json https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch=Westfield%20New%20Jersey&gsrnamespace=6&gsrlimit=50&prop=imageinfo&iiprop=url|size&iiurlwidth=1920&format=json
-wt_q2.json https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch=657%20Boulevard%20Westfield&gsrnamespace=6&gsrlimit=20&prop=imageinfo&iiprop=url|size&iiurlwidth=1920&format=json
-wt_q3.json https://en.wikipedia.org/api/rest_v1/page/media-list/Westfield,_New_Jersey
