@@ -1,0 +1,152 @@
+# Voces gratis con Microsoft Edge TTS y descarga de archivos.
+#
+# tts/NOMBRE.txt   -> media/NOMBRE.mp3 + media/NOMBRE.vtt
+#   línea 1: voz (vacía = es-MX-JorgeNeural)
+#   línea 2: velocidad (vacía = -5%)
+#   resto:   texto a narrar
+#
+# fetch/ALGO.txt   -> cada línea "NOMBRE_ARCHIVO URL" se descarga a media/NOMBRE_ARCHIVO
+#
+# Los .txt que se procesan bien se borran; si algo falla, el .txt se queda y el
+# job termina en rojo para poder ver el error. Los commits del workflow usan
+# GITHUB_TOKEN, que por diseño no vuelve a disparar workflows (no hay bucle).
+
+name: Voces y descargas
+
+on:
+  push:
+    branches: [ridmer-videos]
+    paths:
+      - "tts/**.txt"
+      - "fetch/**.txt"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: voces-ridmer-videos
+  cancel-in-progress: false
+
+jobs:
+  procesar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ridmer-videos
+
+      - uses: actions/setup-python@v5
+        if: hashFiles('tts/*.txt') != ''
+        with:
+          python-version: "3.12"
+
+      - name: Instalar edge-tts
+        if: hashFiles('tts/*.txt') != ''
+        run: pip install edge-tts
+
+      - name: Generar voces (tts/)
+        id: tts
+        if: hashFiles('tts/*.txt') != ''
+        shell: bash
+        run: |
+          shopt -s nullglob
+          mkdir -p media
+          fallos=0
+          recortar() { sed -e 's/\r$//' -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//'; }
+          for f in tts/*.txt; do
+            nombre=$(basename "$f" .txt)
+            voz=$(sed -n '1p' "$f" | recortar)
+            vel=$(sed -n '2p' "$f" | recortar)
+            [ -z "$voz" ] && voz="es-MX-JorgeNeural"
+            [ -z "$vel" ] && vel="-5%"
+            texto=$(mktemp)
+            tail -n +3 "$f" | sed 's/\r$//' > "$texto"
+            echo "::group::$f (voz $voz, velocidad $vel)"
+            if ! grep -q '[^[:space:]]' "$texto"; then
+              echo "::error file=$f::El archivo no tiene texto a partir de la línea 3"
+              fallos=1; echo "::endgroup::"; continue
+            fi
+            subs=$(mktemp)
+            if edge-tts --voice "$voz" --rate="$vel" --file "$texto" \
+                 --write-media "media/$nombre.mp3" --write-subtitles "$subs" \
+               && python3 - "$subs" "media/$nombre.vtt" <<'PY'
+          import re, sys
+          # edge-tts 7+ escribe SRT; lo pasamos a WebVTT (las versiones viejas ya daban VTT)
+          texto = open(sys.argv[1], encoding="utf-8").read()
+          if not texto.lstrip().startswith("WEBVTT"):
+              texto = re.sub(r"(\d{2}:\d{2}:\d{2}),(\d{3})", r"\1.\2", texto)
+              texto = "WEBVTT\n\n" + texto.lstrip()
+          if "-->" not in texto:
+              sys.exit("edge-tts no generó subtítulos")
+          open(sys.argv[2], "w", encoding="utf-8").write(texto)
+          PY
+            then
+              git rm -q "$f"
+              echo "✅ media/$nombre.mp3 y media/$nombre.vtt"
+            else
+              echo "::error file=$f::Falló la generación de voz para $f"
+              rm -f "media/$nombre.mp3" "media/$nombre.vtt"
+              fallos=1
+            fi
+            echo "::endgroup::"
+          done
+          echo "fallos=$fallos" >> "$GITHUB_OUTPUT"
+
+      - name: Descargar archivos (fetch/)
+        id: fetch
+        if: hashFiles('fetch/*.txt') != ''
+        shell: bash
+        run: |
+          shopt -s nullglob
+          mkdir -p media
+          fallos=0
+          for f in fetch/*.txt; do
+            echo "::group::$f"
+            ok=1
+            while IFS= read -r linea || [ -n "$linea" ]; do
+              linea=$(printf '%s' "$linea" | sed -e 's/\r$//' -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
+              [ -z "$linea" ] && continue
+              case "$linea" in \#*) continue ;; esac
+              nombre=${linea%%[[:space:]]*}
+              url=$(printf '%s' "${linea#"$nombre"}" | sed 's/^[[:space:]]*//')
+              if [ -z "$url" ] || [ "$nombre" = "$linea" ]; then
+                echo "::error file=$f::Línea sin formato 'NOMBRE URL': $linea"; ok=0; continue
+              fi
+              case "$nombre" in */*|..*) echo "::error file=$f::Nombre no válido: $nombre"; ok=0; continue ;; esac
+              if curl -fsSL --retry 3 --retry-delay 5 --connect-timeout 30 \
+                   -A "Mozilla/5.0" -o "media/$nombre.part" "$url"; then
+                mv "media/$nombre.part" "media/$nombre"
+                echo "✅ media/$nombre ($(du -h "media/$nombre" | cut -f1))"
+              else
+                echo "::error file=$f::No se pudo descargar $url"
+                rm -f "media/$nombre.part"; ok=0
+              fi
+            done < "$f"
+            if [ "$ok" = 1 ]; then git rm -q "$f"; else fallos=1; fi
+            echo "::endgroup::"
+          done
+          echo "fallos=$fallos" >> "$GITHUB_OUTPUT"
+
+      - name: Commit y push de los resultados
+        if: always()
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          [ -d media ] && git add media
+          if git diff --cached --quiet; then
+            echo "Nada que subir."; exit 0
+          fi
+          git commit -q -m "Voces y descargas automáticas"
+          for intento in 1 2 3; do
+            git push origin HEAD:ridmer-videos && exit 0
+            git pull -q --rebase origin ridmer-videos
+          done
+          exit 1
+
+      - name: Marcar error si algún archivo falló
+        if: steps.tts.outputs.fallos == '1' || steps.fetch.outputs.fallos == '1'
+        run: |
+          echo "::error::Algún archivo falló. Su .txt se dejó en el repositorio; mira los pasos anteriores."
+          exit 1
