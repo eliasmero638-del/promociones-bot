@@ -42,8 +42,8 @@ _id = _env("ALLOWED_USER_ID", obligatoria=False)
 ALLOWED_USER_ID = int(_id) if _id.isdigit() else None
 YTDLP_COOKIES = _env("YTDLP_COOKIES", obligatoria=False) or None
 # Repo PÚBLICO para /redes (enlaces directos para Metricool)
-REDES_REPO = _env("REDES_REPO", obligatoria=False) or "eliasmero638-del/promociones-bot"
-REDES_BRANCH = _env("REDES_BRANCH", obligatoria=False) or "ridmer-videos"
+REDES_REPO = _env("REDES_REPO", obligatoria=False) or "eliasmero638-del/ridmer-videos"
+REDES_BRANCH = _env("REDES_BRANCH", obligatoria=False) or "main"
 # Opcionales, de my.telegram.org: permiten enviar/recibir archivos de hasta 2 GB
 _api_id = _env("TELEGRAM_API_ID", obligatoria=False)
 TELEGRAM_API_HASH = _env("TELEGRAM_API_HASH", obligatoria=False)
