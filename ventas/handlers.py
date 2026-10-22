@@ -64,7 +64,13 @@ from telegram.ext import (
     filters,
 )
 
-from .config import PAYMENT_PAUSED_PLACEHOLDER, SalesConfigManager, TrialKicksStore, VipExclusiveTrialUsageStore
+from .config import (
+    PAYMENT_PAUSED_PLACEHOLDER,
+    SalesConfigManager,
+    TrialKicksStore,
+    VipExclusiveTrialUsageStore,
+    _default_config,
+)
 from .storage import SalesRequestsManager
 from . import keyboards
 
@@ -1079,7 +1085,7 @@ def register_ventas_handlers(application):
     if application.job_queue:
         application.job_queue.run_once(_reschedule_pending_trial_kicks, when=1)
         application.job_queue.run_once(_fix_expired_demo_group_link, when=1)
-        application.job_queue.run_once(_fix_exposed_bank_data, when=1)
+        application.job_queue.run_once(_restore_bank_data_after_pause, when=1)
     else:
         logger.error("[ventas] No job_queue available at startup; cannot reconcile pending trial kicks.")
 
@@ -1109,27 +1115,26 @@ async def _fix_expired_demo_group_link(context: ContextTypes.DEFAULT_TYPE):
         logger.error("[ventas] Failed to save updated demo_group_link.")
 
 
-async def _fix_exposed_bank_data(context: ContextTypes.DEFAULT_TYPE):
-    """Corrección puntual al arrancar (pedido explícito, incidente de
-    seguridad de Railway - posible exposición de variables de entorno,
-    incluido el token de Upstash): solo cambiar el valor por defecto en
-    _default_config() no alcanza, porque lo ya guardado en Upstash tiene
-    prioridad y seguiría teniendo los números de cuenta/PayPal reales. Acá
-    se sobreescribe también eso. No toca nada si un admin ya puso un dato
-    nuevo distinto del placeholder (para no pisar una recuperación manual
-    ya hecha)."""
+async def _restore_bank_data_after_pause(context: ContextTypes.DEFAULT_TYPE):
+    """Corrección puntual al arrancar: el incidente de seguridad de
+    Railway había llevado a pausar los pagos (ver PAYMENT_PAUSED_PLACEHOLDER
+    y el commit que lo introdujo) sobreescribiendo los datos bancarios con
+    un aviso, incluido lo ya guardado en Upstash. A pedido explícito, se
+    reactivan: si el dato guardado todavía es exactamente ese placeholder,
+    se restaura el valor real de _default_config(). No toca nada si un
+    admin ya puso un dato distinto (para no pisar un cambio manual)."""
     config = SalesConfigManager()
+    defaults = _default_config()
     fields = ("bank_guayaquil_details", "bank_pichincha_details", "paypal_details")
     getters = (config.get_bank_guayaquil_details, config.get_bank_pichincha_details, config.get_paypal_details)
     setters = (config.set_bank_guayaquil_details, config.set_bank_pichincha_details, config.set_paypal_details)
 
     changed = False
     for field, getter, setter in zip(fields, getters, setters):
-        current = getter()
-        if current and current != PAYMENT_PAUSED_PLACEHOLDER:
-            setter(PAYMENT_PAUSED_PLACEHOLDER)
+        if getter() == PAYMENT_PAUSED_PLACEHOLDER:
+            setter(defaults[field])
             changed = True
-            logger.info(f"[ventas] Dato bancario expuesto borrado de Upstash: {field}.")
+            logger.info(f"[ventas] Dato bancario restaurado en Upstash tras la pausa: {field}.")
 
     if changed and not config.save():
-        logger.error("[ventas] Failed to save scrubbed bank details.")
+        logger.error("[ventas] Failed to save restored bank details.")
