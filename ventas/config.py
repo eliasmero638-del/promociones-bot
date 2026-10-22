@@ -32,6 +32,12 @@ SALES_DEEP_LINK_PAYLOAD = "venta"
 # 4 opciones (ver send_demo_directly en handlers.py).
 SALES_DEMO_DEEP_LINK_PAYLOAD = "demo"
 
+# Pedido explícito tras el incidente de seguridad de Railway (posible
+# exposición de variables de entorno, incluido el token de Upstash):
+# reemplaza cualquier dato bancario/PayPal real mientras los pagos están
+# pausados - ver _fix_exposed_bank_data en handlers.py.
+PAYMENT_PAUSED_PLACEHOLDER = "⚠️ Los pagos están temporalmente pausados. Contactá al administrador."
+
 UPSTASH_SALES_CONFIG_KEY = "ventas_bot:config"
 SALES_CONFIG_LOCAL_FILENAME = "ventas_config.json"
 
@@ -86,39 +92,14 @@ def _default_group_id(env_var_name: str) -> Optional[int]:
 def _default_config() -> dict:
     return {
         "vip_price": "$8 permanente",
-        "bank_guayaquil_details": (
-            "Cuenta de ahorros: 0013991214\n"
-            "Titular: Ricardo.m\n\n"
-            "⚠️ IMPORTANTE\n\n"
-            "• Realiza la transferencia únicamente a los datos mostrados.\n"
-            "• No es necesario enviar captura de pantalla ni comprobante.\n"
-            "• Solo presiona \"✅ Ya realicé el pago\" y escribe el nombre del "
-            "titular desde el que realizaste la transferencia.\n"
-            "• Un administrador verificará el pago y, una vez confirmado, "
-            "recibirás automáticamente el enlace de acceso VIP."
-        ),
-        "bank_pichincha_details": (
-            "Cuenta: 2206103888\n"
-            "Titular: Ricardo.m\n\n"
-            "⚠️ IMPORTANTE\n\n"
-            "• Realiza la transferencia únicamente a los datos mostrados.\n"
-            "• No es necesario enviar captura de pantalla ni comprobante.\n"
-            "• Solo presiona \"✅ Ya realicé el pago\" y escribe el nombre del "
-            "titular desde el que realizaste la transferencia.\n"
-            "• Un administrador verificará el pago y, una vez confirmado, "
-            "recibirás automáticamente el enlace de acceso VIP."
-        ),
-        "paypal_details": (
-            "Ridmerwtf@gmail.com\n"
-            "Titular: Ricardo.m\n\n"
-            "⚠️ IMPORTANTE\n\n"
-            "• Realiza el pago únicamente a los datos mostrados.\n"
-            "• No es necesario enviar captura de pantalla ni comprobante.\n"
-            "• Solo presiona \"✅ Ya realicé el pago\" y escribe el nombre del "
-            "titular desde el que realizaste el pago.\n"
-            "• Un administrador verificará el pago y, una vez confirmado, "
-            "recibirás automáticamente el enlace de acceso VIP."
-        ),
+        # Pagos pausados (pedido explícito, incidente de seguridad de
+        # Railway - ver PAYMENT_PAUSED_PLACEHOLDER más abajo): se quitan
+        # los números de cuenta/PayPal reales de acá. _fix_exposed_bank_data
+        # se encarga de sobreescribir también lo que ya estaba guardado en
+        # Upstash con este mismo texto.
+        "bank_guayaquil_details": PAYMENT_PAUSED_PLACEHOLDER,
+        "bank_pichincha_details": PAYMENT_PAUSED_PLACEHOLDER,
+        "paypal_details": PAYMENT_PAUSED_PLACEHOLDER,
         "demo_group_link": "https://t.me/+FNAYL9Pr_0AzMjY5",
         "vip_group_link": "",
         "faq_text": (
