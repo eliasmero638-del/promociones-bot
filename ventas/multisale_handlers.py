@@ -72,6 +72,7 @@ from .multisale_config import (
     MultiSaleConfigManager,
     PaymentDataSeenStore,
     RecentPaymentsStore,
+    _default_config,
     get_individual_total,
     get_offer_price,
 )
@@ -1089,7 +1090,35 @@ def register_multisale_handlers(application):
 
     if application.job_queue:
         application.job_queue.run_once(_reschedule_pending_ms_actions, when=1)
+        application.job_queue.run_once(_fix_exposed_payment_data, when=1)
     else:
         logger.error("[multisale] No job_queue available at startup; cannot reconcile pending timers.")
 
     logger.info("[multisale] All multi-sale handlers registered.")
+
+
+async def _fix_exposed_payment_data(context: ContextTypes.DEFAULT_TYPE):
+    """Corrección puntual al arrancar (pedido explícito, incidente de
+    seguridad de Railway - posible exposición de variables de entorno,
+    incluido el token de Upstash): "payment_methods" ya sale siempre de
+    _default_config() (ver _merge_with_defaults), así que los números de
+    cuenta/PayPal reales ya no se muestran - pero el JSON crudo ya
+    guardado en Upstash todavía los tiene adentro, así que se sobreescribe
+    también eso. Además fuerza payment_data_silenced=True (que sí se
+    mezcla con lo persistido) para que ningún cliente vea datos de pago
+    mientras está pausado."""
+    config = MultiSaleConfigManager()
+    changed = False
+
+    if config.data.get("payment_methods") != _default_config()["payment_methods"]:
+        config.data["payment_methods"] = _default_config()["payment_methods"]
+        changed = True
+        logger.info("[multisale] Datos bancarios expuestos borrados de Upstash (payment_methods).")
+
+    if not config.is_payment_data_silenced():
+        config.set_payment_data_silenced(True)
+        changed = True
+        logger.info("[multisale] payment_data_silenced forzado a True (pagos pausados).")
+
+    if changed and not config.save():
+        logger.error("[multisale] Failed to save scrubbed payment data.")
