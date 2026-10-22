@@ -18,12 +18,6 @@ from typing import Dict, List, Optional
 
 logger = logging.getLogger("bot")
 
-# Pedido explícito tras el incidente de seguridad de Railway (posible
-# exposición de variables de entorno, incluido el token de Upstash):
-# reemplaza cualquier dato bancario/PayPal real mientras los pagos están
-# pausados - ver _fix_exposed_payment_data en multisale_handlers.py.
-PAYMENT_PAUSED_PLACEHOLDER = "⚠️ Los pagos están temporalmente pausados. Contactá al administrador."
-
 UPSTASH_MULTISALE_CONFIG_KEY = "multisale_bot:config"
 MULTISALE_CONFIG_LOCAL_FILENAME = "multisale_config.json"
 
@@ -121,29 +115,28 @@ def _default_config() -> dict:
                 "link": "https://t.me/+FWxEYinp4rMxNzFh",
             },
         },
-        # Pagos pausados (pedido explícito, incidente de seguridad de
-        # Railway - posible exposición del token de Upstash): se quitan
-        # los números de cuenta/PayPal reales de acá. Alcanza con esto
-        # para el admin/display (_merge_with_defaults ya fuerza que
-        # "payment_methods" salga siempre de acá, nunca de lo persistido
-        # en Upstash) - _fix_exposed_payment_data en multisale_handlers.py
-        # se encarga de sobreescribir también el JSON crudo ya guardado.
         "payment_methods": {
             "interbancario": {
                 "label": "🏦 Pago interbancario",
-                "details": PAYMENT_PAUSED_PLACEHOLDER,
+                "details": (
+                    "Banco: Banco Pichincha\n"
+                    "Tipo de cuenta: Ahorros\n"
+                    "Número de cuenta: [lo configuraré]\n"
+                    "Titular: Ricardo Elías Mero Mieles\n"
+                    "Cédula: 1315531515"
+                ),
             },
             "bank_pichincha": {
                 "label": "🏦 Banco Pichincha",
-                "details": PAYMENT_PAUSED_PLACEHOLDER,
+                "details": "Cuenta de ahorro transaccional: 2214437107\nTitular: Ricardo.m",
             },
             "bank_guayaquil": {
                 "label": "🏦 Banco Guayaquil",
-                "details": PAYMENT_PAUSED_PLACEHOLDER,
+                "details": "Cuenta de ahorros: 0013991214\nTitular: Ricardo.m",
             },
             "paypal": {
                 "label": "💙 PayPal",
-                "details": PAYMENT_PAUSED_PLACEHOLDER,
+                "details": "Ridmerwtf@gmail.com\nTitular: Ricardo.m",
             },
         },
     }
