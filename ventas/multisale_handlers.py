@@ -1090,35 +1090,34 @@ def register_multisale_handlers(application):
 
     if application.job_queue:
         application.job_queue.run_once(_reschedule_pending_ms_actions, when=1)
-        application.job_queue.run_once(_fix_exposed_payment_data, when=1)
+        application.job_queue.run_once(_restore_payment_data_after_pause, when=1)
     else:
         logger.error("[multisale] No job_queue available at startup; cannot reconcile pending timers.")
 
     logger.info("[multisale] All multi-sale handlers registered.")
 
 
-async def _fix_exposed_payment_data(context: ContextTypes.DEFAULT_TYPE):
-    """Corrección puntual al arrancar (pedido explícito, incidente de
-    seguridad de Railway - posible exposición de variables de entorno,
-    incluido el token de Upstash): "payment_methods" ya sale siempre de
-    _default_config() (ver _merge_with_defaults), así que los números de
-    cuenta/PayPal reales ya no se muestran - pero el JSON crudo ya
-    guardado en Upstash todavía los tiene adentro, así que se sobreescribe
-    también eso. Además fuerza payment_data_silenced=True (que sí se
-    mezcla con lo persistido) para que ningún cliente vea datos de pago
-    mientras está pausado."""
+async def _restore_payment_data_after_pause(context: ContextTypes.DEFAULT_TYPE):
+    """Corrección puntual al arrancar: el incidente de seguridad de
+    Railway había llevado a pausar los pagos (payment_data_silenced=True
+    + "payment_methods" reemplazado por un aviso, ver el commit que lo
+    introdujo). A pedido explícito, se reactivan: se restaura el JSON
+    crudo de "payment_methods" en Upstash a los datos reales de
+    _default_config() (por más que _merge_with_defaults ya los fuerce
+    igual en cada lectura, para no dejar el aviso viejo guardado ahí) y se
+    apaga payment_data_silenced, que sí se mezcla con lo persistido."""
     config = MultiSaleConfigManager()
     changed = False
 
     if config.data.get("payment_methods") != _default_config()["payment_methods"]:
         config.data["payment_methods"] = _default_config()["payment_methods"]
         changed = True
-        logger.info("[multisale] Datos bancarios expuestos borrados de Upstash (payment_methods).")
+        logger.info("[multisale] Datos bancarios restaurados en Upstash tras la pausa (payment_methods).")
 
-    if not config.is_payment_data_silenced():
-        config.set_payment_data_silenced(True)
+    if config.is_payment_data_silenced():
+        config.set_payment_data_silenced(False)
         changed = True
-        logger.info("[multisale] payment_data_silenced forzado a True (pagos pausados).")
+        logger.info("[multisale] payment_data_silenced apagado (pagos reactivados).")
 
     if changed and not config.save():
         logger.error("[multisale] Failed to save scrubbed payment data.")
