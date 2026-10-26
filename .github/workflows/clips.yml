@@ -1,0 +1,54 @@
+# Descarga de clips de video.
+# clips/ALGO.txt -> cada línea:
+#   list NOMBRE URL_DEL_CANAL_O_PLAYLIST        (guarda media/NOMBRE.txt con los últimos videos)
+#   clip NOMBRE URL INICIO FIN                  (INICIO/FIN como 1:02:30; guarda media/NOMBRE.mp4, máx 720p)
+name: Clips
+on:
+  push:
+    branches: [ridmer-videos]
+    paths: ["clips/**.txt"]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: clips-ridmer-videos
+  cancel-in-progress: false
+jobs:
+  clips:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ridmer-videos
+      - name: Instalar yt-dlp y ffmpeg
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          python3 -m pip install -q -U yt-dlp
+      - name: Procesar
+        shell: bash
+        run: |
+          shopt -s nullglob; mkdir -p media
+          for f in clips/*.txt; do
+            while read -r tipo nombre url ini fin || [ -n "$tipo" ]; do
+              [ -z "$tipo" ] && continue
+              case "$tipo" in \#*) continue;; esac
+              if [ "$tipo" = list ]; then
+                yt-dlp --flat-playlist --playlist-end 40 --print "%(id)s | %(duration_string)s | %(live_status)s | %(title)s" "$url" > "media/$nombre.txt" 2> "media/$nombre.err" || true
+              else
+                yt-dlp -f "bv*[height<=720][ext=mp4]+ba[ext=m4a]/b[height<=720]/b" --merge-output-format mp4 \
+                  --download-sections "*$ini-$fin" --force-keyframes-at-cuts -o "media/$nombre.%(ext)s" "$url" > "media/$nombre.log" 2>&1 || true
+              fi
+            done < "$f"
+            git rm -q "$f"
+          done
+      - name: Subir resultados
+        if: always()
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A media clips
+          git diff --cached --quiet && exit 0
+          git commit -q -m "Clips automáticos"
+          for i in 1 2 3; do git push origin HEAD:ridmer-videos && exit 0; git pull -q --rebase origin ridmer-videos; done
+          exit 1
