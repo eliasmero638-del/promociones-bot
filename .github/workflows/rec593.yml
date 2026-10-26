@@ -1,0 +1,45 @@
+# Graba la señal 24/7 de La Casa 593.
+# rec/ALGO.txt -> línea 1: segundos a grabar (ej. 120)
+name: Grabar Casa 593
+on:
+  push:
+    branches: [ridmer-videos]
+    paths: ["rec/**.txt"]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: rec593
+  cancel-in-progress: false
+jobs:
+  rec:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ridmer-videos
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+      - name: Grabar
+        shell: bash
+        run: |
+          shopt -s nullglob; mkdir -p media
+          U=https://live.lacasa593.com/api/v1/streams/stream_aAxcuWBFzEJf/hls/index.m3u8
+          curl -sS -A "Mozilla/5.0" -H "Referer: https://lacasa593.com/" "$U" > media/c593_index.m3u8 || true
+          sub=$(grep -v '^#' media/c593_index.m3u8 | head -1)
+          if [ -n "$sub" ]; then case "$sub" in http*) SU="$sub";; *) SU="$(dirname $U)/$sub";; esac; curl -sS -A "Mozilla/5.0" -H "Referer: https://lacasa593.com/" "$SU" > media/c593_sub.m3u8 || true; fi
+          for f in rec/*.txt; do
+            S=$(head -1 "$f" | tr -dc 0-9); [ -z "$S" ] && S=120
+            ffmpeg -v warning -user_agent "Mozilla/5.0" -headers "Referer: https://lacasa593.com/"$'\r\n' -i "$U" -t "$S" -c copy media/c593_rec.mp4 > media/c593_rec.log 2>&1 || true
+            git rm -q "$f"
+          done
+      - name: Subir
+        if: always()
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A media; git add -A rec 2>/dev/null || true
+          git diff --cached --quiet && exit 0
+          git commit -q -m "Grabación Casa 593"
+          for i in 1 2 3; do git push origin HEAD:ridmer-videos && exit 0; git pull -q --rebase origin ridmer-videos; done
+          exit 1
