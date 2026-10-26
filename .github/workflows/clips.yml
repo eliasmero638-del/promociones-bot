@@ -47,7 +47,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A media clips
+          git add -A media; git add -A clips 2>/dev/null || true
           git diff --cached --quiet && exit 0
           git commit -q -m "Clips automáticos"
           for i in 1 2 3; do git push origin HEAD:ridmer-videos && exit 0; git pull -q --rebase origin ridmer-videos; done
