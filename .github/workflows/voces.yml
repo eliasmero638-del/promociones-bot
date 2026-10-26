@@ -140,8 +140,9 @@ jobs:
           fi
           git commit -q -m "Voces y descargas automáticas"
           for intento in 1 2 3; do
-            git push origin HEAD:ridmer-videos && exit 0
-            git pull -q --rebase origin ridmer-videos
+            out=$(git push origin HEAD:ridmer-videos 2>&1) && exit 0
+            echo "::error::push $intento: $(echo "$out" | tr '\n' ' ' | cut -c1-900)"
+            out2=$(git pull -q --rebase origin ridmer-videos 2>&1) || echo "::error::pull $intento: $(echo "$out2" | tr '\n' ' ' | cut -c1-900)"
           done
           exit 1
 
