@@ -28,15 +28,24 @@ def texto(msg, chat=None, botones=None):
         _api('sendMessage', **kw)
 
 
-def video(path, caption, clip_id):
-    botones = [[{'text': '✅ Me lo quedo', 'callback_data': f'ok:{clip_id}'},
-                {'text': '❌ Descartar', 'callback_data': f'no:{clip_id}'}]]
+def video(path, caption, clip_id, publicar=False):
+    """Manda el clip. Devuelve [(chat_id, message_id)]."""
+    if publicar:
+        botones = [[{'text': '📤 Publicar ya', 'callback_data': f'pub:{clip_id}'},
+                    {'text': '🚫 No publicar', 'callback_data': f'no:{clip_id}'}]]
+    else:
+        botones = [[{'text': '✅ Me lo quedo', 'callback_data': f'ok:{clip_id}'},
+                    {'text': '❌ Descartar', 'callback_data': f'no:{clip_id}'}]]
+    enviados = []
     for c in C.get()['chat_ids']:
         kw = dict(chat_id=c, caption=caption[:1000], parse_mode='HTML', supports_streaming='true', width='720', height='1280')
         if not C.get().get('solo_enviar'):
             kw['reply_markup'] = json.dumps({'inline_keyboard': botones})
         with open(path, 'rb') as f:
-            _api('sendVideo', files={'video': f}, **kw)
+            r = _api('sendVideo', files={'video': f}, **kw)
+        if r and r.get('ok'):
+            enviados.append((c, r['result']['message_id'], r['result'].get('caption', '')))
+    return enviados
 
 
 def escuchar(manejador):
@@ -70,3 +79,8 @@ def editar_caption(q, extra):
     m = q['message']
     _api('editMessageCaption', chat_id=m['chat']['id'], message_id=m['message_id'],
          caption=(m.get('caption', '') + '\n\n' + extra)[:1000])
+
+
+def agregar_nota(chat_id, message_id, caption_original, extra):
+    _api('editMessageCaption', chat_id=chat_id, message_id=message_id,
+         caption=(caption_original + '\n\n' + extra)[:1000])

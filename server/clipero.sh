@@ -26,9 +26,15 @@ case "$1" in
     K=$(echo "$K" | tr -d ' \r\n')
     cd /opt/clipero/app && R=$(CLIPERO_DATA=$DATA $PY -c "import ia,sys; c,t=ia.probar('$K'); print(c)")
     if [ "$R" = "200" ]; then CLIPERO_DATA=$DATA $PY -c "import config; config.save(gemini_key='$K')" && systemctl restart clipero && echo "✅ IA ACTIVADA"; else echo "❌ La clave no funcionó (código $R)"; fi ;;
+  facebook)
+    read -r -p "Pega el token de Facebook y presiona Enter: " K
+    K=$(echo "$K" | tr -d ' \r\n')
+    [ -n "$K" ] || { echo "No pegaste nada."; exit 1; }
+    cd /opt/clipero/app && CLIPERO_DATA=$DATA $PY -c "import fb,sys; ok,m=fb.conectar(sys.argv[1]); print(('✅ ' if ok else '❌ ')+m); sys.exit(0 if ok else 1)" "$K" \
+      && systemctl restart clipero && echo "Listo. En Telegram escribe /estado para verlo." ;;
   estado) systemctl --no-pager status clipero | head -5; cat $DATA/estado.json; echo ;;
   log) journalctl -u clipero -n 60 --no-pager ;;
   reiniciar) systemctl restart clipero; echo "Reiniciado." ;;
   prueba) bash /opt/clipero/server/probar.sh ;;
-  *) echo "Usa: clipero token | clipero estado | clipero log | clipero reiniciar | clipero prueba" ;;
+  *) echo "Usa: clipero token | clipero gemini | clipero facebook | clipero estado | clipero log | clipero reiniciar | clipero prueba" ;;
 esac

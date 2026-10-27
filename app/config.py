@@ -30,6 +30,12 @@ DEFAULTS = {
     'ventana_antes': 60,                 # con IA: segundos que mira antes del pico
     'ventana_despues': 150,              # con IA: segundos que mira después (para no cortar el desenlace)
     'clip_min': 30,
+    'auto_publicar': True,               # publicar solo en Facebook si no respondes
+    'auto_espera_min': 20,               # minutos que espera tu respuesta
+    'auto_minimo': 85,                   # interés mínimo para publicar sin preguntarte
+    'max_publicaciones_dia': 12,
+    'fb_page_id': '',
+    'fb_page_token': '',
     'clip_max': 180,
     'horas': [],                         # [] = todo el día; ej. [[18, 24], [0, 2]] solo esas horas
     'segmento_seg': 120,

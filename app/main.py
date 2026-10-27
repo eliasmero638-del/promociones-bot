@@ -1,8 +1,8 @@
 """Clipero: graba el reality, detecta los momentos fuertes, los edita y te los manda por Telegram."""
 import json, os, queue, subprocess, threading, time
-import config as C, recorder, analyzer, editor, tg, ia
+import config as C, recorder, analyzer, editor, tg, ia, fb
 
-VERSION = 'v6-largo'
+VERSION = 'v7-facebook'
 cola = queue.Queue()
 historial = []          # (hora, puntaje) de clips enviados, para límites por hora
 stats = {'pedazos': 0, 'clips': 0, 'ult_puntaje': None, 'ult_pedazo': None}
@@ -117,10 +117,97 @@ def trabajador():
                    + (f"📌 {info['descripcion']}\n" if info.get('descripcion') else '')
                    + (f"🗣️ “{frase}…”\n" if frase and not info.get('descripcion') else '') +
                    f"\n📝 Para publicar:\n{post}")
-            tg.video(info['ruta'], cap, cid)
+            hay_fb = fb.activo()
+            if hay_fb:
+                cfg = C.get()
+                if info.get('explicito'):
+                    cap += '\n\n🔒 Explícito: no se publica solo.'
+                elif cfg['auto_publicar'] and (pts or 0) >= cfg['auto_minimo']:
+                    cap += f"\n\n⏳ Si no respondes, se publica solo en {cfg['auto_espera_min']} min."
+            env = tg.video(info['ruta'], cap, cid, publicar=hay_fb)
+            guardar_meta(cid, {'ruta': info['ruta'], 'texto_post': post, 'titulo': info['titulo'],
+                               'interes': pts or 0, 'explicito': bool(info.get('explicito')), 'manual': job['manual'],
+                               'enviado': time.time(), 'estado': 'pendiente', 'mensajes': env})
             log('clip enviado', cid, job['puntaje'])
         except Exception as e:
             log('error en clip', e)
+
+
+def meta_path(cid):
+    return os.path.join(C.CLIPS, cid, 'meta.json')
+
+
+def leer_meta(cid):
+    try:
+        return json.load(open(meta_path(cid)))
+    except Exception:
+        return None
+
+
+def guardar_meta(cid, m):
+    try:
+        with open(meta_path(cid), 'w') as f:
+            json.dump(m, f, ensure_ascii=False)
+    except Exception as e:
+        log('no pude guardar meta', e)
+
+
+_pub_lock = threading.Lock()
+
+
+def publicados_hoy():
+    hoy = time.strftime('%Y%m%d')
+    n = 0
+    for d in os.listdir(C.CLIPS):
+        m = leer_meta(d)
+        if m and m.get('estado') == 'publicado' and time.strftime('%Y%m%d', time.localtime(m.get('publicado', 0))) == hoy:
+            n += 1
+    return n
+
+
+def publicar_clip(cid, motivo):
+    """Publica un clip en Facebook y avisa en Telegram. motivo: 'tú' o 'auto'."""
+    with _pub_lock:
+        m = leer_meta(cid)
+        if not m or m.get('estado') != 'pendiente':
+            return False, 'ya estaba ' + (m or {}).get('estado', 'borrado')
+        m['estado'] = 'publicando'; guardar_meta(cid, m)
+    ok, res = fb.publicar(m['ruta'], m['texto_post'], m.get('titulo', ''))
+    m['estado'] = 'publicado' if ok else 'pendiente'
+    if ok:
+        m['publicado'] = time.time(); m['fb_id'] = res
+    else:
+        m['error_fb'] = res; m['auto_fallo'] = True
+    guardar_meta(cid, m)
+    nota = (f"📤 Publicado en Facebook ({'automático' if motivo == 'auto' else 'por ti'}) "
+            f"· {time.strftime('%H:%M')}") if ok else f'⚠️ No se pudo publicar: {res}'
+    for chat_id, msg_id, cap in m.get('mensajes', []):
+        tg.agregar_nota(chat_id, msg_id, cap, nota)
+    log('publicar', cid, ok, res)
+    return ok, res
+
+
+def auto_publicador():
+    while True:
+        time.sleep(60)
+        try:
+            cfg = C.get()
+            if not (fb.activo() and cfg['auto_publicar']):
+                continue
+            ahora = time.time()
+            for cid in sorted(os.listdir(C.CLIPS)):
+                m = leer_meta(cid)
+                if not m or m.get('estado') != 'pendiente' or m.get('auto_fallo') or m.get('explicito'):
+                    continue
+                if m.get('interes', 0) < cfg['auto_minimo'] or ahora - m.get('enviado', ahora) < cfg['auto_espera_min'] * 60:
+                    continue
+                if ahora - m.get('enviado', ahora) > 6 * 3600:      # muy viejo: ya no
+                    continue
+                if publicados_hoy() >= cfg['max_publicaciones_dia']:
+                    break
+                publicar_clip(cid, 'auto')
+        except Exception as e:
+            log('error auto_publicador', e)
 
 
 def comandos(tipo, chat, dato, raw):
@@ -129,7 +216,17 @@ def comandos(tipo, chat, dato, raw):
         accion, _, cid = dato.partition(':')
         with open(decisiones_file, 'a') as f:
             f.write(json.dumps({'clip': cid, 'decision': accion, 'hora': time.time()}) + '\n')
-        tg.editar_caption(raw, '✅ Guardado' if accion == 'ok' else '❌ Descartado')
+        m = leer_meta(cid)
+        if accion == 'pub':
+            tg.texto('📤 Subiendo a Facebook…', chat)
+            ok, res = publicar_clip(cid, 'tú')
+            if not ok:
+                tg.texto(f'⚠️ No se publicó: {res}', chat)
+            return
+        if m and m.get('estado') == 'pendiente':
+            m['estado'] = 'guardado' if accion == 'ok' else 'descartado'
+            guardar_meta(cid, m)
+        tg.editar_caption(raw, '✅ Guardado' if accion == 'ok' else ('🚫 No se publica' if fb.activo() else '❌ Descartado'))
         return
     if chat not in cfg['chat_ids']:
         if dato.startswith('/start') and not cfg['chat_ids']:
@@ -149,6 +246,9 @@ def comandos(tipo, chat, dato, raw):
                  f"🧩 Pedazos analizados: {stats['pedazos']} (último {stats['ult_pedazo'] or '—'}, "
                  f"pico {stats['ult_puntaje'] if stats['ult_puntaje'] is not None else '—'})\n"
                  f"🎬 Clips enviados: {stats['clips']}\n"
+                 f"📘 Facebook: {('✅ ' + cfg.get('fb_page_nombre', '')) if fb.activo() else '❌ sin conectar'}"
+                 + (f" · auto {'✅ ' + str(cfg['auto_minimo']) + '+' if cfg['auto_publicar'] else '❌'} · hoy {publicados_hoy()}" if fb.activo() else '')
+                 + "\n"
                  + (f"⚠️ {e['error']}" if e.get('error') else ''), chat)
     elif cmd == '/clip':
         if ia.activa():
@@ -170,6 +270,18 @@ def comandos(tipo, chat, dato, raw):
                 C.save(umbral=v); tg.texto(f'🎚️ Umbral en {v}.', chat)
         except Exception:
             tg.texto('Usa así: /umbral 70', chat)
+    elif cmd == '/auto':
+        arg = (dato.split() + [''])[1].lower()
+        if arg in ('no', 'off', 'apagar'):
+            C.save(auto_publicar=False); tg.texto('🛑 Publicación automática apagada. Solo se publica si tocas 📤.', chat)
+        elif arg.isdigit():
+            v = max(50, min(100, int(arg))); C.save(auto_publicar=True, auto_minimo=v)
+            tg.texto(f'🤖 Se publica solo lo que tenga {v}/100 o más, si no respondes en {cfg["auto_espera_min"]} min.', chat)
+        else:
+            C.save(auto_publicar=True)
+            tg.texto(f'🤖 Publicación automática activada: {cfg["auto_minimo"]}/100 o más, tras {cfg["auto_espera_min"]} min '
+                     f'sin respuesta, máx {cfg["max_publicaciones_dia"]} al día. Nunca lo explícito.\n'
+                     '/auto no – apagarla · /auto 90 – cambiar el mínimo', chat)
     elif cmd == '/start':
         tg.texto('Ya estás registrado. /estado para ver cómo va.', chat)
 
@@ -181,6 +293,7 @@ def main():
     recorder.iniciar()
     threading.Thread(target=analizar_bucle, daemon=True).start()
     threading.Thread(target=trabajador, daemon=True).start()
+    threading.Thread(target=auto_publicador, daemon=True).start()
     if not C.get().get('solo_enviar'):
         tg.escuchar(comandos)
     if C.get()['chat_ids']:
