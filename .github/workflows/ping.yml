@@ -1,4 +1,5 @@
-# intento 1
+# intento 2
+
 name: Ping servidor
 on:
   push:
