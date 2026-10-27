@@ -1,8 +1,8 @@
 """Clipero: graba el reality, detecta los momentos fuertes, los edita y te los manda por Telegram."""
 import json, os, queue, secrets, subprocess, threading, time
-import config as C, recorder, analyzer, editor, tg, ia, fb, wa, web
+import config as C, recorder, analyzer, editor, tg, ia, fb, wa, web, ntfy
 
-VERSION = 'v8-whatsapp'
+VERSION = 'v9-avisos'
 cola = queue.Queue()
 historial = []          # (hora, puntaje) de clips enviados, para límites por hora
 stats = {'pedazos': 0, 'clips': 0, 'ult_puntaje': None, 'ult_pedazo': None}
@@ -132,8 +132,26 @@ def trabajador():
                                'duracion_txt': f'{du // 60}:{du % 60:02d}', 'token': token,
                                'interes': pts or 0, 'explicito': bool(info.get('explicito')), 'manual': job['manual'],
                                'enviado': time.time(), 'estado': 'pendiente', 'mensajes': env})
+            cfg = C.get()
+            link = f"{cfg.get('web_url', 'http://173.249.44.95')}/c/{token}"
+            if ntfy.activo():
+                try:
+                    subprocess.run(['ffmpeg', '-y', '-v', 'error', '-ss', str(max(1, du // 3)), '-i', info['ruta'],
+                                    '-frames:v', '1', '-vf', 'scale=480:-2', '-q:v', '5',
+                                    os.path.join(os.path.dirname(info['ruta']), 'mini.jpg')], timeout=60)
+                except Exception:
+                    pass
+                extra = ''
+                if info.get('explicito'):
+                    extra = '\n⚠️ Explícito: no se publica solo'
+                elif hay_fb and cfg['auto_publicar'] and (pts or 0) >= cfg['auto_minimo']:
+                    extra = f"\n⏳ Se publica solo en {cfg['auto_espera_min']} min si no respondes"
+                ok_n, r_n = ntfy.enviar(f"🔥 {pts or 0}/100 · {info['titulo']}",
+                                        f"{info.get('subtitulo', '')} · ⏱️ {du // 60}:{du % 60:02d}{extra}",
+                                        link, f"{cfg.get('web_url', 'http://173.249.44.95')}/i/{token}.jpg")
+                if not ok_n:
+                    log('ntfy falló', r_n)
             if wa.activo():
-                cfg = C.get()
                 aviso = ''
                 if hay_fb and not info.get('explicito') and cfg['auto_publicar'] and (pts or 0) >= cfg['auto_minimo']:
                     aviso = f"\n⏳ Se publica solo en {cfg['auto_espera_min']} min si no respondes"
@@ -141,7 +159,7 @@ def trabajador():
                     aviso = '\n⚠️ Explícito: no se publica solo'
                 ok_wa, r_wa = wa.enviar(f"🔥 *{pts or 0}/100* · ⏱️ {du // 60}:{du % 60:02d}\n"
                                         f"*{info['titulo']}*\n{info.get('subtitulo', '')}{aviso}\n\n"
-                                        f"👉 Ver y decidir: {cfg.get('web_url', 'http://173.249.44.95')}/c/{token}")
+                                        f"👉 Ver y decidir: {link}")
                 if not ok_wa:
                     log('whatsapp falló', r_wa)
             log('clip enviado', cid, job['puntaje'])

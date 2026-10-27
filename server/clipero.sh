@@ -41,9 +41,17 @@ case "$1" in
       && CLIPERO_DATA=$DATA $PY -c "import config,sys; config.save(wa_telefono=sys.argv[1], wa_apikey=sys.argv[2])" "$T" "$K" \
       && systemctl restart clipero && echo "✅ Listo. Revisa tu WhatsApp: te debió llegar un mensaje." \
       || echo "❌ No llegó. Revisa el número (con +593) y la apikey." ;;
+  avisos)
+    TEMA=$(CLIPERO_DATA=$DATA $PY -c "import sys; sys.path.insert(0,'/opt/clipero/app'); import config; print(config.get().get('ntfy_tema',''))")
+    if [ -z "$TEMA" ]; then TEMA="clips-$(head -c 12 /dev/urandom | od -An -tx1 | tr -d ' \n')"; fi
+    cd /opt/clipero/app && CLIPERO_DATA=$DATA $PY -c "import config,sys; config.save(ntfy_tema=sys.argv[1])" "$TEMA" && systemctl restart clipero
+    echo ""; echo "En la app ntfy toca + y suscríbete a este tema (cópialo exacto):"; echo ""; echo "   $TEMA"; echo ""
+    echo "Cuando estés suscrito escribe:  clipero probaraviso" ;;
+  probaraviso)
+    cd /opt/clipero/app && CLIPERO_DATA=$DATA $PY -c "import ntfy; ok,r=ntfy.enviar('🔥 90/100 · PRUEBA DEL CLIPERO','Así te van a llegar los avisos de los clips', 'http://173.249.44.95'); print('✅ Enviado, revisa tu celular' if ok else '❌ '+r)" ;;
   estado) systemctl --no-pager status clipero | head -5; cat $DATA/estado.json; echo ;;
   log) journalctl -u clipero -n 60 --no-pager ;;
   reiniciar) systemctl restart clipero; echo "Reiniciado." ;;
   prueba) bash /opt/clipero/server/probar.sh ;;
-  *) echo "Usa: clipero token | clipero gemini | clipero facebook | clipero whatsapp | clipero estado | clipero log | clipero reiniciar | clipero prueba" ;;
+  *) echo "Usa: clipero token | clipero gemini | clipero facebook | clipero whatsapp | clipero avisos | clipero estado | clipero log | clipero reiniciar | clipero prueba" ;;
 esac

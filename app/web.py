@@ -60,7 +60,7 @@ class H(BaseHTTPRequestHandler):
         self.wfile.write(b)
 
     def _clip(self):
-        m_ = re.match(r'^/(c|v)/([A-Za-z0-9_-]{16,64})(\.mp4)?$', self.path.split('?')[0])
+        m_ = re.match(r'^/(c|v|i)/([A-Za-z0-9_-]{16,64})(\.mp4|\.jpg)?$', self.path.split('?')[0])
         if not m_:
             return None, None, None, None
         cid, meta = _buscar(m_.group(2))
@@ -72,6 +72,11 @@ class H(BaseHTTPRequestHandler):
             return self._send(404, 'No encontrado')
         if tipo == 'c':
             return self._send(200, _pagina(cid, m, token))
+        if tipo == 'i':
+            p_ = os.path.join(os.path.dirname(m.get('ruta', '')), 'mini.jpg')
+            if not os.path.exists(p_):
+                return self._send(404, 'Sin imagen')
+            return self._send(200, open(p_, 'rb').read(), 'image/jpeg')
         path = m.get('ruta', '')
         if not os.path.exists(path):
             return self._send(404, 'Video borrado')
