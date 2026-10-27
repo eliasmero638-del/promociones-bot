@@ -6,7 +6,7 @@ S=173.249.44.95; P=443; D=$HOME/clipero
 echo "== 1/4 Instalando herramientas (5-10 min) =="
 yes | pkg update -y >/dev/null 2>&1 || true
 pkg install -y python ffmpeg openssh rsync nodejs >/dev/null
-pip install -q -U yt-dlp
+pip install -q -U "yt-dlp[default]"
 mkdir -p $D/rec $D/chat ~/.ssh ~/.termux/boot
 echo "== 2/4 Conectando con tu servidor =="
 [ -f ~/.ssh/id_ed25519 ] || ssh-keygen -t ed25519 -N "" -f ~/.ssh/id_ed25519 -q
