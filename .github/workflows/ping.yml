@@ -4,10 +4,11 @@ on:
     branches: [ridmer-videos]
     paths: [".github/workflows/ping.yml"]
 jobs:
-  ping:
+  p22:
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          # intento 2
-          for i in 1 2 3 4; do timeout 8 bash -c 'echo > /dev/tcp/173.249.44.95/22' && exit 0; sleep 5; done
-          exit 1
+      - run: for i in 1 2 3; do timeout 8 bash -c 'echo > /dev/tcp/173.249.44.95/22' && exit 0; sleep 5; done; exit 1
+  p443:
+    runs-on: ubuntu-latest
+    steps:
+      - run: for i in 1 2 3; do timeout 8 bash -c 'echo > /dev/tcp/173.249.44.95/443' && exit 0; sleep 5; done; exit 1
