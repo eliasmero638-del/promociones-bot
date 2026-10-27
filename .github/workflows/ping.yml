@@ -8,5 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          for i in 1 2 3 4; do timeout 8 bash -c 'echo > /dev/tcp/173.249.44.95/22' && echo "PUERTO22_ABIERTO" && break || echo "intento $i: sin respuesta"; sleep 5; done
-          timeout 8 bash -c 'head -c 40 < /dev/tcp/173.249.44.95/22' || true
+          # intento 2
+          for i in 1 2 3 4; do timeout 8 bash -c 'echo > /dev/tcp/173.249.44.95/22' && exit 0; sleep 5; done
+          exit 1
