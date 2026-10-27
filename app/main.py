@@ -2,7 +2,7 @@
 import json, os, queue, subprocess, threading, time
 import config as C, recorder, analyzer, editor, tg, ia
 
-VERSION = 'v5-completo'
+VERSION = 'v6-largo'
 cola = queue.Queue()
 historial = []          # (hora, puntaje) de clips enviados, para límites por hora
 stats = {'pedazos': 0, 'clips': 0, 'ult_puntaje': None, 'ult_pedazo': None}

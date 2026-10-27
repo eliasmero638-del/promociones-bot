@@ -180,7 +180,7 @@ def hacer_clip(pedazos_info, centro, chat_textos, nombre=None, job_filtro=None, 
             if fin <= ini:
                 ini, fin = max(0, cfg['ventana_antes'] - 35), cfg['ventana_antes'] + 40
             ini = max(0.0, ini - 1.5)
-            fin = min(dur, fin + 2.0)
+            fin = min(dur, fin + 4.0)
             if fin - ini < cfg['clip_min']:
                 fin = min(dur, ini + cfg['clip_min'])
             if fin - ini > cfg['clip_max']:

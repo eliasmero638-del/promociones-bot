@@ -55,7 +55,9 @@ Te doy {nfotos} fotos del clip en orden y su audio. Tareas:
 7. Decide dónde EMPIEZA y TERMINA el momento completo ("inicio" y "fin", en segundos desde el inicio del audio).
    Empieza un poco antes de que arranque el tema, para que se entienda. Termina cuando el momento de verdad se
    cierre: la respuesta, la reacción, la conclusión o el remate. NUNCA lo cortes a la mitad de lo que está pasando.
-   Duración entre {cmin} y {cmax} segundos; si todo el audio es el mismo momento, usa todo.
+   Duración entre {cmin} y {cmax} segundos. Lo normal es entre 60 y 150 segundos: si la conversación sigue sobre el
+   mismo tema, inclúyela completa. Si dudas, alárgalo: es mejor que sobre un poco a que falte el final.
+   Si todo el audio es el mismo momento, usa todo.
 Reglas: si en el clip aparece un niño o niña, nunca le des un ángulo picante ni sexual al título o texto.
 
 Responde SOLO con este JSON:
