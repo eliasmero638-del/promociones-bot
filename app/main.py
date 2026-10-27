@@ -2,7 +2,7 @@
 import json, os, queue, subprocess, threading, time
 import config as C, recorder, analyzer, editor, tg, ia
 
-VERSION = 'v3-exigente'
+VERSION = 'v4-emocion'
 cola = queue.Queue()
 historial = []          # (hora, puntaje) de clips enviados, para límites por hora
 stats = {'pedazos': 0, 'clips': 0, 'ult_puntaje': None, 'ult_pedazo': None}
@@ -54,7 +54,16 @@ def analizar_bucle():
                 if cfg['pausado'] or not en_horario():
                     continue
                 umb = cfg['umbral_ia'] if ia.activa() else cfg['umbral']
-                for s, sc, d in analyzer.mejores(puntos, umb, cfg['separacion_min'] * 60):
+                elegidos = analyzer.mejores(puntos, umb, cfg['separacion_min'] * 60)
+                # Barrido: momentos tranquilos (charlas en voz baja, confesiones) no suben el volumen,
+                # así que cada cierto tiempo la IA revisa igual el mejor momento del pedazo.
+                barrer = cfg.get('barrido_cada', 3)
+                if ia.activa() and not elegidos and puntos and barrer and stats['pedazos'] % barrer == 0:
+                    s0, sc0, d0 = max(puntos, key=lambda x: x[1])
+                    c0 = t0 + s0
+                    if not any(abs(c0 - h) < cfg['separacion_min'] * 60 for h, _ in historial):
+                        cola.put({'centro': c0, 'puntaje': sc0, 'detalle': d0, 'manual': False, 'barrido': True})
+                for s, sc, d in elegidos:
                     centro = t0 + s
                     ahora = time.time()
                     recientes = [h for h, _ in historial if ahora - h < 3600]
@@ -84,7 +93,8 @@ def trabajador():
                     break
                 time.sleep(15)
             chat = [t for _, t in recorder.chat_mensajes(centro - 40, centro + 40)]
-            info = editor.hacer_clip(info_pedazos(), centro, chat, job_filtro=None if job['manual'] else C.get()['ia_minimo'])
+            info = editor.hacer_clip(info_pedazos(), centro, chat, job_filtro=None if job['manual'] else C.get()['ia_minimo'],
+                                     solo_ia=job.get('barrido', False))
             if info and info.get('descartado'):
                 continue
             if not info:
@@ -92,6 +102,8 @@ def trabajador():
                     tg.texto('⚠️ No pude armar ese clip (¿todavía no hay grabación de ese momento?).')
                 continue
             stats['clips'] += 1
+            if job.get('barrido'):
+                historial.append((centro, info.get('interes', 0)))
             cid = os.path.basename(os.path.dirname(info['ruta']))
             frase = info['texto'][:220].strip()
             nombres = ', '.join(info['nombres']) or '—'

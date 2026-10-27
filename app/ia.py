@@ -36,15 +36,18 @@ Comentarios del chat en vivo en ese momento: {chat}
 Te doy {nfotos} fotos del clip en orden y su audio. Tareas:
 1. Transcribe lo que se dice, con tiempos en segundos desde el inicio del audio, en frases cortas (máx 7 palabras).
 2. Di qué participantes intervienen (usa los nombres de la lista; si no estás seguro, no inventes).
-3. Califica de 0 a 100 qué tanto engancharía a gente en Facebook que NO ve el reality. Sé MUY exigente: la mayoría
-   de momentos de una casa en vivo son aburridos y deben quedar entre 10 y 55. Escala:
-   90-100: pelea fuerte con gritos o insultos, escándalo, beso o momento picante claro, humillación o burla muy fuerte.
-   75-89: discusión clara entre dos o más, burla o patanada evidente, coqueteo atrevido, chisme fuerte sobre otro
-          participante dicho con emoción, llanto fuerte, momento MUY gracioso.
-   50-74: conversación normal sobre estrategia o nominaciones, comentarios tranquilos, chisme sin emoción.
-   0-49: silencio, comer, caminar, cantar, charla aburrida, pantalla en negro o publicidad.
-   Pregúntate: ¿alguien que va pasando por Facebook se detendría a ver esto? Si la respuesta es "no estoy seguro",
-   ponle menos de 70. Hablar en voz baja o tranquilo NUNCA pasa de 70.
+3. Califica de 0 a 100 qué tanto engancharía a gente en Facebook que NO ve el reality. Califica por LO QUE PASA y
+   LO QUE SE DICE, no por el volumen: una conversación a solas en voz baja puede valer 90 si es fuerte.
+   Sé exigente: la mayoría de momentos de una casa en vivo son rutina y deben quedar entre 10 y 55. Escala:
+   90-100: pelea fuerte, insultos, escándalo, beso o momento picante claro, humillación o burla muy fuerte,
+           confesión impactante, secreto revelado, traición descubierta, alguien llorando de verdad por algo serio.
+   75-89: discusión clara, burla o patanada evidente, coqueteo atrevido, chisme fuerte sobre otro participante,
+          plan secreto para traicionar o nominar a alguien, conversación íntima y conmovedora (familia, pasado,
+          sentimientos), alguien que se quiebra, reconciliación, momento MUY gracioso, algo que deje con la boca abierta.
+   50-74: conversación común sobre estrategia o nominaciones sin nada nuevo, comentarios sueltos, chisme sin sustancia.
+   0-49: silencio, comer, caminar, cantar, charla de rutina, pantalla en negro o publicidad.
+   Pregúntate: ¿alguien que va pasando por Facebook se detendría a ver esto y lo comentaría o compartiría?
+   Si no estás seguro, ponle menos de 70.
 4. Escribe un título gancho en MAYÚSCULAS (máx 6 palabras) y un subtítulo (máx 8 palabras) que digan quién y qué pasó,
    estilo "JORGITO SE BURLA DE BRILLIT" / "y ella no se quedó callada". Llamativo pero fiel a lo que pasó.
 5. Escribe un texto para publicar en Facebook (1-2 frases, con 2-3 emojis y hashtags).

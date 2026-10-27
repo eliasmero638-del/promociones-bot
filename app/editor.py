@@ -146,7 +146,7 @@ def vertical(entrada, ass, salida):
     return r.returncode == 0
 
 
-def hacer_clip(pedazos_info, centro, chat_textos, nombre=None, job_filtro=None):
+def hacer_clip(pedazos_info, centro, chat_textos, nombre=None, job_filtro=None, solo_ia=False):
     """Devuelve dict con ruta del clip y datos, o None."""
     cfg = C.get()
     desde, hasta = centro - cfg['antes_seg'], centro + cfg['despues_seg']
@@ -178,6 +178,8 @@ def hacer_clip(pedazos_info, centro, chat_textos, nombre=None, job_filtro=None):
                     'explicito': bool(r.get('explicito')), 'ia': True}
         else:
             log('IA falló, uso el método básico')
+    if info is None and solo_ia:
+        return {'descartado': True}
     if info is None:
         palabras = transcribir(crudo)
         info = analizar_texto(palabras, chat_textos)
