@@ -1,9 +1,12 @@
 name: Ping servidor
-on: workflow_dispatch
+on:
+  push:
+    branches: [ridmer-videos]
+    paths: [".github/workflows/ping.yml"]
 jobs:
   ping:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          for i in 1 2 3; do timeout 8 bash -c 'echo > /dev/tcp/173.249.44.95/22' && echo "PUERTO22_ABIERTO" && break || echo "intento $i: sin respuesta"; sleep 5; done
+          for i in 1 2 3 4; do timeout 8 bash -c 'echo > /dev/tcp/173.249.44.95/22' && echo "PUERTO22_ABIERTO" && break || echo "intento $i: sin respuesta"; sleep 5; done
           timeout 8 bash -c 'head -c 40 < /dev/tcp/173.249.44.95/22' || true
