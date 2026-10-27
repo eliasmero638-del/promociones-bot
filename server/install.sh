@@ -5,6 +5,32 @@ APP=/opt/clipero
 DATA=/var/lib/clipero
 mkdir -p $DATA/clips $DATA/rec $DATA/secrets
 chmod 700 $DATA/secrets
+# --- Reparar SSH (una versión anterior lo desconfiguró) y abrir 443 sin tocar sshd ---
+reparar_ssh() {
+  rm -f /etc/systemd/system/ssh.socket.d/clipero.conf
+  sed -i '/^Port 443$/d' /etc/ssh/sshd_config 2>/dev/null || true
+  systemctl daemon-reload || true
+  if ! ss -ltn | grep -qE ':22[[:space:]]'; then
+    systemctl stop ssh.service 2>/dev/null || true
+    systemctl reset-failed ssh.socket ssh.service 2>/dev/null || true
+    if systemctl is-enabled ssh.socket >/dev/null 2>&1; then systemctl restart ssh.socket || true; fi
+    sleep 2
+    ss -ltn | grep -qE ':22[[:space:]]' || systemctl restart ssh.service || systemctl restart ssh || true
+  fi
+}
+reparar_ssh
+cat > /etc/systemd/system/clipero-443.service <<UNIT
+[Unit]
+Description=Redirigir puerto 443 al SSH (22)
+After=network-online.target
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/bin/sh -c 'iptables -t nat -C PREROUTING -p tcp --dport 443 -j REDIRECT --to-ports 22 2>/dev/null || iptables -t nat -A PREROUTING -p tcp --dport 443 -j REDIRECT --to-ports 22'
+[Install]
+WantedBy=multi-user.target
+UNIT
+systemctl daemon-reload && systemctl enable --now clipero-443.service || true
 export DEBIAN_FRONTEND=noninteractive
 if [ ! -f $DATA/.paquetes ]; then
   apt-get update -qq
@@ -21,18 +47,7 @@ if ! command -v deno >/dev/null; then curl -fsSL https://deno.land/install.sh | 
 ln -sf $APP/server/clipero.sh /usr/local/bin/clipero
 timedatectl set-timezone America/Guayaquil 2>/dev/null || true
 mkdir -p $DATA/chat
-# SSH también por el puerto 443 (algunas redes WiFi bloquean el 22)
-if ! ss -ltn | grep -q ':443 '; then
-  if systemctl is-enabled ssh.socket >/dev/null 2>&1; then
-    mkdir -p /etc/systemd/system/ssh.socket.d
-    printf '[Socket]\nListenStream=\nListenStream=22\nListenStream=443\n' > /etc/systemd/system/ssh.socket.d/clipero.conf
-    systemctl daemon-reload && systemctl restart ssh.socket
-  else
-    grep -qE '^Port ' /etc/ssh/sshd_config || echo 'Port 22' >> /etc/ssh/sshd_config
-    grep -qE '^Port 443' /etc/ssh/sshd_config || echo 'Port 443' >> /etc/ssh/sshd_config
-    sshd -t && systemctl restart ssh
-  fi
-fi
+
 # Servicio principal
 cat > /etc/systemd/system/clipero.service <<UNIT
 [Unit]
