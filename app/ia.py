@@ -52,12 +52,16 @@ Te doy {nfotos} fotos del clip en orden y su audio. Tareas:
    estilo "JORGITO SE BURLA DE BRILLIT" / "y ella no se quedó callada". Llamativo pero fiel a lo que pasó.
 5. Escribe un texto para publicar en Facebook (1-2 frases, con 2-3 emojis y hashtags).
 6. Marca "explicito": true si hay desnudos o actos sexuales visibles.
+7. Decide dónde EMPIEZA y TERMINA el momento completo ("inicio" y "fin", en segundos desde el inicio del audio).
+   Empieza un poco antes de que arranque el tema, para que se entienda. Termina cuando el momento de verdad se
+   cierre: la respuesta, la reacción, la conclusión o el remate. NUNCA lo cortes a la mitad de lo que está pasando.
+   Duración entre {cmin} y {cmax} segundos; si todo el audio es el mismo momento, usa todo.
 Reglas: si en el clip aparece un niño o niña, nunca le des un ángulo picante ni sexual al título o texto.
 
 Responde SOLO con este JSON:
 {{"interes": 0-100, "categoria": "pelea|chisme|picante|burla|gracioso|romance|llanto|nominacion|otro",
  "personajes": ["..."], "titulo": "...", "subtitulo": "...", "descripcion": "qué pasó en una frase",
- "texto_post": "...", "explicito": false,
+ "texto_post": "...", "explicito": false, "inicio": 0.0, "fin": 0.0,
  "subtitulos": [{{"t0": 0.0, "t1": 2.1, "texto": "..."}}]}}"""
 
 
@@ -65,7 +69,7 @@ def activa():
     return bool(C.get().get('gemini_key'))
 
 
-def _fotos(clip, n=4):
+def _fotos(clip, n=8):
     out = []
     dur = float(subprocess.run(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', clip],
                                capture_output=True, text=True).stdout.strip() or 60)
@@ -87,10 +91,10 @@ def _audio(clip):
 def analizar(clip, chat_textos, seg):
     cfg = C.get()
     parts_txt = '; '.join(f"{k}: {', '.join(v)}" for k, v in cfg['participantes'].items())
-    chat = ' | '.join(chat_textos[-40:])[:2500] or '(sin chat)'
+    chat = ' | '.join(chat_textos[-80:])[:4000] or '(sin chat)'
     fotos = _fotos(clip)
     prompt = PROMPT.format(marca=cfg['marca'], reality=cfg['reality'], seg=int(seg), participantes=parts_txt,
-                           chat=chat, nfotos=len(fotos))
+                           chat=chat, nfotos=len(fotos), cmin=cfg.get('clip_min', 30), cmax=cfg.get('clip_max', 180))
     parts = [{'text': prompt}]
     parts += [{'inline_data': {'mime_type': 'image/jpeg', 'data': base64.b64encode(f).decode()}} for f in fotos]
     aud = _audio(clip)

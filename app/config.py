@@ -27,6 +27,10 @@ DEFAULTS = {
     'separacion_min': 8,                 # minutos mínimos entre clips automáticos
     'antes_seg': 35,                     # segundos antes del pico
     'despues_seg': 25,                   # segundos después del pico
+    'ventana_antes': 60,                 # con IA: segundos que mira antes del pico
+    'ventana_despues': 150,              # con IA: segundos que mira después (para no cortar el desenlace)
+    'clip_min': 30,
+    'clip_max': 180,
     'horas': [],                         # [] = todo el día; ej. [[18, 24], [0, 2]] solo esas horas
     'segmento_seg': 120,
     'guardar_horas': 3,                  # cuánto tiempo guardar lo grabado

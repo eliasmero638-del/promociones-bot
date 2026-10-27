@@ -2,7 +2,7 @@
 import json, os, queue, subprocess, threading, time
 import config as C, recorder, analyzer, editor, tg, ia
 
-VERSION = 'v4-emocion'
+VERSION = 'v5-completo'
 cola = queue.Queue()
 historial = []          # (hora, puntaje) de clips enviados, para límites por hora
 stats = {'pedazos': 0, 'clips': 0, 'ult_puntaje': None, 'ult_pedazo': None}
@@ -86,7 +86,8 @@ def trabajador():
         try:
             centro = job['centro']
             # esperar a que el pedazo que contiene el final del clip esté cerrado
-            fin = centro + C.get()['despues_seg']
+            cfg = C.get()
+            fin = centro + (cfg['ventana_despues'] if ia.activa() else cfg['despues_seg'])
             for _ in range(80):
                 ps = info_pedazos()
                 if ps and ps[-1][1] + ps[-1][2] >= fin:
@@ -110,7 +111,7 @@ def trabajador():
             pts = info.get('interes') if info.get('ia') else job['puntaje']
             post = info.get('texto_post') or f"{info['titulo'].capitalize()} 😱🔥 #{C.get()['reality'].replace(' ', '')} #Reality"
             cap = (('⚠️ <b>CONTENIDO EXPLÍCITO — revisar antes de subir</b>\n' if info.get('explicito') else '') +
-                   f"{'🎬 Clip pedido' if job['manual'] else '🔥 Momento fuerte'} <b>({pts}/100)</b> · {info['hora']}\n"
+                   f"{'🎬 Clip pedido' if job['manual'] else '🔥 Momento fuerte'} <b>({pts}/100)</b> · {info['hora']} · ⏱️ {info.get('duracion', 0) // 60}:{info.get('duracion', 0) % 60:02d}\n"
                    f"<b>{info['titulo']}</b>\n{info['subtitulo']}\n"
                    f"👥 {nombres}\n"
                    + (f"📌 {info['descripcion']}\n" if info.get('descripcion') else '')
@@ -150,8 +151,12 @@ def comandos(tipo, chat, dato, raw):
                  f"🎬 Clips enviados: {stats['clips']}\n"
                  + (f"⚠️ {e['error']}" if e.get('error') else ''), chat)
     elif cmd == '/clip':
-        cola.put({'centro': time.time() - C.get()['despues_seg'] - 10, 'puntaje': 0, 'detalle': {}, 'manual': True})
-        tg.texto('🎬 Ok, armando clip del último minuto. Te llega en unos minutos.', chat)
+        if ia.activa():
+            cola.put({'centro': time.time() - 30 - C.get()['ventana_despues'], 'puntaje': 0, 'detalle': {}, 'manual': True})
+            tg.texto('🎬 Ok, reviso los últimos 3-4 minutos y te armo el momento completo. Te llega en unos minutos.', chat)
+        else:
+            cola.put({'centro': time.time() - C.get()['despues_seg'] - 10, 'puntaje': 0, 'detalle': {}, 'manual': True})
+            tg.texto('🎬 Ok, armando clip del último minuto. Te llega en unos minutos.', chat)
     elif cmd == '/pausa':
         C.save(pausado=True); tg.texto('⏸️ Clips automáticos en pausa (sigo grabando). /seguir para reanudar.', chat)
     elif cmd == '/seguir':

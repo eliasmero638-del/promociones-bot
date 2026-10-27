@@ -100,6 +100,8 @@ def hacer_ass(palabras, info, dur, path):
     lineas = []
     grupo = []
     for w in palabras:
+        if grupo and w[0] - grupo[-1][1] > 1.0:
+            lineas.append(grupo); grupo = []
         grupo.append(w)
         if len(grupo) >= 5 or re.search(r'[.?!,]$', w[2]):
             lineas.append(grupo); grupo = []
@@ -146,10 +148,20 @@ def vertical(entrada, ass, salida):
     return r.returncode == 0
 
 
+def recortar(entrada, ss, t, salida):
+    r = subprocess.run(['ffmpeg', '-y', '-v', 'error', '-ss', f'{ss:.2f}', '-i', entrada, '-t', f'{t:.2f}',
+                        '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '20', '-c:a', 'aac', '-b:a', '160k', salida])
+    return r.returncode == 0 and os.path.exists(salida)
+
+
 def hacer_clip(pedazos_info, centro, chat_textos, nombre=None, job_filtro=None, solo_ia=False):
     """Devuelve dict con ruta del clip y datos, o None."""
     cfg = C.get()
-    desde, hasta = centro - cfg['antes_seg'], centro + cfg['despues_seg']
+    usar_ia = ia.activa()
+    if usar_ia:
+        desde, hasta = centro - cfg['ventana_antes'], centro + cfg['ventana_despues']
+    else:
+        desde, hasta = centro - cfg['antes_seg'], centro + cfg['despues_seg']
     nombre = nombre or time.strftime('%Y%m%d_%H%M%S', time.localtime(centro))
     d = os.path.join(C.CLIPS, nombre); os.makedirs(d, exist_ok=True)
     crudo = os.path.join(d, 'crudo.mp4')
@@ -157,19 +169,44 @@ def hacer_clip(pedazos_info, centro, chat_textos, nombre=None, job_filtro=None, 
         return None
     dur = hasta - desde
     info = None
-    if ia.activa():
+    if usar_ia:
         r = ia.analizar(crudo, chat_textos, dur)
         if 'error' not in r:
+            # recorte del momento completo que eligió la IA
+            try:
+                ini, fin = float(r.get('inicio') or 0), float(r.get('fin') or 0)
+            except Exception:
+                ini, fin = 0.0, 0.0
+            if fin <= ini:
+                ini, fin = max(0, cfg['ventana_antes'] - 35), cfg['ventana_antes'] + 40
+            ini = max(0.0, ini - 1.5)
+            fin = min(dur, fin + 2.0)
+            if fin - ini < cfg['clip_min']:
+                fin = min(dur, ini + cfg['clip_min'])
+            if fin - ini > cfg['clip_max']:
+                fin = ini + cfg['clip_max']
             palabras = []
             for s_ in r.get('subtitulos') or []:
                 ws = str(s_.get('texto', '')).split()
                 if not ws:
                     continue
-                t0, t1 = float(s_.get('t0', 0)), float(s_.get('t1', 0))
+                try:
+                    t0, t1 = float(s_.get('t0', 0)), float(s_.get('t1', 0))
+                except Exception:
+                    continue
                 if t1 <= t0:
                     t1 = t0 + 0.4 * len(ws)
                 st = (t1 - t0) / len(ws)
-                palabras += [(t0 + i * st, t0 + (i + 1) * st, w) for i, w in enumerate(ws)]
+                for i, w in enumerate(ws):
+                    a_, b_ = t0 + i * st - ini, t0 + (i + 1) * st - ini
+                    if b_ > 0 and a_ < fin - ini:
+                        palabras.append((max(0.0, a_), b_, w))
+            if ini > 0.5 or fin < dur - 0.5:
+                rec = os.path.join(d, 'momento.mp4')
+                if recortar(crudo, ini, fin - ini, rec):
+                    crudo, dur = rec, fin - ini
+                else:
+                    palabras = [(a_ + ini, b_ + ini, w) for a_, b_, w in palabras]
             info = {'titulo': str(r.get('titulo') or '¡SE PRENDIÓ LA CASA!').upper(),
                     'subtitulo': str(r.get('subtitulo') or C.get()['reality']),
                     'nombres': r.get('personajes') or [], 'tipo': r.get('categoria'),
@@ -180,6 +217,12 @@ def hacer_clip(pedazos_info, centro, chat_textos, nombre=None, job_filtro=None, 
             log('IA falló, uso el método básico')
     if info is None and solo_ia:
         return {'descartado': True}
+    if info is None and usar_ia:
+        # sin respuesta de la IA: me quedo con la ventana corta de siempre
+        ss = max(0.0, cfg['ventana_antes'] - cfg['antes_seg'])
+        rec = os.path.join(d, 'momento.mp4')
+        if recortar(crudo, ss, cfg['antes_seg'] + cfg['despues_seg'], rec):
+            crudo, dur = rec, cfg['antes_seg'] + cfg['despues_seg']
     if info is None:
         palabras = transcribir(crudo)
         info = analizar_texto(palabras, chat_textos)
@@ -193,5 +236,6 @@ def hacer_clip(pedazos_info, centro, chat_textos, nombre=None, job_filtro=None, 
     if not vertical(crudo, ass, final):
         return None
     info['ruta'] = final
+    info['duracion'] = int(dur)
     info['hora'] = time.strftime('%H:%M', time.localtime(centro))
     return info
