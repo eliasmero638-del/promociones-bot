@@ -23,7 +23,7 @@ def modelos_tts(key):
         pass
     def orden(n):
         v = [int(x) for x in re.findall(r'\d+', n)][:2]
-        return (('flash' in n), v)
+        return (('lite' not in n), ('flash' in n), v)
     lista = sorted(set(lista), key=orden, reverse=True)
     _mod = lista + [m for m in RESPALDO if m not in lista]
     return _mod
@@ -58,7 +58,7 @@ def gemini(texto, salida_mp3, voz='Charon', estilo=ESTILO):
 
 
 def edge(texto, salida_mp3, voz='es-EC-LuisNeural'):
-    p = subprocess.run([sys.executable, '-m', 'edge_tts', '--voice', voz, '--rate', '-5%', '--text', texto,
+    p = subprocess.run([sys.executable, '-m', 'edge_tts', '--voice', voz, '--rate=-5%', '--text', texto,
                         '--write-media', salida_mp3], capture_output=True, text=True, timeout=300)
     return p.returncode == 0, p.stderr[-200:]
 
