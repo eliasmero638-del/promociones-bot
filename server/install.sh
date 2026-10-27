@@ -8,12 +8,17 @@ chmod 700 $DATA/secrets
 export DEBIAN_FRONTEND=noninteractive
 if [ ! -f $DATA/.paquetes ]; then
   apt-get update -qq
-  apt-get install -y -qq git ffmpeg python3-venv python3-pip fonts-dejavu-core >/dev/null
+  apt-get install -y -qq git ffmpeg python3-venv python3-pip fonts-dejavu-core curl unzip >/dev/null
   touch $DATA/.paquetes
 fi
 if [ ! -d $DATA/venv ]; then python3 -m venv $DATA/venv; fi
 $DATA/venv/bin/pip install -q -U pip
 $DATA/venv/bin/pip install -q -U -r $APP/app/requirements.txt
+# yt-dlp necesita un motor de JavaScript para YouTube
+if ! command -v deno >/dev/null; then curl -fsSL https://deno.land/install.sh | sh -s -- -y >/dev/null 2>&1; ln -sf /root/.deno/bin/deno /usr/local/bin/deno; fi
+# cookies subidas a /root
+[ -s /root/cookies.txt ] && mv /root/cookies.txt $DATA/secrets/cookies.txt && chmod 600 $DATA/secrets/cookies.txt
+ln -sf $APP/server/clipero.sh /usr/local/bin/clipero
 # Servicio principal
 cat > /etc/systemd/system/clipero.service <<UNIT
 [Unit]

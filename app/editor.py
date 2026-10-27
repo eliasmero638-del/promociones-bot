@@ -1,0 +1,167 @@
+"""Editor: corta el momento, transcribe, arma título y lo deja vertical con subtítulos."""
+import os, re, subprocess, time, unicodedata
+import config as C
+
+_modelo = None
+
+
+def log(*a):
+    print(time.strftime('%H:%M:%S'), '[editor]', *a, flush=True)
+
+
+def cortar(pedazos_info, desde, hasta, salida):
+    """pedazos_info: [(path, inicio_epoch, dur)]. Corta [desde, hasta] (epoch) uniendo pedazos si hace falta."""
+    usar = [(p, t0, d) for p, t0, d in pedazos_info if t0 < hasta and t0 + d > desde]
+    if not usar:
+        return False
+    lista = salida + '.txt'
+    with open(lista, 'w') as f:
+        for p, _, _ in usar:
+            f.write(f"file '{p}'\n")
+    ss = max(0.0, desde - usar[0][1])
+    r = subprocess.run(['ffmpeg', '-y', '-v', 'error', '-f', 'concat', '-safe', '0', '-i', lista, '-ss', f'{ss:.2f}',
+                        '-t', f'{hasta - desde:.2f}', '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '20',
+                        '-c:a', 'aac', '-b:a', '160k', salida])
+    os.remove(lista)
+    return r.returncode == 0 and os.path.exists(salida)
+
+
+def transcribir(path):
+    """Lista de palabras [(inicio, fin, palabra)]. Si whisper no está disponible devuelve []."""
+    global _modelo
+    try:
+        if _modelo is None:
+            from faster_whisper import WhisperModel
+            _modelo = WhisperModel(C.get()['whisper_modelo'], device='cpu', compute_type='int8',
+                                   download_root=os.path.join(C.DATA, 'modelos'))
+        segs, _ = _modelo.transcribe(path, language='es', word_timestamps=True, vad_filter=True, beam_size=1)
+        return [(w.start, w.end, w.word.strip()) for s in segs for w in (s.words or []) if w.word.strip()]
+    except Exception as e:
+        log('sin transcripción:', e)
+        return []
+
+
+def _norm(s):
+    return ''.join(c for c in unicodedata.normalize('NFD', s.lower()) if unicodedata.category(c) != 'Mn')
+
+
+TIPOS = [
+    ('pelea', r'callate|cállate|respetame|respeta|no me grites|que te pasa|qué te pasa|mentirosa|mentiroso|hipocrita|'
+              r'falsa|falso|pelea|vete|a mi no|a mí no|no me hables|loca|loco|mierda|carajo|verga|puta'),
+    ('nominacion', r'nomin|eliminad|elimina|salvad|placa|votacion|votación|expulsad'),
+    ('romance', r'beso|te quiero|me gustas|te amo|novio|novia|enamorad|coquete'),
+    ('llanto', r'llor|perdon|perdón|lo siento|me duele|extraño a'),
+]
+TITULOS = {
+    'pelea': ['¡SE ARMÓ LA PELEA!', '¡SE PRENDIÓ LA CASA!'],
+    'nominacion': ['¡MOMENTO DE NOMINACIÓN!'],
+    'romance': ['¿HAY ROMANCE EN LA CASA?'],
+    'llanto': ['¡SE QUEBRÓ EN VIVO!'],
+    None: ['¡SE PRENDIÓ LA CASA!'],
+}
+
+
+def analizar_texto(palabras, chat_textos):
+    texto = ' '.join(w for _, _, w in palabras)
+    nt = _norm(texto + ' ' + ' '.join(chat_textos))
+    nombres = []
+    for nombre, alias in C.get()['participantes'].items():
+        cnt = sum(len(re.findall(r'\b' + re.escape(_norm(a)) + r'\b', nt)) for a in alias)
+        if cnt:
+            nombres.append((cnt, nombre))
+    nombres = [n for _, n in sorted(nombres, reverse=True)][:2]
+    tipo = None
+    mejor = 0
+    for t, rx in TIPOS:
+        c = len(re.findall(_norm(rx), nt))
+        if c > mejor:
+            tipo, mejor = t, c
+    if len(nombres) == 2 and tipo in ('pelea', None):
+        titulo = f'{nombres[0].split()[0].upper()} VS {nombres[1].split()[0].upper()}'
+        sub = '¡SE ARMÓ LA PELEA!' if tipo == 'pelea' else '¡SE PRENDIÓ LA CASA!'
+    else:
+        titulo = TITULOS[tipo][0]
+        sub = nombres[0].upper() if nombres else C.get()['reality']
+    return {'titulo': titulo, 'subtitulo': sub, 'nombres': nombres, 'tipo': tipo, 'texto': texto}
+
+
+def _ass_tiempo(t):
+    t = max(0, t)
+    return f'{int(t // 3600)}:{int(t % 3600 // 60):02d}:{t % 60:05.2f}'
+
+
+def _esc(s):
+    return s.replace('\\', '').replace('{', '(').replace('}', ')').replace('\n', ' ')
+
+
+def hacer_ass(palabras, info, dur, path):
+    marca = C.get()['marca']
+    lineas = []
+    grupo = []
+    for w in palabras:
+        grupo.append(w)
+        if len(grupo) >= 5 or re.search(r'[.?!,]$', w[2]):
+            lineas.append(grupo); grupo = []
+    if grupo:
+        lineas.append(grupo)
+    ev = []
+    ev.append(f'Dialogue: 1,0:00:00.00,{_ass_tiempo(dur)},Marca,,0,0,0,,{_esc(marca)}')
+    ev.append(f'Dialogue: 1,0:00:00.00,{_ass_tiempo(dur)},Titulo,,0,0,0,,{_esc(info["titulo"])}')
+    ev.append(f'Dialogue: 1,0:00:00.00,{_ass_tiempo(dur)},Sub,,0,0,0,,{_esc(info["subtitulo"])}')
+    for g in lineas:
+        a, b = g[0][0], g[-1][1] + 0.15
+        ev.append(f'Dialogue: 0,{_ass_tiempo(a)},{_ass_tiempo(b)},Cap,,0,0,0,,{_esc(" ".join(x[2] for x in g)).upper()}')
+    head = """[Script Info]
+ScriptType: v4.00+
+PlayResX: 720
+PlayResY: 1280
+WrapStyle: 0
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Marca,DejaVu Sans,30,&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,1,0,0,0,100,100,1,0,1,0,0,8,20,20,40,1
+Style: Titulo,DejaVu Sans,62,&H0000DCFF,&H00FFFFFF,&H00000000,&H00000000,1,0,0,0,100,100,0,0,1,5,0,8,30,30,105,1
+Style: Sub,DejaVu Sans,40,&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,1,0,0,0,100,100,0,0,1,4,0,8,30,30,195,1
+Style: Cap,DejaVu Sans,46,&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,1,0,0,0,100,100,0,0,1,5,0,2,40,40,230,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+"""
+    with open(path, 'w', encoding='utf-8') as f:
+        f.write(head + '\n'.join(ev) + '\n')
+
+
+def vertical(entrada, ass, salida):
+    fc = ('[0:v]split[a][b];[a]scale=720:1280:force_original_aspect_ratio=increase,crop=720:1280,boxblur=25:2,'
+          'eq=brightness=-0.25[bg];[b]scale=720:-2[fg];[bg][fg]overlay=0:(H-h)/2,'
+          'drawbox=x=0:y=0:w=720:h=270:color=black@0.75:t=fill,'
+          f"subtitles='{ass}'[v]")
+    r = subprocess.run(['ffmpeg', '-y', '-v', 'error', '-i', entrada, '-filter_complex', fc, '-map', '[v]', '-map', '0:a?',
+                        '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '23', '-maxrate', '2.5M', '-bufsize', '5M',
+                        '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '128k', '-af', 'loudnorm=I=-14:TP=-1.5',
+                        '-movflags', '+faststart', salida], capture_output=True, text=True)
+    if r.returncode != 0:
+        log('error vertical:', r.stderr[-500:])
+    return r.returncode == 0
+
+
+def hacer_clip(pedazos_info, centro, chat_textos, nombre=None):
+    """Devuelve dict con ruta del clip y datos, o None."""
+    cfg = C.get()
+    desde, hasta = centro - cfg['antes_seg'], centro + cfg['despues_seg']
+    nombre = nombre or time.strftime('%Y%m%d_%H%M%S', time.localtime(centro))
+    d = os.path.join(C.CLIPS, nombre); os.makedirs(d, exist_ok=True)
+    crudo = os.path.join(d, 'crudo.mp4')
+    if not cortar(pedazos_info, desde, hasta, crudo):
+        return None
+    palabras = transcribir(crudo)
+    info = analizar_texto(palabras, chat_textos)
+    dur = hasta - desde
+    ass = os.path.join(d, 'subs.ass')
+    hacer_ass(palabras, info, dur, ass)
+    final = os.path.join(d, 'clip.mp4')
+    if not vertical(crudo, ass, final):
+        return None
+    info['ruta'] = final
+    info['hora'] = time.strftime('%H:%M', time.localtime(centro))
+    return info
