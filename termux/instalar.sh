@@ -13,7 +13,7 @@ echo "== 2/4 Conectando con tu servidor =="
 if ! ssh -p $P -o BatchMode=yes -o StrictHostKeyChecking=accept-new -o ConnectTimeout=15 root@$S true 2>/dev/null; then
   echo ">>> Escribe la CONTRASEÑA del servidor (la de root) y presiona Enter. No se ve mientras escribes, es normal."
   cat ~/.ssh/id_ed25519.pub | ssh -p $P -o StrictHostKeyChecking=accept-new root@$S \
-    'mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys' < /dev/tty
+    'mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys'
 fi
 ssh -p $P -o BatchMode=yes root@$S true && echo "Conectado al servidor ✅"
 echo "== 3/4 Bajando el grabador y tus cookies =="
