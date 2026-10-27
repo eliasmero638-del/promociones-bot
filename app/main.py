@@ -1,8 +1,8 @@
 """Clipero: graba el reality, detecta los momentos fuertes, los edita y te los manda por Telegram."""
 import json, os, queue, subprocess, threading, time
-import config as C, recorder, analyzer, editor, tg
+import config as C, recorder, analyzer, editor, tg, ia
 
-VERSION = 'v1'
+VERSION = 'v2-ia'
 cola = queue.Queue()
 historial = []          # (hora, puntaje) de clips enviados, para límites por hora
 stats = {'pedazos': 0, 'clips': 0, 'ult_puntaje': None, 'ult_pedazo': None}
@@ -53,11 +53,12 @@ def analizar_bucle():
                 cfg = C.get()
                 if cfg['pausado'] or not en_horario():
                     continue
-                for s, sc, d in analyzer.mejores(puntos, cfg['umbral'], cfg['separacion_min'] * 60):
+                umb = cfg['umbral_ia'] if ia.activa() else cfg['umbral']
+                for s, sc, d in analyzer.mejores(puntos, umb, cfg['separacion_min'] * 60):
                     centro = t0 + s
                     ahora = time.time()
                     recientes = [h for h, _ in historial if ahora - h < 3600]
-                    if len(recientes) >= cfg['max_por_hora']:
+                    if len(recientes) >= cfg['max_por_hora'] * (3 if ia.activa() else 1):
                         break
                     if any(abs(centro - h) < cfg['separacion_min'] * 60 for h, _ in historial):
                         continue
@@ -83,7 +84,9 @@ def trabajador():
                     break
                 time.sleep(15)
             chat = [t for _, t in recorder.chat_mensajes(centro - 40, centro + 40)]
-            info = editor.hacer_clip(info_pedazos(), centro, chat)
+            info = editor.hacer_clip(info_pedazos(), centro, chat, job_filtro=None if job['manual'] else C.get()['ia_minimo'])
+            if info and info.get('descartado'):
+                continue
             if not info:
                 if job['manual']:
                     tg.texto('⚠️ No pude armar ese clip (¿todavía no hay grabación de ese momento?).')
@@ -92,12 +95,15 @@ def trabajador():
             cid = os.path.basename(os.path.dirname(info['ruta']))
             frase = info['texto'][:220].strip()
             nombres = ', '.join(info['nombres']) or '—'
-            cap = (f"{'🎬 Clip pedido' if job['manual'] else '🔥 Momento fuerte'} "
-                   f"<b>({job['puntaje']}/100)</b> · {info['hora']}\n"
-                   f"<b>{info['titulo']}</b> · {info['subtitulo']}\n"
+            pts = info.get('interes') if info.get('ia') else job['puntaje']
+            post = info.get('texto_post') or f"{info['titulo'].capitalize()} 😱🔥 #{C.get()['reality'].replace(' ', '')} #Reality"
+            cap = (('⚠️ <b>CONTENIDO EXPLÍCITO — revisar antes de subir</b>\n' if info.get('explicito') else '') +
+                   f"{'🎬 Clip pedido' if job['manual'] else '🔥 Momento fuerte'} <b>({pts}/100)</b> · {info['hora']}\n"
+                   f"<b>{info['titulo']}</b>\n{info['subtitulo']}\n"
                    f"👥 {nombres}\n"
-                   + (f"🗣️ “{frase}…”\n" if frase else '') +
-                   f"\n📝 Texto sugerido:\n{info['titulo'].capitalize()} 😱🔥 #{C.get()['reality'].replace(' ', '')} #Reality")
+                   + (f"📌 {info['descripcion']}\n" if info.get('descripcion') else '')
+                   + (f"🗣️ “{frase}…”\n" if frase and not info.get('descripcion') else '') +
+                   f"\n📝 Para publicar:\n{post}")
             tg.video(info['ruta'], cap, cid)
             log('clip enviado', cid, job['puntaje'])
         except Exception as e:
@@ -126,7 +132,7 @@ def comandos(tipo, chat, dato, raw):
     if cmd == '/estado':
         e = recorder.estado
         tg.texto(f"📡 {'Grabando' if e['grabando'] else 'Sin grabar'}: {e.get('titulo') or '—'}\n"
-                 f"⏸️ Automático: {'pausado' if cfg['pausado'] else 'activo'} · umbral {cfg['umbral']}\n"
+                 f"⏸️ Automático: {'pausado' if cfg['pausado'] else 'activo'} · umbral {cfg['umbral_ia'] if ia.activa() else cfg['umbral']} · IA {'✅' if ia.activa() else '❌'}\n"
                  f"🧩 Pedazos analizados: {stats['pedazos']} (último {stats['ult_pedazo'] or '—'}, "
                  f"pico {stats['ult_puntaje'] if stats['ult_puntaje'] is not None else '—'})\n"
                  f"🎬 Clips enviados: {stats['clips']}\n"

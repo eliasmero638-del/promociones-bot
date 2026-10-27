@@ -1,6 +1,7 @@
 """Editor: corta el momento, transcribe, arma título y lo deja vertical con subtítulos."""
 import os, re, subprocess, time, unicodedata
 import config as C
+import ia
 
 _modelo = None
 
@@ -145,7 +146,7 @@ def vertical(entrada, ass, salida):
     return r.returncode == 0
 
 
-def hacer_clip(pedazos_info, centro, chat_textos, nombre=None):
+def hacer_clip(pedazos_info, centro, chat_textos, nombre=None, job_filtro=None):
     """Devuelve dict con ruta del clip y datos, o None."""
     cfg = C.get()
     desde, hasta = centro - cfg['antes_seg'], centro + cfg['despues_seg']
@@ -154,9 +155,36 @@ def hacer_clip(pedazos_info, centro, chat_textos, nombre=None):
     crudo = os.path.join(d, 'crudo.mp4')
     if not cortar(pedazos_info, desde, hasta, crudo):
         return None
-    palabras = transcribir(crudo)
-    info = analizar_texto(palabras, chat_textos)
     dur = hasta - desde
+    info = None
+    if ia.activa():
+        r = ia.analizar(crudo, chat_textos, dur)
+        if 'error' not in r:
+            palabras = []
+            for s_ in r.get('subtitulos') or []:
+                ws = str(s_.get('texto', '')).split()
+                if not ws:
+                    continue
+                t0, t1 = float(s_.get('t0', 0)), float(s_.get('t1', 0))
+                if t1 <= t0:
+                    t1 = t0 + 0.4 * len(ws)
+                st = (t1 - t0) / len(ws)
+                palabras += [(t0 + i * st, t0 + (i + 1) * st, w) for i, w in enumerate(ws)]
+            info = {'titulo': str(r.get('titulo') or '¡SE PRENDIÓ LA CASA!').upper(),
+                    'subtitulo': str(r.get('subtitulo') or C.get()['reality']),
+                    'nombres': r.get('personajes') or [], 'tipo': r.get('categoria'),
+                    'texto': ' '.join(w for _, _, w in palabras), 'interes': r.get('interes', 0),
+                    'descripcion': r.get('descripcion', ''), 'texto_post': r.get('texto_post', ''),
+                    'explicito': bool(r.get('explicito')), 'ia': True}
+        else:
+            log('IA falló, uso el método básico')
+    if info is None:
+        palabras = transcribir(crudo)
+        info = analizar_texto(palabras, chat_textos)
+        info['ia'] = False
+    if job_filtro is not None and info.get('ia') and info.get('interes', 0) < job_filtro:
+        log('IA dice que no interesa:', info.get('interes'), info.get('descripcion'))
+        return {'descartado': True, **info}
     ass = os.path.join(d, 'subs.ass')
     hacer_ass(palabras, info, dur, ass)
     final = os.path.join(d, 'clip.mp4')

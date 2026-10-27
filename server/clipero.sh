@@ -21,6 +21,11 @@ case "$1" in
     sleep 5
     curl -s "https://api.telegram.org/bot$T/sendMessage" -d chat_id=$I -d text="🟢 Clipero conectado a este bot (modo solo envío)." | grep -q '"ok":true' \
       && echo "Listo ✅ Revisa tu Telegram: te debió llegar un mensaje." || echo "No pude mandar el mensaje. Revisa el token y el chat ID." ;;
+  gemini)
+    read -r -p "Pega tu clave de Gemini y presiona Enter: " K
+    K=$(echo "$K" | tr -d ' \r\n')
+    cd /opt/clipero/app && R=$(CLIPERO_DATA=$DATA $PY -c "import ia,sys; c,t=ia.probar('$K'); print(c)")
+    if [ "$R" = "200" ]; then CLIPERO_DATA=$DATA $PY -c "import config; config.save(gemini_key='$K')" && systemctl restart clipero && echo "✅ IA ACTIVADA"; else echo "❌ La clave no funcionó (código $R)"; fi ;;
   estado) systemctl --no-pager status clipero | head -5; cat $DATA/estado.json; echo ;;
   log) journalctl -u clipero -n 60 --no-pager ;;
   reiniciar) systemctl restart clipero; echo "Reiniciado." ;;
