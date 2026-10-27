@@ -39,7 +39,8 @@ DEFAULTS = {
     'wa_apikey': '',                     # clave que te da CallMeBot
     'web_url': 'http://173.249.44.95',   # dirección de la página para ver los clips
     'web_puerto': 80,
-    'ntfy_tema': '',                     # tema secreto de la app ntfy
+    'ntfy_tema': '',
+    'voz_narrador': 'Algenib',           # voz de Gemini elegida para Ridmer                     # tema secreto de la app ntfy
     'fb_page_token': '',
     'clip_max': 180,
     'horas': [],                         # [] = todo el día; ej. [[18, 24], [0, 2]] solo esas horas

@@ -29,7 +29,8 @@ def modelos_tts(key):
     return _mod
 
 
-def gemini(texto, salida_mp3, voz='Charon', estilo=ESTILO):
+def gemini(texto, salida_mp3, voz=None, estilo=ESTILO):
+    voz = voz or C.get().get('voz_narrador', 'Algenib')
     key = C.get().get('gemini_key')
     if not key:
         return False, 'sin clave de Gemini'
