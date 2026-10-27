@@ -94,7 +94,7 @@ def analizar(clip, chat_textos, seg):
     for m in modelos(cfg['gemini_key']):
         try:
             r = requests.post(f'https://generativelanguage.googleapis.com/v1beta/models/{m}:generateContent',
-                              params={'key': cfg['gemini_key']}, json=body, timeout=120)
+                              params={'key': cfg['gemini_key']}, json=body, timeout=300)
             if r.status_code != 200:
                 ultimo = f'{m}: {r.status_code} {r.text[:200]}'
                 continue
@@ -112,9 +112,12 @@ def analizar(clip, chat_textos, seg):
 def probar(key):
     ult = (0, '')
     for m in modelos(key):
+      try:
         r = requests.post(f'https://generativelanguage.googleapis.com/v1beta/models/{m}:generateContent',
-                          params={'key': key}, json={'contents': [{'parts': [{'text': 'Responde solo: OK'}]}]}, timeout=60)
+                          params={'key': key}, json={'contents': [{'parts': [{'text': 'Responde solo: OK'}]}]}, timeout=180)
         if r.status_code == 200:
             return 200, m
-        ult = (r.status_code, r.text[:300])
+        ult = (r.status_code, m + ' ' + r.text[:200])
+      except Exception as e:
+        ult = (0, f'{m}: {e}')
     return ult
