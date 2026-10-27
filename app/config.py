@@ -21,7 +21,7 @@ DEFAULTS = {
     'pausado': False,
     'gemini_key': '',
     'umbral_ia': 50,                     # con IA: puntaje para pasarle el momento a la IA
-    'ia_minimo': 60,                     # con IA: interés mínimo para mandarte el clip
+    'ia_minimo': 75,                     # con IA: interés mínimo para mandarte el clip
     'umbral': 72,                        # puntaje mínimo (0-100) para mandar un clip
     'max_por_hora': 4,
     'separacion_min': 8,                 # minutos mínimos entre clips automáticos

@@ -36,10 +36,15 @@ Comentarios del chat en vivo en ese momento: {chat}
 Te doy {nfotos} fotos del clip en orden y su audio. Tareas:
 1. Transcribe lo que se dice, con tiempos en segundos desde el inicio del audio, en frases cortas (máx 7 palabras).
 2. Di qué participantes intervienen (usa los nombres de la lista; si no estás seguro, no inventes).
-3. Califica de 0 a 100 qué tanto engancharía a la audiencia en redes. Puntúa ALTO: peleas, insultos, discusiones,
-   chisme, traiciones, estrategias para nominar, coqueteo, doble sentido, propuestas picantes, burlas, patanadas,
-   momentos ridículos o muy graciosos, llanto, confesiones, besos, escándalos. Puntúa BAJO: silencio, comer,
-   caminar, cantar, conversaciones aburridas, pantalla en negro o publicidad.
+3. Califica de 0 a 100 qué tanto engancharía a gente en Facebook que NO ve el reality. Sé MUY exigente: la mayoría
+   de momentos de una casa en vivo son aburridos y deben quedar entre 10 y 55. Escala:
+   90-100: pelea fuerte con gritos o insultos, escándalo, beso o momento picante claro, humillación o burla muy fuerte.
+   75-89: discusión clara entre dos o más, burla o patanada evidente, coqueteo atrevido, chisme fuerte sobre otro
+          participante dicho con emoción, llanto fuerte, momento MUY gracioso.
+   50-74: conversación normal sobre estrategia o nominaciones, comentarios tranquilos, chisme sin emoción.
+   0-49: silencio, comer, caminar, cantar, charla aburrida, pantalla en negro o publicidad.
+   Pregúntate: ¿alguien que va pasando por Facebook se detendría a ver esto? Si la respuesta es "no estoy seguro",
+   ponle menos de 70. Hablar en voz baja o tranquilo NUNCA pasa de 70.
 4. Escribe un título gancho en MAYÚSCULAS (máx 6 palabras) y un subtítulo (máx 8 palabras) que digan quién y qué pasó,
    estilo "JORGITO SE BURLA DE BRILLIT" / "y ella no se quedó callada". Llamativo pero fiel a lo que pasó.
 5. Escribe un texto para publicar en Facebook (1-2 frases, con 2-3 emojis y hashtags).

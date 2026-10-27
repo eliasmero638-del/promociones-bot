@@ -2,7 +2,7 @@
 import json, os, queue, subprocess, threading, time
 import config as C, recorder, analyzer, editor, tg, ia
 
-VERSION = 'v2-ia'
+VERSION = 'v3-exigente'
 cola = queue.Queue()
 historial = []          # (hora, puntaje) de clips enviados, para límites por hora
 stats = {'pedazos': 0, 'clips': 0, 'ult_puntaje': None, 'ult_pedazo': None}
@@ -132,7 +132,7 @@ def comandos(tipo, chat, dato, raw):
     if cmd == '/estado':
         e = recorder.estado
         tg.texto(f"📡 {'Grabando' if e['grabando'] else 'Sin grabar'}: {e.get('titulo') or '—'}\n"
-                 f"⏸️ Automático: {'pausado' if cfg['pausado'] else 'activo'} · umbral {cfg['umbral_ia'] if ia.activa() else cfg['umbral']} · IA {'✅' if ia.activa() else '❌'}\n"
+                 f"⏸️ Automático: {'pausado' if cfg['pausado'] else 'activo'} · mínimo {cfg['ia_minimo'] if ia.activa() else cfg['umbral']} · IA {'✅' if ia.activa() else '❌'}\n"
                  f"🧩 Pedazos analizados: {stats['pedazos']} (último {stats['ult_pedazo'] or '—'}, "
                  f"pico {stats['ult_puntaje'] if stats['ult_puntaje'] is not None else '—'})\n"
                  f"🎬 Clips enviados: {stats['clips']}\n"
@@ -147,7 +147,10 @@ def comandos(tipo, chat, dato, raw):
     elif cmd == '/umbral':
         try:
             v = max(30, min(98, int(dato.split()[1])))
-            C.save(umbral=v); tg.texto(f'🎚️ Umbral en {v}.', chat)
+            if ia.activa():
+                C.save(ia_minimo=v); tg.texto(f'🎚️ Ahora solo te mando clips con interés de {v}/100 o más.', chat)
+            else:
+                C.save(umbral=v); tg.texto(f'🎚️ Umbral en {v}.', chat)
         except Exception:
             tg.texto('Usa así: /umbral 70', chat)
     elif cmd == '/start':
