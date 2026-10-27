@@ -2,7 +2,7 @@
 import json, os, queue, secrets, subprocess, threading, time
 import config as C, recorder, analyzer, editor, tg, ia, fb, wa, web, ntfy
 
-VERSION = 'v11-nombres'
+VERSION = 'v12-nombres'
 cola = queue.Queue()
 historial = []          # (hora, puntaje) de clips enviados, para límites por hora
 stats = {'pedazos': 0, 'clips': 0, 'ult_puntaje': None, 'ult_pedazo': None}
@@ -338,7 +338,9 @@ def comandos(tipo, chat, dato, raw):
                      '/auto no – apagarla · /auto 90 – cambiar el mínimo', chat)
     elif cmd in ('/participantes', '/lista'):
         ps = cfg['participantes']
+        ex = cfg.get('exparticipantes') or {}
         tg.texto('🏠 Siguen en la casa:\n' + '\n'.join(f'• {n}' for n in ps) +
+                 ('\n\n🚪 Ya salieron:\n' + '\n'.join(f'• {n}' for n in ex) if ex else '') +
                  '\n\nSi alguien sale: /salio Nombre\nSi entra alguien: /entro Nombre, apodo1, apodo2', chat)
     elif cmd == '/salio':
         q = editor._norm(dato.partition(' ')[2].strip())
@@ -348,8 +350,11 @@ def comandos(tipo, chat, dato, raw):
         quien = [n for n, al in ps.items() if q in editor._norm(n) or any(q == editor._norm(a) for a in al)]
         if len(quien) != 1:
             return tg.texto('No encontré a uno solo con ese nombre. Mira la lista con /participantes', chat)
-        ps.pop(quien[0]); C.save(participantes=ps)
-        tg.texto(f'👋 {quien[0]} fuera de la lista. La IA ya no lo va a nombrar.', chat)
+        ex = dict(cfg.get('exparticipantes') or {})
+        ex[quien[0]] = ps.pop(quien[0])
+        C.save(participantes=ps, exparticipantes=ex)
+        tg.texto(f'👋 {quien[0]} pasó a exparticipantes: la IA ya no lo pondrá como quien habla, '
+                 'pero sí puede nombrarlo si hablan de él.', chat)
     elif cmd == '/entro':
         partes = [x.strip() for x in dato.partition(' ')[2].split(',') if x.strip()]
         if not partes:

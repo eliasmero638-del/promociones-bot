@@ -46,6 +46,9 @@ DEFAULTS = {
     'segmento_seg': 120,
     'guardar_horas': 3,                  # cuánto tiempo guardar lo grabado
     'whisper_modelo': 'small',
+    'exparticipantes': {
+        'Rey Ezequiel': ['rey', 'ezequiel'],
+    },
     'participantes': {
         'Santiago Castro': ['santiago', 'castro'],
         'Josselin "La Sabrosura" Jiménez': ['sabrosura', 'josselin', 'josselyn', 'joselin', 'joselyn'],

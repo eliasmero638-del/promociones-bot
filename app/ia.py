@@ -31,9 +31,12 @@ PROMPT = """Eres el editor de una página de Facebook de clips de realities ("{m
 Estás viendo un pedazo de {seg} segundos del reality "{reality}" (Ecuador), transmitido en vivo.
 
 Participantes que SIGUEN en la casa (nombre: apodos): {participantes}
-Cualquier otra persona que mencionen ya salió de la casa o no es participante: NUNCA la pongas en "personajes" ni
-uses su nombre en título, subtítulo o texto (salvo que el momento trate justamente de hablar de alguien que salió,
-y aun así solo si estás 100% seguro).
+Exparticipantes que YA SALIERON (ya no aparecen en cámara, pero pueden ser mencionados): {exparticipantes}
+Distingue bien QUIÉN APARECE/HABLA de QUIÉN ES MENCIONADO:
+- Quien aparece en cámara o habla solo puede ser alguien que sigue en la casa. Nunca le pongas el nombre de un
+  exparticipante a quien está hablando.
+- Si hablan DE alguien (aunque ya haya salido), puedes nombrarlo como tema: "KAVIEDES HABLA DE REY EZEQUIEL".
+- No confundas a las personas: si no estás 100% seguro de quién está hablando, no le pongas nombre.
 Comentarios del chat en vivo en ese momento: {chat}
 
 Te doy {nfotos} fotos del clip en orden y su audio. Tareas:
@@ -103,7 +106,9 @@ def analizar(clip, chat_textos, seg):
     parts_txt = '; '.join(f"{k}: {', '.join(v)}" for k, v in cfg['participantes'].items())
     chat = ' | '.join(chat_textos[-80:])[:4000] or '(sin chat)'
     fotos = _fotos(clip)
-    prompt = PROMPT.format(marca=cfg['marca'], reality=cfg['reality'], seg=int(seg), participantes=parts_txt,
+    ex = cfg.get('exparticipantes') or {}
+    ex_txt = '; '.join(f"{k}: {', '.join(v)}" for k, v in ex.items()) or '(ninguno)'
+    prompt = PROMPT.format(exparticipantes=ex_txt, marca=cfg['marca'], reality=cfg['reality'], seg=int(seg), participantes=parts_txt,
                            chat=chat, nfotos=len(fotos), cmin=cfg.get('clip_min', 30), cmax=cfg.get('clip_max', 180))
     parts = [{'text': prompt}]
     parts += [{'inline_data': {'mime_type': 'image/jpeg', 'data': base64.b64encode(f).decode()}} for f in fotos]
