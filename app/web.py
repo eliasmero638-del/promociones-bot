@@ -3,6 +3,7 @@ import html, json, os, re, threading
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import config as C
 
+_generando = False
 _acciones = {}      # 'publicar' / 'no' -> función(cid) -> (ok, msg)
 _buscar = None      # función(token) -> (cid, meta) o (None, None)
 
@@ -85,6 +86,20 @@ class H(BaseHTTPRequestHandler):
             if not (n.endswith('.mp3') and os.path.exists(p_)):
                 return self._send(404, 'No')
             return self._send(200, open(p_, 'rb').read(), 'audio/mpeg')
+        global _generando
+        if 'hacer=1' in self.path and not _generando:
+            def gen():
+                global _generando
+                _generando = True
+                try:
+                    import voz
+                    voz.muestras()
+                except Exception as e:
+                    print('voces error', e, flush=True)
+                finally:
+                    _generando = False
+            threading.Thread(target=gen, daemon=True).start()
+            _generando = True
         fs = sorted(os.listdir(d)) if os.path.isdir(d) else []
         filas = ''.join(f'<div class="box"><b>{"🎙️ Gemini" if f.startswith("gemini") else "🪟 Microsoft"} · '
                         f'{html.escape(f.split("_", 1)[1][:-4])}</b><br><audio controls preload="none" '
@@ -92,7 +107,11 @@ class H(BaseHTTPRequestHandler):
         return self._send(200, f'<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" '
                           f'content="width=device-width,initial-scale=1"><title>Voces</title><style>{CSS}</style></head>'
                           f'<body><main><div class="marca">RIDMER</div><h1>Muestras de voces</h1>'
-                          f'{filas or "<p>Todavía no hay muestras.</p>"}</main></body></html>')
+                          + ('<meta http-equiv="refresh" content="20;url=/voces"><div class="estado">⏳ Creando las voces… la página se '
+                             'actualiza sola, tarda 2-3 minutos.</div>' if _generando else
+                             '<form action="/voces"><input type="hidden" name="hacer" value="1">'
+                             '<button class="pub" style="width:100%;margin:10px 0">🎙️ Crear muestras de voces</button></form>')
+                          + f'{filas or "<p>Todavía no hay muestras.</p>"}</main></body></html>')
 
     def do_GET(self):
         if self.path.startswith('/voces') or self.path.startswith('/m/'):
