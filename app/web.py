@@ -77,7 +77,26 @@ class H(BaseHTTPRequestHandler):
         cid, meta = _buscar(m_.group(2))
         return m_.group(1), m_.group(2), cid, meta
 
+    def _muestras(self):
+        d = os.path.join(C.DATA, 'muestras')
+        if self.path.startswith('/m/'):
+            n = os.path.basename(self.path.split('?')[0])
+            p_ = os.path.join(d, n)
+            if not (n.endswith('.mp3') and os.path.exists(p_)):
+                return self._send(404, 'No')
+            return self._send(200, open(p_, 'rb').read(), 'audio/mpeg')
+        fs = sorted(os.listdir(d)) if os.path.isdir(d) else []
+        filas = ''.join(f'<div class="box"><b>{"🎙️ Gemini" if f.startswith("gemini") else "🪟 Microsoft"} · '
+                        f'{html.escape(f.split("_", 1)[1][:-4])}</b><br><audio controls preload="none" '
+                        f'style="width:100%;margin-top:8px" src="/m/{html.escape(f)}"></audio></div>' for f in fs)
+        return self._send(200, f'<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" '
+                          f'content="width=device-width,initial-scale=1"><title>Voces</title><style>{CSS}</style></head>'
+                          f'<body><main><div class="marca">RIDMER</div><h1>Muestras de voces</h1>'
+                          f'{filas or "<p>Todavía no hay muestras.</p>"}</main></body></html>')
+
     def do_GET(self):
+        if self.path.startswith('/voces') or self.path.startswith('/m/'):
+            return self._muestras()
         tipo, token, cid, m = self._clip()
         if not cid:
             return self._send(404, 'No encontrado')

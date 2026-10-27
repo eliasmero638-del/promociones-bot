@@ -49,6 +49,10 @@ case "$1" in
     echo "Cuando estés suscrito escribe:  clipero probaraviso" ;;
   probaraviso)
     cd /opt/clipero/app && CLIPERO_DATA=$DATA $PY -c "import ntfy; ok,r=ntfy.enviar('🔥 90/100 · PRUEBA DEL CLIPERO','Así te van a llegar los avisos de los clips', 'http://173.249.44.95'); print('✅ Enviado, revisa tu celular' if ok else '❌ '+r)" ;;
+  voces)
+    echo "Haciendo muestras de voces (tarda 2-3 minutos)..."
+    cd /opt/clipero/app && CLIPERO_DATA=$DATA $PY voz.py
+    echo ""; echo "👉 Escúchalas en el celular: http://173.249.44.95/voces" ;;
   estado) systemctl --no-pager status clipero | head -5; cat $DATA/estado.json; echo ;;
   log) journalctl -u clipero -n 60 --no-pager ;;
   reiniciar) systemctl restart clipero; echo "Reiniciado." ;;
