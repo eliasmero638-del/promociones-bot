@@ -35,6 +35,10 @@ DEFAULTS = {
     'auto_minimo': 85,                   # interés mínimo para publicar sin preguntarte
     'max_publicaciones_dia': 12,
     'fb_page_id': '',
+    'wa_telefono': '',                   # tu WhatsApp, ej. +593991234567
+    'wa_apikey': '',                     # clave que te da CallMeBot
+    'web_url': 'http://173.249.44.95',   # dirección de la página para ver los clips
+    'web_puerto': 80,
     'fb_page_token': '',
     'clip_max': 180,
     'horas': [],                         # [] = todo el día; ej. [[18, 24], [0, 2]] solo esas horas

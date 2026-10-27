@@ -1,8 +1,8 @@
 """Clipero: graba el reality, detecta los momentos fuertes, los edita y te los manda por Telegram."""
-import json, os, queue, subprocess, threading, time
-import config as C, recorder, analyzer, editor, tg, ia, fb
+import json, os, queue, secrets, subprocess, threading, time
+import config as C, recorder, analyzer, editor, tg, ia, fb, wa, web
 
-VERSION = 'v7-facebook'
+VERSION = 'v8-whatsapp'
 cola = queue.Queue()
 historial = []          # (hora, puntaje) de clips enviados, para límites por hora
 stats = {'pedazos': 0, 'clips': 0, 'ult_puntaje': None, 'ult_pedazo': None}
@@ -125,9 +125,25 @@ def trabajador():
                 elif cfg['auto_publicar'] and (pts or 0) >= cfg['auto_minimo']:
                     cap += f"\n\n⏳ Si no respondes, se publica solo en {cfg['auto_espera_min']} min."
             env = tg.video(info['ruta'], cap, cid, publicar=hay_fb)
+            token = secrets.token_urlsafe(16)
+            du = int(info.get('duracion', 0))
             guardar_meta(cid, {'ruta': info['ruta'], 'texto_post': post, 'titulo': info['titulo'],
+                               'subtitulo': info.get('subtitulo', ''), 'descripcion': info.get('descripcion', ''),
+                               'duracion_txt': f'{du // 60}:{du % 60:02d}', 'token': token,
                                'interes': pts or 0, 'explicito': bool(info.get('explicito')), 'manual': job['manual'],
                                'enviado': time.time(), 'estado': 'pendiente', 'mensajes': env})
+            if wa.activo():
+                cfg = C.get()
+                aviso = ''
+                if hay_fb and not info.get('explicito') and cfg['auto_publicar'] and (pts or 0) >= cfg['auto_minimo']:
+                    aviso = f"\n⏳ Se publica solo en {cfg['auto_espera_min']} min si no respondes"
+                elif info.get('explicito'):
+                    aviso = '\n⚠️ Explícito: no se publica solo'
+                ok_wa, r_wa = wa.enviar(f"🔥 *{pts or 0}/100* · ⏱️ {du // 60}:{du % 60:02d}\n"
+                                        f"*{info['titulo']}*\n{info.get('subtitulo', '')}{aviso}\n\n"
+                                        f"👉 Ver y decidir: {cfg.get('web_url', 'http://173.249.44.95')}/c/{token}")
+                if not ok_wa:
+                    log('whatsapp falló', r_wa)
             log('clip enviado', cid, job['puntaje'])
         except Exception as e:
             log('error en clip', e)
@@ -185,6 +201,26 @@ def publicar_clip(cid, motivo):
         tg.agregar_nota(chat_id, msg_id, cap, nota)
     log('publicar', cid, ok, res)
     return ok, res
+
+
+def buscar_token(token):
+    for cid in os.listdir(C.CLIPS):
+        m = leer_meta(cid)
+        if m and m.get('token') == token:
+            return cid, m
+    return None, None
+
+
+def no_publicar(cid):
+    with _pub_lock:
+        m = leer_meta(cid)
+        if not m or m.get('estado') != 'pendiente':
+            return False, 'ya estaba ' + (m or {}).get('estado', 'borrado')
+        m['estado'] = 'descartado'
+        guardar_meta(cid, m)
+    for chat_id, msg_id, cap in m.get('mensajes', []):
+        tg.agregar_nota(chat_id, msg_id, cap, '🚫 No se publica')
+    return True, 'ok'
 
 
 def auto_publicador():
@@ -294,6 +330,7 @@ def main():
     threading.Thread(target=analizar_bucle, daemon=True).start()
     threading.Thread(target=trabajador, daemon=True).start()
     threading.Thread(target=auto_publicador, daemon=True).start()
+    web.iniciar(buscar_token, lambda cid: publicar_clip(cid, 'tú'), no_publicar)
     if not C.get().get('solo_enviar'):
         tg.escuchar(comandos)
     if C.get()['chat_ids']:

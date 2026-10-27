@@ -1,0 +1,138 @@
+"""Página web privada para ver cada clip y decidir (Publicar / No publicar) desde el link de WhatsApp."""
+import html, json, os, re, threading
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+import config as C
+
+_acciones = {}      # 'publicar' / 'no' -> función(cid) -> (ok, msg)
+_buscar = None      # función(token) -> (cid, meta) o (None, None)
+
+CSS = """
+:root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:#120818;color:#f4eef8;
+font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif}main{max-width:520px;margin:0 auto;padding:16px}
+.marca{font-size:13px;letter-spacing:.08em;color:#ff4f8b;font-weight:800}h1{font-size:22px;margin:6px 0 2px;line-height:1.2}
+.sub{color:#cdbfd8;margin:0 0 12px}video{width:100%;max-height:70vh;border-radius:14px;background:#000}
+.pts{display:inline-block;background:#ff2b6e;color:#fff;border-radius:99px;padding:3px 10px;font-weight:700;font-size:14px}
+.box{background:#22142c;border-radius:12px;padding:12px;margin:12px 0;white-space:pre-wrap;font-size:15px}
+.btns{display:flex;gap:10px;margin:14px 0}button{flex:1;border:0;border-radius:12px;padding:16px;font-size:17px;font-weight:700}
+.pub{background:#22c55e;color:#04130a}.no{background:#3a2a46;color:#f4eef8}.aviso{background:#ffb02033;color:#ffd27a}
+.estado{font-size:18px;font-weight:700;text-align:center;padding:14px;border-radius:12px;background:#22142c}
+.copiar{background:#3a2a46;color:#fff;padding:10px;font-size:14px;margin-top:6px;width:100%}
+"""
+
+
+def _pagina(cid, m, token, msg=''):
+    e = html.escape
+    est = m.get('estado', 'pendiente')
+    if est == 'pendiente':
+        acciones = (f'<form method="post" class="btns"><button class="pub" name="a" value="publicar">📤 Publicar</button>'
+                    f'<button class="no" name="a" value="no">🚫 No publicar</button></form>')
+    else:
+        txt = {'publicado': '✅ Ya está publicado en Facebook', 'publicando': '⏳ Publicando…',
+               'descartado': '🚫 No se publica', 'guardado': '💾 Guardado sin publicar'}.get(est, est)
+        acciones = f'<div class="estado">{txt}</div>'
+    explic = '<div class="box aviso">⚠️ Contenido explícito: revisa antes de publicar.</div>' if m.get('explicito') else ''
+    return f"""<!doctype html><html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
+<title>{e(m.get('titulo', 'Clip'))}</title><style>{CSS}</style></head><body><main>
+<div class="marca">{e(C.get()['marca'])}</div>
+<h1>{e(m.get('titulo', ''))}</h1><p class="sub">{e(m.get('subtitulo', ''))}</p>
+<span class="pts">{m.get('interes', 0)}/100 · {e(m.get('duracion_txt', ''))}</span>
+{explic}{('<div class="estado">' + e(msg) + '</div>') if msg else ''}
+<p></p><video src="/v/{token}.mp4" controls playsinline preload="metadata"></video>
+{acciones}
+<div class="box" id="t">{e(m.get('texto_post', ''))}</div>
+<button class="copiar" onclick="navigator.clipboard.writeText(document.getElementById('t').innerText);this.innerText='✅ Copiado'">📋 Copiar texto</button>
+<div class="box">{e(m.get('descripcion', ''))}</div>
+</main></body></html>"""
+
+
+class H(BaseHTTPRequestHandler):
+    def log_message(self, *a):
+        pass
+
+    def _send(self, code, body, ctype='text/html; charset=utf-8'):
+        b = body.encode() if isinstance(body, str) else body
+        self.send_response(code)
+        self.send_header('Content-Type', ctype)
+        self.send_header('Content-Length', str(len(b)))
+        self.send_header('Cache-Control', 'no-store')
+        self.end_headers()
+        self.wfile.write(b)
+
+    def _clip(self):
+        m_ = re.match(r'^/(c|v)/([A-Za-z0-9_-]{16,64})(\.mp4)?$', self.path.split('?')[0])
+        if not m_:
+            return None, None, None, None
+        cid, meta = _buscar(m_.group(2))
+        return m_.group(1), m_.group(2), cid, meta
+
+    def do_GET(self):
+        tipo, token, cid, m = self._clip()
+        if not cid:
+            return self._send(404, 'No encontrado')
+        if tipo == 'c':
+            return self._send(200, _pagina(cid, m, token))
+        path = m.get('ruta', '')
+        if not os.path.exists(path):
+            return self._send(404, 'Video borrado')
+        size = os.path.getsize(path)
+        rng = self.headers.get('Range')
+        a, b = 0, size - 1
+        if rng:
+            mr = re.match(r'bytes=(\d*)-(\d*)', rng)
+            if mr:
+                if mr.group(1):
+                    a = int(mr.group(1))
+                    if mr.group(2):
+                        b = min(int(mr.group(2)), size - 1)
+                elif mr.group(2):
+                    a = max(0, size - int(mr.group(2)))
+        self.send_response(206 if rng else 200)
+        self.send_header('Content-Type', 'video/mp4')
+        self.send_header('Accept-Ranges', 'bytes')
+        self.send_header('Content-Length', str(b - a + 1))
+        if rng:
+            self.send_header('Content-Range', f'bytes {a}-{b}/{size}')
+        self.end_headers()
+        try:
+            with open(path, 'rb') as f:
+                f.seek(a)
+                falta = b - a + 1
+                while falta > 0:
+                    chunk = f.read(min(256 * 1024, falta))
+                    if not chunk:
+                        break
+                    self.wfile.write(chunk)
+                    falta -= len(chunk)
+        except (BrokenPipeError, ConnectionResetError):
+            pass
+
+    def do_POST(self):
+        tipo, token, cid, m = self._clip()
+        if not cid or tipo != 'c':
+            return self._send(404, 'No encontrado')
+        n = int(self.headers.get('Content-Length', 0) or 0)
+        datos = self.rfile.read(min(n, 1000)).decode(errors='ignore')
+        accion = 'publicar' if 'a=publicar' in datos else ('no' if 'a=no' in datos else '')
+        msg = ''
+        if accion in _acciones:
+            ok, res = _acciones[accion](cid)
+            if accion == 'publicar':
+                msg = '✅ Publicado en Facebook' if ok else f'⚠️ No se pudo publicar: {res}'
+        _, m = _buscar(token)
+        self._send(200, _pagina(cid, m, token, msg))
+
+
+def iniciar(buscar, publicar, no_publicar):
+    global _buscar
+    _buscar = buscar
+    _acciones['publicar'] = publicar
+    _acciones['no'] = no_publicar
+    puerto = int(C.get().get('web_puerto', 80))
+
+    def correr():
+        try:
+            ThreadingHTTPServer(('0.0.0.0', puerto), H).serve_forever()
+        except Exception as e:
+            print('web error', e, flush=True)
+    threading.Thread(target=correr, daemon=True).start()
