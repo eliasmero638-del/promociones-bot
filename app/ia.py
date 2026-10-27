@@ -148,3 +148,40 @@ def probar(key):
       except Exception as e:
         ult = (0, f'{m}: {e}')
     return ult
+
+
+def generar(prompt, buscar=False, temperatura=0.7, timeout=240):
+    """Texto → JSON con Gemini. buscar=True usa Búsqueda de Google para datos actuales.
+    Devuelve (dict, fuentes) o (None, error)."""
+    key = C.get().get('gemini_key')
+    if not key:
+        return None, 'sin clave'
+    body = {'contents': [{'parts': [{'text': prompt}]}], 'generationConfig': {'temperature': temperatura}}
+    if buscar:
+        body['tools'] = [{'google_search': {}}]
+    else:
+        body['generationConfig']['responseMimeType'] = 'application/json'
+    ult = None
+    for m in modelos(key):
+        try:
+            r = requests.post(f'https://generativelanguage.googleapis.com/v1beta/models/{m}:generateContent',
+                              params={'key': key}, json=body, timeout=timeout)
+            if r.status_code != 200:
+                ult = f'{m}: {r.status_code} {r.text[:200]}'
+                continue
+            cand = r.json()['candidates'][0]
+            txt = ''.join(p.get('text', '') for p in cand['content']['parts'])
+            ini, fin = txt.find('{'), txt.rfind('}')
+            if ini < 0:
+                ult = f'{m}: sin JSON'
+                continue
+            d = json.loads(txt[ini:fin + 1])
+            fuentes = []
+            for ch in (cand.get('groundingMetadata') or {}).get('groundingChunks', []):
+                w = ch.get('web') or {}
+                if w.get('title') and w['title'] not in fuentes:
+                    fuentes.append(w['title'])
+            return d, fuentes
+        except Exception as e:
+            ult = f'{m}: {e}'
+    return None, ult

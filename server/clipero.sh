@@ -53,6 +53,10 @@ case "$1" in
     echo "Haciendo muestras de voces (tarda 2-3 minutos)..."
     cd /opt/clipero/app && CLIPERO_DATA=$DATA $PY voz.py
     echo ""; echo "👉 Escúchalas en el celular: http://173.249.44.95/voces" ;;
+  ridmer)
+    F=${2:-short}; if [ $# -ge 2 ]; then shift 2; else shift $#; fi; TEMA="$*"
+    echo "Haciendo un $F de Ridmer (tarda 5-15 minutos)..."
+    cd /opt/clipero/app && CLIPERO_DATA=$DATA nice -n 5 $PY fabrica.py "$F" ${TEMA:+"$TEMA"} ;;
   estado) systemctl --no-pager status clipero | head -5; cat $DATA/estado.json; echo ;;
   log) journalctl -u clipero -n 60 --no-pager ;;
   reiniciar) systemctl restart clipero; echo "Reiniciado." ;;

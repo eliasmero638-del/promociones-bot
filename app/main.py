@@ -1,8 +1,8 @@
 """Clipero: graba el reality, detecta los momentos fuertes, los edita y te los manda por Telegram."""
 import json, os, queue, secrets, subprocess, threading, time
-import config as C, recorder, analyzer, editor, tg, ia, fb, wa, web, ntfy
+import config as C, recorder, analyzer, editor, tg, ia, fb, wa, web, ntfy, fabrica
 
-VERSION = 'v12-nombres'
+VERSION = 'v13-ridmer'
 cola = queue.Queue()
 historial = []          # (hora, puntaje) de clips enviados, para límites por hora
 stats = {'pedazos': 0, 'clips': 0, 'ult_puntaje': None, 'ult_pedazo': None}
@@ -363,6 +363,12 @@ def comandos(tipo, chat, dato, raw):
         ps[partes[0]] = [p.lower() for p in partes[1:]] + [partes[0].split()[0].lower()]
         C.save(participantes=ps)
         tg.texto(f'🆕 {partes[0]} agregado a la lista.', chat)
+    elif cmd == '/ridmer':
+        f_ = 'largo' if 'largo' in dato.lower() else 'short'
+        tema = dato.split(maxsplit=2)[2] if len(dato.split(maxsplit=2)) > 2 else None
+        threading.Thread(target=fabrica._cola_segura, args=(f_, {'titulo': tema, 'resumen': '', 'tipo': 'misterio'}
+                                                            if tema else None, 'manual'), daemon=True).start()
+        tg.texto(f'🎬 Haciendo un {f_} de Ridmer' + (f' sobre: {tema}' if tema else '') + '. Te aviso cuando esté.', chat)
     elif cmd == '/start':
         tg.texto('Ya estás registrado. /estado para ver cómo va.', chat)
 
@@ -375,7 +381,9 @@ def main():
     threading.Thread(target=analizar_bucle, daemon=True).start()
     threading.Thread(target=trabajador, daemon=True).start()
     threading.Thread(target=auto_publicador, daemon=True).start()
-    web.iniciar(buscar_token, lambda cid: publicar_clip(cid, 'tú'), no_publicar)
+    web.iniciar(buscar_token, lambda cid: publicar_clip(cid, 'tú'), no_publicar,
+                {'buscar': fabrica.buscar_token, 'publicar': fabrica.publicar, 'no': fabrica.no_publicar})
+    fabrica.iniciar()
     if not C.get().get('solo_enviar'):
         tg.escuchar(comandos)
     if C.get()['chat_ids']:

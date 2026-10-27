@@ -10,9 +10,20 @@ def _v():
     return C.get().get('fb_version', 'v23.0')
 
 
-def activo():
+def pagina(clave=None):
+    """(id, token, nombre) de la página. clave=None → la de realities; 'ridmer' → Ridmer TV."""
     c = C.get()
-    return bool(c.get('fb_page_token') and c.get('fb_page_id'))
+    if clave:
+        for pid, d in (c.get('fb_paginas') or {}).items():
+            if clave.lower() in d['nombre'].lower():
+                return pid, d['token'], d['nombre']
+        return None, None, None
+    return c.get('fb_page_id'), c.get('fb_page_token'), c.get('fb_page_nombre', '')
+
+
+def activo(clave=None):
+    pid, tok, _ = pagina(clave)
+    return bool(pid and tok)
 
 
 def conectar(user_token, nombre_pagina=''):
@@ -35,9 +46,11 @@ def conectar(user_token, nombre_pagina=''):
             if 'realit' in p['name'].lower():
                 elegida = p
     if not elegida:
-        return False, 'No encontré la página. Páginas que veo: ' + ', '.join(p['name'] for p in pags)
-    C.save(fb_page_id=elegida['id'], fb_page_token=elegida['access_token'], fb_page_nombre=elegida['name'])
-    return True, f"Conectado a la página: {elegida['name']}"
+        elegida = pags[0]
+    todas = {p['id']: {'nombre': p['name'], 'token': p['access_token']} for p in pags}
+    C.save(fb_page_id=elegida['id'], fb_page_token=elegida['access_token'], fb_page_nombre=elegida['name'],
+           fb_paginas=todas)
+    return True, 'Conectado a: ' + ', '.join(p['name'] for p in pags)
 
 
 def _dur(path):
@@ -48,8 +61,7 @@ def _dur(path):
         return 0.0
 
 
-def _reel(path, texto):
-    c = C.get(); pid, tok = c['fb_page_id'], c['fb_page_token']
+def _reel(path, texto, pid, tok):
     r = requests.post(f'{API}/{_v()}/{pid}/video_reels', data={'upload_phase': 'start', 'access_token': tok}, timeout=60).json()
     if 'video_id' not in r:
         raise RuntimeError(r.get('error', {}).get('message', str(r)))
@@ -68,8 +80,7 @@ def _reel(path, texto):
     return vid
 
 
-def _video(path, texto, titulo):
-    c = C.get(); pid, tok = c['fb_page_id'], c['fb_page_token']
+def _video(path, texto, titulo, pid, tok):
     with open(path, 'rb') as f:
         r = requests.post(f'https://graph-video.facebook.com/{_v()}/{pid}/videos',
                           data={'description': texto, 'title': titulo[:100], 'access_token': tok},
@@ -79,14 +90,15 @@ def _video(path, texto, titulo):
     return r['id']
 
 
-def publicar(path, texto, titulo=''):
+def publicar(path, texto, titulo='', clave=None):
     """Reel si dura hasta 90 s (límite de Facebook para reels por API); video normal si es más largo.
     Devuelve (ok, id_o_error)."""
-    if not activo():
-        return False, 'Facebook no está conectado'
+    pid, tok, _ = pagina(clave)
+    if not (pid and tok):
+        return False, 'Esa página de Facebook no está conectada'
     try:
         if _dur(path) <= 90:
-            return True, _reel(path, texto)
-        return True, _video(path, texto, titulo)
+            return True, _reel(path, texto, pid, tok)
+        return True, _video(path, texto, titulo, pid, tok)
     except Exception as e:
         return False, str(e)[:300]

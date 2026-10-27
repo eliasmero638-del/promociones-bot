@@ -40,7 +40,14 @@ DEFAULTS = {
     'web_url': 'http://173.249.44.95',   # dirección de la página para ver los clips
     'web_puerto': 80,
     'ntfy_tema': '',
-    'voz_narrador': 'Algenib',           # voz de Gemini elegida para Ridmer                     # tema secreto de la app ntfy
+    'voz_narrador': 'Algenib',
+    'ridmer_activo': True,               # fábrica de videos Ridmer
+    'ridmer_horas_shorts': [8, 12, 16, 20],
+    'ridmer_hora_largo': 18,
+    'ridmer_espera_min': 20,             # minutos antes de publicar solo en Ridmer TV
+    'ridmer_auto': True,
+    'ridmer_max_extra': 2,               # noticias urgentes extra por día
+    'ridmer_urgencia': 85,           # voz de Gemini elegida para Ridmer                     # tema secreto de la app ntfy
     'fb_page_token': '',
     'clip_max': 180,
     'horas': [],                         # [] = todo el día; ej. [[18, 24], [0, 2]] solo esas horas

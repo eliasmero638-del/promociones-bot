@@ -6,6 +6,7 @@ import config as C
 _generando = False
 _acciones = {}      # 'publicar' / 'no' -> función(cid) -> (ok, msg)
 _buscar = None      # función(token) -> (cid, meta) o (None, None)
+_ridmer = None      # {'buscar','publicar','no'}
 
 CSS = """
 :root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:#120818;color:#f4eef8;
@@ -45,6 +46,45 @@ def _pagina(cid, m, token, msg=''):
 <div class="box" id="t">{e(m.get('texto_post', ''))}</div>
 <button class="copiar" onclick="navigator.clipboard.writeText(document.getElementById('t').innerText);this.innerText='✅ Copiado'">📋 Copiar texto</button>
 <div class="box">{e(m.get('descripcion', ''))}</div>
+</main></body></html>"""
+
+
+def _pagina_ridmer(m, token, msg=''):
+    e = html.escape
+    est = m.get('estado', 'pendiente')
+    if est == 'pendiente':
+        acciones = ('<form method="post" class="btns"><button class="pub" name="a" value="publicar">📤 Publicar en Ridmer TV'
+                    '</button><button class="no" name="a" value="no">🚫 No publicar</button></form>')
+    else:
+        acciones = '<div class="estado">' + {'publicado': '✅ Publicado en Ridmer TV', 'publicando': '⏳ Publicando…',
+                                               'descartado': '🚫 No se publica en Facebook'}.get(est, est) + '</div>'
+    v = m['archivos']['video']
+    horiz = v.startswith('largo')
+    du = m.get('duracion', 0)
+
+    def copiar(idx, titulo, texto):
+        return (f'<div class="box"><b>{titulo}</b><div id="c{idx}" style="margin-top:6px">{e(texto)}</div>'
+                f'<button class="copiar" onclick="navigator.clipboard.writeText(document.getElementById(\'c{idx}\')'
+                f'.innerText);this.innerText=\'✅ Copiado\'">📋 Copiar</button></div>')
+    return f"""<!doctype html><html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
+<title>{e(m.get('titulo', 'Ridmer'))}</title><style>{CSS}
+.dl{{display:block;text-align:center;background:#e01818;color:#fff;text-decoration:none;font-weight:800;border-radius:12px;padding:14px;margin:10px 0}}
+</style></head><body><main>
+<div class="marca" style="color:#ff3b3b">RIDMER · {'VIDEO LARGO' if horiz else 'SHORT'}</div>
+<h1>{e(m.get('titulo_youtube', ''))}</h1>
+<span class="pts" style="background:#e01818">⏱️ {du // 60}:{du % 60:02d}</span>
+{('<div class="estado">' + e(msg) + '</div>') if msg else ''}
+{acciones}
+<video src="/r/{token}/{v}" poster="/r/{token}/miniatura.jpg" controls playsinline preload="none"
+ style="aspect-ratio:{'16/9' if horiz else '9/16'}"></video>
+<a class="dl" href="/r/{token}/{v}?d=1">⬇️ Descargar video para YouTube</a>
+<a class="dl" style="background:#3a2a46" href="/r/{token}/miniatura.jpg?d=1">🖼️ Descargar miniatura</a>
+{copiar(1, 'Título para YouTube', m.get('titulo_youtube', ''))}
+{copiar(2, 'Descripción', m.get('descripcion_youtube', ''))}
+{copiar(3, 'Etiquetas', ', '.join(m.get('etiquetas', [])))}
+{copiar(4, 'Texto para Facebook', m.get('texto_facebook', ''))}
+<details class="box"><summary>📜 Guion</summary>{e(m.get('guion', ''))}</details>
 </main></body></html>"""
 
 
@@ -113,7 +153,35 @@ class H(BaseHTTPRequestHandler):
                              '<button class="pub" style="width:100%;margin:10px 0">🎙️ Crear muestras de voces</button></form>')
                           + f'{filas or "<p>Todavía no hay muestras.</p>"}</main></body></html>')
 
+    def _ridmer(self, post=False):
+        m_ = re.match(r'^/r/([A-Za-z0-9_-]{16,64})(?:/([a-z_]+\.(?:mp4|jpg)))?$', self.path.split('?')[0])
+        if not m_ or not _ridmer:
+            return self._send(404, 'No encontrado')
+        carpeta, m = _ridmer['buscar'](m_.group(1))
+        if not m:
+            return self._send(404, 'No encontrado')
+        if m_.group(2):
+            if m_.group(2) not in m['archivos'].values():
+                return self._send(404, 'No')
+            p_ = os.path.join(carpeta, m_.group(2))
+            nombre = re.sub(r'[^A-Za-z0-9_-]+', '_', m.get('titulo', 'ridmer'))[:50] + '_' + m_.group(2)
+            return self._archivo(p_, 'video/mp4' if p_.endswith('.mp4') else 'image/jpeg',
+                                 nombre if 'd=1' in self.path else None)
+        msg = ''
+        if post:
+            n = int(self.headers.get('Content-Length', 0) or 0)
+            datos = self.rfile.read(min(n, 1000)).decode(errors='ignore')
+            if 'a=publicar' in datos:
+                ok, res = _ridmer['publicar'](m['id'])
+                msg = '✅ Publicado en Ridmer TV' if ok else f'⚠️ No se pudo publicar: {res}'
+            elif 'a=no' in datos:
+                _ridmer['no'](m['id'])
+            carpeta, m = _ridmer['buscar'](m_.group(1))
+        return self._send(200, _pagina_ridmer(m, m_.group(1), msg))
+
     def do_GET(self):
+        if self.path.startswith('/r/'):
+            return self._ridmer()
         if self.path.startswith('/voces') or self.path.startswith('/m/'):
             return self._muestras()
         tipo, token, cid, m = self._clip()
@@ -129,6 +197,9 @@ class H(BaseHTTPRequestHandler):
         path = m.get('ruta', '')
         if not os.path.exists(path):
             return self._send(404, 'Video borrado')
+        return self._archivo(path, 'video/mp4')
+
+    def _archivo(self, path, ctype, descarga=None):
         size = os.path.getsize(path)
         rng = self.headers.get('Range')
         a, b = 0, size - 1
@@ -150,7 +221,9 @@ class H(BaseHTTPRequestHandler):
                 self.end_headers()
                 return
         self.send_response(206 if rng else 200)
-        self.send_header('Content-Type', 'video/mp4')
+        self.send_header('Content-Type', ctype)
+        if descarga:
+            self.send_header('Content-Disposition', f'attachment; filename="{descarga}"')
         self.send_header('Accept-Ranges', 'bytes')
         self.send_header('Content-Length', str(b - a + 1))
         if rng:
@@ -171,7 +244,10 @@ class H(BaseHTTPRequestHandler):
         except (BrokenPipeError, ConnectionResetError):
             pass
 
+
     def do_POST(self):
+        if self.path.startswith('/r/'):
+            return self._ridmer(post=True)
         tipo, token, cid, m = self._clip()
         if not cid or tipo != 'c':
             return self._send(404, 'No encontrado')
@@ -194,9 +270,10 @@ class Servidor(ThreadingHTTPServer):
         pass        # el celular cortó la conexión (normal al adelantar el video)
 
 
-def iniciar(buscar, publicar, no_publicar):
-    global _buscar
+def iniciar(buscar, publicar, no_publicar, ridmer=None):
+    global _buscar, _ridmer
     _buscar = buscar
+    _ridmer = ridmer
     _acciones['publicar'] = publicar
     _acciones['no'] = no_publicar
     puerto = int(C.get().get('web_puerto', 80))
