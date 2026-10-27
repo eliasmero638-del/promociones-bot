@@ -155,7 +155,8 @@ def main():
     recorder.iniciar()
     threading.Thread(target=analizar_bucle, daemon=True).start()
     threading.Thread(target=trabajador, daemon=True).start()
-    tg.escuchar(comandos)
+    if not C.get().get('solo_enviar'):
+        tg.escuchar(comandos)
     if C.get()['chat_ids']:
         tg.texto(f'🟢 Clipero {VERSION} encendido.')
     while True:

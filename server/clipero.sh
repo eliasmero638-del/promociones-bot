@@ -9,6 +9,18 @@ case "$1" in
     cd /opt/clipero/app && CLIPERO_DATA=$DATA $PY -c "import config; config.save(telegram_token='$T')"
     systemctl restart clipero
     echo "Listo. Ahora abre tu bot en Telegram y escríbele /start" ;;
+  compartido)
+    read -r -p "Pega el token del bot Ridmer Descargas y presiona Enter: " T
+    T=$(echo "$T" | tr -d ' \r\n')
+    read -r -p "Pega tu chat ID (número) y presiona Enter: " I
+    I=$(echo "$I" | tr -dc '0-9-')
+    case "$T" in *:*) ;; *) echo "Ese token no parece válido."; exit 1;; esac
+    [ -n "$I" ] || { echo "Falta el chat ID."; exit 1; }
+    cd /opt/clipero/app && CLIPERO_DATA=$DATA $PY -c "import config; config.save(telegram_token='$T', chat_ids=[int('$I')], solo_enviar=True)"
+    systemctl restart clipero
+    sleep 5
+    curl -s "https://api.telegram.org/bot$T/sendMessage" -d chat_id=$I -d text="🟢 Clipero conectado a este bot (modo solo envío)." | grep -q '"ok":true' \
+      && echo "Listo ✅ Revisa tu Telegram: te debió llegar un mensaje." || echo "No pude mandar el mensaje. Revisa el token y el chat ID." ;;
   estado) systemctl --no-pager status clipero | head -5; cat $DATA/estado.json; echo ;;
   log) journalctl -u clipero -n 60 --no-pager ;;
   reiniciar) systemctl restart clipero; echo "Reiniciado." ;;

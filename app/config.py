@@ -12,7 +12,8 @@ for d in (DATA, SECRETS, REC, CLIPS):
 
 DEFAULTS = {
     'telegram_token': '',
-    'chat_ids': [],                      # se llena solo cuando escribes /start al bot
+    'chat_ids': [],
+    'solo_enviar': False,                # True = bot compartido con otro programa: solo manda, no lee mensajes                      # se llena solo cuando escribes /start al bot
     'canal': 'https://www.youtube.com/@LaCasa593EnVivo/streams',
     'reality': 'LA CASA 593',
     'marca': 'PASIÓN POR LOS REALITIES',

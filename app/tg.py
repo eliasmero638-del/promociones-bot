@@ -32,10 +32,11 @@ def video(path, caption, clip_id):
     botones = [[{'text': '✅ Me lo quedo', 'callback_data': f'ok:{clip_id}'},
                 {'text': '❌ Descartar', 'callback_data': f'no:{clip_id}'}]]
     for c in C.get()['chat_ids']:
+        kw = dict(chat_id=c, caption=caption[:1000], parse_mode='HTML', supports_streaming='true', width='720', height='1280')
+        if not C.get().get('solo_enviar'):
+            kw['reply_markup'] = json.dumps({'inline_keyboard': botones})
         with open(path, 'rb') as f:
-            _api('sendVideo', chat_id=c, caption=caption[:1000], parse_mode='HTML', supports_streaming='true',
-                 width='720', height='1280', reply_markup=json.dumps({'inline_keyboard': botones}),
-                 files={'video': f})
+            _api('sendVideo', files={'video': f}, **kw)
 
 
 def escuchar(manejador):
