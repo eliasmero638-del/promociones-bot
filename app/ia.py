@@ -35,7 +35,10 @@ Comentarios del chat en vivo en ese momento: {chat}
 
 Te doy {nfotos} fotos del clip en orden y su audio. Tareas:
 1. Transcribe lo que se dice, con tiempos en segundos desde el inicio del audio, en frases cortas (máx 7 palabras).
-2. Di qué participantes intervienen (usa los nombres de la lista; si no estás seguro, no inventes).
+2. Di qué participantes intervienen SOLO si estás 100% seguro de quién es (porque lo nombran claramente en el audio
+   por su nombre o apodo, o el chat lo confirma). Si tienes la mínima duda, NO lo pongas en "personajes" y en el
+   título, subtítulo, descripción y texto NO uses su nombre: di "una participante", "un compañero", "uno de los chicos".
+   Es mucho peor poner un nombre equivocado que no poner ninguno.
 3. Califica de 0 a 100 qué tanto engancharía a gente en Facebook que NO ve el reality. Califica por LO QUE PASA y
    LO QUE SE DICE, no por el volumen: una conversación a solas en voz baja puede valer 90 si es fuerte.
    Sé exigente: la mayoría de momentos de una casa en vivo son rutina y deben quedar entre 10 y 55. Escala:
@@ -47,15 +50,17 @@ Te doy {nfotos} fotos del clip en orden y su audio. Tareas:
    50-74: conversación común sobre estrategia o nominaciones sin nada nuevo, comentarios sueltos, chisme sin sustancia.
    0-49: silencio, comer, caminar, cantar, charla de rutina, pantalla en negro o publicidad.
    Pregúntate: ¿alguien que va pasando por Facebook se detendría a ver esto y lo comentaría o compartiría?
-   Si no estás seguro, ponle menos de 70.
-4. Escribe un título gancho en MAYÚSCULAS (máx 6 palabras) y un subtítulo (máx 8 palabras) que digan quién y qué pasó,
+   Si no estás seguro, ponle menos de 70. Anécdotas, historias del pasado o charlas que no generan reacción en la
+   casa ni polémica valen menos de 75, aunque se cuenten con emoción.
+4. Escribe un título gancho en MAYÚSCULAS (máx 6 palabras) y un subtítulo (máx 8 palabras) que digan qué pasó
+   (y quién, solo si estás 100% seguro del nombre),
    estilo "JORGITO SE BURLA DE BRILLIT" / "y ella no se quedó callada". Llamativo pero fiel a lo que pasó.
 5. Escribe un texto para publicar en Facebook (1-2 frases, con 2-3 emojis y hashtags).
 6. Marca "explicito": true si hay desnudos o actos sexuales visibles.
 7. Decide dónde EMPIEZA y TERMINA el momento completo ("inicio" y "fin", en segundos desde el inicio del audio).
    Empieza un poco antes de que arranque el tema, para que se entienda. Termina cuando el momento de verdad se
    cierre: la respuesta, la reacción, la conclusión o el remate. NUNCA lo cortes a la mitad de lo que está pasando.
-   Duración entre {cmin} y {cmax} segundos. Lo normal es entre 60 y 150 segundos: si la conversación sigue sobre el
+   Duración entre {cmin} y {cmax} segundos. Lo normal es entre 90 y 170 segundos: si la conversación sigue sobre el
    mismo tema, inclúyela completa. Si dudas, alárgalo: es mejor que sobre un poco a que falte el final.
    Si todo el audio es el mismo momento, usa todo.
 Reglas: si en el clip aparece un niño o niña, nunca le des un ángulo picante ni sexual al título o texto.

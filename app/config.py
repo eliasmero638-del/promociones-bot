@@ -21,7 +21,7 @@ DEFAULTS = {
     'pausado': False,
     'gemini_key': '',
     'umbral_ia': 50,                     # con IA: puntaje para pasarle el momento a la IA
-    'ia_minimo': 75,                     # con IA: interés mínimo para mandarte el clip
+    'ia_minimo': 80,                     # con IA: interés mínimo para mandarte el clip
     'umbral': 72,                        # puntaje mínimo (0-100) para mandar un clip
     'max_por_hora': 4,
     'separacion_min': 8,                 # minutos mínimos entre clips automáticos
@@ -29,7 +29,7 @@ DEFAULTS = {
     'despues_seg': 25,                   # segundos después del pico
     'ventana_antes': 60,                 # con IA: segundos que mira antes del pico
     'ventana_despues': 150,              # con IA: segundos que mira después (para no cortar el desenlace)
-    'clip_min': 30,
+    'clip_min': 60,
     'auto_publicar': True,               # publicar solo en Facebook si no respondes
     'auto_espera_min': 20,               # minutos que espera tu respuesta
     'auto_minimo': 85,                   # interés mínimo para publicar sin preguntarte
@@ -61,18 +61,50 @@ DEFAULTS = {
 
 _lock = threading.Lock()
 _cfg = None
+_propio = {}            # solo lo que se guardó a propósito (no los valores por defecto)
+
+VERSION_CFG = 2
+# claves que versiones viejas guardaban sin querer: se borran para que mande el valor por defecto
+MIGRAR = {2: ['clip_min', 'clip_max', 'ventana_antes', 'ventana_despues', 'antes_seg', 'despues_seg',
+              'umbral_ia', 'max_por_hora', 'separacion_min', 'segmento_seg', 'guardar_horas', 'whisper_modelo',
+              'auto_espera_min', 'auto_minimo', 'max_publicaciones_dia', 'participantes', 'canal', 'reality',
+              'marca', 'modo', 'web_url', 'web_puerto', 'umbral']}
+FORZAR = {2: {'ia_minimo': 80}}
+
+
+def _escribir():
+    tmp = CFG_FILE + '.tmp'
+    with open(tmp, 'w', encoding='utf-8') as f:
+        json.dump(_propio, f, ensure_ascii=False, indent=1)
+    os.replace(tmp, CFG_FILE)
+    os.chmod(CFG_FILE, 0o600)
 
 
 def get():
-    global _cfg
+    global _cfg, _propio
     with _lock:
         if _cfg is None:
-            c = dict(DEFAULTS)
+            propio = {}
             if os.path.exists(CFG_FILE):
                 try:
-                    c.update(json.load(open(CFG_FILE, encoding='utf-8')))
+                    propio = json.load(open(CFG_FILE, encoding='utf-8'))
+                except Exception:
+                    propio = {}
+            v = propio.get('cfg_version', 1)
+            if v < VERSION_CFG:
+                for n in range(v + 1, VERSION_CFG + 1):
+                    for k in MIGRAR.get(n, []):
+                        propio.pop(k, None)
+                    propio.update(FORZAR.get(n, {}))
+                propio['cfg_version'] = VERSION_CFG
+                _propio = propio
+                try:
+                    _escribir()
                 except Exception:
                     pass
+            _propio = propio
+            c = dict(DEFAULTS)
+            c.update(propio)
             _cfg = c
         return _cfg
 
@@ -81,8 +113,5 @@ def save(**kw):
     c = get()
     with _lock:
         c.update(kw)
-        tmp = CFG_FILE + '.tmp'
-        with open(tmp, 'w', encoding='utf-8') as f:
-            json.dump(c, f, ensure_ascii=False, indent=1)
-        os.replace(tmp, CFG_FILE)
-        os.chmod(CFG_FILE, 0o600)
+        _propio.update(kw)
+        _escribir()

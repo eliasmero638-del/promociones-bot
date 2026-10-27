@@ -10,7 +10,7 @@ CSS = """
 :root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:#120818;color:#f4eef8;
 font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif}main{max-width:520px;margin:0 auto;padding:16px}
 .marca{font-size:13px;letter-spacing:.08em;color:#ff4f8b;font-weight:800}h1{font-size:22px;margin:6px 0 2px;line-height:1.2}
-.sub{color:#cdbfd8;margin:0 0 12px}video{width:100%;max-height:70vh;border-radius:14px;background:#000}
+.sub{color:#cdbfd8;margin:0 0 12px}video{display:block;width:100%;aspect-ratio:9/16;max-height:72vh;object-fit:contain;border-radius:14px;background:#000;margin:0 auto}
 .pts{display:inline-block;background:#ff2b6e;color:#fff;border-radius:99px;padding:3px 10px;font-weight:700;font-size:14px}
 .box{background:#22142c;border-radius:12px;padding:12px;margin:12px 0;white-space:pre-wrap;font-size:15px}
 .btns{display:flex;gap:10px;margin:14px 0}button{flex:1;border:0;border-radius:12px;padding:16px;font-size:17px;font-weight:700}
@@ -38,8 +38,8 @@ def _pagina(cid, m, token, msg=''):
 <h1>{e(m.get('titulo', ''))}</h1><p class="sub">{e(m.get('subtitulo', ''))}</p>
 <span class="pts">{m.get('interes', 0)}/100 · {e(m.get('duracion_txt', ''))}</span>
 {explic}{('<div class="estado">' + e(msg) + '</div>') if msg else ''}
-<p></p><video src="/v/{token}.mp4" controls playsinline preload="metadata"></video>
 {acciones}
+<video src="/v/{token}.mp4" poster="/i/{token}.jpg" controls playsinline preload="none"></video>
 <div class="box" id="t">{e(m.get('texto_post', ''))}</div>
 <button class="copiar" onclick="navigator.clipboard.writeText(document.getElementById('t').innerText);this.innerText='✅ Copiado'">📋 Copiar texto</button>
 <div class="box">{e(m.get('descripcion', ''))}</div>
