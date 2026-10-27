@@ -19,6 +19,20 @@ if ! command -v deno >/dev/null; then curl -fsSL https://deno.land/install.sh | 
 # cookies subidas a /root
 [ -s /root/cookies.txt ] && mv /root/cookies.txt $DATA/secrets/cookies.txt && chmod 600 $DATA/secrets/cookies.txt
 ln -sf $APP/server/clipero.sh /usr/local/bin/clipero
+timedatectl set-timezone America/Guayaquil 2>/dev/null || true
+mkdir -p $DATA/chat
+# SSH también por el puerto 443 (algunas redes WiFi bloquean el 22)
+if ! ss -ltn | grep -q ':443 '; then
+  if systemctl is-enabled ssh.socket >/dev/null 2>&1; then
+    mkdir -p /etc/systemd/system/ssh.socket.d
+    printf '[Socket]\nListenStream=\nListenStream=22\nListenStream=443\n' > /etc/systemd/system/ssh.socket.d/clipero.conf
+    systemctl daemon-reload && systemctl restart ssh.socket
+  else
+    grep -qE '^Port ' /etc/ssh/sshd_config || echo 'Port 22' >> /etc/ssh/sshd_config
+    grep -qE '^Port 443' /etc/ssh/sshd_config || echo 'Port 443' >> /etc/ssh/sshd_config
+    sshd -t && systemctl restart ssh
+  fi
+fi
 # Servicio principal
 cat > /etc/systemd/system/clipero.service <<UNIT
 [Unit]

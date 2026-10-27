@@ -1,5 +1,5 @@
 """Grabador: busca el en vivo actual del canal, lo graba en pedazos y guarda el chat."""
-import glob, json, os, re, shutil, subprocess, sys, threading, time
+import calendar, glob, json, os, re, shutil, subprocess, sys, threading, time
 import config as C
 
 YTDLP = [sys.executable, '-m', 'yt_dlp']
@@ -106,19 +106,37 @@ def bucle():
         time.sleep(20)
 
 
+def bucle_remoto():
+    """El teléfono graba y sube pedazos a REC y el chat a chat/. Aquí solo leemos su estado."""
+    f = os.path.join(C.DATA, 'remoto.json')
+    while True:
+        try:
+            limpiar()
+            d = json.load(open(f)) if os.path.exists(f) else {}
+            vivo = d.get('grabando') and time.time() - d.get('hora', 0) < 300
+            estado.update(video=d.get('video'), titulo=d.get('titulo'), grabando=bool(vivo),
+                          error=None if vivo else 'el teléfono no está enviando grabación')
+        except Exception as e:
+            estado['error'] = f'remoto: {e}'
+        time.sleep(15)
+
+
 def iniciar():
-    threading.Thread(target=bucle, daemon=True).start()
+    fn = bucle_remoto if C.get().get('modo') == 'remoto' else bucle
+    threading.Thread(target=fn, daemon=True).start()
 
 
 def pedazos():
     """Pedazos terminados (todos menos el que se está escribiendo), ordenados."""
     fs = sorted(glob.glob(os.path.join(C.REC, '*.ts')))
+    if C.get().get('modo') == 'remoto':
+        return [p for p in fs if time.time() - os.path.getmtime(p) > 5]
     return fs[:-1] if estado['grabando'] else fs
 
 
 def pedazo_inicio(path):
     m = re.search(r'(\d{8}_\d{6})', os.path.basename(path))
-    return time.mktime(time.strptime(m.group(1), '%Y%m%d_%H%M%S')) if m else os.path.getctime(path)
+    return calendar.timegm(time.strptime(m.group(1), '%Y%m%d_%H%M%S')) if m else os.path.getctime(path)
 
 
 def chat_mensajes(desde, hasta):
@@ -127,7 +145,7 @@ def chat_mensajes(desde, hasta):
     vid = estado.get('video')
     if not vid:
         return out
-    for p in glob.glob(os.path.join(C.DATA, 'chat', vid + '*.json')):
+    for p in glob.glob(os.path.join(C.DATA, 'chat', vid + '*live_chat*')):
         try:
             with open(p, encoding='utf-8', errors='ignore') as f:
                 for line in f:

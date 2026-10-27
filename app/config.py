@@ -16,6 +16,7 @@ DEFAULTS = {
     'canal': 'https://www.youtube.com/@LaCasa593EnVivo/streams',
     'reality': 'LA CASA 593',
     'marca': 'PASIÓN POR LOS REALITIES',
+    'modo': 'remoto',                    # 'remoto' = el teléfono graba y sube; 'local' = graba el servidor
     'pausado': False,
     'umbral': 72,                        # puntaje mínimo (0-100) para mandar un clip
     'max_por_hora': 4,
