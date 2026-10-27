@@ -33,11 +33,15 @@ while true; do
   log "grabando $VID $TIT"
   $YT --skip-download --write-subs --sub-langs live_chat -o "$D/chat/$VID" "https://www.youtube.com/watch?v=$VID" >/dev/null 2>>$D/yt.log &
   CH=$!
-  $YT -f "best[height<=480]/best[height<=720]/best" --hls-use-mpegts -o - "https://www.youtube.com/watch?v=$VID" 2>>$D/yt.log \
-    | TZ=UTC ffmpeg -v error -i pipe:0 -map 0:v:0? -map 0:a:0? -c copy -f segment -segment_time 120 \
-      -segment_format mpegts -reset_timestamps 1 -strftime 1 "$D/rec/%Y%m%d_%H%M%S.ts"
+  U=$($YT -f "bv*[height<=480]+ba/b[height<=480]/bv*+ba/b" -g "https://www.youtube.com/watch?v=$VID" 2>>$D/yt.log)
+  V=$(echo "$U" | sed -n 1p); A=$(echo "$U" | sed -n 2p)
+  if [ -z "$V" ]; then log "no pude obtener el video, reintento en 1 min"; tail -n 2 $D/yt.log; kill $CH 2>/dev/null; sleep 60; continue; fi
+  if [ -n "$A" ]; then IN="-i $V -i $A -map 0:v:0 -map 1:a:0"; else IN="-i $V -map 0:v:0? -map 0:a:0?"; fi
+  log "grabando video+audio"
+  TZ=UTC ffmpeg -v error -reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 10 $IN -c copy -f segment -segment_time 120 \
+    -segment_format mpegts -reset_timestamps 1 -strftime 1 "$D/rec/%Y%m%d_%H%M%S.ts" 2>>$D/ffmpeg.log
   kill $CH 2>/dev/null
-  log "el en vivo se cortó o terminó; busco de nuevo"
-  tail -n 2 $D/yt.log
+  log "la grabación se detuvo; vuelvo a conectar"
+  tail -n 2 $D/ffmpeg.log
   sleep 15
 done
