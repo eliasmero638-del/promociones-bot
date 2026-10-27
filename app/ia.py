@@ -3,7 +3,29 @@ import base64, json, os, re, subprocess, tempfile
 import requests
 import config as C
 
-MODELOS = ['gemini-2.5-flash', 'gemini-2.0-flash']
+MODELOS_RESPALDO = ['gemini-flash-latest', 'gemini-2.5-flash', 'gemini-2.0-flash']
+_cache = {}
+
+
+def modelos(key):
+    """Modelos 'flash' disponibles para esta clave, del más nuevo al más viejo."""
+    if key in _cache:
+        return _cache[key]
+    lista = []
+    try:
+        r = requests.get('https://generativelanguage.googleapis.com/v1beta/models', params={'key': key, 'pageSize': 200}, timeout=30)
+        for m in r.json().get('models', []):
+            n = m['name'].split('/')[-1]
+            if 'generateContent' in m.get('supportedGenerationMethods', []) and 'flash' in n and not any(
+                    x in n for x in ('lite', 'image', 'tts', 'audio', 'live', 'thinking', 'exp', 'preview')):
+                lista.append(n)
+    except Exception:
+        pass
+    def ver(n):
+        return [int(x) for x in re.findall(r'\d+', n)][:2] or [0]
+    lista = sorted(set(lista), key=ver, reverse=True)
+    _cache[key] = (lista + [m for m in MODELOS_RESPALDO if m not in lista])[:4]
+    return _cache[key]
 
 PROMPT = """Eres el editor de una página de Facebook de clips de realities ("{marca}") que vive de las vistas.
 Estás viendo un pedazo de {seg} segundos del reality "{reality}" (Ecuador), transmitido en vivo.
@@ -69,7 +91,7 @@ def analizar(clip, chat_textos, seg):
     body = {'contents': [{'parts': parts}],
             'generationConfig': {'responseMimeType': 'application/json', 'temperature': 0.4}}
     ultimo = None
-    for m in MODELOS:
+    for m in modelos(cfg['gemini_key']):
         try:
             r = requests.post(f'https://generativelanguage.googleapis.com/v1beta/models/{m}:generateContent',
                               params={'key': cfg['gemini_key']}, json=body, timeout=120)
@@ -88,6 +110,11 @@ def analizar(clip, chat_textos, seg):
 
 
 def probar(key):
-    r = requests.post('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent',
-                      params={'key': key}, json={'contents': [{'parts': [{'text': 'Responde solo: OK'}]}]}, timeout=60)
-    return r.status_code, r.text[:300]
+    ult = (0, '')
+    for m in modelos(key):
+        r = requests.post(f'https://generativelanguage.googleapis.com/v1beta/models/{m}:generateContent',
+                          params={'key': key}, json={'contents': [{'parts': [{'text': 'Responde solo: OK'}]}]}, timeout=60)
+        if r.status_code == 200:
+            return 200, m
+        ult = (r.status_code, r.text[:300])
+    return ult
