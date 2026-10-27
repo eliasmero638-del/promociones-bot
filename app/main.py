@@ -2,7 +2,7 @@
 import json, os, queue, secrets, subprocess, threading, time
 import config as C, recorder, analyzer, editor, tg, ia, fb, wa, web, ntfy
 
-VERSION = 'v10-exigente'
+VERSION = 'v11-nombres'
 cola = queue.Queue()
 historial = []          # (hora, puntaje) de clips enviados, para límites por hora
 stats = {'pedazos': 0, 'clips': 0, 'ult_puntaje': None, 'ult_pedazo': None}
@@ -336,6 +336,28 @@ def comandos(tipo, chat, dato, raw):
             tg.texto(f'🤖 Publicación automática activada: {cfg["auto_minimo"]}/100 o más, tras {cfg["auto_espera_min"]} min '
                      f'sin respuesta, máx {cfg["max_publicaciones_dia"]} al día. Nunca lo explícito.\n'
                      '/auto no – apagarla · /auto 90 – cambiar el mínimo', chat)
+    elif cmd in ('/participantes', '/lista'):
+        ps = cfg['participantes']
+        tg.texto('🏠 Siguen en la casa:\n' + '\n'.join(f'• {n}' for n in ps) +
+                 '\n\nSi alguien sale: /salio Nombre\nSi entra alguien: /entro Nombre, apodo1, apodo2', chat)
+    elif cmd == '/salio':
+        q = editor._norm(dato.partition(' ')[2].strip())
+        if not q:
+            return tg.texto('Usa así: /salio Kaviedes', chat)
+        ps = dict(cfg['participantes'])
+        quien = [n for n, al in ps.items() if q in editor._norm(n) or any(q == editor._norm(a) for a in al)]
+        if len(quien) != 1:
+            return tg.texto('No encontré a uno solo con ese nombre. Mira la lista con /participantes', chat)
+        ps.pop(quien[0]); C.save(participantes=ps)
+        tg.texto(f'👋 {quien[0]} fuera de la lista. La IA ya no lo va a nombrar.', chat)
+    elif cmd == '/entro':
+        partes = [x.strip() for x in dato.partition(' ')[2].split(',') if x.strip()]
+        if not partes:
+            return tg.texto('Usa así: /entro Nombre Apellido, apodo1, apodo2', chat)
+        ps = dict(cfg['participantes'])
+        ps[partes[0]] = [p.lower() for p in partes[1:]] + [partes[0].split()[0].lower()]
+        C.save(participantes=ps)
+        tg.texto(f'🆕 {partes[0]} agregado a la lista.', chat)
     elif cmd == '/start':
         tg.texto('Ya estás registrado. /estado para ver cómo va.', chat)
 

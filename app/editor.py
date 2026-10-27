@@ -207,6 +207,17 @@ def hacer_clip(pedazos_info, centro, chat_textos, nombre=None, job_filtro=None, 
                     crudo, dur = rec, fin - ini
                 else:
                     palabras = [(a_ + ini, b_ + ini, w) for a_, b_, w in palabras]
+            # solo nombres que estén en la lista actual de participantes
+            nombres_ok = []
+            for n in r.get('personajes') or []:
+                nn = _norm(str(n))
+                for nombre, alias in cfg['participantes'].items():
+                    claves = [_norm(nombre)] + [_norm(a_) for a_ in alias]
+                    if any(re.search(r'\b' + re.escape(k) + r'\b', nn) for k in claves if len(k) >= 3):
+                        if nombre not in nombres_ok:
+                            nombres_ok.append(nombre)
+                        break
+            r['personajes'] = nombres_ok
             info = {'titulo': str(r.get('titulo') or '¡SE PRENDIÓ LA CASA!').upper(),
                     'subtitulo': str(r.get('subtitulo') or C.get()['reality']),
                     'nombres': r.get('personajes') or [], 'tipo': r.get('categoria'),

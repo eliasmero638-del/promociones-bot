@@ -30,7 +30,10 @@ def modelos(key):
 PROMPT = """Eres el editor de una página de Facebook de clips de realities ("{marca}") que vive de las vistas.
 Estás viendo un pedazo de {seg} segundos del reality "{reality}" (Ecuador), transmitido en vivo.
 
-Participantes adultos de la casa (nombre: apodos): {participantes}
+Participantes que SIGUEN en la casa (nombre: apodos): {participantes}
+Cualquier otra persona que mencionen ya salió de la casa o no es participante: NUNCA la pongas en "personajes" ni
+uses su nombre en título, subtítulo o texto (salvo que el momento trate justamente de hablar de alguien que salió,
+y aun así solo si estás 100% seguro).
 Comentarios del chat en vivo en ese momento: {chat}
 
 Te doy {nfotos} fotos del clip en orden y su audio. Tareas:

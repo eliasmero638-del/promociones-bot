@@ -40,6 +40,7 @@ def _pagina(cid, m, token, msg=''):
 {explic}{('<div class="estado">' + e(msg) + '</div>') if msg else ''}
 {acciones}
 <video src="/v/{token}.mp4" poster="/i/{token}.jpg" controls playsinline preload="none"></video>
+<p style="text-align:center;margin:8px 0"><a style="color:#ff8fb3" href="/v/{token}.mp4">▶️ Si no se ve, toca aquí para abrir el video</a></p>
 <div class="box" id="t">{e(m.get('texto_post', ''))}</div>
 <button class="copiar" onclick="navigator.clipboard.writeText(document.getElementById('t').innerText);this.innerText='✅ Copiado'">📋 Copiar texto</button>
 <div class="box">{e(m.get('descripcion', ''))}</div>
@@ -47,8 +48,17 @@ def _pagina(cid, m, token, msg=''):
 
 
 class H(BaseHTTPRequestHandler):
+    protocol_version = 'HTTP/1.1'      # iPhone (Safari) necesita 1.1 para reproducir video por partes
+
     def log_message(self, *a):
         pass
+
+    def do_HEAD(self):
+        self._solo_cabecera = True
+        try:
+            self.do_GET()
+        finally:
+            self._solo_cabecera = False
 
     def _send(self, code, body, ctype='text/html; charset=utf-8'):
         b = body.encode() if isinstance(body, str) else body
@@ -57,7 +67,8 @@ class H(BaseHTTPRequestHandler):
         self.send_header('Content-Length', str(len(b)))
         self.send_header('Cache-Control', 'no-store')
         self.end_headers()
-        self.wfile.write(b)
+        if not getattr(self, '_solo_cabecera', False):
+            self.wfile.write(b)
 
     def _clip(self):
         m_ = re.match(r'^/(c|v|i)/([A-Za-z0-9_-]{16,64})(\.mp4|\.jpg)?$', self.path.split('?')[0])
@@ -84,14 +95,22 @@ class H(BaseHTTPRequestHandler):
         rng = self.headers.get('Range')
         a, b = 0, size - 1
         if rng:
-            mr = re.match(r'bytes=(\d*)-(\d*)', rng)
-            if mr:
+            mr = re.match(r'bytes=(\d*)-(\d*)', rng.strip())
+            if mr and (mr.group(1) or mr.group(2)):
                 if mr.group(1):
                     a = int(mr.group(1))
                     if mr.group(2):
                         b = min(int(mr.group(2)), size - 1)
-                elif mr.group(2):
+                else:
                     a = max(0, size - int(mr.group(2)))
+            else:
+                rng = None
+            if rng and a >= size:
+                self.send_response(416)
+                self.send_header('Content-Range', f'bytes */{size}')
+                self.send_header('Content-Length', '0')
+                self.end_headers()
+                return
         self.send_response(206 if rng else 200)
         self.send_header('Content-Type', 'video/mp4')
         self.send_header('Accept-Ranges', 'bytes')
@@ -99,6 +118,8 @@ class H(BaseHTTPRequestHandler):
         if rng:
             self.send_header('Content-Range', f'bytes {a}-{b}/{size}')
         self.end_headers()
+        if getattr(self, '_solo_cabecera', False):
+            return
         try:
             with open(path, 'rb') as f:
                 f.seek(a)
@@ -128,6 +149,13 @@ class H(BaseHTTPRequestHandler):
         self._send(200, _pagina(cid, m, token, msg))
 
 
+class Servidor(ThreadingHTTPServer):
+    daemon_threads = True
+
+    def handle_error(self, request, client_address):
+        pass        # el celular cortó la conexión (normal al adelantar el video)
+
+
 def iniciar(buscar, publicar, no_publicar):
     global _buscar
     _buscar = buscar
@@ -137,7 +165,7 @@ def iniciar(buscar, publicar, no_publicar):
 
     def correr():
         try:
-            ThreadingHTTPServer(('0.0.0.0', puerto), H).serve_forever()
+            Servidor(('0.0.0.0', puerto), H).serve_forever()
         except Exception as e:
             print('web error', e, flush=True)
     threading.Thread(target=correr, daemon=True).start()
