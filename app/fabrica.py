@@ -417,6 +417,8 @@ def revisar_pedidos():
     hechos_p = os.path.join(DIR, 'pedidos_hechos.json')
     hechos = _leer(hechos_p, [])
     for p in _leer(PEDIDOS, []):
+        if p.get('despues') and time.time() < p['despues']:
+            continue
         if p.get('id') and p['id'] not in hechos:
             hechos.append(p['id']); _guardar(hechos_p, hechos)
             tema = {'titulo': p['tema'], 'resumen': p.get('resumen', ''), 'tipo': p.get('tipo', 'misterio')} \
