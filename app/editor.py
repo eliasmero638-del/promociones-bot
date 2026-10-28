@@ -164,6 +164,9 @@ FUERTE = (r'callate|cállate|respeta|no me grites|que te pasa|qué te pasa|menti
 
 
 _local = {}       # transcripción local del último clip (para Groq)
+import collections as _co
+diag = {'candidatos': 0, 'filtro_descarta': 0, 'a_ia': 0, 'ia_error': 0, 'supervisor': _co.Counter(),
+        'bajo_interes': 0, 'enviados': 0, 'ultimos': _co.deque(maxlen=6)}
 
 
 def prefiltro(crudo, chat_textos, señales=None):
@@ -234,8 +237,12 @@ def hacer_clip(pedazos_info, centro, chat_textos, nombre=None, job_filtro=None, 
     if usar_ia and job_filtro is not None and cfg.get('prefiltro', True) and not extra:
         pasa, motivo = prefiltro(crudo, chat_textos, señales)
         log(motivo, '→', 'a Gemini' if pasa else 'descartado sin gastar cuota')
+        diag['candidatos'] += 1
         if not pasa:
+            diag['filtro_descarta'] += 1
+            diag['ultimos'].append(time.strftime('%H:%M ') + 'filtro: ' + motivo)
             return {'descartado': True}
+        diag['a_ia'] += 1
     if usar_ia:
         r = ia.analizar(crudo, chat_textos, dur) if ia.hay_cuota() else {'error': 'Gemini sin cuota'}
         if 'error' in r and ia.groq_activa():
@@ -265,6 +272,8 @@ def hacer_clip(pedazos_info, centro, chat_textos, nombre=None, job_filtro=None, 
                     motivo = 'la evidencia no aparece en el audio'
             if motivo:
                 log('supervisor descarta:', motivo, '·', r.get('titulo'))
+                diag['supervisor'][motivo.split('(')[0].strip()[:40]] += 1
+                diag['ultimos'].append(time.strftime('%H:%M ') + f"IA descarta ({motivo}): {r.get('titulo', '')}")
                 return {'descartado': True, 'motivo': motivo}
             if r.get('sigue') and extra < cfg.get('extension_max', 360):
                 return {'extender': True}
@@ -370,6 +379,8 @@ def hacer_clip(pedazos_info, centro, chat_textos, nombre=None, job_filtro=None, 
                     'explicito': bool(r.get('explicito')), 'ia': True, 'evidencia': r.get('evidencia', '')}
         else:
             log('IA falló, uso el método básico')
+            diag['ia_error'] += 1
+            diag['ultimos'].append(time.strftime('%H:%M ') + 'IA no respondió: ' + str(r.get('error'))[:80])
     if info is None and solo_ia:
         return {'descartado': True}
     if info is None and usar_ia:
@@ -384,6 +395,8 @@ def hacer_clip(pedazos_info, centro, chat_textos, nombre=None, job_filtro=None, 
         info['ia'] = False
     if job_filtro is not None and info.get('ia') and info.get('interes', 0) < job_filtro:
         log('IA dice que no interesa:', info.get('interes'), info.get('descripcion'))
+        diag['bajo_interes'] += 1
+        diag['ultimos'].append(time.strftime('%H:%M ') + f"interés {info.get('interes')}: {info.get('titulo', '')}")
         return {'descartado': True, **info}
     ass = os.path.join(d, 'subs.ass')
     hacer_ass(palabras, info, dur, ass)

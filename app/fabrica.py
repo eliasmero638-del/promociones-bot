@@ -555,12 +555,51 @@ def _cola_segura(formato, tema=None, motivo='programado', intento=1):
 PEDIDOS = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'pedidos.json')
 
 
+def recibir_video(p):
+    """Video ya editado por Claude (subido a GitHub): bajarlo, mandarlo a Telegram con botones y publicar a los 20 min."""
+    try:
+        jid = time.strftime('%Y%m%d_%H%M%S') + '_claude'
+        carpeta = os.path.join(DIR, jid)
+        os.makedirs(carpeta, exist_ok=True)
+        archivos = {}
+        for clave, nombre in (('url', 'video.mp4'), ('miniatura_url', 'miniatura.jpg')):
+            if p.get(clave):
+                r = requests.get(p[clave], headers=UA, timeout=600, stream=True)
+                r.raise_for_status()
+                with open(os.path.join(carpeta, nombre), 'wb') as f:
+                    for ch in r.iter_content(1 << 20):
+                        f.write(ch)
+                archivos['video' if clave == 'url' else 'miniatura'] = nombre
+        v = os.path.join(carpeta, 'video.mp4')
+        if 'miniatura' not in archivos:
+            montaje.sh(['ffmpeg', '-y', '-v', 'error', '-ss', '3', '-i', v, '-frames:v', '1', os.path.join(carpeta, 'miniatura.jpg')])
+            archivos['miniatura'] = 'miniatura.jpg'
+        du = int(montaje.dur(v))
+        meta = {'id': jid, 'formato': p.get('formato') or ('short' if du < 60 else 'largo'), 'motivo': 'claude',
+                'tema': {'titulo': p.get('titulo', '')}, 'titulo': p.get('titulo', ''),
+                'titulo_youtube': p.get('titulo_youtube') or p.get('titulo', ''),
+                'descripcion_youtube': p.get('descripcion_youtube', ''), 'etiquetas': p.get('etiquetas', []),
+                'texto_facebook': p.get('texto_facebook', ''), 'guion': p.get('guion', ''), 'archivos': archivos,
+                'token': secrets.token_urlsafe(16), 'creado': time.time(), 'estado': 'pendiente', 'duracion': du}
+        _guardar(os.path.join(carpeta, 'meta.json'), meta)
+        avisar(meta)
+        log('video de Claude recibido', jid)
+    except Exception as e:
+        log('error recibiendo video de Claude', e)
+        for c in C.get()['chat_ids']:
+            tg._api('sendMessage', chat_id=c, text=f'⚠️ No pude recibir el video editado: {str(e)[:300]}')
+
+
 def revisar_pedidos():
     """Pedidos que Claude deja en el repositorio (pedidos.json): se hacen una sola vez cada uno."""
     hechos_p = os.path.join(DIR, 'pedidos_hechos.json')
     hechos = _leer(hechos_p, [])
     for p in _leer(PEDIDOS, []):
         if p.get('despues') and time.time() < p['despues']:
+            continue
+        if p.get('id') and p['id'] not in hechos and p.get('tipo') == 'video_listo':
+            hechos.append(p['id']); _guardar(hechos_p, hechos)
+            threading.Thread(target=recibir_video, args=(p,), daemon=True).start()
             continue
         if p.get('id') and p['id'] not in hechos:
             hechos.append(p['id']); _guardar(hechos_p, hechos)

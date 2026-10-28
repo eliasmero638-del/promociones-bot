@@ -7,7 +7,7 @@ except Exception as _e:          # si la fábrica falla, el Clipero sigue funcio
     fabrica = None
     print('fabrica no disponible:', _e, flush=True)
 
-VERSION = 'v24-edicion'
+VERSION = 'v25-diag'
 cola = queue.Queue()
 historial = []          # (hora, puntaje) de clips enviados, para límites por hora
 stats = {'pedazos': 0, 'clips': 0, 'ult_puntaje': None, 'ult_pedazo': None}
@@ -125,6 +125,7 @@ def trabajador():
                     tg.texto('⚠️ No pude armar ese clip (¿todavía no hay grabación de ese momento?).')
                 continue
             stats['clips'] += 1
+            editor.diag['enviados'] += 1
             if job.get('barrido'):
                 historial.append((centro, info.get('interes', 0)))
             cid = os.path.basename(os.path.dirname(info['ruta']))
@@ -294,6 +295,50 @@ MOTIVOS = {'normal': 'Charla normal, no pasa nada', 'nopol': 'No hay polémica r
            'pic': 'Picante exagerado', 'nom': 'Nombre incorrecto', 'tit': 'Título engañoso'}
 
 
+def texto_diag():
+    d = editor.diag
+    e = recorder.estado
+    ult = stats.get('ult_pedazo') or '—'
+    sup = ', '.join(f'{k}: {v}' for k, v in d['supervisor'].most_common(4)) or '—'
+    return (f"🩺 <b>Diagnóstico Clipero {VERSION}</b>\n"
+            f"📡 Grabación: {'✅ llegando' if e['grabando'] else '❌ NO llega (revisa el teléfono)'} · último pedazo {ult}\n"
+            f"🧩 Pedazos analizados: {stats['pedazos']}\n"
+            f"🔎 Momentos candidatos: {d['candidatos']} · descartados por el filtro gratis: {d['filtro_descarta']}\n"
+            f"🤖 Revisados por IA: {d['a_ia']} · IA sin respuesta: {d['ia_error']} · interés bajo: {d['bajo_interes']}\n"
+            f"🛡️ Descartes del supervisor: {sup}\n"
+            f"🎬 Clips enviados: {stats['clips']}\n"
+            f"IA: Gemini {'✅' if ia.hay_cuota() else '⛔ sin cuota'} · Groq {'✅' if ia.groq_activa() else '❌'}\n\n"
+            "Últimos descartes:\n" + ('\n'.join(d['ultimos']) or '—'))
+
+
+def vigilante():
+    """Reporte cada 2 horas (silencioso) y alerta si deja de llegar la grabación."""
+    ult_rep, sin_grab_desde, avisado = time.time(), None, False
+    while True:
+        time.sleep(60)
+        try:
+            if not recorder.estado['grabando']:
+                sin_grab_desde = sin_grab_desde or time.time()
+                if time.time() - sin_grab_desde > 15 * 60 and not avisado:
+                    avisado = True
+                    for c in C.get()['chat_ids']:
+                        tg._api('sendMessage', chat_id=c, parse_mode='HTML',
+                                text='⚠️ <b>Clipero:</b> hace 15 minutos que NO llega grabación del teléfono. '
+                                     'Revisa que el Infinix esté prendido, con internet y con Termux abierto.')
+                    if ntfy.activo():
+                        ntfy.enviar('⚠️ Clipero: no llega la grabación', 'Revisa el Infinix (Termux, internet, batería).')
+            else:
+                if avisado:
+                    tg.texto('✅ Clipero: la grabación volvió a llegar.')
+                sin_grab_desde, avisado = None, False
+            if C.get().get('reporte_horas', 2) and time.time() - ult_rep > C.get().get('reporte_horas', 2) * 3600:
+                ult_rep = time.time()
+                for c in C.get()['chat_ids']:
+                    tg._api('sendMessage', chat_id=c, text=texto_diag(), parse_mode='HTML', disable_notification='true')
+        except Exception as ex:
+            log('vigilante', ex)
+
+
 def comandos(tipo, chat, dato, raw):
     cfg = C.get()
     if tipo == 'boton' and dato.startswith(('rpub:', 'rno:')) and fabrica:
@@ -423,6 +468,8 @@ def comandos(tipo, chat, dato, raw):
         threading.Thread(target=fabrica._cola_segura, args=(f_, {'titulo': tema, 'resumen': '', 'tipo': 'misterio'}
                                                             if tema else None, 'manual'), daemon=True).start()
         tg.texto(f'🎬 Haciendo un {f_} de Ridmer' + (f' sobre: {tema}' if tema else '') + '. Te aviso cuando esté.', chat)
+    elif cmd == '/diag':
+        tg.texto(texto_diag(), chat)
     elif cmd == '/start':
         tg.texto('Ya estás registrado. /estado para ver cómo va.', chat)
 
@@ -435,6 +482,7 @@ def main():
     threading.Thread(target=analizar_bucle, daemon=True).start()
     threading.Thread(target=trabajador, daemon=True).start()
     threading.Thread(target=auto_publicador, daemon=True).start()
+    threading.Thread(target=vigilante, daemon=True).start()
     web.iniciar(buscar_token, lambda cid: publicar_clip(cid, 'tú'), no_publicar,
                 {'buscar': fabrica.buscar_token, 'publicar': fabrica.publicar, 'no': fabrica.no_publicar}
                 if fabrica else None)

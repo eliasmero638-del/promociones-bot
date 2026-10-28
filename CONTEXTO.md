@@ -15,6 +15,11 @@ El dueño no programa: explicarle todo paso a paso, en español sencillo, con un
 - v23-gratis: Ridmer saca temas de Wikipedia (`app/fuentes.py`, sin cuota) y urgentes de Google Noticias RSS; el guion
   lo escribe Groq (o Gemini sin búsqueda) SOLO con el texto fuente; fotos del propio artículo como respaldo; la fuente
   (URL) va en la descripción. Gemini con Google queda como último recurso. Clipero usa primero los modelos lite de Gemini.
+- v25-diag: `/diag` en Telegram (grabación, candidatos, descartes del filtro/IA/supervisor con motivos); reporte
+  silencioso cada 2 h; alerta si no llega grabación 15 min. Videos editados por Claude: subir el mp4 a GitHub (rama
+  `entregas`) y agregar a `pedidos.json` `{"id","tipo":"video_listo","url": raw.githubusercontent…, "miniatura_url",
+  "titulo_youtube","descripcion_youtube","etiquetas","texto_facebook","formato"}` → el servidor lo manda a Telegram con
+  botones y lo publica en Ridmer TV a los 20 min.
 - Pendiente del plan: cola persistente con estados/reintentos, métricas por categoría, fuentes con URL/fecha en Ridmer,
   YouTube API, Ridmer TV en Meta.
 
