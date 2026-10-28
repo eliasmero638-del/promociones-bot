@@ -57,15 +57,29 @@ def _hechos(n=60):
     return '; '.join(h['titulo'] for h in _leer(HIST, [])[-n:]) or '(ninguno)'
 
 
+ULTIMO_ERROR = ''
+
+
 def buscar_tema(formato):
     hoy = time.strftime('%d/%m/%Y')
     extra = ('Es un video largo de 4 a 5 minutos: elige un caso con suficiente historia y giros.' if formato == 'largo'
              else 'Es un Short de menos de 60 segundos: elige algo que se cuente rápido y sorprenda. '
                   'Si hoy hay una noticia importante y llamativa, puede ser uno de los temas.')
-    d, f = ia.generar(TEMAS.format(hoy=hoy, n=5, formato='video LARGO' if formato == 'largo' else 'SHORT',
-                                   extra=extra, hechos=_hechos()), buscar=True, temperatura=0.9)
+    p = TEMAS.format(hoy=hoy, n=5, formato='video LARGO' if formato == 'largo' else 'SHORT', extra=extra, hechos=_hechos())
+    intentos = []
+    d, f = ia.generar(p, buscar=True, temperatura=0.9)                 # 1) Gemini con Google
+    intentos.append(f'Gemini+Google: {"ok" if d else f}')
+    if not d or not d.get('temas'):                                     # 2) Gemini sin búsqueda (casos conocidos)
+        d, f = ia.generar(p.replace('Busca en internet y propón', 'Propón (casos REALES bien documentados que conozcas)'),
+                          buscar=False, temperatura=0.9)
+        intentos.append(f'Gemini: {"ok" if d else f}')
+    if (not d or not d.get('temas')) and ia.groq_activa():              # 3) Groq
+        d = ia.groq_json(p.replace('Busca en internet y propón', 'Propón (casos REALES bien documentados que conozcas)'))
+        intentos.append(f'Groq: {"ok" if d else "falló"}')
     if not d or not d.get('temas'):
-        log('no hubo temas', f)
+        global ULTIMO_ERROR
+        ULTIMO_ERROR = 'no encontré tema → ' + ' | '.join(str(x)[:160] for x in intentos)
+        log(ULTIMO_ERROR)
         return None
     hechos = _hechos(200).lower()
     temas = [t for t in d['temas'] if t.get('titulo') and t['titulo'].lower()[:40] not in hechos]
@@ -116,6 +130,11 @@ def escribir_guion(tema, formato):
                      palabras='entre 95 y 115' if corto else 'entre 620 y 760',
                      segmentos='7 a 9' if corto else '28 a 38', tono=tono)
     d, fuentes = ia.generar(p, buscar=True, temperatura=0.7, timeout=300)
+    if not d or not d.get('segmentos'):
+        log('guion con búsqueda falló:', fuentes, '→ sin búsqueda')
+        d, fuentes = ia.generar(p.replace('Busca en internet y usa SOLO datos verificados',
+                                          'Usa SOLO datos que conozcas con seguridad'), buscar=False, temperatura=0.7)
+        fuentes = []
     if not d or not d.get('segmentos'):
         raise RuntimeError(f'no se pudo escribir el guion: {fuentes}')
     d['fuentes'] = fuentes if isinstance(fuentes, list) else []
@@ -252,7 +271,7 @@ def producir(formato, tema=None, motivo='programado'):
     with _lock:
         tema = tema or buscar_tema(formato)
         if not tema:
-            raise RuntimeError('no encontré tema')
+            raise RuntimeError(ULTIMO_ERROR or 'no encontré tema')
         jid = time.strftime('%Y%m%d_%H%M%S') + '_' + formato
         carpeta = os.path.join(DIR, jid)
         os.makedirs(carpeta, exist_ok=True)
@@ -400,13 +419,24 @@ def no_publicar(jid):
 
 
 # ---------------------------------------------------------------- horario
-def _cola_segura(formato, tema=None, motivo='programado'):
+def _cola_segura(formato, tema=None, motivo='programado', intento=1):
     try:
         producir(formato, tema, motivo)
     except Exception as e:
         log('error produciendo', formato, e)
+        reintento = intento < 2
+        txt = (f"⚠️ Ridmer: no se pudo hacer el {'Short' if formato == 'short' else 'video largo'} "
+               f"({time.strftime('%H:%M')}).\nMotivo: {str(e)[:400]}\n"
+               + ('🔁 Lo vuelvo a intentar en 1 hora.' if reintento else '⏭️ Sigo con el próximo horario.'))
         if ntfy.activo():
-            ntfy.enviar('⚠️ Ridmer: no se pudo hacer un video', str(e)[:300], prioridad=2)
+            ntfy.enviar('⚠️ Ridmer: no se pudo hacer un video', txt[:500], prioridad=2)
+        for c in C.get()['chat_ids']:
+            tg._api('sendMessage', chat_id=c, text=txt, disable_notification='true')
+        if reintento:
+            def otra_vez():
+                time.sleep(3600)
+                _cola_segura(formato, tema, motivo, intento + 1)
+            threading.Thread(target=otra_vez, daemon=True).start()
 
 
 PEDIDOS = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'pedidos.json')

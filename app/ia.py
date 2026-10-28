@@ -58,7 +58,10 @@ Te doy {nfotos} fotos del clip en orden y su audio. Tareas:
 2. Di qué participantes intervienen SOLO si estás 100% seguro de quién es (porque lo nombran claramente en el audio
    por su nombre o apodo, o el chat lo confirma). Si tienes la mínima duda, NO lo pongas en "personajes" y en el
    título, subtítulo, descripción y texto NO uses su nombre: di "una participante", "un compañero", "uno de los chicos".
-   Es mucho peor poner un nombre equivocado que no poner ninguno.
+   Es mucho peor poner un nombre equivocado que no poner ninguno. Identifica POR SEPARADO quién habla ("habla") y con
+   quién habla ("con_quien"), cada uno con su certeza y cómo lo sabes. No adivines por quién aparece en pantalla ni
+   solo por el chat. Si no confirmas los dos nombres, el título NO lleva nombres: usa uno neutral como
+   "SE ARMA UNA DISCUSIÓN EN LA CASA" o "CONVERSACIÓN TENSA EN LA CASA". Si no es una discusión real, no digas "pelea".
 3. CLASIFICA el momento (no solo peleas importan; el volumen bajo NUNCA es motivo de descarte, y los gritos NO
    prueban que haya polémica). Categorías:
    - "polemica": discusión real, acusaciones, desacuerdo fuerte, respuesta fuerte, tensión entre participantes.
@@ -97,7 +100,9 @@ Responde SOLO con este JSON:
 {{"decision": "clip|descartar", "motivo_descarte": "", "interes": 0-100,
  "categoria": "polemica|conversacion_importante|tristeza|historia_personal|picante|revelacion|humor|normal",
  "categoria_secundaria": "", "explicacion": "qué ocurre concretamente y por qué interesa",
- "contexto_claro": true, "certeza": 0-100, "intensidad": 0-100, "novedad": 0-100, "sigue": false,
+ "contexto_claro": true, "certeza": 0-100,
+ "habla": [{{"nombre": "...", "certeza": 0-100, "como_lo_sabes": "lo nombran / se ve en el chat / ..."}}],
+ "con_quien": [{{"nombre": "...", "certeza": 0-100, "como_lo_sabes": "..."}}], "intensidad": 0-100, "novedad": 0-100, "sigue": false,
  "personajes": ["..."], "titulo": "...", "subtitulo": "...", "descripcion": "qué pasó en una frase",
  "texto_post": "...", "explicito": false, "inicio": 0.0, "fin": 0.0, "evidencia": "frase exacta", "primera_frase": "primeras palabras exactas del tema",
  "subtitulos": [{{"t0": 0.0, "t1": 2.1, "texto": "..."}}]}}"""
@@ -364,3 +369,20 @@ def groq_clasificar(texto, chat=''):
         except Exception:
             continue
     return None, 0
+
+
+def groq_json(prompt, temperatura=0.8):
+    key = C.get().get('groq_key')
+    if not key:
+        return None
+    for m in groq_modelos(key)[:3]:
+        try:
+            r = requests.post('https://api.groq.com/openai/v1/chat/completions', timeout=120,
+                              headers={'Authorization': f'Bearer {key}'},
+                              json={'model': m, 'temperature': temperatura, 'response_format': {'type': 'json_object'},
+                                    'messages': [{'role': 'user', 'content': prompt}]})
+            if r.status_code == 200:
+                return json.loads(r.json()['choices'][0]['message']['content'])
+        except Exception:
+            continue
+    return None

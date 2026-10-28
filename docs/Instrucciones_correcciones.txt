@@ -1,0 +1,154 @@
+                           INSTRUCCIONES DE CORRECCIÓN
+ Clipero + Fábrica Ridmer · Notificaciones, identificación y producción de YouTube
+
+ Objetivo: corregir errores observados sin deshacer la mejora reciente de calidad de clips y sin cambiar el temporizador de
+ publicación automática de 20 minutos.
+
+
+ 1. Reglas que no se deben cambiar
+   • Conservar los botones actuales de aprobar/rechazar en Telegram y la publicación automática tras 20 minutos sin respuesta.
+
+   • No deshacer la mejora reciente de selección de clips.
+
+   • Primero revisar código, logs y estado real; no modificar ni desplegar a ciegas.
+
+   • No subir secretos, tokens ni cookies al repositorio público. Los secretos permanecen en /var/lib/clipero/secrets/config.json.
+
+
+ 2. Aviso de Ridmer que aparece en notificaciones, pero no en Telegram
+ Observación: aparece un aviso similar a “Ridmer: no se pudo hacer un video, no encontré tema” en las notificaciones del teléfono,
+ pero no llega como mensaje dentro del bot.
+
+   • Localizar el código que genera exactamente el aviso y determinar si usa ntfy/notificación local, Telegram o ambos.
+
+   • Revisar los logs de esa ejecución y confirmar si falló la búsqueda de tema, el envío del mensaje o ambos.
+
+   • Verificar chat_id, token configurado y resultado de la llamada, sin mostrar secretos.
+
+   • Si ntfy/local funciona pero falta Telegram, mandar también un resumen por Telegram con reintentos limitados y sin duplicados.
+
+   • Si no encuentra tema, explicar cuándo se buscó, qué etapa falló y si se volverá a intentar.
+
+
+ 3. Evitar confusiones de participantes y títulos
+ Ejemplo informado: el título decía que Kavieres discutía con la Firense, pero el usuario indica que hablaba con la Lama. El
+ sistema no debe adivinar identidades.
+
+   • Verificar por separado quién habla y con quién interactúa; son dos identificaciones diferentes.
+
+   • Usar nombres propios solo si hay evidencia clara y alta confianza. No inferirlos solo por quién aparece en pantalla o por el chat.
+
+   • Si no está seguro de los nombres, usar título neutral: “Se arma una discusión en la casa 593” o “Una conversación tensa en la
+     casa 593”.
+
+   • No llamar “pelea” a una conversación normal. El título debe describir exactamente lo que se ve y oye.
+
+   • El supervisor debe comprobar el título contra el video final antes de enviarlo a Telegram. Si el nombre es dudoso, quitarlo y volver
+     a validar.
+
+ Regla: si no se pueden confirmar ambos nombres, no usar nombres propios en el título. Si no se confirma que es una discusión,
+ usar “conversación” en vez de “pelea”.
+
+
+ 4. Supervisor de calidad antes de Telegram
+   • Verificar que existe un acontecimiento interesante y que el contexto se entiende.
+
+   • Validar nombres, apodos, interlocutores, transcripción y título.
+
+   • Comprobar que el clip incluye inicio, desarrollo y final natural; no cortar una polémica que continúa.
+
+   • Revisar audio, imagen, subtítulos, duración y duplicados.
+
+   • Si falta contexto, ampliar el material. Si persiste la duda, usar título neutral o descartar.
+
+   • Toda verificación nueva ocurre antes de enviar a Telegram. No cambiar el temporizador de 20 minutos.
+
+
+
+
+Correcciones Clipero + Ridmer                                                                                                        Página 1
+ 5. Fábrica Ridmer: no se están creando videos
+ El aviso “no encontré tema” no demuestra por sí solo que el editor esté roto. Claude debe seguir una ejecución completa y
+ localizar la etapa exacta donde se detiene.
+
+   • Revisar logs desde búsqueda de tema → guion → verificación → voz → tiempos/subtítulos → imágenes → montaje → miniatura
+     → entrega/publicación.
+
+   • Confirmar que los horarios programados realmente se ejecutan y que los trabajos no se quedan bloqueados en cola.
+
+   • Comprobar cuotas, dependencias, permisos, rutas, fuentes de búsqueda y filtros demasiado estrictos.
+
+   • Si la búsqueda devuelve cero temas, registrar si fue por error del proveedor, cuota, falta de fuentes verificables o duplicado;
+     intentar una búsqueda alternativa con límite.
+
+   • Si no encuentra tema fiable, guardar el trabajo para reintento y enviar un aviso útil por Telegram.
+
+   • Ejecutar una prueba controlada de un Short y otra de un video largo; comprobar archivos y etapa final.
+
+   • No afirmar que YouTube está automatizado hasta verificar en código y logs que la subida está implementada y autorizada.
+
+
+ 6. Diagnóstico, recuperación y alertas
+   • Cada trabajo debe tener ID, etapa actual, hora, último error e intentos.
+
+   • Si Gemini/Groq agota cuota, guardar el trabajo y esperar o usar un respaldo compatible; no perderlo ni entrar en bucle.
+
+   • Evitar duplicados tras reinicios o timeouts. Antes de reintentar una publicación, comprobar si ya se publicó.
+
+   • Alertar por Telegram cuando haya errores repetidos, cola bloqueada o ausencia de videos en el horario esperado.
+
+   • Rotar logs y no registrar secretos.
+
+
+ 7. Orden de trabajo para Claude Code
+   • Primero auditar código, servicios y logs sin editar ni desplegar.
+
+   • Entregar diagnóstico con causa confirmada, evidencia, archivos implicados y cambio propuesto.
+
+   • Corregir primero atribución de participantes y títulos neutrales; después notificaciones; después la cadena de producción Ridmer.
+
+   • Implementar cambios mínimos, añadir pruebas, comprobar logs y preparar rollback.
+
+   • No reiniciar ni desplegar producción sin copia de seguridad, pruebas y autorización explícita.
+
+
+ 8. Prompt para copiar y pegar en Claude Code
+           Revisa Clipero + Fábrica Ridmer. PRIMERO AUDITA código y logs; no edites ni despliegues en la primera pasada.
+           Entrega diagnóstico con evidencia, archivos afectados y plan.
+
+           REGLAS: no cambies la publicación automática de Telegram tras 20 minutos; no deshagas la mejora reciente de
+           calidad; no cortes polémicas por duración fija; no dupliques funciones existentes; no expongas secretos ni
+           los subas al repo público; no despliegues sin backup, pruebas y autorización.
+
+           1) NOTIFICACIÓN: el aviso “Ridmer: no se pudo hacer un video, no encontré tema” aparece en notificaciones del
+           teléfono, pero no en Telegram. Localiza quién genera el aviso, revisa logs, chat_id, envío y excepciones. Si
+           ntfy/local funciona pero falta Telegram, envía también un resumen a Telegram con reintentos limitados y sin
+           duplicados.
+
+           2) PARTICIPANTES: hubo un título que atribuía una discusión de Kavieres a la Firense, pero el usuario dice
+           que hablaba con la Lama. Verifica por separado quién habla y con quién interactúa. Usa nombres solo con
+           evidencia clara y alta confianza. Si no está seguro, usa título neutral como “Se arma una discusión en la
+           casa 593”. No llames pelea a una charla normal. El supervisor debe revisar el título contra el video final
+           antes de enviarlo y quitar nombres dudosos.
+
+           3) RIDMER NO PRODUCE: sigue una ejecución desde búsqueda de tema, guion, verificación, voz, subtítulos,
+           imágenes, montaje, miniatura y entrega/publicación. Determina la etapa exacta que falla. Comprueba
+           programación, cuotas, dependencias, permisos, rutas, fuentes y filtros. Si no hay tema verificable, intenta
+           una búsqueda alternativa con límite, guarda el trabajo para reintento y explica la causa. Prueba un Short y
+           un video largo de extremo a extremo. No afirmes que la subida a YouTube existe hasta comprobarlo.
+
+
+
+
+Correcciones Clipero + Ridmer                                                                                                      Página 2
+           4) SUPERVISOR: antes de Telegram valida interés, contexto, identidades, título, audio, subtítulos,
+           integridad y final natural. Si hay duda, ampliar contexto, usar título neutral o descartar.
+
+           Entrega primero auditoría; después aplica cambios mínimos, pruebas y rollback. Actualiza VERSION según el
+           procedimiento existente. Explica al usuario en español sencillo y un comando por vez.
+
+
+
+
+Correcciones Clipero + Ridmer                                                                                    Página 3
+

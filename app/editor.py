@@ -322,6 +322,44 @@ def hacer_clip(pedazos_info, centro, chat_textos, nombre=None, job_filtro=None, 
                             nombres_ok.append(nombre)
                         break
             r['personajes'] = nombres_ok
+            # supervisor de nombres: solo los confirmados (habla / con quién, certeza ≥ 90)
+            conf = set()
+            for campo in ('habla', 'con_quien'):
+                for x in r.get(campo) or []:
+                    try:
+                        if int(x.get('certeza', 0) or 0) >= cfg.get('certeza_nombres', 90):
+                            nx = _norm(str(x.get('nombre', '')))
+                            for nombre_, al in list(cfg['participantes'].items()) + list((cfg.get('exparticipantes') or {}).items()):
+                                if any(k and k in nx for k in [_norm(nombre_)] + [_norm(a_) for a_ in al] if len(k) >= 3):
+                                    conf.add(nombre_)
+                    except Exception:
+                        pass
+            texto_tit = _norm(' '.join(str(r.get(k, '')) for k in ('titulo', 'subtitulo', 'texto_post', 'descripcion')))
+            dudosos = []
+            for nombre_, al in list(cfg['participantes'].items()) + list((cfg.get('exparticipantes') or {}).items()):
+                if nombre_ in conf:
+                    continue
+                if any(re.search(r'\b' + re.escape(k) + r'\b', texto_tit) for k in [_norm(a_) for a_ in al] if len(k) >= 3):
+                    dudosos.append(nombre_)
+            if dudosos:
+                cat = str(r.get('categoria', '')).lower()
+                neutros = {'polemica': ('SE ARMA UNA DISCUSIÓN EN LA CASA', 'y nadie se quedó callado'),
+                           'tristeza': ('MOMENTO MUY EMOTIVO EN LA CASA', 'no pudo contener lo que siente'),
+                           'historia_personal': ('UNA HISTORIA QUE CONMUEVE', 'contó lo que vivió'),
+                           'picante': ('SE PONE PICANTE LA CONVERSACIÓN', 'y nadie lo vio venir'),
+                           'revelacion': ('SALE A LA LUZ UN SECRETO', 'lo que dijeron cambia todo'),
+                           'humor': ('NADIE PUDO PARAR DE REÍR', 'momento épico en la casa'),
+                           'conversacion_importante': ('CONVERSACIÓN TENSA EN LA CASA', 'lo que dijeron cambia todo')}
+                t_, s_ = neutros.get(cat, ('CONVERSACIÓN TENSA EN LA CASA', 'mira lo que pasó'))
+                log('nombres dudosos en el título', dudosos, '→ título neutral')
+                r['titulo'], r['subtitulo'] = t_, s_
+                r['texto_post'] = f"{t_.capitalize()} 😱 ¿Qué opinas? #{cfg['reality'].replace(' ', '')} #Reality"
+                r['descripcion'] = re.sub('|'.join(re.escape(n.split()[0]) for n in dudosos), 'un participante',
+                                          str(r.get('descripcion', '')), flags=re.I)
+                r['personajes'] = [n for n in r['personajes'] if n in conf]
+            if str(r.get('categoria', '')).lower() != 'polemica':
+                for k in ('titulo', 'subtitulo', 'texto_post'):
+                    r[k] = re.sub(r'(?i)\bpeleas?\b', 'conversación', str(r.get(k, '')))
             if not str(r.get('evidencia') or '').strip():
                 r['interes'] = min(int(r.get('interes', 0) or 0), 55)
             info = {'titulo': str(r.get('titulo') or '¡SE PRENDIÓ LA CASA!').upper(),
