@@ -1,0 +1,72 @@
+# CONTEXTO — Clipero + Fábrica Ridmer (para continuar en otra sesión de Claude)
+
+El dueño no programa: explicarle todo paso a paso, en español sencillo, con un comando a la vez para copiar y pegar.
+**Nunca subir secretos a GitHub** (este repo es público). Los secretos viven solo en el servidor:
+`/var/lib/clipero/secrets/config.json`.
+
+## Cómo se despliega
+- Rama `clipero` de `eliasmero638-del/promociones-bot`. El servidor hace `git pull` cada 5 min
+  (`clipero-update.timer` → `server/update.sh`). Si cambió algo, corre `server/install.sh`, que instala lo de
+  `app/requirements.txt` y reinicia `clipero.service`.
+- Al arrancar, el bot de Telegram manda "🟢 Clipero vXX encendido". Hay que subir `VERSION` en `app/main.py` en cada cambio.
+- **Pedidos desde el repo:** `pedidos.json` en la raíz (lista de `{id, formato: short|largo, tema, resumen}`). El
+  servidor hace cada `id` una sola vez. Sirve para que Claude mande a hacer videos sin acceso SSH.
+- Claude NO tiene SSH al servidor. El usuario usa Termius (host "clipero"). Comandos útiles: `clipero estado`,
+  `clipero log`, `clipero reiniciar`, `clipero gemini`, `clipero facebook`, `clipero avisos`, `clipero voces`,
+  `clipero ridmer short "tema"`.
+- Para forzar la actualización:
+  `cd /opt/clipero && git fetch -q origin clipero && git reset -q --hard origin/clipero && bash server/install.sh`
+
+## Infraestructura
+- **Servidor:** Contabo Cloud VPS, IP 173.249.44.95, Ubuntu 24.04. La app está en /opt/clipero y los datos en
+  /var/lib/clipero. SSH por el puerto 22 (y el 443 redirigido al 22 con iptables). Hay una web en el puerto 80
+  (`app/web.py`).
+- **Grabación:** un Infinix Note 12 con Termux (`termux/grabar.sh`) graba el en vivo de YouTube de La Casa 593 con
+  yt-dlp y cookies de una cuenta descartable. YouTube bloquea las IPs de servidores, por eso graba el teléfono.
+  Sube pedazos .ts de 2 minutos por rsync a `/var/lib/clipero/rec`.
+- **IA:** Gemini, con la clave en config, cuenta gratuita. `ia.modelos()` elige automáticamente entre flash y lite;
+  cuando un modelo da 429 se pausa 1 hora (`_agotado`).
+- **Avisos:** la app ntfy (tema secreto en config), el bot de Telegram @cliperoyt_bot y una página web privada
+  `/c/<token>` (clips) y `/r/<token>` (Ridmer). CallMeBot para WhatsApp está programado, pero el servicio estaba
+  lleno; falta la apikey.
+- **Facebook:** app de Meta "Clipero" en modo desarrollo, con los permisos pages_show_list, pages_read_engagement
+  y pages_manage_posts. `clipero facebook` guarda los tokens de todas las páginas del token (`fb_paginas`). Hoy solo
+  está conectada **Pasión por los Realities**. **FALTA conectar Ridmer TV**: repetir el token marcando las dos
+  páginas.
+
+## Clipero (clips de realities → página "Pasión por los Realities")
+`analyzer.py` detecta picos de volumen y de chat. `editor.hacer_clip` corta una ventana de 60 s antes y 150 s
+después del pico. Gemini (`ia.analizar`) ve 8 fotos, el audio y el chat, y devuelve el interés, el título, los
+personajes, la evidencia y el inicio y fin del momento. El clip queda vertical 720x1280 con subtítulos.
+Reglas aprendidas con el usuario:
+- **Mínimo de interés 85.** Nunca mandar un clip si la IA falló (`solo_ia`). Descartar clips de menos de 55 s.
+- Solo es "pelea" si hay confrontación real; tiene que haber una "evidencia" (la frase exacta), si no, el interés
+  baja a 55 como máximo.
+- **Nombres:** solo si la IA está 100% segura. Quien habla tiene que ser un participante actual. A los
+  exparticipantes se los puede mencionar, pero nunca confundirlos con quien habla. Se manejan con `/participantes`,
+  `/salio Nombre` y `/entro Nombre, apodos`.
+- Aprende de los botones ❌ y ✅ (`ia.aprender` → `aprendizaje.json`, que se agrega al prompt).
+- Publica en Facebook con el botón 📤 o solo si nadie responde en 20 min y el clip tiene 85 o más. Lo explícito
+  nunca se publica solo.
+
+## Fábrica Ridmer (canal de YouTube "Ridmer", página de Facebook Ridmer TV)
+`app/fabrica.py` + `app/montaje.py` + `app/voz.py`. Shorts a las 8, 12, 16 y 20 h; video largo a las 18 h;
+revisión de noticias urgentes cada 2 h. Pasos: tema con Google Search de Gemini → guion verificado y **clickbait**
+→ voz de Gemini TTS **Algenib** (respaldo: Microsoft Edge) → Whisper para los tiempos → fotos de Wikimedia Commons
+o satelitales de Esri → video con zoom lento, subtítulos, música de suspenso, golpe y riser, **intro de Ridmer
+después del gancho** (`assets/intro_ridmer.mp4`) → miniatura → se manda a Telegram con los botones
+"✅ Publicar en Ridmer TV" y "❌ No publicar" → si nadie responde en 20 min, se publica solo. El usuario sube a
+YouTube a mano.
+Preferencias: Shorts SIEMPRE de menos de 60 s; nada de efectos de comedia; imágenes reales; títulos clickbait pero
+verdaderos.
+
+## Estado al 27-oct-2026 22:30 y pendientes
+1. La cuota gratis de Gemini se agotó hoy (429). **Siguiente paso acordado (opción 1):** prefiltro local con Whisper.
+   Transcribir cada candidato en el servidor y solo pasarlo a Gemini si hay señales fuertes (palabras de pelea,
+   gritos, chat explotando). La meta es 10 veces menos pedidos.
+   Opción 2: agregar Groq (clave gratis) como segundo cerebro de texto.
+2. El Short de prueba de Robert Hansen (`pedidos.json`, id `prueba-hansen-1`) falló por la cuota. Para reintentarlo
+   hay que agregar un pedido con un `id` nuevo.
+3. Conectar Ridmer TV en Facebook (nuevo token con las dos páginas).
+4. Pendiente opcional: WhatsApp (CallMeBot sin cupo; o el número de prueba de WhatsApp Cloud de Meta), reconocimiento
+   de caras, La Mansión VIP 2 (desde el 8 de noviembre).
