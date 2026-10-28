@@ -409,8 +409,27 @@ def _cola_segura(formato, tema=None, motivo='programado'):
             ntfy.enviar('⚠️ Ridmer: no se pudo hacer un video', str(e)[:300], prioridad=2)
 
 
+PEDIDOS = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'pedidos.json')
+
+
+def revisar_pedidos():
+    """Pedidos que Claude deja en el repositorio (pedidos.json): se hacen una sola vez cada uno."""
+    hechos_p = os.path.join(DIR, 'pedidos_hechos.json')
+    hechos = _leer(hechos_p, [])
+    for p in _leer(PEDIDOS, []):
+        if p.get('id') and p['id'] not in hechos:
+            hechos.append(p['id']); _guardar(hechos_p, hechos)
+            tema = {'titulo': p['tema'], 'resumen': p.get('resumen', ''), 'tipo': p.get('tipo', 'misterio')} \
+                if p.get('tema') else None
+            threading.Thread(target=_cola_segura, args=(p.get('formato', 'short'), tema, 'pedido'), daemon=True).start()
+
+
 def bucle():
     while True:
+        try:
+            revisar_pedidos()
+        except Exception as e:
+            log('error pedidos', e)
         try:
             cfg = C.get()
             if cfg.get('ridmer_activo', True) and cfg.get('gemini_key'):
