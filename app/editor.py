@@ -163,6 +163,9 @@ FUERTE = (r'callate|cállate|respeta|no me grites|que te pasa|qué te pasa|menti
           r'a tus espaldas|hablando de ti|hablan de ti|estrategia|votar|voto')
 
 
+_local = {}       # transcripción local del último clip (para Groq)
+
+
 def prefiltro(crudo, chat_textos, señales=None):
     """Filtro gratis en el servidor (Whisper) antes de gastar cuota de Gemini. Devuelve (pasa, motivo)."""
     s_ = señales or {}
@@ -170,6 +173,7 @@ def prefiltro(crudo, chat_textos, señales=None):
     if s_.get('puntaje', 0) >= C.get().get('pasa_directo', 88) or d.get('chat_fuerte', 0) >= 4 or d.get('chat_z', 0) >= 3:
         return True, 'señal fuerte de volumen/chat'
     palabras = transcribir(crudo)
+    _local[crudo] = palabras
     texto = _norm(' '.join(w for _, _, w in palabras))
     if len(texto.split()) < 25:
         return False, 'casi no hablan'
@@ -203,7 +207,13 @@ def hacer_clip(pedazos_info, centro, chat_textos, nombre=None, job_filtro=None, 
         if not pasa:
             return {'descartado': True}
     if usar_ia:
-        r = ia.analizar(crudo, chat_textos, dur)
+        r = ia.analizar(crudo, chat_textos, dur) if ia.hay_cuota() else {'error': 'Gemini sin cuota'}
+        if 'error' in r and ia.groq_activa():
+            loc = _local.pop(crudo, None) or transcribir(crudo)
+            if loc:
+                r = ia.analizar_groq(loc, chat_textos, dur)
+                log('Gemini no disponible → Groq', r.get('_modelo') or r.get('error'))
+        _local.pop(crudo, None)
         if 'error' not in r:
             # recorte del momento completo que eligió la IA
             try:

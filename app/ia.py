@@ -238,3 +238,86 @@ def generar(prompt, buscar=False, temperatura=0.7, timeout=240):
         except Exception as e:
             ult = f'{m}: {e}'
     return None, ult
+
+
+# ---------------------------------------------------------------- Groq (segundo cerebro gratis, solo texto)
+_groq_mod = []
+
+
+def groq_activa():
+    return bool(C.get().get('groq_key'))
+
+
+def groq_modelos(key):
+    global _groq_mod
+    if _groq_mod:
+        return _groq_mod
+    pref = ['openai/gpt-oss-120b', 'llama-3.3-70b-versatile', 'moonshotai/kimi-k2-instruct', 'qwen/qwen3-32b',
+            'openai/gpt-oss-20b', 'llama-3.1-8b-instant']
+    try:
+        r = requests.get('https://api.groq.com/openai/v1/models', headers={'Authorization': f'Bearer {key}'},
+                         timeout=30).json()
+        ids = [m['id'] for m in r.get('data', []) if not any(x in m['id'] for x in ('whisper', 'tts', 'guard', 'vision'))]
+    except Exception:
+        ids = []
+    _groq_mod = [m for m in pref if m in ids] + [m for m in ids if m not in pref and ('70b' in m or '120b' in m)]
+    return _groq_mod or pref[:2]
+
+
+def analizar_groq(palabras, chat_textos, seg):
+    """Igual que analizar() pero con la transcripción local (Whisper) y Groq. Sin imágenes."""
+    key = C.get().get('groq_key')
+    if not key:
+        return {'error': 'sin clave de Groq'}
+    cfg = C.get()
+    lineas, g = [], []
+    for a, b, w in palabras:
+        g.append((a, w))
+        if len(g) >= 8:
+            lineas.append(f'[{g[0][0]:.1f}s] ' + ' '.join(x[1] for x in g)); g = []
+    if g:
+        lineas.append(f'[{g[0][0]:.1f}s] ' + ' '.join(x[1] for x in g))
+    parts_txt = '; '.join(f"{k}: {', '.join(v)}" for k, v in cfg['participantes'].items())
+    ex = cfg.get('exparticipantes') or {}
+    ex_txt = '; '.join(f"{k}: {', '.join(v)}" for k, v in ex.items()) or '(ninguno)'
+    prompt = PROMPT.format(aprendizaje=aprendizaje(), exparticipantes=ex_txt, marca=cfg['marca'], reality=cfg['reality'],
+                           seg=int(seg), participantes=parts_txt, chat=' | '.join(chat_textos[-80:])[:4000] or '(sin chat)',
+                           nfotos=0, cmin=cfg.get('clip_min', 60), cmax=cfg.get('clip_max', 180))
+    prompt = prompt.replace('Te doy 0 fotos del clip en orden y su audio.',
+                            'No tienes fotos ni audio: te doy la TRANSCRIPCIÓN automática con tiempos (puede tener '
+                            'errores; no adivines quién habla si no lo nombran).')
+    prompt += '\n\nTRANSCRIPCIÓN:\n' + '\n'.join(lineas)[:12000] + '\n\n(En "subtitulos" devuelve [] — ya los tengo.)'
+    ult = ''
+    for m in groq_modelos(key):
+        try:
+            r = requests.post('https://api.groq.com/openai/v1/chat/completions', timeout=120,
+                              headers={'Authorization': f'Bearer {key}'},
+                              json={'model': m, 'temperature': 0.3, 'response_format': {'type': 'json_object'},
+                                    'messages': [{'role': 'user', 'content': prompt}]})
+            if r.status_code != 200:
+                ult = f'{m}: {r.status_code} {r.text[:150]}'
+                continue
+            d = json.loads(r.json()['choices'][0]['message']['content'])
+            d['interes'] = int(d.get('interes', 0) or 0)
+            d['subtitulos'] = [{'t0': a, 't1': b, 'texto': w} for a, b, w in palabras]
+            d['_modelo'] = 'groq:' + m
+            return d
+        except Exception as e:
+            ult = f'{m}: {e}'
+    return {'error': ult}
+
+
+def probar_groq(key):
+    global _groq_mod
+    _groq_mod = []
+    for m in groq_modelos(key)[:3]:
+        try:
+            r = requests.post('https://api.groq.com/openai/v1/chat/completions', timeout=60,
+                              headers={'Authorization': f'Bearer {key}'},
+                              json={'model': m, 'messages': [{'role': 'user', 'content': 'Responde solo: OK'}]})
+            if r.status_code == 200:
+                return 200, m
+            ult = (r.status_code, r.text[:200])
+        except Exception as e:
+            ult = (0, str(e))
+    return ult

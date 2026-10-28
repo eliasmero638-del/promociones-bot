@@ -57,6 +57,11 @@ case "$1" in
     F=${2:-short}; if [ $# -ge 2 ]; then shift 2; else shift $#; fi; TEMA="$*"
     echo "Haciendo un $F de Ridmer (tarda 5-15 minutos)..."
     cd /opt/clipero/app && CLIPERO_DATA=$DATA nice -n 5 $PY fabrica.py "$F" ${TEMA:+"$TEMA"} ;;
+  groq)
+    read -r -p "Pega tu clave de Groq y presiona Enter: " K
+    K=$(echo "$K" | tr -d ' \r\n')
+    cd /opt/clipero/app && R=$(CLIPERO_DATA=$DATA $PY -c "import ia,sys; c,t=ia.probar_groq(sys.argv[1]); print(c, t)" "$K")
+    case "$R" in 200*) CLIPERO_DATA=$DATA $PY -c "import config,sys; config.save(groq_key=sys.argv[1])" "$K" && systemctl restart clipero && echo "✅ GROQ ACTIVADO ($R)";; *) echo "❌ La clave no funcionó: $R";; esac ;;
   estado) systemctl --no-pager status clipero | head -5; cat $DATA/estado.json; echo ;;
   log) journalctl -u clipero -n 60 --no-pager ;;
   reiniciar) systemctl restart clipero; echo "Reiniciado." ;;

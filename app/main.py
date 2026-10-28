@@ -7,7 +7,7 @@ except Exception as _e:          # si la fábrica falla, el Clipero sigue funcio
     fabrica = None
     print('fabrica no disponible:', _e, flush=True)
 
-VERSION = 'v18-filtro'
+VERSION = 'v19-groq'
 cola = queue.Queue()
 historial = []          # (hora, puntaje) de clips enviados, para límites por hora
 stats = {'pedazos': 0, 'clips': 0, 'ult_puntaje': None, 'ult_pedazo': None}
@@ -72,7 +72,7 @@ def analizar_bucle():
                     centro = t0 + s
                     ahora = time.time()
                     recientes = [h for h, _ in historial if ahora - h < 3600]
-                    if len(recientes) >= cfg['max_por_hora'] * (3 if ia.activa() else 1) or not ia.hay_cuota():
+                    if len(recientes) >= cfg['max_por_hora'] * (3 if ia.activa() else 1) or not (ia.hay_cuota() or ia.groq_activa()):
                         break
                     if any(abs(centro - h) < cfg['separacion_min'] * 60 for h, _ in historial):
                         continue
@@ -319,7 +319,7 @@ def comandos(tipo, chat, dato, raw):
     if cmd == '/estado':
         e = recorder.estado
         tg.texto(f"📡 {'Grabando' if e['grabando'] else 'Sin grabar'}: {e.get('titulo') or '—'}\n"
-                 f"⏸️ Automático: {'pausado' if cfg['pausado'] else 'activo'} · mínimo {cfg['ia_minimo'] if ia.activa() else cfg['umbral']} · IA {'✅' if ia.activa() else '❌'}\n"
+                 f"⏸️ Automático: {'pausado' if cfg['pausado'] else 'activo'} · mínimo {cfg['ia_minimo'] if ia.activa() else cfg['umbral']} · IA {'✅' if ia.hay_cuota() else '⛔ sin cuota'}{' · Groq ✅' if ia.groq_activa() else ''}\n"
                  f"🧩 Pedazos analizados: {stats['pedazos']} (último {stats['ult_pedazo'] or '—'}, "
                  f"pico {stats['ult_puntaje'] if stats['ult_puntaje'] is not None else '—'})\n"
                  f"🎬 Clips enviados: {stats['clips']}\n"
