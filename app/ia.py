@@ -86,7 +86,8 @@ Te doy {nfotos} fotos del clip en orden y su audio. Tareas:
 5. Escribe un texto para publicar en Facebook (1-2 frases, con 2-3 emojis y hashtags).
 6. Marca "explicito": true si hay desnudos o actos sexuales visibles.
 7. Decide dónde EMPIEZA y TERMINA el momento completo ("inicio" y "fin", en segundos desde el inicio del audio).
-   Empieza un poco antes de que arranque el tema, para que se entienda. Termina cuando el momento de verdad se
+   "inicio" = el segundo donde empieza ESE tema (la primera frase sobre él), NO antes: no incluyas conversación previa de
+   otro tema ni relleno. En "primera_frase" copia EXACTAMENTE las primeras 5-8 palabras con las que arranca el tema. Termina cuando el momento de verdad se
    cierre: la respuesta, la reacción, la conclusión o el remate. NUNCA lo cortes a la mitad de lo que está pasando.
    Mínimo {cmin} segundos y SIN máximo fijo: dura lo que dure el momento hasta su cierre natural (incluye la respuesta
    o reacción final). Si el momento sigue al final del audio y no termina, pon "sigue": true.
@@ -98,7 +99,7 @@ Responde SOLO con este JSON:
  "categoria_secundaria": "", "explicacion": "qué ocurre concretamente y por qué interesa",
  "contexto_claro": true, "certeza": 0-100, "intensidad": 0-100, "novedad": 0-100, "sigue": false,
  "personajes": ["..."], "titulo": "...", "subtitulo": "...", "descripcion": "qué pasó en una frase",
- "texto_post": "...", "explicito": false, "inicio": 0.0, "fin": 0.0, "evidencia": "frase exacta",
+ "texto_post": "...", "explicito": false, "inicio": 0.0, "fin": 0.0, "evidencia": "frase exacta", "primera_frase": "primeras palabras exactas del tema",
  "subtitulos": [{{"t0": 0.0, "t1": 2.1, "texto": "..."}}]}}"""
 
 

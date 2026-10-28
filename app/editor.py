@@ -201,6 +201,21 @@ def _evidencia_real(evid, palabras):
     return sum(1 for w in ev if w.strip('.,;:!?¡¿"') in dicho) >= max(1, len(ev) // 2)
 
 
+def _buscar_frase(frase, palabras):
+    """Segundo donde aparece la frase en la transcripción local (o None)."""
+    ws = [w for w in _norm(frase).split() if len(w) >= 3][:6]
+    if len(ws) < 2:
+        return None
+    tx = [_norm(x[2]).strip('.,;:!?¡¿"') for x in palabras]
+    mejor, t = 0, None
+    for i in range(len(tx)):
+        ventana = set(tx[i:i + 12])
+        n = sum(1 for w in ws if w.strip('.,;:!?¡¿"') in ventana)
+        if n > mejor:
+            mejor, t = n, palabras[i][0]
+    return t if mejor >= max(2, len(ws) // 2 + 1) else None
+
+
 def hacer_clip(pedazos_info, centro, chat_textos, nombre=None, job_filtro=None, solo_ia=False, señales=None, extra=0):
     """Devuelve dict con ruta del clip y datos, o None."""
     cfg = C.get()
@@ -261,6 +276,13 @@ def hacer_clip(pedazos_info, centro, chat_textos, nombre=None, job_filtro=None, 
                 ini, fin = 0.0, 0.0
             if fin <= ini:
                 ini, fin = max(0, cfg['ventana_antes'] - 35), cfg['ventana_antes'] + 40
+            # ajustar el inicio a donde de verdad arranca el tema (con la transcripción local)
+            if r.get('primera_frase'):
+                ref_local = local if local else (transcribir(crudo) if job_filtro is not None else [])
+                tf = _buscar_frase(r['primera_frase'], ref_local) if ref_local else None
+                if tf is not None and abs(tf - ini) > 3:
+                    log('inicio ajustado', round(ini, 1), '→', round(tf, 1))
+                    ini = tf
             ini = max(0.0, ini - 1.5)
             fin = min(dur, fin + 4.0)
             if fin - ini < cfg['clip_min']:
