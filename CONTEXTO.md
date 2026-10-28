@@ -61,12 +61,10 @@ Preferencias: Shorts SIEMPRE de menos de 60 s; nada de efectos de comedia; imág
 verdaderos.
 
 ## Estado al 27-oct-2026 22:30 y pendientes
-1. La cuota gratis de Gemini se agotó hoy (429). **Siguiente paso acordado (opción 1):** prefiltro local con Whisper.
-   Transcribir cada candidato en el servidor y solo pasarlo a Gemini si hay señales fuertes (palabras de pelea,
-   gritos, chat explotando). La meta es 10 veces menos pedidos.
-   Opción 2: agregar Groq (clave gratis) como segundo cerebro de texto.
-2. El Short de prueba de Robert Hansen (`pedidos.json`, id `prueba-hansen-1`) falló por la cuota. Para reintentarlo
-   hay que agregar un pedido con un `id` nuevo.
+1. La cuota gratis de Gemini se agotó el 27-oct (429). YA HECHO (v18-filtro): prefiltro local con Whisper en
+   `editor.prefiltro()` antes de llamar a Gemini; los modelos agotados se pausan 1 h. Falta ver si alcanza la cuota
+   gratis. Opción siguiente: agregar Groq (clave gratis) como segundo cerebro de texto.
+2. Short de prueba de Robert Hansen: hay un reintento en `pedidos.json` (id `prueba-hansen-2`, el 28-oct a las 7:30 EC).
 3. Conectar Ridmer TV en Facebook (nuevo token con las dos páginas).
 4. Pendiente opcional: WhatsApp (CallMeBot sin cupo; o el número de prueba de WhatsApp Cloud de Meta), reconocimiento
    de caras, La Mansión VIP 2 (desde el 8 de noviembre).
