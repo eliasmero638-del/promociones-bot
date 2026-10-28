@@ -57,7 +57,7 @@ def tarjeta(texto, salida, formato='horizontal'):
 
 def _escena(img, d, i, W, H, salida):
     """Una escena: fondo desenfocado + imagen con zoom lento (alternando acercar/alejar)."""
-    fw, fh = (W, int(H * 0.62)) if H > W else (W, H)
+    fw, fh = (W, int(H * 0.55)) if H > W else (W, H)
     z = '(1+0.10*t/{d})' if i % 2 == 0 else '(1.10-0.10*t/{d})'
     z = z.format(d=max(d, 0.5))
     fc = (f"[0:v]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},boxblur=28:3,eq=brightness=-0.33[bg];"
@@ -68,30 +68,40 @@ def _escena(img, d, i, W, H, salida):
         '-r', '30', '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '20', '-pix_fmt', 'yuv420p', '-an', salida])
 
 
-def _ass(palabras, W, H, titulo, path, por_linea=4):
+def _ass(palabras, W, H, titulo, path, por_linea=3, rotulos=None):
+    """Subtítulos estilo Ridmer: 3 palabras, grandes, la palabra que se dice se pinta en amarillo (karaoke).
+    rotulos: [(t0, t1, texto)] carteles de lugar/fecha/nombre sobre la imagen."""
     vertical = H > W
     lineas, g = [], []
     for w in palabras:
-        if g and (w[0] - g[-1][1] > 0.6):
+        if g and (w[0] - g[-1][1] > 0.5):
             lineas.append(g); g = []
         g.append(w)
         if len(g) >= por_linea or re.search(r'[.?!,;:]$', w[2]):
             lineas.append(g); g = []
     if g:
         lineas.append(g)
+    tam, mv = (80, 300) if vertical else (78, 90)
+    estilos = (f"Style: Cap,Inter Display Black,{tam},&H0000E5FF,&H00FFFFFF,&H00000000,&H96000000,0,0,0,0,100,100,0,0,1,8,3,2,60,60,{mv},1\n"
+               f"Style: Rot,Inter Display Black,{56 if vertical else 50},&H00FFFFFF,&H00FFFFFF,&H001A1AD0,&H001A1AD0,0,0,0,0,100,100,2,0,3,14,0,{8 if vertical else 7},60,60,{430 if vertical else 60},1\n")
     if vertical:
-        estilos = ("Style: Cap,Inter Display Black,78,&H00FFFFFF,&H00FFFFFF,&H00000000,&H64000000,0,0,0,0,100,100,0,0,1,7,2,2,60,60,430,1\n"
-                   "Style: Tit,Inter Display Black,74,&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,7,0,8,60,60,170,1\n"
-                   "Style: Mar,Inter Display Black,40,&H002020E0,&H00FFFFFF,&H00000000,&H00000000,0,0,0,0,100,100,6,0,1,3,0,8,60,60,95,1\n")
-    else:
-        estilos = "Style: Cap,Inter Display Black,64,&H00FFFFFF,&H00FFFFFF,&H00000000,&H64000000,0,0,0,0,100,100,0,0,1,6,2,2,120,120,70,1\n"
+        estilos += ("Style: Tit,Inter Display Black,74,&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,7,0,8,60,60,170,1\n"
+                    "Style: Mar,Inter Display Black,40,&H002020E0,&H00FFFFFF,&H00000000,&H00000000,0,0,0,0,100,100,6,0,1,3,0,8,60,60,95,1\n")
     ev = []
     fin = palabras[-1][1] + 1 if palabras else 1
     if vertical and titulo:
         ev.append(f'Dialogue: 1,0:00:00.00,{_t(fin + 30)},Mar,,0,0,0,,RIDMER')
         ev.append(f'Dialogue: 1,0:00:00.00,{_t(fin + 30)},Tit,,0,0,0,,{_esc(titulo.upper())}')
+    for t0, t1, txt in rotulos or []:
+        if txt and t1 - t0 > 1.2:
+            ev.append(f'Dialogue: 2,{_t(t0 + 0.3)},{_t(min(t1, t0 + 4.5))},Rot,,0,0,0,,{{\\fad(200,200)}}{_esc(txt.upper())}')
     for g in lineas:
-        ev.append(f'Dialogue: 0,{_t(g[0][0])},{_t(g[-1][1] + 0.12)},Cap,,0,0,0,,{_esc(" ".join(x[2] for x in g)).upper()}')
+        partes = []
+        for k, w in enumerate(g):
+            fin_w = g[k + 1][0] if k + 1 < len(g) else w[1]
+            cs = max(1, int(round((fin_w - w[0]) * 100)))
+            partes.append(f'{{\\k{cs}}}{_esc(w[2]).upper()}')
+        ev.append(f'Dialogue: 0,{_t(g[0][0])},{_t(g[-1][1] + 0.15)},Cap,,0,0,0,,' + ' '.join(partes))
     with open(path, 'w', encoding='utf-8') as f:
         f.write(f"[Script Info]\nScriptType: v4.00+\nPlayResX: {W}\nPlayResY: {H}\nWrapStyle: 0\n\n[V4+ Styles]\n"
                 "Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, "
@@ -134,7 +144,11 @@ def render(trabajo, voz, palabras, escenas, formato, titulo, hook_fin, salida):
     mezcla = os.path.join(trabajo, 'mezcla.wav')
     _mezcla(voz, D, hook_fin, mezcla)
     ass = os.path.join(trabajo, f'subs_{formato}.ass')
-    _ass(palabras, W, H, titulo if formato == 'vertical' else '', ass)
+    rot = []
+    for i, e in enumerate(escenas):
+        t1 = D if i == len(escenas) - 1 else escenas[i + 1]['t0']
+        rot.append((e['t0'], t1, e.get('rotulo', '')))
+    _ass(palabras, W, H, titulo if formato == 'vertical' else '', ass, rotulos=rot)
     # cuerpo + audio + subtítulos, partido en gancho | intro | resto
     hf = min(max(hook_fin, 1.0), D - 1)
     if formato == 'vertical':

@@ -169,12 +169,16 @@ Estructura:
 - Divide el texto en {segmentos} segmentos (1 o 2 frases cada uno). Para cada segmento da una búsqueda de imagen
   REAL para Wikimedia Commons en inglés ("imagen_en", 2-5 palabras concretas: lugar, persona, objeto, año) y en
   español ("imagen_es"). Si el segmento ocurre en un lugar concreto, da "lat" y "lon".
+- "rotulo": texto corto en pantalla SOLO cuando aparece un dato clave: lugar y año ("ALASKA · 1983"), nombre y quién es
+  ("ROBERT HANSEN · PANADERO"), una cifra ("17 VÍCTIMAS"). Máx 4 palabras. En la mayoría de segmentos déjalo "".
+- "imagen_en" debe describir algo que SE PUEDA FOTOGRAFIAR y que esté en Wikimedia: el lugar real, la persona real,
+  el objeto real o el año ("Anchorage Alaska 1980s", "Knik River valley", "Piper Super Cub airplane"). Nada abstracto.
 {tono}
 Responde SOLO con JSON:
 {{"titulo_video": "MÁX 6 PALABRAS EN MAYÚSCULAS, clickbait", "miniatura_texto": "2 a 4 palabras clickbait que den ganas de tocar",
  "titulo_youtube": "título CLICKBAIT irresistible, máx 80 caracteres (curiosidad, giro, dato impactante; puede usar …, ¿?, MAYÚSCULAS en 1-2 palabras clave; nunca falso)", "descripcion_youtube": "3-5 líneas + hashtags",
  "etiquetas": ["...", "..."], "texto_facebook": "1-2 frases clickbait que no revelen el final + 3 hashtags",
- "segmentos": [{{"texto": "...", "imagen_en": "...", "imagen_es": "...", "lat": null, "lon": null}}]}}"""
+ "segmentos": [{{"texto": "...", "imagen_en": "...", "imagen_es": "...", "rotulo": "", "lat": null, "lon": null}}]}}"""
 
 
 def escribir_guion(tema, formato):
@@ -240,7 +244,8 @@ def _commons(q, carpeta, nombre, usados):
             t = p.get('title', '').lower()
             if ii.get('mime') not in ('image/jpeg', 'image/png') or ii.get('width', 0) < 700:
                 continue
-            if any(x in t for x in ('logo', 'icon', 'flag of', 'coat of arms', 'signature', 'diagram')):
+            if any(x in t for x in ('logo', 'icon', 'flag of', 'coat of arms', 'signature', 'diagram', 'map', 'chart',
+                                    'plan', 'graph', 'mapa', '.svg', 'locator')):
                 continue
             url = ii.get('thumburl') or ii.get('url')
             if url in usados:
@@ -294,7 +299,11 @@ def buscar_imagenes(segmentos, carpeta, extra=None):
     extra = list(extra or [])
     for i, s in enumerate(segmentos):
         n = f'img_{i:02d}'
-        p = (_commons(s.get('imagen_en'), carpeta, n, usados) or _commons(s.get('imagen_es'), carpeta, n, usados))
+        p = None
+        if extra and i % 2 == 0:
+            while not p and extra:
+                p = _bajar(extra.pop(0), carpeta, n, usados)
+        p = p or _commons(s.get('imagen_en'), carpeta, n, usados) or _commons(s.get('imagen_es'), carpeta, n, usados)
         while not p and extra:
             p = _bajar(extra.pop(0), carpeta, n, usados)
         if not p and s.get('lat') not in (None, '') and s.get('lon') not in (None, ''):
@@ -326,7 +335,7 @@ def narrar(segmentos, carpeta, formato):
     partes = []
     for k, b in enumerate(bloques):
         mp3 = os.path.join(carpeta, f'voz_{k:02d}.mp3')
-        ok, r = voz.gemini(b, mp3, estilo=ESTILO_SHORT if formato == 'short' else voz.ESTILO)
+        ok, r = voz.gemini(b, mp3, estilo='')
         if not ok:
             log('voz gemini falló, uso Microsoft:', r)
             ok, r = voz.edge(b, mp3)

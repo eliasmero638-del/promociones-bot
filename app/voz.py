@@ -40,7 +40,7 @@ def gemini(texto, salida_mp3, voz=None, estilo=ESTILO):
             try:
                 r = requests.post(f'https://generativelanguage.googleapis.com/v1beta/models/{m}:generateContent',
                                   params={'key': key}, timeout=300, json={
-                                      'contents': [{'parts': [{'text': estilo + texto}]}],
+                                      'contents': [{'parts': [{'text': (estilo + texto) if estilo else texto}]}],
                                       'generationConfig': {'responseModalities': ['AUDIO'], 'speechConfig': {
                                           'voiceConfig': {'prebuiltVoiceConfig': {'voiceName': voz}}}}})
                 if r.status_code == 429:
