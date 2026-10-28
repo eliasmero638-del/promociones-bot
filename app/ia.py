@@ -39,13 +39,19 @@ Distingue bien QUIÉN APARECE/HABLA de QUIÉN ES MENCIONADO:
 - No confundas a las personas: si no estás 100% seguro de quién está hablando, no le pongas nombre.
 Comentarios del chat en vivo en ese momento: {chat}
 
+{aprendizaje}
 Te doy {nfotos} fotos del clip en orden y su audio. Tareas:
 1. Transcribe lo que se dice, con tiempos en segundos desde el inicio del audio, en frases cortas (máx 7 palabras).
 2. Di qué participantes intervienen SOLO si estás 100% seguro de quién es (porque lo nombran claramente en el audio
    por su nombre o apodo, o el chat lo confirma). Si tienes la mínima duda, NO lo pongas en "personajes" y en el
    título, subtítulo, descripción y texto NO uses su nombre: di "una participante", "un compañero", "uno de los chicos".
    Es mucho peor poner un nombre equivocado que no poner ninguno.
-3. Califica de 0 a 100 qué tanto engancharía a gente en Facebook que NO ve el reality. Califica por LO QUE PASA y
+3. Antes de calificar, verifica con el AUDIO: ¿hay de verdad gritos, insultos, reclamos directos, llanto, beso,
+   burla clara o una revelación fuerte? Solo es "pelea" si dos personas se confrontan directamente con voz alterada o
+   insultos. Si solo están conversando, contando algo o comentando, NO es pelea ni chisme fuerte: ponle menos de 60.
+   En "evidencia" copia la frase exacta del audio que prueba lo fuerte del momento; si no hay ninguna, deja "" y
+   califica menos de 60.
+   Califica de 0 a 100 qué tanto engancharía a gente en Facebook que NO ve el reality. Califica por LO QUE PASA y
    LO QUE SE DICE, no por el volumen: una conversación a solas en voz baja puede valer 90 si es fuerte.
    Sé exigente: la mayoría de momentos de una casa en vivo son rutina y deben quedar entre 10 y 55. Escala:
    90-100: pelea fuerte, insultos, escándalo, beso o momento picante claro, humillación o burla muy fuerte,
@@ -74,8 +80,35 @@ Reglas: si en el clip aparece un niño o niña, nunca le des un ángulo picante 
 Responde SOLO con este JSON:
 {{"interes": 0-100, "categoria": "pelea|chisme|picante|burla|gracioso|romance|llanto|nominacion|otro",
  "personajes": ["..."], "titulo": "...", "subtitulo": "...", "descripcion": "qué pasó en una frase",
- "texto_post": "...", "explicito": false, "inicio": 0.0, "fin": 0.0,
+ "texto_post": "...", "explicito": false, "inicio": 0.0, "fin": 0.0, "evidencia": "frase exacta",
  "subtitulos": [{{"t0": 0.0, "t1": 2.1, "texto": "..."}}]}}"""
+
+
+APRENDE = os.path.join(C.DATA, 'aprendizaje.json')
+
+
+def aprendizaje():
+    try:
+        d = json.load(open(APRENDE, encoding='utf-8'))
+    except Exception:
+        return ''
+    t = ''
+    if d.get('no'):
+        t += ('El dueño de la página RECHAZÓ estos clips por aburridos o porque no pasaba lo que decía el título. '
+              'NO mandes nada parecido (ponles menos de 50):\n- ' + '\n- '.join(d['no'][-15:]) + '\n')
+    if d.get('ok'):
+        t += 'Estos SÍ le gustaron (así es lo que busca):\n- ' + '\n- '.join(d['ok'][-10:]) + '\n'
+    return t
+
+
+def aprender(bueno, texto):
+    try:
+        d = json.load(open(APRENDE, encoding='utf-8'))
+    except Exception:
+        d = {'ok': [], 'no': []}
+    d['ok' if bueno else 'no'].append(texto[:200])
+    d['ok'], d['no'] = d['ok'][-30:], d['no'][-30:]
+    json.dump(d, open(APRENDE, 'w', encoding='utf-8'), ensure_ascii=False)
 
 
 def activa():
@@ -108,7 +141,7 @@ def analizar(clip, chat_textos, seg):
     fotos = _fotos(clip)
     ex = cfg.get('exparticipantes') or {}
     ex_txt = '; '.join(f"{k}: {', '.join(v)}" for k, v in ex.items()) or '(ninguno)'
-    prompt = PROMPT.format(exparticipantes=ex_txt, marca=cfg['marca'], reality=cfg['reality'], seg=int(seg), participantes=parts_txt,
+    prompt = PROMPT.format(aprendizaje=aprendizaje(), exparticipantes=ex_txt, marca=cfg['marca'], reality=cfg['reality'], seg=int(seg), participantes=parts_txt,
                            chat=chat, nfotos=len(fotos), cmin=cfg.get('clip_min', 30), cmax=cfg.get('clip_max', 180))
     parts = [{'text': prompt}]
     parts += [{'inline_data': {'mime_type': 'image/jpeg', 'data': base64.b64encode(f).decode()}} for f in fotos]

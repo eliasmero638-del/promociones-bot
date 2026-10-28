@@ -21,7 +21,7 @@ DEFAULTS = {
     'pausado': False,
     'gemini_key': '',
     'umbral_ia': 50,                     # con IA: puntaje para pasarle el momento a la IA
-    'ia_minimo': 80,                     # con IA: interés mínimo para mandarte el clip
+    'ia_minimo': 85,                     # con IA: interés mínimo para mandarte el clip
     'umbral': 72,                        # puntaje mínimo (0-100) para mandar un clip
     'max_por_hora': 4,
     'separacion_min': 8,                 # minutos mínimos entre clips automáticos
@@ -74,13 +74,13 @@ _lock = threading.Lock()
 _cfg = None
 _propio = {}            # solo lo que se guardó a propósito (no los valores por defecto)
 
-VERSION_CFG = 2
+VERSION_CFG = 3
 # claves que versiones viejas guardaban sin querer: se borran para que mande el valor por defecto
 MIGRAR = {2: ['clip_min', 'clip_max', 'ventana_antes', 'ventana_despues', 'antes_seg', 'despues_seg',
               'umbral_ia', 'max_por_hora', 'separacion_min', 'segmento_seg', 'guardar_horas', 'whisper_modelo',
               'auto_espera_min', 'auto_minimo', 'max_publicaciones_dia', 'participantes', 'canal', 'reality',
               'marca', 'modo', 'web_url', 'web_puerto', 'umbral']}
-FORZAR = {2: {'ia_minimo': 80}}
+FORZAR = {2: {'ia_minimo': 80}, 3: {'ia_minimo': 85}}
 
 
 def _escribir():

@@ -2,7 +2,7 @@
 import json, os, queue, secrets, subprocess, threading, time
 import config as C, recorder, analyzer, editor, tg, ia, fb, wa, web, ntfy, fabrica
 
-VERSION = 'v14-ridmer'
+VERSION = 'v15-aprende'
 cola = queue.Queue()
 historial = []          # (hora, puntaje) de clips enviados, para límites por hora
 stats = {'pedazos': 0, 'clips': 0, 'ult_puntaje': None, 'ult_pedazo': None}
@@ -95,8 +95,11 @@ def trabajador():
                 time.sleep(15)
             chat = [t for _, t in recorder.chat_mensajes(centro - 40, centro + 40)]
             info = editor.hacer_clip(info_pedazos(), centro, chat, job_filtro=None if job['manual'] else C.get()['ia_minimo'],
-                                     solo_ia=job.get('barrido', False))
+                                     solo_ia=not job['manual'])
             if info and info.get('descartado'):
+                continue
+            if info and not job['manual'] and info.get('duracion', 999) < C.get()['clip_min'] - 5:
+                log('clip muy corto, descartado', info.get('duracion'))
                 continue
             if not info:
                 if job['manual']:
@@ -233,6 +236,8 @@ def buscar_token(token):
 def no_publicar(cid):
     with _pub_lock:
         m = leer_meta(cid)
+        if m:
+            ia.aprender(False, f"{m.get('titulo', '')} — {m.get('descripcion', '')}")
         if not m or m.get('estado') != 'pendiente':
             return False, 'ya estaba ' + (m or {}).get('estado', 'borrado')
         m['estado'] = 'descartado'
@@ -282,6 +287,8 @@ def comandos(tipo, chat, dato, raw):
         with open(decisiones_file, 'a') as f:
             f.write(json.dumps({'clip': cid, 'decision': accion, 'hora': time.time()}) + '\n')
         m = leer_meta(cid)
+        if m and accion in ('pub', 'no', 'ok'):
+            ia.aprender(accion != 'no', f"{m.get('titulo', '')} — {m.get('descripcion', '')}")
         if accion == 'pub':
             tg.texto('📤 Subiendo a Facebook…', chat)
             ok, res = publicar_clip(cid, 'tú')

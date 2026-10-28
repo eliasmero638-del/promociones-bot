@@ -218,12 +218,14 @@ def hacer_clip(pedazos_info, centro, chat_textos, nombre=None, job_filtro=None, 
                             nombres_ok.append(nombre)
                         break
             r['personajes'] = nombres_ok
+            if not str(r.get('evidencia') or '').strip():
+                r['interes'] = min(int(r.get('interes', 0) or 0), 55)
             info = {'titulo': str(r.get('titulo') or '¡SE PRENDIÓ LA CASA!').upper(),
                     'subtitulo': str(r.get('subtitulo') or C.get()['reality']),
                     'nombres': r.get('personajes') or [], 'tipo': r.get('categoria'),
                     'texto': ' '.join(w for _, _, w in palabras), 'interes': r.get('interes', 0),
                     'descripcion': r.get('descripcion', ''), 'texto_post': r.get('texto_post', ''),
-                    'explicito': bool(r.get('explicito')), 'ia': True}
+                    'explicito': bool(r.get('explicito')), 'ia': True, 'evidencia': r.get('evidencia', '')}
         else:
             log('IA falló, uso el método básico')
     if info is None and solo_ia:
