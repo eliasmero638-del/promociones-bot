@@ -7,7 +7,7 @@ except Exception as _e:          # si la fábrica falla, el Clipero sigue funcio
     fabrica = None
     print('fabrica no disponible:', _e, flush=True)
 
-VERSION = 'v17-cuota'
+VERSION = 'v18-filtro'
 cola = queue.Queue()
 historial = []          # (hora, puntaje) de clips enviados, para límites por hora
 stats = {'pedazos': 0, 'clips': 0, 'ult_puntaje': None, 'ult_pedazo': None}
@@ -100,7 +100,7 @@ def trabajador():
                 time.sleep(15)
             chat = [t for _, t in recorder.chat_mensajes(centro - 40, centro + 40)]
             info = editor.hacer_clip(info_pedazos(), centro, chat, job_filtro=None if job['manual'] else C.get()['ia_minimo'],
-                                     solo_ia=not job['manual'])
+                                     solo_ia=not job['manual'], señales=job)
             if info and info.get('descartado'):
                 continue
             if info and not job['manual'] and info.get('duracion', 999) < C.get()['clip_min'] - 5:

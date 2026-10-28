@@ -154,7 +154,35 @@ def recortar(entrada, ss, t, salida):
     return r.returncode == 0 and os.path.exists(salida)
 
 
-def hacer_clip(pedazos_info, centro, chat_textos, nombre=None, job_filtro=None, solo_ia=False):
+FUERTE = (r'callate|cállate|respeta|no me grites|que te pasa|qué te pasa|mentiros|hipocrit|hipócrit|falsa|falso|'
+          r'pelea|peleamos|no me hables|loca|loco|mierda|carajo|verga|puta|maldit|estupid|estúpid|idiota|imbecil|'
+          r'imbécil|perra|cachudo|sapo|sapa|lárgate|largate|vete a|me vale|asco|odio|traicion|traición|traidor|'
+          r'nomin|placa|expuls|elimina|salvad|beso|besa|te quiero|me gustas|te amo|enamorad|coquete|cama|bañ|'
+          r'llor|perdón|perdon|lo siento|secreto|confies|confes|mi mamá|mi mama|mi hijo|mi hija|mi familia|'
+          r'se burla|burla|ridícul|ridicul|jajaja|grita|gritando|golpe|empuj|amenaz|chisme|dijo que tú|dijo que tu|'
+          r'a tus espaldas|hablando de ti|hablan de ti|estrategia|votar|voto')
+
+
+def prefiltro(crudo, chat_textos, señales=None):
+    """Filtro gratis en el servidor (Whisper) antes de gastar cuota de Gemini. Devuelve (pasa, motivo)."""
+    s_ = señales or {}
+    d = s_.get('detalle') or {}
+    if s_.get('puntaje', 0) >= C.get().get('pasa_directo', 88) or d.get('chat_fuerte', 0) >= 4 or d.get('chat_z', 0) >= 3:
+        return True, 'señal fuerte de volumen/chat'
+    palabras = transcribir(crudo)
+    texto = _norm(' '.join(w for _, _, w in palabras))
+    if len(texto.split()) < 25:
+        return False, 'casi no hablan'
+    fuertes = len(re.findall(_norm(FUERTE), texto))
+    chat_f = len(re.findall(_norm(FUERTE), _norm(' '.join(chat_textos))))
+    nombres = sum(1 for n, al in C.get()['participantes'].items()
+                  if any(re.search(r'\b' + re.escape(_norm(a)) + r'\b', texto) for a in al))
+    puntos = fuertes * 2 + min(chat_f, 4) + min(nombres, 2)
+    minimo = C.get().get('prefiltro_minimo', 6)
+    return puntos >= minimo, f'prefiltro {puntos}/{minimo} (fuertes {fuertes}, chat {chat_f}, nombres {nombres})'
+
+
+def hacer_clip(pedazos_info, centro, chat_textos, nombre=None, job_filtro=None, solo_ia=False, señales=None):
     """Devuelve dict con ruta del clip y datos, o None."""
     cfg = C.get()
     usar_ia = ia.activa()
@@ -169,6 +197,11 @@ def hacer_clip(pedazos_info, centro, chat_textos, nombre=None, job_filtro=None, 
         return None
     dur = hasta - desde
     info = None
+    if usar_ia and job_filtro is not None and cfg.get('prefiltro', True):
+        pasa, motivo = prefiltro(crudo, chat_textos, señales)
+        log(motivo, '→', 'a Gemini' if pasa else 'descartado sin gastar cuota')
+        if not pasa:
+            return {'descartado': True}
     if usar_ia:
         r = ia.analizar(crudo, chat_textos, dur)
         if 'error' not in r:
