@@ -2,7 +2,7 @@
 import json, os, queue, secrets, subprocess, threading, time
 import config as C, recorder, analyzer, editor, tg, ia, fb, wa, web, ntfy, fabrica
 
-VERSION = 'v13-ridmer'
+VERSION = 'v14-ridmer'
 cola = queue.Queue()
 historial = []          # (hora, puntaje) de clips enviados, para límites por hora
 stats = {'pedazos': 0, 'clips': 0, 'ult_puntaje': None, 'ult_pedazo': None}
@@ -110,7 +110,8 @@ def trabajador():
             nombres = ', '.join(info['nombres']) or '—'
             pts = info.get('interes') if info.get('ia') else job['puntaje']
             post = info.get('texto_post') or f"{info['titulo'].capitalize()} 😱🔥 #{C.get()['reality'].replace(' ', '')} #Reality"
-            cap = (('⚠️ <b>CONTENIDO EXPLÍCITO — revisar antes de subir</b>\n' if info.get('explicito') else '') +
+            cap = ('💗 <b>PASIÓN POR LOS REALITIES</b> · clip del reality\n' +
+                   ('⚠️ <b>CONTENIDO EXPLÍCITO — revisar antes de subir</b>\n' if info.get('explicito') else '') +
                    f"{'🎬 Clip pedido' if job['manual'] else '🔥 Momento fuerte'} <b>({pts}/100)</b> · {info['hora']} · ⏱️ {info.get('duracion', 0) // 60}:{info.get('duracion', 0) % 60:02d}\n"
                    f"<b>{info['titulo']}</b>\n{info['subtitulo']}\n"
                    f"👥 {nombres}\n"
@@ -146,7 +147,7 @@ def trabajador():
                     extra = '\n⚠️ Explícito: no se publica solo'
                 elif hay_fb and cfg['auto_publicar'] and (pts or 0) >= cfg['auto_minimo']:
                     extra = f"\n⏳ Se publica solo en {cfg['auto_espera_min']} min si no respondes"
-                ok_n, r_n = ntfy.enviar(f"🔥 {pts or 0}/100 · {info['titulo']}",
+                ok_n, r_n = ntfy.enviar(f"💗 REALITIES · {pts or 0}/100 · {info['titulo']}",
                                         f"{info.get('subtitulo', '')} · ⏱️ {du // 60}:{du % 60:02d}{extra}",
                                         link, f"{cfg.get('web_url', 'http://173.249.44.95')}/i/{token}.jpg")
                 if not ok_n:
@@ -266,6 +267,16 @@ def auto_publicador():
 
 def comandos(tipo, chat, dato, raw):
     cfg = C.get()
+    if tipo == 'boton' and dato.startswith(('rpub:', 'rno:')):
+        accion, _, jid = dato.partition(':')
+        if accion == 'rpub':
+            tg.texto('📤 Subiendo a Facebook Ridmer TV…', chat)
+            ok, res = fabrica.publicar(jid, 'tú')
+            if not ok:
+                tg.texto(f'⚠️ No se publicó: {res}', chat)
+        else:
+            fabrica.no_publicar(jid)
+        return
     if tipo == 'boton':
         accion, _, cid = dato.partition(':')
         with open(decisiones_file, 'a') as f:

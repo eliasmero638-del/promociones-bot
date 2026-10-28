@@ -318,27 +318,54 @@ def buscar_token(token):
     return None, None
 
 
+def _nota(meta, texto):
+    for chat_id, msg_id, cap in meta.get('mensajes', []):
+        tg.agregar_nota(chat_id, msg_id, cap, texto)
+
+
 def avisar(meta):
     cfg = C.get()
     link = f"{cfg.get('web_url', 'http://173.249.44.95')}/r/{meta['token']}"
     du = meta.get('duracion', 0)
-    tipo = '🎬 Short' if meta['formato'] == 'short' else '🎞️ Video largo'
+    corto = meta['formato'] == 'short'
+    tipo = '🎬 SHORT (vertical)' if corto else '🎞️ VIDEO LARGO (horizontal)'
+    destino = ('Para: YouTube Shorts (lo subes tú) + Reel de Facebook en Ridmer TV' if corto else
+               'Para: YouTube (lo subes tú) + video en Facebook Ridmer TV')
     espera = cfg.get('ridmer_espera_min', 20)
     auto = fb.activo('ridmer') and cfg.get('ridmer_auto', True)
-    extra = f'⏳ Se publica solo en Ridmer TV en {espera} min' if auto else '📘 Ridmer TV no está conectado: publícalo tú'
+    extra = (f'⏳ Si no respondes, se publica solo en Facebook Ridmer TV en {espera} min' if auto
+             else '⚠️ Ridmer TV no está conectado todavía: no se publica solo')
     if ntfy.activo():
-        ntfy.enviar(f"{tipo} RIDMER · {meta['titulo']}", f"⏱️ {du // 60}:{du % 60:02d} · {extra}", link,
-                    f"{link}/miniatura.jpg")
-    cap = (f"{tipo} listo · ⏱️ {du // 60}:{du % 60:02d}\n<b>{meta['titulo_youtube']}</b>\n\n{extra}\n"
-           f"👉 Descargar, títulos y descripción: {link}")
+        ntfy.enviar(f"🔴 RIDMER · {tipo.split(' (')[0]} · {meta['titulo']}", f"⏱️ {du // 60}:{du % 60:02d} · {extra}",
+                    link, f"{link}/miniatura.jpg")
+    cap = (f"🔴 <b>RIDMER TV</b> · {tipo} · ⏱️ {du // 60}:{du % 60:02d}\n{destino}\n\n"
+           f"<b>{meta['titulo_youtube']}</b>\n\n{extra}\n"
+           f"👉 Video en calidad completa, miniatura, descripción y etiquetas: {link}")
     v = os.path.join(DIR, meta['id'], meta['archivos']['video'])
+    if os.path.getsize(v) >= 48 * 1024 * 1024:
+        # Telegram no deja mandar más de 50 MB: va una versión liviana para revisar
+        prev = os.path.join(DIR, meta['id'], 'vista_previa.mp4')
+        montaje.sh(['ffmpeg', '-y', '-v', 'error', '-i', v, '-vf', 'scale=-2:540', '-c:v', 'libx264', '-preset', 'veryfast',
+                    '-b:v', '900k', '-maxrate', '1M', '-bufsize', '2M', '-c:a', 'aac', '-b:a', '96k',
+                    '-movflags', '+faststart', prev])
+        v = prev
+        cap += '\n(En Telegram va en calidad baja para revisar; descarga la buena del link)'
+    botones = json.dumps({'inline_keyboard': [[
+        {'text': '✅ Publicar en Ridmer TV', 'callback_data': f"rpub:{meta['id']}"},
+        {'text': '❌ No publicar', 'callback_data': f"rno:{meta['id']}"}]]})
+    mensajes = []
     for c in cfg['chat_ids']:
-        if os.path.getsize(v) < 48 * 1024 * 1024:
-            with open(v, 'rb') as f:
-                tg._api('sendVideo', files={'video': f}, chat_id=c, caption=cap[:1000], parse_mode='HTML',
-                        supports_streaming='true', disable_notification='true')
+        kw = dict(chat_id=c, caption=cap[:1000], parse_mode='HTML', supports_streaming='true')
+        if not cfg.get('solo_enviar'):
+            kw['reply_markup'] = botones
+        with open(v, 'rb') as f:
+            r = tg._api('sendVideo', files={'video': f}, **kw)
+        if r and r.get('ok'):
+            mensajes.append((c, r['result']['message_id'], r['result'].get('caption', '')))
         else:
-            tg._api('sendMessage', chat_id=c, text=cap, parse_mode='HTML', disable_notification='true')
+            tg._api('sendMessage', chat_id=c, text=cap, parse_mode='HTML')
+    meta['mensajes'] = mensajes
+    _guardar(os.path.join(DIR, meta['id'], 'meta.json'), meta)
 
 
 def publicar(jid, motivo='tú'):
@@ -356,6 +383,8 @@ def publicar(jid, motivo='tú'):
     else:
         m['publicado'] = time.time()
     _guardar(os.path.join(carpeta, 'meta.json'), m)
+    _nota(m, (f"📤 Publicado en Facebook Ridmer TV ({'automático' if motivo == 'auto' else 'por ti'}) · "
+              f"{time.strftime('%H:%M')}") if ok else f'⚠️ No se pudo publicar en Facebook: {res}')
     log('publicar', jid, ok, res)
     return ok, res
 
@@ -366,6 +395,7 @@ def no_publicar(jid):
         return False, 'ya estaba ' + (m or {}).get('estado', 'borrado')
     m['estado'] = 'descartado'
     _guardar(os.path.join(DIR, jid, 'meta.json'), m)
+    _nota(m, '❌ No se publica en Facebook')
     return True, 'ok'
 
 
