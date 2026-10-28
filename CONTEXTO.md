@@ -63,7 +63,7 @@ verdaderos.
 ## Estado al 27-oct-2026 22:30 y pendientes
 1. La cuota gratis de Gemini se agotó el 27-oct (429). YA HECHO (v18-filtro): prefiltro local con Whisper en
    `editor.prefiltro()` antes de llamar a Gemini; los modelos agotados se pausan 1 h. Falta ver si alcanza la cuota
-   gratis. Opción siguiente: agregar Groq (clave gratis) como segundo cerebro de texto.
+   gratis. YA HECHO (v19-groq): si Gemini no tiene cuota, el clip lo juzga Groq con la transcripción local (`ia.analizar_groq`). Falta que el usuario ponga su clave con `clipero groq`.
 2. Short de prueba de Robert Hansen: hay un reintento en `pedidos.json` (id `prueba-hansen-2`, el 28-oct a las 7:30 EC).
 3. Conectar Ridmer TV en Facebook (nuevo token con las dos páginas).
 4. Pendiente opcional: WhatsApp (CallMeBot sin cupo; o el número de prueba de WhatsApp Cloud de Meta), reconocimiento
