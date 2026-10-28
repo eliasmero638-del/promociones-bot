@@ -59,24 +59,27 @@ Te doy {nfotos} fotos del clip en orden y su audio. Tareas:
    por su nombre o apodo, o el chat lo confirma). Si tienes la mínima duda, NO lo pongas en "personajes" y en el
    título, subtítulo, descripción y texto NO uses su nombre: di "una participante", "un compañero", "uno de los chicos".
    Es mucho peor poner un nombre equivocado que no poner ninguno.
-3. Antes de calificar, verifica con el AUDIO: ¿hay de verdad gritos, insultos, reclamos directos, llanto, beso,
-   burla clara o una revelación fuerte? Solo es "pelea" si dos personas se confrontan directamente con voz alterada o
-   insultos. Si solo están conversando, contando algo o comentando, NO es pelea ni chisme fuerte: ponle menos de 60.
-   En "evidencia" copia la frase exacta del audio que prueba lo fuerte del momento; si no hay ninguna, deja "" y
-   califica menos de 60.
-   Califica de 0 a 100 qué tanto engancharía a gente en Facebook que NO ve el reality. Califica por LO QUE PASA y
-   LO QUE SE DICE, no por el volumen: una conversación a solas en voz baja puede valer 90 si es fuerte.
-   Sé exigente: la mayoría de momentos de una casa en vivo son rutina y deben quedar entre 10 y 55. Escala:
-   90-100: pelea fuerte, insultos, escándalo, beso o momento picante claro, humillación o burla muy fuerte,
-           confesión impactante, secreto revelado, traición descubierta, alguien llorando de verdad por algo serio.
-   75-89: discusión clara, burla o patanada evidente, coqueteo atrevido, chisme fuerte sobre otro participante,
-          plan secreto para traicionar o nominar a alguien, conversación íntima y conmovedora (familia, pasado,
-          sentimientos), alguien que se quiebra, reconciliación, momento MUY gracioso, algo que deje con la boca abierta.
-   50-74: conversación común sobre estrategia o nominaciones sin nada nuevo, comentarios sueltos, chisme sin sustancia.
-   0-49: silencio, comer, caminar, cantar, charla de rutina, pantalla en negro o publicidad.
-   Pregúntate: ¿alguien que va pasando por Facebook se detendría a ver esto y lo comentaría o compartiría?
-   Si no estás seguro, ponle menos de 70. Anécdotas, historias del pasado o charlas que no generan reacción en la
-   casa ni polémica valen menos de 75, aunque se cuenten con emoción.
+3. CLASIFICA el momento (no solo peleas importan; el volumen bajo NUNCA es motivo de descarte, y los gritos NO
+   prueban que haya polémica). Categorías:
+   - "polemica": discusión real, acusaciones, desacuerdo fuerte, respuesta fuerte, tensión entre participantes.
+   - "conversacion_importante": aunque hablen bajo: confesión, decisión, explicación seria, secreto, algo que cambia la situación.
+   - "tristeza": llanto, duelo, nostalgia, arrepentimiento, decepción, rechazo, soledad, reconciliación, relato doloroso.
+   - "historia_personal": experiencia difícil, superación, familia, pérdidas, dificultades, con un arco que conecte.
+   - "picante": coqueteo, insinuaciones, celos, tensión romántica, conversación sobre relaciones o sexo, confesiones íntimas
+     (sin inventar ni exagerar: si solo se insinúa, no lo presentes como hecho).
+   - "revelacion": información inesperada, contradicción, secreto revelado, giro en una relación o situación.
+   - "humor": sorpresa o momento gracioso genuino, con valor por sí mismo (no confundir ruido con interés).
+   - "normal": charla cotidiana, rutina, repeticiones, comentarios sin emoción ni giro → se descarta.
+   Para cada momento responde con hechos: ¿qué ocurre concretamente?, ¿qué frase o acción lo demuestra ("evidencia",
+   copia EXACTA del audio)?, ¿se entiende el contexto antes y después?, ¿tiene inicio, desarrollo y cierre natural?
+   Si no puedes explicar con evidencia por qué es interesante, decision = "descartar". Nunca etiquetes una charla común
+   como polémica para tener más clips. Si hay gritos pero no se entiende qué pasó, decision = "descartar" (incierto).
+   Califica "interes" de 0 a 100 SEGÚN SU CATEGORÍA (una historia triste no necesita pelea; una conversación picante
+   puede ser en voz baja; una revelación puede no tener emoción visible). Sé exigente: la rutina queda entre 10 y 55.
+   90-100: momento que cualquiera en Facebook se detendría a ver y compartiría (pelea real, confesión impactante,
+           llanto serio, revelación fuerte, picante claro, burla o humillación fuerte, giro inesperado).
+   75-89: claro y con valor (discusión, conversación íntima conmovedora, coqueteo atrevido, chisme fuerte con evidencia).
+   50-74: tiene algo pero flojo o sin nada nuevo.  0-49: rutina, silencio, publicidad, pantalla negra.
 4. Escribe un título gancho en MAYÚSCULAS (máx 6 palabras) y un subtítulo (máx 8 palabras) que digan qué pasó
    (y quién, solo si estás 100% seguro del nombre),
    estilo "JORGITO SE BURLA DE BRILLIT" / "y ella no se quedó callada". Llamativo pero fiel a lo que pasó.
@@ -85,13 +88,15 @@ Te doy {nfotos} fotos del clip en orden y su audio. Tareas:
 7. Decide dónde EMPIEZA y TERMINA el momento completo ("inicio" y "fin", en segundos desde el inicio del audio).
    Empieza un poco antes de que arranque el tema, para que se entienda. Termina cuando el momento de verdad se
    cierre: la respuesta, la reacción, la conclusión o el remate. NUNCA lo cortes a la mitad de lo que está pasando.
-   Duración entre {cmin} y {cmax} segundos. Lo normal es entre 90 y 170 segundos: si la conversación sigue sobre el
-   mismo tema, inclúyela completa. Si dudas, alárgalo: es mejor que sobre un poco a que falte el final.
-   Si todo el audio es el mismo momento, usa todo.
+   Mínimo {cmin} segundos y SIN máximo fijo: dura lo que dure el momento hasta su cierre natural (incluye la respuesta
+   o reacción final). Si el momento sigue al final del audio y no termina, pon "sigue": true.
 Reglas: si en el clip aparece un niño o niña, nunca le des un ángulo picante ni sexual al título o texto.
 
 Responde SOLO con este JSON:
-{{"interes": 0-100, "categoria": "pelea|chisme|picante|burla|gracioso|romance|llanto|nominacion|otro",
+{{"decision": "clip|descartar", "motivo_descarte": "", "interes": 0-100,
+ "categoria": "polemica|conversacion_importante|tristeza|historia_personal|picante|revelacion|humor|normal",
+ "categoria_secundaria": "", "explicacion": "qué ocurre concretamente y por qué interesa",
+ "contexto_claro": true, "certeza": 0-100, "intensidad": 0-100, "novedad": 0-100, "sigue": false,
  "personajes": ["..."], "titulo": "...", "subtitulo": "...", "descripcion": "qué pasó en una frase",
  "texto_post": "...", "explicito": false, "inicio": 0.0, "fin": 0.0, "evidencia": "frase exacta",
  "subtitulos": [{{"t0": 0.0, "t1": 2.1, "texto": "..."}}]}}"""
@@ -121,6 +126,18 @@ def aprender(bueno, texto):
         d = {'ok': [], 'no': []}
     d['ok' if bueno else 'no'].append(texto[:200])
     d['ok'], d['no'] = d['ok'][-30:], d['no'][-30:]
+    json.dump(d, open(APRENDE, 'w', encoding='utf-8'), ensure_ascii=False)
+
+
+def aprender_motivo(titulo, motivo):
+    try:
+        d = json.load(open(APRENDE, encoding='utf-8'))
+    except Exception:
+        return
+    for i in range(len(d.get('no', [])) - 1, -1, -1):
+        if d['no'][i].startswith(titulo[:40]) and '[motivo' not in d['no'][i]:
+            d['no'][i] += f' [motivo: {motivo}]'
+            break
     json.dump(d, open(APRENDE, 'w', encoding='utf-8'), ensure_ascii=False)
 
 
@@ -321,3 +338,28 @@ def probar_groq(key):
         except Exception as e:
             ult = (0, str(e))
     return ult
+
+
+def groq_clasificar(texto, chat=''):
+    """Clasificación rápida de texto para el prefiltro. Devuelve (categoria, interes) o (None, 0)."""
+    key = C.get().get('groq_key')
+    if not key or not texto.strip():
+        return None, 0
+    p = ('Transcripción automática de un momento de un reality en vivo (puede tener errores). Clasifícalo con '
+         'exigencia. Categorías: polemica, conversacion_importante, tristeza, historia_personal, picante, revelacion, '
+         'humor, normal (charla de rutina sin emoción ni giro). El volumen no importa; importa lo que se dice. '
+         'Responde SOLO JSON {"categoria": "...", "interes": 0-100, "por_que": "..."}.\n\nTEXTO: ' + texto[:6000] +
+         ('\n\nCHAT: ' + chat[:1500] if chat else ''))
+    for m in groq_modelos(key)[:3]:
+        try:
+            r = requests.post('https://api.groq.com/openai/v1/chat/completions', timeout=60,
+                              headers={'Authorization': f'Bearer {key}'},
+                              json={'model': m, 'temperature': 0.2, 'response_format': {'type': 'json_object'},
+                                    'messages': [{'role': 'user', 'content': p}]})
+            if r.status_code != 200:
+                continue
+            d = json.loads(r.json()['choices'][0]['message']['content'])
+            return str(d.get('categoria', 'normal')), int(d.get('interes', 0) or 0)
+        except Exception:
+            continue
+    return None, 0

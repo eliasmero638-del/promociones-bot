@@ -7,7 +7,7 @@ except Exception as _e:          # si la fábrica falla, el Clipero sigue funcio
     fabrica = None
     print('fabrica no disponible:', _e, flush=True)
 
-VERSION = 'v19-groq'
+VERSION = 'v20-categorias'
 cola = queue.Queue()
 historial = []          # (hora, puntaje) de clips enviados, para límites por hora
 stats = {'pedazos': 0, 'clips': 0, 'ult_puntaje': None, 'ult_pedazo': None}
@@ -27,7 +27,7 @@ def dur(path):
 
 
 def info_pedazos():
-    return [(p, recorder.pedazo_inicio(p), dur(p)) for p in recorder.pedazos()[-6:]]
+    return [(p, recorder.pedazo_inicio(p), dur(p)) for p in recorder.pedazos()[-12:]]
 
 
 def en_horario():
@@ -99,8 +99,22 @@ def trabajador():
                     break
                 time.sleep(15)
             chat = [t for _, t in recorder.chat_mensajes(centro - 40, centro + 40)]
-            info = editor.hacer_clip(info_pedazos(), centro, chat, job_filtro=None if job['manual'] else C.get()['ia_minimo'],
-                                     solo_ia=not job['manual'], señales=job)
+            extra = 0
+            while True:
+                info = editor.hacer_clip(info_pedazos(), centro, chat, job_filtro=None if job['manual'] else C.get()['ia_minimo'],
+                                         solo_ia=not job['manual'], señales=job, extra=extra)
+                if not (info and info.get('extender')):
+                    break
+                # el momento sigue: esperar más grabación y volver a cortar más largo
+                extra += 180
+                log('el momento sigue, amplío', extra, 's')
+                objetivo = centro + C.get()['ventana_despues'] + extra
+                for _ in range(40):
+                    ps = info_pedazos()
+                    if ps and ps[-1][1] + ps[-1][2] >= objetivo:
+                        break
+                    time.sleep(15)
+                chat = [t for _, t in recorder.chat_mensajes(centro - 60, objetivo)]
             if info and info.get('descartado'):
                 continue
             if info and not job['manual'] and info.get('duracion', 999) < C.get()['clip_min'] - 5:
@@ -275,6 +289,11 @@ def auto_publicador():
             log('error auto_publicador', e)
 
 
+MOTIVOS = {'normal': 'Charla normal, no pasa nada', 'nopol': 'No hay polémica real', 'ctx': 'Fuera de contexto',
+           'incomp': 'Historia incompleta / clip cortado', 'emo': 'Emoción mal interpretada',
+           'pic': 'Picante exagerado', 'nom': 'Nombre incorrecto', 'tit': 'Título engañoso'}
+
+
 def comandos(tipo, chat, dato, raw):
     cfg = C.get()
     if tipo == 'boton' and dato.startswith(('rpub:', 'rno:')) and fabrica:
@@ -292,8 +311,20 @@ def comandos(tipo, chat, dato, raw):
         with open(decisiones_file, 'a') as f:
             f.write(json.dumps({'clip': cid, 'decision': accion, 'hora': time.time()}) + '\n')
         m = leer_meta(cid)
+        if accion == 'mot':
+            cid_, _, k = cid.partition(':')
+            mm = leer_meta(cid_)
+            if mm:
+                ia.aprender_motivo(mm.get('titulo', ''), MOTIVOS.get(k, k))
+            tg.editar_caption(raw, f'📝 Motivo guardado: {MOTIVOS.get(k, k)}') if raw.get('message', {}).get('caption') else \
+                tg._api('editMessageText', chat_id=chat, message_id=raw['message']['message_id'],
+                        text=f'📝 Motivo guardado: {MOTIVOS.get(k, k)}. La IA lo tendrá en cuenta.')
+            return
         if m and accion in ('pub', 'no', 'ok'):
             ia.aprender(accion != 'no', f"{m.get('titulo', '')} — {m.get('descripcion', '')}")
+        if m and accion == 'no':
+            botones = [[{'text': v, 'callback_data': f'mot:{cid}:{k}'}] for k, v in MOTIVOS.items()]
+            tg.texto('¿Por qué no sirve? (opcional, así aprende)', chat, botones)
         if accion == 'pub':
             tg.texto('📤 Subiendo a Facebook…', chat)
             ok, res = publicar_clip(cid, 'tú')

@@ -4,6 +4,17 @@ El dueño no programa: explicarle todo paso a paso, en español sencillo, con un
 **Nunca subir secretos a GitHub** (este repo es público). Los secretos viven solo en el servidor:
 `/var/lib/clipero/secrets/config.json`.
 
+## ⚠️ Antes de nada
+- El plan del dueño está en `docs/Plan_Definitivo_v2.txt` (y PDF). Manda sobre este archivo.
+- **Cualquier push a la rama `clipero` se despliega solo en ~5 min.** Trabaja en `clipero-dev` y fusiona solo con
+  autorización explícita del dueño.
+- v20-categorias (en `clipero-dev`): categorías más allá de peleas, supervisor con reglas (decision, normal, explicación,
+  contexto, certeza ≥60, evidencia que aparezca en la transcripción), prefiltro con Groq, extensión del clip si "sigue"
+  (hasta +6 min), sin tope fijo (clip_max 900), control de calidad del archivo (audio + duración), motivos de rechazo en
+  Telegram. NO toca el temporizador de 20 min.
+- Pendiente del plan: cola persistente con estados/reintentos, métricas por categoría, fuentes con URL/fecha en Ridmer,
+  YouTube API, Ridmer TV en Meta.
+
 ## Cómo se despliega
 - Rama `clipero` de `eliasmero638-del/promociones-bot`. El servidor hace `git pull` cada 5 min
   (`clipero-update.timer` → `server/update.sh`). Si cambió algo, corre `server/install.sh`, que instala lo de

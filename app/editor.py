@@ -183,15 +183,30 @@ def prefiltro(crudo, chat_textos, señales=None):
                   if any(re.search(r'\b' + re.escape(_norm(a)) + r'\b', texto) for a in al))
     puntos = fuertes * 2 + min(chat_f, 4) + min(nombres, 2)
     minimo = C.get().get('prefiltro_minimo', 6)
-    return puntos >= minimo, f'prefiltro {puntos}/{minimo} (fuertes {fuertes}, chat {chat_f}, nombres {nombres})'
+    if puntos >= minimo:
+        return True, f'prefiltro {puntos}/{minimo} (fuertes {fuertes}, chat {chat_f}, nombres {nombres})'
+    if ia.groq_activa():
+        cat, inte = ia.groq_clasificar(' '.join(w for _, _, w in palabras), ' | '.join(chat_textos[-40:]))
+        if cat:
+            return (cat != 'normal' and inte >= C.get().get('prefiltro_groq', 65)), f'Groq: {cat} {inte}'
+    return False, f'prefiltro {puntos}/{minimo} (fuertes {fuertes}, chat {chat_f}, nombres {nombres})'
 
 
-def hacer_clip(pedazos_info, centro, chat_textos, nombre=None, job_filtro=None, solo_ia=False, señales=None):
+def _evidencia_real(evid, palabras):
+    """¿La frase de evidencia aparece de verdad en lo que se dijo? (al menos la mitad de sus palabras importantes)"""
+    ev = [w for w in _norm(evid).split() if len(w) >= 4]
+    if not ev:
+        return False
+    dicho = set(w.strip('.,;:!?¡¿"') for w in _norm(' '.join(x[2] for x in palabras)).split())
+    return sum(1 for w in ev if w.strip('.,;:!?¡¿"') in dicho) >= max(1, len(ev) // 2)
+
+
+def hacer_clip(pedazos_info, centro, chat_textos, nombre=None, job_filtro=None, solo_ia=False, señales=None, extra=0):
     """Devuelve dict con ruta del clip y datos, o None."""
     cfg = C.get()
     usar_ia = ia.activa()
     if usar_ia:
-        desde, hasta = centro - cfg['ventana_antes'], centro + cfg['ventana_despues']
+        desde, hasta = centro - cfg['ventana_antes'], centro + cfg['ventana_despues'] + extra
     else:
         desde, hasta = centro - cfg['antes_seg'], centro + cfg['despues_seg']
     nombre = nombre or time.strftime('%Y%m%d_%H%M%S', time.localtime(centro))
@@ -201,7 +216,7 @@ def hacer_clip(pedazos_info, centro, chat_textos, nombre=None, job_filtro=None, 
         return None
     dur = hasta - desde
     info = None
-    if usar_ia and job_filtro is not None and cfg.get('prefiltro', True):
+    if usar_ia and job_filtro is not None and cfg.get('prefiltro', True) and not extra:
         pasa, motivo = prefiltro(crudo, chat_textos, señales)
         log(motivo, '→', 'a Gemini' if pasa else 'descartado sin gastar cuota')
         if not pasa:
@@ -213,7 +228,31 @@ def hacer_clip(pedazos_info, centro, chat_textos, nombre=None, job_filtro=None, 
             if loc:
                 r = ia.analizar_groq(loc, chat_textos, dur)
                 log('Gemini no disponible → Groq', r.get('_modelo') or r.get('error'))
-        _local.pop(crudo, None)
+        local = _local.pop(crudo, None)
+        if 'error' not in r and job_filtro is not None:
+            # supervisor: reglas obligatorias antes de Telegram
+            motivo = ''
+            if r.get('decision') == 'descartar':
+                motivo = 'IA: ' + str(r.get('motivo_descarte') or 'descartar')
+            elif str(r.get('categoria', '')).lower() == 'normal':
+                motivo = 'conversación normal'
+            elif not str(r.get('explicacion') or '').strip():
+                motivo = 'sin explicación concreta'
+            elif r.get('contexto_claro') is False:
+                motivo = 'contexto no claro'
+            elif int(r.get('certeza', 100) or 0) < cfg.get('certeza_minima', 60):
+                motivo = f"certeza baja ({r.get('certeza')})"
+            elif not str(r.get('evidencia') or '').strip():
+                motivo = 'sin evidencia'
+            else:
+                ref = local or [(0, 0, w) for s_ in r.get('subtitulos') or [] for w in str(s_.get('texto', '')).split()]
+                if ref and not _evidencia_real(r['evidencia'], ref):
+                    motivo = 'la evidencia no aparece en el audio'
+            if motivo:
+                log('supervisor descarta:', motivo, '·', r.get('titulo'))
+                return {'descartado': True, 'motivo': motivo}
+            if r.get('sigue') and extra < cfg.get('extension_max', 360):
+                return {'extender': True}
         if 'error' not in r:
             # recorte del momento completo que eligió la IA
             try:
@@ -226,8 +265,8 @@ def hacer_clip(pedazos_info, centro, chat_textos, nombre=None, job_filtro=None, 
             fin = min(dur, fin + 4.0)
             if fin - ini < cfg['clip_min']:
                 fin = min(dur, ini + cfg['clip_min'])
-            if fin - ini > cfg['clip_max']:
-                fin = ini + cfg['clip_max']
+            if fin - ini > cfg.get('clip_max', 900):
+                fin = ini + cfg.get('clip_max', 900)
             palabras = []
             for s_ in r.get('subtitulos') or []:
                 ws = str(s_.get('texto', '')).split()
@@ -290,6 +329,18 @@ def hacer_clip(pedazos_info, centro, chat_textos, nombre=None, job_filtro=None, 
     hacer_ass(palabras, info, dur, ass)
     final = os.path.join(d, 'clip.mp4')
     if not vertical(crudo, ass, final):
+        return None
+    # control de calidad: que tenga audio y la duración esperada
+    pr = subprocess.run(['ffprobe', '-v', 'error', '-show_entries', 'stream=codec_type:format=duration', '-of', 'json', final],
+                        capture_output=True, text=True)
+    try:
+        jd = __import__('json').loads(pr.stdout)
+        tiene_audio = any(x.get('codec_type') == 'audio' for x in jd.get('streams', []))
+        d_final = float(jd['format']['duration'])
+    except Exception:
+        tiene_audio, d_final = False, 0
+    if not tiene_audio or d_final < dur - 3:
+        log('control de calidad falló: audio', tiene_audio, 'duración', d_final, 'esperada', dur)
         return None
     info['ruta'] = final
     info['duracion'] = int(dur)

@@ -1,0 +1,524 @@
+       REVISIÓN 2 — CATEGORÍAS DE CONTENIDO
+Añadido al Plan Definitivo de Clipero + Fábrica Ridmer
+
+Esta revisión amplía y precisa el filtro de Clipero: no debe buscar únicamente peleas. Debe detectar cualquier
+conversación o acontecimiento que tenga interés emocional, humano o social, incluso cuando los participantes hablan
+despacio y no hay gritos.
+
+Instrucción de precedencia: esta revisión reemplaza cualquier interpretación del plan anterior que dé prioridad exclusiva a
+peleas, gritos o discusiones. Se mantienen sin cambios el temporizador actual de 20 minutos, los botones de Telegram y la
+regla de clips completos.
+
+
+1. Qué tipos de momentos debe aprender a distinguir
+Categorías prioritarias de Clipero
+ • Polémica o confrontación: discusión real, acusaciones, desacuerdos, respuestas fuertes, tensión o revelaciones entre
+   participantes. Debe existir evidencia y contexto.
+
+ • Conversación importante aunque hablen bajo: confesiones, decisiones, explicaciones serias, secretos revelados,
+   consecuencias o una conversación que cambie la situación. El volumen bajo nunca debe ser motivo automático de descarte.
+
+ • Tristeza, pena o emoción: llanto, duelo, nostalgia, arrepentimiento, decepción, rechazo, soledad, reconciliación o relatos
+   dolorosos. No exigir gritos ni una pelea.
+
+ • Historias personales: experiencias difíciles, superación, familia, relaciones, pérdidas, dificultades económicas u otros relatos
+   que tengan un arco narrativo y puedan conectar con la audiencia.
+
+ • Contenido romántico o picante: coqueteo, insinuaciones, celos, tensión romántica, conversaciones sobre relaciones o sexo
+   y confesiones íntimas, siempre que el contenido sea permitido y se describa sin inventar ni exagerar.
+
+ • Humor o sorpresa genuina: situaciones inesperadas, reacciones espontáneas o momentos divertidos que tengan valor por
+   sí mismos, sin confundir ruido con interés.
+
+ • Revelaciones o giros: información inesperada, contradicciones comprobables, secretos revelados o cambios importantes en
+   una relación o situación.
+
+ • Conversación normal sin valor claro: charla cotidiana, repeticiones o comentarios sin emoción, información, giro ni
+   acontecimiento relevante. Normalmente debe descartarse.
+
+
+2. Cómo decidir si un momento merece ser clip
+El sistema debe clasificar el tipo de interés y después puntuar la calidad. No debe considerar que solo una pelea puede ser
+viral. Un momento tranquilo puede ser muy bueno si revela algo importante o genera tristeza, empatía, sorpresa o curiosidad.
+
+ • ¿Qué está ocurriendo concretamente?
+
+ • ¿Qué categoría describe mejor el momento?
+
+ • ¿Qué frase, acción o reacción demuestra que tiene interés?
+
+ • ¿Se entiende el contexto anterior y posterior?
+
+ • ¿Hay una emoción, información, giro o tensión que pueda interesar a la audiencia?
+
+ • ¿El clip tiene un principio, desarrollo y cierre natural?
+
+ • ¿El título puede describirlo con precisión sin inventar hechos?
+Regla de descarte: si la IA no puede explicar con evidencia qué hace interesante el momento, debe descartarlo o ampliar el
+contexto. No debe etiquetar una charla común como polémica solo para generar más clips.
+
+
+3. Puntuación por tipo de interés
+Añadir al análisis campos independientes: categoría principal, categoría secundaria, intensidad emocional, relevancia de la
+información, novedad, claridad del contexto, fuerza de la evidencia y certeza. La puntuación global de interés actual (85) se
+conserva como punto de partida, pero las reglas obligatorias de evidencia y contexto siguen vigentes.
+
+No usar un solo modelo de puntuación para todas las categorías: una historia triste puede no tener confrontación; una
+conversación picante puede hablarse en voz baja; una revelación puede ser importante sin emoción visible. El sistema debe
+valorar cada momento según su categoría.
+
+Ejemplos de decisiones
+          Ejemplo                                                 Clasificación esperada
+
+          Dos participantes discuten y se acusan con              Polémica; revisar el intercambio completo.
+          evidencia
+
+          Participante cuenta en voz baja una pérdida             Historia triste/emocional; no descartar por volumen
+          familiar y se emociona                                  bajo.
+
+          Conversación sobre sexo o intimidad con                 Picante/relaciones; comprobar contexto, políticas y
+          insinuaciones                                           que el título no exagere.
+
+          Alguien revela algo importante sobre una relación       Revelación/relaciones; verificar qué se dijo
+                                                                  realmente.
+
+          Personajes conversan sobre actividades rutinarias       Conversación normal; descartar.
+          sin giro ni emoción
+
+          Hay gritos, pero no se entiende qué pasó                Incierto; recuperar contexto o descartar, no
+                                                                  etiquetar como polémica.
+
+
+4. Contenido picante: límites de calidad
+ • Detectar conversaciones sobre sexo, intimidad, celos y coqueteo como una categoría de interés, no descartarlas solo porque
+   no sean peleas.
+
+ • No convertir insinuaciones en afirmaciones explícitas si el audio no lo demuestra. No inventar citas ni describir como hecho
+   algo que solo parece sugerido.
+
+ • Evitar títulos engañosos o sexualmente explícitos que no correspondan al contenido real.
+
+ • No automatizar publicación de material sexual explícito ni contenido que pueda infringir las políticas de la plataforma. Si hay
+   duda, bloquear o mandar a revisión.
+
+ • Si no se entiende el sentido por falta de contexto, recuperar más fragmentos antes de decidir.
+
+
+5. Clips completos: se mantiene la regla
+Todas las categorías deben conservar el momento completo. Si una historia triste dura 3 minutos, una confesión dura 2
+minutos y 40 segundos o una polémica dura 4 minutos, el clip editorial debe abarcar el desarrollo necesario hasta el cierre
+natural. No cortar por una duración fija. Si una plataforma no admite el formato largo, conservar el clip completo y crear una
+versión aparte para esa plataforma sin hacer pasar el resumen por el original completo.
+
+
+6. Aprendizaje con feedback
+ • Registrar la categoría y el motivo por el que el propietario aprueba o rechaza cada clip.
+
+ • Permitir motivos de rechazo específicos: no hay polémica, charla normal, fuera de contexto, historia incompleta,
+   tristeza/emoción mal interpretada, picante exagerado, nombre incorrecto, título engañoso o clip cortado.
+
+ • Usar los rechazos para ajustar la clasificación y el prompt, pero no cambiar automáticamente reglas críticas sin pruebas.
+ • Probar con ejemplos reales de todas las categorías, incluyendo conversaciones tranquilas importantes, historias tristes y
+   conversaciones picantes.
+
+ • Medir por categoría cuántos clips se aceptan, cuántos se rechazan y qué resultados obtienen; optimizar calidad, no solo
+   volumen.
+
+
+7. Instrucción adicional para Claude Code
+Actualiza el análisis de Clipero para clasificar interés más allá de peleas. Categorías mínimas: polémica/confrontación;
+conversación importante aunque sea tranquila; tristeza/pena/emoción; historia personal; relaciones/coqueteo/conversación
+picante; revelación/giro; sorpresa/humor genuino; conversación normal sin interés.
+
+No descartar por hablar bajo. No asumir que hay polémica por gritos. Cada candidato debe devolver categoría, explicación
+concreta, evidencia/frase o acción, contexto anterior/posterior, emoción, novedad, certeza, inicio y final propuestos, decisión y
+motivo de descarte. Mantener evidencia y contexto como requisitos obligatorios. Conservar el umbral de 85 como punto de
+partida, pero evaluar cada categoría según su tipo de interés.
+
+Mantener clips completos hasta el cierre natural, sin duración máxima fija en la fase editorial. No alterar la publicación
+automática actual de Telegram: si no hay aprobación/rechazo en 20 minutos, se publica como ahora. Toda verificación nueva
+ocurre antes de enviar el clip a Telegram. Probar con ejemplos etiquetados de todas las categorías antes de desplegar.
+
+Este añadido debe leerse antes del plan anterior y prevalece si alguna frase parece priorizar únicamente las peleas. Claude
+Code debe auditar primero y no cambiar el temporizador de 20 minutos.
+                            PLAN DEFINITIVO DE MEJORAS
+                          Clipero + Fábrica Ridmer · Menos errores, clips completos y automatización
+
+ Objetivo: reducir al máximo los clips irrelevantes, los errores de contexto y los fallos de producción; hacer que el supervisor
+ revise cada clip y que los videos se publiquen completos, con el mínimo trabajo manual posible.
+
+ Reglas que no se deben cambiar: se conserva la regla actual de que, si un clip está pendiente en Telegram y el
+ propietario no lo aprueba ni lo rechaza en 20 minutos, se publica automáticamente. También se conservan los botones de
+ aprobar/rechazar, los horarios y las funciones actuales que ya trabajan correctamente. El trabajo de esta propuesta es
+ mejorar lo que sucede ANTES de ese plazo.
+
+ Documento preparado para revisión y para entregar a Claude Code. Primero debe auditar el proyecto actual; no asumir que una función falta ni
+ reemplazar código que ya funciona.
+
+
+
+
+Clipero + Fábrica Ridmer · Plan para revisión                                                                                               Página 1
+ 1. Prioridad máxima: que los clips sean realmente interesantes
+ El problema actual reportado es que muchos clips enviados no contienen una polémica real. La solución es cambiar el criterio
+ de selección, no solamente añadir otra IA. El sistema debe preferir enviar pocos clips buenos antes que llenar Telegram de
+ clips malos.
+
+ Pipeline de Clipero
+  • 1) Detectar candidatos: usar picos de audio/chat como señales para buscar, nunca como prueba de que existe una polémica.
+
+  • 2) Transcribir: usar Whisper local si el servidor puede ejecutarlo sin quedarse sin recursos. Guardar transcripción y marcas de
+    tiempo asociadas al fragmento.
+
+  • 3) Prefiltrar: reglas económicas y Groq (si hay cuota disponible) clasifican el texto. Conversación normal, charla sin
+    acontecimiento y señales ambiguas deben descartarse o no avanzar.
+
+  • 4) Recuperar contexto: analizar suficiente material anterior y posterior para comprender cómo empieza, qué ocurre y cuándo
+    termina el evento. No juzgar por una frase aislada.
+
+  • 5) Verificar en profundidad: Gemini revisa solo candidatos prometedores, usando el audio, las imágenes y el chat disponible.
+    Debe explicar qué ocurrió y señalar evidencia concreta.
+
+  • 6) Supervisor de calidad: valida el resultado de la IA, aplica reglas obligatorias y decide aprobar, descartar o dejar en espera
+    por incertidumbre.
+
+  • 7) Editar: solo después de que el acontecimiento supere los filtros se genera el clip.
+
+  • 8) Revisar el archivo terminado: comprobar que comienza antes de que el evento sea entendible, que contiene todo el
+    desarrollo y que termina después de la conclusión natural.
+
+  • 9) Enviar a Telegram: incluir el clip, un título fiel, breve descripción del acontecimiento y, para diagnóstico interno, el motivo de
+    selección. Conservar los botones actuales.
+
+  • 10) Aprender: registrar aprobaciones y rechazos con motivo para ajustar los filtros tras pruebas.
+
+ Reglas obligatorias de selección
+  • No considerar que hay pelea solo porque se grita, se habla fuerte o sube el chat.
+
+  • Para clasificar como pelea o confrontación debe haber una confrontación real y evidencia concreta: frase exacta o acción
+    observable.
+
+  • Exigir una explicación concreta: qué ocurrió, qué lo hace relevante y cuál es la evidencia. Si la IA solo dice “momento intenso”
+    sin explicarlo, no pasa.
+
+  • Si el contenido es una conversación cotidiana sin un hecho relevante, descartarlo.
+
+  • Si falta contexto, los nombres son dudosos, la transcripción es mala o las IA discrepan, no aprobar automáticamente el
+    análisis. Recuperar más contexto o descartar.
+
+  • Los nombres se muestran solo con alta certeza y si la persona es participante actual; no confundir exparticipantes con quien
+    habla.
+
+  • Conservar el umbral actual de interés 85 como punto de partida, pero la puntuación nunca puede compensar la falta de
+    evidencia/contexto.
+
+  • No publicar automáticamente material explícito según las reglas actuales.
+
+  • No generar clips si la IA falla o devuelve datos incompletos, inválidos o contradictorios.
+
+
+ 2. Los clips deben terminar cuando termina la polémica
+ Requisito esencial: la duración no debe quedar fijada a 55, 60, 90 o 118 segundos si eso corta el acontecimiento. Si una
+ polémica dura 3 minutos, el clip debe durar lo necesario para mostrarla completa, aunque exceda la duración típica de un
+ Short. No cortar automáticamente al minuto 1:58 ni a ninguna duración fija.
+
+
+
+Clipero + Fábrica Ridmer · Plan para revisión                                                                                     Página 2
+ Cómo encontrar el inicio y el final
+  • Localizar el inicio real: incluir el contexto mínimo necesario para entender cómo empezó la discusión, sin introducir minutos
+    irrelevantes.
+
+  • Seguir el evento mientras continúe la misma discusión, respuesta, réplica, revelación o reacción relacionada.
+
+  • Detectar el final natural: cuando los participantes terminan el intercambio, cambia claramente el tema o existe una pausa
+    sostenida que indique que el evento acabó.
+
+  • Incluir la respuesta o reacción final si es necesaria para comprender la polémica. No cortar justo después de la frase llamativa
+     si falta la respuesta que la explica.
+
+  • Usar el fragmento inicial de 2 minutos como señal de candidato, no como límite del clip final. El sistema debe poder
+    unir/recuperar fragmentos siguientes y anteriores.
+
+  • Si el evento cruza varios archivos .ts, unir los segmentos necesarios sin perder audio, imagen ni continuidad; comprobar
+    sincronización y evitar saltos o repeticiones.
+
+  • Aplicar un margen configurable antes y después del evento para evitar cortes abruptos, pero decidir el final según el
+    acontecimiento y no por una cifra fija.
+
+  • Si el final no está claro, ampliar el análisis y el corte; si aun así no puede determinarse, marcar para revisión o descartar, nunca
+    cortar arbitrariamente.
+
+  • Después del render, verificar que el archivo contiene el inicio, el desarrollo y el cierre del evento. Comparar duración del clip
+    con las marcas de tiempo detectadas.
+
+  • Registrar las marcas de tiempo de inicio/fin, fragmentos fuente usados y motivo del corte para poder depurar errores.
+ Compatibilidad de plataformas: la duración editorial debe conservar la polémica completa. Después, un módulo de
+ distribución puede decidir si ese archivo es apto para publicarse como Reel/Short según las reglas vigentes de cada
+ plataforma. Si el evento es demasiado largo, no se debe mutilar para encajarlo: se publica en un formato compatible más
+ largo o se crea una versión corta separada, claramente editada, que no sustituya al clip completo.
+
+
+ 3. Supervisor central: qué debe revisar
+ El supervisor es software dentro del servidor, no una IA adicional necesariamente. Coordina etapas, valida salidas, evita
+ duplicados, maneja fallos y notifica. Puede llamar a Groq/Gemini para tareas concretas, pero las comprobaciones técnicas
+ deben ser reglas programadas.
+
+ Verificación antes de enviar cada clip
+  • ¿Existe un acontecimiento específico o es solo conversación?
+
+  • ¿La evidencia citada aparece realmente en la transcripción/audio/video?
+
+  • ¿Se entiende el contexto anterior y posterior?
+
+  • ¿Los nombres están suficientemente confirmados?
+
+  • ¿El clip incluye todo el intercambio y su conclusión natural?
+
+  • ¿El audio y el video están completos, sincronizados y sin cortes anómalos?
+
+  • ¿Los subtítulos corresponden al audio y no tapan información importante?
+
+  • ¿La duración es la necesaria para terminar el acontecimiento, no una duración fija impuesta?
+
+  • ¿Ya se envió o publicó un clip equivalente?
+
+  • ¿El título describe fielmente lo que se ve y oye?
+ Si una condición crítica falla, el supervisor debe bloquear el envío, intentar recuperar más contexto o repetir el montaje con
+ límites de intentos. Si no puede resolverlo, debe registrar la razón y avisar. No debe convertir una respuesta incierta de IA
+ en una aprobación.
+
+
+
+Clipero + Fábrica Ridmer · Plan para revisión                                                                                    Página 3
+ 4. Whisper, Groq y Gemini: funciones separadas
+  • Whisper local: transcribe y aporta marcas de tiempo. No decide por sí solo si algo es polémico; puede equivocarse con ruido
+    y voces superpuestas.
+
+  • Groq: clasifica la transcripción y ayuda a descartar candidatos débiles, si el modelo/cuota disponibles lo permiten.
+
+  • Gemini: analiza los candidatos prometedores con contexto visual/audio y verifica la evidencia.
+
+  • Supervisor: valida reglas, estados y archivo final; no es un modelo de lenguaje ni sustituye el análisis semántico.
+
+  • En caso de cuota agotada (429), pausar ese proveedor, guardar el trabajo y usar un respaldo solo si puede ejecutar la misma
+    tarea. Si no hay proveedor disponible, dejar en cola y reintentar más tarde.
+
+  • No asumir que una cuota gratuita es ilimitada. No añadir API de pago sin aprobación expresa. La API de ChatGPT/OpenAI se
+    factura por separado de la suscripción ChatGPT.
+
+  • Medir CPU/RAM del VPS antes de activar Whisper local permanentemente; si la carga es excesiva, usar un modelo más
+    pequeño o procesar en cola.
+
+
+ 5. Fábrica Ridmer: historias, noticias, Shorts y videos largos
+  • Buscar temas en categorías aprobadas y detectar tendencias con fuentes accesibles; guardar URL, medio, fecha de
+    publicación y fecha del hecho.
+
+  • Eliminar temas duplicados y evitar historias viejas presentadas como nuevas.
+
+  • Verificar nombres, fechas, cifras, citas y afirmaciones con fuentes suficientes antes del guion.
+
+  • Si una afirmación no está verificada, no presentarla como hecho confirmado. Descartar o etiquetar con claridad la
+    incertidumbre.
+
+  • Crear guion según el formato: Short/Reel o video largo. No forzar un video largo a ser un Short.
+
+  • Usar imágenes autorizadas, propias o con licencia apropiada; guardar la procedencia de cada recurso.
+
+  • Generar voz, subtítulos, montaje, miniatura y título después de verificar el guion.
+
+  • Revisar audio, sincronía, subtítulos, imágenes, pantallas negras, duración, título y miniatura antes de publicar.
+
+  • Si una historia no tiene suficiente material o fuentes fiables, no producirla por llenar el calendario.
+
+
+ 6. Supervisor técnico, cola y recuperación de errores
+ Estados persistentes
+ nuevo → transcrito → prefiltrado → verificado → aprobado → editado → control_calidad → pendiente_publicación →
+ publicado. Estados alternativos: descartado, esperando_cuota, reintento_programado y error_requiere_atención.
+
+  • Cada trabajo debe tener ID único, etapa actual, intentos, archivos de origen, marcas de tiempo, último error y estado de
+    publicación.
+
+  • Guardar el estado después de cada etapa para continuar tras reinicios.
+
+  • Usar reintentos limitados y espera progresiva; separar errores temporales de permanentes.
+
+  • Evitar que dos procesos trabajen o publiquen el mismo clip a la vez.
+
+  • Antes de reintentar una publicación con timeout, comprobar si la plataforma ya la recibió.
+
+  • Alertar por Telegram si deja de llegar la grabación, crece la cola, se agota cuota, falla una autorización o hay errores repetidos.
+
+  • Rotar logs y nunca escribir secretos en ellos.
+
+  • Usar almacenamiento persistente y copias de seguridad; comprobar si el sistema actual necesita SQLite u otra cola, sin
+    sustituir lo existente a ciegas.
+
+
+
+
+Clipero + Fábrica Ridmer · Plan para revisión                                                                                   Página 4
+ 7. Publicación a los 20 minutos: NO CAMBIAR
+ La regla actual queda explícitamente fuera del alcance de las modificaciones: cuando el clip está en el bot de Telegram, si
+ el propietario no lo aprueba ni lo rechaza dentro de 20 minutos, se publica automáticamente. Se conservan los botones y el
+ comportamiento actual. No añadir una nueva aprobación obligatoria ni alargar ese plazo.
+
+ Las verificaciones nuevas deben ocurrir antes de que el clip llegue a Telegram. El supervisor no debe alterar el temporizador
+ actual ni cambiar la lógica de publicación automática. Si el sistema detecta un fallo técnico antes del envío, no debe enviar el
+ clip defectuoso al flujo de 20 minutos.
+
+
+ 8. Facebook y YouTube
+  • Conectar la página Ridmer TV a Meta y comprobar permisos de la página correcta.
+
+  • Automatizar la subida a YouTube mediante la API oficial y OAuth, si las autorizaciones y cuotas están disponibles.
+
+  • Guardar IDs de publicación y comprobar resultado para evitar duplicados.
+
+  • Respetar derechos de autor, permisos y políticas de las plataformas.
+
+  • Si un archivo no pasa control de calidad, no publicarlo aunque exista un horario pendiente.
+
+  • Si la plataforma no admite la duración o formato elegido, elegir un destino/formato compatible; no recortar la polémica
+    automáticamente para ajustarla.
+
+
+ 9. Aprendizaje y pruebas
+  • Guardar aprobaciones y rechazos con motivos concretos: conversación normal, fuera de contexto, polémica incompleta,
+    nombre incorrecto, clip repetido, subtítulos malos, audio cortado o título engañoso.
+
+  • Probar con 20–50 fragmentos históricos que incluyan ejemplos buenos y malos antes de activar nuevos filtros en producción.
+
+  • Medir falsos positivos (clips malos aprobados) y falsos negativos (momentos buenos descartados), no solo cantidad de clips.
+
+  • Probar especialmente eventos de más de 2 minutos y eventos que cruzan varios archivos .ts.
+
+  • Probar fallos 429, reinicio durante el montaje, audio ausente, archivo corrupto, publicación con timeout y reintentos.
+
+  • Preferir menos clips y mayor precisión. No prometer viralidad: el sistema optimiza señales y calidad, pero el interés del público
+    no se puede garantizar.
+
+
+ 10. Orden seguro de implementación
+              Fase                Qué hacer                                             Prueba de aceptación
+
+              0. Auditoría        Revisar código y funciones actuales sin editar.       Inventario de lo existente y plan de cambios.
+
+              1. Clips            Eliminar duración fija como límite editorial;         Una polémica de 3 min se conserva completa aunque
+              completos           detectar inicio/fin y unir segmentos fuente.          cruce varios archivos.
+
+              2. Filtro de        Whisper, prefiltrado, análisis contextual y reglas    Conversaciones normales se descartan; candidatos
+              calidad             duras.                                                aprobados tienen evidencia.
+
+              3. Supervisor       Validación, cola persistente, reintentos,             Un fallo simulado se recupera sin perder ni duplicar el
+                                  deduplicación y alertas.                              trabajo.
+
+              4. QA de            Revisar duración, audio, sincronía, subtítulos y      No se envían clips truncados o corruptos.
+              archivo             cierre del evento.
+
+              5. Ridmer           Radar de temas, fuentes, verificación y revisión de   Cada video tiene fuentes y supera control técnico.
+                                  render.
+
+              6. Publicación      Completar Meta/YouTube respetando el                  Publicación verificada y sin duplicados.
+                                  temporizador de 20 min.
+
+
+
+
+Clipero + Fábrica Ridmer · Plan para revisión                                                                                                     Página 5
+              Fase                Qué hacer                        Prueba de aceptación
+
+              7. Aprendizaje      Métricas y motivos de rechazo.   Informe de precisión y mejora con ejemplos reales.
+
+
+
+ 11. Instrucción completa para Claude Code
+   Trabaja sobre el proyecto existente Clipero + Fábrica Ridmer. Lee este plan completo antes de cambiar código.
+
+   OBJETIVO: minimizar clips irrelevantes, errores de contexto, cortes prematuros y errores de
+   producción/publicación. Prioriza precisión, recuperación de fallos y cambios pequeños.
+
+   REGLAS INNEGOCIABLES
+   1. PRIMERO AUDITA. No edites ni despliegues en la primera pasada. Inspecciona repositorio, rama, archivos,
+   servicios, logs, configuración, reglas de selección, temporizador de 20 minutos y montaje actual. Devuelve una
+   tabla de implementado/parcial/ausente, archivos afectados, riesgos y plan.
+   2. NO CAMBIES LA REGLA DE PUBLICACIÓN A LOS 20 MINUTOS. Si el usuario no aprueba ni rechaza el clip en Telegram en
+   20 minutos, la publicación automática existente debe seguir exactamente igual. No cambies botones, temporizador ni
+   lógica actual. Las nuevas verificaciones deben suceder antes de enviar el clip a Telegram.
+   3. NO CORTES LAS POLÉMICAS POR UNA DURACIÓN FIJA. No cortar a 55, 60, 90, 118 segundos ni al final de un fragmento
+   fuente si el evento sigue. Si la polémica dura 3 minutos, el clip completo dura lo necesario. Encontrar inicio,
+   desarrollo y final natural; ampliar contexto y unir segmentos .ts si el evento cruza archivos. Incluir la
+   respuesta/cierre necesario. Solo después, el módulo de distribución decide qué plataformas admiten ese formato. No
+   mutilar el clip completo para ajustarlo a Shorts/Reels; crear una versión corta aparte solo si mantiene el sentido
+   y el clip completo se conserva.
+   4. NO ROMPAS FUNCIONES QUE YA TRABAJAN. No reconstruyas una función que ya existe. Haz cambios mínimos,
+   compatibles, versionados y reversibles.
+   5. REPOSITORIO PÚBLICO: nunca subas ni imprimas secretos. Las claves viven en
+   /var/lib/clipero/secrets/config.json. No registrar tokens, cookies ni claves.
+   6. NO DESPLIEGUES NI REINICIES PRODUCCIÓN sin backup, pruebas y autorización explícita del propietario. El usuario
+   no programa: explica en español sencillo, un comando por vez cuando necesite intervenir.
+   7. No asumir que cuotas gratuitas son ilimitadas. No añadir servicios de pago sin autorización.
+
+   IMPLEMENTACIÓN PRIORIZADA
+   A. Clips: Whisper local si el VPS lo soporta; prefiltro barato; Groq para clasificar texto; Gemini para candidatos
+   prometedores con contexto visual/audio.
+   B. El volumen/chat son señales, no prueba. Conversación cotidiana se descarta. Para pelea, exigir evidencia
+   concreta y confrontación real. Nombres solo con alta certeza. Salida de IA inválida, contradictoria o sin contexto
+   no pasa.
+   C. Conservar interés mínimo actual de 85 como punto de partida, pero evidencia/contexto/certeza son condiciones
+   obligatorias, no puntos compensables.
+   D. Detector de inicio y final de evento: usar transcripción, audio, chat y contexto; permitir duración variable.
+   Unir archivos fuente contiguos, comprobar sincronía, evitar huecos/duplicados y verificar que el clip termina tras
+   el cierre natural.
+   E. Supervisor: validar cada candidato antes de Telegram; revisar evidencia, contexto, nombres, completitud,
+   duración, audio/video/subtítulos/título y duplicados. Si falla, ampliar contexto/reprocesar con intentos
+   limitados o descartar. No enviar clips defectuosos al temporizador de 20 min.
+   F. Cola persistente con estados por etapa, reintentos limitados, espera progresiva, recuperación tras reinicio,
+   deduplicación, registro de errores y alertas.
+   G. Ridmer: radar de temas con URL/medio/fechas, verificación de afirmaciones, control de duplicados, guion
+   verdadero, recursos autorizados y control técnico del video final.
+   H. Completar publicación de Ridmer TV en Meta y YouTube oficial/OAuth solo cuando los permisos existan; guardar
+   IDs de publicación y verificar estado antes de reintentar.
+   I. Registrar aprobación/rechazo con motivos y métricas disponibles. Probar con 20–50 clips históricos, incluyendo
+   conversaciones normales, polémicas reales de más de 2 minutos y eventos que cruzan archivos.
+
+   PRUEBAS OBLIGATORIAS
+   - Conversación normal: descartar.
+   - Gritos sin evento claro: descartar o dejar incierto.
+   - Polémica real de 3 minutos: incluir completa, sin límite fijo.
+   - Evento que cruza dos o más archivos .ts: unir correctamente.
+   - Contexto insuficiente o nombres dudosos: no aprobar automáticamente.
+   - Gemini/Groq 429: guardar el trabajo; esperar o usar respaldo válido.
+   - Reinicio a mitad del montaje: recuperar sin duplicar.
+   - Archivo sin audio/subtítulos o corrupto: bloquear.
+   - Publicación con timeout: comprobar si ya se publicó antes de reintentar.
+   - Temporizador Telegram: verificar que sigue exactamente en 20 minutos sin cambios.
+
+   ENTREGA
+   Primero entrega auditoría y plan. Después implementar fase por fase, con pruebas y rollback. Actualiza VERSION
+   según el procedimiento existente. No despliegues hasta autorización explícita.
+
+
+
+
+Clipero + Fábrica Ridmer · Plan para revisión                                                                           Página 6
+ 12. Seguridad y límites realistas
+  • Hacer copia de seguridad antes de cada fase y conservar una forma de revertir.
+
+  • Medir CPU/RAM del VPS antes de Whisper y render adicional.
+
+  • No automatizar acusaciones o rumores sin corroboración.
+
+  • Respetar licencias, derechos de autor, permisos y políticas de plataformas.
+
+  • Ninguna IA garantiza viralidad ni cero errores; el objetivo es bloquear errores detectables antes de publicación y avisar solo
+    cuando un caso no se puede resolver con seguridad.
+ Fin del documento. La primera acción de Claude Code debe ser una auditoría sin modificar nada.
+
+
+
+
+Clipero + Fábrica Ridmer · Plan para revisión                                                                                  Página 7
+
