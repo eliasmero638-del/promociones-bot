@@ -192,7 +192,10 @@ def analizar(clip, chat_textos, seg):
     body = {'contents': [{'parts': parts}],
             'generationConfig': {'responseMimeType': 'application/json', 'temperature': 0.4}}
     ultimo = None
-    for m in _disponibles(cfg['gemini_key']):
+    orden = _disponibles(cfg['gemini_key'])
+    if cfg.get('clipero_lite_primero', True):
+        orden = [m for m in orden if 'lite' in m] + [m for m in orden if 'lite' not in m]
+    for m in orden:
         try:
             r = requests.post(f'https://generativelanguage.googleapis.com/v1beta/models/{m}:generateContent',
                               params={'key': cfg['gemini_key']}, json=body, timeout=300)

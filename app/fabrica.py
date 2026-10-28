@@ -2,6 +2,7 @@
 import json, os, random, re, secrets, shutil, subprocess, sys, threading, time
 import requests
 import config as C, ia, voz, montaje, editor, fb, ntfy, tg
+import fuentes as wiki
 
 DIR = os.path.join(C.DATA, 'ridmer')
 os.makedirs(DIR, exist_ok=True)
@@ -60,7 +61,41 @@ def _hechos(n=60):
 ULTIMO_ERROR = ''
 
 
+ELEGIR = """Eres productor del canal de YouTube "Ridmer" (misterio, casos reales, sobrevivientes, sucesos extraños).
+Estos son artículos REALES de Wikipedia. Elige el que dé el {formato} más impactante y que enganche más
+(misterio, giro, algo difícil de creer pero cierto). Evita temas aburridos, políticos o sin historia.
+{lista}
+Responde SOLO JSON: {{"elegido": número, "titulo": "título CLICKBAIT verdadero (máx 80 caracteres)",
+ "resumen": "2 frases con lo clave", "puntaje": 0-100}}"""
+
+
+def tema_wikipedia(formato):
+    cands = wiki.candidatos(8, excluir=_hechos(400))
+    if not cands:
+        return None
+    lista = '\n'.join(f'{i}. {c["titulo"]}: {c["intro"][:400]}' for i, c in enumerate(cands))
+    p = ELEGIR.format(formato='video largo' if formato == 'largo' else 'Short', lista=lista)
+    d = ia.groq_json(p) if ia.groq_activa() else None
+    if not d and ia.hay_cuota():
+        d, _ = ia.generar(p, buscar=False, temperatura=0.8)
+    try:
+        c = cands[int(d['elegido'])]
+        titulo, resumen = d.get('titulo') or c['titulo'], d.get('resumen') or c['intro'][:300]
+    except Exception:
+        c = cands[0]
+        titulo, resumen = c['titulo'], c['intro'][:300]
+    return {'titulo': titulo, 'resumen': resumen, 'tipo': 'misterio', 'articulo': c['titulo'], 'url': c['url']}
+
+
 def buscar_tema(formato):
+    if C.get().get('ridmer_fuente', 'wikipedia') == 'wikipedia':
+        try:
+            t = tema_wikipedia(formato)
+            if t:
+                log('tema de Wikipedia:', t['articulo'])
+                return t
+        except Exception as e:
+            log('Wikipedia falló:', e)
     hoy = time.strftime('%d/%m/%Y')
     extra = ('Es un video largo de 4 a 5 minutos: elige un caso con suficiente historia y giros.' if formato == 'largo'
              else 'Es un Short de menos de 60 segundos: elige algo que se cuente rápido y sorprenda. '
@@ -87,7 +122,28 @@ def buscar_tema(formato):
     return temas[0] if temas else None
 
 
+URG_RSS = """Titulares de Google Noticias de las últimas 12 horas:
+{lista}
+¿Hay algo MUY importante que la gente en Ecuador y Latinoamérica querría ver ya en video (terremoto fuerte, tsunami,
+erupción, catástrofe, accidente grave, hecho histórico)? Política y farándula NO cuentan. Ya publicados: {hechos}
+Responde SOLO JSON: {{"hay": true/false, "urgencia": 0-100, "titulo": "...", "resumen": "solo datos que digan los titulares",
+ "indices": [números de los titulares usados]}}"""
+
+
 def revisar_urgente():
+    items = wiki.noticias()
+    if items:
+        lista = '\n'.join(f"{i}. {x['titulo']} ({x['fuente']}, {x['fecha']})" for i, x in enumerate(items))
+        p = URG_RSS.format(lista=lista, hechos=_hechos(10))
+        d = ia.groq_json(p, 0.2) if ia.groq_activa() else None
+        if not d and ia.hay_cuota():
+            d, _ = ia.generar(p, buscar=False, temperatura=0.2)
+        if d and d.get('hay') and int(d.get('urgencia', 0) or 0) >= C.get().get('ridmer_urgencia', 85) \
+                and d.get('titulo', '').lower()[:40] not in _hechos(30).lower():
+            usados = [items[i] for i in d.get('indices', []) if isinstance(i, int) and i < len(items)] or items[:5]
+            return {'titulo': d['titulo'], 'resumen': d.get('resumen', ''), 'tipo': 'noticia',
+                    'urgencia': int(d.get('urgencia', 0)), 'noticias': usados}
+        return None
     d, _ = ia.generar(URGENTE.format(hoy=time.strftime('%d/%m/%Y %H:%M'), hechos=_hechos(10)), buscar=True,
                       temperatura=0.2)
     if d and d.get('hay') and int(d.get('urgencia', 0) or 0) >= C.get().get('ridmer_urgencia', 85):
@@ -129,6 +185,35 @@ def escribir_guion(tema, formato):
                      titulo=tema['titulo'], resumen=tema.get('resumen', ''),
                      palabras='entre 95 y 115' if corto else 'entre 620 y 760',
                      segmentos='7 a 9' if corto else '28 a 38', tono=tono)
+    fuente_txt, fuentes_urls = '', []
+    if not tema.get('articulo') and tema.get('tipo') != 'noticia':
+        try:   # pedido manual: buscar el caso en Wikipedia
+            c = wiki._get({'action': 'query', 'list': 'search', 'srsearch': tema['titulo'], 'srlimit': 1})
+            hit = c.get('query', {}).get('search', [])
+            if hit and hit[0].get('size', 0) > 5000:
+                tema['articulo'] = hit[0]['title']
+        except Exception:
+            pass
+    if tema.get('articulo'):
+        try:
+            art = wiki.articulo(tema['articulo'])
+            tema['_imagenes'] = art['imagenes']
+            fuente_txt, fuentes_urls = art['texto'], [art['url']]
+        except Exception as e:
+            log('no pude leer Wikipedia:', e)
+    elif tema.get('noticias'):
+        fuente_txt = '\n'.join(f"- {x['titulo']} ({x['fuente']}, {x['fecha']}): {x['resumen']}" for x in tema['noticias'])
+        fuentes_urls = [f"{x['fuente']}: {x['url']}" for x in tema['noticias'][:5]]
+    d = None
+    if fuente_txt:
+        pf = p.replace('Busca en internet y usa SOLO datos verificados',
+                       'Usa SOLO los datos del TEXTO FUENTE de abajo') + '\n\nTEXTO FUENTE:\n' + fuente_txt
+        d = ia.groq_json(pf, 0.7) if ia.groq_activa() else None
+        if (not d or not d.get('segmentos')) and ia.hay_cuota():
+            d, _ = ia.generar(pf, buscar=False, temperatura=0.7, timeout=300)
+        if d and d.get('segmentos'):
+            d['fuentes'] = fuentes_urls
+            return d
     d, fuentes = ia.generar(p, buscar=True, temperatura=0.7, timeout=300)
     if not d or not d.get('segmentos'):
         log('guion con búsqueda falló:', fuentes, '→ sin búsqueda')
@@ -189,11 +274,29 @@ def _satelite(lat, lon, carpeta, nombre, zoom_km=2.5):
     return None
 
 
-def buscar_imagenes(segmentos, carpeta):
+def _bajar(url, carpeta, nombre, usados):
+    try:
+        if url in usados:
+            return None
+        r = requests.get(url, headers=UA, timeout=60)
+        if r.status_code == 200 and len(r.content) > 15000:
+            path = os.path.join(carpeta, nombre + ('.png' if url.lower().endswith('.png') else '.jpg'))
+            open(path, 'wb').write(r.content)
+            usados.add(url)
+            return path
+    except Exception:
+        pass
+    return None
+
+
+def buscar_imagenes(segmentos, carpeta, extra=None):
     usados, reales = set(), []
+    extra = list(extra or [])
     for i, s in enumerate(segmentos):
         n = f'img_{i:02d}'
         p = (_commons(s.get('imagen_en'), carpeta, n, usados) or _commons(s.get('imagen_es'), carpeta, n, usados))
+        while not p and extra:
+            p = _bajar(extra.pop(0), carpeta, n, usados)
         if not p and s.get('lat') not in (None, '') and s.get('lon') not in (None, ''):
             p = _satelite(s['lat'], s['lon'], carpeta, n)
         if p:
@@ -277,7 +380,7 @@ def producir(formato, tema=None, motivo='programado'):
         os.makedirs(carpeta, exist_ok=True)
         log('produciendo', formato, '·', tema['titulo'])
         g = escribir_guion(tema, formato)
-        segs = buscar_imagenes(g['segmentos'], carpeta)
+        segs = buscar_imagenes(g['segmentos'], carpeta, tema.get('_imagenes'))
         wav = narrar(segs, carpeta, formato)
         palabras = editor.transcribir(wav)
         if not palabras:
@@ -307,7 +410,7 @@ def producir(formato, tema=None, motivo='programado'):
         montaje.miniatura(imgs[min(1, len(imgs) - 1)] if imgs else segs[0]['img'], g.get('miniatura_texto') or titulo, mini)
         archivos['miniatura'] = 'miniatura.jpg'
         desc = (g.get('descripcion_youtube', '') + '\n\nImágenes: Wikimedia Commons (licencias libres).'
-                + ('\nFuentes: ' + ', '.join(g['fuentes'][:6]) if g.get('fuentes') else ''))
+                + ('\nFuentes: ' + '\n'.join(g['fuentes'][:6]) if g.get('fuentes') else ''))
         meta = {'id': jid, 'formato': formato, 'motivo': motivo, 'tema': tema, 'titulo': titulo,
                 'titulo_youtube': g.get('titulo_youtube', titulo), 'descripcion_youtube': desc,
                 'etiquetas': g.get('etiquetas', []), 'texto_facebook': g.get('texto_facebook', ''),
@@ -315,7 +418,8 @@ def producir(formato, tema=None, motivo='programado'):
                 'creado': time.time(), 'estado': 'pendiente', 'duracion': int(montaje.dur(out))}
         _guardar(os.path.join(carpeta, 'meta.json'), meta)
         h = _leer(HIST, [])
-        h.append({'fecha': time.strftime('%Y-%m-%d %H:%M'), 'titulo': tema['titulo'], 'formato': formato})
+        h.append({'fecha': time.strftime('%Y-%m-%d %H:%M'), 'titulo': (tema.get('articulo') or '') + ' · ' + tema['titulo'],
+                  'formato': formato})
         _guardar(HIST, h[-400:])
         for f_ in os.listdir(carpeta):
             if f_.startswith(('voz_', 'cuerpo_', 'mezcla', 'esc_')):

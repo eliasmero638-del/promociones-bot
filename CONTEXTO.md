@@ -12,6 +12,9 @@ El dueño no programa: explicarle todo paso a paso, en español sencillo, con un
   contexto, certeza ≥60, evidencia que aparezca en la transcripción), prefiltro con Groq, extensión del clip si "sigue"
   (hasta +6 min), sin tope fijo (clip_max 900), control de calidad del archivo (audio + duración), motivos de rechazo en
   Telegram. NO toca el temporizador de 20 min.
+- v23-gratis: Ridmer saca temas de Wikipedia (`app/fuentes.py`, sin cuota) y urgentes de Google Noticias RSS; el guion
+  lo escribe Groq (o Gemini sin búsqueda) SOLO con el texto fuente; fotos del propio artículo como respaldo; la fuente
+  (URL) va en la descripción. Gemini con Google queda como último recurso. Clipero usa primero los modelos lite de Gemini.
 - Pendiente del plan: cola persistente con estados/reintentos, métricas por categoría, fuentes con URL/fecha en Ridmer,
   YouTube API, Ridmer TV en Meta.
 
