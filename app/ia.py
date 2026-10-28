@@ -1,10 +1,21 @@
 """Cerebro del Clipero: Gemini mira fotos del clip, escucha el audio y decide si vale la pena."""
-import base64, json, os, re, subprocess, tempfile
+import base64, json, os, re, subprocess, tempfile, time
 import requests
 import config as C
 
 MODELOS_RESPALDO = ['gemini-flash-latest', 'gemini-2.5-flash', 'gemini-2.0-flash']
 _cache = {}
+_agotado = {}       # modelo -> hora hasta la que no se usa (cuota gratis acabada)
+
+
+def _disponibles(key):
+    ahora = time.time()
+    return [m for m in modelos(key) if _agotado.get(m, 0) < ahora]
+
+
+def _marcar(m, r):
+    if r.status_code == 429:
+        _agotado[m] = time.time() + 3600
 
 
 def modelos(key):
@@ -17,14 +28,16 @@ def modelos(key):
         for m in r.json().get('models', []):
             n = m['name'].split('/')[-1]
             if 'generateContent' in m.get('supportedGenerationMethods', []) and 'flash' in n and not any(
-                    x in n for x in ('lite', 'image', 'tts', 'audio', 'live', 'thinking', 'exp', 'preview')):
+                    x in n for x in ('image', 'tts', 'audio', 'live', 'thinking', 'exp', 'preview')):
                 lista.append(n)
     except Exception:
         pass
     def ver(n):
         return [int(x) for x in re.findall(r'\d+', n)][:2] or [0]
     lista = sorted(set(lista), key=ver, reverse=True)
-    _cache[key] = (lista + [m for m in MODELOS_RESPALDO if m not in lista])[:4]
+    normales = [m for m in lista if 'lite' not in m][:3]
+    lite = [m for m in lista if 'lite' in m][:2]
+    _cache[key] = normales + [m for m in MODELOS_RESPALDO if m not in normales][:1] + lite
     return _cache[key]
 
 PROMPT = """Eres el editor de una página de Facebook de clips de realities ("{marca}") que vive de las vistas.
@@ -111,6 +124,11 @@ def aprender(bueno, texto):
     json.dump(d, open(APRENDE, 'w', encoding='utf-8'), ensure_ascii=False)
 
 
+def hay_cuota():
+    k = C.get().get('gemini_key')
+    return bool(k) and bool(_disponibles(k))
+
+
 def activa():
     return bool(C.get().get('gemini_key'))
 
@@ -151,10 +169,11 @@ def analizar(clip, chat_textos, seg):
     body = {'contents': [{'parts': parts}],
             'generationConfig': {'responseMimeType': 'application/json', 'temperature': 0.4}}
     ultimo = None
-    for m in modelos(cfg['gemini_key']):
+    for m in _disponibles(cfg['gemini_key']):
         try:
             r = requests.post(f'https://generativelanguage.googleapis.com/v1beta/models/{m}:generateContent',
                               params={'key': cfg['gemini_key']}, json=body, timeout=300)
+            _marcar(m, r)
             if r.status_code != 200:
                 ultimo = f'{m}: {r.status_code} {r.text[:200]}'
                 continue
@@ -195,10 +214,11 @@ def generar(prompt, buscar=False, temperatura=0.7, timeout=240):
     else:
         body['generationConfig']['responseMimeType'] = 'application/json'
     ult = None
-    for m in modelos(key):
+    for m in _disponibles(key):
         try:
             r = requests.post(f'https://generativelanguage.googleapis.com/v1beta/models/{m}:generateContent',
                               params={'key': key}, json=body, timeout=timeout)
+            _marcar(m, r)
             if r.status_code != 200:
                 ult = f'{m}: {r.status_code} {r.text[:200]}'
                 continue

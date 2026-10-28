@@ -7,7 +7,7 @@ except Exception as _e:          # si la fábrica falla, el Clipero sigue funcio
     fabrica = None
     print('fabrica no disponible:', _e, flush=True)
 
-VERSION = 'v16'
+VERSION = 'v17-cuota'
 cola = queue.Queue()
 historial = []          # (hora, puntaje) de clips enviados, para límites por hora
 stats = {'pedazos': 0, 'clips': 0, 'ult_puntaje': None, 'ult_pedazo': None}
@@ -62,8 +62,8 @@ def analizar_bucle():
                 elegidos = analyzer.mejores(puntos, umb, cfg['separacion_min'] * 60)
                 # Barrido: momentos tranquilos (charlas en voz baja, confesiones) no suben el volumen,
                 # así que cada cierto tiempo la IA revisa igual el mejor momento del pedazo.
-                barrer = cfg.get('barrido_cada', 3)
-                if ia.activa() and not elegidos and puntos and barrer and stats['pedazos'] % barrer == 0:
+                barrer = cfg.get('barrido_cada', 6)
+                if ia.activa() and ia.hay_cuota() and not elegidos and puntos and barrer and stats['pedazos'] % barrer == 0:
                     s0, sc0, d0 = max(puntos, key=lambda x: x[1])
                     c0 = t0 + s0
                     if not any(abs(c0 - h) < cfg['separacion_min'] * 60 for h, _ in historial):
@@ -72,7 +72,7 @@ def analizar_bucle():
                     centro = t0 + s
                     ahora = time.time()
                     recientes = [h for h, _ in historial if ahora - h < 3600]
-                    if len(recientes) >= cfg['max_por_hora'] * (3 if ia.activa() else 1):
+                    if len(recientes) >= cfg['max_por_hora'] * (3 if ia.activa() else 1) or not ia.hay_cuota():
                         break
                     if any(abs(centro - h) < cfg['separacion_min'] * 60 for h, _ in historial):
                         continue
