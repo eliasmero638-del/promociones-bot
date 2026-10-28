@@ -3,3 +3,4 @@ requests
 numpy
 faster-whisper
 edge-tts
+pillow

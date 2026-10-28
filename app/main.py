@@ -1,8 +1,13 @@
 """Clipero: graba el reality, detecta los momentos fuertes, los edita y te los manda por Telegram."""
 import json, os, queue, secrets, subprocess, threading, time
-import config as C, recorder, analyzer, editor, tg, ia, fb, wa, web, ntfy, fabrica
+import config as C, recorder, analyzer, editor, tg, ia, fb, wa, web, ntfy
+try:
+    import fabrica
+except Exception as _e:          # si la fábrica falla, el Clipero sigue funcionando
+    fabrica = None
+    print('fabrica no disponible:', _e, flush=True)
 
-VERSION = 'v15-aprende'
+VERSION = 'v16'
 cola = queue.Queue()
 historial = []          # (hora, puntaje) de clips enviados, para límites por hora
 stats = {'pedazos': 0, 'clips': 0, 'ult_puntaje': None, 'ult_pedazo': None}
@@ -272,7 +277,7 @@ def auto_publicador():
 
 def comandos(tipo, chat, dato, raw):
     cfg = C.get()
-    if tipo == 'boton' and dato.startswith(('rpub:', 'rno:')):
+    if tipo == 'boton' and dato.startswith(('rpub:', 'rno:')) and fabrica:
         accion, _, jid = dato.partition(':')
         if accion == 'rpub':
             tg.texto('📤 Subiendo a Facebook Ridmer TV…', chat)
@@ -381,7 +386,7 @@ def comandos(tipo, chat, dato, raw):
         ps[partes[0]] = [p.lower() for p in partes[1:]] + [partes[0].split()[0].lower()]
         C.save(participantes=ps)
         tg.texto(f'🆕 {partes[0]} agregado a la lista.', chat)
-    elif cmd == '/ridmer':
+    elif cmd == '/ridmer' and fabrica:
         f_ = 'largo' if 'largo' in dato.lower() else 'short'
         tema = dato.split(maxsplit=2)[2] if len(dato.split(maxsplit=2)) > 2 else None
         threading.Thread(target=fabrica._cola_segura, args=(f_, {'titulo': tema, 'resumen': '', 'tipo': 'misterio'}
@@ -400,8 +405,10 @@ def main():
     threading.Thread(target=trabajador, daemon=True).start()
     threading.Thread(target=auto_publicador, daemon=True).start()
     web.iniciar(buscar_token, lambda cid: publicar_clip(cid, 'tú'), no_publicar,
-                {'buscar': fabrica.buscar_token, 'publicar': fabrica.publicar, 'no': fabrica.no_publicar})
-    fabrica.iniciar()
+                {'buscar': fabrica.buscar_token, 'publicar': fabrica.publicar, 'no': fabrica.no_publicar}
+                if fabrica else None)
+    if fabrica:
+        fabrica.iniciar()
     if not C.get().get('solo_enviar'):
         tg.escuchar(comandos)
     if C.get()['chat_ids']:
