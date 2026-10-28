@@ -37,6 +37,9 @@ Fecha de hoy: {hoy}. Busca en internet y propón {n} temas para un {formato}.
 Reglas:
 - Solo historias REALES y verificables (con fuentes). Nada inventado ni leyendas presentadas como hechos.
 - Que enganchen desde la primera frase: misterio, giro inesperado, algo difícil de creer pero cierto.
+- El "titulo" de cada tema debe ser CLICKBAIT: que provoque una curiosidad irresistible (dato impactante, pregunta,
+  giro, algo que no se dice completo). Ej: "Las soltaba en el bosque… y luego salía a cazarlas",
+  "Encontraron su diario 30 años después y lo que decía heló a todos". Siempre basado en hechos reales.
 - Variedad: no repitas estos temas ya hechos: {hechos}
 - Con tacto: si hay víctimas, nada morboso ni burlón.
 Responde SOLO con JSON:
@@ -87,7 +90,8 @@ Busca en internet y usa SOLO datos verificados (nombres, fechas, lugares, cifras
 no lo digas o di "según reportes". Nunca inventes.
 
 Estructura:
-- Segmento 1 = GANCHO: 1 o 2 frases que dejen al espectador sin poder irse (después de él va la intro del canal).
+- Segmento 1 = GANCHO tipo clickbait: 1 o 2 frases con lo más impactante o una pregunta que deje al espectador sin
+  poder irse, sin revelar el final (después de él va la intro del canal).
 - Luego la historia en orden, con tensión y giros, frases cortas y fáciles de narrar.
 - Final: cierre impactante + "Suscríbete a Ridmer para más historias como esta." (una sola vez, corto).
 - Español latino neutro, sin emojis, números escritos con letras cuando sea fácil leerlos.
@@ -97,9 +101,9 @@ Estructura:
   español ("imagen_es"). Si el segmento ocurre en un lugar concreto, da "lat" y "lon".
 {tono}
 Responde SOLO con JSON:
-{{"titulo_video": "MÁX 6 PALABRAS EN MAYÚSCULAS", "miniatura_texto": "2 a 4 palabras impactantes",
- "titulo_youtube": "título con gancho (máx 90 caracteres)", "descripcion_youtube": "3-5 líneas + hashtags",
- "etiquetas": ["...", "..."], "texto_facebook": "1-2 frases con gancho + 3 hashtags",
+{{"titulo_video": "MÁX 6 PALABRAS EN MAYÚSCULAS, clickbait", "miniatura_texto": "2 a 4 palabras clickbait que den ganas de tocar",
+ "titulo_youtube": "título CLICKBAIT irresistible, máx 80 caracteres (curiosidad, giro, dato impactante; puede usar …, ¿?, MAYÚSCULAS en 1-2 palabras clave; nunca falso)", "descripcion_youtube": "3-5 líneas + hashtags",
+ "etiquetas": ["...", "..."], "texto_facebook": "1-2 frases clickbait que no revelen el final + 3 hashtags",
  "segmentos": [{{"texto": "...", "imagen_en": "...", "imagen_es": "...", "lat": null, "lon": null}}]}}"""
 
 
