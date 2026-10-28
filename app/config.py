@@ -41,7 +41,7 @@ DEFAULTS = {
     'web_puerto': 80,
     'ntfy_tema': '',
     'voz_narrador': 'Algenib',
-    'ridmer_activo': True,               # fábrica de videos Ridmer
+    'ridmer_activo': False,              # fábrica automática apagada (los videos los edita Claude)
     'ridmer_horas_shorts': [8, 12, 16, 20],
     'ridmer_hora_largo': 18,
     'ridmer_espera_min': 20,             # minutos antes de publicar solo en Ridmer TV
