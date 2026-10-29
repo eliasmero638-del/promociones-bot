@@ -1,0 +1,713 @@
+{
+ "fecha": "2026-10-29",
+ "modo": "claude",
+ "videos": [
+  {
+   "eid": "fb1",
+   "tipo": "fb",
+   "hora_fb": "12:30",
+   "hora_short": "13:00",
+   "articulo": "Terremoto en Panamá",
+   "fuente": "https://news.google.com/ (Clarín, Infobae, ONU Mujeres)",
+   "titulo_video": "TERREMOTO 7,7 EN PANAMÁ",
+   "titulo_youtube": "Terremoto de 7,7 en Panamá: las imágenes y las cifras que deja",
+   "descripcion_youtube": "Un terremoto de magnitud 7,7 sacudió Panamá.\nMás de 16.300 viviendas evaluadas y 52.874 personas registradas tras la emergencia, según reportes de prensa.\nFuentes: Clarín, Infobae, ONU Mujeres.\n#panama #terremoto #ridmer",
+   "etiquetas": [
+    "terremoto",
+    "Panamá",
+    "terremoto Panamá",
+    "sismo 7,7",
+    "noticias",
+    "emergencia",
+    "ridmer"
+   ],
+   "texto_facebook": "Terremoto de magnitud 7,7 en Panamá: así quedaron algunas calles y estas son las primeras cifras. #panama #terremoto #ridmer",
+   "miniatura": {
+    "img": 1,
+    "texto": "MAGNITUD 7,7"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Un terremoto de magnitud siete coma siete sacudió Panamá… y las imágenes que dejó son devastadoras.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     },
+     "short": true
+    },
+    {
+     "texto": "Edificios partidos por la mitad. Techos que se vinieron abajo. Comercios convertidos en escombros, a un lado de la calle.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     },
+     "short": true
+    },
+    {
+     "texto": "Magnitud siete coma siete. Una cifra que, por sí sola, explica la magnitud del golpe.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "MAGNITUD 7,7",
+      "sub": "Terremoto en Panamá"
+     },
+     "short": true
+    },
+    {
+     "texto": "Frente a las ruinas se reunieron rescatistas, autoridades y periodistas, todos tratando de medir lo que había pasado.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Y entonces llegaron las primeras cifras oficiales de la emergencia.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 8.54,
+      "lon": -80.78,
+      "lugar": "Panamá",
+      "km": 250
+     }
+    },
+    {
+     "texto": "Según los reportes, más de dieciséis mil trescientas viviendas ya fueron evaluadas tras el sismo.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "16.300 VIVIENDAS",
+      "sub": "evaluadas tras el terremoto"
+     },
+     "short": true
+    },
+    {
+     "texto": "Y cincuenta y dos mil ochocientas setenta y cuatro personas fueron registradas tras la emergencia.",
+     "escena": {
+      "tipo": "foto",
+      "img": 7
+     },
+     "short": true,
+     "rotulo": "52.874 PERSONAS"
+    },
+    {
+     "texto": "Detrás de cada número hay una familia que espera saber si su casa todavía es segura.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Los equipos de Protección Civil entrenan durante años para escenas como esta: estructuras colapsadas y personas que buscar entre el concreto.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "Y los perros de rescate son una parte clave de ese trabajo.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "La emergencia ya llegó a los organismos internacionales: ONU Mujeres publicó una actualización humanitaria sobre el terremoto.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "AYUDA HUMANITARIA",
+      "sub": "Actualización de ONU Mujeres"
+     }
+    },
+    {
+     "texto": "La evaluación de los daños continúa. Comparte esta información para que más personas estén al tanto. Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     },
+     "short": true
+    }
+   ]
+  },
+  {
+   "eid": "fb2",
+   "tipo": "fb",
+   "hora_fb": "18:30",
+   "hora_short": "19:00",
+   "articulo": "John Franklin",
+   "fuente": "https://es.wikipedia.org/wiki/John_Franklin",
+   "titulo_video": "128 HOMBRES. NINGUNO VOLVIÓ",
+   "titulo_youtube": "128 hombres entraron al Ártico… y ninguno volvió a casa",
+   "descripcion_youtube": "En 1845, dos barcos británicos partieron a buscar el Paso del Noroeste.\nDesaparecieron sin dejar rastro… hasta que, años después, una nota escondida bajo unas piedras empezó a contar la verdad.\n#misterio #casosreales #ridmer",
+   "etiquetas": [
+    "misterio",
+    "caso real",
+    "John Franklin",
+    "expedición Franklin",
+    "Erebus y Terror",
+    "Ártico",
+    "Paso del Noroeste",
+    "ridmer"
+   ],
+   "texto_facebook": "128 hombres entraron al Ártico en 1845. Ninguno volvió… y lo que encontraron después heló a todos. #misterio #historia #ridmer",
+   "miniatura": {
+    "img": 16,
+    "texto": "NINGUNO VOLVIÓ"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Ciento veintiocho hombres entraron al Ártico… y ninguno volvió a casa.",
+     "escena": {
+      "tipo": "foto",
+      "img": 14
+     },
+     "short": true
+    },
+    {
+     "texto": "Los dirigía sir John Franklin, un explorador al que ya apodaban «el hombre que se comió sus botas».",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Sir John Franklin",
+      "sub": "Capitán de la Royal Navy",
+      "img": 7
+     },
+     "short": true
+    },
+    {
+     "texto": "En un viaje anterior, sus hombres sobrevivieron comiendo grasa quemada, líquenes y hasta sus botas.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "1819 - 1822",
+      "sub": "Río Coppermine, Canadá"
+     }
+    },
+    {
+     "texto": "Aun así, en mayo de mil ochocientos cuarenta y cinco volvió a zarpar con dos barcos: el Erebus y el Terror.",
+     "escena": {
+      "tipo": "foto",
+      "img": 10
+     }
+    },
+    {
+     "texto": "Buscaban el Paso del Noroeste. Nunca regresarían.",
+     "escena": {
+      "tipo": "foto",
+      "img": 23
+     }
+    },
+    {
+     "texto": "Su esposa, Lady Franklin, pagó varias expediciones de búsqueda. Llegó a haber doce barcos tras su rastro.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Lady Jane Franklin",
+      "sub": "Esposa de John Franklin",
+      "img": 2
+     }
+    },
+    {
+     "texto": "En mil ochocientos cincuenta aparecieron las primeras huellas en la isla Beechey: tres tumbas de hombres muertos en mil ochocientos cuarenta y seis.",
+     "escena": {
+      "tipo": "foto",
+      "img": 21
+     },
+     "short": true,
+     "rotulo": "TRES TUMBAS"
+    },
+    {
+     "texto": "Pero no había ni un solo mensaje.",
+     "escena": {
+      "tipo": "foto",
+      "img": 20
+     }
+    },
+    {
+     "texto": "Años después, un inuit le habló al explorador John Rae de unos cuarenta hombres blancos que habían muerto de hambre.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Y en mil ochocientos cincuenta y nueve apareció una nota escondida bajo un montón de piedras.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "1859",
+      "sub": "Isla del Rey Guillermo"
+     },
+     "short": true
+    },
+    {
+     "texto": "Decía que los barcos llevaban atrapados en el hielo desde mil ochocientos cuarenta y seis… y que Franklin ya había muerto.",
+     "escena": {
+      "tipo": "foto",
+      "img": 16
+     },
+     "short": true,
+     "rotulo": "FRANKLIN HABÍA MUERTO"
+    },
+    {
+     "texto": "Los que quedaban abandonaron los barcos y caminaron hacia el sur. Ninguno sobrevivió.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     },
+     "short": true
+    },
+    {
+     "texto": "Plomo en las latas, escorbuto, hambre… y pruebas de canibalismo. Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb3",
+   "tipo": "fb",
+   "hora_fb": "21:00",
+   "articulo": "Sakae Ōba",
+   "fuente": "https://es.wikipedia.org/wiki/Sakae_%C5%8Cba",
+   "titulo_video": "LO DIERON POR MUERTO",
+   "titulo_youtube": "Lo declararon muerto… y siguió peleando 512 días escondido en la selva",
+   "descripcion_youtube": "Japón lo dio por muerto en 1944. Pero el capitán Sakae Ōba seguía vivo en la selva de Saipán, con soldados y civiles a su cargo.\nLos marines lo llamaron \"el Zorro de Saipán\".\n#misterio #historia #ridmer",
+   "etiquetas": [
+    "historia",
+    "Segunda Guerra Mundial",
+    "Sakae Oba",
+    "Zorro de Saipán",
+    "Saipán",
+    "soldado japonés",
+    "ridmer"
+   ],
+   "texto_facebook": "Japón lo declaró muerto… pero siguió escondido en la selva 512 días. Los marines lo llamaban \"el Zorro\". #historia #misterio #ridmer",
+   "miniatura": {
+    "img": 5,
+    "texto": "512 DÍAS ESCONDIDO"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Japón lo declaró muerto en combate… pero él siguió peleando en la selva quinientos doce días.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Se llamaba Sakae Ōba, un exmaestro de escuela convertido en capitán del ejército japonés.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Sakae Ōba",
+      "sub": "Capitán del Ejército Imperial Japonés",
+      "img": 5
+     }
+    },
+    {
+     "texto": "En junio de mil novecientos cuarenta y cuatro, los marines estadounidenses desembarcaron en Saipán.",
+     "escena": {
+      "tipo": "foto",
+      "img": 18
+     }
+    },
+    {
+     "texto": "Los japoneses fueron empujados hacia el monte Tapochau, en el centro de la isla.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 15.18,
+      "lon": 145.74,
+      "lugar": "Monte Tapochau, Saipán",
+      "km": 8
+     }
+    },
+    {
+     "texto": "El siete de julio, Ōba participó en la mayor carga banzai de la guerra del Pacífico. Murieron casi cuatro mil trescientos japoneses.",
+     "escena": {
+      "tipo": "foto",
+      "img": 10
+     }
+    },
+    {
+     "texto": "Japón lo dio por muerto y hasta lo ascendió a mayor.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "DADO POR MUERTO",
+      "sub": "30 de septiembre de 1944"
+     }
+    },
+    {
+     "texto": "Pero Ōba seguía vivo. Se internó en la selva con cuarenta y seis soldados y doscientos civiles.",
+     "escena": {
+      "tipo": "foto",
+      "img": 8
+     }
+    },
+    {
+     "texto": "Escondió a los civiles en cuevas y aldeas ocultas, y desde el monte emboscaba a los marines.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Eran tan rápidos y sigilosos que los estadounidenses lo apodaron «el Zorro de Saipán».",
+     "escena": {
+      "tipo": "foto",
+      "img": 17
+     },
+     "rotulo": "EL ZORRO DE SAIPÁN"
+    },
+    {
+     "texto": "Japón se rindió… y él siguió resistiendo tres meses más.",
+     "escena": {
+      "tipo": "foto",
+      "img": 12
+     }
+    },
+    {
+     "texto": "En diciembre de mil novecientos cuarenta y cinco, a pedido de su antiguo general, entregó su katana a los marines.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     },
+     "rotulo": "512 DÍAS"
+    },
+    {
+     "texto": "Volvió con su esposa Mineko y, por fin, conoció al hijo que nació cuando él partió a la guerra.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Años después, un exmarine emboscado por sus hombres le devolvió aquella katana. Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    }
+   ]
+  },
+  {
+   "eid": "largo1",
+   "tipo": "largo",
+   "hora_youtube": "18:00",
+   "articulo": "Expedición de Narváez",
+   "fuente": "https://es.wikipedia.org/wiki/Expedici%C3%B3n_de_Narv%C3%A1ez",
+   "titulo_video": "SALIERON 600, VOLVIERON 4",
+   "titulo_youtube": "Salieron 600 a conquistar la Florida… y solo 4 volvieron para contarlo",
+   "descripcion_youtube": "1527: Pánfilo de Narváez zarpa de España con unas 600 personas para conquistar la Florida.\nHuracanes, deserciones, barcos encallados, hambre… y un viaje que nadie imaginó.\nBasado en la expedición de Narváez y el relato de Cabeza de Vaca.\n#misterio #historia #ridmer",
+   "etiquetas": [
+    "historia",
+    "expedición de Narváez",
+    "Cabeza de Vaca",
+    "Naufragios",
+    "Florida",
+    "conquista",
+    "supervivencia",
+    "ridmer"
+   ],
+   "miniatura": {
+    "img": 5,
+    "texto": "SOLO 4 VOLVIERON"
+   },
+   "gancho": 2,
+   "segmentos": [
+    {
+     "texto": "Seiscientas personas zarparon de España para conquistar la Florida.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Ocho años después de pisar esas tierras, solo cuatro hombres seguían con vida… y habían cruzado medio continente.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "600 → 4",
+      "sub": "1528 - 1536"
+     }
+    },
+    {
+     "texto": "Esta es la historia de la expedición de Pánfilo de Narváez.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Pánfilo de Narváez",
+      "sub": "Adelantado de la Florida"
+     }
+    },
+    {
+     "texto": "El veinticinco de diciembre de mil quinientos veintiséis, el emperador Carlos Quinto le dio una licencia para reclamar la costa norte del golfo de México.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "25 DE DICIEMBRE DE 1526",
+      "sub": "Licencia de Carlos V"
+     }
+    },
+    {
+     "texto": "El contrato le exigía fundar al menos dos ciudades, con cien personas cada una, y levantar fortalezas para frenar a franceses e ingleses.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Pero la Corona no pondría ni un solo centavo. Todo correría por cuenta de Narváez.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     },
+     "rotulo": "NI UN CENTAVO"
+    },
+    {
+     "texto": "Para financiarse, convenció a comerciantes y nobles con una promesa: riquezas comparables a las de Hernán Cortés.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Él mismo se endeudó para pagar los barcos, las armas, los caballos y los sueldos de todos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Su hombre de confianza era Álvar Núñez Cabeza de Vaca, segundo al mando y tesorero.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Álvar Núñez Cabeza de Vaca",
+      "sub": "Segundo al mando y tesorero"
+     }
+    },
+    {
+     "texto": "Su misión era ser los ojos y oídos del rey, y asegurar que la Corona recibiera su parte de cualquier riqueza.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "LOS OJOS Y OÍDOS DEL REY",
+      "sub": "Cabeza de Vaca"
+     }
+    },
+    {
+     "texto": "El diecisiete de junio de mil quinientos veintisiete, la expedición partió de Sanlúcar de Barrameda, en la desembocadura del Guadalquivir.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 36.778,
+      "lon": -6.352,
+      "lugar": "Sanlúcar de Barrameda, España",
+      "km": 8
+     }
+    },
+    {
+     "texto": "Iban soldados, oficiales, marineros, esposas, sirvientes, esclavos y un grupo de frailes franciscanos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Tras reabastecerse en las islas Canarias, cruzaron el Atlántico y llegaron a Santo Domingo, en la isla Española.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Allí escucharon una noticia escalofriante: otra expedición, la de Lucas Vázquez de Ayllón, había perdido cuatrocientos cincuenta de sus seiscientos hombres.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "450 DE 600",
+      "sub": "Expedición de Vázquez de Ayllón"
+     }
+    },
+    {
+     "texto": "Cerca de cien hombres abandonaron a Narváez antes de seguir.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     },
+     "rotulo": "100 DESERTORES"
+    },
+    {
+     "texto": "En Cuba, gracias a su familia y a sus contactos, consiguió provisiones, caballos y más hombres.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 20.02,
+      "lon": -75.82,
+      "lugar": "Santiago de Cuba",
+      "km": 30
+     }
+    },
+    {
+     "texto": "Envió dos barcos a Trinidad, al mando de Cabeza de Vaca y de un capitán llamado Pantoja, para recoger suministros.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Entonces llegó un huracán. Los dos barcos se hundieron. Murieron sesenta hombres, se ahogó una quinta parte de los caballos y se perdió todo lo que habían cargado.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     },
+     "rotulo": "60 MUERTOS"
+    },
+    {
+     "texto": "En febrero de mil quinientos veintiocho, la expedición se reagrupó en Cienfuegos: unos cuatrocientos hombres y ochenta caballos.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 22.15,
+      "lon": -80.44,
+      "lugar": "Cienfuegos, Cuba",
+      "km": 15
+     }
+    },
+    {
+     "texto": "Allí contrataron a un piloto llamado Miruelo, que aseguraba conocer a detalle la costa del golfo.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Solo dos días después de zarpar, todos los barcos encallaron en los bancos de arena del archipiélago de los Canarreos.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 21.75,
+      "lon": -82.0,
+      "lugar": "Archipiélago de los Canarreos",
+      "km": 40
+     }
+    },
+    {
+     "texto": "Pasaron dos o tres semanas atrapados, mientras se agotaban las pocas provisiones que les quedaban.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Una tormenta los liberó… pero el viento los alejó de La Habana, cuando ya podían ver los mástiles de los barcos en el puerto.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Para evitar un motín, Narváez decidió seguir adelante con su plan.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "El doce de abril de mil quinientos veintiocho, divisaron tierra al norte de la bahía de Tampa.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "12 DE ABRIL DE 1528",
+      "sub": "Bahía de Tampa, Florida"
+     }
+    },
+    {
+     "texto": "Habían llegado a la Florida. Pero lo peor apenas comenzaba.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "En tierra fueron atacados por los pueblos nativos, y empezaron a sufrir hambre y enfermedades.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "En septiembre intentaron escapar por mar, rumbo a México.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Un nuevo huracán los barrió cerca de la isla de Galveston, en Texas. Solo ochenta hombres sobrevivieron.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 29.28,
+      "lon": -94.83,
+      "lugar": "Isla de Galveston, Texas",
+      "km": 25
+     },
+     "rotulo": "SOLO 80"
+    },
+    {
+     "texto": "Y en los años siguientes, casi todos ellos también murieron.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "Al final quedaban solo cuatro: Cabeza de Vaca, Alonso del Castillo Maldonado, Andrés Dorantes de Carranza y su esclavo, Estevanico.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "4 SOBREVIVIENTES",
+      "sub": "De unas 600 personas"
+     }
+    },
+    {
+     "texto": "Durante años atravesaron el sur de lo que hoy es Estados Unidos y el norte de México.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Fueron los primeros europeos en ver el río Misisipi y en recorrer la costa del golfo de México y de Texas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "En mil quinientos treinta y seis, por fin, encontraron a otros españoles en lo que hoy es la Ciudad de México.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "De los cerca de seiscientos que habían partido de España, solo ellos cuatro volvieron para contarlo.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     },
+     "rotulo": "SOLO 4"
+    },
+    {
+     "texto": "De regreso en España, Cabeza de Vaca escribió todo lo que vivieron en La Relación, publicada en mil quinientos cuarenta y dos.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "LA RELACIÓN",
+      "sub": "Publicada en 1542"
+     }
+    },
+    {
+     "texto": "En ediciones posteriores, el libro cambió de nombre. Hoy se le conoce como Naufragios.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Buscaban riquezas como las de Cortés… y terminaron protagonizando una de las historias de supervivencia más duras de su tiempo. Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    }
+   ]
+  }
+ ]
+}
