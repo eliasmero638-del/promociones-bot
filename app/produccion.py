@@ -484,6 +484,12 @@ def bucle():
                         radar.preparar_dia(hoy)
                     except Exception as e:
                         log('radar falló', e)
+                if 6 <= hora <= 23 and time.time() - est.get('vigilado', 0) > C.get().get('vigilar_min', 20) * 60:
+                    est['vigilado'] = time.time(); F._guardar(ESTADO, est)
+                    try:
+                        radar.vigilar(hoy)
+                    except Exception as e:
+                        log('vigilar falló', e)
                 plan = _bajar_plan(hoy)
                 if plan and plan.get('modo') == 'claude':
                     modo_claude(hoy, plan)

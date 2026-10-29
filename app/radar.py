@@ -115,7 +115,7 @@ def preparar_dia(fecha=None):
     # 1) ¿noticia muy importante? ocupa el primer lugar
     try:
         import fabrica
-        urg = fabrica.revisar_urgente()
+        urg = fabrica.revisar_urgente(horas=24)
         if urg and urg.get('noticias'):
             encargos.append(armar_encargo('fb1', 'fb', '', carpeta_dia, urg['titulo'], urg['noticias']))
     except Exception as e:
@@ -134,13 +134,19 @@ def preparar_dia(fecha=None):
         except Exception:
             pass
     elegidos = elegidos or cands
-    total = n_fb + (1 if hay_largo(fecha) else 0)
+    total = n_fb + (1 if hay_largo(fecha) else 0) + 1        # +1 = reserva (res1) por si una noticia no sirve
     k = 0
     for c in elegidos:
         if len(encargos) >= total:
             break
-        tipo = 'fb' if sum(1 for e in encargos if e['tipo'] == 'fb') < n_fb else 'largo'
-        eid = f"{tipo}{sum(1 for e in encargos if e['tipo'] == tipo) + 1}"
+        n_f = sum(1 for e in encargos if e['eid'].startswith('fb'))
+        n_l = sum(1 for e in encargos if e['tipo'] == 'largo')
+        if n_f < n_fb:
+            tipo, eid = 'fb', f'fb{n_f + 1}'
+        elif hay_largo(fecha) and not n_l:
+            tipo, eid = 'largo', 'largo1'
+        else:
+            tipo, eid = 'fb', 'res1'
         try:
             encargos.append(armar_encargo(eid, tipo, c['titulo'], carpeta_dia))
             k += 1
@@ -150,6 +156,42 @@ def preparar_dia(fecha=None):
     json.dump(data, open(os.path.join(carpeta_dia, 'encargos.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
     log('encargos listos', fecha, [e['eid'] + ': ' + e['titulo'] for e in encargos])
     return data
+
+
+URG_HECHOS = os.path.join(DIR, 'urgentes_hechos.json')
+
+
+def vigilar(fecha=None):
+    """Noticia de ÚLTIMA HORA (≤ 3 h, ≥ 3 medios): se agrega como encargo urgN para que Claude la edite enseguida."""
+    import fabrica
+    fecha = fecha or time.strftime('%Y-%m-%d')
+    urg = fabrica.revisar_urgente(horas=3)
+    if not urg or not urg.get('noticias'):
+        return None
+    try:
+        vistos = json.load(open(URG_HECHOS, encoding='utf-8'))
+    except Exception:
+        vistos = []
+    clave = urg['titulo'].lower()[:40]
+    carpeta_dia = os.path.join(DIR, fecha)
+    os.makedirs(carpeta_dia, exist_ok=True)
+    p = os.path.join(carpeta_dia, 'encargos.json')
+    try:
+        data = json.load(open(p, encoding='utf-8'))
+    except Exception:
+        data = {'fecha': fecha, 'hay_largo': hay_largo(fecha), 'encargos': [], 'creado': time.time()}
+    previos = ' '.join(e.get('titulo_sugerido', '') + ' ' + e.get('titulo', '') for e in data['encargos']).lower()
+    if clave in ' '.join(vistos) or clave in previos:
+        return None
+    eid = f"urg{sum(1 for e in data['encargos'] if e['eid'].startswith('urg')) + 1}"
+    enc = armar_encargo(eid, 'fb', '', carpeta_dia, urg['titulo'], urg['noticias'])
+    enc.update({'urgente': True, 'creado': time.time(), 'resumen': urg.get('resumen', '')})
+    data['encargos'].append(enc)
+    json.dump(data, open(p, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
+    vistos.append(clave)
+    json.dump(vistos[-200:], open(URG_HECHOS, 'w', encoding='utf-8'), ensure_ascii=False)
+    log('ÚLTIMA HORA', eid, urg['titulo'])
+    return enc
 
 
 if __name__ == '__main__':

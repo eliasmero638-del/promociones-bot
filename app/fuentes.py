@@ -72,17 +72,34 @@ def articulo(titulo, max_chars=14000):
     return {'titulo': pg.get('title', titulo), 'texto': texto[:max_chars], 'url': pg.get('fullurl', ''), 'imagenes': imgs}
 
 
-def noticias(q='terremoto OR tsunami OR erupción OR huracán OR catástrofe', horas=12):
-    url = ('https://news.google.com/rss/search?q=' + requests.utils.quote(f'{q} when:{horas}h') +
+CONSULTA_URG = ('terremoto OR sismo OR tsunami OR erupción OR huracán OR catástrofe OR tragedia OR atentado OR '
+                'explosión OR "muere" OR "murió" OR "fallece" OR "falleció"')
+
+
+def noticias(q=CONSULTA_URG, horas=24):
+    """Titulares de Google Noticias publicados DE VERDAD en las últimas `horas` (se revisa la fecha de cada uno)."""
+    from email.utils import parsedate_to_datetime
+    from datetime import timezone
+    url = ('https://news.google.com/rss/search?q=' + requests.utils.quote(f'{q} when:{max(1, int(horas))}h') +
            '&hl=es-419&gl=EC&ceid=EC:es-419')
     try:
         raiz = ET.fromstring(requests.get(url, headers=UA, timeout=30).content)
     except Exception:
         return []
-    out = []
+    out, ahora = [], time.time()
     for it in raiz.iter('item'):
+        try:
+            fh = parsedate_to_datetime(it.findtext('pubDate') or '')
+            if fh.tzinfo is None:
+                fh = fh.replace(tzinfo=timezone.utc)
+            edad = (ahora - fh.timestamp()) / 3600
+        except Exception:
+            continue                                   # sin fecha = no se usa
+        if edad < -1 or edad > horas:
+            continue
         out.append({'titulo': html.unescape(it.findtext('title') or ''),
-                    'fecha': it.findtext('pubDate') or '', 'fuente': (it.find('source').text if it.find('source') is not None else ''),
+                    'fecha': it.findtext('pubDate') or '', 'edad_h': round(edad, 1),
+                    'fuente': (it.find('source').text if it.find('source') is not None else ''),
                     'url': it.findtext('link') or '',
                     'resumen': re.sub('<[^>]+>', ' ', html.unescape(it.findtext('description') or ''))[:300]})
-    return out[:25]
+    return out[:40]

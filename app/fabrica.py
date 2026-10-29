@@ -122,35 +122,38 @@ def buscar_tema(formato):
     return temas[0] if temas else None
 
 
-URG_RSS = """Titulares de Google Noticias de las últimas 12 horas:
+URG_RSS = """Titulares REALES de Google Noticias publicados en las últimas {horas} horas (fuente y antigüedad):
 {lista}
-¿Hay algo MUY importante que la gente en Ecuador y Latinoamérica querría ver ya en video (terremoto fuerte, tsunami,
-erupción, catástrofe, accidente grave, hecho histórico)? Política y farándula NO cuentan. Ya publicados: {hechos}
+¿Hay una noticia MUY importante y de alcance mundial o latinoamericano que la gente querría ver YA en video?
+Cuenta: terremoto o sismo fuerte, tsunami, erupción, huracán, catástrofe o tragedia con víctimas, atentado,
+muerte de un presidente/expresidente, jefe de Estado, papa o famoso MUY conocido. NO cuenta: política normal,
+farándula menor, deportes, noticias locales pequeñas, aniversarios ni recuentos de algo que pasó hace días.
+Tiene que estar en VARIOS titulares de medios distintos. Ya publicados: {hechos}
 Responde SOLO JSON: {{"hay": true/false, "urgencia": 0-100, "titulo": "...", "resumen": "solo datos que digan los titulares",
- "indices": [números de los titulares usados]}}"""
+ "indices": [números de TODOS los titulares que hablan de ese mismo hecho]}}"""
 
 
-def revisar_urgente():
-    items = wiki.noticias()
-    if items:
-        lista = '\n'.join(f"{i}. {x['titulo']} ({x['fuente']}, {x['fecha']})" for i, x in enumerate(items))
-        p = URG_RSS.format(lista=lista, hechos=_hechos(10))
-        d = ia.groq_json(p, 0.2) if ia.groq_activa() else None
-        if not d and ia.hay_cuota():
-            d, _ = ia.generar(p, buscar=False, temperatura=0.2)
-        if d and d.get('hay') and int(d.get('urgencia', 0) or 0) >= C.get().get('ridmer_urgencia', 85) \
-                and d.get('titulo', '').lower()[:40] not in _hechos(30).lower():
-            usados = [items[i] for i in d.get('indices', []) if isinstance(i, int) and i < len(items)] or items[:5]
-            return {'titulo': d['titulo'], 'resumen': d.get('resumen', ''), 'tipo': 'noticia',
-                    'urgencia': int(d.get('urgencia', 0)), 'noticias': usados}
+def revisar_urgente(horas=24, minimo_medios=3):
+    """Noticia urgente SOLO si es reciente (fecha real de cada titular) y la publican varios medios distintos."""
+    items = wiki.noticias(horas=horas)
+    if not items:
         return None
-    d, _ = ia.generar(URGENTE.format(hoy=time.strftime('%d/%m/%Y %H:%M'), hechos=_hechos(10)), buscar=True,
-                      temperatura=0.2)
-    if d and d.get('hay') and int(d.get('urgencia', 0) or 0) >= C.get().get('ridmer_urgencia', 85):
-        if d.get('titulo', '').lower()[:40] not in _hechos(30).lower():
-            return {'titulo': d['titulo'], 'resumen': d.get('resumen', ''), 'tipo': 'noticia',
-                    'urgencia': int(d.get('urgencia', 0))}
-    return None
+    lista = '\n'.join(f"{i}. {x['titulo']} ({x['fuente']}, hace {x['edad_h']} h)" for i, x in enumerate(items))
+    p = URG_RSS.format(lista=lista, hechos=_hechos(30), horas=horas)
+    d = ia.groq_json(p, 0.1) if ia.groq_activa() else None
+    if not d and ia.hay_cuota():
+        d, _ = ia.generar(p, buscar=False, temperatura=0.1)
+    if not (d and d.get('hay') and int(d.get('urgencia', 0) or 0) >= C.get().get('ridmer_urgencia', 85)):
+        return None
+    if d.get('titulo', '').lower()[:40] in _hechos(60).lower():
+        return None
+    usados = [items[i] for i in d.get('indices', []) if isinstance(i, int) and 0 <= i < len(items)]
+    medios = {x['fuente'].strip().lower() for x in usados if x.get('fuente')}
+    if len(medios) < minimo_medios or any(x['edad_h'] > horas for x in usados):
+        log('urgente descartada (pocos medios o vieja):', d.get('titulo'), len(medios))
+        return None
+    return {'titulo': d['titulo'], 'resumen': d.get('resumen', ''), 'tipo': 'noticia',
+            'urgencia': int(d.get('urgencia', 0)), 'noticias': usados}
 
 
 # ---------------------------------------------------------------- guion

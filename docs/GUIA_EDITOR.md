@@ -92,3 +92,20 @@ prepara el MATERIAL (voz y fotos) y **TÚ armas y revisas cada video** (modo "cl
 5. Entrega: `python3 tools/entregar.py FECHA salida/fb1 salida/fb2 …` (sube a la rama `entregas`; el servidor
    los baja en ≤ 2 min y los entrega a su hora). Hazlo antes de las 10:30: después de esa hora el servidor arma
    automático lo que falte (respaldo).
+
+## Noticias: SOLO si son recientes y confirmadas (regla del dueño)
+- Una noticia grande (terremoto/sismo fuerte, tsunami, catástrofe, atentado, muerte de un presidente, jefe de Estado,
+  papa o famoso muy conocido) va SIEMPRE primero (fb1) en lugar de una historia… pero SOLO si:
+  1) pasó en las **últimas 24 horas** (revisa la fecha con WebSearch: si el hecho es de días atrás, NO va), y
+  2) la confirman **al menos 3 medios serios** distintos.
+- Si el encargo de noticia no cumple, ponle `"omitir": true` y usa el encargo de reserva `res1` con las horas de fb1.
+- El guion de noticia: tono serio, solo lo confirmado, di cuándo pasó ("este jueves", "hace unas horas"). Nunca una
+  noticia vieja como si fuera nueva.
+
+## Última hora (tarea de cada hora, 7:17 a 23:17)
+- El servidor vigila Google Noticias cada 20 min; si algo enorme pasó en las últimas 3 h y lo publican ≥ 3 medios,
+  agrega a `encargos.json` un encargo `urgN` con `"urgente": true`.
+- La tarea horaria pide los encargos; si hay un `urgN` que todavía no está en `planes/FECHA.json`: verifica con
+  WebSearch (reciente + confirmado), agrégalo al plan con `"hora_fb": "ya", "hora_short": "ya"` (sin borrar los demás
+  videos), pide el material, edítalo (Facebook ~1:00–1:30 y Short < 60 s) y entrégalo SOLO a él con entregar.py.
+  Facebook se publica a los 20 min de avisar; el Short le llega al dueño para subirlo.
