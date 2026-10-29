@@ -47,7 +47,7 @@ DEFAULTS = {
     'ridmer_espera_min': 20,             # minutos antes de publicar solo en Ridmer TV
     'ridmer_auto': True,
     'ridmer_max_extra': 2,               # noticias urgentes extra por día
-    'ridmer_urgencia': 85,
+    'ridmer_urgencia': 90,
     'reporte_horas': 0,                  # sin reporte periódico (solo /diag cuando lo pidas)
     'ridmer_fb_dia': 3,
     'radar_hora': 2,           # voz de Gemini elegida para Ridmer                     # tema secreto de la app ntfy
@@ -77,13 +77,13 @@ _lock = threading.Lock()
 _cfg = None
 _propio = {}            # solo lo que se guardó a propósito (no los valores por defecto)
 
-VERSION_CFG = 3
+VERSION_CFG = 4
 # claves que versiones viejas guardaban sin querer: se borran para que mande el valor por defecto
 MIGRAR = {2: ['clip_min', 'clip_max', 'ventana_antes', 'ventana_despues', 'antes_seg', 'despues_seg',
               'umbral_ia', 'max_por_hora', 'separacion_min', 'segmento_seg', 'guardar_horas', 'whisper_modelo',
               'auto_espera_min', 'auto_minimo', 'max_publicaciones_dia', 'participantes', 'canal', 'reality',
               'marca', 'modo', 'web_url', 'web_puerto', 'umbral']}
-FORZAR = {2: {'ia_minimo': 80}, 3: {'ia_minimo': 85}}
+FORZAR = {2: {'ia_minimo': 80}, 3: {'ia_minimo': 85}, 4: {'ridmer_urgencia': 90}}
 
 
 def _escribir():
