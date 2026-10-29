@@ -7,7 +7,7 @@ except Exception as _e:          # si la fábrica falla, el Clipero sigue funcio
     fabrica = None
     print('fabrica no disponible:', _e, flush=True)
 
-VERSION = 'v26-pausa'
+VERSION = 'v27-claude-editor'
 cola = queue.Queue()
 historial = []          # (hora, puntaje) de clips enviados, para límites por hora
 stats = {'pedazos': 0, 'clips': 0, 'ult_puntaje': None, 'ult_pedazo': None}
@@ -488,6 +488,11 @@ def main():
                 if fabrica else None)
     if fabrica:
         fabrica.iniciar()
+        try:
+            import produccion
+            produccion.iniciar()
+        except Exception as e:
+            log('producción no disponible', e)
     if not C.get().get('solo_enviar'):
         tg.escuchar(comandos)
     if C.get()['chat_ids']:

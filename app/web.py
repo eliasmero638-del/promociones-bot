@@ -179,7 +179,18 @@ class H(BaseHTTPRequestHandler):
             carpeta, m = _ridmer['buscar'](m_.group(1))
         return self._send(200, _pagina_ridmer(m, m_.group(1), msg))
 
+    def _encargos(self):
+        m_ = re.match(r'^/encargos/(\d{4}-\d{2}-\d{2})/(encargos\.json|[a-z]+\d/(?:hoja|c\d\d)\.jpg)$', self.path.split('?')[0])
+        if not m_:
+            return self._send(404, 'No')
+        p_ = os.path.join(C.DATA, 'encargos', m_.group(1), m_.group(2))
+        if not os.path.exists(p_):
+            return self._send(404, 'No')
+        return self._send(200, open(p_, 'rb').read(), 'application/json' if p_.endswith('.json') else 'image/jpeg')
+
     def do_GET(self):
+        if self.path.startswith('/encargos/'):
+            return self._encargos()
         if self.path.startswith('/r/'):
             return self._ridmer()
         if self.path.startswith('/voces') or self.path.startswith('/m/'):

@@ -460,9 +460,10 @@ def avisar(meta):
     link = f"{cfg.get('web_url', 'http://173.249.44.95')}/r/{meta['token']}"
     du = meta.get('duracion', 0)
     corto = meta['formato'] == 'short'
-    tipo = '🎬 SHORT (vertical)' if corto else '🎞️ VIDEO LARGO (horizontal)'
-    destino = ('Para: YouTube Shorts (lo subes tú) + Reel de Facebook en Ridmer TV' if corto else
-               'Para: YouTube (lo subes tú) + video en Facebook Ridmer TV')
+    tipo = ('📘 FACEBOOK' if meta.get('entrega') == 'fb' else '🎬 SHORT (vertical)' if corto else '🎞️ VIDEO LARGO (horizontal)')
+    destino = meta.get('destino') and f"Para: {meta['destino']}" or (
+        'Para: YouTube Shorts (lo subes tú) + Reel de Facebook en Ridmer TV' if corto else
+        'Para: YouTube (lo subes tú) + video en Facebook Ridmer TV')
     espera = cfg.get('ridmer_espera_min', 20)
     auto = fb.activo('ridmer') and cfg.get('ridmer_auto', True)
     extra = (f'⏳ Si no respondes, se publica solo en Facebook Ridmer TV en {espera} min' if auto
@@ -641,21 +642,25 @@ def bucle():
                             if t['urgencia'] >= 95:
                                 _cola_segura('largo', t, 'urgente')
                         threading.Thread(target=urg, daemon=True).start()
-                # publicar solos los que nadie respondió
-                if fb.activo('ridmer') and cfg.get('ridmer_auto', True):
-                    for jid in sorted(os.listdir(DIR)):
-                        m = leer_meta(jid) if os.path.isdir(os.path.join(DIR, jid)) else None
-                        if m and m.get('estado') == 'pendiente' and not m.get('auto_fallo') and \
-                                time.time() - m.get('creado', 0) > cfg.get('ridmer_espera_min', 20) * 60 and \
-                                time.time() - m.get('creado', 0) < 12 * 3600:
-                            publicar(jid, 'auto')
-                # limpiar trabajos de más de 4 días
-                for jid in os.listdir(DIR):
-                    p = os.path.join(DIR, jid)
-                    if os.path.isdir(p) and time.time() - os.path.getmtime(p) > 4 * 86400:
-                        shutil.rmtree(p, ignore_errors=True)
         except Exception as e:
             log('error bucle', e)
+        try:
+            cfg = C.get()
+            # publicar solos los que nadie respondió
+            if fb.activo('ridmer') and cfg.get('ridmer_auto', True):
+                for jid in sorted(os.listdir(DIR)):
+                    m = leer_meta(jid) if os.path.isdir(os.path.join(DIR, jid)) else None
+                    if m and m.get('estado') == 'pendiente' and not m.get('auto_fallo') and m.get('motivo') == 'claude' and \
+                            time.time() - m.get('creado', 0) > cfg.get('ridmer_espera_min', 20) * 60 and \
+                            time.time() - m.get('creado', 0) < 12 * 3600:
+                        publicar(jid, 'auto')
+            # limpiar trabajos de más de 4 días
+            for jid in os.listdir(DIR):
+                p = os.path.join(DIR, jid)
+                if os.path.isdir(p) and time.time() - os.path.getmtime(p) > 4 * 86400:
+                    shutil.rmtree(p, ignore_errors=True)
+        except Exception as e:
+            log('error publicador', e)
         time.sleep(60)
 
 

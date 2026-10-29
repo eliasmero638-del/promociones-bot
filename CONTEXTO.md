@@ -20,6 +20,12 @@ El dueño no programa: explicarle todo paso a paso, en español sencillo, con un
   `entregas`) y agregar a `pedidos.json` `{"id","tipo":"video_listo","url": raw.githubusercontent…, "miniatura_url",
   "titulo_youtube","descripcion_youtube","etiquetas","texto_facebook","formato"}` → el servidor lo manda a Telegram con
   botones y lo publica en Ridmer TV a los 20 min.
+- v27-claude-editor: Claude es el editor. 2:00 `radar.py` arma encargos (DATA/encargos/FECHA: encargos.json + hojas
+  de fotos numeradas, servidos en /encargos/…). 5:37 tarea programada de Claude: sube `pedir/FECHA.txt` a la rama
+  `encargos` → el workflow trae los encargos → Claude escribe `planes/FECHA.json` en la rama `planes` siguiendo
+  `docs/GUIA_EDITOR.md`. `produccion.py` baja el plan (raw GitHub), hace voz Algenib, arma fb/short/largo con
+  plantillas (`montaje.escena_*`) y entrega: Facebook avisa 20 min antes y se publica solo (motivo 'claude');
+  YouTube Short 13:00/19:00 y largo 18:00 (días alternos) se avisan para subir a mano. Fábrica automática apagada.
 - Pendiente del plan: cola persistente con estados/reintentos, métricas por categoría, fuentes con URL/fecha en Ridmer,
   YouTube API, Ridmer TV en Meta.
 

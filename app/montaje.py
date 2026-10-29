@@ -197,3 +197,107 @@ def miniatura(img, texto, salida):
            stroke_fill=(0, 0, 0))
     base.save(salida, quality=92)
     return salida
+
+
+# ---------------------------------------------------------------- escenas diseñadas (estilo Ridmer)
+MONO = '/usr/share/fonts/truetype/dejavu/DejaVuSansMono-Bold.ttf'
+
+
+def _f(tam, ruta=None):
+    try:
+        return ImageFont.truetype(ruta or FUENTE, tam)
+    except Exception:
+        return ImageFont.load_default()
+
+
+def _fondo_oscuro(W, H, rojo=False):
+    im = Image.new('RGB', (W, H), (10, 8, 12))
+    d = ImageDraw.Draw(im)
+    for r in range(int(W * 0.7), 0, -8):
+        c = int(55 * (1 - r / (W * 0.7)))
+        d.ellipse([W / 2 - r, H / 2 - r * 0.7, W / 2 + r, H / 2 + r * 0.7],
+                  fill=(12 + c + (25 if rojo else 0), 8 + c // 3, 12 + c // 3))
+    return im
+
+
+def _texto_centrado(d, W, y, txt, f, col, borde=6):
+    w = d.textlength(txt, font=f)
+    d.text(((W - w) / 2, y), txt, font=f, fill=col, stroke_width=borde, stroke_fill=(0, 0, 0))
+
+
+def escena_ficha(nombre, sub, foto, salida, W=1600, H=1000):
+    """Ficha de persona: foto a la izquierda, nombre grande y quién es."""
+    im = _fondo_oscuro(W, H)
+    d = ImageDraw.Draw(im)
+    if foto and os.path.exists(foto):
+        ph = ImageOps.fit(Image.open(foto).convert('RGB'), (520, 640), Image.LANCZOS)
+        ph = ImageOps.grayscale(ph).convert('RGB') if 'B/N' in (sub or '') else ph
+        im.paste(ph, (110, (H - 640) // 2))
+        d.rectangle([110, (H - 640) // 2, 630, (H + 640) // 2], outline=(220, 30, 30), width=8)
+        x0 = 700
+    else:
+        x0 = 140
+    f1, f2 = _f(96), _f(50, MONO)
+    lineas = textwrap.wrap(nombre.upper(), 14)[:2]
+    y = H / 2 - 60 - 55 * len(lineas)
+    for ln in lineas:
+        d.text((x0, y), ln, font=f1, fill=(255, 255, 255), stroke_width=5, stroke_fill=(0, 0, 0)); y += 108
+    d.rectangle([x0, y + 10, x0 + 140, y + 20], fill=(220, 30, 30))
+    for ln in textwrap.wrap((sub or '').upper(), 26)[:3]:
+        y += 70
+        d.text((x0, y), ln, font=f2, fill=(230, 210, 210))
+    im.save(salida, quality=92)
+    return salida
+
+
+def escena_fecha(texto, sub, salida, W=1600, H=1000):
+    """Cartel de fecha / lugar / cifra en pantalla completa."""
+    im = _fondo_oscuro(W, H, rojo=True)
+    d = ImageDraw.Draw(im)
+    lineas = textwrap.wrap(texto.upper(), 16)[:3]
+    tam = 150 if len(lineas) == 1 else 120
+    y = H / 2 - (len(lineas) * (tam + 10)) / 2 - (40 if sub else 0)
+    for ln in lineas:
+        _texto_centrado(d, W, y, ln, _f(tam), (255, 255, 255), 8); y += tam + 10
+    if sub:
+        _texto_centrado(d, W, y + 30, sub.upper(), _f(56, MONO), (235, 60, 60), 3)
+    im.save(salida, quality=92)
+    return salida
+
+
+def escena_cita(texto, autor, salida, W=1600, H=1000):
+    """Documento / carta / declaración en papel viejo."""
+    im = Image.new('RGB', (W, H), (16, 12, 10))
+    papel = Image.new('RGB', (1260, 820), (226, 214, 188))
+    dp = ImageDraw.Draw(papel)
+    import random as _r
+    for _ in range(2500):
+        x, y = _r.randrange(1260), _r.randrange(820)
+        c = _r.randrange(185, 225)
+        dp.point((x, y), fill=(c, c - 10, c - 30))
+    f = _f(58, MONO)
+    lineas = textwrap.wrap('“' + texto.strip('"“” ') + '”', 32)[:8]
+    y = max(70, (820 - len(lineas) * 80 - (90 if autor else 0)) // 2)
+    for ln in lineas:
+        dp.text((80, y), ln, font=f, fill=(35, 28, 22)); y += 80
+    if autor:
+        dp.text((80, y + 30), '— ' + autor, font=_f(46, MONO), fill=(140, 20, 20))
+    papel = papel.rotate(-2, expand=True, fillcolor=(16, 12, 10))
+    im.paste(papel, ((W - papel.width) // 2, (H - papel.height) // 2))
+    im.save(salida, quality=92)
+    return salida
+
+
+def escena_mapa(img_satelite, lugar, salida, W=1600, H=1000):
+    """Mapa satelital con marcador rojo y nombre del lugar."""
+    im = ImageOps.fit(Image.open(img_satelite).convert('RGB'), (W, H), Image.LANCZOS)
+    d = ImageDraw.Draw(im)
+    cx, cy = W // 2, H // 2
+    for r, a in ((70, 60), (46, 120)):
+        d.ellipse([cx - r, cy - r, cx + r, cy + r], outline=(230, 30, 30), width=6)
+    d.ellipse([cx - 14, cy - 14, cx + 14, cy + 14], fill=(230, 30, 30))
+    _texto_centrado(d, W, 70, lugar.upper(), _f(100), (255, 255, 255), 8)
+    d.text((30, H - 50), 'Imagen satelital: Esri, Maxar', font=_f(26, MONO), fill=(230, 230, 230),
+           stroke_width=2, stroke_fill=(0, 0, 0))
+    im.save(salida, quality=92)
+    return salida

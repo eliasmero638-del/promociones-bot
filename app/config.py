@@ -47,7 +47,10 @@ DEFAULTS = {
     'ridmer_espera_min': 20,             # minutos antes de publicar solo en Ridmer TV
     'ridmer_auto': True,
     'ridmer_max_extra': 2,               # noticias urgentes extra por día
-    'ridmer_urgencia': 85,           # voz de Gemini elegida para Ridmer                     # tema secreto de la app ntfy
+    'ridmer_urgencia': 85,
+    'reporte_horas': 0,                  # sin reporte periódico (solo /diag cuando lo pidas)
+    'ridmer_fb_dia': 3,
+    'radar_hora': 2,           # voz de Gemini elegida para Ridmer                     # tema secreto de la app ntfy
     'fb_page_token': '',
     'clip_max': 900,                     # sin tope real: dura lo que dure el momento
     'horas': [],                         # [] = todo el día; ej. [[18, 24], [0, 2]] solo esas horas
