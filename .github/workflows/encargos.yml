@@ -1,0 +1,39 @@
+# Trae del servidor los ENCARGOS del día (tema, texto fuente, hoja de fotos) para que Claude los edite.
+# Se activa cuando Claude sube un archivo pedir/AAAA-MM-DD.txt
+name: Traer encargos
+on:
+  push:
+    branches: [encargos]
+    paths: ["pedir/**.txt"]
+permissions:
+  contents: write
+jobs:
+  traer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Descargar del servidor
+        run: |
+          set -e
+          for f in pedir/*.txt; do
+            [ -e "$f" ] || continue
+            FECHA=$(basename "$f" .txt)
+            mkdir -p "encargos/$FECHA"
+            for i in 1 2 3 4 5 6; do
+              if curl -sf --max-time 60 "http://173.249.44.95/encargos/$FECHA/encargos.json" -o "encargos/$FECHA/encargos.json"; then break; fi
+              echo "todavía no hay encargos, espero 2 min"; sleep 120
+            done
+            [ -s "encargos/$FECHA/encargos.json" ] || { echo "sin encargos para $FECHA" > "encargos/$FECHA/ERROR.txt"; git rm -q "$f"; continue; }
+            for E in $(python3 -c "import json,sys; print(' '.join(e['eid'] for e in json.load(open(sys.argv[1]))['encargos']))" "encargos/$FECHA/encargos.json"); do
+              mkdir -p "encargos/$FECHA/$E"
+              curl -sf --max-time 120 "http://173.249.44.95/encargos/$FECHA/$E/hoja.jpg" -o "encargos/$FECHA/$E/hoja.jpg" || true
+            done
+            git rm -q "$f"
+          done
+      - name: Guardar
+        run: |
+          git config user.name "encargos-bot"
+          git config user.email "encargos-bot@users.noreply.github.com"
+          git add -A encargos pedir || true
+          git commit -qm "Encargos del día" || exit 0
+          git push
