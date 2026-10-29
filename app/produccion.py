@@ -135,31 +135,8 @@ def _cortar_audio(wav, rangos, salida):
     montaje.sh(['ffmpeg', '-y', '-v', 'error', '-i', wav, '-filter_complex', fc, '-map', '[o]', '-ar', '48000', salida])
 
 
-# ---------------------------------------------------------------- armar un video del plan
-def producir(fecha, v):
-    eid = v['eid']
-    carpeta_enc = os.path.join(radar.DIR, fecha, eid)
-    jid = f'{fecha.replace("-", "")}_{eid}'
-    carpeta = os.path.join(F.DIR, jid)
-    os.makedirs(carpeta, exist_ok=True)
-    segs = [dict(s) for s in v['segmentos'] if str(s.get('texto', '')).strip()]
-    reales, usados = [], set()
-    for i, s in enumerate(segs):
-        s['img'] = _escena_img(s.get('escena'), carpeta_enc, carpeta, i, usados)
-        if s['img'] and (s.get('escena') or {}).get('tipo', 'foto') == 'foto':
-            reales.append(s['img'])
-    for i, s in enumerate(segs):            # escenas sin imagen: repetir una foto real cercana
-        if not s['img']:
-            s['img'] = reales[min(i, len(reales) - 1)] if reales else montaje.tarjeta(v.get('titulo_video', 'Ridmer'),
-                                                                                       os.path.join(carpeta, 'tj.jpg'))
-    g = max(1, min(int(v.get('gancho', 1)), len(segs) - 1))
-    wav, hook = _narrar(segs, carpeta, g)                # voz Algenib (sin acelerar)
-    palabras = editor.transcribir(wav)
-    if not palabras:
-        todas = ' '.join(s['texto'] for s in segs).split()
-        d = montaje.dur(wav)
-        palabras = [(k * d / len(todas), (k + 1) * d / len(todas), w) for k, w in enumerate(todas)]
-    segs = _tiempos(segs, palabras, hook, g)
+def armar(carpeta, wav, palabras, segs, g, hook, v, foto_mini):
+    """Render de un video ya decidido: segs con t0/img/rotulo/short. Devuelve ([(tipo, mp4)], miniatura)."""
     D = montaje.dur(wav)
     escenas = [{'t0': s['t0'], 'img': s['img'], 'rotulo': s.get('rotulo', '')} for s in segs]
     titulo = v.get('titulo_video') or v.get('titulo_youtube', '')
@@ -203,16 +180,54 @@ def producir(fecha, v):
                 os.replace(tmp, out_s)
             salidas.append(('short', out_s))
     mini = os.path.join(carpeta, 'miniatura.jpg')
+    montaje.miniatura(foto_mini, (v.get('miniatura') or {}).get('texto') or titulo, mini)
+    return salidas, mini
+
+
+# ---------------------------------------------------------------- armar un video del plan
+def producir(fecha, v):
+    eid = v['eid']
+    carpeta_enc = os.path.join(radar.DIR, fecha, eid)
+    jid = f'{fecha.replace("-", "")}_{eid}'
+    carpeta = os.path.join(F.DIR, jid)
+    os.makedirs(carpeta, exist_ok=True)
+    segs = [dict(s) for s in v['segmentos'] if str(s.get('texto', '')).strip()]
+    reales, usados = [], set()
+    for i, s in enumerate(segs):
+        s['img'] = _escena_img(s.get('escena'), carpeta_enc, carpeta, i, usados)
+        if s['img'] and (s.get('escena') or {}).get('tipo', 'foto') == 'foto':
+            reales.append(s['img'])
+    for i, s in enumerate(segs):            # escenas sin imagen: repetir una foto real cercana
+        if not s['img']:
+            s['img'] = reales[min(i, len(reales) - 1)] if reales else montaje.tarjeta(v.get('titulo_video', 'Ridmer'),
+                                                                                       os.path.join(carpeta, 'tj.jpg'))
+    g = max(1, min(int(v.get('gancho', 1)), len(segs) - 1))
+    wav, hook = _narrar(segs, carpeta, g)                # voz Algenib (sin acelerar)
+    palabras = editor.transcribir(wav)
+    if not palabras:
+        todas = ' '.join(s['texto'] for s in segs).split()
+        d = montaje.dur(wav)
+        palabras = [(k * d / len(todas), (k + 1) * d / len(todas), w) for k, w in enumerate(todas)]
+    segs = _tiempos(segs, palabras, hook, g)
+    D = montaje.dur(wav)
     mi = (v.get('miniatura') or {})
     foto_m = os.path.join(carpeta_enc, f"c{int(mi.get('img', 0) or 0):02d}.jpg")
     if not os.path.exists(foto_m) and mi.get('seg') is not None and 0 <= int(mi['seg']) < len(segs):
         foto_m = segs[int(mi['seg'])]['img']
-    montaje.miniatura(foto_m if os.path.exists(foto_m) else (reales[0] if reales else segs[0]['img']),
-                      mi.get('texto') or titulo, mini)
+    if not os.path.exists(foto_m):
+        foto_m = reales[0] if reales else segs[0]['img']
+    salidas, mini = armar(carpeta, wav, palabras, segs, g, hook, v, foto_m)
     for f_ in os.listdir(carpeta):
         if f_.startswith(('voz_', 'cuerpo_', 'mezcla', 'esc_', 'e_')) and f_.endswith(('.mp3', '.wav', '.txt')):
             os.remove(os.path.join(carpeta, f_))
-    # programar entregas
+    _programar(fecha, v, jid, salidas, mini, ' '.join(s['texto'] for s in segs))
+    shutil.rmtree(carpeta, ignore_errors=True)
+    log('listo', jid, [t for t, _ in salidas])
+
+
+def _programar(fecha, v, jid, salidas, mini, guion):
+    """Deja cada video (fb / short / largo) listo para entregarse a su hora."""
+    titulo = v.get('titulo_video') or v.get('titulo_youtube', '')
     desc = v.get('descripcion_youtube', '')
     if v.get('fuente'):
         desc += '\n\nFuente: ' + v['fuente']
@@ -230,17 +245,170 @@ def producir(fecha, v):
         meta = {'id': f'{jid}_{tipo}', 'formato': 'short' if tipo != 'largo' else 'largo', 'motivo': 'claude',
                 'entrega': tipo, 'titulo': titulo, 'titulo_youtube': v.get('titulo_youtube', titulo),
                 'descripcion_youtube': desc, 'etiquetas': v.get('etiquetas', []),
-                'texto_facebook': v.get('texto_facebook', ''), 'guion': ' '.join(s['texto'] for s in segs),
+                'texto_facebook': v.get('texto_facebook', ''), 'guion': guion,
                 'archivos': {'video': os.path.basename(path), 'miniatura': 'miniatura.jpg'},
                 'token': secrets.token_urlsafe(16), 'estado': 'programado', 'hora': hora,
                 'aviso_en': cuando - (20 * 60 if tipo == 'fb' else 0), 'publicar_en': cuando,
                 'duracion': int(montaje.dur(os.path.join(sub, os.path.basename(path))))}
         F._guardar(os.path.join(sub, 'meta.json'), meta)
-    shutil.rmtree(carpeta, ignore_errors=True)
     h = F._leer(F.HIST, [])
     h.append({'fecha': time.strftime('%Y-%m-%d %H:%M'), 'titulo': v.get('articulo', '') + ' · ' + titulo, 'formato': v['tipo']})
     F._guardar(F.HIST, h[-400:])
-    log('listo', jid, [t for t, _ in salidas])
+
+
+# ---------------------------------------------------------------- modo "Claude edita el 100 %"
+# 1) Claude escribe el plan con "modo": "claude".  2) El servidor SOLO prepara el material (voz Algenib, tiempos de
+# cada palabra, fotos y escenas) en DATA/material/FECHA, servido en /material/… y subido a GitHub por un workflow.
+# 3) Claude arma y revisa cada video él mismo y los sube a la rama `entregas`.  4) El servidor los baja y entrega.
+MAT = os.path.join(C.DATA, 'material')
+ENTREGAS_URL = 'https://raw.githubusercontent.com/eliasmero638-del/promociones-bot/entregas/entregas/{fecha}/{f}'
+
+
+def _jpg(src, dst, maximo=1600):
+    from PIL import Image
+    im = Image.open(src).convert('RGB')
+    im.thumbnail((maximo, maximo))
+    im.save(dst, quality=90)
+
+
+def preparar_material(fecha, v):
+    eid = v['eid']
+    carpeta_enc = os.path.join(radar.DIR, fecha, eid)
+    out = os.path.join(MAT, fecha, eid)
+    tmp = out + '_tmp'
+    shutil.rmtree(tmp, ignore_errors=True)
+    os.makedirs(tmp, exist_ok=True)
+    segs = [dict(s) for s in v['segmentos'] if str(s.get('texto', '')).strip()]
+    usados = set()
+    for i, s in enumerate(segs):
+        img = _escena_img(s.get('escena'), carpeta_enc, tmp, i, usados)
+        if img:
+            _jpg(img, os.path.join(tmp, f'esc_{i:02d}.jpg'), 2000)
+        s['img'] = f'esc_{i:02d}.jpg' if img else None
+    if os.path.isdir(carpeta_enc):                       # todas las fotos candidatas, por si Claude cambia alguna
+        for f_ in sorted(os.listdir(carpeta_enc)):
+            if re.match(r'c\d\d\.jpg$', f_):
+                _jpg(os.path.join(carpeta_enc, f_), os.path.join(tmp, f_))
+    g = max(1, min(int(v.get('gancho', 1)), len(segs) - 1))
+    wav, hook = _narrar(segs, tmp, g)
+    palabras = editor.transcribir(wav)
+    if not palabras:
+        todas = ' '.join(s['texto'] for s in segs).split()
+        d = montaje.dur(wav)
+        palabras = [(k * d / len(todas), (k + 1) * d / len(todas), w) for k, w in enumerate(todas)]
+    segs = _tiempos(segs, palabras, hook, g)
+    montaje.sh(['ffmpeg', '-y', '-v', 'error', '-i', wav, '-c:a', 'flac', os.path.join(tmp, 'voz.flac')])
+    info = {'eid': eid, 'hook_fin': round(hook, 3), 'duracion_voz': round(montaje.dur(wav), 3),
+            'segmentos': [{'texto': s['texto'], 't0': round(s.get('t0', 0), 3), 'img': s['img'],
+                           'escena': s.get('escena'), 'short': bool(s.get('short')), 'rotulo': s.get('rotulo', '')}
+                          for s in segs],
+            'palabras': [[round(a, 3), round(b, 3), w] for a, b, w in palabras]}
+    F._guardar(os.path.join(tmp, 'info.json'), info)
+    for f_ in os.listdir(tmp):
+        if not (f_.endswith('.jpg') or f_ in ('voz.flac', 'info.json')):
+            os.remove(os.path.join(tmp, f_))
+    shutil.rmtree(out, ignore_errors=True)
+    os.replace(tmp, out)
+    log('material listo', fecha, eid)
+
+
+def _lista_material(fecha, plan):
+    base = os.path.join(MAT, fecha)
+    eids = [v['eid'] for v in plan.get('videos', []) if not v.get('omitir')]
+    listos = [e for e in eids if os.path.exists(os.path.join(base, e, 'info.json'))]
+    archivos = [f'{e}/{f_}' for e in listos for f_ in sorted(os.listdir(os.path.join(base, e)))]
+    F._guardar(os.path.join(base, 'lista.json'), {'fecha': fecha, 'completo': len(listos) == len(eids),
+                                                 'listos': listos, 'archivos': archivos})
+
+
+def _bajar(url, dst):
+    r = requests.get(url, params={'t': int(time.time())}, timeout=300, stream=True)
+    if r.status_code != 200:
+        return False
+    with open(dst, 'wb') as f:
+        for b in r.iter_content(1 << 20):
+            f.write(b)
+    return True
+
+
+def importar_entregas(fecha, plan):
+    """Baja los videos que Claude editó (rama `entregas`) y los programa."""
+    try:
+        r = requests.get(ENTREGAS_URL.format(fecha=fecha, f='manifest.json'), params={'t': int(time.time())}, timeout=30)
+        if r.status_code != 200:
+            return
+        man = r.json()
+    except Exception:
+        return
+    hechos = F._leer(HECHOS, [])
+    planes = {v['eid']: v for v in plan.get('videos', [])}
+    for e in man.get('videos', []):
+        clave = f"{fecha}:{e.get('eid')}:claude"
+        if clave in hechos or f"{fecha}:{e.get('eid')}" in hechos or e.get('eid') not in planes:
+            continue
+        v = dict(planes[e['eid']], **(e.get('cambios') or {}))
+        jid = f'{fecha.replace("-", "")}_{e["eid"]}'
+        carpeta = os.path.join(F.DIR, jid)
+        os.makedirs(carpeta, exist_ok=True)
+        try:
+            salidas = []
+            for tipo, partes in (e.get('archivos') or {}).items():
+                dst = os.path.join(carpeta, f'{tipo}.mp4')
+                with open(dst, 'wb') as out:
+                    for p in partes:                          # videos grandes van en partes de < 95 MB
+                        pp = dst + '.parte'
+                        if not _bajar(ENTREGAS_URL.format(fecha=fecha, f=p), pp):
+                            raise RuntimeError('no pude bajar ' + p)
+                        with open(pp, 'rb') as f:
+                            shutil.copyfileobj(f, out)
+                        os.remove(pp)
+                if montaje.dur(dst) < 5:
+                    raise RuntimeError(f'{tipo}.mp4 llegó dañado')
+                salidas.append((tipo, dst))
+            mini = os.path.join(carpeta, 'miniatura.jpg')
+            if not _bajar(ENTREGAS_URL.format(fecha=fecha, f=e.get('miniatura', '')), mini):
+                raise RuntimeError('no pude bajar la miniatura')
+            _programar(fecha, v, jid, salidas, mini, e.get('guion', ''))
+            hechos.append(clave); hechos.append(f"{fecha}:{e['eid']}"); F._guardar(HECHOS, hechos)
+            log('entrega de Claude programada', jid, [t for t, _ in salidas])
+        except Exception as ex:
+            log('error importando', jid, ex)
+        finally:
+            shutil.rmtree(carpeta, ignore_errors=True)
+
+
+def modo_claude(fecha, plan):
+    """Material para Claude, videos editados por Claude y, si Claude no entregó a tiempo, armado automático."""
+    hechos = F._leer(HECHOS, [])
+    for v in plan.get('videos', []):
+        clave = f"{fecha}:{v.get('eid')}:material"
+        if clave in hechos or v.get('omitir'):
+            continue
+        hechos.append(clave); F._guardar(HECHOS, hechos)
+        with _lock:
+            try:
+                preparar_material(fecha, v)
+            except Exception as e:
+                log('error material', clave, e)
+                for c in C.get()['chat_ids']:
+                    tg._api('sendMessage', chat_id=c, text=f"⚠️ Ridmer: no pude preparar el material de {v.get('eid')}: {str(e)[:300]}")
+    _lista_material(fecha, plan)
+    importar_entregas(fecha, plan)
+    limite = C.get().get('claude_limite', '10:30')         # respaldo: si Claude no entregó, se arma automático
+    if time.strftime('%H:%M') >= limite:
+        hechos = F._leer(HECHOS, [])
+        for v in plan.get('videos', []):
+            clave = f"{fecha}:{v.get('eid')}"
+            if clave in hechos or v.get('omitir') or v.get('hora_fb') == 'ya':
+                continue
+            hechos.append(clave); F._guardar(HECHOS, hechos)
+            with _lock:
+                try:
+                    producir(fecha, v)
+                    for c in C.get()['chat_ids']:
+                        tg._api('sendMessage', chat_id=c, text=f"ℹ️ Ridmer: Claude no entregó {v.get('eid')} a tiempo; lo armé automático.")
+                except Exception as e:
+                    log('error produciendo', clave, e)
 
 
 # ---------------------------------------------------------------- entregas a su hora
@@ -313,7 +481,9 @@ def bucle():
                     except Exception as e:
                         log('radar falló', e)
                 plan = _bajar_plan(hoy)
-                if plan:
+                if plan and plan.get('modo') == 'claude':
+                    modo_claude(hoy, plan)
+                elif plan:
                     hechos = F._leer(HECHOS, [])
                     for v in plan.get('videos', []):
                         clave = f"{hoy}:{v.get('eid')}"

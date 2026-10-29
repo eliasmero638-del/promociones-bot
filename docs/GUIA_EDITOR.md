@@ -3,11 +3,11 @@
 Tú (Claude) eres el EDITOR del canal de misterio "Ridmer" (YouTube 170 mil, Facebook "Ridmer TV").
 El servidor ya preparó los ENCARGOS del día: tema real, texto fuente (Wikipedia o titulares) y una HOJA de fotos
 candidatas numeradas. Tu trabajo: escribir el PLAN de edición (JSON). El servidor hace la voz (Gemini, Algenib),
-arma el video con tus decisiones y lo entrega. No renderizas nada tú.
+prepara el MATERIAL (voz y fotos) y **TÚ armas y revisas cada video** (modo "claude"). El servidor solo los entrega.
 
 ## Qué entregas: `planes/AAAA-MM-DD.json` en la rama `planes`
 ```json
-{"fecha": "2026-10-29",
+{"fecha": "2026-10-29", "modo": "claude",
  "videos": [
   {"eid": "fb1", "tipo": "fb", "hora_fb": "12:30", "hora_short": "13:00",
    "articulo": "Robert Hansen", "fuente": "https://es.wikipedia.org/wiki/Robert_Hansen",
@@ -74,3 +74,21 @@ arma el video con tus decisiones y lo entrega. No renderizas nada tú.
 ## Reglas finales
 - No modifiques otras ramas (solo escribe en `planes`). No imprimas claves ni tokens.
 - Si un encargo no tiene material suficiente, igual hazlo con fichas/fechas/mapas; si es imposible, ponle `"omitir": true`.
+
+## Modo "claude": TÚ editas el 100 % (obligatorio, `"modo": "claude"` en el plan)
+1. Sube el plan a `planes/FECHA.json` (rama `planes`). El servidor hace la voz Algenib de cada video (el gancho se
+   graba aparte), calcula el tiempo de cada palabra y baja las fotos/escenas que pediste.
+2. Pide el material: en la rama `encargos` sube `pedir/FECHA-material.txt` (contenido: la fecha). Un workflow espera a
+   que esté completo y lo deja en la rama **`material`**: `material/FECHA/<eid>/` con `info.json` (segmentos con su
+   t0, `hook_fin`, palabras), `voz.flac`, `esc_NN.jpg` (la imagen de cada segmento) y `cNN.jpg` (todas las candidatas).
+   Revisa con `git fetch origin material` cada minuto (máx. 60 min).
+3. Para cada eid: `python3 tools/editar.py material/FECHA/<eid> planes/FECHA.json <eid> salida/<eid>`
+   (desde un clon de la rama `clipero`). Deja fb.mp4 + short.mp4 (o largo.mp4), miniatura.jpg y
+   `revision_*.jpg` (un cuadro cada 2 s).
+4. **MIRA** con Read cada `revision_*.jpg`, la miniatura y las `esc_NN.jpg`. Corrige lo que esté mal escribiendo
+   `salida/<eid>/cambios.json` (foto equivocada → otra `cNN.jpg`; cartel; qué segmentos van al Short; mover un
+   corte con `t0`) y vuelve a correr editar.py con ese archivo como 5.º argumento. Repite hasta que esté bien:
+   foto que corresponde a lo narrado, sin pantallas negras, intro justo tras el gancho, Short < 60 s.
+5. Entrega: `python3 tools/entregar.py FECHA salida/fb1 salida/fb2 …` (sube a la rama `entregas`; el servidor
+   los baja en ≤ 2 min y los entrega a su hora). Hazlo antes de las 10:30: después de esa hora el servidor arma
+   automático lo que falte (respaldo).

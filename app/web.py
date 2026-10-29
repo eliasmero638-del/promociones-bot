@@ -188,9 +188,22 @@ class H(BaseHTTPRequestHandler):
             return self._send(404, 'No')
         return self._send(200, open(p_, 'rb').read(), 'application/json' if p_.endswith('.json') else 'image/jpeg')
 
+    def _material(self):
+        m_ = re.match(r'^/material/(\d{4}-\d{2}-\d{2})/(lista\.json|[a-z]+\d/(?:info\.json|voz\.flac|[a-z]+_?\d\d\.jpg|c\d\d\.jpg))$',
+                      self.path.split('?')[0])
+        if not m_:
+            return self._send(404, 'No')
+        p_ = os.path.join(C.DATA, 'material', m_.group(1), m_.group(2))
+        if not os.path.exists(p_):
+            return self._send(404, 'No')
+        tipo = {'.json': 'application/json', '.flac': 'audio/flac'}.get(os.path.splitext(p_)[1], 'image/jpeg')
+        return self._send(200, open(p_, 'rb').read(), tipo)
+
     def do_GET(self):
         if self.path.startswith('/encargos/'):
             return self._encargos()
+        if self.path.startswith('/material/'):
+            return self._material()
         if self.path.startswith('/r/'):
             return self._ridmer()
         if self.path.startswith('/voces') or self.path.startswith('/m/'):
