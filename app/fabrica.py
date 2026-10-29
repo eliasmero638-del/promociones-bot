@@ -122,35 +122,42 @@ def buscar_tema(formato):
     return temas[0] if temas else None
 
 
-URG_RSS = """Titulares REALES de Google Noticias publicados en las últimas {horas} horas (fuente y antigüedad):
+URG_RSS = """Titulares REALES publicados en las últimas {horas} horas. [EC] = Google Noticias Latinoamérica,
+[US] = Google News Estados Unidos (fuente y antigüedad):
 {lista}
-¿Hay una noticia MUY importante y de alcance mundial o latinoamericano que la gente querría ver YA en video?
-Cuenta: terremoto o sismo fuerte, tsunami, erupción, huracán, catástrofe o tragedia con víctimas, atentado,
-muerte de un presidente/expresidente, jefe de Estado, papa o famoso MUY conocido. NO cuenta: política normal,
-farándula menor, deportes, noticias locales pequeñas, aniversarios ni recuentos de algo que pasó hace días.
-Tiene que estar en VARIOS titulares de medios distintos. Ya publicados: {hechos}
-Responde SOLO JSON: {{"hay": true/false, "urgencia": 0-100, "titulo": "...", "resumen": "solo datos que digan los titulares",
- "indices": [números de TODOS los titulares que hablan de ese mismo hecho]}}"""
+¿Hay UNA noticia de la que TODO EL MUNDO está hablando ahora mismo (tendencia mundial en noticias y redes sociales)?
+SOLO cuenta si es de impacto MUNDIAL: terremoto o tsunami enorme, catástrofe con muchas víctimas, atentado mayor,
+o la muerte de alguien famoso EN TODO EL MUNDO (estrella mundial, presidente en funciones de una potencia, papa…).
+NO cuenta: expresidentes o políticos conocidos solo en su país, famosos locales, política normal, deportes,
+farándula menor, noticias de un solo país, aniversarios ni recuentos de algo que pasó hace días.
+Debe aparecer en titulares [EC] Y [US] de muchos medios distintos. En la duda, responde "hay": false.
+Ya publicados: {hechos}
+Responde SOLO JSON: {{"hay": true/false, "urgencia": 0-100, "mundial": true/false, "titulo": "...",
+ "resumen": "solo datos que digan los titulares", "indices": [números de TODOS los titulares de ese mismo hecho]}}"""
 
 
-def revisar_urgente(horas=24, minimo_medios=3):
-    """Noticia urgente SOLO si es reciente (fecha real de cada titular) y la publican varios medios distintos."""
-    items = wiki.noticias(horas=horas)
+def revisar_urgente(horas=24, minimo_medios=None):
+    """Noticia SOLO si es reciente (fecha real), tendencia MUNDIAL (sale en Latinoamérica y EE. UU.) y la publican
+    muchos medios distintos."""
+    minimo_medios = minimo_medios or C.get().get('urgente_medios', 6)
+    items = wiki.noticias(horas=horas) + wiki.noticias(q=wiki.CONSULTA_EN, horas=horas, region='US')
     if not items:
         return None
-    lista = '\n'.join(f"{i}. {x['titulo']} ({x['fuente']}, hace {x['edad_h']} h)" for i, x in enumerate(items))
+    lista = '\n'.join(f"{i}. [{x['region']}] {x['titulo']} ({x['fuente']}, hace {x['edad_h']} h)" for i, x in enumerate(items))
     p = URG_RSS.format(lista=lista, hechos=_hechos(30), horas=horas)
     d = ia.groq_json(p, 0.1) if ia.groq_activa() else None
     if not d and ia.hay_cuota():
         d, _ = ia.generar(p, buscar=False, temperatura=0.1)
-    if not (d and d.get('hay') and int(d.get('urgencia', 0) or 0) >= C.get().get('ridmer_urgencia', 85)):
+    if not (d and d.get('hay') and d.get('mundial') and
+            int(d.get('urgencia', 0) or 0) >= C.get().get('ridmer_urgencia', 90)):
         return None
     if d.get('titulo', '').lower()[:40] in _hechos(60).lower():
         return None
     usados = [items[i] for i in d.get('indices', []) if isinstance(i, int) and 0 <= i < len(items)]
     medios = {x['fuente'].strip().lower() for x in usados if x.get('fuente')}
-    if len(medios) < minimo_medios or any(x['edad_h'] > horas for x in usados):
-        log('urgente descartada (pocos medios o vieja):', d.get('titulo'), len(medios))
+    regiones = {x['region'] for x in usados}
+    if len(medios) < minimo_medios or regiones != {'EC', 'US'} or any(x['edad_h'] > horas for x in usados):
+        log('urgente descartada (no es tendencia mundial o es vieja):', d.get('titulo'), len(medios), regiones)
         return None
     return {'titulo': d['titulo'], 'resumen': d.get('resumen', ''), 'tipo': 'noticia',
             'urgencia': int(d.get('urgencia', 0)), 'noticias': usados}

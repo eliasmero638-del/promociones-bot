@@ -94,16 +94,18 @@ prepara el MATERIAL (voz y fotos) y **TÚ armas y revisas cada video** (modo "cl
    automático lo que falte (respaldo).
 
 ## Noticias: SOLO si son recientes y confirmadas (regla del dueño)
-- Una noticia grande (terremoto/sismo fuerte, tsunami, catástrofe, atentado, muerte de un presidente, jefe de Estado,
-  papa o famoso muy conocido) va SIEMPRE primero (fb1) en lugar de una historia… pero SOLO si:
+- Solo noticias de las que **TODO EL MUNDO está hablando** (tendencia mundial en noticias y redes): terremoto o
+  tsunami enorme, catástrofe con muchas víctimas, atentado mayor, muerte de alguien famoso EN TODO EL MUNDO
+  (estrella mundial, presidente en funciones de una potencia, papa). NO: expresidentes o famosos conocidos solo en su
+  país, política normal, deportes, noticias de un solo país. En la duda, NO va. Si va, va SIEMPRE primero (fb1), y SOLO si:
   1) pasó en las **últimas 24 horas** (revisa la fecha con WebSearch: si el hecho es de días atrás, NO va), y
-  2) la confirman **al menos 3 medios serios** distintos.
+  2) la cubren medios grandes de **varios países** (Latinoamérica y EE. UU./Europa), al menos 6 distintos.
 - Si el encargo de noticia no cumple, ponle `"omitir": true` y usa el encargo de reserva `res1` con las horas de fb1.
 - El guion de noticia: tono serio, solo lo confirmado, di cuándo pasó ("este jueves", "hace unas horas"). Nunca una
   noticia vieja como si fuera nueva.
 
 ## Última hora (tarea de cada hora, 7:17 a 23:17)
-- El servidor vigila Google Noticias cada 20 min; si algo enorme pasó en las últimas 3 h y lo publican ≥ 3 medios,
+- El servidor vigila Google Noticias cada 20 min; si algo de impacto MUNDIAL pasó en las últimas 3 h (sale en Latinoamérica y EE. UU., ≥ 6 medios),
   agrega a `encargos.json` un encargo `urgN` con `"urgente": true`.
 - La tarea horaria pide los encargos; si hay un `urgN` que todavía no está en `planes/FECHA.json`: verifica con
   WebSearch (reciente + confirmado), agrégalo al plan con `"hora_fb": "ya", "hora_short": "ya"` (sin borrar los demás
