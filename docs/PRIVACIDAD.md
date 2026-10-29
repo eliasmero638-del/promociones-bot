@@ -8,6 +8,6 @@ Clipero es una herramienta privada que usa su propio dueño para publicar videos
 - **Dónde se guardan:** en el servidor privado del dueño. No se venden ni se comparten con terceros.
 - **Eliminación de datos:** el dueño puede quitar el acceso cuando quiera desde Facebook → Configuración →
   Integraciones empresariales → Clipero → Eliminar. Al hacerlo, el token deja de funcionar. Para pedir que se borre
-  cualquier dato, escribe a eliasmero638@gmail.com y se elimina en un máximo de 7 días.
+  cualquier dato, envía un mensaje a la página de Facebook correspondiente y se elimina en un máximo de 7 días.
 
 Última actualización: octubre de 2026.
