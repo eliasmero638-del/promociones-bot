@@ -17,6 +17,7 @@ jobs:
           set -e
           for f in pedir/*.txt; do
             [ -e "$f" ] || continue
+            case "$f" in *-material.txt) continue;; esac
             FECHA=$(basename "$f" .txt)
             mkdir -p "encargos/$FECHA"
             for i in 1 2 3 4 5 6; do

@@ -1,0 +1,47 @@
+# Trae del servidor el MATERIAL (voz, tiempos, fotos) para que Claude edite él mismo cada video.
+# Se activa cuando Claude sube pedir/AAAA-MM-DD-material.txt. Deja todo en la rama `material` (se reemplaza cada vez).
+name: Traer material
+on:
+  push:
+    branches: [encargos]
+    paths: ["pedir/**-material.txt"]
+permissions:
+  contents: write
+jobs:
+  traer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - name: Descargar del servidor
+        run: |
+          set -e
+          S=http://173.249.44.95/material
+          mkdir -p /tmp/m
+          for f in pedir/*-material.txt; do
+            [ -e "$f" ] || continue
+            FECHA=$(basename "$f" -material.txt)
+            mkdir -p "/tmp/m/material/$FECHA"
+            L="/tmp/m/material/$FECHA/lista.json"
+            for i in $(seq 1 30); do
+              if curl -sf --max-time 60 "$S/$FECHA/lista.json" -o "$L" && python3 -c "import json,sys; sys.exit(0 if json.load(open(sys.argv[1]))['completo'] else 1)" "$L"; then break; fi
+              echo "material todavía no está completo, espero 2 min"; sleep 120
+            done
+            [ -s "$L" ] || { echo "sin material" > "/tmp/m/material/$FECHA/ERROR.txt"; continue; }
+            for A in $(python3 -c "import json,sys; print(' '.join(json.load(open(sys.argv[1]))['archivos']))" "$L"); do
+              mkdir -p "/tmp/m/material/$FECHA/$(dirname $A)"
+              curl -sf --retry 3 --max-time 300 "$S/$FECHA/$A" -o "/tmp/m/material/$FECHA/$A" || echo "falló $A"
+            done
+          done
+      - name: Guardar
+        run: |
+          git config user.name "encargos-bot"
+          git config user.email "encargos-bot@users.noreply.github.com"
+          git rm -q pedir/*-material.txt || true
+          git commit -qm "Material pedido" && git push || true
+          git checkout -q --orphan material-nuevo
+          git rm -rq --cached . && git clean -fdq
+          cp -r /tmp/m/material .
+          git add material
+          git commit -qm "Material para Claude"
+          git push -f origin HEAD:material
