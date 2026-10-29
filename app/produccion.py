@@ -26,12 +26,20 @@ def _epoch(fecha, hora):
 
 
 # ---------------------------------------------------------------- escenas del plan → imágenes
-def _escena_img(esc, carpeta_enc, carpeta, i):
+def _escena_img(esc, carpeta_enc, carpeta, i, usados=None):
     t = (esc or {}).get('tipo', 'foto')
     foto = None
+    usados = usados if usados is not None else set()
     if esc and esc.get('img'):
         p = os.path.join(carpeta_enc, f"c{int(esc['img']):02d}.jpg")
         foto = p if os.path.exists(p) else None
+    if esc and not foto and esc.get('url'):          # foto exacta elegida por Claude (p. ej. Wikimedia)
+        foto = F._bajar(esc['url'], carpeta, f'u_{i:02d}', usados)
+    if esc and not foto and esc.get('buscar'):       # o búsqueda en Wikimedia Commons
+        for q in ([esc['buscar']] if isinstance(esc['buscar'], str) else esc['buscar']):
+            foto = F._commons(q, carpeta, f'b_{i:02d}', usados)
+            if foto:
+                break
     out = os.path.join(carpeta, f'esc_{i:02d}.jpg')
     try:
         if t == 'ficha':
@@ -63,9 +71,9 @@ def producir(fecha, v):
     carpeta = os.path.join(F.DIR, jid)
     os.makedirs(carpeta, exist_ok=True)
     segs = [dict(s) for s in v['segmentos'] if str(s.get('texto', '')).strip()]
-    reales = []
+    reales, usados = [], set()
     for i, s in enumerate(segs):
-        s['img'] = _escena_img(s.get('escena'), carpeta_enc, carpeta, i)
+        s['img'] = _escena_img(s.get('escena'), carpeta_enc, carpeta, i, usados)
         if s['img'] and (s.get('escena') or {}).get('tipo', 'foto') == 'foto':
             reales.append(s['img'])
     for i, s in enumerate(segs):            # escenas sin imagen: repetir una foto real cercana
@@ -126,6 +134,8 @@ def producir(fecha, v):
     mini = os.path.join(carpeta, 'miniatura.jpg')
     mi = (v.get('miniatura') or {})
     foto_m = os.path.join(carpeta_enc, f"c{int(mi.get('img', 0) or 0):02d}.jpg")
+    if not os.path.exists(foto_m) and mi.get('seg') is not None and 0 <= int(mi['seg']) < len(segs):
+        foto_m = segs[int(mi['seg'])]['img']
     montaje.miniatura(foto_m if os.path.exists(foto_m) else (reales[0] if reales else segs[0]['img']),
                       mi.get('texto') or titulo, mini)
     for f_ in os.listdir(carpeta):
@@ -142,7 +152,10 @@ def producir(fecha, v):
         shutil.copy(mini, os.path.join(sub, 'miniatura.jpg'))
         hora = {'fb': v.get('hora_fb', '12:30'), 'short': v.get('hora_short', '13:00'),
                 'largo': v.get('hora_youtube', '18:00')}[tipo]
-        cuando = _epoch(fecha, hora)
+        if hora == 'ya':                     # prueba: avisar ahora (Facebook se publica a los 20 min)
+            cuando = time.time() + (20 * 60 if tipo == 'fb' else 60)
+        else:
+            cuando = _epoch(fecha, hora)
         meta = {'id': f'{jid}_{tipo}', 'formato': 'short' if tipo != 'largo' else 'largo', 'motivo': 'claude',
                 'entrega': tipo, 'titulo': titulo, 'titulo_youtube': v.get('titulo_youtube', titulo),
                 'descripcion_youtube': desc, 'etiquetas': v.get('etiquetas', []),
