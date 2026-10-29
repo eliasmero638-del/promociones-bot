@@ -708,6 +708,118 @@
      }
     }
    ]
+  },
+  {
+   "eid": "urg1",
+   "tipo": "fb",
+   "hora_fb": "ya",
+   "hora_short": "ya",
+   "articulo": "Muerte de Patrick Stewart",
+   "fuente": "https://news.google.com/ (NPR, The New York Times, CNN en Español, Fox News, BBC News Mundo, La Prensa Panamá, La Gaceta)",
+   "titulo_video": "MURIÓ PATRICK STEWART",
+   "titulo_youtube": "Murió Patrick Stewart, el capitán Picard y el Profesor X, a los 86 años",
+   "descripcion_youtube": "Patrick Stewart, actor de Star Trek y X-Men, murió a los 86 años en su casa de Los Ángeles.\nSu familia lo anunció este jueves en Instagram.\nFuentes: NPR, The New York Times, CNN en Español, BBC News Mundo.\n#patrickstewart #startrek #ridmer",
+   "etiquetas": [
+    "Patrick Stewart",
+    "muere Patrick Stewart",
+    "Star Trek",
+    "X-Men",
+    "capitán Picard",
+    "Profesor X",
+    "noticias",
+    "ridmer"
+   ],
+   "texto_facebook": "Murió Patrick Stewart, el inolvidable capitán Picard de Star Trek y el Profesor X de X-Men, a los 86 años. #patrickstewart #startrek #ridmer",
+   "miniatura": {
+    "img": 1,
+    "texto": "ADIÓS, PICARD"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "El capitán Picard y el Profesor X se quedaron sin su rostro: murió Patrick Stewart, a los ochenta y seis años.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     },
+     "short": true
+    },
+    {
+     "texto": "Su familia lo anunció este jueves en su cuenta de Instagram. El actor murió el miércoles, en su casa de Los Ángeles.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "MIÉRCOLES 28 DE OCTUBRE",
+      "sub": "Los Ángeles, Estados Unidos"
+     },
+     "short": true
+    },
+    {
+     "texto": "Según el comunicado, partió tras una batalla contra el alzhéimer y la demencia con cuerpos de Lewy.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Estuvo bajo el cuidado de su esposa, Sunny, rodeado de familiares y amigos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Patrick Stewart nació en Mirfield, en el condado inglés de Yorkshire.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Patrick Stewart",
+      "sub": "Actor británico · 86 años",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Se formó sobre las tablas de la Royal Shakespeare Company, y construyó una carrera de casi siete décadas entre el teatro, Broadway, el cine y la televisión.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 53.676,
+      "lon": -1.692,
+      "lugar": "Mirfield, Inglaterra",
+      "km": 8
+     }
+    },
+    {
+     "texto": "Para millones de personas fue el capitán Jean-Luc Picard, al mando de la nave Enterprise en Star Trek.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "STAR TREK",
+      "sub": "Capitán Jean-Luc Picard"
+     },
+     "short": true
+    },
+    {
+     "texto": "Y para otra generación fue el Profesor Charles Xavier, el líder de los X-Men.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "X-MEN",
+      "sub": "Profesor Charles Xavier"
+     },
+     "short": true
+    },
+    {
+     "texto": "Hoy, medios de Estados Unidos, Europa y Latinoamérica despiden a una leyenda de la actuación.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Descanse en paz, Patrick Stewart. Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     },
+     "short": true
+    }
+   ]
   }
  ]
 }
