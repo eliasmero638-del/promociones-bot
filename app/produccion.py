@@ -138,16 +138,20 @@ def _cortar_audio(wav, rangos, salida):
 def armar(carpeta, wav, palabras, segs, g, hook, v, foto_mini):
     """Render de un video ya decidido: segs con t0/img/rotulo/short. Devuelve ([(tipo, mp4)], miniatura)."""
     D = montaje.dur(wav)
-    escenas = [{'t0': s['t0'], 'img': s['img'], 'rotulo': s.get('rotulo', '')} for s in segs]
+    rend = montaje.render_pro if v.get('pro') else montaje.render
+    extra = ('tipo', 'mov', 'trans', 'sfx', 'latido')
+    escenas = [dict({'t0': s['t0'], 'img': s['img'], 'rotulo': s.get('rotulo', '')},
+                    **{k: (s.get('escena') or {}).get('tipo', 'foto') if k == 'tipo' else s.get(k)
+                       for k in extra if (k == 'tipo' or s.get(k) is not None)}) for s in segs]
     titulo = v.get('titulo_video') or v.get('titulo_youtube', '')
     salidas = []
     if v['tipo'] == 'largo':
         out = os.path.join(carpeta, 'largo.mp4')
-        montaje.render(carpeta, wav, palabras, escenas, 'horizontal', titulo, hook, out)
+        rend(carpeta, wav, palabras, escenas, 'horizontal', titulo, hook, out)
         salidas.append(('largo', out))
     else:
         out = os.path.join(carpeta, 'fb.mp4')
-        montaje.render(carpeta, wav, palabras, escenas, 'vertical', titulo, hook, out)
+        rend(carpeta, wav, palabras, escenas, 'vertical', titulo, hook, out)
         salidas.append(('fb', out))
         idx = [k for k, s in enumerate(segs) if s.get('short')]
         if idx:
@@ -157,7 +161,7 @@ def armar(carpeta, wav, palabras, segs, g, hook, v, foto_mini):
                 a = segs[k]['t0']
                 b = segs[k + 1]['t0'] if k + 1 < len(segs) else D
                 rangos.append((a, b))
-                esc_s.append({'t0': t, 'img': segs[k]['img'], 'rotulo': segs[k].get('rotulo', '')})
+                esc_s.append(dict(escenas[k], t0=t))
                 pal_s += [(x - a + t, y - a + t, w) for x, y, w in palabras if a <= x < b]
                 t += b - a
             wav_s = os.path.join(carpeta, 'voz_short.wav')
@@ -172,7 +176,7 @@ def armar(carpeta, wav, palabras, segs, g, hook, v, foto_mini):
                 esc_s = [dict(e, t0=e['t0'] / f_) for e in esc_s]
             hook_s = esc_s[g]['t0'] if len(esc_s) > g else 4.0
             out_s = os.path.join(carpeta, 'short.mp4')
-            montaje.render(carpeta, wav_s, pal_s, esc_s, 'vertical', titulo, hook_s, out_s)
+            rend(carpeta, wav_s, pal_s, esc_s, 'vertical', titulo, hook_s, out_s)
             if montaje.dur(out_s) > 59.5:
                 tmp = os.path.join(carpeta, 'short_c.mp4')
                 montaje.sh(['ffmpeg', '-y', '-v', 'error', '-i', out_s, '-t', '59.4', '-c:v', 'libx264', '-preset',

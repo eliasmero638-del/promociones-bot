@@ -95,13 +95,14 @@ def _ass(palabras, W, H, titulo, path, por_linea=3, rotulos=None):
     for t0, t1, txt in rotulos or []:
         if txt and t1 - t0 > 1.2:
             ev.append(f'Dialogue: 2,{_t(t0 + 0.3)},{_t(min(t1, t0 + 4.5))},Rot,,0,0,0,,{{\\fad(200,200)}}{_esc(txt.upper())}')
-    for g in lineas:
+    for n_, g in enumerate(lineas):
+        sig = lineas[n_ + 1][0][0] if n_ + 1 < len(lineas) else 1e9
         partes = []
         for k, w in enumerate(g):
             fin_w = g[k + 1][0] if k + 1 < len(g) else w[1]
             cs = max(1, int(round((fin_w - w[0]) * 100)))
             partes.append(f'{{\\k{cs}}}{_esc(w[2]).upper()}')
-        ev.append(f'Dialogue: 0,{_t(g[0][0])},{_t(g[-1][1] + 0.15)},Cap,,0,0,0,,' + ' '.join(partes))
+        ev.append(f'Dialogue: 0,{_t(g[0][0])},{_t(min(g[-1][1] + 0.15, sig - 0.02))},Cap,,0,0,0,,' + ' '.join(partes))
     with open(path, 'w', encoding='utf-8') as f:
         f.write(f"[Script Info]\nScriptType: v4.00+\nPlayResX: {W}\nPlayResY: {H}\nWrapStyle: 0\n\n[V4+ Styles]\n"
                 "Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, "
@@ -300,4 +301,125 @@ def escena_mapa(img_satelite, lugar, salida, W=1600, H=1000):
     d.text((30, H - 50), 'Imagen satelital: Esri, Maxar', font=_f(26, MONO), fill=(230, 230, 230),
            stroke_width=2, stroke_fill=(0, 0, 0))
     im.save(salida, quality=92)
+    return salida
+
+
+# ================================================================ edición "a mano" (la usa Claude con tools/editar.py)
+MOVS = ('in', 'out', 'izq', 'der')
+
+
+def _escena_pro(img, d, mov, W, H, salida):
+    """Escena con movimiento suave (easing): in/out (zoom), izq/der (paneo), golpe (zoom de impacto + temblor),
+    mapa (acercamiento fuerte al punto). Viñeta + grano de película."""
+    fw, fh = (W, int(H * 0.55)) if H > W else (W, H)
+    e = f'(1-cos(PI*min(t/{max(d, 0.5):.3f},1)))/2'          # 0→1 suave
+    zoom = {'in': f'(1.0+0.16*{e})', 'out': f'(1.16-0.16*{e})', 'izq': '1.14', 'der': '1.14',
+            'golpe': '(1.06+0.20*exp(-7*t))', 'mapa': f'(1.0+0.45*{e})'}.get(mov, f'(1.0+0.12*{e})')
+    dx = {'izq': f'+0.06*W*(0.5-{e})', 'der': f'-0.06*W*(0.5-{e})'}.get(mov, '')
+    temblor = '+12*sin(t*53)*exp(-5*t)' if mov == 'golpe' else ''
+    fc = (f"[0:v]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},boxblur=28:3,eq=brightness=-0.36[bg];"
+          f"[0:v]scale={fw}:{fh}:force_original_aspect_ratio=decrease[f0];"
+          f"[f0]scale=w='trunc(iw*{zoom}/2)*2':h=-2:eval=frame[fg];"
+          f"[bg][fg]overlay=x='(W-w)/2{dx}{temblor}':y='(H-h)/2{temblor.replace('53', '47')}':eval=frame,"
+          f"vignette=PI/4.5,noise=alls=7:allf=t,fps=30,format=yuv420p[v]")
+    sh(['ffmpeg', '-y', '-v', 'error', '-loop', '1', '-t', f'{d:.3f}', '-i', img, '-filter_complex', fc, '-map', '[v]',
+        '-r', '30', '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '19', '-pix_fmt', 'yuv420p', '-an', salida])
+
+
+def _auto(e, i):
+    """Decisión por defecto de movimiento / transición / efecto según el tipo de escena (Claude puede cambiarla)."""
+    t = e.get('tipo', 'foto')
+    mov = e.get('mov') or ('mapa' if t == 'mapa' else 'golpe' if (t == 'fecha' or e.get('rotulo')) else
+                           'in' if t in ('ficha', 'cita') else MOVS[i % 4])
+    trans = e.get('trans') or ('fadewhite' if mov == 'golpe' else 'fadeblack' if t == 'fecha' else 'fade')
+    sfx = e.get('sfx', 'impacto' if mov == 'golpe' else 'whoosh' if (i % 2 == 0 or t in ('mapa', 'ficha')) else '')
+    return mov, trans, sfx
+
+
+SFX_ARCH = {'impacto': ('susp_impact.mp3', 0.55), 'whoosh': ('wh_deep.mp3', 0.30), 'golpe': ('golpe_terror.mp3', 0.45),
+            'latido': ('heart_slow.mp3', 0.40), 'riser': ('riser2.mp3', 0.35)}
+
+
+def render_pro(trabajo, voz, palabras, escenas, formato, titulo, hook_fin, salida):
+    """Como render(), pero editado "a mano": movimiento con easing por escena, transiciones (fundido, destello,
+    negro), efectos de sonido de suspenso sincronizados con los cortes, viñeta y grano. Intro tras el gancho."""
+    W, H = FORMATOS[formato]
+    trabajo, voz, salida = os.path.abspath(trabajo), os.path.abspath(voz), os.path.abspath(salida)
+    os.makedirs(trabajo, exist_ok=True)
+    D = dur(voz) + 0.6
+    T = {'fade': 0.30, 'fadewhite': 0.16, 'fadeblack': 0.45, 'dissolve': 0.35}
+    clips, durs, trans, eventos = [], [], [], []
+    for i, e in enumerate(escenas):
+        t1 = D if i == len(escenas) - 1 else escenas[i + 1]['t0']
+        d = max(0.6, t1 - e['t0'])
+        mov, tr, sfx = _auto(e, i)
+        tt = T.get(tr, 0.3) if i < len(escenas) - 1 else 0
+        out = os.path.join(trabajo, f'p_{formato}_{i:03d}.mp4')
+        _escena_pro(os.path.abspath(e['img']), d + tt, mov, W, H, out)
+        clips.append(out); durs.append(d); trans.append(tr)
+        if sfx in SFX_ARCH and i > 0:
+            eventos.append((max(0.0, e['t0'] - (0.25 if sfx == 'whoosh' else 0.02)), sfx))
+        if e.get('latido'):
+            eventos.append((e['t0'], 'latido'))
+    # unir con transiciones (xfade); cada clip dura su escena + la transición, así los cortes caen en su t0
+    ins, fc, prev, off = [], '', '[0:v]', 0.0
+    for c in clips:
+        ins += ['-i', c]
+    for i in range(1, len(clips)):
+        tr = trans[i - 1]
+        off += durs[i - 1]
+        tt = T.get(tr, 0.3)
+        fc += f"{prev}[{i}:v]xfade=transition={tr}:duration={tt:.2f}:offset={off - 0.0:.3f}[x{i}];"
+        prev = f'[x{i}]'
+    cuerpo = os.path.join(trabajo, f'cuerpo_{formato}.mp4')
+    if len(clips) == 1:
+        sh(['ffmpeg', '-y', '-v', 'error', '-i', clips[0], '-c', 'copy', cuerpo])
+    else:
+        sh(['ffmpeg', '-y', '-v', 'error'] + ins + ['-filter_complex', fc.rstrip(';'), '-map', prev, '-r', '30',
+            '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '19', '-pix_fmt', 'yuv420p', cuerpo])
+    # audio: voz + música + golpe inicial + riser antes de la intro + efectos de cada corte
+    mezcla = os.path.join(trabajo, 'mezcla.wav')
+    ins = ['-i', voz, '-stream_loop', '-1', '-i', MUSICA, '-i', os.path.join(SFX, 'golpe_terror.mp3'),
+           '-i', os.path.join(SFX, 'riser2.mp3')]
+    r_ini = max(0.0, hook_fin - 4.0)
+    fa = (f"[0:a]aresample=48000,aformat=channel_layouts=stereo,apad=whole_dur={D:.2f}[v];"
+          f"[1:a]atrim=0:{D:.2f},volume=0.12,afade=t=in:d=2,afade=t=out:st={max(0, D - 3):.2f}:d=3[m];"
+          f"[2:a]volume=0.45[s1];[3:a]volume=0.35,adelay={int(r_ini * 1000)}|{int(r_ini * 1000)}[s2];")
+    etiquetas = ['[v]', '[m]', '[s1]', '[s2]']
+    for k, (t, s) in enumerate(eventos):
+        arch, vol = SFX_ARCH[s]
+        ins += ['-i', os.path.join(SFX, arch)]
+        ms = int(t * 1000)
+        fa += f"[{4 + k}:a]volume={vol},adelay={ms}|{ms}[e{k}];"
+        etiquetas.append(f'[e{k}]')
+    fa += ''.join(etiquetas) + f"amix=inputs={len(etiquetas)}:normalize=0:duration=first,atrim=0:{D:.2f}[a]"
+    sh(['ffmpeg', '-y', '-v', 'error'] + ins + ['-filter_complex', fa, '-map', '[a]', '-ar', '48000', '-ac', '2', mezcla])
+    ass = os.path.join(trabajo, f'subs_{formato}.ass')
+    rot = []
+    for i, e in enumerate(escenas):
+        t1 = D if i == len(escenas) - 1 else escenas[i + 1]['t0']
+        rot.append((e['t0'], t1, e.get('rotulo', '')))
+    _ass(palabras, W, H, titulo if formato == 'vertical' else '', ass, rotulos=rot)
+    hf = min(max(hook_fin, 1.0), D - 1)
+    if formato == 'vertical':
+        vi = (f"[2:v]split[i1][i2];[i1]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},boxblur=28:3,"
+              f"eq=brightness=-0.3[ib];[i2]scale={W}:-2[if];[ib][if]overlay=0:(H-h)/2,fps=30,format=yuv420p,setsar=1[vi]")
+    else:
+        vi = f"[2:v]scale={W}:{H},fps=30,format=yuv420p,setsar=1[vi]"
+    fc = (f"[0:v]subtitles='{ass}':fontsdir='{os.path.dirname(FUENTE)}',fps=30,format=yuv420p,setsar=1,split[c1][c2];"
+          f"[c1]trim=0:{hf:.3f},setpts=PTS-STARTPTS,fade=t=out:st={max(0, hf - 0.12):.3f}:d=0.12[va];"
+          f"[c2]trim={hf:.3f},setpts=PTS-STARTPTS,fade=t=in:d=0.25[vb];"
+          f"[1:a]asplit[x1][x2];[x1]atrim=0:{hf:.3f},asetpts=PTS-STARTPTS,afade=t=out:st={max(0, hf - 0.15):.3f}:d=0.15[aa];"
+          f"[x2]atrim={hf:.3f},asetpts=PTS-STARTPTS,afade=t=in:d=0.3[ab];"
+          f"{vi};[2:a]aresample=48000,aformat=channel_layouts=stereo,asetpts=PTS-STARTPTS[ai];"
+          f"[va][aa][vi][ai][vb][ab]concat=n=3:v=1:a=1[v][a0];[a0]loudnorm=I=-14:TP=-1.5:LRA=11,aresample=48000[a]")
+    enc = (['-c:v', 'libx264', '-preset', 'fast', '-crf', '21', '-maxrate', '8M', '-bufsize', '16M']
+           if formato == 'horizontal' else
+           ['-c:v', 'libx264', '-preset', 'fast', '-crf', '21', '-maxrate', '6M', '-bufsize', '12M'])
+    sh(['ffmpeg', '-y', '-v', 'error', '-i', cuerpo, '-i', mezcla, '-i', INTRO, '-filter_complex', fc,
+        '-map', '[v]', '-map', '[a]'] + enc + ['-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '192k',
+                                               '-movflags', '+faststart', salida])
+    for f_ in os.listdir(trabajo):
+        if f_.startswith(f'p_{formato}_'):
+            os.remove(os.path.join(trabajo, f_))
     return salida
