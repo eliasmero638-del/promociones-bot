@@ -3,7 +3,7 @@
 5:30  Claude (tarea programada) lee los encargos y escribe el PLAN de edición en la rama `planes` de GitHub
 luego el servidor baja el plan, hace la voz (Algenib), arma Facebook / Short / largo con las decisiones de Claude
 y los entrega a su hora: Facebook se avisa 20 min antes y se publica solo; YouTube se avisa para subir a mano."""
-import json, os, secrets, shutil, threading, time
+import json, os, re, secrets, shutil, threading, time
 import requests
 import config as C, montaje, editor, fb, tg, ntfy, radar
 import fabrica as F
@@ -57,8 +57,80 @@ def _escena_img(esc, carpeta_enc, carpeta, i, usados=None):
     return foto
 
 
+def _parte_wav(texto, carpeta, k):
+    """Una parte de la narración → wav limpio (sin silencio al inicio ni al final) + 0.35 s de pausa."""
+    mp3 = os.path.join(carpeta, f'voz_{k:02d}.mp3')
+    ok, r = F.voz.gemini(texto, mp3, estilo='')
+    if not ok:
+        log('voz gemini falló, uso Microsoft:', r)
+        ok, r = F.voz.edge(texto, mp3)
+        if not ok:
+            raise RuntimeError('no se pudo hacer la voz: ' + str(r))
+    wav = os.path.join(carpeta, f'voz_{k:02d}.wav')
+    lim = 'silenceremove=start_periods=1:start_threshold=-45dB'
+    montaje.sh(['ffmpeg', '-y', '-v', 'error', '-i', mp3, '-af', f'{lim},areverse,{lim},areverse,apad=pad_dur=0.35',
+                '-ar', '48000', '-ac', '1', '-c:a', 'pcm_s16le', wav])
+    return wav
+
+
+def _narrar(segs, carpeta, g):
+    """El gancho se narra aparte: así sabemos al milisegundo dónde termina y la intro nunca corta una palabra."""
+    textos = [s['texto'].strip() for s in segs]
+    bloques, actual = [' '.join(textos[:g])], ''
+    for t in textos[g:]:
+        if actual and len(actual) + len(t) > 900:
+            bloques.append(actual); actual = ''
+        actual = (actual + ' ' + t).strip()
+    if actual:
+        bloques.append(actual)
+    partes = []
+    for k, b in enumerate(bloques):
+        partes.append(_parte_wav(b, carpeta, k))
+        time.sleep(4)
+    lista = os.path.join(carpeta, 'voz.txt')
+    with open(lista, 'w') as f:
+        for p in partes:
+            f.write(f"file '{os.path.abspath(p)}'\n")
+    wav = os.path.join(carpeta, 'voz.wav')
+    montaje.sh(['ffmpeg', '-y', '-v', 'error', '-f', 'concat', '-safe', '0', '-i', lista, '-c:a', 'pcm_s16le', wav])
+    return wav, montaje.dur(partes[0])
+
+
+def _tiempos(segs, palabras, hook_fin, g):
+    """Inicio de cada segmento, siempre en una pausa de la voz (nunca a mitad de palabra)."""
+    nw = len(palabras)
+    n = [len(s['texto'].split()) for s in segs]
+    pal_hook = [k for k, w in enumerate(palabras) if w[0] < hook_fin]
+    nh = len(pal_hook)
+    tot_h, tot_r = sum(n[:g]) or 1, sum(n[g:]) or 1
+    acum, prev = 0, 0
+    segs[0]['t0'] = 0.0
+    for i in range(1, len(segs)):
+        acum += n[i - 1]
+        if i == g:
+            segs[i]['t0'] = hook_fin; prev = nh; continue
+        if i < g:
+            est = int(round(acum * nh / tot_h)); lo, hi = 1, max(1, nh - 1)
+        else:
+            est = nh + int(round((acum - sum(n[:g])) * (nw - nh) / tot_r)); lo, hi = nh + 1, nw - 1
+        mejor, puntos = None, -1
+        for j in range(max(lo, prev + 1, est - 5), min(hi, est + 5) + 1):
+            hueco = palabras[j][0] - palabras[j - 1][1]
+            p = hueco + (0.6 if re.search(r'[.?!…]$', palabras[j - 1][2]) else 0) - abs(j - est) * 0.03
+            if p > puntos:
+                mejor, puntos = j, p
+        if mejor is None:
+            segs[i]['t0'] = segs[i - 1]['t0'] + 0.8; continue
+        prev = mejor
+        segs[i]['t0'] = max(palabras[mejor - 1][1] + 0.02, palabras[mejor][0] - 0.25)
+    for i in range(1, len(segs)):
+        segs[i]['t0'] = max(segs[i]['t0'], segs[i - 1]['t0'] + 0.8)
+    return segs
+
+
 def _cortar_audio(wav, rangos, salida):
-    partes = ''.join(f"[0:a]atrim={a:.3f}:{b:.3f},asetpts=PTS-STARTPTS[a{k}];" for k, (a, b) in enumerate(rangos))
+    partes = ''.join(f"[0:a]atrim={a:.3f}:{b:.3f},asetpts=PTS-STARTPTS,afade=t=in:d=0.02,"
+                     f"afade=t=out:st={max(0, b - a - 0.05):.3f}:d=0.05[a{k}];" for k, (a, b) in enumerate(rangos))
     fc = partes + ''.join(f'[a{k}]' for k in range(len(rangos))) + f'concat=n={len(rangos)}:v=0:a=1[o]'
     montaje.sh(['ffmpeg', '-y', '-v', 'error', '-i', wav, '-filter_complex', fc, '-map', '[o]', '-ar', '48000', salida])
 
@@ -80,16 +152,15 @@ def producir(fecha, v):
         if not s['img']:
             s['img'] = reales[min(i, len(reales) - 1)] if reales else montaje.tarjeta(v.get('titulo_video', 'Ridmer'),
                                                                                        os.path.join(carpeta, 'tj.jpg'))
-    wav = F.narrar(segs, carpeta, 'largo')              # voz Algenib (sin acelerar)
+    g = max(1, min(int(v.get('gancho', 1)), len(segs) - 1))
+    wav, hook = _narrar(segs, carpeta, g)                # voz Algenib (sin acelerar)
     palabras = editor.transcribir(wav)
     if not palabras:
         todas = ' '.join(s['texto'] for s in segs).split()
         d = montaje.dur(wav)
         palabras = [(k * d / len(todas), (k + 1) * d / len(todas), w) for k, w in enumerate(todas)]
-    segs = F.tiempos(segs, palabras)
+    segs = _tiempos(segs, palabras, hook, g)
     D = montaje.dur(wav)
-    g = max(1, min(int(v.get('gancho', 1)), len(segs) - 1))
-    hook = segs[g]['t0'] - 0.1
     escenas = [{'t0': s['t0'], 'img': s['img'], 'rotulo': s.get('rotulo', '')} for s in segs]
     titulo = v.get('titulo_video') or v.get('titulo_youtube', '')
     salidas = []
@@ -122,7 +193,7 @@ def producir(fecha, v):
                 os.replace(rap, wav_s)
                 pal_s = [(x / f_, y / f_, w) for x, y, w in pal_s]
                 esc_s = [dict(e, t0=e['t0'] / f_) for e in esc_s]
-            hook_s = esc_s[g]['t0'] - 0.1 if len(esc_s) > g else 4.0
+            hook_s = esc_s[g]['t0'] if len(esc_s) > g else 4.0
             out_s = os.path.join(carpeta, 'short.mp4')
             montaje.render(carpeta, wav_s, pal_s, esc_s, 'vertical', titulo, hook_s, out_s)
             if montaje.dur(out_s) > 59.5:

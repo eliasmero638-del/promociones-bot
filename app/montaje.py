@@ -159,7 +159,7 @@ def render(trabajo, voz, palabras, escenas, formato, titulo, hook_fin, salida):
     fuentes_dir = os.path.dirname(FUENTE)
     fc = (f"[0:v]subtitles='{ass}':fontsdir='{fuentes_dir}',fps=30,format=yuv420p,setsar=1,split[c1][c2];"
           f"[c1]trim=0:{hf:.3f},setpts=PTS-STARTPTS[va];[c2]trim={hf:.3f},setpts=PTS-STARTPTS[vb];"
-          f"[1:a]asplit[x1][x2];[x1]atrim=0:{hf:.3f},asetpts=PTS-STARTPTS[aa];[x2]atrim={hf:.3f},asetpts=PTS-STARTPTS[ab];"
+          f"[1:a]asplit[x1][x2];[x1]atrim=0:{hf:.3f},asetpts=PTS-STARTPTS,afade=t=out:st={max(0, hf - 0.15):.3f}:d=0.15[aa];[x2]atrim={hf:.3f},asetpts=PTS-STARTPTS,afade=t=in:d=0.3[ab];"
           f"{vi};[2:a]aresample=48000,aformat=channel_layouts=stereo,asetpts=PTS-STARTPTS[ai];"
           f"[va][aa][vi][ai][vb][ab]concat=n=3:v=1:a=1[v][a0];[a0]loudnorm=I=-14:TP=-1.5:LRA=11,aresample=48000[a]")
     enc = (['-c:v', 'libx264', '-preset', 'veryfast', '-crf', '21', '-maxrate', '8M', '-bufsize', '16M']
