@@ -1,0 +1,172 @@
+{
+ "fecha": "2026-10-28",
+ "videos": [
+  {
+   "eid": "prueba1",
+   "tipo": "fb",
+   "hora_fb": "ya",
+   "hora_short": "ya",
+   "articulo": "Robert Ledru",
+   "fuente": "https://vocal.media/history/the-police-detective-who-caught-himself",
+   "titulo_video": "ERA EL ASESINO QUE BUSCABA",
+   "titulo_youtube": "Investigó un asesinato… y el asesino resultó ser él mismo",
+   "descripcion_youtube": "Era uno de los mejores detectives de Francia. Lo llamaron para resolver un crimen en la playa de Le Havre… y cada pista lo llevaba de vuelta a él.\nUna de las historias más extrañas de la policía francesa del siglo XIX (relatada en libros y artículos; no hay registros judiciales públicos que la confirmen).\n#misterio #casosreales #ridmer #sonambulismo",
+   "etiquetas": [
+    "misterio",
+    "caso real",
+    "Robert Ledru",
+    "detective sonámbulo",
+    "historias de misterio",
+    "crímenes sin resolver",
+    "Le Havre",
+    "sonambulismo",
+    "ridmer"
+   ],
+   "texto_facebook": "Lo llamaron para atrapar a un asesino… y todas las pistas lo señalaban a él 😨 #misterio #casosreales #ridmer",
+   "miniatura": {
+    "seg": 5,
+    "texto": "ERA ÉL MISMO"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Un detective francés investigó un asesinato... y descubrió que el asesino era él mismo.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Plage du Havre",
+       "Le Havre plage"
+      ]
+     },
+     "short": true
+    },
+    {
+     "texto": "Francia, mil ochocientos ochenta y siete. Robert Ledru, de treinta y cinco años, era considerado uno de los mejores detectives del país.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Robert Ledru",
+      "sub": "Detective de París · 35 años"
+     },
+     "short": true
+    },
+    {
+     "texto": "Ese año lo enviaron al puerto de Le Havre, para ayudar con un caso de marineros desaparecidos.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 49.4944,
+      "lon": 0.1079,
+      "lugar": "Le Havre, Francia",
+      "km": 8
+     }
+    },
+    {
+     "texto": "Llegó de noche y se fue a dormir temprano.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Le Havre 1880",
+       "Le Havre port XIXe siècle",
+       "Le Havre 19th century"
+      ]
+     }
+    },
+    {
+     "texto": "A la mañana siguiente despertó con algo extraño: sus zapatos y sus medias estaban mojados.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "19th century leather boots",
+       "Victorian boots"
+      ]
+     },
+     "short": true
+    },
+    {
+     "texto": "Esa misma noche habían matado a André Monet, un comerciante, de un disparo en el pecho, en la playa.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Claude Monet Plage du Havre",
+       "Plage du Havre 1890",
+       "Le Havre beach"
+      ]
+     },
+     "short": true,
+     "rotulo": "UN DISPARO"
+    },
+    {
+     "texto": "Ledru estudió las huellas en la arena y dijo que le parecían conocidas.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Footprints in wet sand",
+       "Footprints beach"
+      ]
+     }
+    },
+    {
+     "texto": "Al asesino le faltaba el dedo gordo de un pie. A Ledru también.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "LE FALTABA UN DEDO",
+      "sub": "La huella del asesino"
+     },
+     "short": true
+    },
+    {
+     "texto": "Revisó su revólver: siempre lo tenía cargado, y ahora le faltaba una bala.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Revolver modèle 1873",
+       "MAS 1873 revolver",
+       "Lefaucheux revolver"
+      ]
+     },
+     "rotulo": "FALTABA UNA BALA"
+    },
+    {
+     "texto": "Confesó: Yo soy el hombre que mató al señor Monet.",
+     "escena": {
+      "tipo": "cita",
+      "texto": "Yo soy el hombre que mató al señor Monet.",
+      "autor": "Robert Ledru"
+     },
+     "short": true
+    },
+    {
+     "texto": "No recordaba nada. Creía haberlo hecho dormido, como sonámbulo.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Somnambulist engraving",
+       "Sleepwalker illustration 19th century",
+       "La somnambule gravure"
+      ]
+     },
+     "short": true
+    },
+    {
+     "texto": "Para probarlo, en la cárcel le dejaron un revólver con balas de salva bajo la almohada. Dormido, se levantó y le disparó a un guardia.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Prison cell 19th century",
+       "Prison corridor 19th century France"
+      ]
+     }
+    },
+    {
+     "texto": "Nunca fue a prisión. Vivió aislado en una granja cerca de París, vigilado por médicos, hasta morir en mil novecientos treinta y siete. Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Ferme Île-de-France XIXe siècle",
+       "French farmhouse 19th century photograph"
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}
