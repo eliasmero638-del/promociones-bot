@@ -6,7 +6,7 @@ Reemplaza el contenido de la rama (no acumula videos viejos). Necesita estar den
 """
 import json, os, shutil, subprocess, sys, tempfile
 
-PARTE = 90 * 1024 * 1024
+PARTE = 45 * 1024 * 1024
 
 
 def sh(*c, cwd=None):
