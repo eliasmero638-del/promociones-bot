@@ -397,6 +397,126 @@
      }
     }
    ]
+  },
+  {
+   "eid": "urg1",
+   "tipo": "fb",
+   "hora_fb": "ya",
+   "hora_short": "ya",
+   "urgente": true,
+   "articulo": "Patrick Stewart",
+   "fuente": "https://cnnespanol.cnn.com/2026/10/29/entretenimiento/muere-patrick-stewart-actor-trax",
+   "titulo_video": "ADIÓS, PATRICK STEWART",
+   "titulo_youtube": "Muere Patrick Stewart, el capitán Picard y el profesor X, a los 86 años",
+   "descripcion_youtube": "Patrick Stewart, leyenda de Star Trek y X-Men, murió a los 86 años. Su muerte se confirmó este jueves en un comunicado.\nRepasamos lo que se sabe y la carrera de un actor que marcó a varias generaciones.\n#PatrickStewart #noticias #ridmer",
+   "etiquetas": [
+    "Patrick Stewart",
+    "Star Trek",
+    "X-Men",
+    "capitán Picard",
+    "profesor Xavier",
+    "noticias",
+    "última hora",
+    "Ridmer"
+   ],
+   "texto_facebook": "Última hora: murió Patrick Stewart, el capitán Picard de Star Trek y el profesor Xavier de X-Men, a los 86 años. Descanse en paz. #PatrickStewart #StarTrek #XMen",
+   "miniatura": {
+    "img": 1,
+    "texto": "ADIÓS, PATRICK STEWART"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "El mundo del cine está de luto. Patrick Stewart, el capitán Picard de Star Trek y el profesor Xavier de X-Men, murió a los ochenta y seis años.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     },
+     "short": true
+    },
+    {
+     "texto": "La noticia se confirmó este jueves, en un comunicado que su vocera de muchos años, Kelly Bush Novak, compartió en las redes sociales del actor.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Patrick Stewart",
+      "sub": "Actor británico · 86 años",
+      "img": 3
+     },
+     "short": true
+    },
+    {
+     "texto": "Según ese comunicado, el actor enfrentaba la enfermedad de Alzheimer y la demencia con cuerpos de Lewy.",
+     "escena": {
+      "tipo": "foto",
+      "img": 8
+     }
+    },
+    {
+     "texto": "Murió al cuidado de su esposa, Sunny, rodeado de familia, amigos, música y oraciones.",
+     "escena": {
+      "tipo": "foto",
+      "img": 7
+     }
+    },
+    {
+     "texto": "Había nacido en 1940 en Mirfield, Inglaterra, y se formó en el teatro, en la Royal Shakespeare Company.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 53.675,
+      "lon": -1.69,
+      "lugar": "Mirfield, Inglaterra",
+      "km": 8
+     }
+    },
+    {
+     "texto": "Pero el mundo entero lo conoció en 1987, como el capitán Jean-Luc Picard en Star Trek: La nueva generación.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "1987",
+      "sub": "Star Trek: La nueva generación"
+     },
+     "short": true
+    },
+    {
+     "texto": "Años después volvió a ese personaje en el cine y en la serie Picard.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "En el año dos mil se convirtió en el profesor Charles Xavier, el líder de los X-Men.",
+     "escena": {
+      "tipo": "foto",
+      "img": 9
+     },
+     "short": true
+    },
+    {
+     "texto": "En 2010 fue nombrado caballero en el Reino Unido por sus servicios al arte dramático.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "SIR PATRICK STEWART",
+      "sub": "Nombrado caballero en 2010"
+     }
+    },
+    {
+     "texto": "En su cuenta se pidió que, en lugar de flores, se hagan donaciones para investigar el Alzheimer.",
+     "escena": {
+      "tipo": "foto",
+      "img": 8
+     }
+    },
+    {
+     "texto": "Descanse en paz, Sir Patrick Stewart. Suscríbete a Ridmer para más noticias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     },
+     "short": true,
+     "rotulo": "1940 – 2026"
+    }
+   ]
   }
  ]
 }
