@@ -225,6 +225,65 @@
     }
    ],
    "hoja": "res1/hoja.jpg"
+  },
+  {
+   "eid": "urg1",
+   "tipo": "fb",
+   "titulo": "Patrick Stewart, star of 'X-Men' and 'Star Trek', dies at 86",
+   "titulo_sugerido": "Patrick Stewart, star of 'X-Men' and 'Star Trek', dies at 86",
+   "fuente": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNNS15YnJqLTh5blBFSi1WTGcyQzNPQVkzbGpsV0VkUkQ3TjhDSWxETHIwa09uR3NlckhyOURTTllXMkpqalJnSXZEVnBEMlBsRTJPcHJScnFaOW9pSlg5WmZMTzlXU1ZDUFc2WmpoU0dSVU1kMHdYWW1QaDZRcjM3S09pZ3lxWGJNZWc0S2luTF9IMldnQ0pYdDYyV0dXSkZ6RDhEUTdVamxneDRSbHNz?oc=5",
+   "texto": "- Muere Patrick Stewart, legendario actor de Star Trek y X-Men, a los 86 años - Identidad Latina Multimedia (Identidad Latina Multimedia, Fri, 30 Oct 2026 13:20:48 GMT):  Muere Patrick Stewart, legendario actor de Star Trek y X-Men, a los 86 años    Identidad Latina Multimedia \n- ¿De qué murió el actor de 'X-Men' y 'Star Trek' Sr Patrick Stewart a los 86 años? - El mundo de Regina (El mundo de Regina, Fri, 30 Oct 2026 12:02:02 GMT):  ¿De qué murió el actor de 'X-Men' y 'Star Trek' Sr Patrick Stewart a los 86 años?    El mundo de Regina \n- Murió Patrick Stewart: los demás actores y actrices del Universo Marvel que han fallecido y que han enlutado a los fans - El Tiempo (El Tiempo, Fri, 30 Oct 2026 12:29:52 GMT):  Murió Patrick Stewart: los demás actores y actrices del Universo Marvel que han fallecido y que han enlutado a los fans    El Tiempo \n- Patrick Stewart, star of 'X-Men' and 'Star Trek,' dies at 86 - Yahoo (Yahoo, Fri, 30 Oct 2026 13:29:01 GMT):  Patrick Stewart, star of 'X-Men' and 'Star Trek,' dies at 86    Yahoo \n- Remembering Sir Patrick Stewart: Acting legend dies at 86 - 11Alive.com (11Alive.com, Fri, 30 Oct 2026 13:25:00 GMT):  Remembering Sir Patrick Stewart: Acting legend dies at 86    11Alive.com \n- Patrick Stewart, Known for 'Star Trek' and 'X-Men' Roles, Dies at 86 - TODAY.com (TODAY.com, Fri, 30 Oct 2026 12:36:33 GMT):  Patrick Stewart, Known for 'Star Trek' and 'X-Men' Roles, Dies at 86    TODAY.com \n- Sir Patrick Stewart, ‘Star Trek’ and ‘X-Men’ star, dies at age 86 - Big Country News | (Big Country News |, Fri, 30 Oct 2026 13:44:23 GMT):  Sir Patrick Stewart, ‘Star Trek’ and ‘X-Men’ star, dies at age 86    Big Country News | ",
+   "candidatos": [
+    {
+     "n": 1,
+     "desc": "Patrick Stewart by Gage Skidmore 2.jpg",
+     "q": "Patrick Stewart 2026"
+    },
+    {
+     "n": 2,
+     "desc": "Me & Patrick Stewart (4578931808).jpg",
+     "q": "Patrick Stewart 2026"
+    },
+    {
+     "n": 3,
+     "desc": "Patrick Stewart by Gage Skidmore.jpg",
+     "q": "Patrick Stewart 2026"
+    },
+    {
+     "n": 4,
+     "desc": "The 6th Marquess of Londonderry as viceroy of Ireland.jpg",
+     "q": "Sir Patrick Stewart portrait"
+    },
+    {
+     "n": 5,
+     "desc": "London School of Tropical Medicine, 14th Session Wellcome M0019226.jpg",
+     "q": "Sir Patrick Stewart portrait"
+    },
+    {
+     "n": 6,
+     "desc": "London School of Tropical Medicine (10th Session) Wellcome M0019222.jpg",
+     "q": "Sir Patrick Stewart portrait"
+    },
+    {
+     "n": 7,
+     "desc": "Sir Patrick Stewart Jean Luc Picard.jpg",
+     "q": "Patrick Stewart Star Trek"
+    },
+    {
+     "n": 8,
+     "desc": "Patrick Stewart, 2011 ST Con.jpg",
+     "q": "Patrick Stewart Star Trek"
+    },
+    {
+     "n": 9,
+     "desc": "SDCC13 - X-Men - Days of Future Past full panel.jpg",
+     "q": "Patrick Stewart X-Men"
+    }
+   ],
+   "hoja": "urg1/hoja.jpg",
+   "urgente": true,
+   "creado": 1793368998.3949368,
+   "resumen": "Patrick Stewart, legendary actor of Star Trek and X-Men, dies at 86"
   }
  ],
  "creado": 1793343715.658637
