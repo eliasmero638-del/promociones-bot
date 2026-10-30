@@ -1,0 +1,402 @@
+{
+ "fecha": "2026-10-30",
+ "modo": "claude",
+ "videos": [
+  {
+   "eid": "fb1",
+   "tipo": "fb",
+   "hora_fb": "12:30",
+   "hora_short": "13:00",
+   "articulo": "Andrés Leonardo Achipiz",
+   "fuente": "https://es.wikipedia.org/wiki/Andr%C3%A9s_Leonardo_Achipiz",
+   "titulo_video": "LO LLAMABAN PESCADITO",
+   "titulo_youtube": "Mató por primera vez a los 11 años… y lo llamaban Pescadito",
+   "descripcion_youtube": "De niño vendía pescado con su padre en un barrio de Bogotá. A los once años cometió su primer asesinato.\nLo encerraron, escapó, lo volvieron a encerrar… y un día salió libre.\nLo que hizo después dejó a Colombia en shock.\n#misterio #casosreales #ridmer",
+   "etiquetas": [
+    "misterio",
+    "caso real",
+    "Pescadito",
+    "Andrés Leonardo Achipiz",
+    "Bogotá",
+    "asesino en serie",
+    "Colombia",
+    "true crime",
+    "Ridmer"
+   ],
+   "texto_facebook": "Lo llamaban Pescadito… y a los 11 años ya había matado. Lo peor vino cuando salió de la cárcel. #misterio #casosreales #ridmer",
+   "miniatura": {
+    "img": 2,
+    "texto": "66 ASESINATOS"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Cometió su primer asesinato a los once años… y en su barrio lo llamaban Pescadito.",
+     "escena": {
+      "tipo": "foto",
+      "img": 7
+     },
+     "short": true
+    },
+    {
+     "texto": "Andrés Leonardo Achipiz nació en Rivera, Huila, en 1994. De niño vendía pescado con su padre en el barrio Britalia, en Bogotá.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Andrés Leonardo Achipiz",
+      "sub": "Alias Pescadito · nacido en 1994"
+     },
+     "short": true
+    },
+    {
+     "texto": "Según su propia confesión, su padre lo maltrataba y una vez le dijo que era un estorbo.",
+     "escena": {
+      "tipo": "cita",
+      "texto": "Era un estorbo",
+      "autor": "Lo que le dijo su padre, según Achipiz"
+     }
+    },
+    {
+     "texto": "A los cinco años ya robaba en las calles de Kennedy. A los once, mató por primera vez.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     }
+    },
+    {
+     "texto": "A los quince lo encerraron en un correccional… pero escapó durante un motín.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "ESCAPÓ A LOS 15",
+      "sub": "Durante un motín"
+     }
+    },
+    {
+     "texto": "Después entró a la banda de un criminal conocido como Camilo. Vendía droga en Kennedy y Bosa, y empezó a matar por encargo.",
+     "escena": {
+      "tipo": "foto",
+      "img": 9
+     }
+    },
+    {
+     "texto": "Por cada encargo cobraba millones de pesos.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 4.62,
+      "lon": -74.17,
+      "lugar": "Kennedy y Bosa, Bogotá",
+      "km": 6
+     },
+     "rotulo": "SICARIO"
+    },
+    {
+     "texto": "En junio de 2013 lo atraparon dentro de un autobús. Solo pudieron condenarlo por doce asesinatos.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "25 DE JUNIO DE 2013",
+      "sub": "Capturado en un autobús"
+     },
+     "short": true
+    },
+    {
+     "texto": "Lo enviaron a la cárcel La Picota, en Bogotá.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Pero en diciembre de 2020… salió libre.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     },
+     "short": true,
+     "rotulo": "LIBRE EN 2020"
+    },
+    {
+     "texto": "Y no cambió. Lideró una banda llamada Los Camilos Dos, responsable de cincuenta asesinatos en Bogotá.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     },
+     "rotulo": "LOS CAMILOS II"
+    },
+    {
+     "texto": "En diciembre de 2022 lo capturaron otra vez. En total, se le atribuyen sesenta y seis asesinatos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     },
+     "short": true,
+     "rotulo": "66 ASESINATOS"
+    },
+    {
+     "texto": "Los especialistas lo describen como un asesino por vocación, alguien que no podría resocializarse. Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "cita",
+      "texto": "Un asesino por vocación",
+      "autor": "Belisario Valbuena, perfilador criminal"
+     },
+     "short": true
+    }
+   ]
+  },
+  {
+   "eid": "fb2",
+   "tipo": "fb",
+   "hora_fb": "18:30",
+   "hora_short": "19:00",
+   "articulo": "Élver James Melchor Bañol",
+   "fuente": "https://es.wikipedia.org/wiki/%C3%89lver_James_Melchor_Ba%C3%B1ol",
+   "titulo_video": "LE DIERON 72 HORAS",
+   "titulo_youtube": "La cárcel le dio 72 horas de permiso… y volvió a matar",
+   "descripcion_youtube": "Ya estaba condenado a 40 años de prisión. Aun así, la cárcel lo dejó salir.\nTres días bastaron para una tragedia que conmocionó a Ibagué.\nEsta es la historia del llamado Depredador de Picaleña.\n#misterio #casosreales #ridmer",
+   "etiquetas": [
+    "misterio",
+    "caso real",
+    "Depredador de Picaleña",
+    "Élver James Melchor Bañol",
+    "Ibagué",
+    "Tolima",
+    "Colombia",
+    "true crime",
+    "Ridmer"
+   ],
+   "texto_facebook": "Estaba condenado a 40 años… y la cárcel le dio permiso para salir. Lo que pasó en esas 72 horas indignó a Colombia. #misterio #casosreales #ridmer",
+   "miniatura": {
+    "img": 2,
+    "texto": "72 HORAS LIBRE"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "La cárcel le dio permiso para salir tres días… y en esos tres días volvió a matar.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     },
+     "short": true
+    },
+    {
+     "texto": "Su nombre es Élver James Melchor Bañol. Nació en Pereira, Colombia, en 1976.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Élver James Melchor Bañol",
+      "sub": "Alias Julio · Pereira, 1976"
+     },
+     "short": true
+    },
+    {
+     "texto": "Lo llamaban el Depredador de Picaleña. Atacaba a menores de edad y adolescentes, y las marcaba con un bisturí.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "EL DEPREDADOR DE PICALEÑA",
+      "sub": "Tolima, Colombia"
+     }
+    },
+    {
+     "texto": "Por su forma de actuar, lo compararon con el asesino en serie Luis Alfredo Garavito. Lo apodaron el Segundo Garavito.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Ya estaba condenado a cuarenta años de prisión por tres crímenes, y lo procesaban por otros veinticinco casos de violencia.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "40 AÑOS DE CONDENA",
+      "sub": "Y 25 casos más en proceso"
+     }
+    },
+    {
+     "texto": "Aun así, la cárcel de Picaleña, en Ibagué, le dio un permiso de setenta y dos horas para salir.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 4.4389,
+      "lon": -75.2322,
+      "lugar": "Ibagué, Tolima",
+      "km": 8
+     },
+     "short": true,
+     "rotulo": "PERMISO DE 72 HORAS"
+    },
+    {
+     "texto": "Era el 26 de febrero de 2019.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "26 DE FEBRERO DE 2019",
+      "sub": "Ibagué, Tolima"
+     }
+    },
+    {
+     "texto": "Una adolescente volvía del colegio a su casa, en la vereda Aparco. Para llegar, tomó una trocha desolada.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Nunca llegó. Encontraron su cuerpo con señales de tortura… y un nombre marcado en la piel: Julio. Era uno de sus apodos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     },
+     "short": true,
+     "rotulo": "«JULIO»"
+    },
+    {
+     "texto": "Al confesar, dijo a las autoridades: me entró el diablo, y ahí no hubo más que hacer.",
+     "escena": {
+      "tipo": "cita",
+      "texto": "Me entró el diablo y ahí no hubo más que hacer",
+      "autor": "Élver James Melchor Bañol"
+     },
+     "short": true
+    },
+    {
+     "texto": "Lo condenaron a sesenta años de prisión, la pena máxima en Colombia.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     },
+     "short": true,
+     "rotulo": "60 AÑOS"
+    },
+    {
+     "texto": "Se le atribuyen siete abusos sexuales y cuatro asesinatos. El último, durante un permiso de la cárcel. Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb3",
+   "tipo": "fb",
+   "hora_fb": "21:00",
+   "articulo": "Desaparición de Emanuela Orlandi",
+   "fuente": "https://es.wikipedia.org/wiki/Desaparici%C3%B3n_de_Emanuela_Orlandi",
+   "titulo_video": "NUNCA VOLVIÓ A CASA",
+   "titulo_youtube": "Vivía dentro del Vaticano… salió a su clase de música y nunca volvió",
+   "descripcion_youtube": "Tenía 15 años y era ciudadana del Vaticano. Una tarde de 1983 salió a su clase de música en Roma.\nDespués llegaron llamadas, exigencias y una grabación con la voz de una niña.\nMás de cuarenta años después, su familia sigue preguntando lo mismo.\n#misterio #casosreales #ridmer",
+   "etiquetas": [
+    "misterio",
+    "caso real",
+    "Emanuela Orlandi",
+    "Vaticano",
+    "Roma",
+    "desaparición",
+    "sin resolver",
+    "Ridmer"
+   ],
+   "texto_facebook": "Salió de su casa dentro del Vaticano para ir a clase… y nunca volvió. Su familia cree que alguien sabe la verdad. #misterio #casosreales #ridmer",
+   "miniatura": {
+    "img": 3,
+    "texto": "¿QUÉ SABE EL VATICANO?"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Salió de su casa, dentro del Vaticano, para ir a su clase de música… y nunca volvió.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "Se llamaba Emanuela Orlandi. Tenía quince años, y su padre trabajaba para la Casa pontificia.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Emanuela Orlandi",
+      "sub": "15 años · Ciudad del Vaticano",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Era el miércoles 22 de junio de 1983, en Roma.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "22 DE JUNIO DE 1983",
+      "sub": "Roma, Italia"
+     }
+    },
+    {
+     "texto": "Al salir de clase, llamó a casa. Un hombre le ofrecía mucho dinero por repartir folletos de Avon: solo dos horas de trabajo.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Su hermana Federica le dijo que no aceptara y que volviera a casa.",
+     "escena": {
+      "tipo": "foto",
+      "img": 10
+     }
+    },
+    {
+     "texto": "Al salir, Emanuela le preguntó a una compañera:",
+     "escena": {
+      "tipo": "cita",
+      "texto": "¿Espero o me voy a casa?",
+      "autor": "Emanuela, según su compañera Raffaella Monzi"
+     }
+    },
+    {
+     "texto": "A las siete y veinte, sus amigas subieron al autobús. Emanuela se quedó sola frente al Palazzo Madama.",
+     "escena": {
+      "tipo": "foto",
+      "img": 7
+     },
+     "rotulo": "19:20"
+    },
+    {
+     "texto": "Testigos vieron allí a una muchacha con un hombre que llevaba una bolsa de Avon, junto a un BMW verde.",
+     "escena": {
+      "tipo": "foto",
+      "img": 11
+     }
+    },
+    {
+     "texto": "Días después, un hombre con acento inglés llamó. Exigía que el papa ayudara a liberar a Alí Ağca, quien había intentado asesinarlo en 1981.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     }
+    },
+    {
+     "texto": "Luego hizo sonar una grabación con la voz de una niña. Su familia asegura que era ella.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "El plazo venció. Emanuela nunca apareció.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "20 DE JULIO DE 1983",
+      "sub": "Vence el plazo"
+     }
+    },
+    {
+     "texto": "Dos investigaciones se cerraron sin respuesta. En 2023, el caso se reabrió.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "REABIERTO EN 2023",
+      "sub": "Tres investigaciones a la vez"
+     }
+    },
+    {
+     "texto": "Su familia está convencida de que el Vaticano conoce la verdad… y se niega a revelarla. Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    }
+   ]
+  }
+ ]
+}
