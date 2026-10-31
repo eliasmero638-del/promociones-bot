@@ -1,0 +1,751 @@
+{
+ "fecha": "2026-10-31",
+ "modo": "claude",
+ "videos": [
+  {
+   "eid": "fb1",
+   "tipo": "fb",
+   "hora_fb": "12:30",
+   "hora_short": "13:00",
+   "articulo": "Secuestro de Zamfara",
+   "fuente": "https://es.wikipedia.org/wiki/Secuestro_de_Zamfara",
+   "titulo_video": "279 NIÑAS DESAPARECIDAS",
+   "titulo_youtube": "Más de 100 hombres armados entraron de noche a un internado de niñas",
+   "descripcion_youtube": "Una madrugada de 2021, un internado de niñas en Nigeria quedó rodeado por hombres armados.\nLo que pasó esa noche, y lo que ocurrió cuando todo parecía terminar, conmocionó al país.\nUn caso real del estado de Zamfara.\n#misterio #casosreales #ridmer",
+   "etiquetas": [
+    "misterio",
+    "caso real",
+    "secuestro",
+    "Nigeria",
+    "Zamfara",
+    "Jangebe",
+    "ridmer"
+   ],
+   "texto_facebook": "Entraron a la una de la madrugada… y por la mañana 279 estudiantes ya no estaban. #misterio #casosreales #ridmer",
+   "miniatura": {
+    "img": 2,
+    "texto": "279 NIÑAS"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "A la una de la madrugada, más de cien hombres armados entraron a un internado de niñas en Nigeria.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "26 DE FEBRERO DE 2021",
+      "sub": "Jangebe, Zamfara · 1:00 a. m."
+     },
+     "short": true
+    },
+    {
+     "texto": "Cuando se fueron, doscientas setenta y nueve estudiantes ya no estaban.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "279 ESTUDIANTES",
+      "sub": "Secuestradas en una sola noche"
+     },
+     "short": true
+    },
+    {
+     "texto": "Tenían entre doce y diecisiete años. Era el segundo secuestro escolar en Nigeria ese mes.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Los atacantes no improvisaron. También atacaron un campamento militar y un puesto de seguridad cercanos, para que nadie interviniera.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 12.17,
+      "lon": 6.25,
+      "lugar": "Estado de Zamfara, Nigeria",
+      "km": 30
+     },
+     "short": true
+    },
+    {
+     "texto": "Bloquearon todas las entradas. Se alega que algunos vestían uniformes de las fuerzas de seguridad.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Un policía murió. Unas cincuenta niñas se salvaron escondiéndose debajo de las camas y en los baños.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     },
+     "short": true
+    },
+    {
+     "texto": "A las demás se las llevaron al bosque de Dangulbi, donde operan muchos grupos criminales.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "BOSQUE DE DANGULBI",
+      "sub": "Zamfara, Nigeria"
+     },
+     "short": true
+    },
+    {
+     "texto": "Una de ellas contó que las obligaron a marchar entre piedras y espinas, golpeándolas con las armas y amenazando con fusilarlas.",
+     "escena": {
+      "tipo": "cita",
+      "texto": "Nos obligaron a marchar entre piedras y espinas",
+      "autor": "Relato de una de las estudiantes"
+     }
+    },
+    {
+     "texto": "Amnistía Internacional lo calificó como un crimen de guerra.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "CRIMEN DE GUERRA",
+      "sub": "Amnistía Internacional"
+     }
+    },
+    {
+     "texto": "Cuatro días después, el gobernador Bello Matawalle anunció que todas habían sido liberadas. Aseguró que no se pagó ningún rescate.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Bello Matawalle",
+      "sub": "Gobernador de Zamfara",
+      "img": 1
+     },
+     "short": true
+    },
+    {
+     "texto": "Muchas volvieron con los pies heridos por caminar descalzas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "La pesadilla no terminó ahí. En la ceremonia de entrega, los padres querían llevarse a sus hijas antes del anochecer.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "3 DE MARZO DE 2021",
+      "sub": "Ceremonia de entrega"
+     }
+    },
+    {
+     "texto": "Hubo piedras, disparos y gases lacrimógenos. Al menos una persona murió.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     },
+     "rotulo": "UN MUERTO"
+    },
+    {
+     "texto": "Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb2",
+   "tipo": "fb",
+   "hora_fb": "18:30",
+   "hora_short": "19:00",
+   "articulo": "Secuestro del Mærsk Alabama",
+   "fuente": "https://es.wikipedia.org/wiki/Secuestro_del_M%C3%A6rsk_Alabama",
+   "titulo_video": "SECUESTRARON AL CAPITÁN",
+   "titulo_youtube": "Piratas de 19 años tomaron un barco de EE. UU.… y se llevaron al capitán",
+   "descripcion_youtube": "Abril de 2009. Cuatro piratas somalíes abordan un mercante estadounidense en pleno océano.\nLa tripulación resiste, pero el capitán termina como rehén en un bote salvavidas.\nCinco días de tensión que terminaron en el cine.\n#misterio #casosreales #ridmer",
+   "etiquetas": [
+    "misterio",
+    "caso real",
+    "piratas somalíes",
+    "Maersk Alabama",
+    "Capitán Phillips",
+    "ridmer"
+   ],
+   "texto_facebook": "Ninguno pasaba de los 19 años… y tomaron un barco de Estados Unidos con su capitán adentro. #casosreales #misterio #ridmer",
+   "miniatura": {
+    "img": 2,
+    "texto": "REHÉN EN EL MAR"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Cuatro piratas armados subieron a un barco estadounidense en pleno océano. Ninguno pasaba de los diecinueve años.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     },
+     "short": true
+    },
+    {
+     "texto": "Fue el primer secuestro exitoso de un mercante estadounidense en casi dos siglos.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "8 DE ABRIL DE 2009",
+      "sub": "Océano Índico"
+     }
+    },
+    {
+     "texto": "El Maersk Alabama navegaba frente a Somalia con veinte tripulantes, rumbo a Kenia.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 7.98,
+      "lon": 49.82,
+      "lugar": "Eyl, Somalia",
+      "km": 30
+     }
+    },
+    {
+     "texto": "Al sonar la alarma, el jefe de máquinas, Mike Perry, escondió a catorce tripulantes en un cuarto seguro.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Mike Perry",
+      "sub": "Jefe de máquinas"
+     }
+    },
+    {
+     "texto": "Después apagó todos los sistemas. Los piratas tenían el barco, pero no podían moverlo.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Perry, cuchillo en mano, persiguió y capturó al cabecilla.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "SALA DE MÁQUINAS",
+      "sub": "Perry captura al cabecilla"
+     }
+    },
+    {
+     "texto": "La tripulación quiso cambiarlo por su capitán, Richard Phillips. El trato salió mal y los piratas huyeron en un bote salvavidas… con Phillips adentro.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Richard Phillips",
+      "sub": "Capitán del Maersk Alabama",
+      "img": 11
+     },
+     "short": true
+    },
+    {
+     "texto": "Estados Unidos envió al destructor USS Bainbridge.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "El diez de abril, Phillips intentó escapar. Lo recapturaron entre disparos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     }
+    },
+    {
+     "texto": "Otros piratas, con cincuenta y cuatro rehenes, iban hacia el bote.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "54 REHENES",
+      "sub": "Rumbo al bote salvavidas"
+     }
+    },
+    {
+     "texto": "El doce de abril, según los informes, un pirata apuntaba al capitán con un AK-47 por la espalda.",
+     "escena": {
+      "tipo": "foto",
+      "img": 7
+     },
+     "short": true
+    },
+    {
+     "texto": "Francotiradores SEAL dispararon desde el Bainbridge casi a la vez. Los tres piratas del bote murieron.",
+     "escena": {
+      "tipo": "foto",
+      "img": 19
+     },
+     "short": true
+    },
+    {
+     "texto": "Phillips fue rescatado en buenas condiciones. El cuarto pirata, Abduwali Muse, fue condenado a más de treinta y tres años.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     },
+     "short": true
+    },
+    {
+     "texto": "Su historia llegó al cine con Tom Hanks. Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 14
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb3",
+   "tipo": "fb",
+   "hora_fb": "21:00",
+   "articulo": "Secuestro de Anabel Segura",
+   "fuente": "https://es.wikipedia.org/wiki/Secuestro_de_Anabel_Segura",
+   "titulo_video": "LA VOZ NO ERA ELLA",
+   "titulo_youtube": "Pidieron una prueba de vida… y la voz de la cinta no era ella",
+   "descripcion_youtube": "Madrid, 1993. Una estudiante sale a correr y una furgoneta blanca se la lleva.\nDurante más de dos años, España entera esperó noticias.\nLa verdad apareció gracias a una voz.\n#misterio #casosreales #ridmer",
+   "etiquetas": [
+    "misterio",
+    "caso real",
+    "Anabel Segura",
+    "La Moraleja",
+    "secuestro",
+    "España",
+    "ridmer"
+   ],
+   "texto_facebook": "La familia pidió oír su voz… y llegó una cinta. Pero no era ella. #casosreales #misterio #ridmer",
+   "miniatura": {
+    "img": 3,
+    "texto": "NO ERA ELLA"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Durante dos años, España entera buscó a una joven secuestrada. La verdad era mucho peor.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Abril de mil novecientos noventa y tres. Anabel Segura, de veintidós años, sale a correr por La Moraleja, en Madrid.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Anabel Segura",
+      "sub": "Estudiante · 22 años",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Es día festivo y su familia está en Marbella.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "Junto al Colegio Escandinavo, una furgoneta se detiene. Un hombre se lanza sobre ella.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 40.515,
+      "lon": -3.635,
+      "lugar": "La Moraleja, Madrid",
+      "km": 2
+     }
+    },
+    {
+     "texto": "Anabel pelea con fuerza y pierde la chaqueta y el walkman. Un jardinero oye gritos, pero solo ve una furgoneta blanca.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     },
+     "rotulo": "FURGONETA BLANCA"
+    },
+    {
+     "texto": "Los secuestradores eran dos hombres comunes: Emilio Muñoz y su amigo Cándido Ortiz.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Emilio Muñoz Guadix",
+      "sub": "Transportista · 38 años"
+     }
+    },
+    {
+     "texto": "Dos días después piden un rescate: ciento cincuenta millones de pesetas.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "150 MILLONES",
+      "sub": "de pesetas de rescate"
+     }
+    },
+    {
+     "texto": "Hubo manifestaciones y pagos fallidos. Nunca una prueba de vida.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "Cuando la familia pidió una prueba, llegó una cinta con su voz. Pero no era ella.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "LA CINTA",
+      "sub": "24 de junio de 1993"
+     }
+    },
+    {
+     "texto": "Era Felisa García, esposa de Emilio Muñoz, haciéndose pasar por Anabel.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Felisa García",
+      "sub": "Esposa de Emilio Muñoz"
+     }
+    },
+    {
+     "texto": "Al fondo se oían niños con acento de Toledo. Esa pista centró la búsqueda.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "ACENTO DE TOLEDO",
+      "sub": "Una palabra local: «bolo»"
+     }
+    },
+    {
+     "texto": "En junio de mil novecientos noventa y cinco, un oyente reconoció la voz. Era Emilio Muñoz.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Detenido, confesó de inmediato. Anabel fue asesinada el mismo día del secuestro, en una fábrica abandonada de Toledo. Solo vivió seis horas y media.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 40.07,
+      "lon": -3.83,
+      "lugar": "Numancia de la Sagra, Toledo",
+      "km": 8
+     },
+     "rotulo": "SEIS HORAS Y MEDIA"
+    },
+    {
+     "texto": "Ambos fueron condenados a cuarenta y tres años. Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    }
+   ]
+  },
+  {
+   "eid": "largo1",
+   "tipo": "largo",
+   "hora_youtube": "18:00",
+   "articulo": "Proyecto Libro Azul",
+   "fuente": "https://es.wikipedia.org/wiki/Proyecto_Libro_Azul",
+   "titulo_video": "701 CASOS SIN EXPLICACIÓN",
+   "titulo_youtube": "La Fuerza Aérea investigó 12.618 ovnis… y 701 nunca tuvieron explicación",
+   "descripcion_youtube": "Entre 1952 y 1969, la Fuerza Aérea de EE. UU. investigó miles de avistamientos en el Proyecto Libro Azul.\nUn comité de la CIA, una regulación secreta y casos que nadie pudo explicar.\nEsta es la historia real.\n#misterio #ovnis #ridmer",
+   "etiquetas": [
+    "misterio",
+    "ovnis",
+    "Proyecto Libro Azul",
+    "Project Blue Book",
+    "Hynek",
+    "Comité Robertson",
+    "ridmer"
+   ],
+   "texto_facebook": "Investigaron 12.618 ovnis durante 17 años… y 701 siguen sin explicación. #ovnis #misterio #ridmer",
+   "miniatura": {
+    "img": 12,
+    "texto": "701 SIN EXPLICACIÓN"
+   },
+   "gancho": 2,
+   "segmentos": [
+    {
+     "texto": "Durante diecisiete años, la Fuerza Aérea de Estados Unidos recogió más de doce mil informes de ovnis. Y setecientos uno nunca pudieron explicarse.",
+     "escena": {
+      "tipo": "foto",
+      "img": 12
+     }
+    },
+    {
+     "texto": "Esta es la historia del Proyecto Libro Azul.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "PROYECTO LIBRO AZUL",
+      "sub": "1952 – 1969"
+     }
+    },
+    {
+     "texto": "Finales de mil novecientos cincuenta y uno. Varios generales de la Fuerza Aérea, de alto rango y muy influyentes, estaban muy descontentos con las investigaciones sobre ovnis.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "FINALES DE 1951",
+      "sub": "Fuerza Aérea de EE. UU."
+     }
+    },
+    {
+     "texto": "Desmantelaron el Proyecto Grudge y, a principios de mil novecientos cincuenta y dos, lo reemplazaron por uno nuevo: el Libro Azul.",
+     "escena": {
+      "tipo": "foto",
+      "img": 13
+     }
+    },
+    {
+     "texto": "Su objetivo era claro: determinar si los ovnis eran una amenaza para la seguridad nacional.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "El primer jefe del proyecto fue el capitán Edward J. Ruppelt.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Edward J. Ruppelt",
+      "sub": "Primer jefe del Libro Azul"
+     }
+    },
+    {
+     "texto": "Ruppelt creó un formato estándar para reportar cada avistamiento. Y acuñó oficialmente una palabra que hoy todos conocemos: ovni.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "OVNI",
+      "sub": "Objeto volador no identificado"
+     }
+    },
+    {
+     "texto": "Hasta entonces se hablaba de platillos volantes, un término más sugestivo y poco exacto.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "A su lado trabajaba el astrónomo J. Allen Hynek, consultor científico del proyecto hasta el final.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "J. Allen Hynek",
+      "sub": "Astrónomo · consultor científico"
+     }
+    },
+    {
+     "texto": "Hynek creó el concepto que hoy se conoce como encuentros cercanos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Julio de mil novecientos cincuenta y dos. Cerca del Aeropuerto Nacional de Washington, hay observaciones visuales que coinciden con detecciones de radar.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 38.85,
+      "lon": -77.04,
+      "lugar": "Aeropuerto Nacional de Washington",
+      "km": 8
+     }
+    },
+    {
+     "texto": "Lo que algunos veían en el cielo también aparecía en las pantallas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 12
+     },
+     "rotulo": "EN EL RADAR"
+    },
+    {
+     "texto": "Esas observaciones llevaron a la CIA a reunir un comité de científicos: físicos, meteorólogos, ingenieros y un astrónomo, el propio Hynek.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "LA CIA INTERVIENE",
+      "sub": "Comité de científicos"
+     }
+    },
+    {
+     "texto": "Lo encabezaba el doctor H. P. Robertson, físico del Instituto Tecnológico de California.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "H. P. Robertson",
+      "sub": "Físico · Caltech"
+     }
+    },
+    {
+     "texto": "El catorce de enero de mil novecientos cincuenta y tres, el comité se reunió por primera vez.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "14 DE ENERO DE 1953",
+      "sub": "Comité Robertson"
+     }
+    },
+    {
+     "texto": "Ruppelt y Hynek presentaron las mejores pruebas del Libro Azul, incluida una filmación.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "El comité pasó solo doce horas revisando seis años de información.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "12 HORAS",
+      "sub": "para revisar 6 años de casos"
+     }
+    },
+    {
+     "texto": "Su conclusión: la mayoría de los casos tenía una explicación racional, y seguir investigando no valía la pena.",
+     "escena": {
+      "tipo": "foto",
+      "img": 13
+     }
+    },
+    {
+     "texto": "Pero el informe advertía algo más. Tantos reportes de poco valor saturaban los canales de inteligencia, y eso podía ocultar una amenaza real.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Según las fuentes, el comité recomendó restar importancia a los ovnis y lanzar una campaña para desacreditarlos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 12
+     }
+    },
+    {
+     "texto": "Usar los medios, psicólogos, astrónomos y famosos, incluso a la compañía Walt Disney, para ridiculizar el fenómeno.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "CAMPAÑA DE DESCRÉDITO",
+      "sub": "Medios · Walt Disney · famosos"
+     }
+    },
+    {
+     "texto": "Y sobre los grupos de aficionados a los ovnis, escribieron que deberían ser vigilados por su influencia sobre el pensamiento de masas.",
+     "escena": {
+      "tipo": "cita",
+      "texto": "Deberían ser vigilados debido a su potencial influencia sobre el pensamiento de masas",
+      "autor": "Comité Robertson"
+     }
+    },
+    {
+     "texto": "En agosto de mil novecientos cincuenta y cuatro, el general Nathan Twining publicó una nueva regulación: la doscientos guion dos.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Nathan Twining",
+      "sub": "Jefe de personal de la Fuerza Aérea"
+     }
+    },
+    {
+     "texto": "La investigación ovni fue declarada secreta por motivos de seguridad nacional.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "SECRETO",
+      "sub": "Regulación 200-2 · 1954"
+     }
+    },
+    {
+     "texto": "Desde entonces, el Libro Azul solo podía hablar con la prensa de los casos que tuvieran explicación.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Si un caso no podía explicarse, la única respuesta permitida era que estaba siendo analizado.",
+     "escena": {
+      "tipo": "foto",
+      "img": 13
+     }
+    },
+    {
+     "texto": "Y recibió una orden más: reducir al mínimo el número de casos no identificados.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "A finales de mil novecientos cincuenta y seis, los casos sin resolver habían bajado a apenas cero coma cuatro por ciento.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "0,4 %",
+      "sub": "casos sin resolver · 1956"
+     }
+    },
+    {
+     "texto": "Unos años antes, eran entre el veinte y el treinta por ciento.",
+     "escena": {
+      "tipo": "foto",
+      "img": 12
+     }
+    },
+    {
+     "texto": "Todo esto se hizo en secreto. De cara al público, el Libro Azul seguía siendo la investigación oficial.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Ruppelt, frustrado, se fue en agosto de mil novecientos cincuenta y tres. Su equipo se había reducido a dos subordinados y él mismo.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "AGOSTO DE 1953",
+      "sub": "Ruppelt abandona el proyecto"
+     }
+    },
+    {
+     "texto": "Sus sucesores mostraron apatía o incluso hostilidad hacia el tema, o se quedaron sin fondos ni apoyo oficial.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Mientras tanto, en Columbus, Ohio, cerca de la base Wright-Patterson, el Instituto Battelle preparaba el mayor estudio ovni jamás emprendido.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "El informe especial número catorce analizó unos tres mil doscientos casos. Quedó completado en mil novecientos cincuenta y cuatro.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "INFORME ESPECIAL N.º 14",
+      "sub": "Unos 3.200 casos · 1954"
+     }
+    },
+    {
+     "texto": "Las reglas eran estrictas. Para declarar un caso explicable bastaba con que dos analistas estuvieran de acuerdo.",
+     "escena": {
+      "tipo": "foto",
+      "img": 13
+     }
+    },
+    {
+     "texto": "Para declararlo inexplicable, hacían falta cuatro.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "4 ANALISTAS",
+      "sub": "para un caso inexplicable"
+     }
+    },
+    {
+     "texto": "El Libro Azul se cerró en diciembre de mil novecientos sesenta y nueve, con doce mil seiscientos dieciocho informes.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "DICIEMBRE DE 1969",
+      "sub": "12.618 informes"
+     }
+    },
+    {
+     "texto": "La mayoría se atribuyó a nubes, estrellas o aviones. Pero setecientos uno siguen siendo inexplicables. Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 12
+     },
+     "rotulo": "701 INEXPLICABLES"
+    }
+   ]
+  },
+  {
+   "eid": "res1",
+   "tipo": "fb",
+   "omitir": true,
+   "motivo": "No se usa: hoy no hubo encargo de noticia que reemplazar."
+  }
+ ]
+}
