@@ -1,0 +1,1226 @@
+{
+ "eid": "fb3",
+ "hook_fin": 6.637,
+ "duracion_voz": 83.232,
+ "segmentos": [
+  {
+   "texto": "Durante dos años, España entera buscó a una joven secuestrada. La verdad era mucho peor.",
+   "t0": 0.0,
+   "img": "esc_00.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 3
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Abril de mil novecientos noventa y tres. Anabel Segura, de veintidós años, sale a correr por La Moraleja, en Madrid.",
+   "t0": 6.637,
+   "img": "esc_01.jpg",
+   "escena": {
+    "tipo": "ficha",
+    "nombre": "Anabel Segura",
+    "sub": "Estudiante · 22 años",
+    "img": 1
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Es día festivo y su familia está en Marbella.",
+   "t0": 13.892,
+   "img": "esc_02.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 5
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Junto al Colegio Escandinavo, una furgoneta se detiene. Un hombre se lanza sobre ella.",
+   "t0": 17.459,
+   "img": "esc_03.jpg",
+   "escena": {
+    "tipo": "mapa",
+    "lat": 40.515,
+    "lon": -3.635,
+    "lugar": "La Moraleja, Madrid",
+    "km": 2
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Anabel pelea con fuerza y pierde la chaqueta y el walkman. Un jardinero oye gritos, pero solo ve una furgoneta blanca.",
+   "t0": 23.008,
+   "img": "esc_04.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 3
+   },
+   "short": false,
+   "rotulo": "FURGONETA BLANCA"
+  },
+  {
+   "texto": "Los secuestradores eran dos hombres comunes: Emilio Muñoz y su amigo Cándido Ortiz.",
+   "t0": 31.331,
+   "img": "esc_05.jpg",
+   "escena": {
+    "tipo": "ficha",
+    "nombre": "Emilio Muñoz Guadix",
+    "sub": "Transportista · 38 años"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Dos días después piden un rescate: ciento cincuenta millones de pesetas.",
+   "t0": 36.484,
+   "img": "esc_06.jpg",
+   "escena": {
+    "tipo": "fecha",
+    "texto": "150 MILLONES",
+    "sub": "de pesetas de rescate"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Hubo manifestaciones y pagos fallidos. Nunca una prueba de vida.",
+   "t0": 40.843,
+   "img": "esc_07.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 5
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Cuando la familia pidió una prueba, llegó una cinta con su voz. Pero no era ella.",
+   "t0": 44.807,
+   "img": "esc_08.jpg",
+   "escena": {
+    "tipo": "fecha",
+    "texto": "LA CINTA",
+    "sub": "24 de junio de 1993"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Era Felisa García, esposa de Emilio Muñoz, haciéndose pasar por Anabel.",
+   "t0": 51.148,
+   "img": "esc_09.jpg",
+   "escena": {
+    "tipo": "ficha",
+    "nombre": "Felisa García",
+    "sub": "Esposa de Emilio Muñoz"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Al fondo se oían niños con acento de Toledo. Esa pista centró la búsqueda.",
+   "t0": 55.508,
+   "img": "esc_10.jpg",
+   "escena": {
+    "tipo": "fecha",
+    "texto": "ACENTO DE TOLEDO",
+    "sub": "Una palabra local: «bolo»"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "En junio de mil novecientos noventa y cinco, un oyente reconoció la voz. Era Emilio Muñoz.",
+   "t0": 61.057,
+   "img": "esc_11.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 3
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Detenido, confesó de inmediato. Anabel fue asesinada el mismo día del secuestro, en una fábrica abandonada de Toledo. Solo vivió seis horas y media.",
+   "t0": 67.398,
+   "img": "esc_12.jpg",
+   "escena": {
+    "tipo": "mapa",
+    "lat": 40.07,
+    "lon": -3.83,
+    "lugar": "Numancia de la Sagra, Toledo",
+    "km": 8
+   },
+   "short": false,
+   "rotulo": "SEIS HORAS Y MEDIA"
+  },
+  {
+   "texto": "Ambos fueron condenados a cuarenta y tres años. Suscríbete a Ridmer para más historias como esta.",
+   "t0": 76.911,
+   "img": "esc_13.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 2
+   },
+   "short": false,
+   "rotulo": ""
+  }
+ ],
+ "palabras": [
+  [
+   0.0,
+   0.396,
+   "Durante"
+  ],
+  [
+   0.396,
+   0.793,
+   "dos"
+  ],
+  [
+   0.793,
+   1.189,
+   "años,"
+  ],
+  [
+   1.189,
+   1.585,
+   "España"
+  ],
+  [
+   1.585,
+   1.982,
+   "entera"
+  ],
+  [
+   1.982,
+   2.378,
+   "buscó"
+  ],
+  [
+   2.378,
+   2.774,
+   "a"
+  ],
+  [
+   2.774,
+   3.171,
+   "una"
+  ],
+  [
+   3.171,
+   3.567,
+   "joven"
+  ],
+  [
+   3.567,
+   3.963,
+   "secuestrada."
+  ],
+  [
+   3.963,
+   4.36,
+   "La"
+  ],
+  [
+   4.36,
+   4.756,
+   "verdad"
+  ],
+  [
+   4.756,
+   5.152,
+   "era"
+  ],
+  [
+   5.152,
+   5.549,
+   "mucho"
+  ],
+  [
+   5.549,
+   5.945,
+   "peor."
+  ],
+  [
+   5.945,
+   6.342,
+   "Abril"
+  ],
+  [
+   6.342,
+   6.738,
+   "de"
+  ],
+  [
+   6.738,
+   7.134,
+   "mil"
+  ],
+  [
+   7.134,
+   7.531,
+   "novecientos"
+  ],
+  [
+   7.531,
+   7.927,
+   "noventa"
+  ],
+  [
+   7.927,
+   8.323,
+   "y"
+  ],
+  [
+   8.323,
+   8.72,
+   "tres."
+  ],
+  [
+   8.72,
+   9.116,
+   "Anabel"
+  ],
+  [
+   9.116,
+   9.512,
+   "Segura,"
+  ],
+  [
+   9.512,
+   9.909,
+   "de"
+  ],
+  [
+   9.909,
+   10.305,
+   "veintidós"
+  ],
+  [
+   10.305,
+   10.701,
+   "años,"
+  ],
+  [
+   10.701,
+   11.098,
+   "sale"
+  ],
+  [
+   11.098,
+   11.494,
+   "a"
+  ],
+  [
+   11.494,
+   11.89,
+   "correr"
+  ],
+  [
+   11.89,
+   12.287,
+   "por"
+  ],
+  [
+   12.287,
+   12.683,
+   "La"
+  ],
+  [
+   12.683,
+   13.079,
+   "Moraleja,"
+  ],
+  [
+   13.079,
+   13.476,
+   "en"
+  ],
+  [
+   13.476,
+   13.872,
+   "Madrid."
+  ],
+  [
+   13.872,
+   14.268,
+   "Es"
+  ],
+  [
+   14.268,
+   14.665,
+   "día"
+  ],
+  [
+   14.665,
+   15.061,
+   "festivo"
+  ],
+  [
+   15.061,
+   15.457,
+   "y"
+  ],
+  [
+   15.457,
+   15.854,
+   "su"
+  ],
+  [
+   15.854,
+   16.25,
+   "familia"
+  ],
+  [
+   16.25,
+   16.646,
+   "está"
+  ],
+  [
+   16.646,
+   17.043,
+   "en"
+  ],
+  [
+   17.043,
+   17.439,
+   "Marbella."
+  ],
+  [
+   17.439,
+   17.835,
+   "Junto"
+  ],
+  [
+   17.835,
+   18.232,
+   "al"
+  ],
+  [
+   18.232,
+   18.628,
+   "Colegio"
+  ],
+  [
+   18.628,
+   19.025,
+   "Escandinavo,"
+  ],
+  [
+   19.025,
+   19.421,
+   "una"
+  ],
+  [
+   19.421,
+   19.817,
+   "furgoneta"
+  ],
+  [
+   19.817,
+   20.214,
+   "se"
+  ],
+  [
+   20.214,
+   20.61,
+   "detiene."
+  ],
+  [
+   20.61,
+   21.006,
+   "Un"
+  ],
+  [
+   21.006,
+   21.403,
+   "hombre"
+  ],
+  [
+   21.403,
+   21.799,
+   "se"
+  ],
+  [
+   21.799,
+   22.195,
+   "lanza"
+  ],
+  [
+   22.195,
+   22.592,
+   "sobre"
+  ],
+  [
+   22.592,
+   22.988,
+   "ella."
+  ],
+  [
+   22.988,
+   23.384,
+   "Anabel"
+  ],
+  [
+   23.384,
+   23.781,
+   "pelea"
+  ],
+  [
+   23.781,
+   24.177,
+   "con"
+  ],
+  [
+   24.177,
+   24.573,
+   "fuerza"
+  ],
+  [
+   24.573,
+   24.97,
+   "y"
+  ],
+  [
+   24.97,
+   25.366,
+   "pierde"
+  ],
+  [
+   25.366,
+   25.762,
+   "la"
+  ],
+  [
+   25.762,
+   26.159,
+   "chaqueta"
+  ],
+  [
+   26.159,
+   26.555,
+   "y"
+  ],
+  [
+   26.555,
+   26.951,
+   "el"
+  ],
+  [
+   26.951,
+   27.348,
+   "walkman."
+  ],
+  [
+   27.348,
+   27.744,
+   "Un"
+  ],
+  [
+   27.744,
+   28.14,
+   "jardinero"
+  ],
+  [
+   28.14,
+   28.537,
+   "oye"
+  ],
+  [
+   28.537,
+   28.933,
+   "gritos,"
+  ],
+  [
+   28.933,
+   29.329,
+   "pero"
+  ],
+  [
+   29.329,
+   29.726,
+   "solo"
+  ],
+  [
+   29.726,
+   30.122,
+   "ve"
+  ],
+  [
+   30.122,
+   30.518,
+   "una"
+  ],
+  [
+   30.518,
+   30.915,
+   "furgoneta"
+  ],
+  [
+   30.915,
+   31.311,
+   "blanca."
+  ],
+  [
+   31.311,
+   31.708,
+   "Los"
+  ],
+  [
+   31.708,
+   32.104,
+   "secuestradores"
+  ],
+  [
+   32.104,
+   32.5,
+   "eran"
+  ],
+  [
+   32.5,
+   32.897,
+   "dos"
+  ],
+  [
+   32.897,
+   33.293,
+   "hombres"
+  ],
+  [
+   33.293,
+   33.689,
+   "comunes:"
+  ],
+  [
+   33.689,
+   34.086,
+   "Emilio"
+  ],
+  [
+   34.086,
+   34.482,
+   "Muñoz"
+  ],
+  [
+   34.482,
+   34.878,
+   "y"
+  ],
+  [
+   34.878,
+   35.275,
+   "su"
+  ],
+  [
+   35.275,
+   35.671,
+   "amigo"
+  ],
+  [
+   35.671,
+   36.067,
+   "Cándido"
+  ],
+  [
+   36.067,
+   36.464,
+   "Ortiz."
+  ],
+  [
+   36.464,
+   36.86,
+   "Dos"
+  ],
+  [
+   36.86,
+   37.256,
+   "días"
+  ],
+  [
+   37.256,
+   37.653,
+   "después"
+  ],
+  [
+   37.653,
+   38.049,
+   "piden"
+  ],
+  [
+   38.049,
+   38.445,
+   "un"
+  ],
+  [
+   38.445,
+   38.842,
+   "rescate:"
+  ],
+  [
+   38.842,
+   39.238,
+   "ciento"
+  ],
+  [
+   39.238,
+   39.634,
+   "cincuenta"
+  ],
+  [
+   39.634,
+   40.031,
+   "millones"
+  ],
+  [
+   40.031,
+   40.427,
+   "de"
+  ],
+  [
+   40.427,
+   40.823,
+   "pesetas."
+  ],
+  [
+   40.823,
+   41.22,
+   "Hubo"
+  ],
+  [
+   41.22,
+   41.616,
+   "manifestaciones"
+  ],
+  [
+   41.616,
+   42.012,
+   "y"
+  ],
+  [
+   42.012,
+   42.409,
+   "pagos"
+  ],
+  [
+   42.409,
+   42.805,
+   "fallidos."
+  ],
+  [
+   42.805,
+   43.202,
+   "Nunca"
+  ],
+  [
+   43.202,
+   43.598,
+   "una"
+  ],
+  [
+   43.598,
+   43.994,
+   "prueba"
+  ],
+  [
+   43.994,
+   44.391,
+   "de"
+  ],
+  [
+   44.391,
+   44.787,
+   "vida."
+  ],
+  [
+   44.787,
+   45.183,
+   "Cuando"
+  ],
+  [
+   45.183,
+   45.58,
+   "la"
+  ],
+  [
+   45.58,
+   45.976,
+   "familia"
+  ],
+  [
+   45.976,
+   46.372,
+   "pidió"
+  ],
+  [
+   46.372,
+   46.769,
+   "una"
+  ],
+  [
+   46.769,
+   47.165,
+   "prueba,"
+  ],
+  [
+   47.165,
+   47.561,
+   "llegó"
+  ],
+  [
+   47.561,
+   47.958,
+   "una"
+  ],
+  [
+   47.958,
+   48.354,
+   "cinta"
+  ],
+  [
+   48.354,
+   48.75,
+   "con"
+  ],
+  [
+   48.75,
+   49.147,
+   "su"
+  ],
+  [
+   49.147,
+   49.543,
+   "voz."
+  ],
+  [
+   49.543,
+   49.939,
+   "Pero"
+  ],
+  [
+   49.939,
+   50.336,
+   "no"
+  ],
+  [
+   50.336,
+   50.732,
+   "era"
+  ],
+  [
+   50.732,
+   51.128,
+   "ella."
+  ],
+  [
+   51.128,
+   51.525,
+   "Era"
+  ],
+  [
+   51.525,
+   51.921,
+   "Felisa"
+  ],
+  [
+   51.921,
+   52.317,
+   "García,"
+  ],
+  [
+   52.317,
+   52.714,
+   "esposa"
+  ],
+  [
+   52.714,
+   53.11,
+   "de"
+  ],
+  [
+   53.11,
+   53.506,
+   "Emilio"
+  ],
+  [
+   53.506,
+   53.903,
+   "Muñoz,"
+  ],
+  [
+   53.903,
+   54.299,
+   "haciéndose"
+  ],
+  [
+   54.299,
+   54.695,
+   "pasar"
+  ],
+  [
+   54.695,
+   55.092,
+   "por"
+  ],
+  [
+   55.092,
+   55.488,
+   "Anabel."
+  ],
+  [
+   55.488,
+   55.885,
+   "Al"
+  ],
+  [
+   55.885,
+   56.281,
+   "fondo"
+  ],
+  [
+   56.281,
+   56.677,
+   "se"
+  ],
+  [
+   56.677,
+   57.074,
+   "oían"
+  ],
+  [
+   57.074,
+   57.47,
+   "niños"
+  ],
+  [
+   57.47,
+   57.866,
+   "con"
+  ],
+  [
+   57.866,
+   58.263,
+   "acento"
+  ],
+  [
+   58.263,
+   58.659,
+   "de"
+  ],
+  [
+   58.659,
+   59.055,
+   "Toledo."
+  ],
+  [
+   59.055,
+   59.452,
+   "Esa"
+  ],
+  [
+   59.452,
+   59.848,
+   "pista"
+  ],
+  [
+   59.848,
+   60.244,
+   "centró"
+  ],
+  [
+   60.244,
+   60.641,
+   "la"
+  ],
+  [
+   60.641,
+   61.037,
+   "búsqueda."
+  ],
+  [
+   61.037,
+   61.433,
+   "En"
+  ],
+  [
+   61.433,
+   61.83,
+   "junio"
+  ],
+  [
+   61.83,
+   62.226,
+   "de"
+  ],
+  [
+   62.226,
+   62.622,
+   "mil"
+  ],
+  [
+   62.622,
+   63.019,
+   "novecientos"
+  ],
+  [
+   63.019,
+   63.415,
+   "noventa"
+  ],
+  [
+   63.415,
+   63.811,
+   "y"
+  ],
+  [
+   63.811,
+   64.208,
+   "cinco,"
+  ],
+  [
+   64.208,
+   64.604,
+   "un"
+  ],
+  [
+   64.604,
+   65.0,
+   "oyente"
+  ],
+  [
+   65.0,
+   65.397,
+   "reconoció"
+  ],
+  [
+   65.397,
+   65.793,
+   "la"
+  ],
+  [
+   65.793,
+   66.189,
+   "voz."
+  ],
+  [
+   66.189,
+   66.586,
+   "Era"
+  ],
+  [
+   66.586,
+   66.982,
+   "Emilio"
+  ],
+  [
+   66.982,
+   67.378,
+   "Muñoz."
+  ],
+  [
+   67.378,
+   67.775,
+   "Detenido,"
+  ],
+  [
+   67.775,
+   68.171,
+   "confesó"
+  ],
+  [
+   68.171,
+   68.568,
+   "de"
+  ],
+  [
+   68.568,
+   68.964,
+   "inmediato."
+  ],
+  [
+   68.964,
+   69.36,
+   "Anabel"
+  ],
+  [
+   69.36,
+   69.757,
+   "fue"
+  ],
+  [
+   69.757,
+   70.153,
+   "asesinada"
+  ],
+  [
+   70.153,
+   70.549,
+   "el"
+  ],
+  [
+   70.549,
+   70.946,
+   "mismo"
+  ],
+  [
+   70.946,
+   71.342,
+   "día"
+  ],
+  [
+   71.342,
+   71.738,
+   "del"
+  ],
+  [
+   71.738,
+   72.135,
+   "secuestro,"
+  ],
+  [
+   72.135,
+   72.531,
+   "en"
+  ],
+  [
+   72.531,
+   72.927,
+   "una"
+  ],
+  [
+   72.927,
+   73.324,
+   "fábrica"
+  ],
+  [
+   73.324,
+   73.72,
+   "abandonada"
+  ],
+  [
+   73.72,
+   74.116,
+   "de"
+  ],
+  [
+   74.116,
+   74.513,
+   "Toledo."
+  ],
+  [
+   74.513,
+   74.909,
+   "Solo"
+  ],
+  [
+   74.909,
+   75.305,
+   "vivió"
+  ],
+  [
+   75.305,
+   75.702,
+   "seis"
+  ],
+  [
+   75.702,
+   76.098,
+   "horas"
+  ],
+  [
+   76.098,
+   76.494,
+   "y"
+  ],
+  [
+   76.494,
+   76.891,
+   "media."
+  ],
+  [
+   76.891,
+   77.287,
+   "Ambos"
+  ],
+  [
+   77.287,
+   77.683,
+   "fueron"
+  ],
+  [
+   77.683,
+   78.08,
+   "condenados"
+  ],
+  [
+   78.08,
+   78.476,
+   "a"
+  ],
+  [
+   78.476,
+   78.872,
+   "cuarenta"
+  ],
+  [
+   78.872,
+   79.269,
+   "y"
+  ],
+  [
+   79.269,
+   79.665,
+   "tres"
+  ],
+  [
+   79.665,
+   80.061,
+   "años."
+  ],
+  [
+   80.061,
+   80.458,
+   "Suscríbete"
+  ],
+  [
+   80.458,
+   80.854,
+   "a"
+  ],
+  [
+   80.854,
+   81.251,
+   "Ridmer"
+  ],
+  [
+   81.251,
+   81.647,
+   "para"
+  ],
+  [
+   81.647,
+   82.043,
+   "más"
+  ],
+  [
+   82.043,
+   82.44,
+   "historias"
+  ],
+  [
+   82.44,
+   82.836,
+   "como"
+  ],
+  [
+   82.836,
+   83.232,
+   "esta."
+  ]
+ ]
+}

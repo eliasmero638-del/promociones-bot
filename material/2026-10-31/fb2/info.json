@@ -1,0 +1,1207 @@
+{
+ "eid": "fb2",
+ "hook_fin": 7.677,
+ "duracion_voz": 77.592,
+ "segmentos": [
+  {
+   "texto": "Cuatro piratas armados subieron a un barco estadounidense en pleno océano. Ninguno pasaba de los diecinueve años.",
+   "t0": 0.0,
+   "img": "esc_00.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 4
+   },
+   "short": true,
+   "rotulo": ""
+  },
+  {
+   "texto": "Fue el primer secuestro exitoso de un mercante estadounidense en casi dos siglos.",
+   "t0": 7.677,
+   "img": "esc_01.jpg",
+   "escena": {
+    "tipo": "fecha",
+    "texto": "8 DE ABRIL DE 2009",
+    "sub": "Océano Índico"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "El Maersk Alabama navegaba frente a Somalia con veinte tripulantes, rumbo a Kenia.",
+   "t0": 11.265,
+   "img": "esc_02.jpg",
+   "escena": {
+    "tipo": "mapa",
+    "lat": 7.98,
+    "lon": 49.82,
+    "lugar": "Eyl, Somalia",
+    "km": 30
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Al sonar la alarma, el jefe de máquinas, Mike Perry, escondió a catorce tripulantes en un cuarto seguro.",
+   "t0": 16.138,
+   "img": "esc_03.jpg",
+   "escena": {
+    "tipo": "ficha",
+    "nombre": "Mike Perry",
+    "sub": "Jefe de máquinas"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Después apagó todos los sistemas. Los piratas tenían el barco, pero no podían moverlo.",
+   "t0": 24.76,
+   "img": "esc_04.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 4
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Perry, cuchillo en mano, persiguió y capturó al cabecilla.",
+   "t0": 28.133,
+   "img": "esc_05.jpg",
+   "escena": {
+    "tipo": "fecha",
+    "texto": "SALA DE MÁQUINAS",
+    "sub": "Perry captura al cabecilla"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "La tripulación quiso cambiarlo por su capitán, Richard Phillips. El trato salió mal y los piratas huyeron en un bote salvavidas… con Phillips adentro.",
+   "t0": 31.507,
+   "img": "esc_06.jpg",
+   "escena": {
+    "tipo": "ficha",
+    "nombre": "Richard Phillips",
+    "sub": "Capitán del Maersk Alabama",
+    "img": 11
+   },
+   "short": true,
+   "rotulo": ""
+  },
+  {
+   "texto": "Estados Unidos envió al destructor USS Bainbridge.",
+   "t0": 40.503,
+   "img": "esc_07.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 2
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "El diez de abril, Phillips intentó escapar. Lo recapturaron entre disparos.",
+   "t0": 43.127,
+   "img": "esc_08.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 6
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Otros piratas, con cincuenta y cuatro rehenes, iban hacia el bote.",
+   "t0": 47.25,
+   "img": "esc_09.jpg",
+   "escena": {
+    "tipo": "fecha",
+    "texto": "54 REHENES",
+    "sub": "Rumbo al bote salvavidas"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "El doce de abril, según los informes, un pirata apuntaba al capitán con un AK-47 por la espalda.",
+   "t0": 51.373,
+   "img": "esc_10.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 7
+   },
+   "short": true,
+   "rotulo": ""
+  },
+  {
+   "texto": "Francotiradores SEAL dispararon desde el Bainbridge casi a la vez. Los tres piratas del bote murieron.",
+   "t0": 58.12,
+   "img": "esc_11.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 19
+   },
+   "short": true,
+   "rotulo": ""
+  },
+  {
+   "texto": "Phillips fue rescatado en buenas condiciones. El cuarto pirata, Abduwali Muse, fue condenado a más de treinta y tres años.",
+   "t0": 64.118,
+   "img": "esc_12.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 1
+   },
+   "short": true,
+   "rotulo": ""
+  },
+  {
+   "texto": "Su historia llegó al cine con Tom Hanks. Suscríbete a Ridmer para más historias como esta.",
+   "t0": 71.615,
+   "img": "esc_13.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 14
+   },
+   "short": false,
+   "rotulo": ""
+  }
+ ],
+ "palabras": [
+  [
+   0.0,
+   0.375,
+   "Cuatro"
+  ],
+  [
+   0.375,
+   0.75,
+   "piratas"
+  ],
+  [
+   0.75,
+   1.125,
+   "armados"
+  ],
+  [
+   1.125,
+   1.499,
+   "subieron"
+  ],
+  [
+   1.499,
+   1.874,
+   "a"
+  ],
+  [
+   1.874,
+   2.249,
+   "un"
+  ],
+  [
+   2.249,
+   2.624,
+   "barco"
+  ],
+  [
+   2.624,
+   2.999,
+   "estadounidense"
+  ],
+  [
+   2.999,
+   3.374,
+   "en"
+  ],
+  [
+   3.374,
+   3.748,
+   "pleno"
+  ],
+  [
+   3.748,
+   4.123,
+   "océano."
+  ],
+  [
+   4.123,
+   4.498,
+   "Ninguno"
+  ],
+  [
+   4.498,
+   4.873,
+   "pasaba"
+  ],
+  [
+   4.873,
+   5.248,
+   "de"
+  ],
+  [
+   5.248,
+   5.623,
+   "los"
+  ],
+  [
+   5.623,
+   5.997,
+   "diecinueve"
+  ],
+  [
+   5.997,
+   6.372,
+   "años."
+  ],
+  [
+   6.372,
+   6.747,
+   "Fue"
+  ],
+  [
+   6.747,
+   7.122,
+   "el"
+  ],
+  [
+   7.122,
+   7.497,
+   "primer"
+  ],
+  [
+   7.497,
+   7.872,
+   "secuestro"
+  ],
+  [
+   7.872,
+   8.247,
+   "exitoso"
+  ],
+  [
+   8.247,
+   8.621,
+   "de"
+  ],
+  [
+   8.621,
+   8.996,
+   "un"
+  ],
+  [
+   8.996,
+   9.371,
+   "mercante"
+  ],
+  [
+   9.371,
+   9.746,
+   "estadounidense"
+  ],
+  [
+   9.746,
+   10.121,
+   "en"
+  ],
+  [
+   10.121,
+   10.496,
+   "casi"
+  ],
+  [
+   10.496,
+   10.87,
+   "dos"
+  ],
+  [
+   10.87,
+   11.245,
+   "siglos."
+  ],
+  [
+   11.245,
+   11.62,
+   "El"
+  ],
+  [
+   11.62,
+   11.995,
+   "Maersk"
+  ],
+  [
+   11.995,
+   12.37,
+   "Alabama"
+  ],
+  [
+   12.37,
+   12.745,
+   "navegaba"
+  ],
+  [
+   12.745,
+   13.119,
+   "frente"
+  ],
+  [
+   13.119,
+   13.494,
+   "a"
+  ],
+  [
+   13.494,
+   13.869,
+   "Somalia"
+  ],
+  [
+   13.869,
+   14.244,
+   "con"
+  ],
+  [
+   14.244,
+   14.619,
+   "veinte"
+  ],
+  [
+   14.619,
+   14.994,
+   "tripulantes,"
+  ],
+  [
+   14.994,
+   15.369,
+   "rumbo"
+  ],
+  [
+   15.369,
+   15.743,
+   "a"
+  ],
+  [
+   15.743,
+   16.118,
+   "Kenia."
+  ],
+  [
+   16.118,
+   16.493,
+   "Al"
+  ],
+  [
+   16.493,
+   16.868,
+   "sonar"
+  ],
+  [
+   16.868,
+   17.243,
+   "la"
+  ],
+  [
+   17.243,
+   17.618,
+   "alarma,"
+  ],
+  [
+   17.618,
+   17.992,
+   "el"
+  ],
+  [
+   17.992,
+   18.367,
+   "jefe"
+  ],
+  [
+   18.367,
+   18.742,
+   "de"
+  ],
+  [
+   18.742,
+   19.117,
+   "máquinas,"
+  ],
+  [
+   19.117,
+   19.492,
+   "Mike"
+  ],
+  [
+   19.492,
+   19.867,
+   "Perry,"
+  ],
+  [
+   19.867,
+   20.241,
+   "escondió"
+  ],
+  [
+   20.241,
+   20.616,
+   "a"
+  ],
+  [
+   20.616,
+   20.991,
+   "catorce"
+  ],
+  [
+   20.991,
+   21.366,
+   "tripulantes"
+  ],
+  [
+   21.366,
+   21.741,
+   "en"
+  ],
+  [
+   21.741,
+   22.116,
+   "un"
+  ],
+  [
+   22.116,
+   22.491,
+   "cuarto"
+  ],
+  [
+   22.491,
+   22.865,
+   "seguro."
+  ],
+  [
+   22.865,
+   23.24,
+   "Después"
+  ],
+  [
+   23.24,
+   23.615,
+   "apagó"
+  ],
+  [
+   23.615,
+   23.99,
+   "todos"
+  ],
+  [
+   23.99,
+   24.365,
+   "los"
+  ],
+  [
+   24.365,
+   24.74,
+   "sistemas."
+  ],
+  [
+   24.74,
+   25.114,
+   "Los"
+  ],
+  [
+   25.114,
+   25.489,
+   "piratas"
+  ],
+  [
+   25.489,
+   25.864,
+   "tenían"
+  ],
+  [
+   25.864,
+   26.239,
+   "el"
+  ],
+  [
+   26.239,
+   26.614,
+   "barco,"
+  ],
+  [
+   26.614,
+   26.989,
+   "pero"
+  ],
+  [
+   26.989,
+   27.363,
+   "no"
+  ],
+  [
+   27.363,
+   27.738,
+   "podían"
+  ],
+  [
+   27.738,
+   28.113,
+   "moverlo."
+  ],
+  [
+   28.113,
+   28.488,
+   "Perry,"
+  ],
+  [
+   28.488,
+   28.863,
+   "cuchillo"
+  ],
+  [
+   28.863,
+   29.238,
+   "en"
+  ],
+  [
+   29.238,
+   29.613,
+   "mano,"
+  ],
+  [
+   29.613,
+   29.987,
+   "persiguió"
+  ],
+  [
+   29.987,
+   30.362,
+   "y"
+  ],
+  [
+   30.362,
+   30.737,
+   "capturó"
+  ],
+  [
+   30.737,
+   31.112,
+   "al"
+  ],
+  [
+   31.112,
+   31.487,
+   "cabecilla."
+  ],
+  [
+   31.487,
+   31.862,
+   "La"
+  ],
+  [
+   31.862,
+   32.236,
+   "tripulación"
+  ],
+  [
+   32.236,
+   32.611,
+   "quiso"
+  ],
+  [
+   32.611,
+   32.986,
+   "cambiarlo"
+  ],
+  [
+   32.986,
+   33.361,
+   "por"
+  ],
+  [
+   33.361,
+   33.736,
+   "su"
+  ],
+  [
+   33.736,
+   34.111,
+   "capitán,"
+  ],
+  [
+   34.111,
+   34.485,
+   "Richard"
+  ],
+  [
+   34.485,
+   34.86,
+   "Phillips."
+  ],
+  [
+   34.86,
+   35.235,
+   "El"
+  ],
+  [
+   35.235,
+   35.61,
+   "trato"
+  ],
+  [
+   35.61,
+   35.985,
+   "salió"
+  ],
+  [
+   35.985,
+   36.36,
+   "mal"
+  ],
+  [
+   36.36,
+   36.734,
+   "y"
+  ],
+  [
+   36.734,
+   37.109,
+   "los"
+  ],
+  [
+   37.109,
+   37.484,
+   "piratas"
+  ],
+  [
+   37.484,
+   37.859,
+   "huyeron"
+  ],
+  [
+   37.859,
+   38.234,
+   "en"
+  ],
+  [
+   38.234,
+   38.609,
+   "un"
+  ],
+  [
+   38.609,
+   38.984,
+   "bote"
+  ],
+  [
+   38.984,
+   39.358,
+   "salvavidas…"
+  ],
+  [
+   39.358,
+   39.733,
+   "con"
+  ],
+  [
+   39.733,
+   40.108,
+   "Phillips"
+  ],
+  [
+   40.108,
+   40.483,
+   "adentro."
+  ],
+  [
+   40.483,
+   40.858,
+   "Estados"
+  ],
+  [
+   40.858,
+   41.233,
+   "Unidos"
+  ],
+  [
+   41.233,
+   41.607,
+   "envió"
+  ],
+  [
+   41.607,
+   41.982,
+   "al"
+  ],
+  [
+   41.982,
+   42.357,
+   "destructor"
+  ],
+  [
+   42.357,
+   42.732,
+   "USS"
+  ],
+  [
+   42.732,
+   43.107,
+   "Bainbridge."
+  ],
+  [
+   43.107,
+   43.482,
+   "El"
+  ],
+  [
+   43.482,
+   43.856,
+   "diez"
+  ],
+  [
+   43.856,
+   44.231,
+   "de"
+  ],
+  [
+   44.231,
+   44.606,
+   "abril,"
+  ],
+  [
+   44.606,
+   44.981,
+   "Phillips"
+  ],
+  [
+   44.981,
+   45.356,
+   "intentó"
+  ],
+  [
+   45.356,
+   45.731,
+   "escapar."
+  ],
+  [
+   45.731,
+   46.106,
+   "Lo"
+  ],
+  [
+   46.106,
+   46.48,
+   "recapturaron"
+  ],
+  [
+   46.48,
+   46.855,
+   "entre"
+  ],
+  [
+   46.855,
+   47.23,
+   "disparos."
+  ],
+  [
+   47.23,
+   47.605,
+   "Otros"
+  ],
+  [
+   47.605,
+   47.98,
+   "piratas,"
+  ],
+  [
+   47.98,
+   48.355,
+   "con"
+  ],
+  [
+   48.355,
+   48.729,
+   "cincuenta"
+  ],
+  [
+   48.729,
+   49.104,
+   "y"
+  ],
+  [
+   49.104,
+   49.479,
+   "cuatro"
+  ],
+  [
+   49.479,
+   49.854,
+   "rehenes,"
+  ],
+  [
+   49.854,
+   50.229,
+   "iban"
+  ],
+  [
+   50.229,
+   50.604,
+   "hacia"
+  ],
+  [
+   50.604,
+   50.978,
+   "el"
+  ],
+  [
+   50.978,
+   51.353,
+   "bote."
+  ],
+  [
+   51.353,
+   51.728,
+   "El"
+  ],
+  [
+   51.728,
+   52.103,
+   "doce"
+  ],
+  [
+   52.103,
+   52.478,
+   "de"
+  ],
+  [
+   52.478,
+   52.853,
+   "abril,"
+  ],
+  [
+   52.853,
+   53.228,
+   "según"
+  ],
+  [
+   53.228,
+   53.602,
+   "los"
+  ],
+  [
+   53.602,
+   53.977,
+   "informes,"
+  ],
+  [
+   53.977,
+   54.352,
+   "un"
+  ],
+  [
+   54.352,
+   54.727,
+   "pirata"
+  ],
+  [
+   54.727,
+   55.102,
+   "apuntaba"
+  ],
+  [
+   55.102,
+   55.477,
+   "al"
+  ],
+  [
+   55.477,
+   55.851,
+   "capitán"
+  ],
+  [
+   55.851,
+   56.226,
+   "con"
+  ],
+  [
+   56.226,
+   56.601,
+   "un"
+  ],
+  [
+   56.601,
+   56.976,
+   "AK-47"
+  ],
+  [
+   56.976,
+   57.351,
+   "por"
+  ],
+  [
+   57.351,
+   57.726,
+   "la"
+  ],
+  [
+   57.726,
+   58.1,
+   "espalda."
+  ],
+  [
+   58.1,
+   58.475,
+   "Francotiradores"
+  ],
+  [
+   58.475,
+   58.85,
+   "SEAL"
+  ],
+  [
+   58.85,
+   59.225,
+   "dispararon"
+  ],
+  [
+   59.225,
+   59.6,
+   "desde"
+  ],
+  [
+   59.6,
+   59.975,
+   "el"
+  ],
+  [
+   59.975,
+   60.35,
+   "Bainbridge"
+  ],
+  [
+   60.35,
+   60.724,
+   "casi"
+  ],
+  [
+   60.724,
+   61.099,
+   "a"
+  ],
+  [
+   61.099,
+   61.474,
+   "la"
+  ],
+  [
+   61.474,
+   61.849,
+   "vez."
+  ],
+  [
+   61.849,
+   62.224,
+   "Los"
+  ],
+  [
+   62.224,
+   62.599,
+   "tres"
+  ],
+  [
+   62.599,
+   62.973,
+   "piratas"
+  ],
+  [
+   62.973,
+   63.348,
+   "del"
+  ],
+  [
+   63.348,
+   63.723,
+   "bote"
+  ],
+  [
+   63.723,
+   64.098,
+   "murieron."
+  ],
+  [
+   64.098,
+   64.473,
+   "Phillips"
+  ],
+  [
+   64.473,
+   64.848,
+   "fue"
+  ],
+  [
+   64.848,
+   65.222,
+   "rescatado"
+  ],
+  [
+   65.222,
+   65.597,
+   "en"
+  ],
+  [
+   65.597,
+   65.972,
+   "buenas"
+  ],
+  [
+   65.972,
+   66.347,
+   "condiciones."
+  ],
+  [
+   66.347,
+   66.722,
+   "El"
+  ],
+  [
+   66.722,
+   67.097,
+   "cuarto"
+  ],
+  [
+   67.097,
+   67.472,
+   "pirata,"
+  ],
+  [
+   67.472,
+   67.846,
+   "Abduwali"
+  ],
+  [
+   67.846,
+   68.221,
+   "Muse,"
+  ],
+  [
+   68.221,
+   68.596,
+   "fue"
+  ],
+  [
+   68.596,
+   68.971,
+   "condenado"
+  ],
+  [
+   68.971,
+   69.346,
+   "a"
+  ],
+  [
+   69.346,
+   69.721,
+   "más"
+  ],
+  [
+   69.721,
+   70.095,
+   "de"
+  ],
+  [
+   70.095,
+   70.47,
+   "treinta"
+  ],
+  [
+   70.47,
+   70.845,
+   "y"
+  ],
+  [
+   70.845,
+   71.22,
+   "tres"
+  ],
+  [
+   71.22,
+   71.595,
+   "años."
+  ],
+  [
+   71.595,
+   71.97,
+   "Su"
+  ],
+  [
+   71.97,
+   72.344,
+   "historia"
+  ],
+  [
+   72.344,
+   72.719,
+   "llegó"
+  ],
+  [
+   72.719,
+   73.094,
+   "al"
+  ],
+  [
+   73.094,
+   73.469,
+   "cine"
+  ],
+  [
+   73.469,
+   73.844,
+   "con"
+  ],
+  [
+   73.844,
+   74.219,
+   "Tom"
+  ],
+  [
+   74.219,
+   74.594,
+   "Hanks."
+  ],
+  [
+   74.594,
+   74.968,
+   "Suscríbete"
+  ],
+  [
+   74.968,
+   75.343,
+   "a"
+  ],
+  [
+   75.343,
+   75.718,
+   "Ridmer"
+  ],
+  [
+   75.718,
+   76.093,
+   "para"
+  ],
+  [
+   76.093,
+   76.468,
+   "más"
+  ],
+  [
+   76.468,
+   76.843,
+   "historias"
+  ],
+  [
+   76.843,
+   77.217,
+   "como"
+  ],
+  [
+   77.217,
+   77.592,
+   "esta."
+  ]
+ ]
+}

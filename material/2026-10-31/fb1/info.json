@@ -1,0 +1,1219 @@
+{
+ "eid": "fb1",
+ "hook_fin": 6.637,
+ "duracion_voz": 84.192,
+ "segmentos": [
+  {
+   "texto": "A la una de la madrugada, más de cien hombres armados entraron a un internado de niñas en Nigeria.",
+   "t0": 0.0,
+   "img": "esc_00.jpg",
+   "escena": {
+    "tipo": "fecha",
+    "texto": "26 DE FEBRERO DE 2021",
+    "sub": "Jangebe, Zamfara · 1:00 a. m."
+   },
+   "short": true,
+   "rotulo": ""
+  },
+  {
+   "texto": "Cuando se fueron, doscientas setenta y nueve estudiantes ya no estaban.",
+   "t0": 6.637,
+   "img": "esc_01.jpg",
+   "escena": {
+    "tipo": "fecha",
+    "texto": "279 ESTUDIANTES",
+    "sub": "Secuestradas en una sola noche"
+   },
+   "short": true,
+   "rotulo": ""
+  },
+  {
+   "texto": "Tenían entre doce y diecisiete años. Era el segundo secuestro escolar en Nigeria ese mes.",
+   "t0": 12.105,
+   "img": "esc_02.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 2
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Los atacantes no improvisaron. También atacaron un campamento militar y un puesto de seguridad cercanos, para que nadie interviniera.",
+   "t0": 18.148,
+   "img": "esc_03.jpg",
+   "escena": {
+    "tipo": "mapa",
+    "lat": 12.17,
+    "lon": 6.25,
+    "lugar": "Estado de Zamfara, Nigeria",
+    "km": 30
+   },
+   "short": true,
+   "rotulo": ""
+  },
+  {
+   "texto": "Bloquearon todas las entradas. Se alega que algunos vestían uniformes de las fuerzas de seguridad.",
+   "t0": 25.801,
+   "img": "esc_04.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 3
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Un policía murió. Unas cincuenta niñas se salvaron escondiéndose debajo de las camas y en los baños.",
+   "t0": 31.844,
+   "img": "esc_05.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 4
+   },
+   "short": true,
+   "rotulo": ""
+  },
+  {
+   "texto": "A las demás se las llevaron al bosque de Dangulbi, donde operan muchos grupos criminales.",
+   "t0": 38.692,
+   "img": "esc_06.jpg",
+   "escena": {
+    "tipo": "fecha",
+    "texto": "BOSQUE DE DANGULBI",
+    "sub": "Zamfara, Nigeria"
+   },
+   "short": true,
+   "rotulo": ""
+  },
+  {
+   "texto": "Una de ellas contó que las obligaron a marchar entre piedras y espinas, golpeándolas con las armas y amenazando con fusilarlas.",
+   "t0": 44.735,
+   "img": "esc_07.jpg",
+   "escena": {
+    "tipo": "cita",
+    "texto": "Nos obligaron a marchar entre piedras y espinas",
+    "autor": "Relato de una de las estudiantes"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Amnistía Internacional lo calificó como un crimen de guerra.",
+   "t0": 53.194,
+   "img": "esc_08.jpg",
+   "escena": {
+    "tipo": "fecha",
+    "texto": "CRIMEN DE GUERRA",
+    "sub": "Amnistía Internacional"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Cuatro días después, el gobernador Bello Matawalle anunció que todas habían sido liberadas. Aseguró que no se pagó ningún rescate.",
+   "t0": 56.82,
+   "img": "esc_09.jpg",
+   "escena": {
+    "tipo": "ficha",
+    "nombre": "Bello Matawalle",
+    "sub": "Gobernador de Zamfara",
+    "img": 1
+   },
+   "short": true,
+   "rotulo": ""
+  },
+  {
+   "texto": "Muchas volvieron con los pies heridos por caminar descalzas.",
+   "t0": 64.876,
+   "img": "esc_10.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 2
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "La pesadilla no terminó ahí. En la ceremonia de entrega, los padres querían llevarse a sus hijas antes del anochecer.",
+   "t0": 68.502,
+   "img": "esc_11.jpg",
+   "escena": {
+    "tipo": "fecha",
+    "texto": "3 DE MARZO DE 2021",
+    "sub": "Ceremonia de entrega"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Hubo piedras, disparos y gases lacrimógenos. Al menos una persona murió.",
+   "t0": 76.558,
+   "img": "esc_12.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 4
+   },
+   "short": false,
+   "rotulo": "UN MUERTO"
+  },
+  {
+   "texto": "Suscríbete a Ridmer para más historias como esta.",
+   "t0": 80.99,
+   "img": "esc_13.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 3
+   },
+   "short": false,
+   "rotulo": ""
+  }
+ ],
+ "palabras": [
+  [
+   0.0,
+   0.403,
+   "A"
+  ],
+  [
+   0.403,
+   0.806,
+   "la"
+  ],
+  [
+   0.806,
+   1.209,
+   "una"
+  ],
+  [
+   1.209,
+   1.611,
+   "de"
+  ],
+  [
+   1.611,
+   2.014,
+   "la"
+  ],
+  [
+   2.014,
+   2.417,
+   "madrugada,"
+  ],
+  [
+   2.417,
+   2.82,
+   "más"
+  ],
+  [
+   2.82,
+   3.223,
+   "de"
+  ],
+  [
+   3.223,
+   3.626,
+   "cien"
+  ],
+  [
+   3.626,
+   4.028,
+   "hombres"
+  ],
+  [
+   4.028,
+   4.431,
+   "armados"
+  ],
+  [
+   4.431,
+   4.834,
+   "entraron"
+  ],
+  [
+   4.834,
+   5.237,
+   "a"
+  ],
+  [
+   5.237,
+   5.64,
+   "un"
+  ],
+  [
+   5.64,
+   6.043,
+   "internado"
+  ],
+  [
+   6.043,
+   6.445,
+   "de"
+  ],
+  [
+   6.445,
+   6.848,
+   "niñas"
+  ],
+  [
+   6.848,
+   7.251,
+   "en"
+  ],
+  [
+   7.251,
+   7.654,
+   "Nigeria."
+  ],
+  [
+   7.654,
+   8.057,
+   "Cuando"
+  ],
+  [
+   8.057,
+   8.46,
+   "se"
+  ],
+  [
+   8.46,
+   8.862,
+   "fueron,"
+  ],
+  [
+   8.862,
+   9.265,
+   "doscientas"
+  ],
+  [
+   9.265,
+   9.668,
+   "setenta"
+  ],
+  [
+   9.668,
+   10.071,
+   "y"
+  ],
+  [
+   10.071,
+   10.474,
+   "nueve"
+  ],
+  [
+   10.474,
+   10.877,
+   "estudiantes"
+  ],
+  [
+   10.877,
+   11.279,
+   "ya"
+  ],
+  [
+   11.279,
+   11.682,
+   "no"
+  ],
+  [
+   11.682,
+   12.085,
+   "estaban."
+  ],
+  [
+   12.085,
+   12.488,
+   "Tenían"
+  ],
+  [
+   12.488,
+   12.891,
+   "entre"
+  ],
+  [
+   12.891,
+   13.294,
+   "doce"
+  ],
+  [
+   13.294,
+   13.696,
+   "y"
+  ],
+  [
+   13.696,
+   14.099,
+   "diecisiete"
+  ],
+  [
+   14.099,
+   14.502,
+   "años."
+  ],
+  [
+   14.502,
+   14.905,
+   "Era"
+  ],
+  [
+   14.905,
+   15.308,
+   "el"
+  ],
+  [
+   15.308,
+   15.711,
+   "segundo"
+  ],
+  [
+   15.711,
+   16.113,
+   "secuestro"
+  ],
+  [
+   16.113,
+   16.516,
+   "escolar"
+  ],
+  [
+   16.516,
+   16.919,
+   "en"
+  ],
+  [
+   16.919,
+   17.322,
+   "Nigeria"
+  ],
+  [
+   17.322,
+   17.725,
+   "ese"
+  ],
+  [
+   17.725,
+   18.128,
+   "mes."
+  ],
+  [
+   18.128,
+   18.53,
+   "Los"
+  ],
+  [
+   18.53,
+   18.933,
+   "atacantes"
+  ],
+  [
+   18.933,
+   19.336,
+   "no"
+  ],
+  [
+   19.336,
+   19.739,
+   "improvisaron."
+  ],
+  [
+   19.739,
+   20.142,
+   "También"
+  ],
+  [
+   20.142,
+   20.545,
+   "atacaron"
+  ],
+  [
+   20.545,
+   20.947,
+   "un"
+  ],
+  [
+   20.947,
+   21.35,
+   "campamento"
+  ],
+  [
+   21.35,
+   21.753,
+   "militar"
+  ],
+  [
+   21.753,
+   22.156,
+   "y"
+  ],
+  [
+   22.156,
+   22.559,
+   "un"
+  ],
+  [
+   22.559,
+   22.962,
+   "puesto"
+  ],
+  [
+   22.962,
+   23.364,
+   "de"
+  ],
+  [
+   23.364,
+   23.767,
+   "seguridad"
+  ],
+  [
+   23.767,
+   24.17,
+   "cercanos,"
+  ],
+  [
+   24.17,
+   24.573,
+   "para"
+  ],
+  [
+   24.573,
+   24.976,
+   "que"
+  ],
+  [
+   24.976,
+   25.379,
+   "nadie"
+  ],
+  [
+   25.379,
+   25.781,
+   "interviniera."
+  ],
+  [
+   25.781,
+   26.184,
+   "Bloquearon"
+  ],
+  [
+   26.184,
+   26.587,
+   "todas"
+  ],
+  [
+   26.587,
+   26.99,
+   "las"
+  ],
+  [
+   26.99,
+   27.393,
+   "entradas."
+  ],
+  [
+   27.393,
+   27.796,
+   "Se"
+  ],
+  [
+   27.796,
+   28.198,
+   "alega"
+  ],
+  [
+   28.198,
+   28.601,
+   "que"
+  ],
+  [
+   28.601,
+   29.004,
+   "algunos"
+  ],
+  [
+   29.004,
+   29.407,
+   "vestían"
+  ],
+  [
+   29.407,
+   29.81,
+   "uniformes"
+  ],
+  [
+   29.81,
+   30.213,
+   "de"
+  ],
+  [
+   30.213,
+   30.615,
+   "las"
+  ],
+  [
+   30.615,
+   31.018,
+   "fuerzas"
+  ],
+  [
+   31.018,
+   31.421,
+   "de"
+  ],
+  [
+   31.421,
+   31.824,
+   "seguridad."
+  ],
+  [
+   31.824,
+   32.227,
+   "Un"
+  ],
+  [
+   32.227,
+   32.63,
+   "policía"
+  ],
+  [
+   32.63,
+   33.032,
+   "murió."
+  ],
+  [
+   33.032,
+   33.435,
+   "Unas"
+  ],
+  [
+   33.435,
+   33.838,
+   "cincuenta"
+  ],
+  [
+   33.838,
+   34.241,
+   "niñas"
+  ],
+  [
+   34.241,
+   34.644,
+   "se"
+  ],
+  [
+   34.644,
+   35.047,
+   "salvaron"
+  ],
+  [
+   35.047,
+   35.449,
+   "escondiéndose"
+  ],
+  [
+   35.449,
+   35.852,
+   "debajo"
+  ],
+  [
+   35.852,
+   36.255,
+   "de"
+  ],
+  [
+   36.255,
+   36.658,
+   "las"
+  ],
+  [
+   36.658,
+   37.061,
+   "camas"
+  ],
+  [
+   37.061,
+   37.464,
+   "y"
+  ],
+  [
+   37.464,
+   37.866,
+   "en"
+  ],
+  [
+   37.866,
+   38.269,
+   "los"
+  ],
+  [
+   38.269,
+   38.672,
+   "baños."
+  ],
+  [
+   38.672,
+   39.075,
+   "A"
+  ],
+  [
+   39.075,
+   39.478,
+   "las"
+  ],
+  [
+   39.478,
+   39.881,
+   "demás"
+  ],
+  [
+   39.881,
+   40.283,
+   "se"
+  ],
+  [
+   40.283,
+   40.686,
+   "las"
+  ],
+  [
+   40.686,
+   41.089,
+   "llevaron"
+  ],
+  [
+   41.089,
+   41.492,
+   "al"
+  ],
+  [
+   41.492,
+   41.895,
+   "bosque"
+  ],
+  [
+   41.895,
+   42.298,
+   "de"
+  ],
+  [
+   42.298,
+   42.7,
+   "Dangulbi,"
+  ],
+  [
+   42.7,
+   43.103,
+   "donde"
+  ],
+  [
+   43.103,
+   43.506,
+   "operan"
+  ],
+  [
+   43.506,
+   43.909,
+   "muchos"
+  ],
+  [
+   43.909,
+   44.312,
+   "grupos"
+  ],
+  [
+   44.312,
+   44.715,
+   "criminales."
+  ],
+  [
+   44.715,
+   45.117,
+   "Una"
+  ],
+  [
+   45.117,
+   45.52,
+   "de"
+  ],
+  [
+   45.52,
+   45.923,
+   "ellas"
+  ],
+  [
+   45.923,
+   46.326,
+   "contó"
+  ],
+  [
+   46.326,
+   46.729,
+   "que"
+  ],
+  [
+   46.729,
+   47.132,
+   "las"
+  ],
+  [
+   47.132,
+   47.534,
+   "obligaron"
+  ],
+  [
+   47.534,
+   47.937,
+   "a"
+  ],
+  [
+   47.937,
+   48.34,
+   "marchar"
+  ],
+  [
+   48.34,
+   48.743,
+   "entre"
+  ],
+  [
+   48.743,
+   49.146,
+   "piedras"
+  ],
+  [
+   49.146,
+   49.549,
+   "y"
+  ],
+  [
+   49.549,
+   49.951,
+   "espinas,"
+  ],
+  [
+   49.951,
+   50.354,
+   "golpeándolas"
+  ],
+  [
+   50.354,
+   50.757,
+   "con"
+  ],
+  [
+   50.757,
+   51.16,
+   "las"
+  ],
+  [
+   51.16,
+   51.563,
+   "armas"
+  ],
+  [
+   51.563,
+   51.966,
+   "y"
+  ],
+  [
+   51.966,
+   52.368,
+   "amenazando"
+  ],
+  [
+   52.368,
+   52.771,
+   "con"
+  ],
+  [
+   52.771,
+   53.174,
+   "fusilarlas."
+  ],
+  [
+   53.174,
+   53.577,
+   "Amnistía"
+  ],
+  [
+   53.577,
+   53.98,
+   "Internacional"
+  ],
+  [
+   53.98,
+   54.383,
+   "lo"
+  ],
+  [
+   54.383,
+   54.785,
+   "calificó"
+  ],
+  [
+   54.785,
+   55.188,
+   "como"
+  ],
+  [
+   55.188,
+   55.591,
+   "un"
+  ],
+  [
+   55.591,
+   55.994,
+   "crimen"
+  ],
+  [
+   55.994,
+   56.397,
+   "de"
+  ],
+  [
+   56.397,
+   56.8,
+   "guerra."
+  ],
+  [
+   56.8,
+   57.202,
+   "Cuatro"
+  ],
+  [
+   57.202,
+   57.605,
+   "días"
+  ],
+  [
+   57.605,
+   58.008,
+   "después,"
+  ],
+  [
+   58.008,
+   58.411,
+   "el"
+  ],
+  [
+   58.411,
+   58.814,
+   "gobernador"
+  ],
+  [
+   58.814,
+   59.217,
+   "Bello"
+  ],
+  [
+   59.217,
+   59.619,
+   "Matawalle"
+  ],
+  [
+   59.619,
+   60.022,
+   "anunció"
+  ],
+  [
+   60.022,
+   60.425,
+   "que"
+  ],
+  [
+   60.425,
+   60.828,
+   "todas"
+  ],
+  [
+   60.828,
+   61.231,
+   "habían"
+  ],
+  [
+   61.231,
+   61.634,
+   "sido"
+  ],
+  [
+   61.634,
+   62.036,
+   "liberadas."
+  ],
+  [
+   62.036,
+   62.439,
+   "Aseguró"
+  ],
+  [
+   62.439,
+   62.842,
+   "que"
+  ],
+  [
+   62.842,
+   63.245,
+   "no"
+  ],
+  [
+   63.245,
+   63.648,
+   "se"
+  ],
+  [
+   63.648,
+   64.051,
+   "pagó"
+  ],
+  [
+   64.051,
+   64.453,
+   "ningún"
+  ],
+  [
+   64.453,
+   64.856,
+   "rescate."
+  ],
+  [
+   64.856,
+   65.259,
+   "Muchas"
+  ],
+  [
+   65.259,
+   65.662,
+   "volvieron"
+  ],
+  [
+   65.662,
+   66.065,
+   "con"
+  ],
+  [
+   66.065,
+   66.468,
+   "los"
+  ],
+  [
+   66.468,
+   66.87,
+   "pies"
+  ],
+  [
+   66.87,
+   67.273,
+   "heridos"
+  ],
+  [
+   67.273,
+   67.676,
+   "por"
+  ],
+  [
+   67.676,
+   68.079,
+   "caminar"
+  ],
+  [
+   68.079,
+   68.482,
+   "descalzas."
+  ],
+  [
+   68.482,
+   68.885,
+   "La"
+  ],
+  [
+   68.885,
+   69.287,
+   "pesadilla"
+  ],
+  [
+   69.287,
+   69.69,
+   "no"
+  ],
+  [
+   69.69,
+   70.093,
+   "terminó"
+  ],
+  [
+   70.093,
+   70.496,
+   "ahí."
+  ],
+  [
+   70.496,
+   70.899,
+   "En"
+  ],
+  [
+   70.899,
+   71.302,
+   "la"
+  ],
+  [
+   71.302,
+   71.704,
+   "ceremonia"
+  ],
+  [
+   71.704,
+   72.107,
+   "de"
+  ],
+  [
+   72.107,
+   72.51,
+   "entrega,"
+  ],
+  [
+   72.51,
+   72.913,
+   "los"
+  ],
+  [
+   72.913,
+   73.316,
+   "padres"
+  ],
+  [
+   73.316,
+   73.719,
+   "querían"
+  ],
+  [
+   73.719,
+   74.121,
+   "llevarse"
+  ],
+  [
+   74.121,
+   74.524,
+   "a"
+  ],
+  [
+   74.524,
+   74.927,
+   "sus"
+  ],
+  [
+   74.927,
+   75.33,
+   "hijas"
+  ],
+  [
+   75.33,
+   75.733,
+   "antes"
+  ],
+  [
+   75.733,
+   76.136,
+   "del"
+  ],
+  [
+   76.136,
+   76.538,
+   "anochecer."
+  ],
+  [
+   76.538,
+   76.941,
+   "Hubo"
+  ],
+  [
+   76.941,
+   77.344,
+   "piedras,"
+  ],
+  [
+   77.344,
+   77.747,
+   "disparos"
+  ],
+  [
+   77.747,
+   78.15,
+   "y"
+  ],
+  [
+   78.15,
+   78.553,
+   "gases"
+  ],
+  [
+   78.553,
+   78.955,
+   "lacrimógenos."
+  ],
+  [
+   78.955,
+   79.358,
+   "Al"
+  ],
+  [
+   79.358,
+   79.761,
+   "menos"
+  ],
+  [
+   79.761,
+   80.164,
+   "una"
+  ],
+  [
+   80.164,
+   80.567,
+   "persona"
+  ],
+  [
+   80.567,
+   80.97,
+   "murió."
+  ],
+  [
+   80.97,
+   81.372,
+   "Suscríbete"
+  ],
+  [
+   81.372,
+   81.775,
+   "a"
+  ],
+  [
+   81.775,
+   82.178,
+   "Ridmer"
+  ],
+  [
+   82.178,
+   82.581,
+   "para"
+  ],
+  [
+   82.581,
+   82.984,
+   "más"
+  ],
+  [
+   82.984,
+   83.387,
+   "historias"
+  ],
+  [
+   83.387,
+   83.789,
+   "como"
+  ],
+  [
+   83.789,
+   84.192,
+   "esta."
+  ]
+ ]
+}
