@@ -1,5 +1,5 @@
 """Clipero: graba el reality, detecta los momentos fuertes, los edita y te los manda por Telegram."""
-import json, os, queue, secrets, subprocess, threading, time
+import json, os, queue, re, secrets, subprocess, threading, time
 import config as C, recorder, analyzer, editor, tg, ia, fb, wa, web, ntfy
 try:
     import fabrica
@@ -7,7 +7,7 @@ except Exception as _e:          # si la fábrica falla, el Clipero sigue funcio
     fabrica = None
     print('fabrica no disponible:', _e, flush=True)
 
-VERSION = 'v34-fbdiag'
+VERSION = 'v35-sin-repetidos'
 cola = queue.Queue()
 historial = []          # (hora, puntaje) de clips enviados, para límites por hora
 stats = {'pedazos': 0, 'clips': 0, 'ult_puntaje': None, 'ult_pedazo': None}
@@ -124,6 +124,13 @@ def trabajador():
                 if job['manual']:
                     tg.texto('⚠️ No pude armar ese clip (¿todavía no hay grabación de ese momento?).')
                 continue
+            if not job['manual']:
+                rep = es_repetido(info, centro)
+                if rep:
+                    log('repetido, no se manda:', rep)
+                    editor.diag['ultimos'].append(time.strftime('%H:%M ') + 'repetido: ' + rep[:90])
+                    continue
+                anotar_reciente(info, centro)
             stats['clips'] += 1
             editor.diag['enviados'] += 1
             if job.get('barrido'):
@@ -147,7 +154,7 @@ def trabajador():
                 if info.get('explicito'):
                     cap += '\n\n🔒 Explícito: no se publica solo.'
                 elif cfg['auto_publicar'] and (pts or 0) >= cfg['auto_minimo']:
-                    cap += f"\n\n⏳ Si no respondes, se publica solo en {cfg['auto_espera_min']} min."
+                    cap += f"\n\n⏳ Si no respondes, entra a la cola y se publica solo (1 por hora, nunca de madrugada)."
             env = tg.video(info['ruta'], cap, cid, publicar=hay_fb)
             token = secrets.token_urlsafe(16)
             du = int(info.get('duracion', 0))
@@ -189,6 +196,45 @@ def trabajador():
             log('clip enviado', cid, job['puntaje'])
         except Exception as e:
             log('error en clip', e)
+
+
+RECIENTES = os.path.join(C.DATA, 'recientes.json')
+
+
+def _palabras(t):
+    return {w for w in re.findall(r'\w{4,}', (t or '').lower())}
+
+
+def es_repetido(info, centro):
+    """¿Ya mandamos este mismo momento? (misma escena, misma persona y tipo hace poco, o casi el mismo texto)"""
+    try:
+        rec = json.load(open(RECIENTES))
+    except Exception:
+        rec = []
+    ahora, lim = time.time(), C.get().get('repetido_min', 120) * 60
+    rec = [e for e in rec if ahora - e['t'] < 6 * 3600]
+    pal = _palabras(info.get('texto'))
+    quien = (info.get('nombres') or [''])[0]
+    for e in rec:
+        if abs(centro - e.get('centro', 0)) < 600:
+            return f"misma escena que «{e.get('titulo', '')}»"
+        if quien and quien == e.get('quien') and ahora - e['t'] < lim:
+            return f"otra vez {quien} — ya salió «{e.get('titulo', '')}» hace menos de {lim // 60} min"
+        otras = set(e.get('pal', []))
+        if pal and otras and len(pal & otras) / max(1, len(pal | otras)) > 0.3:
+            return f"casi el mismo texto que «{e.get('titulo', '')}»"
+    return ''
+
+
+def anotar_reciente(info, centro):
+    try:
+        rec = json.load(open(RECIENTES))
+    except Exception:
+        rec = []
+    rec = [e for e in rec if time.time() - e['t'] < 6 * 3600]
+    rec.append({'t': time.time(), 'centro': centro, 'quien': (info.get('nombres') or [''])[0], 'tipo': info.get('tipo'),
+                'titulo': info.get('titulo', ''), 'pal': sorted(_palabras(info.get('texto')))[:400]})
+    json.dump(rec, open(RECIENTES, 'w'), ensure_ascii=False)
 
 
 def meta_path(cid):
@@ -268,6 +314,8 @@ def no_publicar(cid):
 
 
 def auto_publicador():
+    """Publica solo lo que nadie revisó: tras la espera, de a uno, con al menos `separacion_pub_min` entre
+    publicaciones y nunca de madrugada (eso se guarda para la mañana). Si hay varios, va primero el mejor."""
     while True:
         time.sleep(60)
         try:
@@ -275,20 +323,34 @@ def auto_publicador():
             if not (fb.activo() and cfg['auto_publicar']):
                 continue
             ahora = time.time()
-            for cid in sorted(os.listdir(C.CLIPS)):
+            h = time.localtime().tm_hour
+            n0, n1 = cfg.get('pub_noche', [0, 7])
+            if n0 <= h < n1:
+                continue
+            ultimo = 0
+            candidatos = []
+            for cid in os.listdir(C.CLIPS):
                 m = leer_meta(cid)
-                if not m or m.get('estado') != 'pendiente' or m.get('auto_fallo') or m.get('explicito'):
+                if not m:
+                    continue
+                if m.get('estado') == 'publicado':
+                    ultimo = max(ultimo, m.get('publicado', 0))
+                    continue
+                if m.get('estado') != 'pendiente' or m.get('auto_fallo') or m.get('explicito'):
                     continue
                 if m.get('interes', 0) < cfg['auto_minimo'] or ahora - m.get('enviado', ahora) < cfg['auto_espera_min'] * 60:
                     continue
-                if ahora - m.get('enviado', ahora) > 6 * 3600:      # muy viejo: ya no
+                if ahora - m.get('enviado', ahora) > 12 * 3600:     # muy viejo: ya no
                     continue
-                if publicados_hoy() >= cfg['max_publicaciones_dia']:
-                    break
-                publicar_clip(cid, 'auto')
+                candidatos.append((m.get('interes', 0), m.get('enviado', 0), cid))
+            if not candidatos or ahora - ultimo < cfg.get('separacion_pub_min', 60) * 60:
+                continue
+            if publicados_hoy() >= cfg['max_publicaciones_dia']:
+                continue
+            candidatos.sort(key=lambda x: (-x[0], -x[1]))
+            publicar_clip(candidatos[0][2], 'auto')
         except Exception as e:
             log('error auto_publicador', e)
-
 
 MOTIVOS = {'normal': 'Charla normal, no pasa nada', 'nopol': 'No hay polémica real', 'ctx': 'Fuera de contexto',
            'incomp': 'Historia incompleta / clip cortado', 'emo': 'Emoción mal interpretada',

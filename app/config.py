@@ -53,21 +53,25 @@ DEFAULTS = {
     'radar_hora': 2,           # voz de Gemini elegida para Ridmer                     # tema secreto de la app ntfy
     'fb_page_token': '',
     'clip_max': 900,                     # sin tope real: dura lo que dure el momento
+    'separacion_pub_min': 60,            # mínimo entre publicaciones en Facebook
+    'pub_noche': [0, 7],                 # de 0:00 a 7:00 no se publica (se guarda para la mañana)
+    'repetido_min': 120,                 # no repetir la misma escena/persona en este tiempo
+    'certeza_minima': 75,
     'horas': [],                         # [] = todo el día; ej. [[18, 24], [0, 2]] solo esas horas
     'segmento_seg': 120,
     'guardar_horas': 3,                  # cuánto tiempo guardar lo grabado
     'whisper_modelo': 'small',
     'exparticipantes': {
         'Rey Ezequiel': ['rey', 'ezequiel'],
-    },
-    'participantes': {
         'Santiago Castro': ['santiago', 'castro'],
-        'Josselin "La Sabrosura" Jiménez': ['sabrosura', 'josselin', 'josselyn', 'joselin', 'joselyn'],
         'Verónica Saltos': ['verónica', 'veronica', 'vero'],
         'Jorgito "El Guayaco"': ['jorgito', 'guayaco', 'jorge'],
-        'Bryan "La Firgense"': ['bryan', 'brayan', 'firgense', 'frigersen'],
-        'Brillit Torres': ['brillit', 'brilit', 'brigitte'],
         'Abigail Lalama': ['abigail', 'abigaíl', 'abi', 'lalama'],
+    },
+    'participantes': {
+        'Josselin "La Sabrosura" Jiménez': ['sabrosura', 'josselin', 'josselyn', 'joselin', 'joselyn'],
+        'Bryan "La Firgense"': ['bryan', 'brayan', 'firgense', 'frigersen', 'frigerse'],
+        'Brillit Torres': ['brillit', 'brilit', 'brigitte'],
         'Dominik Kaviedes': ['dominik', 'dominic', 'kaviedes', 'caviedes'],
         'Martha Quiñónez': ['martha', 'marta', 'quiñónez', 'quiñonez'],
     },
@@ -77,13 +81,14 @@ _lock = threading.Lock()
 _cfg = None
 _propio = {}            # solo lo que se guardó a propósito (no los valores por defecto)
 
-VERSION_CFG = 4
+VERSION_CFG = 5
 # claves que versiones viejas guardaban sin querer: se borran para que mande el valor por defecto
 MIGRAR = {2: ['clip_min', 'clip_max', 'ventana_antes', 'ventana_despues', 'antes_seg', 'despues_seg',
               'umbral_ia', 'max_por_hora', 'separacion_min', 'segmento_seg', 'guardar_horas', 'whisper_modelo',
               'auto_espera_min', 'auto_minimo', 'max_publicaciones_dia', 'participantes', 'canal', 'reality',
-              'marca', 'modo', 'web_url', 'web_puerto', 'umbral']}
-FORZAR = {2: {'ia_minimo': 80}, 3: {'ia_minimo': 85}, 4: {'ridmer_urgencia': 90}}
+              'marca', 'modo', 'web_url', 'web_puerto', 'umbral'],
+          5: ['participantes', 'exparticipantes']}       # lista actual según lacasa593.com (1-nov-2026)
+FORZAR = {2: {'ia_minimo': 80}, 3: {'ia_minimo': 85}, 4: {'ridmer_urgencia': 90}, 5: {'certeza_minima': 75}}
 
 
 def _escribir():

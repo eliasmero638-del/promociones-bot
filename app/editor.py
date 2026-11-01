@@ -350,6 +350,14 @@ def hacer_clip(pedazos_info, centro, chat_textos, nombre=None, job_filtro=None, 
                     continue
                 if any(re.search(r'\b' + re.escape(k) + r'\b', texto_tit) for k in [_norm(a_) for a_ in al] if len(k) >= 3):
                     dudosos.append(nombre_)
+            actuales = [n for n in conf if n in cfg['participantes']]
+            if solo_ia and (dudosos or not actuales):
+                motivo = 'nombres no confirmados' if dudosos else 'no se sabe quién habla'
+                log('supervisor descarta:', motivo, '·', r.get('titulo'))
+                diag['supervisor'][motivo] += 1
+                diag['ultimos'].append(time.strftime('%H:%M ') + f"IA descarta ({motivo}): {r.get('titulo', '')}")
+                return {'descartado': True, 'motivo': motivo}
+            r['personajes'] = [n for n in r['personajes'] if n in conf] or actuales
             if dudosos:
                 cat = str(r.get('categoria', '')).lower()
                 neutros = {'polemica': ('SE ARMA UNA DISCUSIÓN EN LA CASA', 'y nadie se quedó callado'),
