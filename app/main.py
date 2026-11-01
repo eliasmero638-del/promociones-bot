@@ -7,7 +7,7 @@ except Exception as _e:          # si la fábrica falla, el Clipero sigue funcio
     fabrica = None
     print('fabrica no disponible:', _e, flush=True)
 
-VERSION = 'v33-solo-mundial'
+VERSION = 'v34-fbdiag'
 cola = queue.Queue()
 historial = []          # (hora, puntaje) de clips enviados, para límites por hora
 stats = {'pedazos': 0, 'clips': 0, 'ult_puntaje': None, 'ult_pedazo': None}
@@ -470,6 +470,14 @@ def comandos(tipo, chat, dato, raw):
         tg.texto(f'🎬 Haciendo un {f_} de Ridmer' + (f' sobre: {tema}' if tema else '') + '. Te aviso cuando esté.', chat)
     elif cmd == '/diag':
         tg.texto(texto_diag(), chat)
+    elif cmd == '/fbdiag':
+        try:
+            import fb as _fb
+            txt = _fb.diagnostico()
+        except Exception as e:
+            txt = f'error: {e}'
+        for i in range(0, len(txt), 3500):
+            tg._api('sendMessage', chat_id=chat, text=txt[i:i + 3500], parse_mode='HTML')
     elif cmd == '/start':
         tg.texto('Ya estás registrado. /estado para ver cómo va.', chat)
 

@@ -102,3 +102,37 @@ def publicar(path, texto, titulo='', clave=None):
         return True, _video(path, texto, titulo, pid, tok)
     except Exception as e:
         return False, str(e)[:300]
+
+
+def diagnostico():
+    """Qué ve Facebook de los últimos videos de cada página: estado, privacidad, derechos de autor, app que publicó."""
+    c = C.get()
+    out = []
+    for pid, d in (c.get('fb_paginas') or {}).items():
+        tok = d['token']
+        out.append(f"📘 <b>{d['nombre']}</b>")
+        try:
+            dbg = requests.get(f'{API}/{_v()}/debug_token', params={'input_token': tok, 'access_token': tok}, timeout=30).json()
+            dd = dbg.get('data', {})
+            out.append(f"  token: válido={dd.get('is_valid')} app={dd.get('application', '?')} permisos={','.join(dd.get('scopes', []))[:160]}")
+        except Exception as e:
+            out.append(f'  token: error {e}')
+        for edge in ('video_reels', 'videos'):
+            try:
+                r = requests.get(f'{API}/{_v()}/{pid}/{edge}', timeout=40, params={
+                    'access_token': tok, 'limit': 6,
+                    'fields': 'id,created_time,description,published,privacy,status,permalink_url,application'}).json()
+            except Exception as e:
+                out.append(f'  {edge}: error {e}'); continue
+            if 'error' in r:
+                out.append(f"  {edge}: error {r['error'].get('message', '')[:200]}"); continue
+            out.append(f'  — {edge} —')
+            for v in r.get('data', []):
+                st = v.get('status') or {}
+                pub = (st.get('publishing_phase') or {})
+                out.append(f"  • {v.get('created_time', '')[:16]} {str(v.get('description', ''))[:35]!r}\n"
+                           f"    publicado={v.get('published')} privacidad={(v.get('privacy') or {}).get('value')} "
+                           f"estado={st.get('video_status')} pub={pub.get('status')}/{pub.get('publish_status')} "
+                           f"copyright={st.get('copyright_check_status', {}).get('status') if isinstance(st.get('copyright_check_status'), dict) else st.get('copyright_check_status')} "
+                           f"app={(v.get('application') or {}).get('name')}")
+    return '\n'.join(out) or 'No hay páginas conectadas.'
