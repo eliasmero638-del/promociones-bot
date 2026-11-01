@@ -1,5 +1,5 @@
 """Publicación en la página de Facebook (Graph API oficial de Meta)."""
-import os, subprocess, time
+import html, os, subprocess, time
 import requests
 import config as C
 
@@ -125,12 +125,12 @@ def diagnostico():
             except Exception as e:
                 out.append(f'  {edge}: error {e}'); continue
             if 'error' in r:
-                out.append(f"  {edge}: error {r['error'].get('message', '')[:200]}"); continue
+                out.append(f"  {edge}: error {html.escape(r['error'].get('message', '')[:200])}"); continue
             out.append(f'  — {edge} —')
             for v in r.get('data', []):
                 st = v.get('status') or {}
                 pub = (st.get('publishing_phase') or {})
-                out.append(f"  • {v.get('created_time', '')[:16]} {str(v.get('description', ''))[:35]!r}\n"
+                out.append(f"  • {v.get('created_time', '')[:16]} {html.escape(str(v.get('description', ''))[:35])}\n"
                            f"    publicado={v.get('published')} privacidad={(v.get('privacy') or {}).get('value')} "
                            f"estado={st.get('video_status')} pub={pub.get('status')}/{pub.get('publish_status')} "
                            f"copyright={st.get('copyright_check_status', {}).get('status') if isinstance(st.get('copyright_check_status'), dict) else st.get('copyright_check_status')} "
