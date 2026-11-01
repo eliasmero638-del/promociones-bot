@@ -1,0 +1,424 @@
+{
+ "fecha": "2026-11-01",
+ "modo": "claude",
+ "videos": [
+  {
+   "eid": "fb1",
+   "tipo": "fb",
+   "hora_fb": "12:30",
+   "hora_short": "13:00",
+   "articulo": "Asesinatos de la familia de Setagaya",
+   "fuente": "https://es.wikipedia.org/wiki/Asesinatos_de_la_familia_de_Setagaya",
+   "titulo_video": "SE QUEDÓ EN LA CASA",
+   "titulo_youtube": "Mató a una familia entera… y se quedó horas en la casa comiendo helado",
+   "descripcion_youtube": "Tokio, 30 de diciembre del año 2000. Una familia entera muere en su propia casa.\nEl asesino dejó ADN, huellas y hasta su ropa… y aun así nadie sabe quién es.\nUno de los crímenes sin resolver más inquietantes de Japón.\n#misterio #casosreales #ridmer",
+   "etiquetas": [
+    "misterio",
+    "caso real",
+    "crimen sin resolver",
+    "Setagaya",
+    "Japón",
+    "Tokio",
+    "familia Miyazawa",
+    "ridmer"
+   ],
+   "texto_facebook": "Dejó su ADN, sus huellas y hasta su ropa… y más de 25 años después nadie sabe quién es. #misterio #casosreales #ridmer",
+   "miniatura": {
+    "img": 1,
+    "texto": "SE QUEDÓ HORAS"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Mató a una familia entera… y después se quedó en la casa a comer helado.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     },
+     "short": true
+    },
+    {
+     "texto": "Treinta de diciembre del año dos mil. Setagaya, Tokio.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "30 DE DICIEMBRE DE 2000",
+      "sub": "Setagaya, Tokio"
+     },
+     "short": true
+    },
+    {
+     "texto": "En esta casa dormían los Miyazawa: Mikio, Yasuko y sus dos hijos, Niina, de ocho años, y Rei, de seis.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Familia Miyazawa",
+      "sub": "Mikio 44 · Yasuko 41 · Niina 8 · Rei 6",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Hacia las once de la noche, un hombre entró por una pequeña ventana del baño del segundo piso.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     },
+     "short": true
+    },
+    {
+     "texto": "Ninguno de los cuatro sobrevivió.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "4 VÍCTIMAS",
+      "sub": "Familia Miyazawa"
+     },
+     "short": true
+    },
+    {
+     "texto": "Pero lo más perturbador vino después. El asesino no huyó. Se quedó varias horas dentro de la casa, con la familia sin vida.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Sacó helado y té de cebada del refrigerador. Usó el botiquín de la familia. Revisó y destruyó sus documentos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     },
+     "short": true
+    },
+    {
+     "texto": "Y a la una y dieciocho de la madrugada, encendió la computadora del padre y se conectó a internet.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "1:18 A. M.",
+      "sub": "Su último movimiento conocido"
+     },
+     "short": true
+    },
+    {
+     "texto": "Dejó lo que la policía llamó una montaña de pruebas: su ADN, sus huellas, una chaqueta, un gorro, unos guantes, y hasta perfume en un pañuelo.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     },
+     "rotulo": "MONTAÑA DE PRUEBAS"
+    },
+    {
+     "texto": "Más de doscientos ochenta mil agentes han trabajado en el caso.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "280 000 AGENTES",
+      "sub": "Policía Metropolitana de Tokio"
+     }
+    },
+    {
+     "texto": "Sus huellas se compararon más de ocho millones de veces. Ninguna coincidió.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     },
+     "rotulo": "8 MILLONES"
+    },
+    {
+     "texto": "Hoy la recompensa es de veinte millones de yenes. Y el hombre que entró por esa ventana sigue sin nombre.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 35.656,
+      "lon": 139.598,
+      "lugar": "Kamisoshigaya, Setagaya",
+      "km": 2
+     },
+     "short": true
+    },
+    {
+     "texto": "Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb2",
+   "tipo": "fb",
+   "hora_fb": "18:30",
+   "hora_short": "19:00",
+   "articulo": "Expedición perdida de Franklin",
+   "fuente": "https://es.wikipedia.org/wiki/Expedici%C3%B3n_perdida_de_Franklin",
+   "titulo_video": "NINGUNO VOLVIÓ DEL HIELO",
+   "titulo_youtube": "129 hombres entraron al Ártico y ninguno volvió… lo que hallaron en sus huesos",
+   "descripcion_youtube": "En 1845, dos barcos británicos partieron a cruzar el último tramo del Paso del Noroeste.\n129 hombres. Ninguno regresó.\nTumbas en el hielo, una nota olvidada y huesos con marcas que nadie esperaba.\n#misterio #casosreales #ridmer",
+   "etiquetas": [
+    "misterio",
+    "caso real",
+    "expedición Franklin",
+    "Ártico",
+    "HMS Erebus",
+    "HMS Terror",
+    "historia",
+    "ridmer"
+   ],
+   "texto_facebook": "Dos barcos, 129 hombres y el hielo del Ártico. Lo que encontraron en la isla del Rey Guillermo fue escalofriante. #misterio #historia #ridmer",
+   "miniatura": {
+    "img": 12,
+    "texto": "NINGUNO VOLVIÓ"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Ciento veintinueve hombres partieron hacia el Ártico. Ninguno volvió con vida.",
+     "escena": {
+      "tipo": "foto",
+      "img": 12
+     },
+     "short": true
+    },
+    {
+     "texto": "Inglaterra, mil ochocientos cuarenta y cinco.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "1845",
+      "sub": "Parten de Inglaterra"
+     },
+     "short": true
+    },
+    {
+     "texto": "Al mando iba sir John Franklin, un explorador experimentado de cincuenta y nueve años.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Sir John Franklin",
+      "sub": "Explorador · 59 años",
+      "img": 2
+     },
+     "short": true
+    },
+    {
+     "texto": "Su misión: cruzar el último tramo inexplorado del Paso del Noroeste, con dos barcos, el Erebus y el Terror.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     }
+    },
+    {
+     "texto": "Pero los barcos quedaron atrapados en el hielo, cerca de la isla del Rey Guillermo.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 69.0,
+      "lon": -97.5,
+      "lugar": "Isla del Rey Guillermo",
+      "km": 30
+     },
+     "short": true
+    },
+    {
+     "texto": "Presionado por la esposa de Franklin, el Almirantazgo inició la búsqueda en mil ochocientos cuarenta y ocho.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "En la isla Beechey aparecieron las primeras huellas: las tumbas de tres tripulantes.",
+     "escena": {
+      "tipo": "foto",
+      "img": 14
+     },
+     "short": true
+    },
+    {
+     "texto": "Los inuit le contaron historias de los marineros al explorador John Rae, y le entregaron objetos que habían sido suyos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "En mil ochocientos cincuenta y nueve, una búsqueda halló una nota con detalles sobre el destino de la expedición.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     },
+     "rotulo": "LA NOTA"
+    },
+    {
+     "texto": "Más de un siglo después, los científicos estudiaron las tumbas y los cuerpos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 15
+     }
+    },
+    {
+     "texto": "En huesos hallados en la isla del Rey Guillermo encontraron marcas de cortes. Se sospechó canibalismo.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "MARCAS DE CORTES",
+      "sub": "Isla del Rey Guillermo"
+     },
+     "short": true
+    },
+    {
+     "texto": "Murieron de frío, hambre, escorbuto, enfermedades… y plomo, quizá de las tuberías de agua de sus propios barcos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "En dos mil catorce, el Erebus apareció bajo el agua. Dos años después, el Terror.",
+     "escena": {
+      "tipo": "foto",
+      "img": 11
+     },
+     "short": true
+    },
+    {
+     "texto": "Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 7
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb3",
+   "tipo": "fb",
+   "hora_fb": "21:00",
+   "articulo": "Expedición británica al Everest de 1924",
+   "fuente": "https://es.wikipedia.org/wiki/Expedici%C3%B3n_brit%C3%A1nica_al_Everest_de_1924",
+   "titulo_video": "¿LLEGARON A LA CIMA?",
+   "titulo_youtube": "Subieron al Everest en 1924 y nunca volvieron… ¿llegaron a la cima primero?",
+   "descripcion_youtube": "En 1924, George Mallory y Andrew Irvine partieron hacia la cumbre del Everest.\nNunca regresaron.\n¿Fueron los primeros en llegar, 29 años antes que Hillary y Tenzing? Una cámara podría saberlo.\n#misterio #casosreales #ridmer",
+   "etiquetas": [
+    "misterio",
+    "Everest",
+    "George Mallory",
+    "Andrew Irvine",
+    "1924",
+    "montañismo",
+    "historia",
+    "ridmer"
+   ],
+   "texto_facebook": "Los vieron subir hacia la cima… y nunca regresaron. ¿Llegaron primero que nadie? #misterio #everest #ridmer",
+   "miniatura": {
+    "img": 8,
+    "texto": "¿LLEGARON?"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Subieron hacia la cima del Everest… y nunca regresaron. ¿Y si llegaron antes que nadie?",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Mil novecientos veinticuatro.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "1924",
+      "sub": "Cara norte del Everest, Tíbet"
+     }
+    },
+    {
+     "texto": "Para Gran Bretaña, conquistar la cima de la montaña más alta de la Tierra era una cuestión de orgullo nacional. Lo llamaban el tercer polo.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Entre los escaladores estaba George Mallory, el único que participó en las tres primeras expediciones británicas.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "George Mallory",
+      "sub": "Escalador · 1921, 1922 y 1924",
+      "img": 8
+     }
+    },
+    {
+     "texto": "Cuando en Estados Unidos le preguntaron por qué quería escalar el Everest, respondió con tres palabras: porque está ahí.",
+     "escena": {
+      "tipo": "cita",
+      "texto": "Porque está ahí.",
+      "autor": "George Mallory"
+     }
+    },
+    {
+     "texto": "Los dos primeros intentos de ese año fracasaron, aunque Edward Norton logró un nuevo récord de altitud.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Edward Norton",
+      "sub": "Récord de altitud · 1924",
+      "img": 12
+     }
+    },
+    {
+     "texto": "Entonces Mallory partió en un tercer intento, junto a su compañero Andrew Irvine.",
+     "escena": {
+      "tipo": "foto",
+      "img": 21
+     }
+    },
+    {
+     "texto": "Nunca regresaron.",
+     "escena": {
+      "tipo": "foto",
+      "img": 19
+     },
+     "rotulo": "NUNCA REGRESARON"
+    },
+    {
+     "texto": "Desde entonces, una pregunta persigue a todos: ¿llegaron a la cumbre?",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Si lo lograron, habrían sido los primeros, veintinueve años antes que Edmund Hillary y Tenzing Norgay.",
+     "escena": {
+      "tipo": "foto",
+      "img": 20
+     },
+     "rotulo": "29 AÑOS ANTES"
+    },
+    {
+     "texto": "En mil novecientos noventa y nueve encontraron el cuerpo de Mallory. Aportó pistas, pero no la respuesta.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "1999",
+      "sub": "Hallan el cuerpo de Mallory"
+     }
+    },
+    {
+     "texto": "Porque Irvine llevaba una cámara de fotos. Y lo que haya en ella podría revelar si llegaron a la cima y por qué no volvieron con vida.",
+     "escena": {
+      "tipo": "foto",
+      "img": 11
+     }
+    },
+    {
+     "texto": "Desde entonces, muchas expediciones han subido a buscar a Irvine y su cámara. La pregunta sigue sin respuesta.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 27.988,
+      "lon": 86.925,
+      "lugar": "Monte Everest",
+      "km": 8
+     }
+    },
+    {
+     "texto": "Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 14
+     }
+    }
+   ]
+  }
+ ]
+}
