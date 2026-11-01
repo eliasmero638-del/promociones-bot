@@ -7,7 +7,7 @@ except Exception as _e:          # si la fábrica falla, el Clipero sigue funcio
     fabrica = None
     print('fabrica no disponible:', _e, flush=True)
 
-VERSION = 'v35-sin-repetidos'
+VERSION = 'v36-visitas'
 cola = queue.Queue()
 historial = []          # (hora, puntaje) de clips enviados, para límites por hora
 stats = {'pedazos': 0, 'clips': 0, 'ult_puntaje': None, 'ult_pedazo': None}
@@ -211,15 +211,15 @@ def es_repetido(info, centro):
         rec = json.load(open(RECIENTES))
     except Exception:
         rec = []
-    ahora, lim = time.time(), C.get().get('repetido_min', 120) * 60
+    ahora, lim = time.time(), C.get().get('repetido_min', 30) * 60
     rec = [e for e in rec if ahora - e['t'] < 6 * 3600]
     pal = _palabras(info.get('texto'))
     quien = (info.get('nombres') or [''])[0]
     for e in rec:
         if abs(centro - e.get('centro', 0)) < 600:
             return f"misma escena que «{e.get('titulo', '')}»"
-        if quien and quien == e.get('quien') and ahora - e['t'] < lim:
-            return f"otra vez {quien} — ya salió «{e.get('titulo', '')}» hace menos de {lim // 60} min"
+        if quien and quien == e.get('quien') and abs(centro - e.get('centro', 0)) < lim:
+            return f"misma conversación de {quien} que «{e.get('titulo', '')}»"
         otras = set(e.get('pal', []))
         if pal and otras and len(pal & otras) / max(1, len(pal | otras)) > 0.3:
             return f"casi el mismo texto que «{e.get('titulo', '')}»"
@@ -524,6 +524,19 @@ def comandos(tipo, chat, dato, raw):
         ps[partes[0]] = [p.lower() for p in partes[1:]] + [partes[0].split()[0].lower()]
         C.save(participantes=ps)
         tg.texto(f'🆕 {partes[0]} agregado a la lista.', chat)
+    elif cmd == '/invitado':
+        partes = [x.strip() for x in dato.partition(' ')[2].split(',') if x.strip()]
+        if not partes:
+            return tg.texto('Usa así: /invitado Nombre, apodo1, apodo2  (para visitas que entran a la casa)', chat)
+        inv = dict(cfg.get('invitados') or {})
+        inv[partes[0]] = [p.lower() for p in partes[1:]] + [partes[0].split()[0].lower()]
+        C.save(invitados=inv)
+        tg.texto(f'👋 {partes[0]} agregado como invitado: la IA ya puede nombrarlo.', chat)
+    elif cmd == '/fuera':
+        q = dato.partition(' ')[2].strip().lower()
+        inv = {k: v for k, v in (cfg.get('invitados') or {}).items() if q not in k.lower()}
+        C.save(invitados=inv)
+        tg.texto('Invitados ahora: ' + (', '.join(inv) or 'ninguno'), chat)
     elif cmd == '/ridmer' and fabrica:
         f_ = 'largo' if 'largo' in dato.lower() else 'short'
         tema = dato.split(maxsplit=2)[2] if len(dato.split(maxsplit=2)) > 2 else None

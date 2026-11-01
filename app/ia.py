@@ -178,6 +178,9 @@ def _audio(clip):
 def analizar(clip, chat_textos, seg):
     cfg = C.get()
     parts_txt = '; '.join(f"{k}: {', '.join(v)}" for k, v in cfg['participantes'].items())
+    if cfg.get('invitados'):
+        parts_txt += ' | INVITADOS DE VISITA en la casa (sí aparecen en cámara): ' + '; '.join(
+            f"{k}: {', '.join(v)}" for k, v in cfg['invitados'].items())
     chat = ' | '.join(chat_textos[-80:])[:4000] or '(sin chat)'
     fotos = _fotos(clip)
     ex = cfg.get('exparticipantes') or {}
@@ -304,6 +307,9 @@ def analizar_groq(palabras, chat_textos, seg):
     if g:
         lineas.append(f'[{g[0][0]:.1f}s] ' + ' '.join(x[1] for x in g))
     parts_txt = '; '.join(f"{k}: {', '.join(v)}" for k, v in cfg['participantes'].items())
+    if cfg.get('invitados'):
+        parts_txt += ' | INVITADOS DE VISITA en la casa (sí aparecen en cámara): ' + '; '.join(
+            f"{k}: {', '.join(v)}" for k, v in cfg['invitados'].items())
     ex = cfg.get('exparticipantes') or {}
     ex_txt = '; '.join(f"{k}: {', '.join(v)}" for k, v in ex.items()) or '(ninguno)'
     prompt = PROMPT.format(aprendizaje=aprendizaje(), exparticipantes=ex_txt, marca=cfg['marca'], reality=cfg['reality'],

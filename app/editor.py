@@ -338,21 +338,22 @@ def hacer_clip(pedazos_info, centro, chat_textos, nombre=None, job_filtro=None, 
                     try:
                         if int(x.get('certeza', 0) or 0) >= cfg.get('certeza_nombres', 90):
                             nx = _norm(str(x.get('nombre', '')))
-                            for nombre_, al in list(cfg['participantes'].items()) + list((cfg.get('exparticipantes') or {}).items()):
+                            for nombre_, al in list(cfg['participantes'].items()) + list((cfg.get('invitados') or {}).items()) + list((cfg.get('exparticipantes') or {}).items()):
                                 if any(k and k in nx for k in [_norm(nombre_)] + [_norm(a_) for a_ in al] if len(k) >= 3):
                                     conf.add(nombre_)
                     except Exception:
                         pass
             texto_tit = _norm(' '.join(str(r.get(k, '')) for k in ('titulo', 'subtitulo', 'texto_post', 'descripcion')))
             dudosos = []
-            for nombre_, al in list(cfg['participantes'].items()) + list((cfg.get('exparticipantes') or {}).items()):
+            for nombre_, al in list(cfg['participantes'].items()) + list((cfg.get('invitados') or {}).items()) + list((cfg.get('exparticipantes') or {}).items()):
                 if nombre_ in conf:
                     continue
                 if any(re.search(r'\b' + re.escape(k) + r'\b', texto_tit) for k in [_norm(a_) for a_ in al] if len(k) >= 3):
                     dudosos.append(nombre_)
-            actuales = [n for n in conf if n in cfg['participantes']]
-            if solo_ia and (dudosos or not actuales):
-                motivo = 'nombres no confirmados' if dudosos else 'no se sabe quién habla'
+            actuales = [n for n in conf if n in cfg['participantes'] or n in (cfg.get('invitados') or {})]
+            fuerte = int(r.get('interes', 0) or 0) >= cfg.get('sin_nombre_minimo', 90)
+            if solo_ia and not actuales and not fuerte:
+                motivo = 'no se sabe quién habla'
                 log('supervisor descarta:', motivo, '·', r.get('titulo'))
                 diag['supervisor'][motivo] += 1
                 diag['ultimos'].append(time.strftime('%H:%M ') + f"IA descarta ({motivo}): {r.get('titulo', '')}")

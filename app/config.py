@@ -55,7 +55,8 @@ DEFAULTS = {
     'clip_max': 900,                     # sin tope real: dura lo que dure el momento
     'separacion_pub_min': 60,            # mínimo entre publicaciones en Facebook
     'pub_noche': [0, 7],                 # de 0:00 a 7:00 no se publica (se guarda para la mañana)
-    'repetido_min': 120,                 # no repetir la misma escena/persona en este tiempo
+    'repetido_min': 30,                  # misma persona dentro de 30 min de grabación = misma conversación
+    'sin_nombre_minimo': 90,             # sin nombre seguro solo pasa si el momento es muy fuerte (título neutral)
     'certeza_minima': 75,
     'horas': [],                         # [] = todo el día; ej. [[18, 24], [0, 2]] solo esas horas
     'segmento_seg': 120,
@@ -67,6 +68,9 @@ DEFAULTS = {
         'Verónica Saltos': ['verónica', 'veronica', 'vero'],
         'Jorgito "El Guayaco"': ['jorgito', 'guayaco', 'jorge'],
         'Abigail Lalama': ['abigail', 'abigaíl', 'abi', 'lalama'],
+    },
+    'invitados': {                     # visitas (se agregan con /invitado y se quitan con /fuera)
+        'Aarón "El Chiche"': ['aarón', 'aaron', 'chiche'],
     },
     'participantes': {
         'Josselin "La Sabrosura" Jiménez': ['sabrosura', 'josselin', 'josselyn', 'joselin', 'joselyn'],
