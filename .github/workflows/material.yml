@@ -25,10 +25,7 @@ jobs:
             L="/tmp/m/material/$FECHA/lista.json"
             for i in $(seq 1 30); do
               # si el pedido trae eids (2.ª línea), espera a que ESOS estén listos; si no, a que todo esté completo
-              if curl -sf --max-time 60 "$S/$FECHA/lista.json" -o "$L" && python3 -c "
-import json,sys
-l=json.load(open(sys.argv[1])); pide=open(sys.argv[2]).read().split()[1:]
-sys.exit(0 if (all(e in l['listos'] for e in pide) if pide else l['completo']) else 1)" "$L" "$f"; then break; fi
+              if curl -sf --max-time 60 "$S/$FECHA/lista.json" -o "$L" && python3 -c "import json,sys; l=json.load(open(sys.argv[1])); pide=open(sys.argv[2]).read().split()[1:]; sys.exit(0 if (all(e in l['listos'] for e in pide) if pide else l['completo']) else 1)" "$L" "$f"; then break; fi
               echo "material todavía no está completo, espero 2 min"; sleep 120
             done
             [ -s "$L" ] || { echo "sin material" > "/tmp/m/material/$FECHA/ERROR.txt"; continue; }
