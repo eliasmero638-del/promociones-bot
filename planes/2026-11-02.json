@@ -1053,6 +1053,331 @@
      "short": true
     }
    ]
+  },
+  {
+   "eid": "urg1s",
+   "tipo": "short",
+   "hora_youtube": "17:00",
+   "articulo": "Accidente de Learjet 60 en Palm Beach",
+   "fuente": "https://www.univision.com/noticias/estados-unidos/un-jet-privado-con-nueve-personas-a-bordo-se-estrella-en-un-barrio-de-florida-esto-es-lo-que-sabemos",
+   "titulo_video": "CAYÓ SOBRE UN BARRIO",
+   "titulo_youtube": "Iba a las Bahamas… y cayó en picada sobre un barrio de Florida",
+   "descripcion_youtube": "Un Learjet 60 que iba de Austin a las Bahamas se estrelló el domingo en Palm Beach, Florida. Murieron las 9 personas a bordo.\n#noticias #florida #ridmer #shorts",
+   "etiquetas": [
+    "noticias",
+    "accidente aéreo",
+    "Florida",
+    "Learjet 60",
+    "shorts",
+    "ridmer"
+   ],
+   "texto_facebook": "",
+   "miniatura": {
+    "seg": 0,
+    "texto": "9 MUERTOS"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Un jet privado iba rumbo a las Bahamas... y terminó cayendo sobre un barrio de Florida.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Learjet 60",
+       "Learjet 60XR"
+      ]
+     }
+    },
+    {
+     "texto": "Pasó este domingo. Era un Learjet sesenta que despegó de Austin, Texas.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "DOMINGO 1 DE NOVIEMBRE",
+      "sub": "Learjet 60 · salió de Austin, Texas"
+     }
+    },
+    {
+     "texto": "Su destino era North Eleuthera, en las Bahamas.",
+     "escena": {
+      "tipo": "ruta",
+      "a": [
+       30.1945,
+       -97.6699
+      ],
+      "b": [
+       25.4747,
+       -76.6836
+      ],
+      "na": "AUSTIN",
+      "nb": "BAHAMAS",
+      "corte": 0.83,
+      "c": [
+       26.6255,
+       -80.115
+      ],
+      "nc": "PALM BEACH"
+     }
+    },
+    {
+     "texto": "Pero a las doce y cincuenta de la tarde cayó en picada en Palm Beach, cerca de Cresthaven.",
+     "escena": {
+      "tipo": "caida",
+      "lat": 26.6255,
+      "lon": -80.115,
+      "km": 2,
+      "lugar": "Palm Beach, Florida"
+     }
+    },
+    {
+     "texto": "Los videos muestran el avión cayendo y una enorme bola de fuego.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Palm Beach County Fire Rescue",
+       "Palm Beach County fire engine"
+      ]
+     }
+    },
+    {
+     "texto": "Las nueve personas a bordo murieron.",
+     "escena": {
+      "tipo": "contador",
+      "n": 9,
+      "texto": "MUERTOS",
+      "sub": "todos los ocupantes del avión"
+     }
+    },
+    {
+     "texto": "Pasó muy cerca de varias casas. No se reportan muertos en tierra.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "West Palm Beach neighborhood houses",
+       "West Palm Beach Florida residential"
+      ]
+     }
+    },
+    {
+     "texto": "Ahora la NTSB investiga qué lo hizo caer. Hasta hoy, la causa es un misterio.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "NTSB investigators",
+       "National Transportation Safety Board investigators"
+      ]
+     },
+     "rotulo": "NTSB INVESTIGA"
+    },
+    {
+     "texto": "Sígueme en Ridmer para más noticias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Learjet 60 cockpit",
+       "Learjet takeoff"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb1s",
+   "tipo": "short",
+   "hora_youtube": "19:00",
+   "articulo": "Secuestros de japoneses por Corea del Norte",
+   "fuente": "https://es.wikipedia.org/wiki/Secuestros_de_japoneses_por_Corea_del_Norte",
+   "titulo_video": "LO LLAMARON CONSPIRACIÓN",
+   "titulo_youtube": "Lo llamaban conspiración… hasta que Corea del Norte lo confesó",
+   "descripcion_youtube": "Durante años nadie les creyó a las familias. Hasta que el propio líder de Corea del Norte lo admitió.\n#misterio #casosreales #ridmer #shorts",
+   "etiquetas": [
+    "misterio",
+    "Corea del Norte",
+    "Japón",
+    "Megumi Yokota",
+    "secuestros",
+    "shorts",
+    "ridmer"
+   ],
+   "texto_facebook": "",
+   "miniatura": {
+    "seg": 0,
+    "texto": "LO CONFESÓ"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Durante años lo llamaron conspiración... hasta que Corea del Norte lo confesó.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Noviembre de mil novecientos setenta y siete. En Niigata, Japón, desaparece Megumi Yokota, de trece años.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "NOVIEMBRE DE 1977",
+      "sub": "Niigata, Japón"
+     }
+    },
+    {
+     "texto": "No fue la única. Japón reconoce diecisiete víctimas; podrían ser hasta ochenta.",
+     "escena": {
+      "tipo": "contador",
+      "n": 17,
+      "texto": "VÍCTIMAS",
+      "sub": "podrían ser hasta 80"
+     }
+    },
+    {
+     "texto": "Se los llevaban agentes de Corea del Norte, al otro lado del mar.",
+     "escena": {
+      "tipo": "ruta",
+      "a": [
+       37.916,
+       139.036
+      ],
+      "b": [
+       39.0392,
+       125.7625
+      ],
+      "na": "NIIGATA",
+      "nb": "PIONYANG",
+      "corte": 1.0
+     }
+    },
+    {
+     "texto": "Por años, Pionyang lo negó todo.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Hasta que en dos mil dos, Kim Jong-il admitió ante el primer ministro japonés que habían secuestrado a trece personas.",
+     "escena": {
+      "tipo": "linea_tiempo",
+      "hitos": [
+       [
+        "1977",
+        "Desaparece Megumi"
+       ],
+       [
+        "2002",
+        "Kim Jong-il lo admite"
+       ],
+       [
+        "2004",
+        "ADN: restos falsos"
+       ]
+      ]
+     }
+    },
+    {
+     "texto": "Dijo que ocho habían muerto, entre ellos Megumi. Pero las pruebas de ADN de Japón desmintieron los restos que entregó.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Hoy, Japón sigue buscando a los que nunca volvieron. Sígueme en Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    }
+   ],
+   "encargo": "fb1"
+  },
+  {
+   "eid": "fb2s",
+   "tipo": "short",
+   "hora_youtube": "22:00",
+   "articulo": "Secuestro del barco Alakrana",
+   "fuente": "https://es.wikipedia.org/wiki/Secuestro_del_barco_Alakrana",
+   "titulo_video": "47 DÍAS CON PIRATAS",
+   "titulo_youtube": "36 marineros, 47 días con piratas… y una amenaza que era mentira",
+   "descripcion_youtube": "El atunero Alakrana fue secuestrado por piratas somalíes en 2009. Lo que pasó después parece de película.\n#misterio #casosreales #ridmer #shorts",
+   "etiquetas": [
+    "piratas",
+    "Alakrana",
+    "Somalia",
+    "secuestro",
+    "casos reales",
+    "shorts",
+    "ridmer"
+   ],
+   "texto_facebook": "",
+   "miniatura": {
+    "seg": 0,
+    "texto": "ERA MENTIRA"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Treinta y seis marineros. Cuarenta y siete días secuestrados por piratas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Octubre de dos mil nueve. El atunero español Alakrana pesca en el océano Índico.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "3 DE OCTUBRE DE 2009",
+      "sub": "Océano Índico"
+     }
+    },
+    {
+     "texto": "Fuera de la zona protegida, los piratas somalíes lo abordan y se lo llevan a su puerto, Harardhere.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "España captura a dos piratas que huían en un bote.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "Entonces llega la amenaza: dicen haber bajado a tres marineros y que los matarán en tres días.",
+     "escena": {
+      "tipo": "foto",
+      "img": 11
+     },
+     "rotulo": "3 DÍAS"
+    },
+    {
+     "texto": "Era mentira. Nunca los bajaron del barco.",
+     "escena": {
+      "tipo": "foto",
+      "img": 12
+     }
+    },
+    {
+     "texto": "El diecisiete de noviembre, tras cuarenta y siete días, el Alakrana queda libre por un rescate de unos cuatro millones de dólares.",
+     "escena": {
+      "tipo": "contador",
+      "n": 47,
+      "texto": "DÍAS",
+      "sub": "secuestrados"
+     }
+    },
+    {
+     "texto": "Y los dos piratas capturados fueron condenados a cuatrocientos treinta y nueve años de cárcel. Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     },
+     "rotulo": "439 AÑOS"
+    }
+   ],
+   "encargo": "fb2"
   }
  ]
 }
