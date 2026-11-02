@@ -1,0 +1,759 @@
+{
+ "fecha": "2026-11-02",
+ "modo": "claude",
+ "videos": [
+  {
+   "eid": "fb1",
+   "tipo": "fb",
+   "hora_fb": "12:30",
+   "hora_short": "13:00",
+   "articulo": "Secuestros de japoneses por Corea del Norte",
+   "fuente": "https://es.wikipedia.org/wiki/Secuestros_de_japoneses_por_Corea_del_Norte",
+   "titulo_video": "LOS SECUESTRÓ UN PAÍS",
+   "titulo_youtube": "Decían que era una conspiración… hasta que Corea del Norte lo confesó",
+   "descripcion_youtube": "Noviembre de 1977. Una niña japonesa de 13 años desaparece camino a casa en Niigata.\nNo fue la única: durante seis años, decenas de japoneses se esfumaron sin dejar rastro.\nDurante décadas lo llamaron teoría de conspiración… hasta que el propio líder norcoreano habló.\n#misterio #casosreales #ridmer",
+   "etiquetas": [
+    "misterio",
+    "caso real",
+    "Corea del Norte",
+    "Japón",
+    "secuestros",
+    "Megumi Yokota",
+    "Kim Jong-il",
+    "ridmer"
+   ],
+   "texto_facebook": "Durante años dijeron que era una teoría de conspiración… hasta que el líder de Corea del Norte lo admitió. #misterio #casosreales #ridmer",
+   "miniatura": {
+    "img": 4,
+    "texto": "LO CONFESÓ"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Durante años lo llamaron teoría de conspiración… hasta que el líder de Corea del Norte lo confesó.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     },
+     "short": true
+    },
+    {
+     "texto": "Noviembre de mil novecientos setenta y siete. En Niigata, Japón, desaparece una niña de trece años: Megumi Yokota.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "NOVIEMBRE DE 1977",
+      "sub": "Niigata, Japón"
+     },
+     "short": true
+    },
+    {
+     "texto": "No era la única. Entre mil novecientos setenta y siete y mil novecientos ochenta y tres, decenas de japoneses desaparecieron sin dejar rastro.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Japón reconoce diecisiete víctimas. Podrían ser hasta ochenta.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "17 VÍCTIMAS",
+      "sub": "Se cree que hasta 80"
+     }
+    },
+    {
+     "texto": "Todos tenían algo en común: se los habían llevado agentes de Corea del Norte.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 39.03,
+      "lon": 125.75,
+      "lugar": "Pionyang, Corea del Norte",
+      "km": 30
+     },
+     "short": true
+    },
+    {
+     "texto": "¿Para qué? Se cree que para enseñar japonés en escuelas de espías.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     },
+     "rotulo": "ESCUELAS DE ESPÍAS"
+    },
+    {
+     "texto": "Corea del Norte lo negó por años. Japón no hacía nada, pese a la presión de los padres.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Hasta que en dos mil dos, el primer ministro Junichiro Koizumi viajó a Pionyang para reunirse con Kim Jong-il.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     },
+     "short": true
+    },
+    {
+     "texto": "Y Kim admitió lo impensable: habían secuestrado a trece japoneses.",
+     "escena": {
+      "tipo": "cita",
+      "texto": "Alguna gente que quiso demostrar su heroísmo y temeridad",
+      "autor": "Kim Jong-il, 2002"
+     },
+     "short": true
+    },
+    {
+     "texto": "Según Pionyang, ocho ya estaban muertos. Entre ellos, Megumi.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "8 MUERTOS",
+      "sub": "Según Corea del Norte"
+     }
+    },
+    {
+     "texto": "Cinco volvieron a Japón en octubre de dos mil dos. Debían regresar. Japón dijo que no.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "En dos mil cuatro, Pionyang entregó unos restos: decía que eran de Megumi. Las pruebas de ADN japonesas dijeron que no.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     },
+     "short": true,
+     "rotulo": "NO ERA ELLA"
+    },
+    {
+     "texto": "Japón sostiene que todo lo que entregó Pionyang es falso. Y varios secuestrados siguen desaparecidos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb2",
+   "tipo": "fb",
+   "hora_fb": "18:30",
+   "hora_short": "19:00",
+   "articulo": "Secuestro del barco Alakrana",
+   "fuente": "https://es.wikipedia.org/wiki/Secuestro_del_barco_Alakrana",
+   "titulo_video": "47 DÍAS CON PIRATAS",
+   "titulo_youtube": "36 marineros, 47 días en manos de piratas… y una amenaza que era mentira",
+   "descripcion_youtube": "Octubre de 2009. Un atunero español pesca frente a Somalia, fuera de la zona protegida.\nLos piratas suben a bordo y empieza una pesadilla de 47 días.\nAmenazas, fragatas, un rescate millonario… y un final que nadie esperaba en un tribunal.\n#misterio #casosreales #ridmer",
+   "etiquetas": [
+    "misterio",
+    "caso real",
+    "piratas somalíes",
+    "Alakrana",
+    "secuestro",
+    "Somalia",
+    "fragata Canarias",
+    "ridmer"
+   ],
+   "texto_facebook": "Treinta y seis marineros. Cuarenta y siete días en manos de piratas. Y una amenaza que puso a todo un país en vilo. #misterio #casosreales #ridmer",
+   "miniatura": {
+    "img": 11,
+    "texto": "47 DÍAS"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Treinta y seis marineros. Cuarenta y siete días en manos de piratas somalíes.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     },
+     "short": true
+    },
+    {
+     "texto": "Tres de octubre de dos mil nueve. El atunero Alakrana, de Bermeo, pesca en el océano Índico.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "3 DE OCTUBRE DE 2009",
+      "sub": "Océano Índico"
+     },
+     "short": true
+    },
+    {
+     "texto": "Está fuera de la zona protegida por la operación europea Atalanta. Y los piratas lo abordan.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "A bordo van treinta y seis tripulantes; dieciséis, españoles.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "36 TRIPULANTES",
+      "sub": "16 españoles"
+     }
+    },
+    {
+     "texto": "España envía la fragata Canarias, pero no llega a tiempo: los piratas llevan el barco a Harardhere, su puerto base.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Aun así, la fragata española captura a dos piratas que huían en un bote, y los envía a España para ser juzgados.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     },
+     "short": true
+    },
+    {
+     "texto": "Los piratas responden: dicen haber bajado a tierra a tres marineros, y amenazan con matarlos en tres días si España no libera a sus compañeros.",
+     "escena": {
+      "tipo": "foto",
+      "img": 11
+     },
+     "short": true,
+     "rotulo": "3 DÍAS"
+    },
+    {
+     "texto": "Era mentira: nunca los bajaron del barco. Todo era para presionar al gobierno.",
+     "escena": {
+      "tipo": "foto",
+      "img": 12
+     },
+     "short": true
+    },
+    {
+     "texto": "España envía una segunda fragata, la Méndez Núñez.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "El diecisiete de noviembre, tras cuarenta y siete días, el Alakrana queda libre.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "17 DE NOVIEMBRE",
+      "sub": "47 días de secuestro"
+     },
+     "short": true
+    },
+    {
+     "texto": "El rescate: unos cuatro millones de dólares. A bordo había ya sesenta y tres piratas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 9
+     },
+     "rotulo": "4 MILLONES"
+    },
+    {
+     "texto": "Se llevaron todas sus pertenencias. Los dieciséis españoles volvieron a casa el veintiuno de noviembre.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Y los dos piratas capturados fueron condenados a cuatrocientos treinta y nueve años de cárcel.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "439 AÑOS",
+      "sub": "Audiencia Nacional · 2011"
+     }
+    },
+    {
+     "texto": "Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb3",
+   "tipo": "fb",
+   "hora_fb": "21:00",
+   "articulo": "William Niehous",
+   "fuente": "https://es.wikipedia.org/wiki/William_Niehous",
+   "titulo_video": "3 AÑOS ENCADENADO",
+   "titulo_youtube": "Lo secuestraron en Venezuela… y lo hallaron 3 años después por pura casualidad",
+   "descripcion_youtube": "Caracas, 1976. Un empresario estadounidense es drogado y sacado de su casa por guerrilleros.\nEl gobierno deja de negociar y pasan los meses… luego los años.\nEl secuestro más largo de la historia política de Venezuela terminó de la forma menos pensada.\n#misterio #casosreales #ridmer",
+   "etiquetas": [
+    "misterio",
+    "caso real",
+    "secuestro",
+    "Venezuela",
+    "William Niehous",
+    "Caracas",
+    "Ciudad Bolívar",
+    "ridmer"
+   ],
+   "texto_facebook": "Pasó más de tres años secuestrado y nunca vio la cara de sus captores. Lo encontraron por pura casualidad. #misterio #casosreales #ridmer",
+   "miniatura": {
+    "texto": "3 AÑOS"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Lo secuestraron en Venezuela… y lo encontraron más de tres años después, por pura casualidad.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "3 AÑOS, 4 MESES",
+      "sub": "En manos de sus captores"
+     }
+    },
+    {
+     "texto": "Febrero de mil novecientos setenta y seis. William Niehous dirige en Venezuela la empresa estadounidense de vidrio Owens-Illinois.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "William Niehous",
+      "sub": "Empresario estadounidense · Owens-Illinois"
+     }
+    },
+    {
+     "texto": "Guerrilleros armados entran a su casa, en Caracas. Lo drogan y se lo llevan.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": "Caracas Venezuela city view"
+     }
+    },
+    {
+     "texto": "Un grupo marxista se atribuye el secuestro. Lo acusan de ser agente de la CIA.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 10.49,
+      "lon": -66.88,
+      "lugar": "Caracas, Venezuela",
+      "km": 8
+     },
+     "rotulo": "¿AGENTE DE LA CIA?"
+    },
+    {
+     "texto": "Piden tres millones y medio de dólares y una declaración contra la empresa en la prensa extranjera.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "3,5 MILLONES DE DÓLARES",
+      "sub": "Rescate exigido"
+     }
+    },
+    {
+     "texto": "La empresa la publica en The New York Times. Y el gobierno corta la comunicación con los secuestradores.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": "newspaper printing press"
+     }
+    },
+    {
+     "texto": "Pasan los meses. Luego los años. Nunca ve la cara de sus captores: usan máscaras.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "NUNCA VIO SUS ROSTROS",
+      "sub": "Usaban máscaras"
+     }
+    },
+    {
+     "texto": "Para resistir, se pone metas cada semana, les enseña a jugar póker y discute con ellos sobre marxismo.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": "playing cards poker"
+     }
+    },
+    {
+     "texto": "Junio de mil novecientos setenta y nueve. Cerca de Ciudad Bolívar, la policía rural busca ladrones de ganado.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": "Ciudad Bolivar Venezuela"
+     }
+    },
+    {
+     "texto": "En un rancho encuentran a un hombre encadenado. Matan a sus dos guardias armados y se lo llevan… sin saber quién era.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 8.12,
+      "lon": -63.55,
+      "lugar": "Ciudad Bolívar",
+      "km": 30
+     },
+     "rotulo": "ENCADENADO"
+    },
+    {
+     "texto": "Era William Niehous. El secuestro más largo en la historia política de Venezuela.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "William Niehous",
+      "sub": "Liberado en junio de 1979"
+     }
+    },
+    {
+     "texto": "Años después, dos de sus secuestradores fueron asesores cercanos de Hugo Chávez.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "ASESORES DE CHÁVEZ",
+      "sub": "Puerta Aponte · Carlos Lanz"
+     }
+    },
+    {
+     "texto": "Murió en Ohio en dos mil trece.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": "Toledo Ohio skyline"
+     }
+    },
+    {
+     "texto": "Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "WILLIAM NIEHOUS",
+      "sub": "1931 – 2013"
+     }
+    }
+   ]
+  },
+  {
+   "eid": "largo1",
+   "tipo": "largo",
+   "hora_youtube": "18:00",
+   "articulo": "Piratería aérea",
+   "fuente": "https://es.wikipedia.org/wiki/Pirater%C3%ADa_a%C3%A9rea",
+   "titulo_video": "SECUESTRAR UN AVIÓN",
+   "titulo_youtube": "Secuestraban un avión cada 5 días… la historia olvidada de la piratería aérea",
+   "descripcion_youtube": "Entre 1968 y 1972 hubo 326 intentos de secuestro aéreo en el mundo: uno cada cinco días y medio.\nUn piloto retenido 10 días en Perú, un crimen en pleno vuelo, prisioneros que tomaron un avión…\nAsí empezó la era de la piratería aérea.\n#misterio #casosreales #ridmer",
+   "etiquetas": [
+    "misterio",
+    "historia",
+    "secuestro aéreo",
+    "piratería aérea",
+    "aviones",
+    "casos reales",
+    "Cuba",
+    "ridmer"
+   ],
+   "texto_facebook": "Hubo una época en que secuestraban un avión cada cinco días. #misterio #historia #ridmer",
+   "miniatura": {
+    "img": 2,
+    "texto": "CADA 5 DÍAS"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Entre mil novecientos sesenta y ocho y mil novecientos setenta y dos, en el mundo se intentó secuestrar un avión cada cinco días y medio.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Trescientos veintiséis intentos en solo cinco años. ¿Cómo se llegó a eso? Esta es la historia de la piratería aérea.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "326 INTENTOS",
+      "sub": "1968 – 1972"
+     }
+    },
+    {
+     "texto": "Secuestrar un avión es tomar el control de la aeronave por la fuerza. Casi siempre, el piloto es obligado a volar bajo las órdenes de los secuestradores.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "A veces ellos mismos toman los mandos, como en los ataques del once de septiembre. Y en al menos tres casos, el secuestrador fue el propio piloto o el copiloto.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "EL PROPIO PILOTO",
+      "sub": "Al menos 3 casos"
+     }
+    },
+    {
+     "texto": "Pero todo empezó mucho antes. Casi desde que existen los aviones.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Diciembre de mil novecientos veintinueve. El piloto J. Howard DeCelles lleva correo en México, de San Luis Potosí a Torreón y luego a Guadalajara.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "DICIEMBRE DE 1929",
+      "sub": "San Luis Potosí, México"
+     }
+    },
+    {
+     "texto": "El gobernador del estado, Saturnino Cedillo, le ordena desviarse. Varios hombres están con él. DeCelles no tiene más remedio que obedecer.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 22.15,
+      "lon": -100.98,
+      "lugar": "San Luis Potosí",
+      "km": 30
+     }
+    },
+    {
+     "texto": "Se cree que pasó varias horas cautivo, bajo vigilancia armada, antes de ser liberado. Pero este caso nunca se confirmó.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": "Ford Trimotor airplane"
+     }
+    },
+    {
+     "texto": "El primer secuestro registrado llegó el veintiuno de febrero de mil novecientos treinta y uno, en Arequipa, Perú.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "21 DE FEBRERO DE 1931",
+      "sub": "Arequipa, Perú"
+     }
+    },
+    {
+     "texto": "El piloto Byron Richards preparaba su ruta en un Ford Tri-Motor cuando revolucionarios armados lo tomaron.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Richards se negó a llevarlos a ninguna parte. El enfrentamiento duró diez días.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": -16.4,
+      "lon": -71.54,
+      "lugar": "Arequipa, Perú",
+      "km": 8
+     },
+     "rotulo": "10 DÍAS"
+    },
+    {
+     "texto": "Al final le dijeron que la revolución había triunfado. Lo liberarían… si llevaba a uno de ellos a Lima.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Byron Richards",
+      "sub": "Piloto · Ford Tri-Motor"
+     }
+    },
+    {
+     "texto": "Al año siguiente, en Brasil, tres hombres armados se llevan un Sikorsky del hangar de la empresa y toman como rehén a un empleado de mantenimiento.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": "Sikorsky S-38 amphibian"
+     }
+    },
+    {
+     "texto": "Ninguno sabía volar. Aun así, despegaron. El avión se estrelló en São João de Meriti. Murieron los cuatro.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": -22.8,
+      "lon": -43.37,
+      "lugar": "São João de Meriti, Brasil",
+      "km": 8
+     },
+     "rotulo": "4 MUERTOS"
+    },
+    {
+     "texto": "Mil novecientos treinta y nueve. Brookfield, Misuri. Ocurre el primer asesinato a bordo de un avión.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "28 DE OCTUBRE DE 1939",
+      "sub": "Brookfield, Misuri"
+     }
+    },
+    {
+     "texto": "El instructor Carl Bivens le enseña a volar a un alumno, Earnest Pletch, en una pequeña avioneta.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": "Taylor Cub airplane"
+     }
+    },
+    {
+     "texto": "En pleno vuelo, Pletch saca un revólver y le dispara dos veces por detrás, en la cabeza.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Carl Bivens",
+      "sub": "Instructor de vuelo"
+     }
+    },
+    {
+     "texto": "Después diría: nunca supo qué lo golpeó.",
+     "escena": {
+      "tipo": "cita",
+      "texto": "Nunca supo qué lo golpeó",
+      "autor": "Earnest P. Pletch"
+     }
+    },
+    {
+     "texto": "Fue condenado a cadena perpetua. Pero salió libre en mil novecientos cincuenta y siete, tras cumplir diecisiete años.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "CADENA PERPETUA",
+      "sub": "Libre tras 17 años"
+     }
+    },
+    {
+     "texto": "En mil novecientos cuarenta y dos llega el primer secuestro aéreo confirmado. Cerca de Malta, cuatro prisioneros aliados viajan en un hidroavión italiano rumbo a un campo de prisioneros.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "1942",
+      "sub": "Primer secuestro aéreo confirmado"
+     }
+    },
+    {
+     "texto": "Reducen a sus captores y toman el avión. Pero al acercarse a una base aliada, un Spitfire los ataca.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": "Supermarine Spitfire"
+     }
+    },
+    {
+     "texto": "Amerizan de emergencia. Todos sobreviven y un barco británico los rescata.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 35.9,
+      "lon": 14.45,
+      "lugar": "Malta",
+      "km": 30
+     }
+    },
+    {
+     "texto": "El dieciséis de julio de mil novecientos cuarenta y ocho ocurre el primer secuestro de un vuelo comercial: el Miss Macao, de Cathay Pacific.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "16 DE JULIO DE 1948",
+      "sub": "Miss Macao · Cathay Pacific"
+     }
+    },
+    {
+     "texto": "Después de esto, las aerolíneas recomendaron a sus tripulaciones obedecer a los secuestradores, en lugar de arriesgarse a un enfrentamiento violento.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "En mil novecientos cincuenta y seis, en Hungría, siete pasajeros secuestran un vuelo para escapar de la Cortina de Hierro. Aterrizan sanos y salvos en Alemania Occidental.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": "Lisunov Li-2"
+     }
+    },
+    {
+     "texto": "Ese mismo año, en Bolivia, ocurre el primer secuestro de un vuelo por motivos políticos.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "26 DE SEPTIEMBRE DE 1956",
+      "sub": "Lloyd Aéreo Boliviano"
+     }
+    },
+    {
+     "texto": "Un avión lleva a cuarenta y siete prisioneros hacia un campo de concentración. En pleno vuelo, dominan a la tripulación.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": "Douglas DC-4 airliner"
+     },
+     "rotulo": "47 PRISIONEROS"
+    },
+    {
+     "texto": "Desvían el avión a Argentina. Aterrizan en Salta y reciben asilo político.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": -24.78,
+      "lon": -65.41,
+      "lugar": "Salta, Argentina",
+      "km": 30
+     }
+    },
+    {
+     "texto": "Ni los gobiernos se quedaron fuera. Ese octubre, fuerzas francesas desviaron un avión marroquí con líderes independentistas argelinos, y los arrestaron en Argel.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Luego llegó la era de Cuba. El uno de mayo de mil novecientos sesenta y uno, un hombre armado con cuchillo y pistola obliga a un capitán a aterrizar en la isla.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "1 DE MAYO DE 1961",
+      "sub": "Miami – Cayo Hueso"
+     }
+    },
+    {
+     "texto": "Desde entonces, los vuelos desviados a Cuba se volvieron algo común.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 23.11,
+      "lon": -82.37,
+      "lugar": "La Habana, Cuba",
+      "km": 30
+     }
+    },
+    {
+     "texto": "Solo en los años sesenta hubo cien intentos de secuestro de aviones estadounidenses. Setenta y siete tuvieron éxito.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "100 INTENTOS",
+      "sub": "77 con éxito · años 60"
+     }
+    },
+    {
+     "texto": "Llegaron las primeras medidas: prohibir armas ocultas, poner agentes entrenados en los vuelos y, desde mil novecientos sesenta y cuatro, cabinas cerradas con llave.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Pero no bastó. Entre mil novecientos sesenta y ocho y mil novecientos setenta y dos hubo trescientos veintiséis intentos. Uno cada cinco días y medio.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     },
+     "rotulo": "326 INTENTOS"
+    },
+    {
+     "texto": "Noventa buscaban desviar aviones a Cuba. Otros veintiséis eran extorsiones, con amenazas de hacer daño.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "90 VUELOS A CUBA",
+      "sub": "26 extorsiones"
+     }
+    },
+    {
+     "texto": "Era tan frecuente que la televisión hacía parodias. La revista Time llegó a publicar una comedia: Qué hacer cuando llega el secuestrador.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Pero no era un chiste. En mayo de mil novecientos setenta, un secuestro en un vuelo de Eastern Air Lines dejó la primera muerte en Estados Unidos.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "17 DE MAYO DE 1970",
+      "sub": "Vuelo 1320 · Eastern Air Lines"
+     }
+    },
+    {
+     "texto": "Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    }
+   ]
+  }
+ ]
+}
