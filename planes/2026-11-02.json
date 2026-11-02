@@ -906,6 +906,153 @@
      "short": true
     }
    ]
+  },
+  {
+   "eid": "urg1v",
+   "tipo": "fb",
+   "hora_fb": "ya",
+   "hora_short": "ya",
+   "urgente": true,
+   "articulo": "Accidente de Learjet 60 en Palm Beach",
+   "fuente": "https://www.univision.com/noticias/estados-unidos/un-jet-privado-con-nueve-personas-a-bordo-se-estrella-en-un-barrio-de-florida-esto-es-lo-que-sabemos",
+   "titulo_video": "CAYÓ SOBRE UN BARRIO",
+   "titulo_youtube": "Un jet cayó en picada sobre un barrio de Florida… y nadie a bordo sobrevivió",
+   "descripcion_youtube": "Un Learjet 60 que iba de Austin a las Bahamas se estrelló este domingo en una zona residencial de Palm Beach, Florida. Murieron las 9 personas a bordo. La NTSB investiga la causa.\n#noticias #florida #ridmer #accidenteaereo",
+   "etiquetas": [
+    "noticias",
+    "accidente aéreo",
+    "Florida",
+    "Palm Beach",
+    "Learjet 60",
+    "avión privado",
+    "NTSB",
+    "ridmer"
+   ],
+   "texto_facebook": "Un jet privado cayó en picada sobre un barrio de Florida… y nadie a bordo sobrevivió 😔✈️ #Noticias #Florida #Ridmer",
+   "miniatura": {
+    "seg": 0,
+    "texto": "9 MUERTOS"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Un avión privado cayó en picada sobre un barrio de Florida... y nadie a bordo sobrevivió.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://vt.tiktok.com/ZSp19RCPc/",
+      "desde": 0,
+      "dur": 6
+     },
+     "short": true
+    },
+    {
+     "texto": "Pasó este domingo, a las doce y cincuenta de la tarde, en el condado de Palm Beach.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "DOMINGO 1 DE NOVIEMBRE",
+      "sub": "12:50 p. m. · Palm Beach, Florida"
+     },
+     "short": true
+    },
+    {
+     "texto": "Era un Learjet sesenta, un jet ejecutivo que había despegado de Austin, Texas, rumbo a las Bahamas.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Austin-Bergstrom International Airport",
+       "Austin Bergstrom airport terminal"
+      ]
+     },
+     "short": true
+    },
+    {
+     "texto": "Nunca llegó a su destino.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Eleuthera Bahamas",
+       "North Eleuthera"
+      ]
+     }
+    },
+    {
+     "texto": "Se estrelló en una zona residencial cerca de Cresthaven, junto a la avenida Military Trail.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 26.6255,
+      "lon": -80.115,
+      "lugar": "Cresthaven · Palm Beach, Florida",
+      "km": 3
+     },
+     "short": true
+    },
+    {
+     "texto": "Los videos que circulan muestran el avión cayendo y una enorme bola de fuego.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://vt.tiktok.com/ZSp19Xsnh/",
+      "desde": 0,
+      "dur": 6
+     }
+    },
+    {
+     "texto": "Las nueve personas que iban a bordo murieron.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "9 MUERTOS",
+      "sub": "todos los ocupantes del avión"
+     },
+     "short": true
+    },
+    {
+     "texto": "El avión pasó muy cerca de varias casas. Hasta ahora no se reportan muertos en tierra.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://vt.tiktok.com/ZSp199DLX/",
+      "desde": 0,
+      "dur": 6
+     }
+    },
+    {
+     "texto": "La policía cerró las calles en ambas direcciones mientras los bomberos apagaban el fuego.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://vt.tiktok.com/ZSp19RCPc/",
+      "desde": 6,
+      "dur": 6
+     }
+    },
+    {
+     "texto": "El secretario de Transporte, Sean Duffy, lo llamó una tragedia horrible.",
+     "escena": {
+      "tipo": "cita",
+      "texto": "Una tragedia horrible.",
+      "autor": "Sean Duffy, secretario de Transporte de EE. UU."
+     },
+     "short": true
+    },
+    {
+     "texto": "La Junta Nacional de Seguridad del Transporte ya investiga qué hizo caer al avión.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "NTSB investigators",
+       "National Transportation Safety Board investigators"
+      ]
+     },
+     "rotulo": "NTSB INVESTIGA"
+    },
+    {
+     "texto": "La causa todavía es un misterio. Suscríbete a Ridmer para más noticias como esta.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://vt.tiktok.com/ZSp199DLX/",
+      "desde": 6,
+      "dur": 6
+     },
+     "short": true
+    }
+   ]
   }
  ]
 }
