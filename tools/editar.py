@@ -12,6 +12,12 @@ CAMBIOS.json (todo opcional) = decisiones de Claude tras revisar:
    "sfx": {"5": "impacto"},             # efecto al entrar: impacto, whoosh, golpe, riser, "" (ninguno)
    "latido": {"9": true},               # latido de corazón debajo de la escena (tensión)
    (una imagen también puede ser v_NN.mp4: fragmento de video real en recuadro, máx. 7 s en movimiento)
+Escenas animadas (se piden en el plan; el servidor baja el mapa y aquí se animan):
+   {"tipo": "ruta", "a": [lat, lon], "b": [lat, lon], "na": "AUSTIN", "nb": "BAHAMAS", "corte": 0.55,
+    "c": [lat, lon], "nc": "PALM BEACH"}       → línea que avanza de A a B (corte < 1 = no llegó) y marca C
+   {"tipo": "caida", "lat": .., "lon": .., "km": 2, "lugar": "PALM BEACH"}  → recreación de una caída con impacto
+   {"tipo": "contador", "n": 9, "texto": "MUERTOS", "sub": "..."}           → cifra que sube
+   {"tipo": "linea_tiempo", "hitos": [["1977", "..."], ["2002", "..."]]}    → línea de tiempo animada
    "titulo_video": "...", "miniatura": {"img": "c04.jpg", "texto": "ERA ÉL"}}
 Deja en SALIDA_DIR: fb.mp4 + short.mp4 (o largo.mp4), miniatura.jpg y revision_*.jpg (cuadros cada 2 s para revisar).
 """
@@ -167,6 +173,33 @@ def main():
         fm = os.path.join(mat, mi['img'])
     elif mi.get('seg') is not None and 0 <= int(mi['seg']) < len(segs):
         fm = segs[int(mi['seg'])]['img']
+    # animaciones (ruta, caída, contador, línea de tiempo): se dibujan aquí, a pantalla completa
+    import animar
+    W_, H_ = (1920, 1080) if v['tipo'] == 'largo' else (1080, 1920)
+    for k, s in enumerate(segs):
+        esc = s.get('escena') or {}
+        t = esc.get('tipo')
+        if t not in ('ruta', 'caida', 'contador', 'linea_tiempo'):
+            continue
+        t1 = segs[k + 1]['t0'] if k + 1 < len(segs) else montaje.dur(wav)
+        dd = max(2.5, t1 - s['t0'] + 0.4)
+        sal = os.path.join(out, f'anim_{k:02d}.mp4')
+        try:
+            if t == 'ruta' and s['img'] and not s['img'].endswith('.mp4'):
+                animar.ruta(s['img'], esc['centro'], esc['km'], esc['a'], esc['b'], esc.get('na', ''), esc.get('nb', ''),
+                            sal, dd, W_, H_, float(esc.get('corte', 1.0)), esc.get('c'), esc.get('nc', ''))
+            elif t == 'caida' and s['img'] and not s['img'].endswith('.mp4'):
+                animar.caida(s['img'], esc.get('lugar', ''), sal, dd, W_, H_)
+            elif t == 'contador':
+                animar.contador(int(esc.get('n', 0)), esc.get('texto', ''), esc.get('sub', ''), sal, min(dd, 5), W_, H_)
+            elif t == 'linea_tiempo':
+                animar.linea_tiempo([tuple(h) for h in esc.get('hitos', [])], sal, dd, W_, H_)
+            else:
+                continue
+            s['img'] = sal
+            print('animación', k, t, round(dd, 1), 's')
+        except Exception as e:
+            print('animación falló', k, t, e)
     fm = fm or next((r_ for r_ in reales if not r_.endswith('.mp4')), reales[0])
     if fm.endswith('.mp4'):
         cuadro = os.path.join(out, 'mini_fuente.jpg')

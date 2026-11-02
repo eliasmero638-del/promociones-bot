@@ -322,6 +322,12 @@ def _escena_pro(img, d, mov, W, H, salida):
           f"[f0]scale=w='trunc(iw*{zoom}/2)*2':h=-2:eval=frame[fg];"
           f"[bg][fg]overlay=x='(W-w)/2{dx}{temblor}':y='(H-h)/2{temblor.replace('53', '47')}':eval=frame,"
           f"vignette=PI/4.5,noise=alls=7:allf=t,fps=30,format=yuv420p[v]")
+    if os.path.basename(img).startswith('anim_') and img.lower().endswith('.mp4'):
+        resto = max(0.0, d - dur(img)) + 0.1                 # animación a pantalla completa (si es corta, se congela)
+        sh(['ffmpeg', '-y', '-v', 'error', '-i', img, '-vf', f'tpad=stop_mode=clone:stop_duration={resto:.3f},'
+            f'scale={W}:{H},vignette=PI/5,noise=alls=5:allf=t,fps=30,format=yuv420p', '-t', f'{d:.3f}', '-an',
+            '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '19', salida])
+        return
     if img.lower().endswith('.mp4'):
         _escena_video(img, d, W, H, salida)
         return

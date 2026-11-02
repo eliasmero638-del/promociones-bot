@@ -48,6 +48,15 @@ def _escena_img(esc, carpeta_enc, carpeta, i, usados=None):
             return montaje.escena_fecha(esc.get('texto', ''), esc.get('sub', ''), out)
         if t == 'cita':
             return montaje.escena_cita(esc.get('texto', ''), esc.get('autor', ''), out)
+        if t == 'ruta' and esc.get('a') and esc.get('b'):      # mapa crudo que cubre A, B (y C); la animación la hace Claude
+            pts = [esc['a'], esc['b']] + ([esc['c']] if esc.get('c') else [])
+            la = [float(p_[0]) for p_ in pts]; lo = [float(p_[1]) for p_ in pts]
+            centro = [(min(la) + max(la)) / 2, (min(lo) + max(lo)) / 2]
+            km = max((max(la) - min(la)) / 2, (max(lo) - min(lo)) / 3.2) * 111 * 1.35 + 5
+            esc['centro'], esc['km'] = centro, round(km, 2)
+            return F._satelite(centro[0], centro[1], carpeta, f'sat_{i:02d}', km)
+        if t == 'caida' and esc.get('lat') is not None:
+            return F._satelite(esc['lat'], esc['lon'], carpeta, f'sat_{i:02d}', esc.get('km', 2))
         if t == 'mapa' and esc.get('lat') is not None:
             sat = F._satelite(esc['lat'], esc['lon'], carpeta, f'sat_{i:02d}', esc.get('km', 2.5))
             if sat:

@@ -124,6 +124,12 @@ prepara el MATERIAL (voz y fotos) y **TÚ armas y revisas cada video** (modo "cl
   - `fb2s` (`"encargo": "fb2"`) → 17:00
   - `sh2` (encargo propio) → 19:00
   - `fb3s` (`"encargo": "fb3"`) → 22:00
-- Largo (días alternos) → `hora_youtube` 18:00. El servidor manda a las 9:00 un resumen con las horas y luego cada video
+- Largo (TODOS los días) → `hora_youtube` 18:00. El servidor manda a las 9:00 un resumen con las horas y luego cada video
   con sus textos. Para llegar a tiempo, ENTREGA ANTES DE LAS 8:45.
 - `gancho`: en Shorts siempre 1 (la intro entra tras la primera frase).
+
+## Animaciones (al dueño le encantan: úsalas en cada video)
+Además de fotos, pide escenas animadas en el plan (ver cabecera de tools/editar.py): `ruta` (viaje de A a B sobre el
+mapa, `corte` < 1 si no llegó, `c` para marcar dónde pasó), `caida` (recreación de una caída con impacto, siempre
+rotulada RECREACIÓN), `contador` (cifra clave que sube) y `linea_tiempo` (hitos con fecha). Mínimo 2 animaciones en
+cada Facebook y Short, 4+ en el largo, siempre fieles a los hechos (nada de cifras inventadas).

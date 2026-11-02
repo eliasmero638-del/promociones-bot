@@ -16,8 +16,9 @@ def log(*a):
 
 
 def hay_largo(fecha):
-    """Video largo un día sí y otro no."""
-    return time.strptime(fecha, '%Y-%m-%d').tm_yday % 2 == 0
+    """Video largo todos los días (largo_cada_dias = 1) o un día sí y otro no (2)."""
+    cada = int(C.get().get('largo_cada_dias', 1) or 1)
+    return time.strptime(fecha, '%Y-%m-%d').tm_yday % cada == 0
 
 
 def _historial():

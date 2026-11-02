@@ -54,7 +54,8 @@ DEFAULTS = {
     'fb_page_token': '',
     'clip_max': 900,                     # sin tope real: dura lo que dure el momento
     'paquete_hora': '09:00',             # Shorts y largo de YouTube llegan todos juntos a esta hora
-    'shorts_extra': 2,                   # Shorts con historia propia además de los 3 de Facebook
+    'shorts_extra': 2,
+    'largo_cada_dias': 1,                # video largo de YouTube todos los días                   # Shorts con historia propia además de los 3 de Facebook
     'separacion_pub_min': 60,            # mínimo entre publicaciones en Facebook
     'pub_noche': [0, 7],                 # de 0:00 a 7:00 no se publica (se guarda para la mañana)
     'repetido_min': 30,                  # misma persona dentro de 30 min de grabación = misma conversación

@@ -7,7 +7,7 @@ except Exception as _e:          # si la fábrica falla, el Clipero sigue funcio
     fabrica = None
     print('fabrica no disponible:', _e, flush=True)
 
-VERSION = 'v40-paquete'
+VERSION = 'v41-animaciones'
 cola = queue.Queue()
 historial = []          # (hora, puntaje) de clips enviados, para límites por hora
 stats = {'pedazos': 0, 'clips': 0, 'ult_puntaje': None, 'ult_pedazo': None}
@@ -524,6 +524,14 @@ def comandos(tipo, chat, dato, raw):
         ps[partes[0]] = [p.lower() for p in partes[1:]] + [partes[0].split()[0].lower()]
         C.save(participantes=ps)
         tg.texto(f'🆕 {partes[0]} agregado a la lista.', chat)
+    elif cmd == '/youtube' and fabrica:
+        import produccion as _pr
+        n = 0
+        for jid in os.listdir(fabrica.DIR):
+            m = fabrica.leer_meta(jid) if os.path.isdir(os.path.join(fabrica.DIR, jid)) else None
+            if m and m.get('estado') == 'programado' and m.get('entrega') in ('short', 'largo'):
+                m['aviso_en'] = time.time(); fabrica._guardar(os.path.join(fabrica.DIR, jid, 'meta.json'), m); n += 1
+        tg.texto(f'📦 Te mando ya {n} video(s) de YouTube pendientes.' if n else 'No hay videos de YouTube pendientes.', chat)
     elif cmd in ('/gusta', '/nogusta'):
         t = dato.partition(' ')[2].strip()
         if not t:
