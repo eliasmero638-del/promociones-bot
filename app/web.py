@@ -189,7 +189,7 @@ class H(BaseHTTPRequestHandler):
         return self._send(200, open(p_, 'rb').read(), 'application/json' if p_.endswith('.json') else 'image/jpeg')
 
     def _material(self):
-        m_ = re.match(r'^/material/(\d{4}-\d{2}-\d{2})/(lista\.json|[a-z]+\d/(?:info\.json|voz\.flac|[a-z]+_?\d\d\.jpg|c\d\d\.jpg))$',
+        m_ = re.match(r'^/material/(\d{4}-\d{2}-\d{2})/(lista\.json|[a-z]+\d+[a-z]?/(?:info\.json|voz\.flac|[a-z]+_?\d\d\.jpg|c\d\d\.jpg|v_\d\d\.mp4))$',
                       self.path.split('?')[0])
         if not m_:
             return self._send(404, 'No')
