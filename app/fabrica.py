@@ -126,8 +126,9 @@ URG_RSS = """Titulares REALES publicados en las últimas {horas} horas. [EC] = G
 [US] = Google News Estados Unidos (fuente y antigüedad):
 {lista}
 ¿Hay UNA noticia de la que TODO EL MUNDO está hablando ahora mismo (tendencia mundial en noticias y redes sociales)?
-SOLO cuenta si es de impacto MUNDIAL: terremoto o tsunami enorme, catástrofe con muchas víctimas, atentado mayor,
-o la muerte de alguien famoso EN TODO EL MUNDO (estrella mundial, presidente en funciones de una potencia, papa…).
+SOLO cuenta si es de impacto MUNDIAL o se volvió VIRAL en varios países: terremoto o tsunami enorme, catástrofe con
+muchas víctimas, atentado mayor, accidente aéreo o tragedia con varios muertos que todos comparten (ej.: un avión que
+cae sobre un barrio), o la muerte de alguien famoso EN TODO EL MUNDO (estrella mundial, presidente de una potencia, papa…).
 NO cuenta: expresidentes o políticos conocidos solo en su país, famosos locales, política normal, deportes,
 farándula menor, noticias de un solo país, aniversarios ni recuentos de algo que pasó hace días.
 Debe aparecer en titulares [EC] Y [US] de muchos medios distintos. En la duda, responde "hay": false.

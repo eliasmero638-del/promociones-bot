@@ -95,7 +95,8 @@ prepara el MATERIAL (voz y fotos) y **TÚ armas y revisas cada video** (modo "cl
 
 ## Noticias: SOLO si son recientes y confirmadas (regla del dueño)
 - Solo noticias de las que **TODO EL MUNDO está hablando** (tendencia mundial en noticias y redes): terremoto o
-  tsunami enorme, catástrofe con muchas víctimas, atentado mayor, muerte de alguien famoso EN TODO EL MUNDO
+  tsunami enorme, catástrofe con muchas víctimas, atentado mayor, accidente aéreo o tragedia viral con varios muertos
+  (ej.: un jet que cae sobre un barrio), muerte de alguien famoso EN TODO EL MUNDO
   (estrella mundial, presidente en funciones de una potencia, papa). NO: expresidentes o famosos conocidos solo en su
   país, política normal, deportes, noticias de un solo país. En la duda, NO va. Si va, va SIEMPRE primero (fb1), y SOLO si:
   1) pasó en las **últimas 24 horas** (revisa la fecha con WebSearch: si el hecho es de días atrás, NO va), y
