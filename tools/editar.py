@@ -11,6 +11,7 @@ CAMBIOS.json (todo opcional) = decisiones de Claude tras revisar:
    "trans": {"4": "fadewhite"},         # transición al ENTRAR a la escena siguiente: fade, fadewhite, fadeblack, dissolve
    "sfx": {"5": "impacto"},             # efecto al entrar: impacto, whoosh, golpe, riser, "" (ninguno)
    "latido": {"9": true},               # latido de corazón debajo de la escena (tensión)
+   (una imagen también puede ser v_NN.mp4: fragmento de video real en recuadro, máx. 7 s en movimiento)
    "titulo_video": "...", "miniatura": {"img": "c04.jpg", "texto": "ERA ÉL"}}
 Deja en SALIDA_DIR: fb.mp4 + short.mp4 (o largo.mp4), miniatura.jpg y revision_*.jpg (cuadros cada 2 s para revisar).
 """
@@ -166,7 +167,12 @@ def main():
         fm = os.path.join(mat, mi['img'])
     elif mi.get('seg') is not None and 0 <= int(mi['seg']) < len(segs):
         fm = segs[int(mi['seg'])]['img']
-    salidas, mini = P.armar(out, wav, palabras, segs, g, info['hook_fin'], v, fm or reales[0])
+    fm = fm or next((r_ for r_ in reales if not r_.endswith('.mp4')), reales[0])
+    if fm.endswith('.mp4'):
+        cuadro = os.path.join(out, 'mini_fuente.jpg')
+        subprocess.run(['ffmpeg', '-v', 'error', '-y', '-ss', '1', '-i', fm, '-frames:v', '1', cuadro])
+        fm = cuadro
+    salidas, mini = P.armar(out, wav, palabras, segs, g, info['hook_fin'], v, fm)
     intro = montaje.dur(montaje.INTRO)
     print('gancho termina en', info['hook_fin'], 's · intro', round(intro, 2), 's')
     for tipo, mp4 in salidas:

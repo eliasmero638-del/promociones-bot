@@ -275,6 +275,36 @@ def _jpg(src, dst, maximo=1600):
     im.save(dst, quality=90)
 
 
+_videos_bajados = {}
+
+
+def _fragmento(esc, carpeta, i):
+    """Fragmento corto de un video real (yt-dlp): desde `desde` s, máx. `dur` s (≤ 7), sin audio, 720 p."""
+    import subprocess, glob
+    url = esc['url']
+    try:
+        src = _videos_bajados.get(url)
+        if not (src and os.path.exists(src)):
+            base = os.path.join(carpeta, f'src_{len(_videos_bajados):02d}')
+            subprocess.run(['yt-dlp', '-q', '--no-playlist', '-f', 'bv*[height<=1080]+ba/b[height<=1080]/b',
+                            '--merge-output-format', 'mp4', '-o', base + '.%(ext)s', url], timeout=300, check=True)
+            src = (glob.glob(base + '.*') or [None])[0]
+            _videos_bajados[url] = src
+        if not src:
+            return None
+        out = f'v_{i:02d}.mp4'
+        d = min(float(esc.get('dur', 6)), 7.0)
+        montaje.sh(['ffmpeg', '-y', '-v', 'error', '-ss', f"{float(esc.get('desde', 0)):.2f}", '-i', src, '-t', f'{d:.2f}',
+                    '-an', '-vf', 'scale=-2:720,fps=30', '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '20',
+                    os.path.join(carpeta, out)])
+        montaje.sh(['ffmpeg', '-y', '-v', 'error', '-ss', '1', '-i', os.path.join(carpeta, out), '-frames:v', '1',
+                    os.path.join(carpeta, f'vf_{i:02d}.jpg')])
+        return out
+    except Exception as e:
+        log('fragmento de video falló', url, e)
+        return None
+
+
 def preparar_material(fecha, v):
     eid = v['eid']
     carpeta_enc = os.path.join(radar.DIR, fecha, eid)
@@ -285,7 +315,13 @@ def preparar_material(fecha, v):
     segs = [dict(s) for s in v['segmentos'] if str(s.get('texto', '')).strip()]
     usados = set()
     for i, s in enumerate(segs):
-        img = _escena_img(s.get('escena'), carpeta_enc, tmp, i, usados)
+        esc = s.get('escena') or {}
+        if esc.get('tipo') == 'video' and esc.get('url'):
+            v = _fragmento(esc, tmp, i)
+            if v:
+                s['img'] = v
+                continue
+        img = _escena_img(esc, carpeta_enc, tmp, i, usados)
         if img:
             _jpg(img, os.path.join(tmp, f'esc_{i:02d}.jpg'), 2000)
         s['img'] = f'esc_{i:02d}.jpg' if img else None
@@ -309,10 +345,11 @@ def preparar_material(fecha, v):
             'palabras': [[round(a, 3), round(b, 3), w] for a, b, w in palabras]}
     F._guardar(os.path.join(tmp, 'info.json'), info)
     for f_ in os.listdir(tmp):
-        if not (f_.endswith('.jpg') or f_ in ('voz.flac', 'info.json')):
+        if not (f_.endswith('.jpg') or f_ in ('voz.flac', 'info.json') or re.match(r'v_\d\d\.mp4$', f_)):
             os.remove(os.path.join(tmp, f_))
     shutil.rmtree(out, ignore_errors=True)
     os.replace(tmp, out)
+    _videos_bajados.clear()
     log('material listo', fecha, eid)
 
 

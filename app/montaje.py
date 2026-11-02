@@ -322,7 +322,29 @@ def _escena_pro(img, d, mov, W, H, salida):
           f"[f0]scale=w='trunc(iw*{zoom}/2)*2':h=-2:eval=frame[fg];"
           f"[bg][fg]overlay=x='(W-w)/2{dx}{temblor}':y='(H-h)/2{temblor.replace('53', '47')}':eval=frame,"
           f"vignette=PI/4.5,noise=alls=7:allf=t,fps=30,format=yuv420p[v]")
+    if img.lower().endswith('.mp4'):
+        _escena_video(img, d, W, H, salida)
+        return
     sh(['ffmpeg', '-y', '-v', 'error', '-loop', '1', '-t', f'{d:.3f}', '-i', img, '-filter_complex', fc, '-map', '[v]',
+        '-r', '30', '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '19', '-pix_fmt', 'yuv420p', '-an', salida])
+
+
+def _escena_video(mp4, d, W, H, salida, maximo=7.0):
+    """Fragmento de video real "disimulado": dentro de un recuadro con borde, ligeramente girado, sobre fondo
+    desenfocado, con crédito. Se mueve máx. 7 s y luego queda congelado con un acercamiento suave."""
+    dv = min(dur(mp4), maximo)
+    resto = max(0.0, d - dv)
+    bw = int(W * (0.80 if H > W else 0.62))
+    e = f'(1-cos(PI*min(t/{max(d, 0.5):.3f},1)))/2'
+    fc = (f"[0:v]trim=0:{dv:.3f},setpts=PTS-STARTPTS,fps=30,tpad=stop_mode=clone:stop_duration={resto + 0.1:.3f},split[a][b];"
+          f"[a]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},boxblur=30:3,eq=brightness=-0.4[bg];"
+          f"[b]scale={bw}:-2,pad=iw+16:ih+16:8:8:color=white,pad=iw+8:ih+8:4:4:color=0xD01A1A[box0];"
+          f"[box0]scale=w='trunc(iw*(1+0.06*{e})/2)*2':h=-2:eval=frame,rotate=-0.025:c=none:ow=rotw(0.025):oh=roth(0.025)[box];"
+          f"[bg][box]overlay=x='(W-w)/2':y='(H-h)/2':eval=frame,"
+          f"drawtext=fontfile='{FUENTE}':text='VIDEO DE REDES SOCIALES':fontsize={26 if H > W else 22}:fontcolor=white@0.85:"
+          f"x=(w-text_w)/2:y=h*{0.27 if H > W else 0.08}:box=1:boxcolor=black@0.45:boxborderw=8,"
+          f"vignette=PI/4.5,noise=alls=7:allf=t,format=yuv420p[v]")
+    sh(['ffmpeg', '-y', '-v', 'error', '-i', mp4, '-filter_complex', fc, '-map', '[v]', '-t', f'{d:.3f}',
         '-r', '30', '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '19', '-pix_fmt', 'yuv420p', '-an', salida])
 
 

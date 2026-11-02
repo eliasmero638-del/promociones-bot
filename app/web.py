@@ -196,7 +196,7 @@ class H(BaseHTTPRequestHandler):
         p_ = os.path.join(C.DATA, 'material', m_.group(1), m_.group(2))
         if not os.path.exists(p_):
             return self._send(404, 'No')
-        tipo = {'.json': 'application/json', '.flac': 'audio/flac'}.get(os.path.splitext(p_)[1], 'image/jpeg')
+        tipo = {'.json': 'application/json', '.flac': 'audio/flac', '.mp4': 'video/mp4'}.get(os.path.splitext(p_)[1], 'image/jpeg')
         return self._send(200, open(p_, 'rb').read(), tipo)
 
     def do_GET(self):
