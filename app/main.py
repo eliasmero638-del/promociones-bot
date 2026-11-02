@@ -7,7 +7,7 @@ except Exception as _e:          # si la fábrica falla, el Clipero sigue funcio
     fabrica = None
     print('fabrica no disponible:', _e, flush=True)
 
-VERSION = 'v36-visitas'
+VERSION = 'v37-gustos'
 cola = queue.Queue()
 historial = []          # (hora, puntaje) de clips enviados, para límites por hora
 stats = {'pedazos': 0, 'clips': 0, 'ult_puntaje': None, 'ult_pedazo': None}
@@ -524,6 +524,14 @@ def comandos(tipo, chat, dato, raw):
         ps[partes[0]] = [p.lower() for p in partes[1:]] + [partes[0].split()[0].lower()]
         C.save(participantes=ps)
         tg.texto(f'🆕 {partes[0]} agregado a la lista.', chat)
+    elif cmd in ('/gusta', '/nogusta'):
+        t = dato.partition(' ')[2].strip()
+        if not t:
+            return tg.texto('Usa así: /gusta cuando llegan visitas y hay celos   ·   /nogusta cuando piden votos', chat)
+        g = list(cfg.get('gustos') or [])
+        g.append({'s': '+' if cmd == '/gusta' else '-', 't': t[:200]})
+        C.save(gustos=g[-40:])
+        tg.texto(('👍 Anotado, el supervisor ahora busca: ' if cmd == '/gusta' else '👎 Anotado, el supervisor ahora evita: ') + t, chat)
     elif cmd == '/invitado':
         partes = [x.strip() for x in dato.partition(' ')[2].split(',') if x.strip()]
         if not partes:

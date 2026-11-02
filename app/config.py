@@ -57,7 +57,7 @@ DEFAULTS = {
     'pub_noche': [0, 7],                 # de 0:00 a 7:00 no se publica (se guarda para la mañana)
     'repetido_min': 30,                  # misma persona dentro de 30 min de grabación = misma conversación
     'sin_nombre_minimo': 90,             # sin nombre seguro solo pasa si el momento es muy fuerte (título neutral)
-    'certeza_minima': 75,
+    'certeza_minima': 70,
     'horas': [],                         # [] = todo el día; ej. [[18, 24], [0, 2]] solo esas horas
     'segmento_seg': 120,
     'guardar_horas': 3,                  # cuánto tiempo guardar lo grabado
@@ -85,14 +85,14 @@ _lock = threading.Lock()
 _cfg = None
 _propio = {}            # solo lo que se guardó a propósito (no los valores por defecto)
 
-VERSION_CFG = 5
+VERSION_CFG = 6
 # claves que versiones viejas guardaban sin querer: se borran para que mande el valor por defecto
 MIGRAR = {2: ['clip_min', 'clip_max', 'ventana_antes', 'ventana_despues', 'antes_seg', 'despues_seg',
               'umbral_ia', 'max_por_hora', 'separacion_min', 'segmento_seg', 'guardar_horas', 'whisper_modelo',
               'auto_espera_min', 'auto_minimo', 'max_publicaciones_dia', 'participantes', 'canal', 'reality',
               'marca', 'modo', 'web_url', 'web_puerto', 'umbral'],
           5: ['participantes', 'exparticipantes']}       # lista actual según lacasa593.com (1-nov-2026)
-FORZAR = {2: {'ia_minimo': 80}, 3: {'ia_minimo': 85}, 4: {'ridmer_urgencia': 90}, 5: {'certeza_minima': 75}}
+FORZAR = {2: {'ia_minimo': 80}, 3: {'ia_minimo': 85}, 4: {'ridmer_urgencia': 90}, 5: {'certeza_minima': 75}, 6: {'certeza_minima': 70}}
 
 
 def _escribir():

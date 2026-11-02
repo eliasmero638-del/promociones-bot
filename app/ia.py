@@ -40,6 +40,19 @@ def modelos(key):
     _cache[key] = normales + [m for m in MODELOS_RESPALDO if m not in normales][:1] + lite
     return _cache[key]
 
+
+def gustos_txt():
+    """Lo que el dueño enseñó con /gusta y /nogusta."""
+    g = C.get().get('gustos') or []
+    si = [x['t'] for x in g if x.get('s') == '+'][-15:]
+    no = [x['t'] for x in g if x.get('s') == '-'][-15:]
+    out = ''
+    if si:
+        out += '- El dueño además pidió (SÍ): ' + '; '.join(si) + '\n'
+    if no:
+        out += '- El dueño además pidió (NO): ' + '; '.join(no) + '\n'
+    return out
+
 PROMPT = """Eres el editor de una página de Facebook de clips de realities ("{marca}") que vive de las vistas.
 Estás viendo un pedazo de {seg} segundos del reality "{reality}" (Ecuador), transmitido en vivo.
 
@@ -52,6 +65,15 @@ Distingue bien QUIÉN APARECE/HABLA de QUIÉN ES MENCIONADO:
 - No confundas a las personas: si no estás 100% seguro de quién está hablando, no le pongas nombre.
 Comentarios del chat en vivo en ese momento: {chat}
 
+LO QUE LE GUSTA AL DUEÑO DE LA PÁGINA (síguelo al calificar):
+- SÍ (sube el interés): visitas o invitados que entran a la casa y las reacciones (sorpresa, abrazos, celos,
+  incomodidad); celos y tensión de pareja; risas de grupo genuinas y bromas que todos celebran; sustos y bromas
+  pesadas; peleas o discusiones reales; chismes y acusaciones con evidencia; confesiones, llanto y despedidas;
+  reencuentros; nominaciones, salvaciones y eliminaciones; cualquier momento con un "antes y después" claro.
+- NO (descártalo o déjalo bajo 55): charla normal sin giro, comer o cocinar sin nada más, limpiar, dormir,
+  repetir lo mismo, pedir votos al público una y otra vez, saludos, publicidad, momentos sin sentido o que no se
+  entienden sin haber visto lo anterior.
+{gustos}
 {aprendizaje}
 Te doy {nfotos} fotos del clip en orden y su audio. Tareas:
 1. Transcribe lo que se dice, con tiempos en segundos desde el inicio del audio, en frases cortas (máx 7 palabras).
@@ -185,7 +207,7 @@ def analizar(clip, chat_textos, seg):
     fotos = _fotos(clip)
     ex = cfg.get('exparticipantes') or {}
     ex_txt = '; '.join(f"{k}: {', '.join(v)}" for k, v in ex.items()) or '(ninguno)'
-    prompt = PROMPT.format(aprendizaje=aprendizaje(), exparticipantes=ex_txt, marca=cfg['marca'], reality=cfg['reality'], seg=int(seg), participantes=parts_txt,
+    prompt = PROMPT.format(gustos=gustos_txt(), aprendizaje=aprendizaje(), exparticipantes=ex_txt, marca=cfg['marca'], reality=cfg['reality'], seg=int(seg), participantes=parts_txt,
                            chat=chat, nfotos=len(fotos), cmin=cfg.get('clip_min', 30), cmax=cfg.get('clip_max', 180))
     parts = [{'text': prompt}]
     parts += [{'inline_data': {'mime_type': 'image/jpeg', 'data': base64.b64encode(f).decode()}} for f in fotos]
@@ -312,7 +334,7 @@ def analizar_groq(palabras, chat_textos, seg):
             f"{k}: {', '.join(v)}" for k, v in cfg['invitados'].items())
     ex = cfg.get('exparticipantes') or {}
     ex_txt = '; '.join(f"{k}: {', '.join(v)}" for k, v in ex.items()) or '(ninguno)'
-    prompt = PROMPT.format(aprendizaje=aprendizaje(), exparticipantes=ex_txt, marca=cfg['marca'], reality=cfg['reality'],
+    prompt = PROMPT.format(gustos=gustos_txt(), aprendizaje=aprendizaje(), exparticipantes=ex_txt, marca=cfg['marca'], reality=cfg['reality'],
                            seg=int(seg), participantes=parts_txt, chat=' | '.join(chat_textos[-80:])[:4000] or '(sin chat)',
                            nfotos=0, cmin=cfg.get('clip_min', 60), cmax=cfg.get('clip_max', 180))
     prompt = prompt.replace('Te doy 0 fotos del clip en orden y su audio.',
