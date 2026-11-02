@@ -125,13 +125,13 @@ def _mezcla(voz, D, hook_fin, salida):
     sh(['ffmpeg', '-y', '-v', 'error'] + ins + ['-filter_complex', fc, '-map', '[a]', '-ar', '48000', '-ac', '2', salida])
 
 
-def render(trabajo, voz, palabras, escenas, formato, titulo, hook_fin, salida):
+def render(trabajo, voz, palabras, escenas, formato, titulo, hook_fin, salida, cola=0.6):
     """escenas: [{'t0','t1','img'}] en segundos de la voz. Intro de Ridmer va después del gancho (hook_fin)."""
     W, H = FORMATOS[formato]
     trabajo, voz, salida = os.path.abspath(trabajo), os.path.abspath(voz), os.path.abspath(salida)
     escenas = [dict(e, img=os.path.abspath(e['img'])) for e in escenas]
     os.makedirs(trabajo, exist_ok=True)
-    D = dur(voz) + 0.6
+    D = dur(voz) + cola
     lista = os.path.join(trabajo, f'esc_{formato}.txt')
     with open(lista, 'w') as f:
         for i, e in enumerate(escenas):
@@ -362,13 +362,13 @@ SFX_ARCH = {'impacto': ('susp_impact.mp3', 0.55), 'whoosh': ('wh_deep.mp3', 0.30
             'latido': ('heart_slow.mp3', 0.40), 'riser': ('riser2.mp3', 0.35)}
 
 
-def render_pro(trabajo, voz, palabras, escenas, formato, titulo, hook_fin, salida):
+def render_pro(trabajo, voz, palabras, escenas, formato, titulo, hook_fin, salida, cola=0.6):
     """Como render(), pero editado "a mano": movimiento con easing por escena, transiciones (fundido, destello,
     negro), efectos de sonido de suspenso sincronizados con los cortes, viñeta y grano. Intro tras el gancho."""
     W, H = FORMATOS[formato]
     trabajo, voz, salida = os.path.abspath(trabajo), os.path.abspath(voz), os.path.abspath(salida)
     os.makedirs(trabajo, exist_ok=True)
-    D = dur(voz) + 0.6
+    D = dur(voz) + cola
     T = {'fade': 0.30, 'fadewhite': 0.16, 'fadeblack': 0.45, 'dissolve': 0.35}
     clips, durs, trans, eventos = [], [], [], []
     for i, e in enumerate(escenas):

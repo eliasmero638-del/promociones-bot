@@ -112,3 +112,18 @@ prepara el MATERIAL (voz y fotos) y **TÚ armas y revisas cada video** (modo "cl
   WebSearch (reciente + confirmado), agrégalo al plan con `"hora_fb": "ya", "hora_short": "ya"` (sin borrar los demás
   videos), pide el material, edítalo (Facebook ~1:00–1:30 y Short < 60 s) y entrégalo SOLO a él con entregar.py.
   Facebook se publica a los 20 min de avisar; el Short le llega al dueño para subirlo.
+
+## YouTube: 5 Shorts + largo, TODO en un paquete a las 9:00 (regla del dueño, reemplaza lo anterior de Shorts)
+- Ya NO marques `short: true` en los videos de Facebook. Cada Short es su PROPIO video en el plan, con `"tipo": "short"`,
+  su propio guion (100–120 palabras, 7–10 segmentos) y `"hora_youtube"` (la hora a la que el dueño lo programa).
+- El Short cuenta la historia COMPLETA: gancho → contexto mínimo → giro → **final claro que cierra la historia** (qué
+  pasó al final / qué se sabe hoy) → "Sígueme en Ridmer para más." Nunca termina en el aire.
+- 5 Shorts por día:
+  - `fb1s` (misma historia que fb1, `"encargo": "fb1"` para usar sus fotos) → `hora_youtube` 12:00
+  - `sh1` (encargo propio) → 15:00
+  - `fb2s` (`"encargo": "fb2"`) → 17:00
+  - `sh2` (encargo propio) → 19:00
+  - `fb3s` (`"encargo": "fb3"`) → 22:00
+- Largo (días alternos) → `hora_youtube` 18:00. El servidor manda a las 9:00 un resumen con las horas y luego cada video
+  con sus textos. Para llegar a tiempo, ENTREGA ANTES DE LAS 8:45.
+- `gancho`: en Shorts siempre 1 (la intro entra tras la primera frase).

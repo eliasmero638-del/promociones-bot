@@ -145,7 +145,24 @@ def armar(carpeta, wav, palabras, segs, g, hook, v, foto_mini):
                        for k in extra if (k == 'tipo' or s.get(k) is not None)}) for s in segs]
     titulo = v.get('titulo_video') or v.get('titulo_youtube', '')
     salidas = []
-    if v['tipo'] == 'largo':
+    if v['tipo'] == 'short':                      # Short con guion propio: historia completa y final claro, < 60 s
+        maximo = 58.5 - montaje.dur(montaje.INTRO) - 1.8
+        if D > maximo:
+            f_ = min(D / maximo, 1.3)
+            rap = os.path.join(carpeta, 'voz_rapida.wav')
+            montaje.sh(['ffmpeg', '-y', '-v', 'error', '-i', wav, '-af', f'atempo={f_:.3f}', rap])
+            wav, D, hook = rap, montaje.dur(rap), hook / f_
+            palabras = [(x / f_, y / f_, w) for x, y, w in palabras]
+            escenas = [dict(e, t0=e['t0'] / f_) for e in escenas]
+        out = os.path.join(carpeta, 'short.mp4')
+        rend(carpeta, wav, palabras, escenas, 'vertical', titulo, hook, out, cola=1.8)
+        if montaje.dur(out) > 59.5:
+            tmp = os.path.join(carpeta, 'short_c.mp4')
+            montaje.sh(['ffmpeg', '-y', '-v', 'error', '-i', out, '-t', '59.4', '-c:v', 'libx264', '-preset',
+                        'veryfast', '-crf', '21', '-c:a', 'aac', '-b:a', '192k', '-movflags', '+faststart', tmp])
+            os.replace(tmp, out)
+        salidas.append(('short', out))
+    elif v['tipo'] == 'largo':
         out = os.path.join(carpeta, 'largo.mp4')
         rend(carpeta, wav, palabras, escenas, 'horizontal', titulo, hook, out)
         salidas.append(('largo', out))
@@ -191,7 +208,7 @@ def armar(carpeta, wav, palabras, segs, g, hook, v, foto_mini):
 # ---------------------------------------------------------------- armar un video del plan
 def producir(fecha, v):
     eid = v['eid']
-    carpeta_enc = os.path.join(radar.DIR, fecha, eid)
+    carpeta_enc = os.path.join(radar.DIR, fecha, v.get('encargo') or eid)
     jid = f'{fecha.replace("-", "")}_{eid}'
     carpeta = os.path.join(F.DIR, jid)
     os.makedirs(carpeta, exist_ok=True)
@@ -240,19 +257,23 @@ def _programar(fecha, v, jid, salidas, mini, guion):
         os.makedirs(sub, exist_ok=True)
         shutil.move(path, os.path.join(sub, os.path.basename(path)))
         shutil.copy(mini, os.path.join(sub, 'miniatura.jpg'))
-        hora = {'fb': v.get('hora_fb', '12:30'), 'short': v.get('hora_short', '13:00'),
-                'largo': v.get('hora_youtube', '18:00')}[tipo]
-        if hora == 'ya':                     # prueba: avisar ahora (Facebook se publica a los 20 min)
+        hora = {'fb': v.get('hora_fb', '12:30'),
+                'short': v.get('hora_youtube') if v['tipo'] == 'short' else v.get('hora_short', '13:00'),
+                'largo': v.get('hora_youtube', '18:00')}[tipo] or '12:00'
+        if hora == 'ya':                     # urgente / prueba: avisar ahora (Facebook se publica a los 20 min)
             cuando = time.time() + (20 * 60 if tipo == 'fb' else 60)
         else:
             cuando = _epoch(fecha, hora)
+        aviso = cuando - (20 * 60 if tipo == 'fb' else 0)
+        if tipo != 'fb' and hora != 'ya':    # YouTube: todo junto en el paquete de la mañana
+            aviso = min(aviso, _epoch(fecha, C.get().get('paquete_hora', '09:00')))
         meta = {'id': f'{jid}_{tipo}', 'formato': 'short' if tipo != 'largo' else 'largo', 'motivo': 'claude',
                 'entrega': tipo, 'titulo': titulo, 'titulo_youtube': v.get('titulo_youtube', titulo),
                 'descripcion_youtube': desc, 'etiquetas': v.get('etiquetas', []),
                 'texto_facebook': v.get('texto_facebook', ''), 'guion': guion,
                 'archivos': {'video': os.path.basename(path), 'miniatura': 'miniatura.jpg'},
                 'token': secrets.token_urlsafe(16), 'estado': 'programado', 'hora': hora,
-                'aviso_en': cuando - (20 * 60 if tipo == 'fb' else 0), 'publicar_en': cuando,
+                'aviso_en': aviso, 'publicar_en': cuando,
                 'duracion': int(montaje.dur(os.path.join(sub, os.path.basename(path))))}
         F._guardar(os.path.join(sub, 'meta.json'), meta)
     h = F._leer(F.HIST, [])
@@ -307,7 +328,7 @@ def _fragmento(esc, carpeta, i):
 
 def preparar_material(fecha, v):
     eid = v['eid']
-    carpeta_enc = os.path.join(radar.DIR, fecha, eid)
+    carpeta_enc = os.path.join(radar.DIR, fecha, v.get('encargo') or eid)
     out = os.path.join(MAT, fecha, eid)
     tmp = out + '_tmp'
     shutil.rmtree(tmp, ignore_errors=True)
@@ -457,9 +478,11 @@ def _avisar_youtube(meta):
     link = f"{C.get().get('web_url', 'http://173.249.44.95')}/r/{meta['token']}"
     largo = meta['entrega'] == 'largo'
     du = meta.get('duracion', 0)
-    cap = (f"📺 <b>YOUTUBE · {'VIDEO LARGO' if largo else 'SHORT'}</b> · ⏱️ {du // 60}:{du % 60:02d}\n"
-           f"⏰ Es buena hora: <b>súbelo ahora</b>.\n\n<b>{meta['titulo_youtube']}</b>\n\n"
-           f"👉 Video en calidad completa, miniatura y textos: {link}")
+    cuando = time.strftime('%I:%M %p', time.localtime(meta.get('publicar_en', time.time()))).lstrip('0')
+    hora_txt = (f"⏰ <b>Prográmalo para las {cuando}</b>\n\n" if meta.get('publicar_en', 0) - time.time() > 600
+                else "⏰ Es buena hora: <b>súbelo ahora</b>.\n\n")
+    cap = (f"📺 <b>YOUTUBE · {'VIDEO LARGO' if largo else 'SHORT'}</b> · ⏱️ {du // 60}:{du % 60:02d}\n" + hora_txt +
+           f"<b>{meta['titulo_youtube']}</b>\n\n👉 Video en calidad completa, miniatura y textos: {link}")
     texto = (f"📝 <b>Título:</b>\n{meta['titulo_youtube']}\n\n<b>Descripción:</b>\n{meta['descripcion_youtube']}\n\n"
              f"<b>Etiquetas:</b>\n{', '.join(meta.get('etiquetas', []))}")
     v = os.path.join(F.DIR, meta['id'], meta['archivos']['video'])
@@ -481,6 +504,7 @@ def _avisar_youtube(meta):
 
 def entregas():
     ahora = time.time()
+    yt = []
     for jid in sorted(os.listdir(F.DIR)):
         m = F.leer_meta(jid) if os.path.isdir(os.path.join(F.DIR, jid)) else None
         if not m or m.get('estado') != 'programado' or ahora < m.get('aviso_en', 0):
@@ -494,10 +518,21 @@ def entregas():
             F._guardar(os.path.join(F.DIR, jid, 'meta.json'), m)
             F.avisar(m)
         else:
-            m['estado'] = 'avisado_youtube'
-            F._guardar(os.path.join(F.DIR, jid, 'meta.json'), m)
-            _avisar_youtube(m)
-
+            yt.append((jid, m))
+    if not yt:
+        return
+    yt.sort(key=lambda x: x[1].get('publicar_en', 0))
+    if len(yt) > 1:
+        lineas = [f"• <b>{time.strftime('%I:%M %p', time.localtime(m['publicar_en'])).lstrip('0')}</b> — "
+                  f"{'🎬 Largo' if m['entrega'] == 'largo' else '▶️ Short'}: {m['titulo_youtube'][:70]}" for _, m in yt]
+        txt = ('📦 <b>PAQUETE DE YOUTUBE DE HOY</b>\nTe mando cada video con sus textos. Súbelos y '
+               '<b>prográmalos a estas horas</b>:\n\n' + '\n'.join(lineas))
+        for c in C.get()['chat_ids']:
+            tg._api('sendMessage', chat_id=c, text=txt, parse_mode='HTML')
+    for jid, m in yt:
+        m['estado'] = 'avisado_youtube'
+        F._guardar(os.path.join(F.DIR, jid, 'meta.json'), m)
+        _avisar_youtube(m)
 
 # ---------------------------------------------------------------- bucle
 def _bajar_plan(fecha):

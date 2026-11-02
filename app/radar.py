@@ -134,17 +134,20 @@ def preparar_dia(fecha=None):
         except Exception:
             pass
     elegidos = elegidos or cands
-    total = n_fb + (1 if hay_largo(fecha) else 0) + 1        # +1 = reserva (res1) por si una noticia no sirve
+    total = n_fb + (1 if hay_largo(fecha) else 0) + C.get().get('shorts_extra', 2) + 1   # + Shorts propios + reserva res1
     k = 0
     for c in elegidos:
         if len(encargos) >= total:
             break
         n_f = sum(1 for e in encargos if e['eid'].startswith('fb'))
         n_l = sum(1 for e in encargos if e['tipo'] == 'largo')
+        n_s = sum(1 for e in encargos if e['tipo'] == 'short')
         if n_f < n_fb:
             tipo, eid = 'fb', f'fb{n_f + 1}'
         elif hay_largo(fecha) and not n_l:
             tipo, eid = 'largo', 'largo1'
+        elif n_s < C.get().get('shorts_extra', 2):
+            tipo, eid = 'short', f'sh{n_s + 1}'
         else:
             tipo, eid = 'fb', 'res1'
         try:
