@@ -1,0 +1,1165 @@
+{
+ "fecha": "2026-11-03",
+ "modo": "claude",
+ "videos": [
+  {
+   "eid": "fb1",
+   "tipo": "fb",
+   "hora_fb": "12:30",
+   "articulo": "Triángulo de las Bermudas",
+   "fuente": "https://es.wikipedia.org/wiki/Tri%C3%A1ngulo_de_las_Bermudas",
+   "titulo_video": "NUNCA VOLVIERON",
+   "titulo_youtube": "Cinco aviones despegaron de Florida… y nunca volvieron: el Triángulo de las Bermudas",
+   "descripcion_youtube": "Barcos con cientos de hombres, aviones con decenas de pasajeros… todos perdidos en la misma zona del Atlántico.\n¿Qué hay de verdad detrás del Triángulo de las Bermudas?\n#misterio #casosreales #ridmer",
+   "etiquetas": [
+    "misterio",
+    "triángulo de las Bermudas",
+    "Vuelo 19",
+    "desapariciones",
+    "océano Atlántico",
+    "casos reales",
+    "ridmer"
+   ],
+   "texto_facebook": "Cinco aviones despegaron… y nunca volvieron. Esto es lo que se sabe del Triángulo de las Bermudas. #misterio #bermudas #ridmer",
+   "miniatura": {
+    "img": 2,
+    "texto": "NUNCA VOLVIERON"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Cinco aviones de la Marina despegaron de Fort Lauderdale en mil novecientos cuarenta y cinco... y nunca volvieron.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Era el famoso Vuelo diecinueve. Y se perdieron en la zona más temida del océano.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "1945",
+      "sub": "Vuelo 19 · Fort Lauderdale, Florida"
+     }
+    },
+    {
+     "texto": "El triángulo de las Bermudas. Un área del Atlántico entre Miami, Puerto Rico y las islas Bermudas.",
+     "escena": {
+      "tipo": "ruta",
+      "a": [
+       25.7617,
+       -80.1918
+      ],
+      "b": [
+       32.3078,
+       -64.7505
+      ],
+      "na": "MIAMI",
+      "nb": "BERMUDAS",
+      "corte": 1.0,
+      "c": [
+       18.4655,
+       -66.1057
+      ],
+      "nc": "PUERTO RICO"
+     }
+    },
+    {
+     "texto": "Cada lado mide unos mil seiscientos kilómetros.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Allí se han perdido unas cincuenta naves y veinte aviones.",
+     "escena": {
+      "tipo": "contador",
+      "n": 50,
+      "texto": "NAVES PERDIDAS",
+      "sub": "y unos 20 aviones"
+     }
+    },
+    {
+     "texto": "En mil novecientos diecinueve, el carguero Cyclops se hundió con trescientos ocho hombres a bordo.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "USS Cyclops (AC-4)",
+       "USS Cyclops 1911"
+      ]
+     },
+     "rotulo": "308 HOMBRES"
+    },
+    {
+     "texto": "En mil novecientos cuarenta y ocho, el avión Star Tiger desapareció con treinta y un pasajeros.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Avro Tudor Star Tiger",
+       "Avro Tudor IV"
+      ]
+     }
+    },
+    {
+     "texto": "Y en mil novecientos sesenta y siete, un crucero pidió ayuda a una milla de Miami. A los diecinueve minutos ya se había hundido.",
+     "escena": {
+      "tipo": "foto",
+      "img": 13
+     }
+    },
+    {
+     "texto": "En los años sesenta, el escritor Vincent Gaddis le dio su nombre. Y en mil novecientos setenta y cuatro, Charles Berlitz lo convirtió en un superventas.",
+     "escena": {
+      "tipo": "linea_tiempo",
+      "hitos": [
+       [
+        "1950",
+        "Primera mención"
+       ],
+       [
+        "Años 60",
+        "Gaddis lo bautiza"
+       ],
+       [
+        "1974",
+        "Libro de Berlitz"
+       ]
+      ]
+     }
+    },
+    {
+     "texto": "Muchos casos fueron exagerados, y algunos ni siquiera ocurrieron dentro del triángulo.",
+     "escena": {
+      "tipo": "foto",
+      "img": 9
+     }
+    },
+    {
+     "texto": "Por aquí pasa la corriente del Golfo, con huracanes y olas enormes. Y muchísimos barcos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 7
+     }
+    },
+    {
+     "texto": "El gobierno de Estados Unidos y los científicos no encontraron nada inusual. Aun así, algunas desapariciones siguen sin explicación.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "¿Tú lo cruzarías? Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 11
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb1s",
+   "tipo": "short",
+   "encargo": "fb1",
+   "hora_youtube": "12:00",
+   "articulo": "Triángulo de las Bermudas",
+   "fuente": "https://es.wikipedia.org/wiki/Tri%C3%A1ngulo_de_las_Bermudas",
+   "titulo_video": "NUNCA VOLVIERON",
+   "titulo_youtube": "Cinco aviones despegaron… y nunca volvieron #shorts",
+   "descripcion_youtube": "El Vuelo 19 y las desapariciones del Triángulo de las Bermudas: lo que se sabe hoy.\n#misterio #bermudas #ridmer #shorts",
+   "etiquetas": [
+    "misterio",
+    "triángulo de las Bermudas",
+    "Vuelo 19",
+    "desapariciones",
+    "océano Atlántico",
+    "casos reales",
+    "ridmer",
+    "shorts"
+   ],
+   "texto_facebook": "",
+   "miniatura": {
+    "img": 2,
+    "texto": "NUNCA VOLVIERON"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Cinco aviones de la Marina despegaron de Florida en mil novecientos cuarenta y cinco... y nunca volvieron.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Era el famoso Vuelo diecinueve.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "1945",
+      "sub": "Vuelo 19 · Fort Lauderdale"
+     }
+    },
+    {
+     "texto": "Se perdieron en el triángulo de las Bermudas, entre Miami, Puerto Rico y las islas Bermudas.",
+     "escena": {
+      "tipo": "ruta",
+      "a": [
+       25.7617,
+       -80.1918
+      ],
+      "b": [
+       32.3078,
+       -64.7505
+      ],
+      "na": "MIAMI",
+      "nb": "BERMUDAS",
+      "corte": 1.0,
+      "c": [
+       18.4655,
+       -66.1057
+      ],
+      "nc": "PUERTO RICO"
+     }
+    },
+    {
+     "texto": "Allí se han perdido unas cincuenta naves y veinte aviones.",
+     "escena": {
+      "tipo": "contador",
+      "n": 50,
+      "texto": "NAVES PERDIDAS",
+      "sub": "y unos 20 aviones"
+     }
+    },
+    {
+     "texto": "Un carguero se hundió con trescientos ocho hombres. Un avión desapareció con treinta y un pasajeros.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "USS Cyclops (AC-4)",
+       "USS Cyclops 1911"
+      ]
+     }
+    },
+    {
+     "texto": "Pero el gobierno de Estados Unidos y los científicos no encontraron nada inusual.",
+     "escena": {
+      "tipo": "foto",
+      "img": 9
+     }
+    },
+    {
+     "texto": "Ahí pasa la corriente del Golfo, con huracanes y olas enormes.",
+     "escena": {
+      "tipo": "foto",
+      "img": 7
+     }
+    },
+    {
+     "texto": "Y muchos casos famosos fueron exagerados por escritores.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Hoy, la mayoría tiene explicación. Pero algunas desapariciones siguen siendo un misterio.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "img": 11
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb2",
+   "tipo": "fb",
+   "hora_fb": "18:30",
+   "articulo": "Desaparición de Katheryne Eggleston",
+   "fuente": "https://es.wikipedia.org/wiki/Desaparici%C3%B3n_de_Katheryne_Eggleston",
+   "titulo_video": "SALIÓ CON UN DESCONOCIDO",
+   "titulo_youtube": "Salió de un ascensor con un desconocido… y nunca más la volvieron a ver",
+   "descripcion_youtube": "Portland, 1993. Una joven vendedora en su primer día sola.\nUn hombre de saco azul, un auto abandonado con las llaves puestas… y un pasaporte que nunca apareció.\n#misterio #casosreales #ridmer",
+   "etiquetas": [
+    "misterio",
+    "desaparición",
+    "Katheryne Eggleston",
+    "Portland",
+    "Oregón",
+    "caso sin resolver",
+    "casos reales",
+    "ridmer"
+   ],
+   "texto_facebook": "La vieron salir de un ascensor con un desconocido… y nunca más se supo de ella. #misterio #casosreales #ridmer",
+   "miniatura": {
+    "img": 2,
+    "texto": "¿QUIÉN ERA ÉL?"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Una joven salió de un ascensor con un desconocido... y nunca más la volvieron a ver.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Se llamaba Katheryne Eggleston. Tenía veintidós años y acababa de graduarse.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Katheryne Eggleston",
+      "sub": "Vendedora · 22 años"
+     }
+    },
+    {
+     "texto": "Era el dos de agosto de mil novecientos noventa y tres. Su primer día haciendo visitas de ventas sola, en Portland, Oregón.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "2 DE AGOSTO DE 1993",
+      "sub": "Portland, Oregón"
+     }
+    },
+    {
+     "texto": "Por la tarde llegó al edificio del Puerto de Portland para una cita.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 45.5313,
+      "lon": -122.66,
+      "lugar": "Edificio del Puerto de Portland",
+      "km": 2
+     }
+    },
+    {
+     "texto": "Cinco testigos la vieron haciendo llamadas en el vestíbulo. Dijeron que parecía preocupada e inquieta.",
+     "escena": {
+      "tipo": "cita",
+      "texto": "Preocupada e inquieta",
+      "autor": "Testigos en el vestíbulo"
+     }
+    },
+    {
+     "texto": "Su cliente la vio salir de un ascensor con un hombre de saco azul, pelo oscuro y tez morena.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     },
+     "rotulo": "EL DESCONOCIDO"
+    },
+    {
+     "texto": "Esa fue la última vez que alguien la vio.",
+     "escena": {
+      "tipo": "foto",
+      "img": 8
+     }
+    },
+    {
+     "texto": "A la mañana siguiente, su Volkswagen Golf apareció a catorce kilómetros, cerca del aeropuerto.",
+     "escena": {
+      "tipo": "ruta",
+      "a": [
+       45.5313,
+       -122.66
+      ],
+      "b": [
+       45.563,
+       -122.537
+      ],
+      "na": "ÚLTIMA VEZ VISTA",
+      "nb": "SU AUTO",
+      "corte": 1.0
+     }
+    },
+    {
+     "texto": "Las puertas abiertas, las ventanas bajadas y las llaves puestas. Su bolso seguía adentro.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Pero faltaba algo: su pasaporte.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "FALTABA SU PASAPORTE",
+      "sub": "bolso, tarjetas y dinero seguían en el auto"
+     }
+    },
+    {
+     "texto": "La policía creyó que había huido para no declarar contra su hermana, acusada de evasión de impuestos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Pero su hermana ya se había declarado culpable. Katheryne nunca habría tenido que declarar.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Después, un hombre anónimo llamó a la línea de pistas y dijo que nunca la encontrarían, porque él la había matado.",
+     "escena": {
+      "tipo": "cita",
+      "texto": "…porque yo la maté.",
+      "autor": "Llamada anónima"
+     }
+    },
+    {
+     "texto": "Más de treinta años después, el caso sigue sin resolver. Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "contador",
+      "n": 33,
+      "texto": "AÑOS SIN RESPUESTA",
+      "sub": "desde agosto de 1993"
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb2s",
+   "tipo": "short",
+   "encargo": "fb2",
+   "hora_youtube": "17:00",
+   "articulo": "Desaparición de Katheryne Eggleston",
+   "fuente": "https://es.wikipedia.org/wiki/Desaparici%C3%B3n_de_Katheryne_Eggleston",
+   "titulo_video": "SALIÓ CON UN DESCONOCIDO",
+   "titulo_youtube": "Salió de un ascensor con un desconocido… y desapareció #shorts",
+   "descripcion_youtube": "Katheryne Eggleston, Portland, 1993. Un caso que sigue sin resolver.\n#misterio #casosreales #ridmer #shorts",
+   "etiquetas": [
+    "misterio",
+    "desaparición",
+    "Katheryne Eggleston",
+    "Portland",
+    "Oregón",
+    "caso sin resolver",
+    "casos reales",
+    "ridmer",
+    "shorts"
+   ],
+   "texto_facebook": "",
+   "miniatura": {
+    "img": 2,
+    "texto": "¿QUIÉN ERA ÉL?"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Una joven salió de un ascensor con un desconocido... y nunca más la volvieron a ver.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Katheryne Eggleston tenía veintidós años. Portland, Oregón, mil novecientos noventa y tres.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Katheryne Eggleston",
+      "sub": "22 años · Portland, 1993"
+     }
+    },
+    {
+     "texto": "Testigos la vieron nerviosa en el vestíbulo de un edificio.",
+     "escena": {
+      "tipo": "foto",
+      "img": 8
+     }
+    },
+    {
+     "texto": "Su cliente la vio salir del ascensor con un hombre de saco azul.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     },
+     "rotulo": "EL DESCONOCIDO"
+    },
+    {
+     "texto": "Al día siguiente, su auto apareció a catorce kilómetros, con las llaves puestas.",
+     "escena": {
+      "tipo": "ruta",
+      "a": [
+       45.5313,
+       -122.66
+      ],
+      "b": [
+       45.563,
+       -122.537
+      ],
+      "na": "ÚLTIMA VEZ VISTA",
+      "nb": "SU AUTO",
+      "corte": 1.0
+     }
+    },
+    {
+     "texto": "Su bolso seguía adentro. Solo faltaba su pasaporte.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "La policía creyó que huyó para no declarar contra su hermana. Pero la hermana ya se había declarado culpable.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Luego, un anónimo llamó y dijo que la había matado.",
+     "escena": {
+      "tipo": "cita",
+      "texto": "…porque yo la maté.",
+      "autor": "Llamada anónima"
+     }
+    },
+    {
+     "texto": "Nunca la encontraron. Más de treinta años después, sigue sin resolverse.",
+     "escena": {
+      "tipo": "contador",
+      "n": 33,
+      "texto": "AÑOS SIN RESPUESTA",
+      "sub": "desde agosto de 1993"
+     }
+    },
+    {
+     "texto": "Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb3",
+   "tipo": "fb",
+   "hora_fb": "21:00",
+   "articulo": "Desaparición de Derrick Engebretson",
+   "fuente": "https://es.wikipedia.org/wiki/Desaparici%C3%B3n_de_Derrick_Engebretson",
+   "titulo_video": "UN ÁNGEL EN LA NIEVE",
+   "titulo_youtube": "Fue a buscar un árbol de Navidad… y solo dejó un ángel en la nieve",
+   "descripcion_youtube": "Oregón, diciembre de 1998. Un niño de 8 años, unas huellas en la nieve y una tormenta.\nMás de 10.000 horas de búsqueda… y una pregunta que sigue abierta.\n#misterio #casosreales #ridmer",
+   "etiquetas": [
+    "misterio",
+    "desaparición",
+    "Derrick Engebretson",
+    "Oregón",
+    "caso sin resolver",
+    "casos reales",
+    "ridmer"
+   ],
+   "texto_facebook": "Fue con su papá a buscar un árbol de Navidad… y solo quedó un ángel en la nieve. #misterio #casosreales #ridmer",
+   "miniatura": {
+    "img": 2,
+    "texto": "DESAPARECIÓ AQUÍ"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Un niño de ocho años fue al bosque a buscar un árbol de Navidad... y desapareció en la nieve.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Se llamaba Derrick Engebretson. Fue con su padre y su abuelo a Pelican Butte, en Oregón.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Derrick Engebretson",
+      "sub": "8 años · Oregón"
+     }
+    },
+    {
+     "texto": "Era el cinco de diciembre de mil novecientos noventa y ocho.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "5 DE DICIEMBRE DE 1998",
+      "sub": "Pelican Butte, Oregón"
+     }
+    },
+    {
+     "texto": "En algún momento, Derrick se alejó. Llevaba una pequeña hacha.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 42.505,
+      "lon": -122.13,
+      "lugar": "Pelican Butte, Oregón",
+      "km": 8
+     }
+    },
+    {
+     "texto": "Hacia las cuatro de la tarde, su padre y su abuelo pidieron ayuda.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "Encontraron pequeñas huellas en la nieve... que llevaban hasta un ángel de nieve junto a la carretera.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Snow angel",
+       "Snow angel in snow"
+      ]
+     }
+    },
+    {
+     "texto": "Pero una quitanieves había borrado el resto. No hubo más rastro.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Esa tarde llegó una tormenta de nieve que frenó la búsqueda.",
+     "escena": {
+      "tipo": "foto",
+      "img": 7
+     }
+    },
+    {
+     "texto": "Lo buscaron con perros, un avión y un helicóptero. Más de diez mil horas de búsqueda.",
+     "escena": {
+      "tipo": "contador",
+      "n": 10000,
+      "texto": "HORAS DE BÚSQUEDA",
+      "sub": "por tierra, en los meses siguientes"
+     }
+    },
+    {
+     "texto": "Un testigo vio ese día a un hombre discutiendo con un niño. Pensó que era su padre.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Otros vieron a un desconocido en un Honda, preguntando por el bosque.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "En mil novecientos noventa y nueve, un grafiti en un baño de carretera hablaba de Derrick. Nunca revelaron qué decía.",
+     "escena": {
+      "tipo": "foto",
+      "img": 7
+     }
+    },
+    {
+     "texto": "Y en dos mil ocho, un condenado por abusar de un niño fue señalado como posible sospechoso.",
+     "escena": {
+      "tipo": "linea_tiempo",
+      "hitos": [
+       [
+        "1998",
+        "Desaparece"
+       ],
+       [
+        "1999",
+        "El grafiti"
+       ],
+       [
+        "2008",
+        "Un sospechoso"
+       ]
+      ]
+     }
+    },
+    {
+     "texto": "Hasta hoy, nadie sabe dónde está Derrick. Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb3s",
+   "tipo": "short",
+   "encargo": "fb3",
+   "hora_youtube": "22:00",
+   "articulo": "Desaparición de Derrick Engebretson",
+   "fuente": "https://es.wikipedia.org/wiki/Desaparici%C3%B3n_de_Derrick_Engebretson",
+   "titulo_video": "UN ÁNGEL EN LA NIEVE",
+   "titulo_youtube": "Fue a buscar un árbol de Navidad… y desapareció en la nieve #shorts",
+   "descripcion_youtube": "Derrick Engebretson, Oregón, 1998. Su paradero sigue siendo un misterio.\n#misterio #casosreales #ridmer #shorts",
+   "etiquetas": [
+    "misterio",
+    "desaparición",
+    "Derrick Engebretson",
+    "Oregón",
+    "caso sin resolver",
+    "casos reales",
+    "ridmer",
+    "shorts"
+   ],
+   "texto_facebook": "",
+   "miniatura": {
+    "img": 2,
+    "texto": "DESAPARECIÓ AQUÍ"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Un niño de ocho años fue al bosque a buscar un árbol de Navidad... y desapareció en la nieve.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Derrick Engebretson iba con su padre y su abuelo. Oregón, diciembre de mil novecientos noventa y ocho.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Derrick Engebretson",
+      "sub": "8 años · Oregón, 1998"
+     }
+    },
+    {
+     "texto": "En algún momento se alejó, con una pequeña hacha.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 42.505,
+      "lon": -122.13,
+      "lugar": "Pelican Butte, Oregón",
+      "km": 8
+     }
+    },
+    {
+     "texto": "Encontraron huellas... y un ángel de nieve junto a la carretera.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Snow angel",
+       "Snow angel in snow"
+      ]
+     }
+    },
+    {
+     "texto": "Una quitanieves borró el rastro. Y llegó una tormenta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 7
+     }
+    },
+    {
+     "texto": "Lo buscaron más de diez mil horas.",
+     "escena": {
+      "tipo": "contador",
+      "n": 10000,
+      "texto": "HORAS DE BÚSQUEDA",
+      "sub": "en los meses siguientes"
+     }
+    },
+    {
+     "texto": "Un testigo vio ese día a un hombre discutiendo con un niño. Pensó que era su padre.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "En dos mil ocho, un condenado por abusar de un niño fue señalado como posible sospechoso.",
+     "escena": {
+      "tipo": "linea_tiempo",
+      "hitos": [
+       [
+        "1998",
+        "Desaparece"
+       ],
+       [
+        "1999",
+        "El grafiti"
+       ],
+       [
+        "2008",
+        "Un sospechoso"
+       ]
+      ]
+     }
+    },
+    {
+     "texto": "Nunca lo encontraron. Hasta hoy, nadie sabe qué le pasó.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    }
+   ]
+  },
+  {
+   "eid": "largo1",
+   "tipo": "largo",
+   "encargo": "fb1",
+   "hora_youtube": "18:00",
+   "articulo": "Triángulo de las Bermudas",
+   "fuente": "https://es.wikipedia.org/wiki/Tri%C3%A1ngulo_de_las_Bermudas",
+   "titulo_video": "EL TRIÁNGULO MALDITO",
+   "titulo_youtube": "Barcos y aviones que se esfumaron: la verdad sobre el Triángulo de las Bermudas",
+   "descripcion_youtube": "Un carguero con 308 hombres. Cinco aviones de la Marina. Un crucero hundido en 19 minutos a una milla de Miami.\n¿Qué pasa realmente en el Triángulo de las Bermudas? Casos reales, la historia de la leyenda… y lo que dicen los científicos.\n#misterio #casosreales #ridmer",
+   "etiquetas": [
+    "misterio",
+    "triángulo de las Bermudas",
+    "Vuelo 19",
+    "desapariciones",
+    "océano Atlántico",
+    "casos reales",
+    "ridmer",
+    "Charles Berlitz",
+    "USS Cyclops",
+    "Star Tiger"
+   ],
+   "texto_facebook": "",
+   "miniatura": {
+    "img": 3,
+    "texto": "¿MITO O VERDAD?"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Un carguero con trescientos ocho hombres. Cinco aviones de la Marina. Un crucero que se hundió en diecinueve minutos. Todos en el mismo rincón del océano.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Bienvenido al triángulo de las Bermudas. Hoy vamos a ver qué hay de verdad... y qué es leyenda.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Es un área del océano Atlántico entre las islas Bermudas, Puerto Rico y la ciudad de Miami, en Florida.",
+     "escena": {
+      "tipo": "ruta",
+      "a": [
+       25.7617,
+       -80.1918
+      ],
+      "b": [
+       32.3078,
+       -64.7505
+      ],
+      "na": "MIAMI",
+      "nb": "BERMUDAS",
+      "corte": 1.0,
+      "c": [
+       18.4655,
+       -66.1057
+      ],
+      "nc": "PUERTO RICO"
+     }
+    },
+    {
+     "texto": "Si unes esos tres puntos con una línea imaginaria, se forma un triángulo de unos mil seiscientos a mil ochocientos kilómetros por lado.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Más de un millón de kilómetros cuadrados de mar abierto.",
+     "escena": {
+      "tipo": "contador",
+      "n": 1100000,
+      "texto": "KM² DE OCÉANO",
+      "sub": "aprox. 1,1 millones"
+     }
+    },
+    {
+     "texto": "Desde mediados del siglo veinte, es el centro de una leyenda: aquí desaparecen aviones, barcos y personas sin dejar rastro.",
+     "escena": {
+      "tipo": "foto",
+      "img": 9
+     }
+    },
+    {
+     "texto": "Pero esta zona tenía mala fama desde mucho antes. La costa de las Carolinas tenía tantos naufragios que la llamaban el cementerio del Atlántico.",
+     "escena": {
+      "tipo": "foto",
+      "img": 10
+     },
+     "rotulo": "CEMENTERIO DEL ATLÁNTICO"
+    },
+    {
+     "texto": "También le dijeron el triángulo del diablo, el triángulo de la muerte o el mar de la mala suerte.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "EL TRIÁNGULO DEL DIABLO",
+      "sub": "triángulo de la muerte · mar de la mala suerte"
+     }
+    },
+    {
+     "texto": "En mil novecientos cincuenta, un periodista de Associated Press, Edward Van Winkle Jones, escribió sobre barcos perdidos cerca de las Bahamas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 11
+     }
+    },
+    {
+     "texto": "Dijo que esas desapariciones de barcos, aviones y botes eran misteriosas.",
+     "escena": {
+      "tipo": "cita",
+      "texto": "Misteriosas",
+      "autor": "Edward Van Winkle Jones, Associated Press (1950)"
+     }
+    },
+    {
+     "texto": "Dos años después, George Sand habló en la revista Fate de extrañas desapariciones marinas.",
+     "escena": {
+      "tipo": "cita",
+      "texto": "Extrañas desapariciones marinas",
+      "autor": "George X. Sand, revista Fate (1952)"
+     }
+    },
+    {
+     "texto": "Y en los años sesenta, el escritor Vincent Gaddis le dio el nombre que hoy todos conocen, en la revista Argosy.",
+     "escena": {
+      "tipo": "foto",
+      "img": 12
+     }
+    },
+    {
+     "texto": "Gaddis marcó los tres vértices: Miami, San Juan de Puerto Rico y las Bermudas. Luego escribió un capítulo llamado el mortal triángulo de las Bermudas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Pero en mil novecientos setenta y cuatro, todo explotó. Charles Berlitz publicó el superventas El triángulo de las Bermudas.",
+     "escena": {
+      "tipo": "linea_tiempo",
+      "hitos": [
+       [
+        "1950",
+        "Jones (AP)"
+       ],
+       [
+        "1952",
+        "Revista Fate"
+       ],
+       [
+        "Años 60",
+        "Gaddis lo bautiza"
+       ],
+       [
+        "1974",
+        "Berlitz"
+       ]
+      ]
+     }
+    },
+    {
+     "texto": "Ese libro convirtió el misterio en un verdadero mito. Y llenó la lista de casos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 13
+     }
+    },
+    {
+     "texto": "En mil novecientos diecinueve, el carguero Cyclops se hundió con trescientos ocho hombres a bordo, durante un huracán.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "USS Cyclops (AC-4)",
+       "USS Cyclops 1911"
+      ]
+     }
+    },
+    {
+     "texto": "Trescientos ocho hombres perdidos en un solo barco.",
+     "escena": {
+      "tipo": "contador",
+      "n": 308,
+      "texto": "HOMBRES A BORDO",
+      "sub": "carguero Cyclops · 1919"
+     }
+    },
+    {
+     "texto": "En mil novecientos diecisiete, el Timandra iba de Virginia a Buenos Aires con carbón y veintiún tripulantes. Se hundió sin enviar ninguna señal de radio... aunque podía hacerlo.",
+     "escena": {
+      "tipo": "foto",
+      "img": 10
+     }
+    },
+    {
+     "texto": "En mil novecientos cuarenta y cinco desaparecieron cinco aviones TBM Avenger de la Marina, que salieron de Fort Lauderdale. Es el famoso Vuelo diecinueve.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     },
+     "rotulo": "VUELO 19"
+    },
+    {
+     "texto": "En mil novecientos cuarenta y ocho desapareció el avión Star Tiger, con treinta y un pasajeros.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Avro Tudor Star Tiger",
+       "Avro Tudor IV"
+      ]
+     }
+    },
+    {
+     "texto": "Ese mismo año se perdió un avión DC tres con veintiocho pasajeros y la tripulación. Y al año siguiente, el Star Ariel.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Douglas DC-3 1940s",
+       "Douglas DC-3"
+      ]
+     }
+    },
+    {
+     "texto": "En mil novecientos cincuenta y cuatro, un Lockheed Constellation de la Marina desapareció con cuarenta y dos personas a bordo.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Lockheed R7V-1 Super Constellation",
+       "Lockheed Constellation US Navy"
+      ]
+     }
+    },
+    {
+     "texto": "Y en mil novecientos sesenta y siete, el crucero Witchcraft pidió ayuda por radio a una milla de Miami.",
+     "escena": {
+      "tipo": "foto",
+      "img": 13
+     }
+    },
+    {
+     "texto": "Diecinueve minutos después, ya se había hundido por completo.",
+     "escena": {
+      "tipo": "contador",
+      "n": 19,
+      "texto": "MINUTOS",
+      "sub": "y el Witchcraft ya estaba hundido"
+     }
+    },
+    {
+     "texto": "A la fecha, en esta zona se han perdido unas cincuenta naves y veinte aviones.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Pero aquí empieza el giro. Muchos de los casos de Berlitz estaban contados de forma imprecisa, exagerados... y a veces con datos inventados.",
+     "escena": {
+      "tipo": "foto",
+      "img": 9
+     }
+    },
+    {
+     "texto": "El Mary Celeste, por ejemplo, fue hallado a la deriva entre las Azores y la península ibérica. A unos cinco mil kilómetros de las Bermudas.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Mary Celeste",
+       "Mary Celeste painting"
+      ]
+     }
+    },
+    {
+     "texto": "El Raifuku Maru se hundió durante una tormenta, con testigos, a más de mil kilómetros al norte de las Bermudas. Totalmente fuera del triángulo.",
+     "escena": {
+      "tipo": "foto",
+      "img": 9
+     }
+    },
+    {
+     "texto": "Del Cotopaxi se dijo que reportó calma total. En realidad, su capitán avisó por radio que el barco se inclinaba y que la bodega estaba llena de agua.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "SS Cotopaxi",
+       "cargo ship 1920s"
+      ]
+     }
+    },
+    {
+     "texto": "Y los restos de otro carguero, el Sandra, fueron encontrados en dos mil veinte por el explorador Michael Barnette.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "2020",
+      "sub": "Hallan los restos del SS Sandra"
+     }
+    },
+    {
+     "texto": "Entonces, ¿qué está pasando en realidad? Por aquí pasa la corriente del Golfo, que trae un tiempo muy inestable, con huracanes y olas enormes.",
+     "escena": {
+      "tipo": "foto",
+      "img": 7
+     }
+    },
+    {
+     "texto": "Y por siglos, los barcos que iban a Europa cruzaban esta zona para aprovechar los vientos y la corriente. El tráfico siempre fue enorme.",
+     "escena": {
+      "tipo": "foto",
+      "img": 10
+     }
+    },
+    {
+     "texto": "Mucho mar, muchos barcos y tormentas violentas. Esa combinación explica la mayoría de las desapariciones.",
+     "escena": {
+      "tipo": "foto",
+      "img": 9
+     }
+    },
+    {
+     "texto": "Por eso, el gobierno de Estados Unidos y las organizaciones científicas no encontraron ninguna actividad inusual.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Lo atribuyen a fenómenos naturales, errores humanos y malas interpretaciones.",
+     "escena": {
+      "tipo": "foto",
+      "img": 7
+     }
+    },
+    {
+     "texto": "Aun así, algunas desapariciones todavía no tienen explicación. Y el debate entre creyentes y escépticos sigue abierto.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Ahora dime tú: ¿mito o misterio? Déjalo en los comentarios. Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 11
+     }
+    }
+   ]
+  }
+ ]
+}
