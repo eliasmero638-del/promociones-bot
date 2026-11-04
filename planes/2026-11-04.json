@@ -1,0 +1,1348 @@
+{
+ "fecha": "2026-11-04",
+ "modo": "claude",
+ "videos": [
+  {
+   "eid": "fb1",
+   "tipo": "fb",
+   "hora_fb": "12:30",
+   "articulo": "Secuestro de Chibok",
+   "fuente": "https://es.wikipedia.org/wiki/Secuestro_de_Chibok",
+   "titulo_video": "SE LAS LLEVARON DE NOCHE",
+   "titulo_youtube": "Entraron de noche a una escuela… y se llevaron a casi 300 niñas",
+   "descripcion_youtube": "Abril de 2014. Una escuela de niñas en Nigeria, en plena semana de exámenes.\nEsa noche llegaron hombres armados… y el ejército ya lo sabía.\n#misterio #casosreales #ridmer",
+   "etiquetas": [
+    "misterio",
+    "casos reales",
+    "Chibok",
+    "Boko Haram",
+    "Nigeria",
+    "Bring Back Our Girls",
+    "secuestro",
+    "ridmer"
+   ],
+   "texto_facebook": "Entraron de noche a una escuela de niñas… y se llevaron a casi 300. El ejército lo sabía horas antes. #misterio #casosreales #ridmer",
+   "miniatura": {
+    "img": 2,
+    "texto": "SE LAS LLEVARON"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Una noche de abril, hombres armados entraron a una escuela de niñas... y se llevaron a casi trescientas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Fue el catorce de abril de dos mil catorce, en Chibok, al nordeste de Nigeria.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 10.87,
+      "lon": 12.85,
+      "lugar": "Chibok, Borno",
+      "km": 30
+     }
+    },
+    {
+     "texto": "Más de trescientas alumnas estaban allí, en plena semana de exámenes. La escuela había recibido amenazas, pero nunca había pasado nada.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Los atacantes llegaron de noche, dispararon contra los guardias y fueron directo a los dormitorios.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "Eran de Boko Haram, un grupo terrorista que rechaza la educación occidental. Subieron a las chicas a camiones.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Cincuenta y siete lograron escapar, saltando de los camiones y escondiéndose en los caminos.",
+     "escena": {
+      "tipo": "contador",
+      "n": 57,
+      "texto": "ESCAPARON",
+      "sub": "saltando de los camiones"
+     }
+    },
+    {
+     "texto": "Días después se supo algo terrible: el ejército había sido avisado cuatro horas antes... y los refuerzos no llegaron a tiempo.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     },
+     "rotulo": "AVISADOS 4 HORAS ANTES"
+    },
+    {
+     "texto": "Semanas más tarde, el líder del grupo apareció en un video. Dijo que las iba a vender.",
+     "escena": {
+      "tipo": "cita",
+      "texto": "Alá me ordenó que las vendiese",
+      "autor": "Abubakar Shekau, líder de Boko Haram"
+     }
+    },
+    {
+     "texto": "El mundo entero respondió con un mismo mensaje: Bring Back Our Girls. Devuelvan a nuestras niñas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Mientras tanto, sus padres esperaban cada día una noticia que no llegaba.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "En octubre de dos mil dieciséis, por fin, veintiuna chicas fueron liberadas.",
+     "escena": {
+      "tipo": "linea_tiempo",
+      "hitos": [
+       [
+        "2014",
+        "Secuestro"
+       ],
+       [
+        "2016",
+        "21 liberadas"
+       ],
+       [
+        "2019",
+        "112 sin rastro"
+       ]
+      ]
+     }
+    },
+    {
+     "texto": "Pero cinco años después del secuestro, ciento doce niñas seguían sin aparecer. Nadie sabía dónde estaban.",
+     "escena": {
+      "tipo": "foto",
+      "img": 7
+     },
+     "rotulo": "112 SIN APARECER"
+    },
+    {
+     "texto": "¿Dónde están? Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 8
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb1s",
+   "tipo": "short",
+   "encargo": "fb1",
+   "hora_youtube": "12:00",
+   "articulo": "Secuestro de Chibok",
+   "fuente": "https://es.wikipedia.org/wiki/Secuestro_de_Chibok",
+   "titulo_video": "SE LAS LLEVARON",
+   "titulo_youtube": "Se llevaron a casi 300 niñas de su escuela… y el ejército lo sabía #shorts",
+   "descripcion_youtube": "El secuestro de Chibok, Nigeria, 2014: lo que pasó y lo que se sabe.\n#misterio #casosreales #ridmer #shorts",
+   "etiquetas": [
+    "misterio",
+    "casos reales",
+    "Chibok",
+    "Boko Haram",
+    "Nigeria",
+    "Bring Back Our Girls",
+    "secuestro",
+    "ridmer",
+    "shorts"
+   ],
+   "texto_facebook": "",
+   "miniatura": {
+    "img": 2,
+    "texto": "SE LAS LLEVARON"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Hombres armados entraron de noche a una escuela de niñas en Nigeria... y se llevaron a casi trescientas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Fue en Chibok, el catorce de abril de dos mil catorce.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 10.87,
+      "lon": 12.85,
+      "lugar": "Chibok, Nigeria",
+      "km": 30
+     }
+    },
+    {
+     "texto": "Eran de Boko Haram. Dispararon a los guardias y subieron a las chicas a camiones.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Cincuenta y siete escaparon saltando de los camiones.",
+     "escena": {
+      "tipo": "contador",
+      "n": 57,
+      "texto": "ESCAPARON",
+      "sub": "saltando de los camiones"
+     }
+    },
+    {
+     "texto": "Y lo peor: el ejército había sido avisado cuatro horas antes del ataque.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "El mundo entero pidió lo mismo: devuelvan a nuestras niñas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "En dos mil dieciséis, veintiuna fueron liberadas.",
+     "escena": {
+      "tipo": "linea_tiempo",
+      "hitos": [
+       [
+        "2014",
+        "Secuestro"
+       ],
+       [
+        "2016",
+        "21 liberadas"
+       ],
+       [
+        "2019",
+        "112 sin rastro"
+       ]
+      ]
+     }
+    },
+    {
+     "texto": "Pero cinco años después del secuestro, ciento doce seguían desaparecidas. Y sus padres seguían sin respuestas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     },
+     "rotulo": "112 SIN APARECER"
+    },
+    {
+     "texto": "Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "img": 7
+     }
+    }
+   ]
+  },
+  {
+   "eid": "sh1",
+   "tipo": "short",
+   "encargo": "largo1",
+   "hora_youtube": "15:00",
+   "articulo": "Carlos Andrés Rivera",
+   "fuente": "https://es.wikipedia.org/wiki/Carlos_Andr%C3%A9s_Rivera",
+   "titulo_video": "EL MONSTRUO DE TABIO",
+   "titulo_youtube": "Vivía como un simple jornalero… pero era el Monstruo de Tabio #shorts",
+   "descripcion_youtube": "Carlos Andrés Rivera, el Monstruo de Tabio: cómo se escondió y cómo lo atraparon.\n#misterio #casosreales #ridmer #shorts",
+   "etiquetas": [
+    "misterio",
+    "casos reales",
+    "Carlos Andrés Rivera",
+    "Monstruo de Tabio",
+    "Colombia",
+    "Tabio",
+    "ridmer",
+    "shorts"
+   ],
+   "texto_facebook": "",
+   "miniatura": {
+    "img": 4,
+    "texto": "SE ESCONDÍA AQUÍ"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Mató a ocho mujeres en Colombia... y se escondía como un simple jornalero.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Es Carlos Andrés Rivera, el Monstruo de Tabio.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Carlos Andrés Rivera",
+      "sub": "«El Monstruo de Tabio» · Medellín, 1982"
+     }
+    },
+    {
+     "texto": "En dos mil quince lo capturaron por violación, pero quedó libre al año siguiente por vencimiento de términos.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "2016",
+      "sub": "Libre por vencimiento de términos"
+     }
+    },
+    {
+     "texto": "Su primera víctima fue una mujer de cuarenta y seis años en Bello, Antioquia.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 6.337,
+      "lon": -75.558,
+      "lugar": "Bello, Antioquia",
+      "km": 8
+     }
+    },
+    {
+     "texto": "Medellín ofrecía doscientos millones de pesos por él.",
+     "escena": {
+      "tipo": "contador",
+      "n": 200,
+      "texto": "MILLONES DE PESOS",
+      "sub": "recompensa en 2023"
+     }
+    },
+    {
+     "texto": "Pero había cambiado su aspecto, usaba una identificación falsa y trabajaba en una finca de Tabio.",
+     "escena": {
+      "tipo": "ruta",
+      "a": [
+       6.337,
+       -75.558
+      ],
+      "b": [
+       4.917,
+       -74.097
+      ],
+      "na": "BELLO",
+      "nb": "TABIO",
+      "corte": 1.0
+     }
+    },
+    {
+     "texto": "Hasta que una mujer que había secuestrado en Fusagasugá logró escapar y lo denunció.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Fusagasugá",
+       "Fusagasuga Cundinamarca"
+      ]
+     }
+    },
+    {
+     "texto": "El veintisiete de mayo de dos mil veinticuatro lo capturaron en Tabio.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "27 DE MAYO DE 2024",
+      "sub": "Capturado en Tabio, Cundinamarca"
+     }
+    },
+    {
+     "texto": "Se le acusa de la muerte de ocho mujeres. Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Tabio Cundinamarca",
+       "Tabio"
+      ]
+     },
+     "rotulo": "8 VÍCTIMAS"
+    }
+   ]
+  },
+  {
+   "eid": "fb2",
+   "tipo": "fb",
+   "hora_fb": "18:30",
+   "articulo": "Abu Sayyaf",
+   "fuente": "https://es.wikipedia.org/wiki/Abu_Sayyaf",
+   "titulo_video": "EL FERRY QUE ESTALLÓ",
+   "titulo_youtube": "Un ferry lleno de pasajeros estalló en el mar… y detrás estaba Abu Sayyaf",
+   "descripcion_youtube": "116 muertos en el peor ataque terrorista de Filipinas.\nQuiénes eran, de dónde salieron y qué queda hoy de ellos.\n#misterio #casosreales #ridmer",
+   "etiquetas": [
+    "misterio",
+    "casos reales",
+    "Abu Sayyaf",
+    "Filipinas",
+    "Superferry 14",
+    "terrorismo",
+    "Joló",
+    "ridmer"
+   ],
+   "texto_facebook": "Un ferry lleno de pasajeros estalló… y fue solo uno de sus golpes. Esta es la historia de Abu Sayyaf. #misterio #casosreales #ridmer",
+   "miniatura": {
+    "img": 3,
+    "texto": "116 MUERTOS"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "En dos mil cuatro, un ferry lleno de pasajeros estalló en Filipinas. Ciento dieciséis personas murieron.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Fue el peor ataque terrorista en la historia del país. Y tenía un responsable: Abu Sayyaf.",
+     "escena": {
+      "tipo": "contador",
+      "n": 116,
+      "texto": "MUERTOS",
+      "sub": "Superferry 14 · 2004"
+     }
+    },
+    {
+     "texto": "Su nombre significa Padre del fabricante de espadas. Nació en el sur de Filipinas, en las islas de Joló y Basilán.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 6.3,
+      "lon": 121.5,
+      "lugar": "Joló y Basilán",
+      "km": 60
+     }
+    },
+    {
+     "texto": "Lo fundó en mil novecientos noventa y uno Abdurajak Janjalani, un maestro de Basilán.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Abdurajak Janjalani",
+      "sub": "Fundador de Abu Sayyaf · maestro de Basilán"
+     }
+    },
+    {
+     "texto": "Había estudiado en Libia, Siria y Arabia Saudita, y fue a pelear a Afganistán contra los soviéticos.",
+     "escena": {
+      "tipo": "ruta",
+      "a": [
+       6.55,
+       122.0
+      ],
+      "b": [
+       34.5,
+       69.2
+      ],
+      "na": "BASILÁN",
+      "nb": "AFGANISTÁN",
+      "corte": 1.0
+     }
+    },
+    {
+     "texto": "Se dice que allí conoció a Osama bin Laden y recibió seis millones de dólares.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     },
+     "rotulo": "6 MILLONES"
+    },
+    {
+     "texto": "En mil novecientos noventa y ocho murió en un tiroteo con la policía. Su hermano menor, Khadaffy, tomó el mando.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     }
+    },
+    {
+     "texto": "Y todo cambió. El grupo empezó a secuestrar personas para cobrar rescates.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "En el año dos mil cruzó a Malasia y se llevó a extranjeros de dos centros turísticos.",
+     "escena": {
+      "tipo": "ruta",
+      "a": [
+       6.05,
+       121.0
+      ],
+      "b": [
+       4.6,
+       118.3
+      ],
+      "na": "JOLÓ",
+      "nb": "MALASIA",
+      "corte": 1.0
+     }
+    },
+    {
+     "texto": "Secuestró y asesinó a más de treinta extranjeros, religiosos y trabajadores cristianos.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Basilan island",
+       "Basilan Philippines"
+      ]
+     },
+     "rotulo": "MÁS DE 30"
+    },
+    {
+     "texto": "En dos mil catorce, uno de sus líderes juró lealtad al Estado Islámico.",
+     "escena": {
+      "tipo": "linea_tiempo",
+      "hitos": [
+       [
+        "1991",
+        "Fundación"
+       ],
+       [
+        "2004",
+        "Superferry 14"
+       ],
+       [
+        "2014",
+        "Lealtad al ISIS"
+       ]
+      ]
+     }
+    },
+    {
+     "texto": "A inicios de los dos mil tenía mil doscientos cincuenta miembros. En dos mil veintiuno quedaban unos setenta.",
+     "escena": {
+      "tipo": "contador",
+      "n": 1250,
+      "texto": "MIEMBROS",
+      "sub": "a inicios de los 2000 · hoy unos 70"
+     }
+    },
+    {
+     "texto": "Casi desapareció... pero nadie olvida aquel ferry. Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb2s",
+   "tipo": "short",
+   "encargo": "fb2",
+   "hora_youtube": "17:00",
+   "articulo": "Abu Sayyaf",
+   "fuente": "https://es.wikipedia.org/wiki/Abu_Sayyaf",
+   "titulo_video": "EL FERRY QUE ESTALLÓ",
+   "titulo_youtube": "Un ferry estalló con cientos a bordo… y fue solo el principio #shorts",
+   "descripcion_youtube": "Abu Sayyaf y el peor ataque terrorista de Filipinas: lo que pasó y qué queda hoy.\n#misterio #casosreales #ridmer #shorts",
+   "etiquetas": [
+    "misterio",
+    "casos reales",
+    "Abu Sayyaf",
+    "Filipinas",
+    "Superferry 14",
+    "terrorismo",
+    "Joló",
+    "ridmer",
+    "shorts"
+   ],
+   "texto_facebook": "",
+   "miniatura": {
+    "img": 3,
+    "texto": "116 MUERTOS"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Un ferry lleno de pasajeros estalló en Filipinas. Murieron ciento dieciséis personas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Fue en dos mil cuatro: el peor ataque terrorista del país.",
+     "escena": {
+      "tipo": "contador",
+      "n": 116,
+      "texto": "MUERTOS",
+      "sub": "Superferry 14 · 2004"
+     }
+    },
+    {
+     "texto": "El responsable fue Abu Sayyaf, un grupo nacido en las islas de Joló y Basilán.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 6.3,
+      "lon": 121.5,
+      "lugar": "Joló y Basilán",
+      "km": 60
+     }
+    },
+    {
+     "texto": "Lo fundó un maestro, Abdurajak Janjalani, que había peleado en Afganistán.",
+     "escena": {
+      "tipo": "ruta",
+      "a": [
+       6.55,
+       122.0
+      ],
+      "b": [
+       34.5,
+       69.2
+      ],
+      "na": "BASILÁN",
+      "nb": "AFGANISTÁN",
+      "corte": 1.0
+     }
+    },
+    {
+     "texto": "Cuando murió en un tiroteo, su hermano menor tomó el mando.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     }
+    },
+    {
+     "texto": "Y el grupo se dedicó a secuestrar por dinero. Asesinó a más de treinta extranjeros y religiosos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "En dos mil catorce, uno de sus líderes juró lealtad al Estado Islámico.",
+     "escena": {
+      "tipo": "linea_tiempo",
+      "hitos": [
+       [
+        "1991",
+        "Fundación"
+       ],
+       [
+        "2004",
+        "Superferry 14"
+       ],
+       [
+        "2014",
+        "Lealtad al ISIS"
+       ]
+      ]
+     }
+    },
+    {
+     "texto": "Pero el grupo se fue apagando. De mil doscientos cincuenta miembros, en dos mil veintiuno quedaban unos setenta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     },
+     "rotulo": "UNOS 70"
+    },
+    {
+     "texto": "Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb3",
+   "tipo": "fb",
+   "hora_fb": "21:00",
+   "articulo": "Vuelo 181 de Lufthansa",
+   "fuente": "https://es.wikipedia.org/wiki/Vuelo_181_de_Lufthansa",
+   "titulo_video": "CINCO DÍAS EN EL AIRE",
+   "titulo_youtube": "Secuestraron su avión y lo llevaron por medio mundo durante 5 días",
+   "descripcion_youtube": "Octubre de 1977. Un Boeing de Lufthansa, 91 personas a bordo y cuatro secuestradores.\nSiete aeropuertos después, todo se decidió en Mogadiscio.\n#misterio #casosreales #ridmer",
+   "etiquetas": [
+    "misterio",
+    "casos reales",
+    "Landshut",
+    "vuelo 181 Lufthansa",
+    "secuestro aéreo",
+    "GSG 9",
+    "Mogadiscio",
+    "1977",
+    "ridmer"
+   ],
+   "texto_facebook": "Secuestraron su avión y lo llevaron por medio mundo durante cinco días. El final nadie lo esperaba. #misterio #casosreales #ridmer",
+   "miniatura": {
+    "img": 2,
+    "texto": "5 DÍAS SECUESTRADOS"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Un avión con noventa y una personas fue secuestrado... y lo llevaron por medio mundo durante cinco días.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Era el vuelo ciento ochenta y uno de Lufthansa, el Landshut, en octubre de mil novecientos setenta y siete.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "13 DE OCTUBRE DE 1977",
+      "sub": "Vuelo 181 · Palma de Mallorca – Fráncfort"
+     }
+    },
+    {
+     "texto": "Iba de Palma de Mallorca a Fráncfort. Sobre Marsella, cuatro secuestradores tomaron el control.",
+     "escena": {
+      "tipo": "ruta",
+      "a": [
+       39.55,
+       2.74
+      ],
+      "b": [
+       50.03,
+       8.57
+      ],
+      "na": "PALMA",
+      "nb": "FRÁNCFORT",
+      "corte": 0.4,
+      "c": [
+       43.3,
+       5.37
+      ],
+      "nc": "MARSELLA"
+     }
+    },
+    {
+     "texto": "Querían liberar a los líderes presos de un grupo terrorista alemán: la Fracción del Ejército Rojo.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Stammheim Prison",
+       "Justizvollzugsanstalt Stuttgart"
+      ]
+     }
+    },
+    {
+     "texto": "Esa banda ya tenía secuestrado al empresario Hanns Martin Schleyer, y el canciller Helmut Schmidt se negaba a ceder.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Hanns Martin Schleyer",
+      "sub": "Secuestrado por la RAF · junto al canciller Schmidt",
+      "img": 10
+     }
+    },
+    {
+     "texto": "El avión saltó de Roma a Chipre, a Baréin, a Dubái y a Adén, en Yemen.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "En Dubái, el jefe pidió por radio un pastel de cumpleaños para una azafata que cumplía veintiocho años.",
+     "escena": {
+      "tipo": "contador",
+      "n": 28,
+      "texto": "VELAS",
+      "sub": "«Feliz cumpleaños Anna-Maria»"
+     }
+    },
+    {
+     "texto": "En Adén, el capitán Jürgen Schumann bajó a revisar el avión. Al volver, el líder lo asesinó.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Jürgen Schumann",
+      "sub": "Capitán del Landshut · 37 años"
+     }
+    },
+    {
+     "texto": "El copiloto tuvo que llevar el avión hasta Mogadiscio, en Somalia.",
+     "escena": {
+      "tipo": "ruta",
+      "a": [
+       12.83,
+       45.03
+      ],
+      "b": [
+       2.01,
+       45.3
+      ],
+      "na": "ADÉN",
+      "nb": "MOGADISCIO",
+      "corte": 1.0
+     }
+    },
+    {
+     "texto": "Allí, el dieciocho de octubre, el comando antiterrorista alemán GSG nueve asaltó el avión.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "18 DE OCTUBRE",
+      "sub": "Mogadiscio · Operación Magia de Fuego"
+     }
+    },
+    {
+     "texto": "Tres secuestradores murieron. Todos los rehenes se salvaron.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     },
+     "rotulo": "REHENES A SALVO"
+    },
+    {
+     "texto": "Pero en la cárcel de Stammheim, tres líderes presos de la banda se quitaron la vida. Y la banda asesinó a Schleyer en venganza.",
+     "escena": {
+      "tipo": "foto",
+      "img": 8
+     }
+    },
+    {
+     "texto": "Un rescate perfecto... con un final terrible. Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb3s",
+   "tipo": "short",
+   "encargo": "fb3",
+   "hora_youtube": "22:00",
+   "articulo": "Vuelo 181 de Lufthansa",
+   "fuente": "https://es.wikipedia.org/wiki/Vuelo_181_de_Lufthansa",
+   "titulo_video": "CINCO DÍAS EN EL AIRE",
+   "titulo_youtube": "Secuestraron su avión y le dieron la vuelta a medio mundo #shorts",
+   "descripcion_youtube": "El secuestro del Landshut, vuelo 181 de Lufthansa (1977), y su final en Mogadiscio.\n#misterio #casosreales #ridmer #shorts",
+   "etiquetas": [
+    "misterio",
+    "casos reales",
+    "Landshut",
+    "vuelo 181 Lufthansa",
+    "secuestro aéreo",
+    "GSG 9",
+    "Mogadiscio",
+    "1977",
+    "ridmer",
+    "shorts"
+   ],
+   "texto_facebook": "",
+   "miniatura": {
+    "img": 2,
+    "texto": "5 DÍAS SECUESTRADOS"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Cuatro secuestradores tomaron un avión con noventa y una personas... y lo llevaron por medio mundo durante cinco días.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Era el vuelo ciento ochenta y uno de Lufthansa, en octubre de mil novecientos setenta y siete.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "OCTUBRE DE 1977",
+      "sub": "Vuelo 181 · «Landshut»"
+     }
+    },
+    {
+     "texto": "Querían liberar a terroristas alemanes presos. El avión saltó de Roma a Chipre, Baréin, Dubái y Adén.",
+     "escena": {
+      "tipo": "ruta",
+      "a": [
+       41.8,
+       12.25
+      ],
+      "b": [
+       12.83,
+       45.03
+      ],
+      "na": "ROMA",
+      "nb": "ADÉN",
+      "corte": 1.0,
+      "c": [
+       25.25,
+       55.36
+      ],
+      "nc": "DUBÁI"
+     }
+    },
+    {
+     "texto": "En Adén, el líder asesinó al capitán, Jürgen Schumann.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Jürgen Schumann",
+      "sub": "Capitán del Landshut · 37 años"
+     }
+    },
+    {
+     "texto": "El copiloto tuvo que llevar el avión hasta Mogadiscio, en Somalia.",
+     "escena": {
+      "tipo": "ruta",
+      "a": [
+       12.83,
+       45.03
+      ],
+      "b": [
+       2.01,
+       45.3
+      ],
+      "na": "ADÉN",
+      "nb": "MOGADISCIO",
+      "corte": 1.0
+     }
+    },
+    {
+     "texto": "Allí lo asaltó el comando alemán GSG nueve.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "18 DE OCTUBRE",
+      "sub": "Mogadiscio · Operación Magia de Fuego"
+     }
+    },
+    {
+     "texto": "Tres secuestradores murieron. Todos los rehenes se salvaron.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     },
+     "rotulo": "REHENES A SALVO"
+    },
+    {
+     "texto": "Pero esa noche, los líderes presos de la banda se quitaron la vida. Y la banda asesinó a su rehén en venganza.",
+     "escena": {
+      "tipo": "foto",
+      "img": 8
+     }
+    },
+    {
+     "texto": "Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     }
+    }
+   ]
+  },
+  {
+   "eid": "largo1",
+   "tipo": "largo",
+   "encargo": "fb3",
+   "hora_youtube": "18:00",
+   "articulo": "Vuelo 181 de Lufthansa",
+   "fuente": "https://es.wikipedia.org/wiki/Vuelo_181_de_Lufthansa",
+   "titulo_video": "CINCO DÍAS DE TERROR",
+   "titulo_youtube": "Secuestraron su avión, mataron al capitán… y el rescate cambió todo",
+   "descripcion_youtube": "Octubre de 1977: el vuelo 181 de Lufthansa, el Landshut, es secuestrado sobre Francia.\nCinco días, siete aeropuertos, un pastel de cumpleaños y un asalto en Mogadiscio.\nLa historia completa del secuestro que marcó el Otoño Alemán.\n#misterio #casosreales #ridmer",
+   "etiquetas": [
+    "misterio",
+    "casos reales",
+    "Landshut",
+    "vuelo 181 Lufthansa",
+    "secuestro aéreo",
+    "GSG 9",
+    "Mogadiscio",
+    "1977",
+    "ridmer",
+    "historia",
+    "Alemania"
+   ],
+   "texto_facebook": "",
+   "miniatura": {
+    "img": 2,
+    "texto": "5 DÍAS DE TERROR"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Trece de octubre de mil novecientos setenta y siete. Un avión despega de Palma de Mallorca con noventa y una personas a bordo... y ninguna sabe que está a punto de vivir los cinco días más largos de su vida.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Media hora después, sobre Marsella, cuatro pasajeros toman el control del avión.",
+     "escena": {
+      "tipo": "ruta",
+      "a": [
+       39.55,
+       2.74
+      ],
+      "b": [
+       50.03,
+       8.57
+      ],
+      "na": "PALMA",
+      "nb": "FRÁNCFORT",
+      "corte": 0.4,
+      "c": [
+       43.3,
+       5.37
+      ],
+      "nc": "MARSELLA"
+     }
+    },
+    {
+     "texto": "Era el vuelo ciento ochenta y uno de Lufthansa, un Boeing setecientos treinta y siete llamado Landshut, que iba de Palma de Mallorca a Fráncfort.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "VUELO LH 181",
+      "sub": "Boeing 737 «Landshut» · Palma – Fráncfort"
+     }
+    },
+    {
+     "texto": "Llevaba ochenta y seis pasajeros y cinco tripulantes. Al mando iba el capitán Jürgen Schumann, de treinta y siete años, un expiloto de cazas de la fuerza aérea alemana.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Jürgen Schumann",
+      "sub": "Capitán · 37 años · expiloto de F-104"
+     }
+    },
+    {
+     "texto": "A su lado, el copiloto Jürgen Vietor, de treinta y cinco años, que había sido piloto de la Marina alemana.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Jürgen Vietor",
+      "sub": "Copiloto · 35 años"
+     }
+    },
+    {
+     "texto": "Los secuestradores se hacían llamar Comando Mártir Halima. Eran del Frente Popular para la Liberación de Palestina, y el nombre honraba a una compañera muerta un año antes en la Operación Entebbe.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Lufthansa Flight 181",
+       "Landshut aircraft"
+      ]
+     }
+    },
+    {
+     "texto": "Pero actuaban bajo la dirección de un grupo terrorista alemán: la Fracción del Ejército Rojo, conocida como la RAF.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "RAF",
+      "sub": "Fracción del Ejército Rojo"
+     }
+    },
+    {
+     "texto": "Su objetivo era uno solo: obligar a Alemania a liberar a los líderes de la banda, que estaban presos en cárceles alemanas.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Stammheim Prison",
+       "Justizvollzugsanstalt Stuttgart"
+      ]
+     }
+    },
+    {
+     "texto": "Y no era su primer golpe. Un mes antes, la RAF había secuestrado a Hanns Martin Schleyer, presidente de la patronal alemana.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Hanns Martin Schleyer",
+      "sub": "Secuestrado por la RAF · junto al canciller Schmidt",
+      "img": 10
+     }
+    },
+    {
+     "texto": "El canciller Helmut Schmidt se negaba a cambiarlo por los presos. Por eso la banda decidió subir la presión... esta vez, en el aire.",
+     "escena": {
+      "tipo": "foto",
+      "img": 9
+     }
+    },
+    {
+     "texto": "Alemania vivía lo que se llamaría el Otoño Alemán: dos meses de ataques terroristas, en septiembre y octubre de ese año.",
+     "escena": {
+      "tipo": "linea_tiempo",
+      "hitos": [
+       [
+        "Sep 1977",
+        "Secuestro de Schleyer"
+       ],
+       [
+        "13 oct",
+        "Secuestro del Landshut"
+       ],
+       [
+        "18 oct",
+        "Mogadiscio"
+       ]
+      ]
+     }
+    },
+    {
+     "texto": "Y el Landshut comenzó un viaje sin rumbo. Primero aterrizó en Roma.",
+     "escena": {
+      "tipo": "ruta",
+      "a": [
+       43.3,
+       5.37
+      ],
+      "b": [
+       41.8,
+       12.25
+      ],
+      "na": "MARSELLA",
+      "nb": "ROMA",
+      "corte": 1.0
+     }
+    },
+    {
+     "texto": "Luego en Lárnaca, en Chipre. Después en Baréin. Y más tarde en Dubái.",
+     "escena": {
+      "tipo": "ruta",
+      "a": [
+       41.8,
+       12.25
+      ],
+      "b": [
+       25.25,
+       55.36
+      ],
+      "na": "ROMA",
+      "nb": "DUBÁI",
+      "corte": 1.0,
+      "c": [
+       34.88,
+       33.63
+      ],
+      "nc": "LÁRNACA"
+     }
+    },
+    {
+     "texto": "En Dubái ocurrió algo difícil de creer. Una de las azafatas, Anna-Maria Staringer, cumplía veintiocho años ese día.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Anna-Maria Staringer",
+      "sub": "Azafata · cumplió 28 años en el vuelo"
+     }
+    },
+    {
+     "texto": "El jefe de los secuestradores, Akache, pidió por radio un pastel de cumpleaños y champán.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Y el servicio del aeropuerto lo entregó: un pastel con veintiocho velas que decía Feliz cumpleaños Anna-Maria.",
+     "escena": {
+      "tipo": "contador",
+      "n": 28,
+      "texto": "VELAS",
+      "sub": "«Feliz cumpleaños Anna-Maria»"
+     }
+    },
+    {
+     "texto": "Pero la pesadilla seguía. Desde Dubái, el avión voló hasta Adén, en Yemen.",
+     "escena": {
+      "tipo": "ruta",
+      "a": [
+       25.25,
+       55.36
+      ],
+      "b": [
+       12.83,
+       45.03
+      ],
+      "na": "DUBÁI",
+      "nb": "ADÉN",
+      "corte": 1.0
+     }
+    },
+    {
+     "texto": "Allí, el dieciséis de octubre, al capitán Schumann le permitieron bajar para revisar el estado del avión. Fue a hablar con las autoridades del aeropuerto.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Aden International Airport",
+       "Aden airport"
+      ]
+     }
+    },
+    {
+     "texto": "Cuando volvió a subir, Akache lo asesinó.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "16 DE OCTUBRE",
+      "sub": "Adén, Yemen"
+     }
+    },
+    {
+     "texto": "Sin capitán, el copiloto Jürgen Vietor tuvo que pilotar el Landshut hasta su último destino: Mogadiscio, la capital de Somalia.",
+     "escena": {
+      "tipo": "ruta",
+      "a": [
+       12.83,
+       45.03
+      ],
+      "b": [
+       2.01,
+       45.3
+      ],
+      "na": "ADÉN",
+      "nb": "MOGADISCIO",
+      "corte": 1.0
+     }
+    },
+    {
+     "texto": "Mientras tanto, el ministro Hans-Jürgen Wischnewski negociaba con gobiernos extranjeros. Por sus contactos con líderes árabes, la prensa lo apodaba Ben Wisch.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Hans-Jürgen Wischnewski",
+      "sub": "Enviado del canciller · «Ben Wisch»"
+     }
+    },
+    {
+     "texto": "Y otro equipo ya estaba en camino: el GSG nueve.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "GSG 9",
+       "GSG 9 der Bundespolizei"
+      ]
+     }
+    },
+    {
+     "texto": "Era una unidad antiterrorista de élite, creada después de la matanza de los Juegos Olímpicos de Múnich, en mil novecientos setenta y dos.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "MÚNICH 1972",
+      "sub": "Nace el GSG 9"
+     }
+    },
+    {
+     "texto": "La dirigía el coronel Ulrich Wegener, de cuarenta y ocho años, el hombre que había creado la unidad.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Ulrich Wegener",
+      "sub": "Comandante del GSG 9 · 48 años",
+      "buscar": [
+       "Ulrich Wegener"
+      ]
+     }
+    },
+    {
+     "texto": "El dieciocho de octubre, en el aeropuerto de Mogadiscio, comenzó la operación Magia de Fuego.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "18 DE OCTUBRE",
+      "sub": "Mogadiscio · Operación Magia de Fuego"
+     }
+    },
+    {
+     "texto": "Los comandos asaltaron el avión. Tres de los secuestradores murieron.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Mogadishu airport",
+       "Aden Adde International Airport"
+      ]
+     },
+     "rotulo": "3 SECUESTRADORES MUERTOS"
+    },
+    {
+     "texto": "Y todos los rehenes salieron con vida.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     },
+     "rotulo": "REHENES A SALVO"
+    },
+    {
+     "texto": "Una de las azafatas, Gabriele Dillmann, de veintitrés años, fue apodada por la prensa el ángel de Mogadiscio.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Gabriele Dillmann",
+      "sub": "Azafata · «el ángel de Mogadiscio»"
+     }
+    },
+    {
+     "texto": "Los rehenes y los comandos volvieron a Alemania.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     }
+    },
+    {
+     "texto": "Pero el rescate tuvo una consecuencia inesperada. En la cárcel de Stammheim, tres líderes presos de la RAF se quitaron la vida.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "Eran Andreas Baader, Gudrun Ensslin y Jan-Carl Raspe. Esa fecha se conoce como la Noche de Stammheim.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "NOCHE DE STAMMHEIM",
+      "sub": "Baader · Ensslin · Raspe"
+     }
+    },
+    {
+     "texto": "Y la RAF respondió con venganza: asesinó a Hanns Martin Schleyer.",
+     "escena": {
+      "tipo": "foto",
+      "img": 8
+     }
+    },
+    {
+     "texto": "Seis semanas después, el copiloto Vietor volvió a trabajar. Su primer avión fue... el mismo Landshut, ya reparado. Se retiró en mil novecientos noventa y nueve.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "La jefa de azafatas, Hannelore Piegler, escribió después un libro sobre esos días.",
+     "escena": {
+      "tipo": "cita",
+      "texto": "Cien horas entre el miedo y la esperanza",
+      "autor": "Hannelore Piegler, jefa de azafatas"
+     }
+    },
+    {
+     "texto": "Cinco días. Siete aeropuertos. Y un capitán que nunca volvió a casa.",
+     "escena": {
+      "tipo": "linea_tiempo",
+      "hitos": [
+       [
+        "13 oct",
+        "Palma"
+       ],
+       [
+        "16 oct",
+        "Adén"
+       ],
+       [
+        "18 oct",
+        "Mogadiscio"
+       ]
+      ]
+     }
+    },
+    {
+     "texto": "¿Qué habrías hecho tú en ese avión? Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    }
+   ]
+  }
+ ]
+}
