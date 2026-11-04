@@ -1409,6 +1409,386 @@
      }
     }
    ]
+  },
+  {
+   "eid": "urg2l",
+   "tipo": "largo",
+   "hora_youtube": "ya",
+   "urgente": true,
+   "articulo": "Guerra de Irán 2026 y ataque en Qeshm",
+   "fuente": "https://www.infobae.com/america/agencias/2026/08/26/los-principales-hitos-de-seis-meses-de-guerra-en-iran/ · https://www.infobae.com/america/mundo/2026/11/03/estados-unidos-lanzo-ataques-limitados-y-defensivos-contra-la-isla-irani-de-qeshm-en-el-estrecho-de-ormuz/",
+   "titulo_video": "IRÁN SE PREPARA PARA LA GUERRA",
+   "titulo_youtube": "Irán se prepara para la guerra con Estados Unidos: así llegamos hasta aquí",
+   "descripcion_youtube": "Estados Unidos atacó un lanzador de misiles en la isla iraní de Qeshm y Teherán dice que sus fuerzas están en máxima alerta. Repasamos la guerra de 2026: la ofensiva del 28 de febrero, el cierre de Ormuz, los altos el fuego que no duraron, el bloqueo naval y lo que puede pasar ahora.\n#noticias #iran #estadosunidos #ormuz #ridmer",
+   "etiquetas": [
+    "Irán",
+    "Estados Unidos",
+    "guerra Irán 2026",
+    "estrecho de Ormuz",
+    "Qeshm",
+    "noticias",
+    "ridmer"
+   ],
+   "texto_facebook": "",
+   "miniatura": {
+    "seg": 0,
+    "texto": "¿NUEVA GUERRA?"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Estados Unidos acaba de atacar una isla de Irán... y Teherán responde que está listo para un nuevo campo de batalla.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Iranian ballistic missile truck",
+       "Iran missile launcher parade"
+      ]
+     }
+    },
+    {
+     "texto": "Para entender cómo llegamos aquí, hay que volver al veintiocho de febrero de dos mil veintiséis.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "28 DE FEBRERO DE 2026",
+      "sub": "Empieza la guerra"
+     }
+    },
+    {
+     "texto": "Ese día, Estados Unidos e Israel lanzaron una ofensiva aérea contra Irán.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Tehran skyline",
+       "Tehran Milad Tower"
+      ]
+     }
+    },
+    {
+     "texto": "En los ataques murió el líder supremo, Alí Jamenei, junto a parte de la cúpula del régimen.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Alí Jamenei",
+      "sub": "Líder supremo de Irán (1989–2026)",
+      "buscar": [
+       "Ali Khamenei"
+      ]
+     }
+    },
+    {
+     "texto": "Irán respondió con misiles y drones contra Israel y contra países de la región.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Iranian ballistic missile launch",
+       "Iran missile launch Tasnim"
+      ]
+     }
+    },
+    {
+     "texto": "Y el tráfico por el estrecho de Ormuz se interrumpió.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 26.57,
+      "lon": 56.25,
+      "lugar": "Estrecho de Ormuz",
+      "km": 80
+     }
+    },
+    {
+     "texto": "Por ese paso, entre Irán y la península arábiga, circula una de las rutas de petróleo más importantes del planeta.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Oil tanker Strait of Hormuz",
+       "Strait of Hormuz tanker"
+      ]
+     }
+    },
+    {
+     "texto": "El efecto fue inmediato: el barril de Brent subió casi siete por ciento en un solo día.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "+6,7 %",
+      "sub": "Petróleo Brent · 2 de marzo"
+     }
+    },
+    {
+     "texto": "El dos de marzo, Hezbolá entró en la guerra atacando a Israel desde el Líbano.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Hezbollah flag",
+       "Southern Lebanon border"
+      ]
+     }
+    },
+    {
+     "texto": "El seis de marzo, Donald Trump exigió a Irán una rendición incondicional.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Donald Trump",
+      "sub": "Presidente de Estados Unidos",
+      "buscar": [
+       "Donald Trump official portrait 2025",
+       "Donald Trump"
+      ]
+     }
+    },
+    {
+     "texto": "Dos días después, Irán eligió a un nuevo líder supremo: Mojtaba Jamenei, hijo del fallecido.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Mojtaba Jamenei",
+      "sub": "Nuevo líder supremo · 8 de marzo",
+      "buscar": [
+       "Mojtaba Khamenei"
+      ]
+     }
+    },
+    {
+     "texto": "A finales de marzo, el barril de Brent llegó a ciento dieciocho dólares.",
+     "escena": {
+      "tipo": "contador",
+      "n": 118,
+      "texto": "DÓLARES",
+      "sub": "por barril de Brent · 31 de marzo"
+     }
+    },
+    {
+     "texto": "Pakistán empezó a mediar, e Irán llegó a proponer cobrar peajes por cruzar Ormuz.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Islamabad Faisal Mosque",
+       "Islamabad"
+      ]
+     }
+    },
+    {
+     "texto": "El ocho de abril llegó el primer respiro: un alto el fuego de dos semanas.",
+     "escena": {
+      "tipo": "contador",
+      "n": 2,
+      "texto": "SEMANAS",
+      "sub": "de alto el fuego · 8 de abril"
+     }
+    },
+    {
+     "texto": "Irán se comprometió a ayudar a reabrir el estrecho.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Oil tanker Strait of Hormuz",
+       "Strait of Hormuz tanker"
+      ]
+     }
+    },
+    {
+     "texto": "Pero las primeras conversaciones directas de alto nivel, en Islamabad, fracasaron por el programa nuclear y el futuro de Ormuz.",
+     "escena": {
+      "tipo": "ruta",
+      "a": [
+       38.9,
+       -77.04
+      ],
+      "b": [
+       33.68,
+       73.05
+      ],
+      "na": "WASHINGTON",
+      "nb": "ISLAMABAD",
+      "corte": 1.0
+     }
+    },
+    {
+     "texto": "El primero de junio, Estados Unidos volvió a atacar Irán, e Irán disparó contra objetivos estadounidenses en la región.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "US Navy destroyer Tomahawk launch",
+       "USS destroyer missile launch"
+      ]
+     }
+    },
+    {
+     "texto": "El ocho de junio, Teherán declaró muerto el alto el fuego y volvió a cerrar Ormuz.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "8 DE JUNIO",
+      "sub": "Irán vuelve a cerrar Ormuz"
+     }
+    },
+    {
+     "texto": "Cinco días después, Estados Unidos impuso un bloqueo a los puertos iraníes.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "US Navy aircraft carrier strike group",
+       "Nimitz-class aircraft carrier"
+      ]
+     },
+     "rotulo": "BLOQUEO NAVAL"
+    },
+    {
+     "texto": "A mediados de junio hubo otro intento: un acuerdo en Islamabad y un memorando firmado por Trump en Versalles, con sesenta días para negociar.",
+     "escena": {
+      "tipo": "contador",
+      "n": 60,
+      "texto": "DÍAS",
+      "sub": "para negociar un acuerdo final"
+     }
+    },
+    {
+     "texto": "No duró. El ocho de julio, Trump terminó el acuerdo y volvió el bloqueo. Irán respondió cerrando otra vez el estrecho.",
+     "escena": {
+      "tipo": "linea_tiempo",
+      "hitos": [
+       [
+        "8 ABR",
+        "Alto el fuego"
+       ],
+       [
+        "8 JUN",
+        "Irán cierra Ormuz"
+       ],
+       [
+        "17 JUN",
+        "Memorando en Versalles"
+       ],
+       [
+        "8 JUL",
+        "Vuelve el bloqueo"
+       ]
+      ]
+     }
+    },
+    {
+     "texto": "En agosto, vencido el plazo, Trump declaró que el estrecho era nuevo territorio de Estados Unidos.",
+     "escena": {
+      "tipo": "cita",
+      "texto": "Nuevo territorio de Estados Unidos.",
+      "autor": "Donald Trump, sobre el estrecho de Ormuz"
+     }
+    },
+    {
+     "texto": "Desde entonces, el conflicto quedó estancado durante meses, entre sanciones, amenazas y negociaciones que no avanzan.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Strait of Hormuz satellite",
+       "Strait of Hormuz from space"
+      ]
+     }
+    },
+    {
+     "texto": "Hasta ahora.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "NOVIEMBRE DE 2026",
+      "sub": "Isla de Qeshm"
+     }
+    },
+    {
+     "texto": "Según funcionarios estadounidenses, un avión atacó un sistema de lanzamiento de misiles de la Guardia Revolucionaria en la isla de Qeshm, después de que dispararan contra una aeronave de Estados Unidos.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 26.85,
+      "lon": 55.9,
+      "lugar": "Isla de Qeshm · Irán",
+      "km": 30
+     }
+    },
+    {
+     "texto": "Medios iraníes reportaron cinco explosiones seguidas, y también hubo explosiones en la isla de Hengam y cerca de Bandar Abbas.",
+     "escena": {
+      "tipo": "contador",
+      "n": 5,
+      "texto": "EXPLOSIONES",
+      "sub": "según medios iraníes"
+     }
+    },
+    {
+     "texto": "Washington lo describe como un ataque limitado y defensivo, no como el regreso a la guerra a gran escala.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "The Pentagon building",
+       "Pentagon aerial view"
+      ]
+     }
+    },
+    {
+     "texto": "Pero Irán no lo ve así. El presidente del Parlamento, Mohammad Bagher Qalibaf, dijo que sus fuerzas están en el nivel más alto de preparación.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Mohammad Bagher Qalibaf",
+      "sub": "Presidente del Parlamento de Irán",
+      "buscar": [
+       "Mohammad Bagher Ghalibaf",
+       "Ghalibaf"
+      ]
+     },
+     "rotulo": "MÁXIMA ALERTA"
+    },
+    {
+     "texto": "Y lanzó una advertencia.",
+     "escena": {
+      "tipo": "cita",
+      "texto": "La pelota está ahora en la cancha de Estados Unidos para evitar la guerra.",
+      "autor": "Mohammad Bagher Qalibaf"
+     }
+    },
+    {
+     "texto": "Mientras tanto, miles de soldados estadounidenses mantienen el bloqueo, y un tercer portaaviones se dirige a Medio Oriente.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "USS Gerald R. Ford aircraft carrier",
+       "aircraft carrier at sea"
+      ]
+     }
+    },
+    {
+     "texto": "Al mismo tiempo, siguen las negociaciones indirectas. Los mediadores buscan un acuerdo: que Irán deje de atacar en Ormuz a cambio de que Estados Unidos levante el bloqueo.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Abbas Araghchi",
+       "Iranian foreign minister Araghchi"
+      ]
+     }
+    },
+    {
+     "texto": "Tras el ataque, el petróleo volvió a subir.",
+     "escena": {
+      "tipo": "contador",
+      "n": 106,
+      "texto": "DÓLARES",
+      "sub": "Brent tras el ataque en Qeshm"
+     }
+    },
+    {
+     "texto": "La pregunta ahora es si esto fue solo un aviso... o el comienzo de una nueva guerra.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Iranian ballistic missile truck",
+       "Iran missile launcher parade"
+      ]
+     }
+    },
+    {
+     "texto": "Suscríbete a Ridmer para seguir esta historia.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 26.57,
+      "lon": 56.25,
+      "lugar": "Estrecho de Ormuz",
+      "km": 80
+     }
+    }
+   ]
   }
  ]
 }
