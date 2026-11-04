@@ -250,12 +250,12 @@ def producir(fecha, v):
     for f_ in os.listdir(carpeta):
         if f_.startswith(('voz_', 'cuerpo_', 'mezcla', 'esc_', 'e_')) and f_.endswith(('.mp3', '.wav', '.txt')):
             os.remove(os.path.join(carpeta, f_))
-    _programar(fecha, v, jid, salidas, mini, ' '.join(s['texto'] for s in segs))
+    _programar(fecha, v, jid, salidas, mini, ' '.join(s['texto'] for s in segs), auto=True)
     shutil.rmtree(carpeta, ignore_errors=True)
     log('listo', jid, [t for t, _ in salidas])
 
 
-def _programar(fecha, v, jid, salidas, mini, guion):
+def _programar(fecha, v, jid, salidas, mini, guion, auto=False):
     """Deja cada video (fb / short / largo) listo para entregarse a su hora."""
     titulo = v.get('titulo_video') or v.get('titulo_youtube', '')
     desc = v.get('descripcion_youtube', '')
@@ -276,7 +276,12 @@ def _programar(fecha, v, jid, salidas, mini, guion):
         aviso = cuando - (20 * 60 if tipo == 'fb' else 0)
         if tipo != 'fb' and hora != 'ya':    # YouTube: todo junto en el paquete de la mañana
             aviso = min(aviso, _epoch(fecha, C.get().get('paquete_hora', '09:00')))
-        meta = {'id': f'{jid}_{tipo}', 'formato': 'short' if tipo != 'largo' else 'largo', 'motivo': 'claude',
+        if auto:
+            sub_ = sub + '_auto'
+            if os.path.isdir(sub_):
+                shutil.rmtree(sub_)
+            os.replace(sub, sub_); sub = sub_
+        meta = {'id': os.path.basename(sub), 'auto': auto, 'formato': 'short' if tipo != 'largo' else 'largo', 'motivo': 'claude',
                 'entrega': tipo, 'titulo': titulo, 'titulo_youtube': v.get('titulo_youtube', titulo),
                 'descripcion_youtube': desc, 'etiquetas': v.get('etiquetas', []),
                 'texto_facebook': v.get('texto_facebook', ''), 'guion': guion,
@@ -415,7 +420,7 @@ def importar_entregas(fecha, plan):
     planes = {v['eid']: v for v in plan.get('videos', [])}
     for e in man.get('videos', []):
         clave = f"{fecha}:{e.get('eid')}:claude"
-        if clave in hechos or f"{fecha}:{e.get('eid')}" in hechos or e.get('eid') not in planes:
+        if clave in hechos or e.get('eid') not in planes:      # lo de Claude entra aunque ya se haya armado el respaldo
             continue
         v = dict(planes[e['eid']], **(e.get('cambios') or {}))
         jid = f'{fecha.replace("-", "")}_{e["eid"]}'
@@ -470,7 +475,8 @@ def modo_claude(fecha, plan):
         hechos = F._leer(HECHOS, [])
         for v in plan.get('videos', []):
             clave = f"{fecha}:{v.get('eid')}"
-            if clave in hechos or v.get('omitir') or v.get('hora_fb') == 'ya':
+            if clave in hechos or v.get('omitir') or v.get('urgente') or 'ya' in (v.get('hora_fb'), v.get('hora_youtube'),
+                                                                                   v.get('hora_short')):
                 continue
             hechos.append(clave); F._guardar(HECHOS, hechos)
             with _lock:
@@ -490,7 +496,8 @@ def _avisar_youtube(meta):
     cuando = time.strftime('%I:%M %p', time.localtime(meta.get('publicar_en', time.time()))).lstrip('0')
     hora_txt = (f"⏰ <b>Prográmalo para las {cuando}</b>\n\n" if meta.get('publicar_en', 0) - time.time() > 600
                 else "⏰ Es buena hora: <b>súbelo ahora</b>.\n\n")
-    cap = (f"📺 <b>YOUTUBE · {'VIDEO LARGO' if largo else 'SHORT'}</b> · ⏱️ {du // 60}:{du % 60:02d}\n" + hora_txt +
+    cap = (f"📺 <b>YOUTUBE · {'VIDEO LARGO' if largo else 'SHORT'}</b> · ⏱️ {du // 60}:{du % 60:02d}\n" +
+           ('🤖 <i>Versión automática de respaldo</i>\n' if meta.get('auto') else '✍️ <i>Editado por Claude</i>\n') + hora_txt +
            f"<b>{meta['titulo_youtube']}</b>\n\n👉 Video en calidad completa, miniatura y textos: {link}")
     texto = (f"📝 <b>Título:</b>\n{meta['titulo_youtube']}\n\n<b>Descripción:</b>\n{meta['descripcion_youtube']}\n\n"
              f"<b>Etiquetas:</b>\n{', '.join(meta.get('etiquetas', []))}")
