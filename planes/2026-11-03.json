@@ -1160,6 +1160,255 @@
      }
     }
    ]
+  },
+  {
+   "articulo": "Ataque de EE. UU. en la isla de Qeshm",
+   "fuente": "https://www.infobae.com/america/mundo/2026/11/03/estados-unidos-lanzo-ataques-limitados-y-defensivos-contra-la-isla-irani-de-qeshm-en-el-estrecho-de-ormuz/",
+   "titulo_video": "IRÁN SE PREPARA PARA LA GUERRA",
+   "etiquetas": [
+    "Irán",
+    "Estados Unidos",
+    "guerra",
+    "Ormuz",
+    "Qeshm",
+    "noticias",
+    "ridmer"
+   ],
+   "gancho": 1,
+   "urgente": true,
+   "eid": "urg2",
+   "tipo": "fb",
+   "hora_fb": "ya",
+   "hora_short": "ya",
+   "titulo_youtube": "Irán se prepara para la guerra con Estados Unidos tras el ataque en Ormuz",
+   "descripcion_youtube": "Estados Unidos atacó un lanzador de misiles en la isla iraní de Qeshm, en el estrecho de Ormuz. Washington lo llama un ataque limitado y defensivo; Irán dice que sus fuerzas están en máxima alerta.\n#noticias #iran #ridmer",
+   "texto_facebook": "Irán se prepara para la guerra con Estados Unidos tras el ataque en Ormuz ⚠️ #Irán #EstadosUnidos #Ridmer",
+   "miniatura": {
+    "seg": 0,
+    "texto": "LISTOS PARA LA GUERRA"
+   },
+   "segmentos": [
+    {
+     "texto": "Estados Unidos acaba de atacar una isla de Irán... e Irán responde que está listo para la guerra.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Iranian ballistic missile truck",
+       "Iran missile launcher parade"
+      ]
+     }
+    },
+    {
+     "texto": "Pasó en las últimas horas, en el estrecho de Ormuz, una de las rutas de petróleo más importantes del mundo.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 26.85,
+      "lon": 55.9,
+      "lugar": "Isla de Qeshm · Irán",
+      "km": 30
+     }
+    },
+    {
+     "texto": "Según funcionarios estadounidenses, un avión atacó un sistema de lanzamiento de misiles de la Guardia Revolucionaria en la isla de Qeshm.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Islamic Revolutionary Guard Corps missile launcher",
+       "IRGC missile launcher"
+      ]
+     }
+    },
+    {
+     "texto": "Dicen que fue después de que dispararan contra una aeronave de Estados Unidos.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "MQ-9 Reaper",
+       "US Air Force F-15E Strike Eagle"
+      ]
+     }
+    },
+    {
+     "texto": "Medios iraníes hablaron de cinco explosiones seguidas. También hubo explosiones en la isla de Hengam y cerca de Bandar Abbas.",
+     "escena": {
+      "tipo": "contador",
+      "n": 5,
+      "texto": "EXPLOSIONES",
+      "sub": "en Qeshm, según medios iraníes"
+     }
+    },
+    {
+     "texto": "Washington asegura que fueron ataques limitados y defensivos, y que no es el regreso de la guerra a gran escala.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "The Pentagon building",
+       "Pentagon aerial view"
+      ]
+     }
+    },
+    {
+     "texto": "Pero Irán respondió con dureza.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Iranian ballistic missile",
+       "Iran missile Tasnim"
+      ]
+     }
+    },
+    {
+     "texto": "El presidente del Parlamento, Mohammad Bagher Qalibaf, dijo que sus fuerzas armadas están en el nivel más alto de preparación.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Mohammad Bagher Qalibaf",
+      "sub": "Presidente del Parlamento de Irán",
+      "buscar": [
+       "Mohammad Bagher Ghalibaf",
+       "Ghalibaf"
+      ]
+     },
+     "rotulo": "MÁXIMA ALERTA"
+    },
+    {
+     "texto": "Y advirtió: si Estados Unidos comete otro error, enfrentará un nuevo campo de batalla.",
+     "escena": {
+      "tipo": "cita",
+      "texto": "La pelota está ahora en la cancha de Estados Unidos para evitar la guerra.",
+      "autor": "Mohammad Bagher Qalibaf"
+     }
+    },
+    {
+     "texto": "Mientras tanto, siguen las negociaciones indirectas, y el petróleo subió de precio tras el ataque.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Oil tanker Strait of Hormuz",
+       "Strait of Hormuz tanker"
+      ]
+     }
+    },
+    {
+     "texto": "La guerra empezó en febrero de este año. Hoy el mundo vuelve a mirar a Ormuz. Suscríbete a Ridmer para más noticias como esta.",
+     "escena": {
+      "tipo": "linea_tiempo",
+      "hitos": [
+       [
+        "28 FEB 2026",
+        "EE. UU. e Israel atacan Irán"
+       ],
+       [
+        "SEPTIEMBRE",
+        "Últimos ataques conocidos"
+       ],
+       [
+        "NOVIEMBRE",
+        "Ataque en Qeshm"
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "articulo": "Ataque de EE. UU. en la isla de Qeshm",
+   "fuente": "https://www.infobae.com/america/mundo/2026/11/03/estados-unidos-lanzo-ataques-limitados-y-defensivos-contra-la-isla-irani-de-qeshm-en-el-estrecho-de-ormuz/",
+   "titulo_video": "IRÁN SE PREPARA PARA LA GUERRA",
+   "etiquetas": [
+    "Irán",
+    "Estados Unidos",
+    "guerra",
+    "Ormuz",
+    "Qeshm",
+    "noticias",
+    "ridmer"
+   ],
+   "gancho": 1,
+   "urgente": true,
+   "eid": "urg2s",
+   "tipo": "short",
+   "hora_youtube": "ya",
+   "titulo_youtube": "Irán se prepara para la guerra con Estados Unidos",
+   "descripcion_youtube": "EE. UU. atacó un lanzador de misiles en la isla de Qeshm. Irán dice que sus fuerzas están en máxima alerta.\n#noticias #iran #shorts",
+   "texto_facebook": "",
+   "miniatura": {
+    "seg": 0,
+    "texto": "MÁXIMA ALERTA"
+   },
+   "segmentos": [
+    {
+     "texto": "Irán se prepara para la guerra... después de que Estados Unidos atacara una de sus islas.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Iranian ballistic missile truck",
+       "Iran missile launcher parade"
+      ]
+     }
+    },
+    {
+     "texto": "Fue en Qeshm, en el estrecho de Ormuz, una de las rutas de petróleo más importantes del mundo.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 26.85,
+      "lon": 55.9,
+      "lugar": "Isla de Qeshm · Irán",
+      "km": 30
+     }
+    },
+    {
+     "texto": "Funcionarios de Estados Unidos dicen que atacaron un lanzador de misiles, tras un disparo contra uno de sus aviones.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Islamic Revolutionary Guard Corps missile launcher",
+       "IRGC missile launcher"
+      ]
+     }
+    },
+    {
+     "texto": "Medios iraníes reportaron cinco explosiones seguidas.",
+     "escena": {
+      "tipo": "contador",
+      "n": 5,
+      "texto": "EXPLOSIONES",
+      "sub": "según medios iraníes"
+     }
+    },
+    {
+     "texto": "Washington lo llama un ataque limitado y defensivo.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "The Pentagon building",
+       "Pentagon aerial view"
+      ]
+     }
+    },
+    {
+     "texto": "Pero el jefe del Parlamento iraní dijo que sus fuerzas están en máxima alerta, y que si hay otro error, habrá un nuevo campo de batalla.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Mohammad Bagher Qalibaf",
+      "sub": "Presidente del Parlamento de Irán",
+      "buscar": [
+       "Mohammad Bagher Ghalibaf",
+       "Ghalibaf"
+      ]
+     },
+     "rotulo": "MÁXIMA ALERTA"
+    },
+    {
+     "texto": "Por ahora, las negociaciones siguen. El mundo mira a Ormuz. Sígueme en Ridmer.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Oil tanker Strait of Hormuz",
+       "Strait of Hormuz tanker"
+      ]
+     }
+    }
+   ]
   }
  ]
 }
