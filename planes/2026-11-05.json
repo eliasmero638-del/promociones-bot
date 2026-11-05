@@ -1,0 +1,1378 @@
+{
+ "fecha": "2026-11-05",
+ "modo": "claude",
+ "videos": [
+  {
+   "articulo": "Vuelo 571 de la Fuerza Aérea Uruguaya",
+   "fuente": "https://es.wikipedia.org/wiki/Vuelo_571_de_la_Fuerza_A%C3%A9rea_Uruguaya",
+   "eid": "fb1",
+   "tipo": "fb",
+   "hora_fb": "12:30",
+   "titulo_video": "SETENTA Y DOS DÍAS",
+   "titulo_youtube": "Su avión cayó en los Andes y los dieron por muertos… 72 días después",
+   "descripcion_youtube": "Octubre de 1972. Un avión con un equipo de rugby desaparece en la cordillera de los Andes.\nA los ocho días dejaron de buscarlos. Lo que pasó después parece imposible.\n#misterio #casosreales #ridmer",
+   "etiquetas": [
+    "misterio",
+    "casos reales",
+    "ridmer",
+    "tragedia de los Andes",
+    "vuelo 571",
+    "milagro de los Andes",
+    "Old Christians",
+    "Nando Parrado",
+    "Roberto Canessa"
+   ],
+   "texto_facebook": "Los dieron por muertos en la cordillera… pero la montaña todavía no había dicho la última palabra. #misterio #casosreales #ridmer",
+   "miniatura": {
+    "img": 9,
+    "texto": "LOS DIERON POR MUERTOS"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Cuarenta y cinco personas cruzaban los Andes… y el avión desapareció entre las nubes.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     }
+    },
+    {
+     "texto": "Era el viernes trece de octubre de mil novecientos setenta y dos.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "13 DE OCTUBRE DE 1972",
+      "sub": "Cordillera de los Andes"
+     }
+    },
+    {
+     "texto": "A bordo iba un equipo de rugby uruguayo, el Old Christians, con familiares y amigos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 8
+     }
+    },
+    {
+     "texto": "Las nubes tapaban la cordillera. Los pilotos creyeron que ya habían pasado Curicó… y empezaron a bajar.",
+     "escena": {
+      "tipo": "ruta",
+      "a": [
+       -32.89,
+       -68.83
+      ],
+      "b": [
+       -34.98,
+       -71.24
+      ],
+      "na": "MENDOZA",
+      "nb": "CURICÓ",
+      "corte": 0.8,
+      "c": [
+       -34.763,
+       -70.286
+      ],
+      "nc": "GLACIAR LAS LÁGRIMAS"
+     }
+    },
+    {
+     "texto": "Pero seguían sobre los Andes. El avión chocó contra un monte y perdió las alas y la cola.",
+     "escena": {
+      "tipo": "caida",
+      "lat": -34.763,
+      "lon": -70.286,
+      "km": 8,
+      "lugar": "Glaciar Las Lágrimas"
+     }
+    },
+    {
+     "texto": "El fuselaje se deslizó montaña abajo hasta un glaciar, a tres mil quinientos setenta metros.",
+     "escena": {
+      "tipo": "foto",
+      "img": 9
+     }
+    },
+    {
+     "texto": "Los buscaron, pero el fuselaje blanco no se veía en la nieve. El veintiuno de octubre, cancelaron la búsqueda.",
+     "escena": {
+      "tipo": "foto",
+      "img": 7
+     },
+     "rotulo": "BÚSQUEDA CANCELADA"
+    },
+    {
+     "texto": "Trece murieron en el choque. Cuatro más esa noche, por las heridas y el frío.",
+     "escena": {
+      "tipo": "foto",
+      "img": 10
+     }
+    },
+    {
+     "texto": "Después murieron doce más. Ocho, por un alud.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": -34.763,
+      "lon": -70.286,
+      "lugar": "Glaciar Las Lágrimas, Mendoza",
+      "km": 8
+     }
+    },
+    {
+     "texto": "Sufrieron congelación, sed y hambre. Tanta, que tuvieron que alimentarse de los cuerpos de los muertos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 9
+     }
+    },
+    {
+     "texto": "El doce de diciembre, Nando Parrado y Roberto Canessa escalaron sin equipo un pico de cuatro mil seiscientos cincuenta metros.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Nando Parrado y Roberto Canessa",
+      "sub": "Sobrevivientes del vuelo 571"
+     }
+    },
+    {
+     "texto": "Bajaron a Chile y encontraron a un arriero, Sergio Catalán, que hizo posible el rescate.",
+     "escena": {
+      "tipo": "linea_tiempo",
+      "hitos": [
+       [
+        "13 OCT",
+        "El choque"
+       ],
+       [
+        "21 OCT",
+        "Fin de la búsqueda"
+       ],
+       [
+        "12 DIC",
+        "Salen a pie"
+       ],
+       [
+        "23 DIC",
+        "Último rescate"
+       ]
+      ]
+     }
+    },
+    {
+     "texto": "El veintitrés de diciembre rescataron a los últimos. Setenta y dos días después del choque.",
+     "escena": {
+      "tipo": "foto",
+      "img": 7
+     },
+     "rotulo": "72 DÍAS"
+    },
+    {
+     "texto": "Dieciséis personas sobrevivieron. Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 10
+     },
+     "rotulo": "16 SOBREVIVIENTES"
+    }
+   ]
+  },
+  {
+   "articulo": "Vuelo 571 de la Fuerza Aérea Uruguaya",
+   "fuente": "https://es.wikipedia.org/wiki/Vuelo_571_de_la_Fuerza_A%C3%A9rea_Uruguaya",
+   "eid": "fb1s",
+   "tipo": "short",
+   "encargo": "fb1",
+   "hora_youtube": "12:00",
+   "titulo_video": "LOS DIERON POR MUERTOS",
+   "titulo_youtube": "Su avión cayó en los Andes y los dieron por muertos… #shorts",
+   "descripcion_youtube": "La tragedia de los Andes, 1972: lo que pasó en la montaña y cómo terminó.\n#misterio #casosreales #ridmer #shorts",
+   "etiquetas": [
+    "misterio",
+    "casos reales",
+    "ridmer",
+    "tragedia de los Andes",
+    "vuelo 571",
+    "milagro de los Andes",
+    "shorts"
+   ],
+   "texto_facebook": "",
+   "miniatura": {
+    "img": 9,
+    "texto": "LOS DIERON POR MUERTOS"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Su avión se estrelló en los Andes… y el mundo los dio por muertos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 9
+     }
+    },
+    {
+     "texto": "Octubre de mil novecientos setenta y dos. Un equipo de rugby uruguayo volaba hacia Chile.",
+     "escena": {
+      "tipo": "foto",
+      "img": 8
+     }
+    },
+    {
+     "texto": "Entre las nubes, los pilotos creyeron haber cruzado las montañas, y empezaron a bajar.",
+     "escena": {
+      "tipo": "ruta",
+      "a": [
+       -32.89,
+       -68.83
+      ],
+      "b": [
+       -34.98,
+       -71.24
+      ],
+      "na": "MENDOZA",
+      "nb": "CURICÓ",
+      "corte": 0.8,
+      "c": [
+       -34.763,
+       -70.286
+      ],
+      "nc": "GLACIAR LAS LÁGRIMAS"
+     }
+    },
+    {
+     "texto": "Chocaron contra un monte. El avión perdió las alas y cayó sobre un glaciar.",
+     "escena": {
+      "tipo": "caida",
+      "lat": -34.763,
+      "lon": -70.286,
+      "km": 8,
+      "lugar": "Glaciar Las Lágrimas"
+     }
+    },
+    {
+     "texto": "A los ocho días cancelaron la búsqueda: el fuselaje blanco no se veía en la nieve.",
+     "escena": {
+      "tipo": "foto",
+      "img": 7
+     },
+     "rotulo": "BÚSQUEDA CANCELADA"
+    },
+    {
+     "texto": "Con frío, sed y hambre, tuvieron que alimentarse de los cuerpos de los muertos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 10
+     }
+    },
+    {
+     "texto": "Entonces dos de ellos cruzaron la montaña a pie hasta encontrar ayuda en Chile.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Nando Parrado y Roberto Canessa",
+      "sub": "Sobrevivientes del vuelo 571"
+     }
+    },
+    {
+     "texto": "Setenta y dos días después del choque, rescataron a los últimos. Sobrevivieron dieciséis.",
+     "escena": {
+      "tipo": "contador",
+      "n": 16,
+      "texto": "SOBREVIVIENTES",
+      "sub": "72 días en la montaña"
+     }
+    },
+    {
+     "texto": "Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     }
+    }
+   ]
+  },
+  {
+   "articulo": "Avión Pirata",
+   "fuente": "https://es.wikipedia.org/wiki/Avi%C3%B3n_Pirata",
+   "eid": "fb2",
+   "tipo": "fb",
+   "hora_fb": "18:30",
+   "titulo_video": "EL AVIÓN PIRATA",
+   "titulo_youtube": "Aterrizaba de noche con carga secreta… hasta que los cazas lo persiguieron",
+   "descripcion_youtube": "Bolivia, 1961. Aviones que llegaban de noche, un vuelo sin plan y una persecución con cazas.\nLa tripulación desapareció… pero el avión sigue ahí.\n#misterio #casosreales #ridmer",
+   "etiquetas": [
+    "misterio",
+    "casos reales",
+    "ridmer",
+    "avión pirata",
+    "Bolivia",
+    "Santa Cruz de la Sierra",
+    "Lockheed Constellation",
+    "contrabando",
+    "1961"
+   ],
+   "texto_facebook": "Llegaban de noche, nadie sabía qué traían… y un día los cazas salieron tras uno de ellos. #misterio #casosreales #ridmer",
+   "miniatura": {
+    "img": 4,
+    "texto": "EL AVIÓN PIRATA"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Un avión despegó de Bolivia sin plan de vuelo… y los cazas salieron a perseguirlo.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Durante meses, aviones Constellation aterrizaban de noche en el aeropuerto El Trompillo, en Santa Cruz de la Sierra.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": -17.811,
+      "lon": -63.171,
+      "lugar": "Aeropuerto El Trompillo, Santa Cruz",
+      "km": 8
+     }
+    },
+    {
+     "texto": "La gente creía que traían contrabando desde Estados Unidos: cigarrillos, whisky, televisores.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "El treinta de julio de mil novecientos sesenta y uno, uno de ellos despegó hacia el sur. Sus ocupantes dijeron que era un vuelo de práctica.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "30 DE JULIO DE 1961",
+      "sub": "Santa Cruz de la Sierra, Bolivia"
+     }
+    },
+    {
+     "texto": "La torre alertó a la Fuerza Aérea Boliviana, que mandó cazas Mustang a perseguirlo.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Le ordenaron volar a Cochabamba. La tripulación los ignoró.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Entonces los cazas abrieron fuego.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     },
+     "rotulo": "ABRIERON FUEGO"
+    },
+    {
+     "texto": "El avión intentó volver a El Trompillo y, al bajar, se lanzó en picada para quitarse a los cazas de encima.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Uno de los pilotos que lo perseguían, el capitán Alberto Peredo Céspedes, se estrelló y murió.",
+     "escena": {
+      "tipo": "caida",
+      "lat": -17.811,
+      "lon": -63.171,
+      "km": 8,
+      "lugar": "Santa Cruz de la Sierra"
+     }
+    },
+    {
+     "texto": "El avión aterrizó con los neumáticos reventados. Arrestaron a sus cinco tripulantes: cuatro estadounidenses y un brasileño.",
+     "escena": {
+      "tipo": "contador",
+      "n": 5,
+      "texto": "ARRESTADOS",
+      "sub": "4 estadounidenses y 1 brasileño"
+     }
+    },
+    {
+     "texto": "Los acusaron de homicidio, piratería y contrabando. Pero en noviembre de ese año… escaparon de Bolivia.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "Ninguno volvió jamás. Cuatro de ellos siguen prófugos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     },
+     "rotulo": "SIGUEN PRÓFUGOS"
+    },
+    {
+     "texto": "Pero el avión se quedó. En mil novecientos setenta y nueve lo llevaron a un parque, y hoy todos lo llaman el Avión Pirata.",
+     "escena": {
+      "tipo": "linea_tiempo",
+      "hitos": [
+       [
+        "1961",
+        "Persecución y arresto"
+       ],
+       [
+        "1961",
+        "La tripulación escapa"
+       ],
+       [
+        "1979",
+        "Llevado a un parque"
+       ]
+      ]
+     }
+    },
+    {
+     "texto": "Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    }
+   ]
+  },
+  {
+   "articulo": "Avión Pirata",
+   "fuente": "https://es.wikipedia.org/wiki/Avi%C3%B3n_Pirata",
+   "eid": "fb2s",
+   "tipo": "short",
+   "encargo": "fb2",
+   "hora_youtube": "17:00",
+   "titulo_video": "LOS CAZAS LO PERSIGUIERON",
+   "titulo_youtube": "Despegó sin plan de vuelo… y los cazas salieron a perseguirlo #shorts",
+   "descripcion_youtube": "El Avión Pirata de Bolivia, 1961: qué pasó y dónde está hoy.\n#misterio #casosreales #ridmer #shorts",
+   "etiquetas": [
+    "misterio",
+    "casos reales",
+    "ridmer",
+    "avión pirata",
+    "Bolivia",
+    "shorts"
+   ],
+   "texto_facebook": "",
+   "miniatura": {
+    "img": 4,
+    "texto": "AVIÓN PIRATA"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Un avión despegó de Bolivia sin plan de vuelo… y los cazas salieron a perseguirlo.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Fue en julio de mil novecientos sesenta y uno, en Santa Cruz de la Sierra.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": -17.811,
+      "lon": -63.171,
+      "lugar": "Aeropuerto El Trompillo, Santa Cruz",
+      "km": 8
+     }
+    },
+    {
+     "texto": "Desde hacía meses, aviones así aterrizaban de noche. Se hablaba de contrabando.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "La tripulación dijo que era un vuelo de práctica. Pero ignoró la orden de ir a Cochabamba.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Los cazas abrieron fuego. En la persecución, el capitán Alberto Peredo Céspedes se estrelló y murió.",
+     "escena": {
+      "tipo": "caida",
+      "lat": -17.811,
+      "lon": -63.171,
+      "km": 8,
+      "lugar": "Santa Cruz de la Sierra"
+     }
+    },
+    {
+     "texto": "El avión aterrizó y sus cinco tripulantes fueron arrestados.",
+     "escena": {
+      "tipo": "contador",
+      "n": 5,
+      "texto": "ARRESTADOS",
+      "sub": "4 estadounidenses y 1 brasileño"
+     }
+    },
+    {
+     "texto": "Pero meses después escaparon de Bolivia. Ninguno volvió, y cuatro siguen prófugos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     },
+     "rotulo": "SIGUEN PRÓFUGOS"
+    },
+    {
+     "texto": "El avión nunca se fue. Hoy está en un parque de Santa Cruz y lo llaman el Avión Pirata.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    }
+   ]
+  },
+  {
+   "articulo": "SS Baychimo",
+   "fuente": "https://es.wikipedia.org/wiki/SS_Baychimo",
+   "eid": "fb3",
+   "tipo": "fb",
+   "hora_fb": "21:00",
+   "titulo_video": "EL BARCO FANTASMA",
+   "titulo_youtube": "Lo abandonaron en el hielo… y el barco siguió apareciendo durante 38 años",
+   "descripcion_youtube": "Alaska, 1931. Un barco cargado de pieles queda atrapado en el hielo y su tripulación lo abandona.\nPero el barco no se hundió.\n#misterio #casosreales #ridmer",
+   "etiquetas": [
+    "misterio",
+    "casos reales",
+    "ridmer",
+    "barco fantasma",
+    "SS Baychimo",
+    "Alaska",
+    "Ártico",
+    "Compañía de la Bahía de Hudson"
+   ],
+   "texto_facebook": "Lo dejaron atrás seguros de que se hundiría… y lo siguieron viendo durante décadas. #misterio #casosreales #ridmer",
+   "miniatura": {
+    "img": 1,
+    "texto": "BARCO FANTASMA"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Lo abandonaron en el hielo… y durante treinta y ocho años siguió apareciendo.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Era el Baychimo, un vapor de la Compañía de la Bahía de Hudson.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "SS Baychimo",
+      "sub": "Vapor · construido en 1914 en Suecia",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Cambiaba provisiones por pieles en los asentamientos inuit del Ártico canadiense.",
+     "escena": {
+      "tipo": "foto",
+      "img": 9
+     }
+    },
+    {
+     "texto": "En octubre de mil novecientos treinta y uno, cargado de pieles, quedó atrapado en el hielo cerca de Barrow, Alaska.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 71.29,
+      "lon": -156.79,
+      "lugar": "Barrow, Alaska",
+      "km": 30
+     }
+    },
+    {
+     "texto": "La tripulación se refugió dos días en el pueblo. Al volver… el barco se había soltado.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "Quince hombres se quedaron cerca, en un refugio de madera, a pasar el invierno.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "El veinticuatro de noviembre llegó una tormenta de nieve. Cuando pasó, el Baychimo ya no estaba.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "24 DE NOVIEMBRE DE 1931",
+      "sub": "Tormenta de nieve"
+     }
+    },
+    {
+     "texto": "El capitán lo dio por hundido. Pero un cazador lo vio a setenta y dos kilómetros.",
+     "escena": {
+      "tipo": "contador",
+      "n": 72,
+      "texto": "KILÓMETROS",
+      "sub": "de donde lo perdieron"
+     }
+    },
+    {
+     "texto": "Se llevaron las pieles más valiosas y lo abandonaron.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Pero no se hundió. Durante décadas lo vieron a la deriva.",
+     "escena": {
+      "tipo": "linea_tiempo",
+      "hitos": [
+       [
+        "1931",
+        "Abandonado"
+       ],
+       [
+        "1933",
+        "Inuit atrapados a bordo"
+       ],
+       [
+        "1939",
+        "Fallido rescate"
+       ],
+       [
+        "1969",
+        "Último avistamiento"
+       ]
+      ]
+     }
+    },
+    {
+     "texto": "En mil novecientos treinta y tres, unos inuit subieron a bordo y una tormenta los atrapó diez días.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "En mil novecientos treinta y nueve, un capitán intentó rescatarlo, pero el hielo se lo impidió.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "La última vez fue en mil novecientos sesenta y nueve, atrapado en el hielo del mar de Beaufort.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 71.0,
+      "lon": -159.0,
+      "lugar": "Entre Punta Barrow e Icy Cape",
+      "km": 30
+     }
+    },
+    {
+     "texto": "En dos mil seis, Alaska empezó a buscarlo. Nunca apareció. Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     },
+     "rotulo": "NUNCA HALLADO"
+    }
+   ]
+  },
+  {
+   "articulo": "SS Baychimo",
+   "fuente": "https://es.wikipedia.org/wiki/SS_Baychimo",
+   "eid": "fb3s",
+   "tipo": "short",
+   "encargo": "fb3",
+   "hora_youtube": "22:00",
+   "titulo_video": "EL BARCO QUE NO SE HUNDIÓ",
+   "titulo_youtube": "Abandonaron este barco en el hielo… y siguió apareciendo 38 años #shorts",
+   "descripcion_youtube": "El SS Baychimo, el barco fantasma de Alaska: qué pasó y qué se sabe hoy.\n#misterio #casosreales #ridmer #shorts",
+   "etiquetas": [
+    "misterio",
+    "casos reales",
+    "ridmer",
+    "barco fantasma",
+    "SS Baychimo",
+    "Alaska",
+    "shorts"
+   ],
+   "texto_facebook": "",
+   "miniatura": {
+    "img": 1,
+    "texto": "BARCO FANTASMA"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Abandonaron este barco en el hielo… y siguió apareciendo treinta y ocho años.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Era el Baychimo. En mil novecientos treinta y uno quedó atrapado en el hielo de Alaska.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 71.29,
+      "lon": -156.79,
+      "lugar": "Barrow, Alaska",
+      "km": 30
+     }
+    },
+    {
+     "texto": "En noviembre llegó una tormenta de nieve. Cuando pasó, el barco había desaparecido.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "24 DE NOVIEMBRE DE 1931",
+      "sub": "Tormenta de nieve"
+     }
+    },
+    {
+     "texto": "Un cazador lo vio a setenta y dos kilómetros. Sacaron las pieles y lo abandonaron.",
+     "escena": {
+      "tipo": "contador",
+      "n": 72,
+      "texto": "KILÓMETROS",
+      "sub": "de donde lo perdieron"
+     }
+    },
+    {
+     "texto": "Pero no se hundió.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Durante años, inuit, exploradores y hasta un capitán subieron a bordo. Nadie logró llevárselo.",
+     "escena": {
+      "tipo": "linea_tiempo",
+      "hitos": [
+       [
+        "1931",
+        "Abandonado"
+       ],
+       [
+        "1933",
+        "Inuit atrapados a bordo"
+       ],
+       [
+        "1939",
+        "Fallido rescate"
+       ],
+       [
+        "1969",
+        "Último avistamiento"
+       ]
+      ]
+     }
+    },
+    {
+     "texto": "Lo vieron por última vez en mil novecientos sesenta y nueve, en el hielo del mar de Beaufort.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "En dos mil seis, Alaska empezó a buscarlo. Hasta hoy, nadie sabe si sigue a flote… o en el fondo del mar.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     },
+     "rotulo": "NUNCA HALLADO"
+    },
+    {
+     "texto": "Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    }
+   ]
+  },
+  {
+   "eid": "sh1",
+   "tipo": "short",
+   "hora_youtube": "15:00",
+   "articulo": "Accidente del helicóptero SAN-100 en Panamá",
+   "fuente": "https://es.wikipedia.org/wiki/Accidente_del_helic%C3%B3ptero_SAN-100_en_Panam%C3%A1",
+   "titulo_video": "CAYÓ SOBRE LA CIUDAD",
+   "titulo_youtube": "Cayó sobre un edificio en Panamá… con el jefe de Carabineros a bordo #shorts",
+   "descripcion_youtube": "Panamá, 2008: el accidente del helicóptero SAN-100 y lo que revelaron los peritajes.\n#misterio #casosreales #ridmer #shorts",
+   "etiquetas": [
+    "misterio",
+    "casos reales",
+    "ridmer",
+    "Panamá",
+    "Carabineros",
+    "Bernales",
+    "helicóptero",
+    "shorts"
+   ],
+   "texto_facebook": "",
+   "miniatura": {
+    "img": 1,
+    "texto": "CAYÓ SOBRE LA CIUDAD"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Un helicóptero cayó sobre un edificio en Panamá… con el jefe de Carabineros de Chile a bordo.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Era mayo de dos mil ocho. El general José Alejandro Bernales estaba de visita oficial con su esposa.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "José Alejandro Bernales",
+      "sub": "General director de Carabineros de Chile"
+     }
+    },
+    {
+     "texto": "El helicóptero se precipitó sobre el barrio de Calidonia y chocó contra un almacén.",
+     "escena": {
+      "tipo": "caida",
+      "lat": 8.966,
+      "lon": -79.538,
+      "km": 2,
+      "lugar": "Calidonia, Panamá"
+     }
+    },
+    {
+     "texto": "La nave y el edificio se incendiaron.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Murieron once de los doce ocupantes. Solo sobrevivió el copiloto.",
+     "escena": {
+      "tipo": "contador",
+      "n": 11,
+      "texto": "MUERTOS",
+      "sub": "de 12 ocupantes"
+     }
+    },
+    {
+     "texto": "Chile decretó tres días de duelo. Bernales fue el primer jefe de Carabineros muerto en su cargo.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Los peritajes hallaron fallas en las turbinas y la licencia del piloto vencida.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     },
+     "rotulo": "FALLAS Y LICENCIA VENCIDA"
+    },
+    {
+     "texto": "Panamá se comprometió a indemnizar a los chilenos con seis coma siete millones de dólares.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "US$ 6,7 MILLONES",
+      "sub": "Indemnización de Panamá a Chile"
+     }
+    },
+    {
+     "texto": "Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    }
+   ]
+  },
+  {
+   "eid": "sh2",
+   "tipo": "short",
+   "hora_youtube": "19:00",
+   "articulo": "Síndrome de la mujer blanca desaparecida",
+   "fuente": "https://es.wikipedia.org/wiki/S%C3%ADndrome_de_la_mujer_blanca_desaparecida",
+   "titulo_video": "SOLO A UNA LA BUSCARON",
+   "titulo_youtube": "Desaparecieron el mismo mes… pero solo una salió en las noticias #shorts",
+   "descripcion_youtube": "Natalee Holloway y LaToyia Figueroa, 2005: el síndrome de la mujer blanca desaparecida.\n#misterio #casosreales #ridmer #shorts",
+   "etiquetas": [
+    "misterio",
+    "casos reales",
+    "ridmer",
+    "Natalee Holloway",
+    "LaToyia Figueroa",
+    "desaparecidas",
+    "Aruba",
+    "shorts"
+   ],
+   "texto_facebook": "",
+   "miniatura": {
+    "img": 2,
+    "texto": "SOLO A UNA"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Dos mujeres estadounidenses desaparecieron el mismo mes… pero solo una salió en las noticias.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "En mayo de dos mil cinco, Natalee Holloway, de dieciocho años, desaparece en Aruba.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Natalee Holloway",
+      "sub": "Estudiante · 18 años",
+      "img": 2
+     }
+    },
+    {
+     "texto": "La televisión habló de ella sin parar, hasta de su música favorita.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "Ese mismo mes desaparece LaToyia Figueroa, de veinticuatro años. Estaba embarazada.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "LaToyia Figueroa",
+      "sub": "24 años · embarazada"
+     }
+    },
+    {
+     "texto": "Casi nadie habló de ella.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "LATOYIA FIGUEROA",
+      "sub": "Casi sin cobertura"
+     }
+    },
+    {
+     "texto": "A esto lo llaman el síndrome de la mujer blanca desaparecida.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     },
+     "rotulo": "SÍNDROME"
+    },
+    {
+     "texto": "Un estudio de dos mil dieciséis comparó cuatro medios con datos del FBI: hombres y personas negras salían mucho menos.",
+     "escena": {
+      "tipo": "contador",
+      "n": 4,
+      "texto": "MEDIOS",
+      "sub": "comparados con datos del FBI"
+     }
+    },
+    {
+     "texto": "En agosto hallaron el cuerpo de LaToyia. La asesinó el padre de su hijo.",
+     "escena": {
+      "tipo": "linea_tiempo",
+      "hitos": [
+       [
+        "MAY 2005",
+        "Desaparecen ambas"
+       ],
+       [
+        "AGO 2005",
+        "Hallan a LaToyia"
+       ],
+       [
+        "2012",
+        "Natalee, declarada muerta"
+       ]
+      ]
+     }
+    },
+    {
+     "texto": "Natalee fue declarada muerta en dos mil doce. Su cuerpo nunca apareció.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    }
+   ]
+  },
+  {
+   "eid": "largo1",
+   "tipo": "largo",
+   "hora_youtube": "18:00",
+   "articulo": "Vuelo 123 de Japan Airlines",
+   "fuente": "https://es.wikipedia.org/wiki/Vuelo_123_de_Japan_Airlines",
+   "titulo_video": "30 MINUTOS SIN CONTROL",
+   "titulo_youtube": "Algo estalló en la cola… y volaron 30 minutos sin poder controlar el avión",
+   "descripcion_youtube": "12 de agosto de 1985. El vuelo 123 de Japan Airlines despega de Tokio con 524 personas a bordo.\nDoce minutos después, algo falla en la cola. Lo que pasó después, y por qué, todavía estremece.\n#misterio #casosreales #ridmer",
+   "etiquetas": [
+    "misterio",
+    "casos reales",
+    "ridmer",
+    "vuelo 123",
+    "Japan Airlines",
+    "JAL 123",
+    "accidente aéreo",
+    "Boeing 747",
+    "Japón",
+    "1985",
+    "monte Osutaka"
+   ],
+   "texto_facebook": "",
+   "miniatura": {
+    "img": 2,
+    "texto": "SIN CONTROL"
+   },
+   "gancho": 2,
+   "segmentos": [
+    {
+     "texto": "Doce minutos después de despegar, algo estalló en la cola de este avión… y durante media hora nadie pudo controlarlo.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Murieron quinientas veinte personas. Solo cuatro sobrevivieron.",
+     "escena": {
+      "tipo": "contador",
+      "n": 520,
+      "texto": "MUERTOS",
+      "sub": "solo 4 sobrevivientes"
+     }
+    },
+    {
+     "texto": "Es el peor desastre aéreo de la historia con un solo avión involucrado. Y el segundo peor de todos los tiempos, después del choque de Tenerife.",
+     "escena": {
+      "tipo": "foto",
+      "img": 15
+     }
+    },
+    {
+     "texto": "Era el doce de agosto de mil novecientos ochenta y cinco, en Japón.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "12 DE AGOSTO DE 1985",
+      "sub": "Tokio, Japón"
+     }
+    },
+    {
+     "texto": "Era la víspera de una fiesta tradicional, y muchísima gente volvía a su tierra para estar con su familia.",
+     "escena": {
+      "tipo": "foto",
+      "img": 12
+     }
+    },
+    {
+     "texto": "Los vuelos iban llenos. Y los equipos de mantenimiento trabajaban bajo presión.",
+     "escena": {
+      "tipo": "foto",
+      "img": 13
+     }
+    },
+    {
+     "texto": "El vuelo ciento veintitrés de Japan Airlines cubría la ruta entre el aeropuerto de Haneda, en Tokio, y Osaka.",
+     "escena": {
+      "tipo": "ruta",
+      "a": [
+       35.5494,
+       139.7798
+      ],
+      "b": [
+       34.7855,
+       135.4382
+      ],
+      "na": "TOKIO",
+      "nb": "OSAKA",
+      "corte": 0.3,
+      "c": [
+       36.0013,
+       138.6942
+      ],
+      "nc": "MONTE TAKAMAGAHARA"
+     }
+    },
+    {
+     "texto": "Era un Boeing setecientos cuarenta y siete SR, una versión con más asientos, pensada para vuelos cortos.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Boeing 747SR",
+      "sub": "Matrícula JA8119",
+      "img": 11
+     }
+    },
+    {
+     "texto": "Ese día llevaba quinientos nueve pasajeros y quince tripulantes.",
+     "escena": {
+      "tipo": "contador",
+      "n": 524,
+      "texto": "A BORDO",
+      "sub": "509 pasajeros y 15 tripulantes"
+     }
+    },
+    {
+     "texto": "Despegó de Haneda a las seis y doce de la tarde, rumbo a Osaka.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "18:12",
+      "sub": "Despegue desde Haneda"
+     }
+    },
+    {
+     "texto": "Doce minutos después, mientras subía sobre la bahía de Sagami, falló el mamparo de presión trasero.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     },
+     "rotulo": "FALLA EL MAMPARO"
+    },
+    {
+     "texto": "El avión perdió el estabilizador vertical, que cayó al mar. La cabina se despresurizó.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Y lo peor: se rompieron las cuatro líneas hidráulicas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     },
+     "rotulo": "SIN HIDRÁULICA"
+    },
+    {
+     "texto": "Sin ellas, los pilotos ya no podían mover las superficies de control. El avión era imposible de maniobrar.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Declararon emergencia. Pidieron volver a Haneda, luego ir a la base estadounidense de Yokota… y otra vez a Haneda. Los controladores hasta intentaron llevarlo a Nagoya.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "El avión empezó a subir y bajar sin control, en lo que se conoce como un ciclo fugoide.",
+     "escena": {
+      "tipo": "foto",
+      "img": 7
+     }
+    },
+    {
+     "texto": "En la cabina faltaba el oxígeno. El capitán sufrió extrañas parálisis, y la hipoxia empezó a nublar el juicio de la tripulación.",
+     "escena": {
+      "tipo": "foto",
+      "img": 13
+     }
+    },
+    {
+     "texto": "Para intentar dirigirlo, los pilotos usaron lo único que les quedaba: la potencia de los motores.",
+     "escena": {
+      "tipo": "foto",
+      "img": 11
+     }
+    },
+    {
+     "texto": "Bajaron a cuatro mil cien metros, sobrevolaron la península de Izu y salieron hacia el océano Pacífico.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 34.9,
+      "lon": 138.95,
+      "lugar": "Península de Izu",
+      "km": 30
+     }
+    },
+    {
+     "texto": "Giraron de vuelta hacia la costa, lograron subir otra vez a cuatro mil metros… y entonces cayeron entre las montañas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Atrás, los pasajeros tuvieron treinta minutos. Algunos alcanzaron a escribir notas de despedida a sus familias.",
+     "escena": {
+      "tipo": "foto",
+      "img": 12
+     },
+     "rotulo": "30 MINUTOS"
+    },
+    {
+     "texto": "A las seis y cincuenta y seis, el avión desapareció del radar.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "18:56",
+      "sub": "Desaparece del radar"
+     }
+    },
+    {
+     "texto": "Chocó en lo alto del monte Takamagahara, a cien kilómetros de Tokio. Cuarenta y cuatro minutos después de despegar.",
+     "escena": {
+      "tipo": "caida",
+      "lat": 36.0013,
+      "lon": 138.6942,
+      "km": 8,
+      "lugar": "Monte Takamagahara"
+     }
+    },
+    {
+     "texto": "Un helicóptero de la Fuerza Aérea de Estados Unidos llegó al lugar unos veinte minutos después. Pero era de noche, llovía y el terreno era montañoso.",
+     "escena": {
+      "tipo": "foto",
+      "img": 10
+     }
+    },
+    {
+     "texto": "Se ofreció a guiar a los rescatistas. Pero el gobierno japonés le ordenó volver a su base.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     }
+    },
+    {
+     "texto": "Los equipos japoneses llegaron a la mañana siguiente. Doce horas después del choque.",
+     "escena": {
+      "tipo": "contador",
+      "n": 12,
+      "texto": "HORAS",
+      "sub": "hasta que llegó el rescate"
+     }
+    },
+    {
+     "texto": "Se estima que algunos sobrevivientes del choque murieron durante esa larga espera en la montaña.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     }
+    },
+    {
+     "texto": "Yumi Ochiai, una azafata que viajaba fuera de servicio, contó después que recordaba el sonido de los rotores del helicóptero.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Yumi Ochiai",
+      "sub": "Azafata fuera de servicio · 25 años"
+     }
+    },
+    {
+     "texto": "Gritó pidiendo socorro mientras movía las manos. Durante la noche, escuchó cómo los gritos a su alrededor se iban apagando.",
+     "escena": {
+      "tipo": "foto",
+      "img": 9
+     }
+    },
+    {
+     "texto": "Ella, una madre con su hija de ocho años y una niña de doce, encontrada en la rama de un árbol, fueron las únicas sobrevivientes.",
+     "escena": {
+      "tipo": "contador",
+      "n": 4,
+      "texto": "SOBREVIVIENTES",
+      "sub": "todas en la parte trasera"
+     }
+    },
+    {
+     "texto": "Entre los muertos estaba el famoso cantante Kyu Sakamoto.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Kyu Sakamoto",
+      "sub": "Cantante japonés"
+     }
+    },
+    {
+     "texto": "Pero ¿por qué falló el mamparo? La respuesta estaba siete años atrás.",
+     "escena": {
+      "tipo": "linea_tiempo",
+      "hitos": [
+       [
+        "1978",
+        "Golpe de cola en Osaka"
+       ],
+       [
+        "1978",
+        "Reparación defectuosa"
+       ],
+       [
+        "1985",
+        "Falla el mamparo"
+       ]
+      ]
+     }
+    },
+    {
+     "texto": "En mil novecientos setenta y ocho, este mismo avión golpeó la cola contra la pista al aterrizar en Osaka.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "La reparación no cumplió con lo que pedía Boeing. Donde iba una placa con dos hileras de remaches, pusieron dos placas… y una tenía una sola hilera.",
+     "escena": {
+      "tipo": "foto",
+      "img": 15
+     }
+    },
+    {
+     "texto": "Eso redujo la resistencia a la fatiga en un setenta por ciento.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     },
+     "rotulo": "-70 % DE RESISTENCIA"
+    },
+    {
+     "texto": "Boeing calculó que así aguantaría unos diez mil despegues. Ya llevaba doce mil trescientos diecinueve.",
+     "escena": {
+      "tipo": "contador",
+      "n": 12319,
+      "texto": "DESPEGUES",
+      "sub": "con la reparación defectuosa"
+     }
+    },
+    {
+     "texto": "Hoy, en la montaña donde cayó, que ahora se llama Osutaka, un monumento recuerda a las quinientas veinte víctimas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 8
+     }
+    },
+    {
+     "texto": "Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    }
+   ]
+  }
+ ]
+}
