@@ -38,8 +38,8 @@ if [ ! -f $DATA/.paquetes ]; then
   touch $DATA/.paquetes
 fi
 if [ ! -d $DATA/venv ]; then python3 -m venv $DATA/venv; fi
-$DATA/venv/bin/pip install -q -U pip
-$DATA/venv/bin/pip install -q -U -r $APP/app/requirements.txt
+$DATA/venv/bin/pip install -q -U pip || echo 'pip no se pudo actualizar; sigo'
+$DATA/venv/bin/pip install -q -U -r $APP/app/requirements.txt || echo 'algún paquete falló; sigo con los que ya están'
 # yt-dlp necesita un motor de JavaScript para YouTube
 if ! command -v deno >/dev/null; then curl -fsSL https://deno.land/install.sh | sh -s -- -y >/dev/null 2>&1; ln -sf /root/.deno/bin/deno /usr/local/bin/deno; fi
 # cookies subidas a /root
