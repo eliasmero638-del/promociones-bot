@@ -1,0 +1,1341 @@
+{
+ "fecha": "2026-11-06",
+ "modo": "claude",
+ "videos": [
+  {
+   "eid": "fb1",
+   "tipo": "fb",
+   "hora_fb": "12:30",
+   "titulo_video": "ENTERRADOS A 700 METROS",
+   "titulo_youtube": "33 hombres quedaron enterrados vivos… y el gobierno canceló su rescate",
+   "descripcion_youtube": "Agosto de 2010. Una mina se derrumba en Chile y 33 mineros quedan atrapados a 700 metros de profundidad.\nLa salida de emergencia nunca se terminó y el rescate llegó a cancelarse.\nEsta es la historia real de la mina San José.\n#misterio #casosreales #ridmer",
+   "etiquetas": [
+    "misterio",
+    "casos reales",
+    "ridmer",
+    "mina San José",
+    "33 mineros",
+    "Chile",
+    "rescate minero",
+    "Copiapó"
+   ],
+   "texto_facebook": "33 mineros atrapados a 700 metros bajo tierra… y un día el gobierno decidió cancelar su rescate. Lo que pasó después dio la vuelta al mundo. #misterio #casosreales #ridmer",
+   "miniatura": {
+    "img": 7,
+    "texto": "ENTERRADOS VIVOS"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Treinta y tres hombres quedaron enterrados vivos a setecientos metros bajo tierra… y el gobierno canceló su rescate.",
+     "escena": {
+      "tipo": "foto",
+      "img": 10
+     }
+    },
+    {
+     "texto": "Cinco de agosto de dos mil diez. La mina San José, cerca de Copiapó, en Chile, se derrumbó.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": -27.16,
+      "lon": -70.5,
+      "lugar": "Mina San José, Copiapó",
+      "km": 30
+     }
+    },
+    {
+     "texto": "Treinta y tres mineros quedaron atrapados en el fondo.",
+     "escena": {
+      "tipo": "contador",
+      "n": 33,
+      "texto": "MINEROS ATRAPADOS",
+      "sub": "a 700 metros de profundidad"
+     }
+    },
+    {
+     "texto": "Intentaron escapar por la chimenea de ventilación, pero la escalera de emergencia nunca se terminó de instalar.",
+     "escena": {
+      "tipo": "foto",
+      "img": 11
+     },
+     "rotulo": "SIN ESCALERA"
+    },
+    {
+     "texto": "Llegaron a solo veinte metros de los rescatistas… y tuvieron que volver al refugio.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Dos días después, un segundo derrumbe bloqueó esa salida para siempre.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     },
+     "rotulo": "SEGUNDO DERRUMBE"
+    },
+    {
+     "texto": "El gobierno creyó que ya no había esperanza, y anunció que cancelaba el rescate.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "RESCATE CANCELADO",
+      "sub": "Agosto de 2010"
+     }
+    },
+    {
+     "texto": "Pero las familias, acampadas frente a la mina, protestaron hasta que el rescate volvió.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     }
+    },
+    {
+     "texto": "El ingeniero André Sougarret ordenó perforar un pozo hasta el refugio.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "André Sougarret",
+      "sub": "Ingeniero a cargo del rescate"
+     }
+    },
+    {
+     "texto": "El veintidós de agosto, diecisiete días después del derrumbe, los encontraron con vida. Habían racionado la poca comida.",
+     "escena": {
+      "tipo": "linea_tiempo",
+      "hitos": [
+       [
+        "5 AGO",
+        "Primer derrumbe"
+       ],
+       [
+        "7 AGO",
+        "Segundo derrumbe"
+       ],
+       [
+        "22 AGO",
+        "Hallados con vida"
+       ],
+       [
+        "13 OCT",
+        "Empieza el rescate"
+       ]
+      ]
+     }
+    },
+    {
+     "texto": "Semanas después, un pozo más ancho llegó hasta ellos, a seiscientos veintitrés metros.",
+     "escena": {
+      "tipo": "foto",
+      "img": 10
+     }
+    },
+    {
+     "texto": "El trece de octubre, una cápsula llamada Fénix dos empezó a subirlos, uno por uno.",
+     "escena": {
+      "tipo": "foto",
+      "img": 15
+     }
+    },
+    {
+     "texto": "Tras sesenta y nueve días bajo tierra, salieron los treinta y tres, vivos. Fue el mayor rescate minero de la historia, visto por más de mil millones de personas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 7
+     },
+     "rotulo": "69 DÍAS"
+    },
+    {
+     "texto": "Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 14
+     }
+    }
+   ],
+   "articulo": "Rescate de la mina San José",
+   "fuente": "https://es.wikipedia.org/wiki/Rescate_de_la_mina_San_Jos%C3%A9"
+  },
+  {
+   "eid": "fb1s",
+   "tipo": "short",
+   "encargo": "fb1",
+   "hora_youtube": "12:00",
+   "titulo_video": "ENTERRADOS A 700 METROS",
+   "titulo_youtube": "Cancelaron su rescate… pero seguían vivos a 700 metros #shorts",
+   "descripcion_youtube": "Mina San José, Chile, 2010: 33 mineros atrapados y un rescate que casi se abandona.\n#misterio #casosreales #ridmer #shorts",
+   "etiquetas": [
+    "misterio",
+    "casos reales",
+    "ridmer",
+    "mina San José",
+    "33 mineros",
+    "Chile",
+    "shorts"
+   ],
+   "texto_facebook": "",
+   "miniatura": {
+    "img": 7,
+    "texto": "ENTERRADOS VIVOS"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Treinta y tres mineros quedaron atrapados a setecientos metros bajo tierra… y el gobierno canceló su rescate.",
+     "escena": {
+      "tipo": "foto",
+      "img": 10
+     }
+    },
+    {
+     "texto": "Cinco de agosto de dos mil diez. La mina San José, en Chile, se derrumbó.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": -27.16,
+      "lon": -70.5,
+      "lugar": "Mina San José, Copiapó",
+      "km": 30
+     }
+    },
+    {
+     "texto": "Intentaron salir por la chimenea, pero la escalera de emergencia nunca se terminó.",
+     "escena": {
+      "tipo": "foto",
+      "img": 11
+     },
+     "rotulo": "SIN ESCALERA"
+    },
+    {
+     "texto": "Un segundo derrumbe bloqueó la salida, y el gobierno dio el rescate por perdido.",
+     "escena": {
+      "tipo": "linea_tiempo",
+      "hitos": [
+       [
+        "5 AGO",
+        "Primer derrumbe"
+       ],
+       [
+        "7 AGO",
+        "Segundo derrumbe"
+       ]
+      ]
+     }
+    },
+    {
+     "texto": "Sus familias protestaron hasta que volvieron a perforar.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     }
+    },
+    {
+     "texto": "Diecisiete días después, la perforación llegó al refugio… y estaban vivos.",
+     "escena": {
+      "tipo": "contador",
+      "n": 33,
+      "texto": "MINEROS VIVOS",
+      "sub": "17 días después"
+     }
+    },
+    {
+     "texto": "El trece de octubre, la cápsula Fénix dos empezó a subirlos uno por uno.",
+     "escena": {
+      "tipo": "foto",
+      "img": 15
+     }
+    },
+    {
+     "texto": "Tras sesenta y nueve días bajo tierra, salieron los treinta y tres. Todos con vida. Fue el mayor rescate minero de la historia.",
+     "escena": {
+      "tipo": "foto",
+      "img": 7
+     },
+     "rotulo": "69 DÍAS"
+    },
+    {
+     "texto": "Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "img": 14
+     }
+    }
+   ],
+   "articulo": "Rescate de la mina San José",
+   "fuente": "https://es.wikipedia.org/wiki/Rescate_de_la_mina_San_Jos%C3%A9"
+  },
+  {
+   "eid": "fb2",
+   "tipo": "fb",
+   "hora_fb": "18:30",
+   "titulo_video": "NUNCA LLEGARON A LA FIESTA",
+   "titulo_youtube": "Tres amigas hicieron autoestop una noche… y uno de los acusados sigue prófugo",
+   "descripcion_youtube": "Noviembre de 1992, Valencia. Míriam, Toñi y Desirée salieron hacia una fiesta y nunca llegaron.\nEspaña entera las buscó durante 75 días.\nEl caso que conmocionó a un país… y un acusado que nunca fue encontrado.\n#misterio #casosreales #ridmer",
+   "etiquetas": [
+    "misterio",
+    "casos reales",
+    "ridmer",
+    "caso Alcácer",
+    "niñas de Alcàsser",
+    "Antonio Anglés",
+    "España",
+    "crimen real"
+   ],
+   "texto_facebook": "Tres amigas salieron hacia una fiesta del instituto y nunca llegaron. 75 días después, la verdad conmocionó a toda España. #misterio #casosreales #ridmer",
+   "miniatura": {
+    "img": 12,
+    "texto": "NUNCA LLEGARON"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Tres amigas salieron una noche hacia una discoteca… y nunca llegaron.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Trece de noviembre de mil novecientos noventa y dos. Alcácer, Valencia, España.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "13 DE NOVIEMBRE DE 1992",
+      "sub": "Alcácer, Valencia"
+     }
+    },
+    {
+     "texto": "Míriam y Desirée tenían catorce años. Toñi, quince.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Míriam, Toñi y Desirée",
+      "sub": "Las niñas de Alcácer",
+      "img": 12
+     }
+    },
+    {
+     "texto": "Iban a una fiesta de su instituto en la discoteca Coolor, en el pueblo vecino de Picasent, a unos dos kilómetros.",
+     "escena": {
+      "tipo": "ruta",
+      "a": [
+       39.37,
+       -0.444
+      ],
+      "b": [
+       39.363,
+       -0.459
+      ],
+      "na": "ALCÁCER",
+      "nb": "PICASENT",
+      "corte": 0.85
+     }
+    },
+    {
+     "texto": "El padre de Míriam solía llevarlas, pero esa noche llegó con fiebre. Así que decidieron hacer autoestop.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Una mujer las vio desde su balcón subir a un pequeño coche blanco, con cuatro personas dentro.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     },
+     "rotulo": "COCHE BLANCO"
+    },
+    {
+     "texto": "Toda España las buscó. Hubo pistas en Granada, en Pamplona, y hasta carteles en otros países.",
+     "escena": {
+      "tipo": "contador",
+      "n": 75,
+      "texto": "DÍAS DE BÚSQUEDA",
+      "sub": "sin rastro de las tres"
+     }
+    },
+    {
+     "texto": "El veintisiete de enero de mil novecientos noventa y tres, dos apicultores subieron a un barranco cerca del pantano de Tous.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 39.22,
+      "lon": -0.62,
+      "lugar": "Barranco de la Romana, Tous",
+      "km": 15
+     }
+    },
+    {
+     "texto": "Junto a sus colmenas, vieron un brazo que salía de la tierra.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     }
+    },
+    {
+     "texto": "En una fosa estaban los cuerpos de las tres niñas. El país quedó conmocionado.",
+     "escena": {
+      "tipo": "foto",
+      "img": 11
+     }
+    },
+    {
+     "texto": "La investigación señaló a dos hombres: Antonio Anglés y Miguel Ricart.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Antonio Anglés y Miguel Ricart",
+      "sub": "Acusados del triple crimen"
+     }
+    },
+    {
+     "texto": "Ricart fue condenado a ciento setenta años de prisión… pero salió libre tras cumplir veintiuno.",
+     "escena": {
+      "tipo": "contador",
+      "n": 170,
+      "texto": "AÑOS DE CONDENA",
+      "sub": "solo cumplió 21"
+     }
+    },
+    {
+     "texto": "Anglés, señalado como el autor material, huyó cuando la policía fue a buscarlo… y sigue en paradero desconocido.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     },
+     "rotulo": "PARADERO DESCONOCIDO"
+    },
+    {
+     "texto": "Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 10
+     }
+    }
+   ],
+   "articulo": "Crimen de Alcácer",
+   "fuente": "https://es.wikipedia.org/wiki/Crimen_de_Alc%C3%A1cer"
+  },
+  {
+   "eid": "fb2s",
+   "tipo": "short",
+   "encargo": "fb2",
+   "hora_youtube": "17:00",
+   "titulo_video": "NUNCA LLEGARON A LA FIESTA",
+   "titulo_youtube": "Hicieron autoestop a una fiesta… y uno de los acusados nunca apareció #shorts",
+   "descripcion_youtube": "El caso de las niñas de Alcácer (España, 1992) en menos de un minuto.\n#misterio #casosreales #ridmer #shorts",
+   "etiquetas": [
+    "misterio",
+    "casos reales",
+    "ridmer",
+    "caso Alcácer",
+    "Antonio Anglés",
+    "shorts"
+   ],
+   "texto_facebook": "",
+   "miniatura": {
+    "img": 12,
+    "texto": "NUNCA LLEGARON"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Tres amigas hicieron autoestop una noche de mil novecientos noventa y dos… y nunca llegaron a su destino.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Míriam, Toñi y Desirée, de catorce y quince años, iban a una fiesta en Picasent, Valencia.",
+     "escena": {
+      "tipo": "ruta",
+      "a": [
+       39.37,
+       -0.444
+      ],
+      "b": [
+       39.363,
+       -0.459
+      ],
+      "na": "ALCÁCER",
+      "nb": "PICASENT",
+      "corte": 0.85
+     }
+    },
+    {
+     "texto": "Una mujer las vio subir a un pequeño coche blanco con cuatro personas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     },
+     "rotulo": "COCHE BLANCO"
+    },
+    {
+     "texto": "España entera las buscó durante setenta y cinco días.",
+     "escena": {
+      "tipo": "contador",
+      "n": 75,
+      "texto": "DÍAS DE BÚSQUEDA",
+      "sub": "sin rastro"
+     }
+    },
+    {
+     "texto": "Hasta que dos apicultores encontraron sus cuerpos en una fosa, cerca del pantano de Tous.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     }
+    },
+    {
+     "texto": "La investigación señaló a dos hombres: Antonio Anglés y Miguel Ricart.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Antonio Anglés y Miguel Ricart",
+      "sub": "Acusados del triple crimen"
+     }
+    },
+    {
+     "texto": "Ricart fue condenado a ciento setenta años, pero salió tras cumplir veintiuno.",
+     "escena": {
+      "tipo": "contador",
+      "n": 170,
+      "texto": "AÑOS DE CONDENA",
+      "sub": "solo cumplió 21"
+     }
+    },
+    {
+     "texto": "Anglés huyó cuando la policía fue a buscarlo… y sigue en paradero desconocido.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     },
+     "rotulo": "PARADERO DESCONOCIDO"
+    },
+    {
+     "texto": "Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "img": 12
+     }
+    }
+   ],
+   "articulo": "Crimen de Alcácer",
+   "fuente": "https://es.wikipedia.org/wiki/Crimen_de_Alc%C3%A1cer"
+  },
+  {
+   "eid": "fb3",
+   "tipo": "fb",
+   "hora_fb": "21:00",
+   "titulo_video": "TOCÓ LA PISTA Y NO FRENÓ",
+   "titulo_youtube": "Este avión tocó la pista… y no frenó. La peor tragedia aérea de Brasil",
+   "descripcion_youtube": "17 de julio de 2007, São Paulo. Un Airbus de TAM aterriza en Congonhas y sigue de largo.\nUna pista recién repavimentada, un inversor averiado y un equipo de fútbol que se salvó por un día.\n#misterio #casosreales #ridmer",
+   "etiquetas": [
+    "misterio",
+    "casos reales",
+    "ridmer",
+    "vuelo 3054",
+    "TAM",
+    "Congonhas",
+    "accidente aéreo",
+    "Brasil"
+   ],
+   "texto_facebook": "El avión tocó la pista… y siguió a 170 km/h. Y un equipo de fútbol iba a ir a bordo. #misterio #casosreales #ridmer",
+   "miniatura": {
+    "img": 20,
+    "texto": "NO FRENÓ"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Este avión tocó la pista… y no frenó.",
+     "escena": {
+      "tipo": "foto",
+      "img": 20
+     }
+    },
+    {
+     "texto": "Diecisiete de julio de dos mil siete. El vuelo tres mil cincuenta y cuatro de TAM iba de Porto Alegre a São Paulo.",
+     "escena": {
+      "tipo": "ruta",
+      "a": [
+       -29.994,
+       -51.171
+      ],
+      "b": [
+       -23.626,
+       -46.656
+      ],
+      "na": "PORTO ALEGRE",
+      "nb": "SÃO PAULO"
+     }
+    },
+    {
+     "texto": "Su destino era Congonhas, un aeropuerto que los pilotos llamaban el portaaviones, por su pista tan corta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 13
+     }
+    },
+    {
+     "texto": "Semanas antes habían repavimentado la pista, pero sin las ranuras que drenan el agua de la lluvia.",
+     "escena": {
+      "tipo": "foto",
+      "img": 14
+     },
+     "rotulo": "SIN RANURAS"
+    },
+    {
+     "texto": "Un día antes, varios pilotos reportaron poco agarre, y un avión patinó en esa pista.",
+     "escena": {
+      "tipo": "foto",
+      "img": 12
+     }
+    },
+    {
+     "texto": "Además, este Airbus A320 volaba con el inversor de su motor derecho averiado.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     },
+     "rotulo": "INVERSOR AVERIADO"
+    },
+    {
+     "texto": "Al tocar la pista, no redujo la velocidad. La cruzó a unos ciento setenta kilómetros por hora.",
+     "escena": {
+      "tipo": "contador",
+      "n": 170,
+      "texto": "KM/H",
+      "sub": "sin frenar sobre la pista"
+     }
+    },
+    {
+     "texto": "Giró a la izquierda y pasó por encima de la avenida Washington Luís.",
+     "escena": {
+      "tipo": "caida",
+      "lat": -23.615,
+      "lon": -46.66,
+      "km": 2,
+      "lugar": "AV. WASHINGTON LUÍS"
+     }
+    },
+    {
+     "texto": "Se estrelló contra el edificio de TAM Express y una gasolinera.",
+     "escena": {
+      "tipo": "foto",
+      "img": 11
+     }
+    },
+    {
+     "texto": "Murieron las ciento ochenta y siete personas a bordo… y doce más en tierra.",
+     "escena": {
+      "tipo": "contador",
+      "n": 199,
+      "texto": "MUERTOS",
+      "sub": "187 a bordo y 12 en tierra"
+     }
+    },
+    {
+     "texto": "Y un detalle escalofriante: el equipo de fútbol Grêmio debía ir en ese vuelo, pero aplazó el viaje.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     }
+    },
+    {
+     "texto": "El informe final culpó a un error del piloto con los mandos, a la pista sin ranuras y a los ordenadores del avión.",
+     "escena": {
+      "tipo": "foto",
+      "img": 22
+     }
+    },
+    {
+     "texto": "Es el accidente aéreo más grave de la historia de Brasil.",
+     "escena": {
+      "tipo": "foto",
+      "img": 8
+     }
+    },
+    {
+     "texto": "Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 16
+     }
+    }
+   ],
+   "articulo": "Vuelo 3054 de TAM Linhas Aéreas",
+   "fuente": "https://es.wikipedia.org/wiki/Vuelo_3054_de_TAM_Linhas_A%C3%A9reas"
+  },
+  {
+   "eid": "fb3s",
+   "tipo": "short",
+   "encargo": "fb3",
+   "hora_youtube": "22:00",
+   "titulo_video": "TOCÓ LA PISTA Y NO FRENÓ",
+   "titulo_youtube": "Tocó la pista a 170 km/h… y no frenó #shorts",
+   "descripcion_youtube": "Vuelo 3054 de TAM, São Paulo, 2007: la peor tragedia aérea de Brasil.\n#misterio #casosreales #ridmer #shorts",
+   "etiquetas": [
+    "misterio",
+    "casos reales",
+    "ridmer",
+    "vuelo 3054",
+    "TAM",
+    "Congonhas",
+    "shorts"
+   ],
+   "texto_facebook": "",
+   "miniatura": {
+    "img": 20,
+    "texto": "NO FRENÓ"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Este avión aterrizó en São Paulo… y no frenó.",
+     "escena": {
+      "tipo": "foto",
+      "img": 20
+     }
+    },
+    {
+     "texto": "Diecisiete de julio de dos mil siete. El vuelo tres mil cincuenta y cuatro de TAM llegaba desde Porto Alegre.",
+     "escena": {
+      "tipo": "ruta",
+      "a": [
+       -29.994,
+       -51.171
+      ],
+      "b": [
+       -23.626,
+       -46.656
+      ],
+      "na": "PORTO ALEGRE",
+      "nb": "SÃO PAULO"
+     }
+    },
+    {
+     "texto": "Su pista en Congonhas era corta, y la habían repavimentado sin las ranuras que drenan el agua.",
+     "escena": {
+      "tipo": "foto",
+      "img": 13
+     }
+    },
+    {
+     "texto": "El Airbus tocó la pista y siguió a unos ciento setenta kilómetros por hora.",
+     "escena": {
+      "tipo": "contador",
+      "n": 170,
+      "texto": "KM/H",
+      "sub": "sin frenar"
+     }
+    },
+    {
+     "texto": "Cruzó la avenida Washington Luís y chocó contra un edificio de TAM Express y una gasolinera.",
+     "escena": {
+      "tipo": "caida",
+      "lat": -23.615,
+      "lon": -46.66,
+      "km": 2,
+      "lugar": "AV. WASHINGTON LUÍS"
+     }
+    },
+    {
+     "texto": "Murieron ciento noventa y nueve personas, doce de ellas en tierra.",
+     "escena": {
+      "tipo": "foto",
+      "img": 11
+     },
+     "rotulo": "199 MUERTOS"
+    },
+    {
+     "texto": "La investigación culpó a un error del piloto, a la pista y a los ordenadores del avión.",
+     "escena": {
+      "tipo": "foto",
+      "img": 22
+     }
+    },
+    {
+     "texto": "Es la peor tragedia aérea de Brasil.",
+     "escena": {
+      "tipo": "foto",
+      "img": 8
+     }
+    },
+    {
+     "texto": "Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "img": 16
+     }
+    }
+   ],
+   "articulo": "Vuelo 3054 de TAM Linhas Aéreas",
+   "fuente": "https://es.wikipedia.org/wiki/Vuelo_3054_de_TAM_Linhas_A%C3%A9reas"
+  },
+  {
+   "eid": "sh1",
+   "tipo": "short",
+   "hora_youtube": "15:00",
+   "titulo_video": "ATRAPADOS BAJO EL COBRE",
+   "titulo_youtube": "Un sismo derrumbó la mayor mina de cobre subterránea… con ellos dentro #shorts",
+   "descripcion_youtube": "El Teniente, Chile, julio de 2025: el derrumbe que dejó cinco mineros atrapados.\n#misterio #casosreales #ridmer #shorts",
+   "etiquetas": [
+    "misterio",
+    "casos reales",
+    "ridmer",
+    "El Teniente",
+    "Codelco",
+    "Chile",
+    "mineros",
+    "shorts"
+   ],
+   "texto_facebook": "",
+   "miniatura": {
+    "img": 1,
+    "texto": "ATRAPADOS"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Un sismo sacudió la mina subterránea de cobre más grande del mundo… y cinco hombres quedaron atrapados.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Treinta y uno de julio de dos mil veinticinco. Mina El Teniente, Chile.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": -34.09,
+      "lon": -70.35,
+      "lugar": "Mina El Teniente",
+      "km": 30
+     }
+    },
+    {
+     "texto": "A las cinco y treinta y cuatro de la tarde, el sismo provocó un derrumbe en el sector Andesita.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "17:34",
+      "sub": "Sismo y derrumbe"
+     }
+    },
+    {
+     "texto": "Los mineros oyeron un fuerte estruendo… y la roca se desprendió.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     },
+     "rotulo": "ESTRUENDO"
+    },
+    {
+     "texto": "Un trabajador murió. Otros cinco quedaron atrapados en una galería colapsada.",
+     "escena": {
+      "tipo": "contador",
+      "n": 5,
+      "texto": "ATRAPADOS",
+      "sub": "galería colapsada"
+     }
+    },
+    {
+     "texto": "Entre réplicas, máquinas a control remoto removieron la roca para llegar a ellos.",
+     "escena": {
+      "tipo": "linea_tiempo",
+      "hitos": [
+       [
+        "31 JUL",
+        "Derrumbe"
+       ],
+       [
+        "2 AGO",
+        "Primer hallazgo"
+       ],
+       [
+        "3 AGO",
+        "Último minero"
+       ]
+      ]
+     }
+    },
+    {
+     "texto": "Pero el dos de agosto encontraron al primero sin vida. Y el tres, a los últimos cuatro.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Murieron seis mineros. Chile decretó duelo nacional.",
+     "escena": {
+      "tipo": "contador",
+      "n": 6,
+      "texto": "MINEROS MUERTOS",
+      "sub": "duelo nacional en Chile"
+     }
+    },
+    {
+     "texto": "Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "EL TENIENTE",
+      "sub": "31 de julio de 2025"
+     }
+    }
+   ],
+   "articulo": "Derrumbe de la mina El Teniente de 2025",
+   "fuente": "https://es.wikipedia.org/wiki/Derrumbe_de_la_mina_El_Teniente_de_2025"
+  },
+  {
+   "eid": "sh2",
+   "tipo": "short",
+   "hora_youtube": "19:00",
+   "titulo_video": "SOLO UNO SOBREVIVIÓ",
+   "titulo_youtube": "27 subieron a este avión de entrenamiento… y solo uno sobrevivió #shorts",
+   "descripcion_youtube": "Chujúyiv, Ucrania, 2020: la tragedia del An-26 lleno de cadetes.\n#misterio #casosreales #ridmer #shorts",
+   "etiquetas": [
+    "misterio",
+    "casos reales",
+    "ridmer",
+    "Antonov An-26",
+    "Chujúyiv",
+    "Ucrania",
+    "accidente aéreo",
+    "shorts"
+   ],
+   "texto_facebook": "",
+   "miniatura": {
+    "img": 4,
+    "texto": "SOLO UNO VIVIÓ"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Veintisiete personas subieron a este avión de entrenamiento… y solo una sobrevivió.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Veinticinco de septiembre de dos mil veinte. Chujúyiv, Ucrania.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 49.835,
+      "lon": 36.686,
+      "lugar": "Chujúyiv, Járkov",
+      "km": 8
+     }
+    },
+    {
+     "texto": "Era un Antonov An-26 militar, lleno de cadetes de la Fuerza Aérea.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "A un cadete no lo dejaron subir en el último momento.",
+     "escena": {
+      "tipo": "foto",
+      "img": 11
+     }
+    },
+    {
+     "texto": "A las ocho y treinta y ocho de la noche, el comandante reportó falla en el motor izquierdo.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "20:38",
+      "sub": "Falla en el motor izquierdo"
+     }
+    },
+    {
+     "texto": "Siete minutos después, enganchó un ala en el suelo y se estrelló cerca de la base.",
+     "escena": {
+      "tipo": "caida",
+      "lat": 49.84,
+      "lon": 36.66,
+      "km": 2,
+      "lugar": "CHUJÚYIV"
+     }
+    },
+    {
+     "texto": "Dos cadetes saltaron antes del impacto. Uno murió al día siguiente.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     }
+    },
+    {
+     "texto": "Murieron veintiséis personas: veintiún cadetes y cinco tripulantes.",
+     "escena": {
+      "tipo": "contador",
+      "n": 26,
+      "texto": "MUERTOS",
+      "sub": "21 cadetes y 5 tripulantes"
+     }
+    },
+    {
+     "texto": "Ucrania suspendió los vuelos de todos los An-26. Y la causa exacta sigue sin estar clara.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    }
+   ],
+   "articulo": "Accidente del Antonov An-26 en Chujúyiv de 2020",
+   "fuente": "https://es.wikipedia.org/wiki/Accidente_del_Antonov_An-26_en_Chuj%C3%BAyiv_de_2020"
+  },
+  {
+   "eid": "largo1",
+   "tipo": "largo",
+   "hora_youtube": "18:00",
+   "titulo_video": "EL TERCER INTENTO",
+   "titulo_youtube": "Intentaron despegar 3 veces en una pista helada… y el tercero fue el último",
+   "descripcion_youtube": "6 de febrero de 1958. El Manchester United vuelve de Belgrado y hace escala en Múnich.\nDos despegues abortados, una pista helada y un piloto culpado durante diez años.\nLa historia real del desastre aéreo de Múnich.\n#misterio #casosreales #ridmer",
+   "etiquetas": [
+    "misterio",
+    "casos reales",
+    "ridmer",
+    "desastre aéreo de Múnich",
+    "Manchester United",
+    "Busby Babes",
+    "Bobby Charlton",
+    "Duncan Edwards",
+    "1958"
+   ],
+   "texto_facebook": "",
+   "miniatura": {
+    "img": 4,
+    "texto": "EL TERCER INTENTO"
+   },
+   "gancho": 2,
+   "segmentos": [
+    {
+     "texto": "Un avión lleno de futbolistas intentó despegar tres veces sobre una pista helada… y el tercer intento fue el último.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Ocho jugadores de uno de los mejores equipos de Europa nunca volverían a pisar una cancha.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     }
+    },
+    {
+     "texto": "Seis de febrero de mil novecientos cincuenta y ocho. Belgrado, Yugoslavia.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "6 DE FEBRERO DE 1958",
+      "sub": "Belgrado, Yugoslavia"
+     }
+    },
+    {
+     "texto": "El Manchester United acababa de empatar tres a tres con el Estrella Roja de Belgrado, en los cuartos de final de la Copa de Europa.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Manchester United",
+      "sub": "Cuartos de final · Copa de Europa",
+      "img": 6
+     }
+    },
+    {
+     "texto": "Con cinco a cuatro en el global, los ingleses se clasificaban a las semifinales, donde los esperaba el Milan.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "5–4 EN EL GLOBAL",
+      "sub": "Rumbo a semifinales"
+     }
+    },
+    {
+     "texto": "Pero el regreso a casa se retrasó una hora: el jugador Johnny Berry había perdido su pasaporte.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "El avión era un Airspeed Ambassador de la British European Airways, un chárter de seis años. Vuelo seiscientos nueve, matrícula G-ALZU.",
+     "escena": {
+      "tipo": "foto",
+      "img": 8
+     }
+    },
+    {
+     "texto": "Antes de llegar a Mánchester, debía hacer una parada en Múnich, en Alemania, para cargar combustible.",
+     "escena": {
+      "tipo": "ruta",
+      "a": [
+       44.82,
+       20.46
+      ],
+      "b": [
+       53.48,
+       -2.24
+      ],
+      "na": "BELGRADO",
+      "nb": "MÁNCHESTER",
+      "corte": 0.39,
+      "c": [
+       48.13,
+       11.7
+      ],
+      "nc": "MÚNICH"
+     }
+    },
+    {
+     "texto": "Aquel día en el aeropuerto de Múnich-Riem el tiempo era terrible. Soplaba un viento fuerte, y la pista estaba helada.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 48.13,
+      "lon": 11.7,
+      "lugar": "Aeropuerto de Múnich-Riem",
+      "km": 8
+     }
+    },
+    {
+     "texto": "El capitán James Thain intentó despegar. Pero los motores dieron problemas, y tuvo que desistir.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "James Thain",
+      "sub": "Capitán del vuelo 609"
+     }
+    },
+    {
+     "texto": "Lo intentó una segunda vez. Otra vez los motores. Otra vez tuvo que abortar.",
+     "escena": {
+      "tipo": "foto",
+      "img": 10
+     }
+    },
+    {
+     "texto": "A las tres y cuatro de la tarde, el avión aceleró por tercera vez.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "15:04",
+      "sub": "Tercer intento de despegue"
+     }
+    },
+    {
+     "texto": "Pero al final de la pista se había formado aguanieve. Frenó al avión, y no alcanzó la velocidad necesaria para subir.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     },
+     "rotulo": "AGUANIEVE"
+    },
+    {
+     "texto": "Se estrelló en los terrenos junto al aeropuerto, contra una casa sin habitantes.",
+     "escena": {
+      "tipo": "caida",
+      "lat": 48.13,
+      "lon": 11.71,
+      "km": 2,
+      "lugar": "MÚNICH-RIEM"
+     }
+    },
+    {
+     "texto": "Siete futbolistas del United murieron en el acto.",
+     "escena": {
+      "tipo": "contador",
+      "n": 7,
+      "texto": "FUTBOLISTAS",
+      "sub": "muertos en el acto"
+     }
+    },
+    {
+     "texto": "También murieron tres hombres del cuerpo técnico, ocho periodistas, el copiloto, un tripulante, un agente de viajes y un aficionado. Uno de esos periodistas, Frank Swift, había sido portero del Manchester City.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Entre los restos, el futbolista Harry Gregg salvó a una pasajera, Vera Lukic, y a su hija Vesna.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Harry Gregg",
+      "sub": "Futbolista y superviviente"
+     }
+    },
+    {
+     "texto": "Duncan Edwards, una de las mayores promesas de Inglaterra, sobrevivió al choque…",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     }
+    },
+    {
+     "texto": "…pero murió por sus heridas el veintiuno de febrero. Tenía veintiún años.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "21 DE FEBRERO DE 1958",
+      "sub": "Muere Duncan Edwards, 21 años"
+     }
+    },
+    {
+     "texto": "En total murieron veintitrés personas. Sobrevivieron veintiuna.",
+     "escena": {
+      "tipo": "contador",
+      "n": 23,
+      "texto": "MUERTOS",
+      "sub": "21 sobrevivientes"
+     }
+    },
+    {
+     "texto": "El entrenador Matt Busby terminó en el hospital, y otros dos jugadores tuvieron que dejar el fútbol por sus lesiones.",
+     "escena": {
+      "tipo": "foto",
+      "img": 14
+     }
+    },
+    {
+     "texto": "Y entonces empezó otra pesadilla. La del hombre que pilotaba el avión.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Las autoridades de Alemania Occidental culparon al capitán Thain. Decían que había nieve sobre las alas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 10
+     }
+    },
+    {
+     "texto": "Su prueba era una fotografía del avión, publicada en la prensa poco antes del accidente.",
+     "escena": {
+      "tipo": "foto",
+      "img": 8
+     }
+    },
+    {
+     "texto": "Pero cuando examinaron el negativo original… no había nieve en las alas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     },
+     "rotulo": "SIN NIEVE"
+    },
+    {
+     "texto": "Y por alguna extraña razón, los testigos que podían defenderlo nunca fueron llamados a declarar.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "La verdadera causa era el aguanieve al final de la pista, que frenaba al avión e impedía que subiera.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Thain fue despedido por la aerolínea poco después del accidente. Volvió a su hogar en Berkshire, y se hizo granjero.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "James Thain",
+      "sub": "Capitán del vuelo 609"
+     }
+    },
+    {
+     "texto": "Recién en mil novecientos sesenta y ocho, diez años después, fue declarado inocente.",
+     "escena": {
+      "tipo": "linea_tiempo",
+      "hitos": [
+       [
+        "1958",
+        "Accidente"
+       ],
+       [
+        "1968",
+        "Thain, inocente"
+       ],
+       [
+        "1975",
+        "Muere Thain"
+       ]
+      ]
+     }
+    },
+    {
+     "texto": "Murió en mil novecientos setenta y cinco, a los cincuenta y tres años, de un paro cardíaco.",
+     "escena": {
+      "tipo": "foto",
+      "img": 13
+     }
+    },
+    {
+     "texto": "Mientras tanto, el Manchester United tuvo que reconstruirse por completo, alrededor de un sobreviviente: Bobby Charlton, uno de los futbolistas con más proyección del mundo.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Bobby Charlton",
+      "sub": "Sobreviviente de Múnich",
+      "img": 11
+     }
+    },
+    {
+     "texto": "En el primer partido tras la tragedia, el programa del estadio salió con la alineación en blanco.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     },
+     "rotulo": "ALINEACIÓN EN BLANCO"
+    },
+    {
+     "texto": "Aun así, un equipo de reservas y juveniles, dirigido por Jimmy Murphy, le ganó tres a cero al Sheffield Wednesday.",
+     "escena": {
+      "tipo": "foto",
+      "img": 14
+     }
+    },
+    {
+     "texto": "En la liga iban cuartos antes del accidente; ganaron solo uno de los últimos catorce partidos y terminaron novenos. Pero llegaron a la final de la FA Cup, aunque la perdieron contra el Bolton.",
+     "escena": {
+      "tipo": "foto",
+      "img": 12
+     }
+    },
+    {
+     "texto": "Busby volvió al banquillo y armó una nueva generación, con un joven llamado George Best.",
+     "escena": {
+      "tipo": "foto",
+      "img": 13
+     }
+    },
+    {
+     "texto": "Y en mil novecientos sesenta y ocho, diez años después de Múnich, el Manchester United ganó la Copa de Europa, ante el Benfica.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "1968",
+      "sub": "Campeones de Europa"
+     }
+    },
+    {
+     "texto": "Hoy, los nombres de los que nunca volvieron de Múnich siguen grabados en piedra.",
+     "escena": {
+      "tipo": "foto",
+      "img": 12
+     }
+    },
+    {
+     "texto": "Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    }
+   ],
+   "articulo": "Desastre aéreo de Múnich",
+   "fuente": "https://es.wikipedia.org/wiki/Desastre_a%C3%A9reo_de_M%C3%BAnich"
+  }
+ ]
+}
