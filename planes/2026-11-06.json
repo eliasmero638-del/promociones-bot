@@ -39,7 +39,7 @@
       "tipo": "mapa",
       "lat": -27.16,
       "lon": -70.5,
-      "lugar": "Mina San José, Copiapó",
+      "lugar": "Mina San José",
       "km": 30
      }
     },
@@ -192,7 +192,7 @@
       "tipo": "mapa",
       "lat": -27.16,
       "lon": -70.5,
-      "lugar": "Mina San José, Copiapó",
+      "lugar": "Mina San José",
       "km": 30
      }
     },
@@ -357,7 +357,7 @@
       "tipo": "mapa",
       "lat": 39.22,
       "lon": -0.62,
-      "lugar": "Barranco de la Romana, Tous",
+      "lugar": "Tous, Valencia",
       "km": 15
      }
     },
@@ -379,7 +379,7 @@
      "texto": "La investigación señaló a dos hombres: Antonio Anglés y Miguel Ricart.",
      "escena": {
       "tipo": "ficha",
-      "nombre": "Antonio Anglés y Miguel Ricart",
+      "nombre": "Anglés y Ricart",
       "sub": "Acusados del triple crimen"
      }
     },
@@ -486,7 +486,7 @@
      "texto": "La investigación señaló a dos hombres: Antonio Anglés y Miguel Ricart.",
      "escena": {
       "tipo": "ficha",
-      "nombre": "Antonio Anglés y Miguel Ricart",
+      "nombre": "Anglés y Ricart",
       "sub": "Acusados del triple crimen"
      }
     },
