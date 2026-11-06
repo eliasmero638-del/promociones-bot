@@ -1783,6 +1783,33 @@
      }
     }
    ]
+  },
+  {
+   "eid": "pov1",
+   "tipo": "short",
+   "hora_youtube": "ya",
+   "hora_short": "ya",
+   "hora_fb": "ya",
+   "canal": "terror",
+   "titulo_video": "POV",
+   "gancho": 1,
+   "nota": "prueba POV terror: solo material",
+   "voz": "Enceladus",
+   "estilo_voz": "",
+   "segmentos": [
+    {
+     "texto": "Esa noche escuché que alguien me llamaba... desde el fondo del pasillo.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Mi familia dormía. Y la voz... era la de mi madre.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    }
+   ]
   }
  ]
 }
