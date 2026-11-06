@@ -1336,6 +1336,112 @@
    ],
    "articulo": "Desastre aéreo de Múnich",
    "fuente": "https://es.wikipedia.org/wiki/Desastre_a%C3%A9reo_de_M%C3%BAnich"
+  },
+  {
+   "tipo": "short",
+   "hora_youtube": "ya",
+   "hora_short": "ya",
+   "hora_fb": "ya",
+   "canal": "terror",
+   "titulo_video": "LA LLORONA",
+   "titulo_youtube": "Si escuchas este llanto cerca del río… no lo sigas #shorts",
+   "descripcion_youtube": "",
+   "etiquetas": [],
+   "texto_facebook": "",
+   "miniatura": {},
+   "gancho": 1,
+   "nota": "prueba canal de terror: solo material, no se entrega",
+   "eid": "ter1",
+   "voz": "Enceladus",
+   "estilo_voz": "Narra en español latinoamericano, con acento mexicano suave, como narrador de historias de terror: voz grave y susurrante, muy lenta, con pausas largas y tono escalofriante. En la última frase susurra muy bajito, casi al oído. Lee exactamente este texto: ",
+   "segmentos": [
+    {
+     "texto": "Si una noche escuchas a una mujer llorando cerca del río... no la busques.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Cuentan que en un pueblo de México vivía María, la mujer más hermosa del lugar.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Se casó con un hombre rico y tuvo dos hijos... pero un día, él la abandonó.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Ciega de dolor, llevó a sus hijos al río... y nunca volvieron.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Cuando entendió lo que había hecho, se lanzó al agua detrás de ellos.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Desde entonces vaga de noche, vestida de blanco, gritando entre los árboles...",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Dicen que si la escuchas lejos... está cerca.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Y si la escuchas cerca...",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "ya está detrás de ti.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    }
+   ]
+  },
+  {
+   "tipo": "short",
+   "hora_youtube": "ya",
+   "hora_short": "ya",
+   "hora_fb": "ya",
+   "canal": "terror",
+   "titulo_video": "LA LLORONA",
+   "titulo_youtube": "Si escuchas este llanto cerca del río… no lo sigas #shorts",
+   "descripcion_youtube": "",
+   "etiquetas": [],
+   "texto_facebook": "",
+   "miniatura": {},
+   "gancho": 1,
+   "nota": "prueba canal de terror: solo material, no se entrega",
+   "eid": "ter1b",
+   "voz": "Kore",
+   "estilo_voz": "Eres el fantasma de una mujer que llora desconsolada. Grita un lamento largo, desgarrado y lejano, alargando mucho las vocales, con voz quebrada por el llanto. Di exactamente: ",
+   "segmentos": [
+    {
+     "texto": "¡Aaaay... mis hijooos!",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "¿Dónde están... mis hijos?",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    }
+   ]
   }
  ]
 }
