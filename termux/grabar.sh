@@ -1,7 +1,8 @@
 #!/data/data/com.termux/files/usr/bin/bash
 # Graba el en vivo de La Casa 593 desde el teléfono y lo sube al servidor.
 S=173.249.44.95; P=443; D=$HOME/clipero; C=$D/cookies.txt
-CANAL=https://www.youtube.com/@LaCasa593EnVivo/streams
+# Revisa estos canales en orden y graba el primero que esté EN VIVO (La Casa 593 y La Mansión VIP 2).
+CANALES="https://www.youtube.com/@LaCasa593EnVivo/streams https://www.youtube.com/@hotspanishvlogs/streams"
 SSH="ssh -p $P -o BatchMode=yes -o ServerAliveInterval=30 -o ConnectTimeout=20"
 YT="yt-dlp --cookies $C --no-warnings --js-runtimes node"
 log() { echo "$(date +%H:%M:%S) $*"; }
@@ -26,7 +27,11 @@ subir() {
 subir &
 
 while true; do
-  L=$($YT --flat-playlist --playlist-end 6 --print "%(id)s|%(live_status)s|%(title)s" "$CANAL" 2>>$D/yt.log | grep '|is_live|' | head -1)
+  L=""
+  for CANAL in $CANALES; do
+    L=$($YT --flat-playlist --playlist-end 6 --print "%(id)s|%(live_status)s|%(title)s" "$CANAL" 2>>$D/yt.log | grep '|is_live|' | head -1)
+    [ -n "$L" ] && break
+  done
   VID=${L%%|*}; TIT=${L##*|}
   if [ -z "$VID" ]; then log "no hay en vivo ahora, reviso en 2 min"; sleep 120; continue; fi
   echo "$VID" > $D/vid.txt; echo "$TIT" > $D/tit.txt
