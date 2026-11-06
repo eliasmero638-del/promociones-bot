@@ -1442,6 +1442,80 @@
      }
     }
    ]
+  },
+  {
+   "tipo": "short",
+   "hora_youtube": "ya",
+   "hora_short": "ya",
+   "hora_fb": "ya",
+   "canal": "terror",
+   "titulo_video": "LA LLORONA",
+   "titulo_youtube": "Si escuchas este llanto cerca del río… no lo sigas #shorts",
+   "descripcion_youtube": "",
+   "etiquetas": [],
+   "texto_facebook": "",
+   "miniatura": {},
+   "gancho": 1,
+   "nota": "prueba canal de terror: solo material, no se entrega",
+   "eid": "ter2",
+   "voz": "Enceladus",
+   "estilo_voz": "Say in Spanish, in a slow, deep, scary whispering voice, like a Mexican horror storyteller: \"{texto}\"",
+   "segmentos": [
+    {
+     "texto": "Si una noche escuchas a una mujer llorando cerca del río... no la busques.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Cuentan que en un pueblo de México vivía María, la mujer más hermosa del lugar.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Se casó con un hombre rico y tuvo dos hijos... pero un día, él la abandonó.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Ciega de dolor, llevó a sus hijos al río... y nunca volvieron.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Cuando entendió lo que había hecho, se lanzó al agua detrás de ellos.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Desde entonces vaga de noche, vestida de blanco, gritando entre los árboles...",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Dicen que si la escuchas lejos... está cerca.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Y si la escuchas cerca...",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "ya está detrás de ti.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    }
+   ]
   }
  ]
 }
