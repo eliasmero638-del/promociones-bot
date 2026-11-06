@@ -66,10 +66,10 @@ def _escena_img(esc, carpeta_enc, carpeta, i, usados=None):
     return foto
 
 
-def _parte_wav(texto, carpeta, k):
+def _parte_wav(texto, carpeta, k, voz=None, estilo=''):
     """Una parte de la narración → wav limpio (sin silencio al inicio ni al final) + 0.35 s de pausa."""
     mp3 = os.path.join(carpeta, f'voz_{k:02d}.mp3')
-    ok, r = F.voz.gemini(texto, mp3, estilo='')
+    ok, r = F.voz.gemini(texto, mp3, voz=voz, estilo=estilo or '')   # voz/estilo propios (p. ej. canal de terror)
     if not ok:
         log('voz gemini falló, uso Microsoft:', r)
         ok, r = F.voz.edge(texto, mp3)
@@ -82,7 +82,7 @@ def _parte_wav(texto, carpeta, k):
     return wav
 
 
-def _narrar(segs, carpeta, g):
+def _narrar(segs, carpeta, g, voz=None, estilo=''):
     """El gancho se narra aparte: así sabemos al milisegundo dónde termina y la intro nunca corta una palabra."""
     textos = [s['texto'].strip() for s in segs]
     bloques, actual = [' '.join(textos[:g])], ''
@@ -94,7 +94,7 @@ def _narrar(segs, carpeta, g):
         bloques.append(actual)
     partes = []
     for k, b in enumerate(bloques):
-        partes.append(_parte_wav(b, carpeta, k))
+        partes.append(_parte_wav(b, carpeta, k, voz, estilo))
         time.sleep(4)
     lista = os.path.join(carpeta, 'voz.txt')
     with open(lista, 'w') as f:
@@ -233,7 +233,7 @@ def producir(fecha, v):
             s['img'] = reales[min(i, len(reales) - 1)] if reales else montaje.tarjeta(v.get('titulo_video', 'Ridmer'),
                                                                                        os.path.join(carpeta, 'tj.jpg'))
     g = max(1, min(int(v.get('gancho', 1)), len(segs) - 1))
-    wav, hook = _narrar(segs, carpeta, g)                # voz Algenib (sin acelerar)
+    wav, hook = _narrar(segs, carpeta, g, v.get('voz'), v.get('estilo_voz', ''))                # voz Algenib (sin acelerar)
     palabras = editor.transcribir(wav)
     if not palabras:
         todas = ' '.join(s['texto'] for s in segs).split()
@@ -354,9 +354,9 @@ def preparar_material(fecha, v):
     for i, s in enumerate(segs):
         esc = s.get('escena') or {}
         if esc.get('tipo') == 'video' and esc.get('url'):
-            v = _fragmento(esc, tmp, i)
-            if v:
-                s['img'] = v
+            frag = _fragmento(esc, tmp, i)
+            if frag:
+                s['img'] = frag
                 continue
         img = _escena_img(esc, carpeta_enc, tmp, i, usados)
         if img:
@@ -367,7 +367,7 @@ def preparar_material(fecha, v):
             if re.match(r'c\d\d\.jpg$', f_):
                 _jpg(os.path.join(carpeta_enc, f_), os.path.join(tmp, f_))
     g = max(1, min(int(v.get('gancho', 1)), len(segs) - 1))
-    wav, hook = _narrar(segs, tmp, g)
+    wav, hook = _narrar(segs, tmp, g, v.get('voz'), v.get('estilo_voz', ''))
     palabras = editor.transcribir(wav)
     if not palabras:
         todas = ' '.join(s['texto'] for s in segs).split()
