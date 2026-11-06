@@ -128,7 +128,8 @@ def preparar_dia(fecha=None):
         lista = '\n'.join(f'{i}. {c["titulo"]}: {c["intro"][:300]}' for i, c in enumerate(cands))
         d = ia.groq_json('Canal de YouTube "Ridmer" (misterio, casos reales, sobrevivientes, sucesos extraños). '
                          'Ordena estos artículos REALES de más a menos impactante para un video viral '
-                         '(misterio, giro, algo difícil de creer pero cierto). Descarta los aburridos.\n' + lista +
+                         '(misterio, giro, algo difícil de creer pero cierto). El público es de México, Ecuador y '
+                         'Argentina: los casos de México y Latinoamérica van PRIMERO. Descarta los aburridos.\n' + lista +
                          '\nResponde SOLO JSON {"orden": [números]}', 0.5)
         try:
             elegidos = [cands[i] for i in d['orden'] if isinstance(i, int) and i < len(cands)]

@@ -9,7 +9,11 @@ BUSQUEDAS = ['desaparición misteriosa', 'caso sin resolver', 'misterio sin reso
              'único superviviente', 'naufragio supervivientes', 'asesino en serie capturado', 'secuestro rescate',
              'fenómeno inexplicable', 'muerte misteriosa', 'expedición desaparecida', 'barco fantasma',
              'crimen sin resolver', 'leyenda urbana origen real', 'rescate milagroso', 'perdido en la selva sobrevivió',
-             'mina rescate atrapados', 'avión desaparecido', 'fraude famoso estafador', 'fuga de prisión famosa']
+             'mina rescate atrapados', 'avión desaparecido', 'fraude famoso estafador', 'fuga de prisión famosa',
+             # el público es de México, Ecuador y Argentina: más casos de Latinoamérica
+             'caso criminal México', 'asesino en serie México', 'desaparición México caso', 'narcotraficante capturado',
+             'crimen Colombia caso', 'asesino en serie Colombia', 'caso policial Argentina', 'crimen Ecuador caso',
+             'secuestro México', 'tragedia México', 'misterio Perú', 'fuga de prisión México']
 
 
 def _get(params, timeout=30):
@@ -21,7 +25,8 @@ def candidatos(n=10, excluir=''):
     """Artículos reales de Wikipedia con suficiente historia (título, intro, url)."""
     excl = excluir.lower()
     vistos, res = set(), []
-    for q in random.sample(BUSQUEDAS, 4):
+    latam = [b for b in BUSQUEDAS if any(p in b for p in ('México', 'Colombia', 'Argentina', 'Ecuador', 'Perú', 'narco'))]
+    for q in random.sample(latam, 3) + random.sample([b for b in BUSQUEDAS if b not in latam], 2):
         try:
             r = _get({'action': 'query', 'list': 'search', 'srsearch': q, 'srlimit': 25, 'srnamespace': 0})
         except Exception:
