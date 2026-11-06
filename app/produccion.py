@@ -42,6 +42,13 @@ def _escena_img(esc, carpeta_enc, carpeta, i, usados=None):
                 break
     out = os.path.join(carpeta, f'esc_{i:02d}.jpg')
     try:
+        if t == 'ia' and esc.get('prompt'):                   # ilustración generada con Gemini (canal de terror)
+            import imagen_ia
+            desc = (esc.get('estilo', '') + ' ' + esc['prompt']).strip()
+            ok, r = imagen_ia.generar(desc, out, esc.get('formato', '9:16'))
+            log('imagen ia', i, ok, r)
+            if ok:
+                return out
         if t == 'ficha':
             return montaje.escena_ficha(esc.get('nombre', ''), esc.get('sub', ''), foto, out)
         if t == 'fecha':

@@ -100,7 +100,8 @@ sh(['ffmpeg', '-v', 'error', '-y', '-i', f'{O}/voz_h.wav', '-stream_loop', '-1',
 # subtítulos (palabra por palabra) + título los primeros segundos
 ass = f'{O}/subs.ass'
 montaje._ass(pal, W, H, 'LA LLORONA', ass, rotulos=[(a, b, '') for a, b in zip(inicios, fines)])
-open(ass, 'w').write(''.join(l for l in open(ass) if not l.rstrip().endswith(',RIDMER')))   # sin la marca de Ridmer
+_l = [l for l in open(ass) if not l.rstrip().endswith(',RIDMER')]
+open(ass, 'w').write(''.join(_l))   # sin la marca de Ridmer
 sh(['ffmpeg', '-v', 'error', '-y', '-i', f'{O}/cuerpo.mp4', '-i', f'{O}/mezcla.wav', '-filter_complex',
     f"[0:v]subtitles='{ass}':fontsdir='{os.path.dirname(montaje.FUENTE)}',format=yuv420p[v]", '-map', '[v]', '-map', '1:a',
     '-c:v', 'libx264', '-preset', 'fast', '-crf', '20', '-c:a', 'aac', '-b:a', '192k', '-movflags', '+faststart',
