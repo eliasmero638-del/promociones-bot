@@ -142,3 +142,22 @@ cada Facebook y Short, 4+ en el largo, siempre fieles a los hechos (nada de cifr
   2 segundos; SIN intro en Shorts ni Facebook (la intro va solo en el largo); fotos a pantalla completa.
 - Temas: prioriza **México y Latinoamérica**, crímenes reales y casos virales recientes, famosos y animales/rescates;
   historia lejana solo si el gancho es universal. Si hay video real del hecho, úsalo (fragmentos ≤ 7 s).
+
+## Escenas DIBUJADAS (estilo de los cuentos) — el dueño las pidió el 6-nov-2026, OBLIGATORIAS
+El dueño se quejó de que los videos eran "puras fotos". Cada video cuenta la historia también con escenas dibujadas
+y animadas (personajes caricatura que caminan, se asustan, se sientan; luces de casco y linternas, polvo, rocas que
+caen, temblor de cámara), mezcladas con las fotos y videos reales. Se piden en `cambios.json` de tools/editar.py:
+`"dibujo": {"N": {"nombre": "...", "evento": "...", "n": 5, "letrero": "RECREACIÓN"}}` (N = número de segmento).
+- `mina`: evento `camina` (mineros con casco y lámpara en el túnel), `sismo` (temblor, grietas, rocas, polvo, pánico),
+  `atrapados` (derrumbe tapa el túnel, mineros detrás), `maquina` (cargador a control remoto saca la roca),
+  `rescate` (perforadora baja desde la superficie), `capsula` (cápsula sube por el pozo).
+- `carretera`: `pasa` (auto de noche con faros) o `recoge` (gente haciendo autoestop sube al auto). `n` personas.
+- `ciudad`: `calma` o `sismo` (edificios tiemblan, se apagan las ventanas, grietas, escombros, polvo).
+- `linternas`: grupo buscando de noche en el bosque con linternas. `pista`: avión aterriza bajo lluvia y no frena.
+- Si ninguna sirve, DIBUJA UNA A MEDIDA (como los cuentos): escribe un script python con `app/dibujos.py`
+  (`persona()`, `pegar()`, `Luces`, `roca()`, `polvo()`, `temblor()`) que se llame `python3 script.py salida.mp4
+  segundos W H`, y ponlo en cambios: `"dibujo": {"N": {"script": "mi_escena.py"}}` (ruta junto a cambios.json).
+- Mínimo: **2 escenas dibujadas en cada Short y Facebook, 4+ en el largo**. Ningún plano dura más de ~4–5 s sin
+  cambiar (si un segmento es largo, pártelo en el guion). Nunca la misma foto dos veces seguidas.
+- Siempre fieles a los hechos (no dibujes lo que no pasó) y rotuladas `RECREACIÓN`. No dibujes caras de personas
+  reales: son personajes genéricos.

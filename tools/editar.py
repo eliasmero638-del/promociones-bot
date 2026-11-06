@@ -151,6 +151,8 @@ def main():
             s['rotulo'] = cambios['rotulo'][str(i)]
         if str(i) in cambios.get('t0', {}):
             s['t0'] = float(cambios['t0'][str(i)])
+        if str(i) in cambios.get('dibujo', {}):          # escena dibujada en vez de la foto
+            s['escena'] = dict(cambios['dibujo'][str(i)], tipo='dibujo')
         for k in ('mov', 'trans', 'sfx', 'latido'):
             if str(i) in cambios.get(k, {}):
                 s[k] = cambios[k][str(i)]
@@ -177,13 +179,13 @@ def main():
         fm = os.path.join(mat, mi['img'])
     elif mi.get('seg') is not None and 0 <= int(mi['seg']) < len(segs):
         fm = segs[int(mi['seg'])]['img']
-    # animaciones (ruta, caída, contador, línea de tiempo): se dibujan aquí, a pantalla completa
-    import animar
+    # animaciones (ruta, caída, contador, línea de tiempo) y escenas DIBUJADAS (estilo cuentos): a pantalla completa
+    import animar, dibujos
     W_, H_ = (1920, 1080) if v['tipo'] == 'largo' else (1080, 1920)
     for k, s in enumerate(segs):
         esc = s.get('escena') or {}
         t = esc.get('tipo')
-        if t not in ('ruta', 'caida', 'contador', 'linea_tiempo'):
+        if t not in ('ruta', 'caida', 'contador', 'linea_tiempo', 'dibujo'):
             continue
         t1 = segs[k + 1]['t0'] if k + 1 < len(segs) else montaje.dur(wav)
         dd = max(2.5, t1 - s['t0'] + 0.4)
@@ -196,6 +198,13 @@ def main():
                 animar.caida(s['img'], esc.get('lugar', ''), sal, dd, W_, H_)
             elif t == 'contador':
                 animar.contador(int(esc.get('n', 0)), esc.get('texto', ''), esc.get('sub', ''), sal, min(dd, 5), W_, H_)
+            elif t == 'dibujo' and esc.get('script'):     # dibujo hecho a medida: python3 script salida seg W H
+                sc = esc['script'] if os.path.isabs(esc['script']) else os.path.join(os.path.dirname(os.path.abspath(
+                    sys.argv[5])) if len(sys.argv) > 5 else mat, esc['script'])
+                subprocess.run([sys.executable, sc, sal, f'{dd:.2f}', str(W_), str(H_)], check=True)
+            elif t == 'dibujo':
+                extra = {k_: x_ for k_, x_ in esc.items() if k_ not in ('tipo', 'nombre', 'img', 'letrero')}
+                dibujos.escena(esc['nombre'], sal, dd, W_, H_, letrero=esc.get('letrero', 'RECREACIÓN'), **extra)
             elif t == 'linea_tiempo':
                 animar.linea_tiempo([tuple(h) for h in esc.get('hitos', [])], sal, dd, W_, H_)
             else:
