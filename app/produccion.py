@@ -322,7 +322,8 @@ def _fragmento(esc, carpeta, i):
         src = _videos_bajados.get(url)
         if not (src and os.path.exists(src)):
             base = os.path.join(carpeta, f'src_{len(_videos_bajados):02d}')
-            subprocess.run(['yt-dlp', '-q', '--no-playlist', '-f', 'bv*[height<=1080]+ba/b[height<=1080]/b',
+            ck = ['--cookies', C.COOKIES] if os.path.exists(C.COOKIES) else []   # YouTube pide sesión en servidores
+            subprocess.run(['yt-dlp', '-q', '--no-playlist'] + ck + ['-f', 'bv*[height<=1080]+ba/b[height<=1080]/b',
                             '--merge-output-format', 'mp4', '-o', base + '.%(ext)s', url], timeout=300, check=True)
             src = (glob.glob(base + '.*') or [None])[0]
             _videos_bajados[url] = src

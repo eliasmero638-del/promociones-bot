@@ -161,3 +161,12 @@ caen, temblor de cámara), mezcladas con las fotos y videos reales. Se piden en 
   cambiar (si un segmento es largo, pártelo en el guion). Nunca la misma foto dos veces seguidas.
 - Siempre fieles a los hechos (no dibujes lo que no pasó) y rotuladas `RECREACIÓN`. No dibujes caras de personas
   reales: son personajes genéricos.
+
+## VIDEOS ORIGINALES del hecho (el dueño los pide, 6-nov-2026) — OBLIGATORIO cuando existan
+"Lo que no me gusta es que no pones videos originales." En CADA video busca con WebSearch un video real del hecho
+(noticiero en YouTube, video viral de TikTok/X/Facebook, cámara de seguridad, video del rescate…) y pide 1 o 2
+fragmentos en el plan: escena `{"tipo": "video", "url": "https://...", "desde": 12, "dur": 5}` (máx. 7 s; el servidor
+lo baja y lo pone en recuadro con borde y el crédito "video de redes sociales"). Lo ideal en un Short:
+foto o video real en el gancho → recreación dibujada de lo que pasó → video/foto real de las consecuencias.
+Si `v_NN.mp4` no llegó en el material, usa fotos reales en su lugar (y dilo en el resumen). Rotula las fotos del hecho
+con `"rotulo": "FOTO REAL"` cuando vengan justo después de una recreación.

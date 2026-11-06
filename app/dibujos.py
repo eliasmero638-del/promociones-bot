@@ -534,64 +534,181 @@ def _linternas(W, H, d, n=4, **kw):
     return cuadro, {'z': 1.6, 'fx': (0.4, 0.6), 'fy': 0.6}
 
 
-def _pista(W, H, d, **kw):
+def _pista(W, H, d, velocidad='170 KM/H', edificio='', **kw):
+    """Avión que aterriza bajo la lluvia y NO frena: la cámara lo sigue por la pista, cruza la avenida con autos y
+    choca contra un edificio (destello, bola de fuego, humo, temblor)."""
     rnd = random.Random(2)
     u = W / 1080 if H > W else H / 1080
-    suelo = int(H * 0.66)
-    f = Image.new('RGBA', (W, H))
-    f.paste(_degradado(W, H, (14, 16, 26), (46, 44, 56)), (0, 0))
-    df = ImageDraw.Draw(f)
-    df.rectangle([0, suelo, W, H], fill=(30, 30, 34))
-    df.rectangle([0, suelo, W * 0.72, suelo + 40 * u], fill=(54, 54, 58))
-    for x in range(0, int(W * 0.72), int(70 * u)):
-        df.ellipse([x - 5 * u, suelo - 5 * u, x + 5 * u, suelo + 5 * u], fill=(255, 240, 160))
-    bx = W * 0.86
-    df.rectangle([bx - 90 * u, suelo - 260 * u, bx + 160 * u, suelo], fill=(60, 56, 64), outline=TINTA, width=4)
-    lluvia = [(rnd.uniform(0, W), rnd.uniform(0, H), rnd.uniform(0.7, 1.3)) for _ in range(160)]
+    suelo = int(H * 0.56) if H > W else int(H * 0.66)
+    FIN = 2600 * u                       # fin de la pista
+    AV0, AV1 = FIN + 380 * u, FIN + 760 * u
+    ED0 = FIN + 860 * u
+    LARGO = (980 if H > W else 760) * u                      # largo del avión
+    cielo = _degradado(W, H, (20, 24, 34), (70, 72, 84))
+    ciudad = Image.new('RGBA', (W * 3, H), (0, 0, 0, 0))
+    dc = ImageDraw.Draw(ciudad)
+    x = 0
+    while x < W * 3:
+        w_, h_ = rnd.uniform(60, 160) * u, rnd.uniform(120, 420) * u
+        dc.rectangle([x, suelo - h_, x + w_, suelo], fill=(40, 42, 52))
+        for yy in range(int(suelo - h_ + 14 * u), int(suelo - 10 * u), int(26 * u)):
+            for xx in range(int(x + 8 * u), int(x + w_ - 12 * u), int(22 * u)):
+                if rnd.random() < 0.3:
+                    dc.rectangle([xx, yy, xx + 9 * u, yy + 12 * u], fill=(230, 200, 130))
+        x += w_ + rnd.uniform(0, 14) * u
+    lluvia = [(rnd.uniform(0, W), rnd.uniform(0, H), rnd.uniform(0.7, 1.3)) for _ in range(220)]
+    autos = [(rnd.uniform(0, 1), rnd.choice([(200, 40, 40), (230, 230, 230), (40, 90, 170), (230, 190, 40)]),
+              rnd.choice([1, -1])) for _ in range(5)]
+    humo = [(rnd.uniform(-1, 1), rnd.uniform(0.5, 1.5), rnd.uniform(0, 1)) for _ in range(30)]
 
-    def avion(dr, x, y, ang):
-        c, s = math.cos(ang), math.sin(ang)
-        def P(px, py):
-            return (x + (px * c - py * s) * u, y + (px * s + py * c) * u)
-        dr.polygon([P(-260, -20), P(200, -24), P(250, 0), P(200, 22), P(-260, 18)], fill=(225, 225, 230), outline=TINTA)
-        dr.polygon([P(-230, -18), P(-280, -110), P(-240, -110), P(-170, -18)], fill=(200, 30, 40), outline=TINTA)
-        dr.polygon([P(-40, 4), P(-110, 70), P(-60, 70), P(40, 4)], fill=(190, 190, 200), outline=TINTA)
-        for k in range(8):
-            dr.ellipse([*P(-170 + k * 40, -10), *P(-160 + k * 40, 0)], fill=(60, 80, 110))
+    def x_avion(t):                      # posición de la nariz en el mundo
+        p = t / d
+        choque = 0.72
+        if p < choque:
+            return 500 * u + (ED0 + 120 * u - 500 * u) * (p / choque) ** 0.92
+        return ED0 + 120 * u + 60 * u * _ease((p - choque) / 0.1)
+
+    def avion(dr, nx, y, inclina=0.0):
+        k = LARGO / 760
+        def P(px, py):                   # px: 0 = nariz, negativo hacia la cola
+            return (nx + px * k, y + py * k - px * k * inclina)
+        cuerpo = [P(0, -40), P(-30, -66), P(-120, -82), P(-640, -82), P(-740, -100), P(-760, -96), P(-720, -40),
+                  P(-640, -20), P(-100, -18), P(-30, -22)]
+        dr.polygon(cuerpo, fill=(236, 236, 240), outline=TINTA, width=max(3, int(4 * u)))
+        dr.polygon([P(-560, -82), P(-690, -250), P(-735, -250), P(-700, -96)], fill=(205, 30, 45), outline=TINTA,
+                   width=max(3, int(4 * u)))
+        dr.line([P(-120, -50), P(-640, -50)], fill=(205, 30, 45), width=int(10 * k))
+        for j in range(22):
+            cx_, cy_ = P(-150 - j * 21, -66)
+            dr.ellipse([cx_ - 5 * k, cy_ - 6 * k, cx_ + 5 * k, cy_ + 6 * k], fill=(50, 70, 100))
+        dr.polygon([P(-26, -64), P(-60, -78), P(-92, -78), P(-92, -60)], fill=(40, 55, 80))
+        dr.polygon([P(-300, -34), P(-470, -12), P(-420, -12), P(-250, -34)], fill=(180, 182, 192), outline=TINTA)
+        dr.rounded_rectangle([*P(-360, -20), *P(-260, 6)], radius=int(10 * k), fill=(200, 200, 208), outline=TINTA)
+        for gx in (-90, -380, -410):
+            a, b = P(gx, -18), P(gx, 22)
+            dr.line([a, b], fill=TINTA, width=int(7 * k))
+            dr.ellipse([b[0] - 16 * k, b[1] - 16 * k, b[0] + 16 * k, b[1] + 16 * k], fill=(25, 25, 25))
 
     def cuadro(t):
-        im = f.copy()
-        dr = ImageDraw.Draw(im)
-        L = Luces(W, H)
         p = t / d
-        if p < 0.3:
-            k = _ease(p / 0.3)
-            x, y, ang = -300 * u + (W * 0.25 + 300 * u) * k, suelo - 300 * u * (1 - k) - 30 * u, 0.12 * (1 - k)
-        else:
-            k = min(1.0, (p - 0.3) / 0.45)
-            x, y, ang = W * 0.25 + (W * 0.55) * k, suelo - 30 * u, 0
-        for (lx, ly, s) in lluvia:
-            yy = (ly + t * 1400 * s * u) % H
-            dr.line([(lx, yy), (lx - 8 * u, yy + 34 * u)], fill=(150, 160, 190), width=2)
-        avion(dr, x, y, ang)
-        L.halo(x + 240 * u, y, 60 * u, color=(255, 255, 230), fuerza=0.6)
+        nx = x_avion(t)
+        cam = nx - W * 0.94                                # la cámara sigue al avión...
+        if nx > FIN:                                        # ...y al salir de la pista se adelanta al edificio
+            k_ = _ease((nx - FIN) / (ED0 + 120 * u - FIN))
+            cam = (FIN - W * 0.94) + ((ED0 - W * 0.5) - (FIN - W * 0.94)) * k_          # la cámara sigue al avión y se detiene en el edificio
+        im = cielo.copy().convert('RGBA')
+        im.alpha_composite(ciudad.crop((int(cam * 0.25) % (W * 2), 0, int(cam * 0.25) % (W * 2) + W, H)))
+        dr = ImageDraw.Draw(im)
+        X = lambda wx: wx - cam
+        dr.rectangle([0, suelo, W, H], fill=(34, 40, 34))
+        dr.rectangle([X(-2000 * u), suelo - 6 * u, X(FIN), suelo + 70 * u], fill=(58, 58, 64))
+        for wx in range(int(-2000 * u), int(FIN), int(180 * u)):
+            dr.rectangle([X(wx), suelo + 28 * u, X(wx + 90 * u), suelo + 36 * u], fill=(225, 225, 225))
+        for wx in range(int(-2000 * u), int(FIN), int(90 * u)):
+            dr.ellipse([X(wx) - 6 * u, suelo - 12 * u, X(wx) + 6 * u, suelo], fill=(255, 235, 150))
+        dr.polygon([(X(FIN), suelo - 6 * u), (X(AV0 - 40 * u), suelo + 90 * u), (X(AV0 - 40 * u), H), (X(FIN), H)],
+                   fill=(40, 46, 34))
+        dr.rectangle([X(AV0), suelo + 80 * u, X(AV1), H], fill=(48, 48, 52))
+        for yy in range(int(suelo + 100 * u), H, int(120 * u)):
+            dr.rectangle([X((AV0 + AV1) / 2) - 5 * u, yy, X((AV0 + AV1) / 2) + 5 * u, yy + 60 * u], fill=(220, 200, 90))
+        L = Luces(W, H)
+        for j, (f0, col, s_) in enumerate(autos[:2]):       # autos en la avenida (de frente, con faros)
+            xx = X(AV0 + (120 + 150 * j) * u)
+            yy = suelo + (150 + 60 * j) * u + 10 * u * math.sin(t * 2 + j)
+            dr.rounded_rectangle([xx - 60 * u, yy - 70 * u, xx + 60 * u, yy], radius=int(14 * u), fill=col, outline=TINTA, width=3)
+            dr.rectangle([xx - 44 * u, yy - 64 * u, xx + 44 * u, yy - 38 * u], fill=(40, 50, 70))
+            for fx_ in (-38, 38):
+                dr.ellipse([xx + fx_ * u - 10 * u, yy - 26 * u, xx + fx_ * u + 10 * u, yy - 10 * u], fill=(255, 250, 210))
+                L.halo(xx + fx_ * u, yy - 18 * u, 60 * u, color=(255, 250, 210), fuerza=0.5)
+        # edificio y gasolinera
+        bx = X(ED0)
+        dr.rectangle([bx, suelo - 430 * u, bx + 620 * u, suelo + 80 * u], fill=(196, 196, 200), outline=TINTA, width=5)
+        dr.rectangle([bx, suelo - 430 * u, bx + 620 * u, suelo - 360 * u], fill=(200, 40, 50), outline=TINTA, width=5)
+        if edificio:
+            fu = _f(int(44 * u))
+            dr.text((bx + 30 * u, suelo - 420 * u), edificio, font=fu, fill=(250, 250, 250))
+        for yy in range(int(suelo - 330 * u), int(suelo + 40 * u), int(70 * u)):
+            for xx in range(int(bx + 30 * u), int(bx + 590 * u), int(80 * u)):
+                dr.rectangle([xx, yy, xx + 50 * u, yy + 40 * u], fill=(110, 140, 170))
+        gx = bx + 700 * u
+        dr.rectangle([gx, suelo - 200 * u, gx + 420 * u, suelo - 160 * u], fill=(230, 230, 230), outline=TINTA, width=4)
+        for px in (gx + 60 * u, gx + 360 * u):
+            dr.rectangle([px - 12 * u, suelo - 160 * u, px + 12 * u, suelo + 80 * u], fill=(200, 200, 200), outline=TINTA)
+        # avión
+        y = suelo - 22 * u
+        inclina = 0.0
+        if nx > FIN:                                        # sale de la pista y baja hacia la avenida
+            q = min(1.0, (nx - FIN) / (AV0 - FIN))
+            y += 90 * u * q
+            inclina = -0.06 * q
+        avion(dr, X(nx), y, inclina)
+        if p >= 0.72:                                       # tras el choque la nariz queda dentro del edificio
+            dr.rectangle([bx, suelo - 360 * u, bx + 620 * u, suelo + 80 * u], fill=(150, 150, 156), outline=TINTA, width=5)
+            for yy in range(int(suelo - 330 * u), int(suelo + 40 * u), int(70 * u)):
+                for xx in range(int(bx + 30 * u), int(bx + 590 * u), int(80 * u)):
+                    dr.rectangle([xx, yy, xx + 50 * u, yy + 40 * u], fill=(60, 50, 50))
+        if p < 0.72:                                        # agua que salpica de las ruedas
+            for j in range(26):
+                r_ = random.Random(j * 31 + int(t * 30))
+                sx = X(nx) - (380 + r_.uniform(0, 380)) * u * LARGO / (760 * u)
+                sy = suelo + 10 * u - r_.uniform(0, 60) * u
+                dr.line([(sx, sy), (sx - r_.uniform(20, 70) * u, sy - r_.uniform(0, 20) * u)], fill=(200, 210, 230), width=3)
+        # primer plano: reja del aeropuerto y charcos que reflejan las luces
+        dr.rectangle([0, suelo + 260 * u, W, H], fill=(18, 22, 20))
+        for j in range(-1, 14):
+            px = (j * 120 * u - cam * 1.4) % (W + 240 * u) - 120 * u
+            dr.rectangle([px - 6 * u, suelo + 160 * u, px + 6 * u, H], fill=(12, 14, 14))
+        for yy in (suelo + 190 * u, suelo + 300 * u):
+            dr.line([(0, yy), (W, yy)], fill=(12, 14, 14), width=int(6 * u))
+        for j in range(5):
+            px = (j * 260 * u - cam * 1.4) % (W + 300 * u) - 150 * u
+            dr.ellipse([px, suelo + 420 * u + j * 30 * u, px + 220 * u, suelo + 450 * u + j * 30 * u], fill=(54, 58, 70))
+        for (lx, ly, s_) in lluvia:
+            yy = (ly + t * 1600 * s_ * u) % H
+            dr.line([(lx, yy), (lx - 10 * u, yy + 40 * u)], fill=(160, 170, 200), width=2)
+        if p < 0.6:                                        # rótulo de velocidad
+            fu = _f(int(58 * u))
+            txt = velocidad
+            tw = dr.textlength(txt, font=fu)
+            yv = int(H * 0.30)
+            dr.rounded_rectangle([W / 2 - tw / 2 - 30 * u, yv, W / 2 + tw / 2 + 30 * u, yv + 90 * u], radius=int(14 * u),
+                                 fill=(200, 20, 30))
+            dr.text((W / 2 - tw / 2, yv + 12 * u), txt, font=fu, fill=(255, 255, 255))
+            fs = _f(int(30 * u))
+            sub = 'NO FRENÓ'
+            if math.sin(t * 9) > -0.2:
+                dr.text((W / 2 - dr.textlength(sub, font=fs) / 2, yv + 100 * u), sub, font=fs, fill=(255, 230, 0))
         im = L.aplicar(im)
-        if p > 0.75:                                       # choque: destello y fuego
-            q = (p - 0.75) / 0.25
-            capa = Image.new('RGBA', (W, H), (255, 240, 200, int(220 * max(0, 1 - q * 4))))
-            im.alpha_composite(capa)
-            fuego = Image.new('RGBA', (W, H), (0, 0, 0, 0))
-            dd = ImageDraw.Draw(fuego)
-            for j in range(18):
-                r = (60 + j * 9) * u * (0.6 + q)
-                fx = bx + 30 * u * math.sin(t * 9 + j)
-                fy = suelo - 80 * u - j * 12 * u * q
-                dd.ellipse([fx - r * 0.5, fy - r * 0.5, fx + r * 0.5, fy + r * 0.5],
-                           fill=(255, 120 + j * 6, 30, 70))
-            im.alpha_composite(fuego.filter(ImageFilter.GaussianBlur(10)))
-            polvo(im, bx, suelo - 200 * u, q, 0.8, ancho=W * 0.3, color=(40, 36, 36))
-        return temblor(im, max(0.0, 1 - (p - 0.75) * 5) if p > 0.75 else 0, t)
-    return cuadro, {'z': 1.5, 'fx': (0.3, 0.7), 'fy': 0.6}
+        sacude = 0.0
+        if p >= 0.72:                                       # choque: destello, fuego y humo
+            q = (p - 0.72) / 0.28
+            sacude = max(0.0, 1 - q * 2.5)
+            capa = Image.new('RGBA', (W // 4, H // 4), (0, 0, 0, 0))
+            dd = ImageDraw.Draw(capa)
+            cx, cy = (bx + 120 * u) / 4, (suelo - 120 * u) / 4
+            for (hx, hs, hf) in humo:
+                r = (80 + 260 * q * hs) * u / 4
+                yy = cy - (200 + 900 * q * hs) * u / 4
+                xx = cx + hx * 160 * u / 4 * (0.4 + q)
+                dd.ellipse([xx - r, yy - r, xx + r, yy + r], fill=(20, 18, 18, int(170 * min(1, q * 3))))
+            im.alpha_composite(capa.filter(ImageFilter.GaussianBlur(4)).resize((W, H), Image.BILINEAR))
+            fuego = Image.new('RGBA', (W // 2, H // 2), (0, 0, 0, 0))
+            df_ = ImageDraw.Draw(fuego)
+            fx0, fy0 = (bx + 40 * u) / 2, (suelo + 40 * u) / 2
+            for j in range(34):                            # lenguas de fuego que se mueven
+                r_ = random.Random(j)
+                base = fx0 + r_.uniform(-120, 680) * u / 2
+                alto_ = (r_.uniform(140, 420) * u / 2) * (0.5 + 0.8 * min(1, q * 4)) * (1 + 0.25 * math.sin(t * 11 + j))
+                ancho_ = r_.uniform(40, 90) * u / 2
+                col = [(255, 70, 20, 210), (255, 140, 30, 220), (255, 215, 80, 230)][j % 3]
+                sway = 18 * u / 2 * math.sin(t * 7 + j)
+                df_.polygon([(base - ancho_, fy0), (base + sway, fy0 - alto_), (base + ancho_, fy0)], fill=col)
+            im.alpha_composite(fuego.filter(ImageFilter.GaussianBlur(3)).resize((W, H), Image.BILINEAR))
+            L.halo(bx + 300 * u, suelo - 100 * u, 700 * u, color=(255, 120, 40), fuerza=0.55)
+            if q < 0.12:
+                im.alpha_composite(Image.new('RGBA', (W, H), (255, 245, 220, int(255 * (1 - q / 0.12)))))
+        return temblor(im, sacude, t)
+    return cuadro, {'z': 1.0, 'fx': (0.5, 0.5), 'fy': 0.5}
 
 
 ESCENAS = {'mina': _mina, 'carretera': _carretera, 'ciudad': _ciudad, 'linternas': _linternas, 'pista': _pista}
