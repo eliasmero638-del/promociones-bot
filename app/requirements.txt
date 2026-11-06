@@ -4,3 +4,4 @@ numpy
 faster-whisper
 edge-tts
 pillow
+av<15
