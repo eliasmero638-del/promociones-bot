@@ -180,7 +180,7 @@ def main():
     elif mi.get('seg') is not None and 0 <= int(mi['seg']) < len(segs):
         fm = segs[int(mi['seg'])]['img']
     # animaciones (ruta, caída, contador, línea de tiempo) y escenas DIBUJADAS (estilo cuentos): a pantalla completa
-    import animar, dibujos
+    import animar, dibujos, terror  # noqa: F401  (terror agrega rio, pueblo, bosque, susto)
     W_, H_ = (1920, 1080) if v['tipo'] == 'largo' else (1080, 1920)
     for k, s in enumerate(segs):
         esc = s.get('escena') or {}
