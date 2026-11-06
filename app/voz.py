@@ -29,6 +29,13 @@ def modelos_tts(key):
     return _mod
 
 
+def _prompt(estilo, texto):
+    """El estilo puede traer {texto} para encerrar el texto entre comillas (así Gemini no lee la instrucción en voz alta)."""
+    if not estilo:
+        return texto
+    return estilo.replace('{texto}', texto) if '{texto}' in estilo else estilo + texto
+
+
 def gemini(texto, salida_mp3, voz=None, estilo=ESTILO):
     voz = voz or C.get().get('voz_narrador', 'Algenib')
     key = C.get().get('gemini_key')
@@ -40,7 +47,7 @@ def gemini(texto, salida_mp3, voz=None, estilo=ESTILO):
             try:
                 r = requests.post(f'https://generativelanguage.googleapis.com/v1beta/models/{m}:generateContent',
                                   params={'key': key}, timeout=300, json={
-                                      'contents': [{'parts': [{'text': (estilo + texto) if estilo else texto}]}],
+                                      'contents': [{'parts': [{'text': _prompt(estilo, texto)}]}],
                                       'generationConfig': {'responseModalities': ['AUDIO'], 'speechConfig': {
                                           'voiceConfig': {'prebuiltVoiceConfig': {'voiceName': voz}}}}})
                 if r.status_code == 429:
