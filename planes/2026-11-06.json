@@ -1810,6 +1810,117 @@
      }
     }
    ]
+  },
+  {
+   "eid": "nc1",
+   "tipo": "short",
+   "hora_youtube": "ya",
+   "hora_short": "ya",
+   "hora_fb": "ya",
+   "canal": "terror",
+   "titulo_video": "NO CONTESTES",
+   "gancho": 1,
+   "nota": "canal de terror POV: solo material",
+   "voz": "Enceladus",
+   "estilo_voz": "",
+   "segmentos": [
+    {
+     "texto": "Si alguna vez escuchas a tu mamá llamándote de madrugada... no le contestes. Eso fue lo que me dijo mi abuela.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Esto me pasó en el dos mil diecinueve, en la casa de campo de mi abuela, en lo más profundo de Manabí.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Esa noche llegamos tarde. Mi mamá se acostó en el cuarto del fondo, y yo me quedé en la sala, junto a la ventana.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Antes de dormir, mi abuela se sentó a mi lado y me dijo en voz baja: si te llaman de madrugada, aunque sea con la voz de tu madre, no respondas. No abras. No mires.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "A las tres y diecisiete de la mañana, me despertó un susurro: hijo... ven... ven al patio.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Era la voz de mi mamá. Pero venía de afuera... de entre los árboles.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Prendí la linterna del celular y me acerqué a la ventana. Allá, entre la neblina, había una mujer parada, de espaldas.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Tenía el mismo vestido que mi mamá. El mismo cabello. Pero era demasiado alta.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Hijo... ¿por qué no vienes?, repitió. Y empezó a girar la cabeza... sin mover el cuerpo.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Retrocedí. Caminé por el pasillo hasta el cuarto de mi mamá... y la puerta estaba abierta.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Mi mamá estaba ahí, dormida, respirando tranquila.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Entonces la voz volvió a sonar, pero esta vez desde adentro de la casa: hijo... ya estoy aquí.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "La linterna empezó a fallar. Al fondo del pasillo, algo se arrastraba hacia mí... en cuatro patas.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Sentí que alguien me jalaba del brazo. Era mi abuela. Me metió a su cuarto, cerró la puerta, y me tapó la boca hasta que amaneció.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "En la mañana se lo conté a mi mamá. Se quedó pálida... y me dijo: hijo... tu abuela murió hace dos años.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Desde entonces, cada vez que alguien me llama de madrugada... no contesto.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    }
+   ]
   }
  ]
 }
