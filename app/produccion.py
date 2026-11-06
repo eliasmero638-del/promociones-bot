@@ -148,6 +148,7 @@ def armar(carpeta, wav, palabras, segs, g, hook, v, foto_mini):
     """Render de un video ya decidido: segs con t0/img/rotulo/short. Devuelve ([(tipo, mp4)], miniatura)."""
     D = montaje.dur(wav)
     rend = montaje.render_pro if v.get('pro') else montaje.render
+    sin_intro = {'intro': False} if v.get('pro') else {}      # intro de Ridmer solo en los videos largos
     extra = ('tipo', 'mov', 'trans', 'sfx', 'latido')
     escenas = [dict({'t0': s['t0'], 'img': s['img'], 'rotulo': s.get('rotulo', '')},
                     **{k: (s.get('escena') or {}).get('tipo', 'foto') if k == 'tipo' else s.get(k)
@@ -155,7 +156,7 @@ def armar(carpeta, wav, palabras, segs, g, hook, v, foto_mini):
     titulo = v.get('titulo_video') or v.get('titulo_youtube', '')
     salidas = []
     if v['tipo'] == 'short':                      # Short con guion propio: historia completa y final claro, < 60 s
-        maximo = 58.5 - montaje.dur(montaje.INTRO) - 1.8
+        maximo = 58.5 - (montaje.dur(montaje.INTRO) if not v.get('pro') else 0) - 1.8
         if D > maximo:
             f_ = min(D / maximo, 1.3)
             rap = os.path.join(carpeta, 'voz_rapida.wav')
@@ -164,7 +165,7 @@ def armar(carpeta, wav, palabras, segs, g, hook, v, foto_mini):
             palabras = [(x / f_, y / f_, w) for x, y, w in palabras]
             escenas = [dict(e, t0=e['t0'] / f_) for e in escenas]
         out = os.path.join(carpeta, 'short.mp4')
-        rend(carpeta, wav, palabras, escenas, 'vertical', titulo, hook, out, cola=1.8)
+        rend(carpeta, wav, palabras, escenas, 'vertical', titulo, hook, out, cola=1.8, **sin_intro)
         if montaje.dur(out) > 59.5:
             tmp = os.path.join(carpeta, 'short_c.mp4')
             montaje.sh(['ffmpeg', '-y', '-v', 'error', '-i', out, '-t', '59.4', '-c:v', 'libx264', '-preset',
@@ -177,7 +178,7 @@ def armar(carpeta, wav, palabras, segs, g, hook, v, foto_mini):
         salidas.append(('largo', out))
     else:
         out = os.path.join(carpeta, 'fb.mp4')
-        rend(carpeta, wav, palabras, escenas, 'vertical', titulo, hook, out)
+        rend(carpeta, wav, palabras, escenas, 'vertical', titulo, hook, out, **sin_intro)
         salidas.append(('fb', out))
         idx = [k for k, s in enumerate(segs) if s.get('short')]
         if idx:
@@ -202,7 +203,7 @@ def armar(carpeta, wav, palabras, segs, g, hook, v, foto_mini):
                 esc_s = [dict(e, t0=e['t0'] / f_) for e in esc_s]
             hook_s = esc_s[g]['t0'] if len(esc_s) > g else 4.0
             out_s = os.path.join(carpeta, 'short.mp4')
-            rend(carpeta, wav_s, pal_s, esc_s, 'vertical', titulo, hook_s, out_s)
+            rend(carpeta, wav_s, pal_s, esc_s, 'vertical', titulo, hook_s, out_s, **sin_intro)
             if montaje.dur(out_s) > 59.5:
                 tmp = os.path.join(carpeta, 'short_c.mp4')
                 montaje.sh(['ffmpeg', '-y', '-v', 'error', '-i', out_s, '-t', '59.4', '-c:v', 'libx264', '-preset',

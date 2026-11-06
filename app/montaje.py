@@ -91,7 +91,7 @@ def _ass(palabras, W, H, titulo, path, por_linea=3, rotulos=None):
     fin = palabras[-1][1] + 1 if palabras else 1
     if vertical and titulo:
         ev.append(f'Dialogue: 1,0:00:00.00,{_t(fin + 30)},Mar,,0,0,0,,RIDMER')
-        ev.append(f'Dialogue: 1,0:00:00.00,{_t(fin + 30)},Tit,,0,0,0,,{_esc(titulo.upper())}')
+        ev.append(f'Dialogue: 1,0:00:00.00,{_t(3.2)},Tit,,0,0,0,,{_esc(titulo.upper())}')
     for t0, t1, txt in rotulos or []:
         if txt and t1 - t0 > 1.2:
             ev.append(f'Dialogue: 2,{_t(t0 + 0.3)},{_t(min(t1, t0 + 4.5))},Rot,,0,0,0,,{{\\fad(200,200)}}{_esc(txt.upper())}')
@@ -308,7 +308,7 @@ def escena_mapa(img_satelite, lugar, salida, W=1600, H=1000):
 MOVS = ('in', 'out', 'izq', 'der')
 
 
-def _escena_pro(img, d, mov, W, H, salida):
+def _escena_pro(img, d, mov, W, H, salida, completa=False):
     """Escena con movimiento suave (easing): in/out (zoom), izq/der (paneo), golpe (zoom de impacto + temblor),
     mapa (acercamiento fuerte al punto). Viñeta + grano de película."""
     fw, fh = (W, int(H * 0.55)) if H > W else (W, H)
@@ -317,6 +317,19 @@ def _escena_pro(img, d, mov, W, H, salida):
             'golpe': '(1.06+0.20*exp(-7*t))', 'mapa': f'(1.0+0.45*{e})'}.get(mov, f'(1.0+0.12*{e})')
     dx = {'izq': f'+0.06*W*(0.5-{e})', 'der': f'-0.06*W*(0.5-{e})'}.get(mov, '')
     temblor = '+12*sin(t*53)*exp(-5*t)' if mov == 'golpe' else ''
+    if completa and H > W:                                  # foto llenando toda la pantalla, con paneo para mostrarla
+        z = {'in': f'(1.0+0.10*{e})', 'out': f'(1.10-0.10*{e})', 'golpe': '(1.04+0.16*exp(-7*t))'}.get(mov, '1.0')
+        sentido = {'izq': f'(1-{e})', 'der': f'{e}'}.get(mov, '0.5')
+        fc = (f"[0:v]scale={W}:{H}:force_original_aspect_ratio=increase,setsar=1[c0];"
+              f"[c0]scale=w='trunc(iw*{z}/2)*2':h=-2:eval=frame[c1];"
+              f"color=black:s={W}x{H}:d={d + 0.2:.3f}[base];"
+              f"[base][c1]overlay=x='-(w-W)*{sentido}{temblor}':y='-(h-H)/2{temblor.replace('53', '47')}':eval=frame,"
+              f"vignette=PI/4.2,noise=alls=7:allf=t,fps=30,format=yuv420p[v]")
+        if not img.lower().endswith('.mp4'):
+            sh(['ffmpeg', '-y', '-v', 'error', '-loop', '1', '-t', f'{d:.3f}', '-i', img, '-filter_complex', fc,
+                '-map', '[v]', '-t', f'{d:.3f}', '-r', '30', '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '19',
+                '-pix_fmt', 'yuv420p', '-an', salida])
+            return
     fc = (f"[0:v]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},boxblur=28:3,eq=brightness=-0.36[bg];"
           f"[0:v]scale={fw}:{fh}:force_original_aspect_ratio=decrease[f0];"
           f"[f0]scale=w='trunc(iw*{zoom}/2)*2':h=-2:eval=frame[fg];"
@@ -368,7 +381,7 @@ SFX_ARCH = {'impacto': ('susp_impact.mp3', 0.55), 'whoosh': ('wh_deep.mp3', 0.30
             'latido': ('heart_slow.mp3', 0.40), 'riser': ('riser2.mp3', 0.35)}
 
 
-def render_pro(trabajo, voz, palabras, escenas, formato, titulo, hook_fin, salida, cola=0.6):
+def render_pro(trabajo, voz, palabras, escenas, formato, titulo, hook_fin, salida, cola=0.6, intro=True):
     """Como render(), pero editado "a mano": movimiento con easing por escena, transiciones (fundido, destello,
     negro), efectos de sonido de suspenso sincronizados con los cortes, viñeta y grano. Intro tras el gancho."""
     W, H = FORMATOS[formato]
@@ -383,7 +396,7 @@ def render_pro(trabajo, voz, palabras, escenas, formato, titulo, hook_fin, salid
         mov, tr, sfx = _auto(e, i)
         tt = T.get(tr, 0.3) if i < len(escenas) - 1 else 0
         out = os.path.join(trabajo, f'p_{formato}_{i:03d}.mp4')
-        _escena_pro(os.path.abspath(e['img']), d + tt, mov, W, H, out)
+        _escena_pro(os.path.abspath(e['img']), d + tt, mov, W, H, out, completa=(e.get('tipo', 'foto') == 'foto'))
         clips.append(out); durs.append(d); trans.append(tr)
         if sfx in SFX_ARCH and i > 0:
             eventos.append((max(0.0, e['t0'] - (0.25 if sfx == 'whoosh' else 0.02)), sfx))
@@ -409,7 +422,7 @@ def render_pro(trabajo, voz, palabras, escenas, formato, titulo, hook_fin, salid
     mezcla = os.path.join(trabajo, 'mezcla.wav')
     ins = ['-i', voz, '-stream_loop', '-1', '-i', MUSICA, '-i', os.path.join(SFX, 'golpe_terror.mp3'),
            '-i', os.path.join(SFX, 'riser2.mp3')]
-    r_ini = max(0.0, hook_fin - 4.0)
+    r_ini = max(0.0, hook_fin - 4.0) if intro else D + 5
     fa = (f"[0:a]aresample=48000,aformat=channel_layouts=stereo,apad=whole_dur={D:.2f}[v];"
           f"[1:a]atrim=0:{D:.2f},volume=0.12,afade=t=in:d=2,afade=t=out:st={max(0, D - 3):.2f}:d=3[m];"
           f"[2:a]volume=0.45[s1];[3:a]volume=0.35,adelay={int(r_ini * 1000)}|{int(r_ini * 1000)}[s2];")
@@ -429,6 +442,16 @@ def render_pro(trabajo, voz, palabras, escenas, formato, titulo, hook_fin, salid
         rot.append((e['t0'], t1, e.get('rotulo', '')))
     _ass(palabras, W, H, titulo if formato == 'vertical' else '', ass, rotulos=rot)
     hf = min(max(hook_fin, 1.0), D - 1)
+    if not intro:                                           # Shorts y Reels: sin intro (la gente se iba ahí)
+        fc = (f"[0:v]subtitles='{ass}':fontsdir='{os.path.dirname(FUENTE)}',fps=30,format=yuv420p,setsar=1[v];"
+              f"[1:a]loudnorm=I=-14:TP=-1.5:LRA=11,aresample=48000[a]")
+        sh(['ffmpeg', '-y', '-v', 'error', '-i', cuerpo, '-i', mezcla, '-filter_complex', fc, '-map', '[v]', '-map', '[a]',
+            '-c:v', 'libx264', '-preset', 'fast', '-crf', '21', '-maxrate', '6M', '-bufsize', '12M', '-pix_fmt', 'yuv420p',
+            '-c:a', 'aac', '-b:a', '192k', '-movflags', '+faststart', '-t', f'{D:.3f}', salida])
+        for f_ in os.listdir(trabajo):
+            if f_.startswith(f'p_{formato}_'):
+                os.remove(os.path.join(trabajo, f_))
+        return salida
     if formato == 'vertical':
         vi = (f"[2:v]split[i1][i2];[i1]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},boxblur=28:3,"
               f"eq=brightness=-0.3[ib];[i2]scale={W}:-2[if];[ib][if]overlay=0:(H-h)/2,fps=30,format=yuv420p,setsar=1[vi]")

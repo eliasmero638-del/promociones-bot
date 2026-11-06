@@ -139,9 +139,13 @@ def main():
     wav = os.path.join(out, 'voz.wav')
     subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', os.path.join(mat, 'voz.flac'), '-ar', '48000', '-ac', '1', wav], check=True)
     segs = []
+    tipo_de = {f'esc_{k:02d}.jpg': (x.get('escena') or {}).get('tipo', 'foto') for k, x in enumerate(info['segmentos'])}
     for i, s in enumerate(info['segmentos']):
         s = dict(s)
         img = cambios.get('img', {}).get(str(i)) or s.get('img')
+        if str(i) in cambios.get('img', {}):            # la imagen cambiada conserva su tipo (tarjeta/mapa no se recorta)
+            t_ = 'tarjeta' if img.startswith('x_') else tipo_de.get(img, 'foto')
+            s['escena'] = dict(s.get('escena') or {}, tipo=t_)
         s['img'] = os.path.join(mat, img) if img and os.path.exists(os.path.join(mat, img)) else None
         if str(i) in cambios.get('rotulo', {}):
             s['rotulo'] = cambios['rotulo'][str(i)]

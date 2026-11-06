@@ -115,7 +115,7 @@ prepara el MATERIAL (voz y fotos) y **TÚ armas y revisas cada video** (modo "cl
 
 ## YouTube: 5 Shorts + largo, TODO en un paquete a las 9:00 (regla del dueño, reemplaza lo anterior de Shorts)
 - Ya NO marques `short: true` en los videos de Facebook. Cada Short es su PROPIO video en el plan, con `"tipo": "short"`,
-  su propio guion (100–120 palabras, 7–10 segmentos) y `"hora_youtube"` (la hora a la que el dueño lo programa).
+  su propio guion (70–95 palabras, 6–8 segmentos, 25–40 s) y `"hora_youtube"` (la hora a la que el dueño lo programa).
 - El Short cuenta la historia COMPLETA: gancho → contexto mínimo → giro → **final claro que cierra la historia** (qué
   pasó al final / qué se sabe hoy) → "Sígueme en Ridmer para más." Nunca termina en el aire.
 - 5 Shorts por día:
@@ -133,3 +133,12 @@ Además de fotos, pide escenas animadas en el plan (ver cabecera de tools/editar
 mapa, `corte` < 1 si no llegó, `c` para marcar dónde pasó), `caida` (recreación de una caída con impacto, siempre
 rotulada RECREACIÓN), `contador` (cifra clave que sube) y `linea_tiempo` (hitos con fecha). Mínimo 2 animaciones en
 cada Facebook y Short, 4+ en el largo, siempre fieles a los hechos (nada de cifras inventadas).
+
+## Lo que dicen los números (YouTube Studio, 6-nov-2026) — manda sobre lo anterior
+- Público: México 26 %, Ecuador 12 %, Argentina 8 %; 98 % gente nueva; casi todo desde el feed de Shorts.
+- El Short que más funcionó (14 mil vistas, 92 % de retención) duró 33 s y era un VIDEO REAL viral. Los narrados de
+  historia lejana (piratería, ferry de Filipinas, niñas de Nigeria) tuvieron 10–35 vistas: la mitad desliza al inicio.
+- Por eso: Shorts de **25–40 s (70–95 palabras)**; la primera imagen es la más impactante y el gancho se entiende en
+  2 segundos; SIN intro en Shorts ni Facebook (la intro va solo en el largo); fotos a pantalla completa.
+- Temas: prioriza **México y Latinoamérica**, crímenes reales y casos virales recientes, famosos y animales/rescates;
+  historia lejana solo si el gancho es universal. Si hay video real del hecho, úsalo (fragmentos ≤ 7 s).
