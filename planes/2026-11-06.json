@@ -1561,6 +1561,117 @@
      }
     }
    ]
+  },
+  {
+   "eid": "ult1",
+   "tipo": "short",
+   "hora_youtube": "ya",
+   "hora_short": "ya",
+   "hora_fb": "ya",
+   "canal": "terror",
+   "titulo_video": "EL ÚLTIMO CLIENTE",
+   "gancho": 1,
+   "nota": "canal de terror: solo material",
+   "voz": "Enceladus",
+   "estilo_voz": "Say in Spanish, in a deep, scary, whispering voice, like a Mexican horror storyteller, at a calm steady pace (not too slow): \"{texto}\"",
+   "segmentos": [
+    {
+     "texto": "Si alguna vez un cliente llega a tu taller pasadas las tres de la mañana... no le abras.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Cuentan en Manabí que en mil novecientos ochenta y siete, en una calle de Montecristi, había un taller que nunca cerraba temprano.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Era de Don Beto, un mecánico que se quedaba trabajando hasta la madrugada.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Aquella noche llovía como nunca. Don Beto ya estaba guardando las herramientas... cuando dos luces aparecieron en la lluvia.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Un carro rojo, viejo, con un faro roto, entró despacio al taller.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Del carro bajó un hombre pálido, empapado, con traje café y sombrero.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Revíselo, por favor, dijo sin dejar de sonreír. Tengo que llegar antes de las tres y diecisiete.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Don Beto miró el tablero. El reloj del carro estaba detenido... en las tres y diecisiete.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Abrió el capó. El motor estaba frío, como si no hubiera andado en años.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Buscando los papeles, abrió la guantera... y encontró una foto del cliente, y un recorte de periódico amarillento.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Decía: trágico accidente en la vía a Montecristi. Conductor muere dentro de su carro rojo. Mil novecientos cincuenta y siete.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Don Beto levantó la vista. En el portón ya no había nadie. Solo un charco de agua.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Entonces, las luces del carro se encendieron solas... y el motor arrancó.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Don Beto retrocedió hasta la pared... y sintió un aliento frío en la oreja.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Ya son las tres y diecisiete.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Dicen que desde esa noche, Don Beto nunca más abrió de madrugada. Y que si pasas por ese taller cuando llueve... todavía se escucha un motor.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    }
+   ]
   }
  ]
 }
