@@ -332,7 +332,7 @@ def _susto(W, H, d, **kw):
         if t < 0.18:
             return im
         q = t - 0.18
-        z = 1.35 - 0.3 * min(1, q / 0.25) + 0.02 * math.sin(q * 40)
+        z = (1.35 - 0.3 * min(1, q / 0.25) + 0.02 * math.sin(q * 40)) * 1.35
         cw2, ch2 = int(W * z), int(H * z)
         c = cara.resize((cw2, ch2), Image.BILINEAR)
         im.alpha_composite(c, (int((W - cw2) / 2), int((H - ch2) / 2)))
