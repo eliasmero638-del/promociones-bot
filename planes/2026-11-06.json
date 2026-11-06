@@ -1516,6 +1516,51 @@
      }
     }
    ]
+  },
+  {
+   "eid": "bos1",
+   "tipo": "short",
+   "hora_youtube": "ya",
+   "hora_short": "ya",
+   "hora_fb": "ya",
+   "canal": "terror",
+   "titulo_video": "BOCETOS",
+   "gancho": 1,
+   "nota": "bocetos IA canal de terror: solo material",
+   "segmentos": [
+    {
+     "texto": "Boceto uno.",
+     "escena": {
+      "tipo": "ia",
+      "estilo": "Semi-realistic 2D animated movie illustration, detailed digital painting, cinematic lighting, rich colors with dark horror atmosphere, Latin American small-town setting, vertical 9:16 composition, no text, no letters, no watermark.",
+      "prompt": "Full body character design of Don Beto, a 50-year-old Ecuadorian auto mechanic with brown skin, a thick black mustache, short graying hair, a red cap, dark blue work overalls with grease stains, holding a wrench, worried expression, standing in his small workshop at night."
+     }
+    },
+    {
+     "texto": "Boceto dos.",
+     "escena": {
+      "tipo": "ia",
+      "estilo": "Semi-realistic 2D animated movie illustration, detailed digital painting, cinematic lighting, rich colors with dark horror atmosphere, Latin American small-town setting, vertical 9:16 composition, no text, no letters, no watermark.",
+      "prompt": "Full body of a mysterious pale man in his 40s wearing a soaked brown 1970s suit and a fedora hat, water dripping from him, grayish skin, hollow tired eyes and a faint unsettling smile, standing in an open garage door at night in heavy rain, backlit by a street lamp."
+     }
+    },
+    {
+     "texto": "Boceto tres.",
+     "escena": {
+      "tipo": "ia",
+      "estilo": "Semi-realistic 2D animated movie illustration, detailed digital painting, cinematic lighting, rich colors with dark horror atmosphere, Latin American small-town setting, vertical 9:16 composition, no text, no letters, no watermark.",
+      "prompt": "A red 1978 four-door sedan with a dented front and one broken headlight, parked inside a small cluttered mechanic workshop at night, tools on the wall, heavy rain visible through the open garage door."
+     }
+    },
+    {
+     "texto": "Boceto cuatro.",
+     "escena": {
+      "tipo": "ia",
+      "estilo": "Semi-realistic 2D animated movie illustration, detailed digital painting, cinematic lighting, rich colors with dark horror atmosphere, Latin American small-town setting, vertical 9:16 composition, no text, no letters, no watermark.",
+      "prompt": "Inside a small mechanic workshop at night lit by a single flickering fluorescent tube: a middle-aged mechanic with a mustache, red cap and blue overalls leans over the open hood of a red 1978 sedan, while in the car's side mirror the reflection of a pale man in a wet brown suit and fedora stares at him. Creepy, suspenseful."
+     }
+    }
+   ]
   }
  ]
 }
