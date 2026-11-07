@@ -1,0 +1,518 @@
+{
+ "eid": "sh2",
+ "hook_fin": 4.857,
+ "duracion_voz": 37.401,
+ "segmentos": [
+  {
+   "texto": "A las siete y diecinueve de la mañana, la Ciudad de México empezó a caerse.",
+   "t0": 0.0,
+   "img": "esc_00.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 5
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Diecinueve de septiembre de mil novecientos ochenta y cinco.",
+   "t0": 4.857,
+   "img": "esc_01.jpg",
+   "escena": {
+    "tipo": "fecha",
+    "texto": "19 DE SEPTIEMBRE DE 1985",
+    "sub": "Magnitud 8.1"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "El epicentro estaba en la costa de Michoacán.",
+   "t0": 8.43,
+   "img": "esc_02.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 6
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Pero en la capital se derrumbaron cientos de edificios.",
+   "t0": 11.35,
+   "img": "esc_03.jpg",
+   "escena": {
+    "tipo": "video",
+    "url": "https://www.youtube.com/watch?v=gJzj4_NwoHM",
+    "desde": 15,
+    "dur": 6,
+    "img": 20
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Los vecinos rescataban a la gente con sus propias manos.",
+   "t0": 15.11,
+   "img": "esc_04.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 17
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "La noche siguiente, una réplica tiró edificios que ya estaban dañados.",
+   "t0": 18.85,
+   "img": "esc_05.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 19
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Oficialmente, tres mil ciento noventa y dos muertos. Otros cálculos: veinte mil.",
+   "t0": 23.65,
+   "img": null,
+   "escena": {
+    "tipo": "contador",
+    "n": 3192,
+    "texto": "MUERTOS (CIFRA OFICIAL)",
+    "sub": "otros cálculos: 20 000"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "De esa tragedia nació Protección Civil y el simulacro de cada diecinueve de septiembre. Sígueme en Ridmer.",
+   "t0": 29.85,
+   "img": "esc_07.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 9
+   },
+   "short": false,
+   "rotulo": ""
+  }
+ ],
+ "palabras": [
+  [
+   0.0,
+   0.1,
+   "A"
+  ],
+  [
+   0.1,
+   0.2,
+   "las"
+  ],
+  [
+   0.2,
+   0.44,
+   "7"
+  ],
+  [
+   0.44,
+   0.66,
+   "y"
+  ],
+  [
+   0.66,
+   1.04,
+   "19"
+  ],
+  [
+   1.04,
+   1.3,
+   "de"
+  ],
+  [
+   1.3,
+   1.42,
+   "la"
+  ],
+  [
+   1.42,
+   1.76,
+   "mañana,"
+  ],
+  [
+   2.28,
+   2.32,
+   "la"
+  ],
+  [
+   2.32,
+   2.64,
+   "Ciudad"
+  ],
+  [
+   2.64,
+   2.78,
+   "de"
+  ],
+  [
+   2.78,
+   3.12,
+   "México"
+  ],
+  [
+   3.12,
+   3.84,
+   "empezó"
+  ],
+  [
+   3.84,
+   3.96,
+   "a"
+  ],
+  [
+   3.96,
+   4.48,
+   "caerse."
+  ],
+  [
+   4.8,
+   5.42,
+   "19"
+  ],
+  [
+   5.42,
+   5.74,
+   "de"
+  ],
+  [
+   5.74,
+   6.28,
+   "septiembre"
+  ],
+  [
+   6.28,
+   6.48,
+   "de"
+  ],
+  [
+   6.48,
+   7.48,
+   "1985."
+  ],
+  [
+   8.68,
+   9.0,
+   "El"
+  ],
+  [
+   9.0,
+   9.5,
+   "epicentro"
+  ],
+  [
+   9.5,
+   9.78,
+   "estaba"
+  ],
+  [
+   9.78,
+   9.98,
+   "en"
+  ],
+  [
+   9.98,
+   10.08,
+   "la"
+  ],
+  [
+   10.08,
+   10.5,
+   "costa"
+  ],
+  [
+   10.5,
+   10.58,
+   "de"
+  ],
+  [
+   10.58,
+   11.08,
+   "Michoacán."
+  ],
+  [
+   11.6,
+   11.84,
+   "Pero"
+  ],
+  [
+   11.84,
+   11.94,
+   "en"
+  ],
+  [
+   11.94,
+   12.04,
+   "la"
+  ],
+  [
+   12.04,
+   12.36,
+   "capital"
+  ],
+  [
+   12.36,
+   12.9,
+   "se"
+  ],
+  [
+   12.9,
+   13.4,
+   "derrumbaron"
+  ],
+  [
+   13.4,
+   13.98,
+   "cientos"
+  ],
+  [
+   13.98,
+   14.22,
+   "de"
+  ],
+  [
+   14.22,
+   14.76,
+   "edificios."
+  ],
+  [
+   15.36,
+   15.58,
+   "Los"
+  ],
+  [
+   15.58,
+   15.92,
+   "vecinos"
+  ],
+  [
+   15.92,
+   16.68,
+   "rescataban"
+  ],
+  [
+   16.68,
+   16.8,
+   "a"
+  ],
+  [
+   16.8,
+   16.86,
+   "la"
+  ],
+  [
+   16.86,
+   17.16,
+   "gente"
+  ],
+  [
+   17.16,
+   17.44,
+   "con"
+  ],
+  [
+   17.44,
+   17.66,
+   "sus"
+  ],
+  [
+   17.66,
+   18.12,
+   "propias"
+  ],
+  [
+   18.12,
+   18.38,
+   "manos."
+  ],
+  [
+   19.1,
+   19.32,
+   "La"
+  ],
+  [
+   19.32,
+   19.48,
+   "noche"
+  ],
+  [
+   19.48,
+   19.94,
+   "siguiente,"
+  ],
+  [
+   20.36,
+   20.48,
+   "una"
+  ],
+  [
+   20.48,
+   21.04,
+   "réplica"
+  ],
+  [
+   21.04,
+   21.32,
+   "tiró"
+  ],
+  [
+   21.32,
+   21.88,
+   "edificios"
+  ],
+  [
+   21.88,
+   22.06,
+   "que"
+  ],
+  [
+   22.06,
+   22.3,
+   "ya"
+  ],
+  [
+   22.3,
+   22.68,
+   "estaban"
+  ],
+  [
+   22.68,
+   23.1,
+   "dañados."
+  ],
+  [
+   23.9,
+   24.54,
+   "Oficialmente,"
+  ],
+  [
+   24.54,
+   25.1,
+   "3"
+  ],
+  [
+   25.1,
+   26.6,
+   ".192"
+  ],
+  [
+   26.6,
+   27.06,
+   "muertos."
+  ],
+  [
+   27.7,
+   27.96,
+   "Otros"
+  ],
+  [
+   27.96,
+   28.38,
+   "cálculos,"
+  ],
+  [
+   28.8,
+   29.14,
+   "20"
+  ],
+  [
+   29.14,
+   29.46,
+   ".000."
+  ],
+  [
+   30.1,
+   30.34,
+   "De"
+  ],
+  [
+   30.34,
+   30.52,
+   "esa"
+  ],
+  [
+   30.52,
+   31.08,
+   "tragedia"
+  ],
+  [
+   31.08,
+   31.46,
+   "nació"
+  ],
+  [
+   31.46,
+   32.22,
+   "protección"
+  ],
+  [
+   32.22,
+   32.54,
+   "civil"
+  ],
+  [
+   32.54,
+   33.04,
+   "y"
+  ],
+  [
+   33.04,
+   33.16,
+   "el"
+  ],
+  [
+   33.16,
+   33.78,
+   "simulacro"
+  ],
+  [
+   33.78,
+   33.88,
+   "de"
+  ],
+  [
+   33.88,
+   34.18,
+   "cada"
+  ],
+  [
+   34.18,
+   34.8,
+   "19"
+  ],
+  [
+   34.8,
+   35.04,
+   "de"
+  ],
+  [
+   35.04,
+   35.5,
+   "septiembre."
+  ],
+  [
+   36.12,
+   36.56,
+   "Sígueme"
+  ],
+  [
+   36.56,
+   36.68,
+   "en"
+  ],
+  [
+   36.68,
+   37.0,
+   "Ritmer."
+  ]
+ ]
+}

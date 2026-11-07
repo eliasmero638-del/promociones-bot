@@ -1,0 +1,553 @@
+{
+ "eid": "fb1s",
+ "hook_fin": 7.077,
+ "duracion_voz": 42.195,
+ "segmentos": [
+  {
+   "texto": "Cuarenta y tres estudiantes desaparecieron en una sola noche… y la versión oficial se cayó.",
+   "t0": 0.0,
+   "img": "esc_00.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 12
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Iguala, México, septiembre de dos mil catorce.",
+   "t0": 7.077,
+   "img": "esc_01.jpg",
+   "escena": {
+    "tipo": "mapa",
+    "lat": 18.345,
+    "lon": -99.539,
+    "lugar": "Iguala, Guerrero",
+    "km": 8
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "La policía persiguió y atacó a estudiantes de Ayotzinapa.",
+   "t0": 10.81,
+   "img": "esc_02.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 11
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Cuarenta y tres jóvenes nunca volvieron.",
+   "t0": 17.83,
+   "img": null,
+   "escena": {
+    "tipo": "contador",
+    "n": 43,
+    "texto": "DESAPARECIDOS",
+    "sub": "Iguala, 2014"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Cinco expertos internacionales llegaron a investigar.",
+   "t0": 20.71,
+   "img": "esc_04.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 2
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Descartaron el incendio en Cocula, la base de la versión oficial.",
+   "t0": 22.85,
+   "img": "esc_05.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 9
+   },
+   "short": false,
+   "rotulo": "VERSIÓN DESCARTADA"
+  },
+  {
+   "texto": "Y denunciaron que el gobierno obstruyó su trabajo.",
+   "t0": 24.59,
+   "img": "esc_06.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 5
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Su informe final concluyó que el Ejército, la Marina y la policía sabían dónde estaban.",
+   "t0": 27.95,
+   "img": "esc_07.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 6
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Y que contribuyeron a su desaparición. Sus familias siguen exigiendo justicia. Sígueme en Ridmer para más.",
+   "t0": 36.91,
+   "img": "esc_08.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 7
+   },
+   "short": false,
+   "rotulo": ""
+  }
+ ],
+ "palabras": [
+  [
+   0.0,
+   0.66,
+   "43"
+  ],
+  [
+   0.66,
+   1.54,
+   "estudiantes"
+  ],
+  [
+   1.54,
+   2.42,
+   "desaparecieron"
+  ],
+  [
+   2.42,
+   2.58,
+   "en"
+  ],
+  [
+   2.58,
+   2.8,
+   "una"
+  ],
+  [
+   2.8,
+   3.1,
+   "sola"
+  ],
+  [
+   3.1,
+   3.46,
+   "noche."
+  ],
+  [
+   4.2,
+   4.48,
+   "Y"
+  ],
+  [
+   4.48,
+   4.56,
+   "la"
+  ],
+  [
+   4.56,
+   4.8,
+   "versión"
+  ],
+  [
+   4.8,
+   5.22,
+   "oficial"
+  ],
+  [
+   5.22,
+   5.92,
+   "se"
+  ],
+  [
+   5.92,
+   6.22,
+   "cayó."
+  ],
+  [
+   7.1,
+   7.76,
+   "Igual"
+  ],
+  [
+   7.76,
+   7.9,
+   "a"
+  ],
+  [
+   7.9,
+   8.22,
+   "México,"
+  ],
+  [
+   8.74,
+   9.2,
+   "septiembre"
+  ],
+  [
+   9.2,
+   9.38,
+   "de"
+  ],
+  [
+   9.38,
+   10.02,
+   "2014."
+  ],
+  [
+   11.06,
+   11.4,
+   "La"
+  ],
+  [
+   11.4,
+   11.88,
+   "policía"
+  ],
+  [
+   11.88,
+   12.54,
+   "persiguió"
+  ],
+  [
+   12.54,
+   12.66,
+   "y"
+  ],
+  [
+   12.66,
+   12.98,
+   "atacó"
+  ],
+  [
+   12.98,
+   13.06,
+   "a"
+  ],
+  [
+   13.06,
+   13.54,
+   "estudiantes"
+  ],
+  [
+   13.54,
+   13.78,
+   "de"
+  ],
+  [
+   13.78,
+   14.3,
+   "Ayotzinapa."
+  ],
+  [
+   14.78,
+   15.24,
+   "43"
+  ],
+  [
+   15.24,
+   15.86,
+   "jóvenes"
+  ],
+  [
+   15.86,
+   16.46,
+   "nunca"
+  ],
+  [
+   16.46,
+   17.0,
+   "volvieron."
+  ],
+  [
+   18.08,
+   18.32,
+   "5"
+  ],
+  [
+   18.32,
+   18.78,
+   "expertos"
+  ],
+  [
+   18.78,
+   19.52,
+   "internacionales"
+  ],
+  [
+   19.52,
+   19.84,
+   "llegaron"
+  ],
+  [
+   19.84,
+   19.96,
+   "a"
+  ],
+  [
+   19.96,
+   20.44,
+   "investigar."
+  ],
+  [
+   20.96,
+   21.6,
+   "Descartaron"
+  ],
+  [
+   21.6,
+   21.76,
+   "el"
+  ],
+  [
+   21.76,
+   22.2,
+   "incendio"
+  ],
+  [
+   22.2,
+   22.3,
+   "en"
+  ],
+  [
+   22.3,
+   22.72,
+   "Cocula,"
+  ],
+  [
+   23.1,
+   23.22,
+   "la"
+  ],
+  [
+   23.22,
+   23.42,
+   "base"
+  ],
+  [
+   23.42,
+   23.56,
+   "de"
+  ],
+  [
+   23.56,
+   23.66,
+   "la"
+  ],
+  [
+   23.66,
+   23.84,
+   "versión"
+  ],
+  [
+   23.84,
+   24.22,
+   "oficial."
+  ],
+  [
+   24.84,
+   25.08,
+   "Y"
+  ],
+  [
+   25.08,
+   25.5,
+   "denunciaron"
+  ],
+  [
+   25.5,
+   25.68,
+   "que"
+  ],
+  [
+   25.68,
+   25.78,
+   "el"
+  ],
+  [
+   25.78,
+   26.02,
+   "gobierno"
+  ],
+  [
+   26.02,
+   26.9,
+   "obstruyó"
+  ],
+  [
+   26.9,
+   27.04,
+   "su"
+  ],
+  [
+   27.04,
+   27.4,
+   "trabajo."
+  ],
+  [
+   28.2,
+   28.64,
+   "Su"
+  ],
+  [
+   28.64,
+   29.04,
+   "informe"
+  ],
+  [
+   29.04,
+   29.28,
+   "final"
+  ],
+  [
+   29.28,
+   29.78,
+   "concluyó"
+  ],
+  [
+   29.78,
+   29.94,
+   "que"
+  ],
+  [
+   29.94,
+   30.48,
+   "el"
+  ],
+  [
+   30.48,
+   31.06,
+   "ejército,"
+  ],
+  [
+   31.34,
+   31.44,
+   "la"
+  ],
+  [
+   31.44,
+   31.84,
+   "marina"
+  ],
+  [
+   31.84,
+   32.04,
+   "y"
+  ],
+  [
+   32.04,
+   32.16,
+   "la"
+  ],
+  [
+   32.16,
+   32.72,
+   "policía"
+  ],
+  [
+   32.72,
+   33.12,
+   "sabían"
+  ],
+  [
+   33.12,
+   33.4,
+   "dónde"
+  ],
+  [
+   33.4,
+   33.92,
+   "estaban"
+  ],
+  [
+   33.92,
+   34.56,
+   "y"
+  ],
+  [
+   34.56,
+   34.66,
+   "que"
+  ],
+  [
+   34.66,
+   35.4,
+   "contribuyeron"
+  ],
+  [
+   35.4,
+   35.48,
+   "a"
+  ],
+  [
+   35.48,
+   35.58,
+   "su"
+  ],
+  [
+   35.58,
+   36.16,
+   "desaparición."
+  ],
+  [
+   37.16,
+   37.28,
+   "Sus"
+  ],
+  [
+   37.28,
+   37.9,
+   "familias"
+  ],
+  [
+   37.9,
+   38.26,
+   "siguen"
+  ],
+  [
+   38.26,
+   38.72,
+   "exigiendo"
+  ],
+  [
+   38.72,
+   39.16,
+   "justicia."
+  ],
+  [
+   40.18,
+   40.62,
+   "Sígueme"
+  ],
+  [
+   40.62,
+   40.72,
+   "en"
+  ],
+  [
+   40.72,
+   41.0,
+   "Ritmer"
+  ],
+  [
+   41.0,
+   41.22,
+   "para"
+  ],
+  [
+   41.22,
+   41.36,
+   "más."
+  ]
+ ]
+}

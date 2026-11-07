@@ -1,0 +1,537 @@
+{
+ "eid": "fb3s",
+ "hook_fin": 5.197,
+ "duracion_voz": 40.009,
+ "segmentos": [
+  {
+   "texto": "Millones le rezan… a un esqueleto vestido como virgen.",
+   "t0": 0.0,
+   "img": "esc_00.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 3
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Es la Santa Muerte, nacida en México.",
+   "t0": 5.197,
+   "img": "esc_01.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 7
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Lleva túnica, guadaña y un globo en la mano.",
+   "t0": 8.87,
+   "img": "esc_02.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 1
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Por décadas se le rezó en secreto, dentro de las casas.",
+   "t0": 12.93,
+   "img": "esc_03.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 4
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "En dos mil uno, Enriqueta Romero abrió su santuario en la Ciudad de México.",
+   "t0": 17.77,
+   "img": "esc_04.jpg",
+   "escena": {
+    "tipo": "video",
+    "url": "https://m.youtube.com/watch?v=AwqbbrZG55c",
+    "desde": 30,
+    "dur": 6,
+    "img": 8
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "El gobierno le canceló el registro religioso, y la Iglesia la condena.",
+   "t0": 23.75,
+   "img": "esc_05.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 12
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Pero hoy se calcula que tiene doce millones de seguidores.",
+   "t0": 28.52,
+   "img": null,
+   "escena": {
+    "tipo": "contador",
+    "n": 12,
+    "texto": "MILLONES DE SEGUIDORES",
+    "sub": "México, Centroamérica y EE. UU."
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Dicen que es el culto que más rápido crece en el mundo. Sígueme en Ridmer para más.",
+   "t0": 33.27,
+   "img": "esc_07.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 10
+   },
+   "short": false,
+   "rotulo": ""
+  }
+ ],
+ "palabras": [
+  [
+   0.0,
+   0.8,
+   "Millones"
+  ],
+  [
+   0.8,
+   1.02,
+   "le"
+  ],
+  [
+   1.02,
+   1.46,
+   "rezan"
+  ],
+  [
+   1.46,
+   2.28,
+   "a"
+  ],
+  [
+   2.28,
+   2.42,
+   "un"
+  ],
+  [
+   2.42,
+   3.02,
+   "esqueleto"
+  ],
+  [
+   3.02,
+   3.44,
+   "vestido"
+  ],
+  [
+   3.44,
+   3.76,
+   "como"
+  ],
+  [
+   3.76,
+   4.34,
+   "virgen."
+  ],
+  [
+   4.62,
+   5.46,
+   "Es"
+  ],
+  [
+   5.46,
+   5.7,
+   "la"
+  ],
+  [
+   5.7,
+   6.14,
+   "Santa"
+  ],
+  [
+   6.14,
+   6.76,
+   "Muerte,"
+  ],
+  [
+   7.06,
+   7.7,
+   "nacida"
+  ],
+  [
+   7.7,
+   7.92,
+   "en"
+  ],
+  [
+   7.92,
+   8.36,
+   "México."
+  ],
+  [
+   9.12,
+   9.32,
+   "Lleva"
+  ],
+  [
+   9.32,
+   9.94,
+   "túnica,"
+  ],
+  [
+   10.3,
+   10.84,
+   "guadaña"
+  ],
+  [
+   10.84,
+   11.3,
+   "y"
+  ],
+  [
+   11.3,
+   11.48,
+   "un"
+  ],
+  [
+   11.48,
+   11.84,
+   "globo"
+  ],
+  [
+   11.84,
+   12.0,
+   "en"
+  ],
+  [
+   12.0,
+   12.1,
+   "la"
+  ],
+  [
+   12.1,
+   12.38,
+   "mano."
+  ],
+  [
+   13.18,
+   13.48,
+   "Por"
+  ],
+  [
+   13.48,
+   14.0,
+   "décadas"
+  ],
+  [
+   14.0,
+   14.4,
+   "se"
+  ],
+  [
+   14.4,
+   14.52,
+   "le"
+  ],
+  [
+   14.52,
+   14.92,
+   "rezó"
+  ],
+  [
+   14.92,
+   15.06,
+   "en"
+  ],
+  [
+   15.06,
+   15.68,
+   "secreto"
+  ],
+  [
+   15.68,
+   16.3,
+   "dentro"
+  ],
+  [
+   16.3,
+   16.56,
+   "de"
+  ],
+  [
+   16.56,
+   16.74,
+   "las"
+  ],
+  [
+   16.74,
+   17.2,
+   "casas."
+  ],
+  [
+   18.02,
+   18.4,
+   "En"
+  ],
+  [
+   18.4,
+   18.98,
+   "2001,"
+  ],
+  [
+   19.38,
+   19.98,
+   "Enriqueta"
+  ],
+  [
+   19.98,
+   20.4,
+   "Romero"
+  ],
+  [
+   20.4,
+   20.96,
+   "abrió"
+  ],
+  [
+   20.96,
+   21.16,
+   "su"
+  ],
+  [
+   21.16,
+   21.72,
+   "santuario"
+  ],
+  [
+   21.72,
+   22.1,
+   "en"
+  ],
+  [
+   22.1,
+   22.2,
+   "la"
+  ],
+  [
+   22.2,
+   22.62,
+   "Ciudad"
+  ],
+  [
+   22.62,
+   22.76,
+   "de"
+  ],
+  [
+   22.76,
+   23.14,
+   "México."
+  ],
+  [
+   24.0,
+   24.18,
+   "El"
+  ],
+  [
+   24.18,
+   24.5,
+   "gobierno"
+  ],
+  [
+   24.5,
+   24.84,
+   "le"
+  ],
+  [
+   24.84,
+   25.32,
+   "canceló"
+  ],
+  [
+   25.32,
+   25.42,
+   "el"
+  ],
+  [
+   25.42,
+   25.92,
+   "registro"
+  ],
+  [
+   25.92,
+   26.52,
+   "religioso"
+  ],
+  [
+   26.52,
+   27.2,
+   "y"
+  ],
+  [
+   27.2,
+   27.34,
+   "la"
+  ],
+  [
+   27.34,
+   27.76,
+   "Iglesia"
+  ],
+  [
+   27.76,
+   27.98,
+   "la"
+  ],
+  [
+   27.98,
+   28.5,
+   "condena."
+  ],
+  [
+   28.5,
+   29.48,
+   "Pero"
+  ],
+  [
+   29.48,
+   29.78,
+   "hoy"
+  ],
+  [
+   29.78,
+   29.96,
+   "se"
+  ],
+  [
+   29.96,
+   30.5,
+   "calcula"
+  ],
+  [
+   30.5,
+   30.62,
+   "que"
+  ],
+  [
+   30.62,
+   30.92,
+   "tiene"
+  ],
+  [
+   30.92,
+   31.4,
+   "12"
+  ],
+  [
+   31.4,
+   31.96,
+   "millones"
+  ],
+  [
+   31.96,
+   32.2,
+   "de"
+  ],
+  [
+   32.2,
+   32.72,
+   "seguidores."
+  ],
+  [
+   33.52,
+   34.14,
+   "Dicen"
+  ],
+  [
+   34.14,
+   34.3,
+   "que"
+  ],
+  [
+   34.3,
+   34.5,
+   "es"
+  ],
+  [
+   34.5,
+   34.64,
+   "el"
+  ],
+  [
+   34.64,
+   35.14,
+   "culto"
+  ],
+  [
+   35.14,
+   35.22,
+   "que"
+  ],
+  [
+   35.22,
+   35.5,
+   "más"
+  ],
+  [
+   35.5,
+   36.0,
+   "rápido"
+  ],
+  [
+   36.0,
+   36.48,
+   "crece"
+  ],
+  [
+   36.48,
+   36.64,
+   "en"
+  ],
+  [
+   36.64,
+   36.76,
+   "el"
+  ],
+  [
+   36.76,
+   37.02,
+   "mundo."
+  ],
+  [
+   37.86,
+   38.42,
+   "Sígueme"
+  ],
+  [
+   38.42,
+   38.58,
+   "en"
+  ],
+  [
+   38.58,
+   38.94,
+   "Ritmer"
+  ],
+  [
+   38.94,
+   39.26,
+   "para"
+  ],
+  [
+   39.26,
+   39.48,
+   "más."
+  ]
+ ]
+}

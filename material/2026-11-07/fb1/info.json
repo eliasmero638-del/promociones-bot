@@ -1,0 +1,1184 @@
+{
+ "eid": "fb1",
+ "hook_fin": 8.317,
+ "duracion_voz": 76.272,
+ "segmentos": [
+  {
+   "texto": "Cuarenta y tres estudiantes desaparecieron en una sola noche en México… y la versión oficial no resistió la investigación.",
+   "t0": 0.0,
+   "img": "esc_00.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 12
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Veintiséis de septiembre de dos mil catorce. Iguala, Guerrero.",
+   "t0": 8.317,
+   "img": "esc_01.jpg",
+   "escena": {
+    "tipo": "fecha",
+    "texto": "26 DE SEPTIEMBRE DE 2014",
+    "sub": "Iguala, Guerrero"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Esa noche, la policía municipal persiguió y atacó a estudiantes de la Normal Rural de Ayotzinapa.",
+   "t0": 11.79,
+   "img": "esc_02.jpg",
+   "escena": {
+    "tipo": "mapa",
+    "lat": 18.345,
+    "lon": -99.539,
+    "lugar": "Iguala, Guerrero",
+    "km": 8
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Hubo al menos nueve muertos y veintisiete heridos.",
+   "t0": 17.27,
+   "img": null,
+   "escena": {
+    "tipo": "contador",
+    "n": 9,
+    "texto": "MUERTOS",
+    "sub": "y 27 heridos"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Y cuarenta y tres jóvenes nunca volvieron a casa.",
+   "t0": 19.87,
+   "img": "esc_04.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 11
+   },
+   "short": false,
+   "rotulo": "43 DESAPARECIDOS"
+  },
+  {
+   "texto": "Sus padres no creyeron lo que les decía el gobierno, y pidieron ayuda fuera del país.",
+   "t0": 22.83,
+   "img": "esc_05.jpg",
+   "escena": {
+    "tipo": "video",
+    "url": "https://www.youtube.com/watch?v=GIJiXPbLbn0",
+    "desde": 20,
+    "dur": 5,
+    "img": 8
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Así llegaron cinco expertos independientes, de Colombia, Guatemala, Chile y España.",
+   "t0": 27.01,
+   "img": "esc_06.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 2
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Su misión: buscar con vida a los estudiantes y revisar toda la investigación.",
+   "t0": 32.43,
+   "img": "esc_07.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 1
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "El seis de septiembre de dos mil quince presentaron sus resultados.",
+   "t0": 37.21,
+   "img": "esc_08.jpg",
+   "escena": {
+    "tipo": "fecha",
+    "texto": "6 DE SEPTIEMBRE DE 2015",
+    "sub": "Primer informe del GIEI"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Y descartaron la hipótesis del incendio en Cocula, la base de la versión oficial.",
+   "t0": 40.53,
+   "img": "esc_09.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 9
+   },
+   "short": false,
+   "rotulo": "VERSIÓN DESCARTADA"
+  },
+  {
+   "texto": "Después denunciaron que el gobierno obstruyó su trabajo a propósito.",
+   "t0": 45.25,
+   "img": "esc_10.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 5
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Uno de ellos lo dijo sin rodeos:",
+   "t0": 49.07,
+   "img": "esc_11.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 4
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "«Nos han mentido, nos han respondido con falsedades».",
+   "t0": 51.17,
+   "img": "esc_12.jpg",
+   "escena": {
+    "tipo": "cita",
+    "texto": "Nos han mentido, nos han respondido con falsedades.",
+    "autor": "Carlos Martín Beristain, GIEI"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Su sexto y último informe llegó en julio de dos mil veintitrés.",
+   "t0": 54.63,
+   "img": null,
+   "escena": {
+    "tipo": "linea_tiempo",
+    "hitos": [
+     [
+      "2014",
+      "Desaparecen los 43"
+     ],
+     [
+      "2015",
+      "Llega el GIEI"
+     ],
+     [
+      "2016",
+      "Denuncian obstrucción"
+     ],
+     [
+      "2023",
+      "Último informe"
+     ]
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Concluyó que el Ejército, la Marina y la policía sabían dónde estaban los estudiantes… y contribuyeron a su desaparición.",
+   "t0": 58.27,
+   "img": "esc_14.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 6
+   },
+   "short": false,
+   "rotulo": "SABÍAN DÓNDE ESTABAN"
+  },
+  {
+   "texto": "Más de diez años después, sus familias siguen exigiendo la verdad.",
+   "t0": 68.47,
+   "img": "esc_15.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 7
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Suscríbete a Ridmer para más historias como esta.",
+   "t0": 73.17,
+   "img": "esc_16.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 10
+   },
+   "short": false,
+   "rotulo": ""
+  }
+ ],
+ "palabras": [
+  [
+   0.0,
+   0.72,
+   "43"
+  ],
+  [
+   0.72,
+   1.82,
+   "estudiantes"
+  ],
+  [
+   1.82,
+   2.78,
+   "desaparecieron"
+  ],
+  [
+   2.78,
+   2.94,
+   "en"
+  ],
+  [
+   2.94,
+   3.12,
+   "una"
+  ],
+  [
+   3.12,
+   3.4,
+   "sola"
+  ],
+  [
+   3.4,
+   3.74,
+   "noche"
+  ],
+  [
+   3.74,
+   3.9,
+   "en"
+  ],
+  [
+   3.9,
+   4.22,
+   "México."
+  ],
+  [
+   4.9,
+   5.08,
+   "Y"
+  ],
+  [
+   5.08,
+   5.2,
+   "la"
+  ],
+  [
+   5.2,
+   5.44,
+   "versión"
+  ],
+  [
+   5.44,
+   5.86,
+   "oficial"
+  ],
+  [
+   5.86,
+   6.44,
+   "no"
+  ],
+  [
+   6.44,
+   6.92,
+   "resistió"
+  ],
+  [
+   6.92,
+   7.0,
+   "la"
+  ],
+  [
+   7.0,
+   7.32,
+   "investigación."
+  ],
+  [
+   8.34,
+   8.9,
+   "26"
+  ],
+  [
+   8.9,
+   9.1,
+   "de"
+  ],
+  [
+   9.1,
+   9.44,
+   "septiembre"
+  ],
+  [
+   9.44,
+   9.66,
+   "de"
+  ],
+  [
+   9.66,
+   10.24,
+   "2014,"
+  ],
+  [
+   10.64,
+   10.94,
+   "igual"
+  ],
+  [
+   10.94,
+   11.1,
+   "a"
+  ],
+  [
+   11.1,
+   11.48,
+   "Guerrero."
+  ],
+  [
+   12.04,
+   12.38,
+   "Esa"
+  ],
+  [
+   12.38,
+   12.54,
+   "noche,"
+  ],
+  [
+   12.78,
+   12.86,
+   "la"
+  ],
+  [
+   12.86,
+   13.16,
+   "policía"
+  ],
+  [
+   13.16,
+   13.38,
+   "municipal"
+  ],
+  [
+   13.38,
+   14.26,
+   "persiguió"
+  ],
+  [
+   14.26,
+   14.36,
+   "y"
+  ],
+  [
+   14.36,
+   14.64,
+   "atacó"
+  ],
+  [
+   14.64,
+   14.7,
+   "a"
+  ],
+  [
+   14.7,
+   15.16,
+   "estudiantes"
+  ],
+  [
+   15.16,
+   15.38,
+   "de"
+  ],
+  [
+   15.38,
+   15.48,
+   "la"
+  ],
+  [
+   15.48,
+   15.72,
+   "normal"
+  ],
+  [
+   15.72,
+   16.1,
+   "rural"
+  ],
+  [
+   16.1,
+   16.3,
+   "de"
+  ],
+  [
+   16.3,
+   16.88,
+   "Ayotzinapa."
+  ],
+  [
+   17.52,
+   17.78,
+   "Hubo"
+  ],
+  [
+   17.78,
+   17.88,
+   "al"
+  ],
+  [
+   17.88,
+   17.98,
+   "menos"
+  ],
+  [
+   17.98,
+   18.26,
+   "nueve"
+  ],
+  [
+   18.26,
+   18.62,
+   "muertos"
+  ],
+  [
+   18.62,
+   18.82,
+   "y"
+  ],
+  [
+   18.82,
+   19.14,
+   "27"
+  ],
+  [
+   19.14,
+   19.56,
+   "heridos."
+  ],
+  [
+   20.12,
+   20.26,
+   "Y"
+  ],
+  [
+   20.26,
+   20.6,
+   "43"
+  ],
+  [
+   20.6,
+   21.14,
+   "jóvenes"
+  ],
+  [
+   21.14,
+   21.46,
+   "nunca"
+  ],
+  [
+   21.46,
+   21.84,
+   "volvieron"
+  ],
+  [
+   21.84,
+   21.96,
+   "a"
+  ],
+  [
+   21.96,
+   22.16,
+   "casa."
+  ],
+  [
+   23.08,
+   23.24,
+   "Sus"
+  ],
+  [
+   23.24,
+   23.44,
+   "padres"
+  ],
+  [
+   23.44,
+   23.66,
+   "no"
+  ],
+  [
+   23.66,
+   24.0,
+   "creyeron"
+  ],
+  [
+   24.0,
+   24.1,
+   "lo"
+  ],
+  [
+   24.1,
+   24.18,
+   "que"
+  ],
+  [
+   24.18,
+   24.32,
+   "les"
+  ],
+  [
+   24.32,
+   24.56,
+   "decía"
+  ],
+  [
+   24.56,
+   24.7,
+   "al"
+  ],
+  [
+   24.7,
+   24.94,
+   "gobierno"
+  ],
+  [
+   24.94,
+   25.34,
+   "y"
+  ],
+  [
+   25.34,
+   25.56,
+   "pidieron"
+  ],
+  [
+   25.56,
+   25.8,
+   "ayuda"
+  ],
+  [
+   25.8,
+   26.16,
+   "fuera"
+  ],
+  [
+   26.16,
+   26.38,
+   "del"
+  ],
+  [
+   26.38,
+   26.58,
+   "país."
+  ],
+  [
+   27.26,
+   27.54,
+   "Así"
+  ],
+  [
+   27.54,
+   27.84,
+   "llegaron"
+  ],
+  [
+   27.84,
+   28.18,
+   "cinco"
+  ],
+  [
+   28.18,
+   28.68,
+   "expertos"
+  ],
+  [
+   28.68,
+   29.3,
+   "independientes."
+  ],
+  [
+   29.3,
+   29.8,
+   "De"
+  ],
+  [
+   29.8,
+   30.1,
+   "Colombia,"
+  ],
+  [
+   30.46,
+   30.8,
+   "Guatemala,"
+  ],
+  [
+   31.3,
+   31.46,
+   "Chile"
+  ],
+  [
+   31.46,
+   31.7,
+   "y"
+  ],
+  [
+   31.7,
+   31.98,
+   "España."
+  ],
+  [
+   32.68,
+   32.88,
+   "Su"
+  ],
+  [
+   32.88,
+   33.16,
+   "misión,"
+  ],
+  [
+   33.56,
+   33.84,
+   "buscar"
+  ],
+  [
+   33.84,
+   34.04,
+   "con"
+  ],
+  [
+   34.04,
+   34.2,
+   "vida"
+  ],
+  [
+   34.2,
+   34.32,
+   "a"
+  ],
+  [
+   34.32,
+   34.4,
+   "los"
+  ],
+  [
+   34.4,
+   34.92,
+   "estudiantes"
+  ],
+  [
+   34.92,
+   35.24,
+   "y"
+  ],
+  [
+   35.24,
+   35.62,
+   "revisar"
+  ],
+  [
+   35.62,
+   35.92,
+   "toda"
+  ],
+  [
+   35.92,
+   36.06,
+   "la"
+  ],
+  [
+   36.06,
+   36.42,
+   "investigación."
+  ],
+  [
+   37.46,
+   37.68,
+   "El"
+  ],
+  [
+   37.68,
+   37.78,
+   "6"
+  ],
+  [
+   37.78,
+   37.92,
+   "de"
+  ],
+  [
+   37.92,
+   38.28,
+   "septiembre"
+  ],
+  [
+   38.28,
+   38.44,
+   "de"
+  ],
+  [
+   38.44,
+   38.9,
+   "2015"
+  ],
+  [
+   38.9,
+   39.6,
+   "presentaron"
+  ],
+  [
+   39.6,
+   39.74,
+   "sus"
+  ],
+  [
+   39.74,
+   40.14,
+   "resultados."
+  ],
+  [
+   40.78,
+   41.0,
+   "Y"
+  ],
+  [
+   41.0,
+   41.52,
+   "descartaron"
+  ],
+  [
+   41.52,
+   41.64,
+   "la"
+  ],
+  [
+   41.64,
+   42.12,
+   "hipótesis"
+  ],
+  [
+   42.12,
+   42.3,
+   "del"
+  ],
+  [
+   42.3,
+   42.7,
+   "incendio"
+  ],
+  [
+   42.7,
+   42.82,
+   "en"
+  ],
+  [
+   42.82,
+   43.16,
+   "Cocula,"
+  ],
+  [
+   43.52,
+   43.6,
+   "la"
+  ],
+  [
+   43.6,
+   43.8,
+   "base"
+  ],
+  [
+   43.8,
+   43.94,
+   "de"
+  ],
+  [
+   43.94,
+   44.02,
+   "la"
+  ],
+  [
+   44.02,
+   44.2,
+   "versión"
+  ],
+  [
+   44.2,
+   44.52,
+   "oficial."
+  ],
+  [
+   45.5,
+   45.8,
+   "Después"
+  ],
+  [
+   45.8,
+   46.46,
+   "denunciaron"
+  ],
+  [
+   46.46,
+   46.64,
+   "que"
+  ],
+  [
+   46.64,
+   46.74,
+   "el"
+  ],
+  [
+   46.74,
+   46.9,
+   "gobierno"
+  ],
+  [
+   46.9,
+   47.56,
+   "obstruyó"
+  ],
+  [
+   47.56,
+   47.68,
+   "su"
+  ],
+  [
+   47.68,
+   47.98,
+   "trabajo"
+  ],
+  [
+   47.98,
+   48.12,
+   "a"
+  ],
+  [
+   48.12,
+   48.62,
+   "propósito."
+  ],
+  [
+   49.32,
+   49.48,
+   "Uno"
+  ],
+  [
+   49.48,
+   49.62,
+   "de"
+  ],
+  [
+   49.62,
+   49.84,
+   "ellos"
+  ],
+  [
+   49.84,
+   49.98,
+   "lo"
+  ],
+  [
+   49.98,
+   50.1,
+   "dijo"
+  ],
+  [
+   50.1,
+   50.26,
+   "sin"
+  ],
+  [
+   50.26,
+   50.64,
+   "rodeos."
+  ],
+  [
+   51.42,
+   51.56,
+   "Nos"
+  ],
+  [
+   51.56,
+   51.7,
+   "han"
+  ],
+  [
+   51.7,
+   52.12,
+   "mentido,"
+  ],
+  [
+   52.52,
+   52.62,
+   "nos"
+  ],
+  [
+   52.62,
+   52.74,
+   "han"
+  ],
+  [
+   52.74,
+   53.24,
+   "respondido"
+  ],
+  [
+   53.24,
+   53.42,
+   "con"
+  ],
+  [
+   53.42,
+   53.98,
+   "falsedades."
+  ],
+  [
+   54.88,
+   55.2,
+   "Su"
+  ],
+  [
+   55.2,
+   55.52,
+   "sexto"
+  ],
+  [
+   55.52,
+   55.58,
+   "y"
+  ],
+  [
+   55.58,
+   55.76,
+   "último"
+  ],
+  [
+   55.76,
+   56.16,
+   "informe"
+  ],
+  [
+   56.16,
+   56.32,
+   "llegó"
+  ],
+  [
+   56.32,
+   56.46,
+   "en"
+  ],
+  [
+   56.46,
+   56.84,
+   "julio"
+  ],
+  [
+   56.84,
+   56.96,
+   "de"
+  ],
+  [
+   56.96,
+   57.54,
+   "2023."
+  ],
+  [
+   58.52,
+   59.2,
+   "Concluyó"
+  ],
+  [
+   59.2,
+   59.34,
+   "que"
+  ],
+  [
+   59.34,
+   59.48,
+   "el"
+  ],
+  [
+   59.48,
+   60.14,
+   "ejército,"
+  ],
+  [
+   60.54,
+   60.66,
+   "la"
+  ],
+  [
+   60.66,
+   61.1,
+   "marina"
+  ],
+  [
+   61.1,
+   61.5,
+   "y"
+  ],
+  [
+   61.5,
+   61.66,
+   "la"
+  ],
+  [
+   61.66,
+   62.38,
+   "policía"
+  ],
+  [
+   62.38,
+   63.1,
+   "sabían"
+  ],
+  [
+   63.1,
+   63.42,
+   "donde"
+  ],
+  [
+   63.42,
+   63.9,
+   "estaban"
+  ],
+  [
+   63.9,
+   64.1,
+   "los"
+  ],
+  [
+   64.1,
+   64.64,
+   "estudiantes."
+  ],
+  [
+   65.46,
+   65.52,
+   "Y"
+  ],
+  [
+   65.52,
+   66.36,
+   "contribuyeron"
+  ],
+  [
+   66.36,
+   66.44,
+   "a"
+  ],
+  [
+   66.44,
+   66.56,
+   "su"
+  ],
+  [
+   66.56,
+   67.12,
+   "desaparición."
+  ],
+  [
+   68.72,
+   69.04,
+   "Más"
+  ],
+  [
+   69.04,
+   69.18,
+   "de"
+  ],
+  [
+   69.18,
+   69.42,
+   "10"
+  ],
+  [
+   69.42,
+   69.66,
+   "años"
+  ],
+  [
+   69.66,
+   70.04,
+   "después,"
+  ],
+  [
+   70.46,
+   70.58,
+   "sus"
+  ],
+  [
+   70.58,
+   71.12,
+   "familias"
+  ],
+  [
+   71.12,
+   71.5,
+   "siguen"
+  ],
+  [
+   71.5,
+   72.14,
+   "exigiendo"
+  ],
+  [
+   72.14,
+   72.28,
+   "la"
+  ],
+  [
+   72.28,
+   72.52,
+   "verdad."
+  ],
+  [
+   73.42,
+   74.0,
+   "Suscríbete"
+  ],
+  [
+   74.0,
+   74.08,
+   "a"
+  ],
+  [
+   74.08,
+   74.32,
+   "Ritmers"
+  ],
+  [
+   74.32,
+   74.68,
+   "para"
+  ],
+  [
+   74.68,
+   74.84,
+   "más"
+  ],
+  [
+   74.84,
+   75.16,
+   "historias"
+  ],
+  [
+   75.16,
+   75.32,
+   "como"
+  ],
+  [
+   75.32,
+   75.5,
+   "esta."
+  ]
+ ]
+}

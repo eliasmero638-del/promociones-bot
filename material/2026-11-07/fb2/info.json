@@ -1,0 +1,1268 @@
+{
+ "eid": "fb2",
+ "hook_fin": 5.677,
+ "duracion_voz": 73.492,
+ "segmentos": [
+  {
+   "texto": "Hay familias que matan a sus propias hijas… y lo llaman honor.",
+   "t0": 0.0,
+   "img": "esc_00.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "honour killing protest",
+     "stop honour killing"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Se llama crimen de honor: el asesinato de una persona a manos de su propia familia.",
+   "t0": 5.677,
+   "img": "esc_01.jpg",
+   "escena": {
+    "tipo": "fecha",
+    "texto": "CRIMEN DE HONOR",
+    "sub": "asesinato por parte de la propia familia"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "La familia cree que la víctima la deshonró.",
+   "t0": 10.91,
+   "img": "esc_02.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "candlelight vigil women",
+     "vigil violence against women"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Basta con amar a alguien que la familia no aprueba.",
+   "t0": 13.41,
+   "img": "esc_03.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "Pakistan women protest",
+     "women rights protest Pakistan"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "O con vestirse de una forma que consideran inapropiada.",
+   "t0": 15.88,
+   "img": "esc_04.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "violence against women protest India"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Lo más escalofriante es que casi nunca lo hace una sola persona.",
+   "t0": 19.91,
+   "img": "esc_05.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "Aurat March"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "A veces lo decide todo un consejo familiar.",
+   "t0": 24.15,
+   "img": "esc_06.jpg",
+   "escena": {
+    "tipo": "fecha",
+    "texto": "CONSEJO FAMILIAR",
+    "sub": "la decisión es colectiva"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Y a menudo eligen a los niños de la familia para hacerlo.",
+   "t0": 27.18,
+   "img": "esc_07.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "honor killing"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "En el año dos mil, la ONU calculó cinco mil víctimas cada año.",
+   "t0": 29.91,
+   "img": null,
+   "escena": {
+    "tipo": "contador",
+    "n": 5000,
+    "texto": "VÍCTIMAS AL AÑO",
+    "sub": "cálculo de la ONU (2000)"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Grupos de mujeres creen que son más de veinte mil.",
+   "t0": 33.99,
+   "img": "esc_09.jpg",
+   "escena": {
+    "tipo": "fecha",
+    "texto": "MÁS DE 20 000",
+    "sub": "según grupos de defensa de las mujeres"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Muchos casos se registran como suicidios o accidentes.",
+   "t0": 36.43,
+   "img": null,
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "women protest violence candles"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Los países con más casos son India, Pakistán y Nepal, pero ocurre en todo el mundo.",
+   "t0": 40.07,
+   "img": "esc_11.jpg",
+   "escena": {
+    "tipo": "mapa",
+    "lat": 27.0,
+    "lon": 76.0,
+    "lugar": "India · Pakistán · Nepal",
+    "km": 1200
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Ya en la antigua Roma, el padre de familia tenía derecho a matar a su hija.",
+   "t0": 45.69,
+   "img": "esc_12.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "Roman Forum ruins"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Una abogada paquistaní, Hina Jilani, lo resumió así:",
+   "t0": 50.07,
+   "img": "esc_13.jpg",
+   "escena": {
+    "tipo": "ficha",
+    "nombre": "Hina Jilani",
+    "sub": "Abogada y activista · Pakistán",
+    "buscar": "Hina Jilani"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "«El derecho a la vida de las mujeres en Pakistán está condicionado a su obediencia».",
+   "t0": 54.13,
+   "img": "esc_14.jpg",
+   "escena": {
+    "tipo": "cita",
+    "texto": "El derecho a la vida de las mujeres en Pakistán está condicionado a su obediencia de las normas y tradiciones sociales.",
+    "autor": "Hina Jilani"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Y en la mayoría de los casos, los asesinos no enfrentan ningún castigo.",
+   "t0": 59.35,
+   "img": "esc_15.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "justice for women protest"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Human Rights Watch lo dice claro: es una violación de los derechos humanos.",
+   "t0": 64.51,
+   "img": "esc_16.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "International Women's Day march"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Suscríbete a Ridmer para más historias como esta.",
+   "t0": 70.11,
+   "img": "esc_17.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "candles memorial night"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  }
+ ],
+ "palabras": [
+  [
+   0.0,
+   0.42,
+   "Hay"
+  ],
+  [
+   0.42,
+   1.06,
+   "familias"
+  ],
+  [
+   1.06,
+   1.26,
+   "que"
+  ],
+  [
+   1.26,
+   1.72,
+   "matan"
+  ],
+  [
+   1.72,
+   1.82,
+   "a"
+  ],
+  [
+   1.82,
+   1.98,
+   "sus"
+  ],
+  [
+   1.98,
+   2.42,
+   "propias"
+  ],
+  [
+   2.42,
+   2.84,
+   "hijas"
+  ],
+  [
+   2.84,
+   3.86,
+   "y"
+  ],
+  [
+   3.86,
+   4.02,
+   "lo"
+  ],
+  [
+   4.02,
+   4.32,
+   "llaman"
+  ],
+  [
+   4.32,
+   4.7,
+   "honor."
+  ],
+  [
+   5.66,
+   6.18,
+   "Se"
+  ],
+  [
+   6.18,
+   6.42,
+   "llama"
+  ],
+  [
+   6.42,
+   7.04,
+   "crimen"
+  ],
+  [
+   7.04,
+   7.2,
+   "de"
+  ],
+  [
+   7.2,
+   7.48,
+   "honor,"
+  ],
+  [
+   7.92,
+   7.96,
+   "el"
+  ],
+  [
+   7.96,
+   8.46,
+   "asesinato"
+  ],
+  [
+   8.46,
+   8.64,
+   "de"
+  ],
+  [
+   8.64,
+   8.76,
+   "una"
+  ],
+  [
+   8.76,
+   9.12,
+   "persona"
+  ],
+  [
+   9.12,
+   9.34,
+   "a"
+  ],
+  [
+   9.34,
+   9.54,
+   "manos"
+  ],
+  [
+   9.54,
+   9.72,
+   "de"
+  ],
+  [
+   9.72,
+   9.84,
+   "su"
+  ],
+  [
+   9.84,
+   10.08,
+   "propia"
+  ],
+  [
+   10.08,
+   10.5,
+   "familia."
+  ],
+  [
+   11.16,
+   11.38,
+   "La"
+  ],
+  [
+   11.38,
+   11.68,
+   "familia"
+  ],
+  [
+   11.68,
+   11.96,
+   "cree"
+  ],
+  [
+   11.96,
+   12.08,
+   "que"
+  ],
+  [
+   12.08,
+   12.18,
+   "la"
+  ],
+  [
+   12.18,
+   12.5,
+   "víctima"
+  ],
+  [
+   12.5,
+   12.68,
+   "la"
+  ],
+  [
+   12.68,
+   13.14,
+   "deshonró,"
+  ],
+  [
+   13.66,
+   13.96,
+   "basta"
+  ],
+  [
+   13.96,
+   14.22,
+   "con"
+  ],
+  [
+   14.22,
+   14.36,
+   "amar"
+  ],
+  [
+   14.36,
+   14.5,
+   "a"
+  ],
+  [
+   14.5,
+   14.72,
+   "alguien"
+  ],
+  [
+   14.72,
+   14.88,
+   "que"
+  ],
+  [
+   14.88,
+   14.98,
+   "la"
+  ],
+  [
+   14.98,
+   15.24,
+   "familia"
+  ],
+  [
+   15.24,
+   15.44,
+   "no"
+  ],
+  [
+   15.44,
+   15.86,
+   "aprueba"
+  ],
+  [
+   15.86,
+   16.52,
+   "o"
+  ],
+  [
+   16.52,
+   17.16,
+   "convestirse"
+  ],
+  [
+   17.16,
+   17.34,
+   "de"
+  ],
+  [
+   17.34,
+   17.44,
+   "una"
+  ],
+  [
+   17.44,
+   17.7,
+   "forma"
+  ],
+  [
+   17.7,
+   17.88,
+   "que"
+  ],
+  [
+   17.88,
+   18.42,
+   "consideran"
+  ],
+  [
+   18.42,
+   19.32,
+   "inapropiada."
+  ],
+  [
+   20.16,
+   20.36,
+   "Lo"
+  ],
+  [
+   20.36,
+   20.56,
+   "más"
+  ],
+  [
+   20.56,
+   21.26,
+   "escalofriante"
+  ],
+  [
+   21.26,
+   21.64,
+   "es"
+  ],
+  [
+   21.64,
+   21.74,
+   "que"
+  ],
+  [
+   21.74,
+   21.94,
+   "casi"
+  ],
+  [
+   21.94,
+   22.32,
+   "nunca"
+  ],
+  [
+   22.32,
+   22.68,
+   "lo"
+  ],
+  [
+   22.68,
+   22.88,
+   "hace"
+  ],
+  [
+   22.88,
+   23.12,
+   "una"
+  ],
+  [
+   23.12,
+   23.3,
+   "sola"
+  ],
+  [
+   23.3,
+   23.74,
+   "persona."
+  ],
+  [
+   24.4,
+   24.58,
+   "A"
+  ],
+  [
+   24.58,
+   24.74,
+   "veces"
+  ],
+  [
+   24.74,
+   24.92,
+   "lo"
+  ],
+  [
+   24.92,
+   25.14,
+   "decide"
+  ],
+  [
+   25.14,
+   25.48,
+   "todo"
+  ],
+  [
+   25.48,
+   25.66,
+   "un"
+  ],
+  [
+   25.66,
+   26.0,
+   "consejo"
+  ],
+  [
+   26.0,
+   26.38,
+   "familiar"
+  ],
+  [
+   26.38,
+   27.16,
+   "y"
+  ],
+  [
+   27.16,
+   27.24,
+   "a"
+  ],
+  [
+   27.24,
+   27.5,
+   "menudo"
+  ],
+  [
+   27.5,
+   27.8,
+   "eligen"
+  ],
+  [
+   27.8,
+   27.94,
+   "a"
+  ],
+  [
+   27.94,
+   28.06,
+   "los"
+  ],
+  [
+   28.06,
+   28.26,
+   "niños"
+  ],
+  [
+   28.26,
+   28.46,
+   "de"
+  ],
+  [
+   28.46,
+   28.56,
+   "la"
+  ],
+  [
+   28.56,
+   28.94,
+   "familia"
+  ],
+  [
+   28.94,
+   29.26,
+   "para"
+  ],
+  [
+   29.26,
+   29.52,
+   "hacerlo."
+  ],
+  [
+   30.16,
+   30.64,
+   "En"
+  ],
+  [
+   30.64,
+   30.76,
+   "el"
+  ],
+  [
+   30.76,
+   30.9,
+   "año"
+  ],
+  [
+   30.9,
+   31.22,
+   "2000"
+  ],
+  [
+   31.22,
+   31.62,
+   "la"
+  ],
+  [
+   31.62,
+   31.84,
+   "ONU"
+  ],
+  [
+   31.84,
+   32.26,
+   "calculó"
+  ],
+  [
+   32.26,
+   32.46,
+   "5"
+  ],
+  [
+   32.46,
+   32.7,
+   "mil"
+  ],
+  [
+   32.7,
+   33.1,
+   "víctimas"
+  ],
+  [
+   33.1,
+   33.38,
+   "cada"
+  ],
+  [
+   33.38,
+   33.68,
+   "año."
+  ],
+  [
+   34.24,
+   34.5,
+   "Grupos"
+  ],
+  [
+   34.5,
+   34.64,
+   "de"
+  ],
+  [
+   34.64,
+   34.86,
+   "mujeres"
+  ],
+  [
+   34.86,
+   35.2,
+   "creen"
+  ],
+  [
+   35.2,
+   35.28,
+   "que"
+  ],
+  [
+   35.28,
+   35.42,
+   "son"
+  ],
+  [
+   35.42,
+   35.56,
+   "más"
+  ],
+  [
+   35.56,
+   35.66,
+   "de"
+  ],
+  [
+   35.66,
+   35.88,
+   "20"
+  ],
+  [
+   35.88,
+   36.08,
+   "mil."
+  ],
+  [
+   36.68,
+   37.06,
+   "Muchos"
+  ],
+  [
+   37.06,
+   37.32,
+   "casos"
+  ],
+  [
+   37.32,
+   37.5,
+   "se"
+  ],
+  [
+   37.5,
+   37.86,
+   "registran"
+  ],
+  [
+   37.86,
+   38.08,
+   "como"
+  ],
+  [
+   38.08,
+   38.8,
+   "suicidios"
+  ],
+  [
+   38.8,
+   38.94,
+   "o"
+  ],
+  [
+   38.94,
+   39.54,
+   "accidentes."
+  ],
+  [
+   40.32,
+   40.44,
+   "Los"
+  ],
+  [
+   40.44,
+   40.68,
+   "países"
+  ],
+  [
+   40.68,
+   40.9,
+   "con"
+  ],
+  [
+   40.9,
+   41.08,
+   "más"
+  ],
+  [
+   41.08,
+   41.36,
+   "casos"
+  ],
+  [
+   41.36,
+   41.64,
+   "son"
+  ],
+  [
+   41.64,
+   41.96,
+   "India,"
+  ],
+  [
+   42.28,
+   42.72,
+   "Pakistán"
+  ],
+  [
+   42.72,
+   42.96,
+   "y"
+  ],
+  [
+   42.96,
+   43.16,
+   "Nepal."
+  ],
+  [
+   43.84,
+   43.88,
+   "Pero"
+  ],
+  [
+   43.88,
+   44.26,
+   "ocurre"
+  ],
+  [
+   44.26,
+   44.38,
+   "en"
+  ],
+  [
+   44.38,
+   44.64,
+   "todo"
+  ],
+  [
+   44.64,
+   44.82,
+   "el"
+  ],
+  [
+   44.82,
+   45.04,
+   "mundo."
+  ],
+  [
+   45.94,
+   46.08,
+   "Ya"
+  ],
+  [
+   46.08,
+   46.24,
+   "en"
+  ],
+  [
+   46.24,
+   46.32,
+   "la"
+  ],
+  [
+   46.32,
+   46.62,
+   "antigua"
+  ],
+  [
+   46.62,
+   46.86,
+   "Roma"
+  ],
+  [
+   46.86,
+   47.32,
+   "el"
+  ],
+  [
+   47.32,
+   47.52,
+   "padre"
+  ],
+  [
+   47.52,
+   47.68,
+   "de"
+  ],
+  [
+   47.68,
+   47.9,
+   "familia"
+  ],
+  [
+   47.9,
+   48.26,
+   "tenía"
+  ],
+  [
+   48.26,
+   48.54,
+   "derecho"
+  ],
+  [
+   48.54,
+   48.72,
+   "a"
+  ],
+  [
+   48.72,
+   48.94,
+   "matar"
+  ],
+  [
+   48.94,
+   49.12,
+   "a"
+  ],
+  [
+   49.12,
+   49.26,
+   "su"
+  ],
+  [
+   49.26,
+   49.54,
+   "hija."
+  ],
+  [
+   50.32,
+   50.58,
+   "Una"
+  ],
+  [
+   50.58,
+   50.98,
+   "abogada"
+  ],
+  [
+   50.98,
+   51.52,
+   "pakistani,"
+  ],
+  [
+   51.88,
+   52.08,
+   "Hina"
+  ],
+  [
+   52.08,
+   52.46,
+   "Gilani,"
+  ],
+  [
+   52.84,
+   52.92,
+   "lo"
+  ],
+  [
+   52.92,
+   53.34,
+   "resumió"
+  ],
+  [
+   53.34,
+   53.56,
+   "así."
+  ],
+  [
+   54.38,
+   54.58,
+   "El"
+  ],
+  [
+   54.58,
+   54.84,
+   "derecho"
+  ],
+  [
+   54.84,
+   55.0,
+   "a"
+  ],
+  [
+   55.0,
+   55.04,
+   "la"
+  ],
+  [
+   55.04,
+   55.28,
+   "vida"
+  ],
+  [
+   55.28,
+   55.4,
+   "de"
+  ],
+  [
+   55.4,
+   55.54,
+   "las"
+  ],
+  [
+   55.54,
+   55.8,
+   "mujeres"
+  ],
+  [
+   55.8,
+   56.06,
+   "en"
+  ],
+  [
+   56.06,
+   56.62,
+   "Pakistán"
+  ],
+  [
+   56.62,
+   57.08,
+   "está"
+  ],
+  [
+   57.08,
+   57.92,
+   "condicionado"
+  ],
+  [
+   57.92,
+   58.1,
+   "a"
+  ],
+  [
+   58.1,
+   58.26,
+   "su"
+  ],
+  [
+   58.26,
+   58.88,
+   "obediencia."
+  ],
+  [
+   59.6,
+   59.78,
+   "Y"
+  ],
+  [
+   59.78,
+   59.92,
+   "en"
+  ],
+  [
+   59.92,
+   60.02,
+   "la"
+  ],
+  [
+   60.02,
+   60.34,
+   "mayoría"
+  ],
+  [
+   60.34,
+   60.56,
+   "de"
+  ],
+  [
+   60.56,
+   60.68,
+   "los"
+  ],
+  [
+   60.68,
+   61.04,
+   "casos,"
+  ],
+  [
+   61.5,
+   61.58,
+   "los"
+  ],
+  [
+   61.58,
+   62.12,
+   "asesinos"
+  ],
+  [
+   62.12,
+   62.44,
+   "no"
+  ],
+  [
+   62.44,
+   63.1,
+   "enfrentan"
+  ],
+  [
+   63.1,
+   63.48,
+   "ningún"
+  ],
+  [
+   63.48,
+   64.16,
+   "castigo."
+  ],
+  [
+   64.76,
+   65.12,
+   "Human"
+  ],
+  [
+   65.12,
+   65.5,
+   "Rights"
+  ],
+  [
+   65.5,
+   65.86,
+   "Watch"
+  ],
+  [
+   65.86,
+   66.1,
+   "lo"
+  ],
+  [
+   66.1,
+   66.36,
+   "dice"
+  ],
+  [
+   66.36,
+   66.78,
+   "claro,"
+  ],
+  [
+   67.34,
+   67.48,
+   "es"
+  ],
+  [
+   67.48,
+   67.66,
+   "una"
+  ],
+  [
+   67.66,
+   68.34,
+   "violación"
+  ],
+  [
+   68.34,
+   68.52,
+   "de"
+  ],
+  [
+   68.52,
+   68.66,
+   "los"
+  ],
+  [
+   68.66,
+   69.04,
+   "derechos"
+  ],
+  [
+   69.04,
+   69.46,
+   "humanos."
+  ],
+  [
+   70.36,
+   71.0,
+   "Suscríbete"
+  ],
+  [
+   71.0,
+   71.1,
+   "a"
+  ],
+  [
+   71.1,
+   71.46,
+   "Riedmer"
+  ],
+  [
+   71.46,
+   71.76,
+   "para"
+  ],
+  [
+   71.76,
+   72.06,
+   "más"
+  ],
+  [
+   72.06,
+   72.6,
+   "historias"
+  ],
+  [
+   72.6,
+   72.8,
+   "como"
+  ],
+  [
+   72.8,
+   73.08,
+   "esta."
+  ]
+ ]
+}

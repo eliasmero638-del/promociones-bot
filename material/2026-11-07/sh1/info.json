@@ -1,0 +1,534 @@
+{
+ "eid": "sh1",
+ "hook_fin": 5.717,
+ "duracion_voz": 35.035,
+ "segmentos": [
+  {
+   "texto": "El puente del Metro se partió con el tren encima… y lo habían advertido.",
+   "t0": 0.0,
+   "img": "esc_00.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 3
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Tres de mayo de dos mil veintiuno, de noche.",
+   "t0": 5.717,
+   "img": "esc_01.jpg",
+   "escena": {
+    "tipo": "fecha",
+    "texto": "3 DE MAYO DE 2021",
+    "sub": "22:22 · Línea 12, Ciudad de México"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "La Línea 12 se desplomó cerca de la estación Olivos.",
+   "t0": 9.11,
+   "img": "esc_02.jpg",
+   "escena": {
+    "tipo": "video",
+    "url": "https://www.youtube.com/watch?v=ds8pw_O86yc",
+    "desde": 3,
+    "dur": 6,
+    "img": 9
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Dos vagones cayeron sobre la avenida Tláhuac.",
+   "t0": 12.49,
+   "img": "esc_03.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 4
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Murieron veintiséis personas y hubo más de ochenta heridos.",
+   "t0": 15.03,
+   "img": null,
+   "escena": {
+    "tipo": "contador",
+    "n": 26,
+    "texto": "MUERTOS",
+    "sub": "y más de 80 heridos"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Desde dos mil diecisiete, los vecinos reportaban daños.",
+   "t0": 18.79,
+   "img": "esc_05.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 13
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Los peritos hallaron piezas faltantes y soldaduras de mala calidad.",
+   "t0": 22.13,
+   "img": "esc_06.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 7
+   },
+   "short": false,
+   "rotulo": "SOLDADURAS FALLIDAS"
+  },
+  {
+   "texto": "Fue el accidente más mortífero del Metro en casi cincuenta años.",
+   "t0": 25.56,
+   "img": "esc_07.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 1
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Diez exfuncionarios fueron acusados de homicidio. Sígueme en Ridmer para más.",
+   "t0": 29.99,
+   "img": "esc_08.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 15
+   },
+   "short": false,
+   "rotulo": ""
+  }
+ ],
+ "palabras": [
+  [
+   0.0,
+   0.44,
+   "El"
+  ],
+  [
+   0.44,
+   0.78,
+   "puente"
+  ],
+  [
+   0.78,
+   0.98,
+   "del"
+  ],
+  [
+   0.98,
+   1.24,
+   "metro"
+  ],
+  [
+   1.24,
+   1.44,
+   "se"
+  ],
+  [
+   1.44,
+   1.9,
+   "partió"
+  ],
+  [
+   1.9,
+   2.18,
+   "con"
+  ],
+  [
+   2.18,
+   2.36,
+   "el"
+  ],
+  [
+   2.36,
+   2.68,
+   "tren"
+  ],
+  [
+   2.68,
+   3.3,
+   "encima"
+  ],
+  [
+   3.3,
+   3.86,
+   "y"
+  ],
+  [
+   3.86,
+   4.0,
+   "lo"
+  ],
+  [
+   4.0,
+   4.3,
+   "habían"
+  ],
+  [
+   4.3,
+   4.94,
+   "advertido."
+  ],
+  [
+   5.48,
+   6.12,
+   "3"
+  ],
+  [
+   6.12,
+   6.28,
+   "de"
+  ],
+  [
+   6.28,
+   6.48,
+   "mayo"
+  ],
+  [
+   6.48,
+   6.74,
+   "de"
+  ],
+  [
+   6.74,
+   7.36,
+   "2021."
+  ],
+  [
+   8.14,
+   8.3,
+   "De"
+  ],
+  [
+   8.3,
+   8.5,
+   "noche."
+  ],
+  [
+   9.36,
+   9.42,
+   "La"
+  ],
+  [
+   9.42,
+   9.62,
+   "línea"
+  ],
+  [
+   9.62,
+   9.88,
+   "12"
+  ],
+  [
+   9.88,
+   10.12,
+   "se"
+  ],
+  [
+   10.12,
+   10.78,
+   "desplomó"
+  ],
+  [
+   10.78,
+   11.02,
+   "cerca"
+  ],
+  [
+   11.02,
+   11.2,
+   "de"
+  ],
+  [
+   11.2,
+   11.3,
+   "la"
+  ],
+  [
+   11.3,
+   11.66,
+   "estación"
+  ],
+  [
+   11.66,
+   12.02,
+   "Olivos."
+  ],
+  [
+   12.74,
+   12.96,
+   "Dos"
+  ],
+  [
+   12.96,
+   13.2,
+   "vagones"
+  ],
+  [
+   13.2,
+   13.62,
+   "cayeron"
+  ],
+  [
+   13.62,
+   13.84,
+   "sobre"
+  ],
+  [
+   13.84,
+   14.02,
+   "la"
+  ],
+  [
+   14.02,
+   14.36,
+   "avenida"
+  ],
+  [
+   14.36,
+   14.84,
+   "Tlahuac."
+  ],
+  [
+   15.28,
+   15.6,
+   "Murieron"
+  ],
+  [
+   15.6,
+   16.1,
+   "26"
+  ],
+  [
+   16.1,
+   16.7,
+   "personas"
+  ],
+  [
+   16.7,
+   16.9,
+   "y"
+  ],
+  [
+   16.9,
+   17.06,
+   "hubo"
+  ],
+  [
+   17.06,
+   17.22,
+   "más"
+  ],
+  [
+   17.22,
+   17.38,
+   "de"
+  ],
+  [
+   17.38,
+   17.86,
+   "80"
+  ],
+  [
+   17.86,
+   18.2,
+   "heridos."
+  ],
+  [
+   19.04,
+   19.26,
+   "Desde"
+  ],
+  [
+   19.26,
+   20.0,
+   "2017"
+  ],
+  [
+   20.0,
+   20.38,
+   "los"
+  ],
+  [
+   20.38,
+   20.7,
+   "vecinos"
+  ],
+  [
+   20.7,
+   21.34,
+   "reportaban"
+  ],
+  [
+   21.34,
+   21.7,
+   "daños."
+  ],
+  [
+   22.38,
+   22.48,
+   "Los"
+  ],
+  [
+   22.48,
+   22.76,
+   "peritos"
+  ],
+  [
+   22.76,
+   23.1,
+   "hallaron"
+  ],
+  [
+   23.1,
+   23.5,
+   "piezas"
+  ],
+  [
+   23.5,
+   24.06,
+   "faltantes"
+  ],
+  [
+   24.06,
+   24.22,
+   "y"
+  ],
+  [
+   24.22,
+   24.64,
+   "soldaduras"
+  ],
+  [
+   24.64,
+   24.86,
+   "de"
+  ],
+  [
+   24.86,
+   25.06,
+   "mala"
+  ],
+  [
+   25.06,
+   25.54,
+   "calidad."
+  ],
+  [
+   25.54,
+   26.44,
+   "Fue"
+  ],
+  [
+   26.44,
+   26.54,
+   "el"
+  ],
+  [
+   26.54,
+   27.02,
+   "accidente"
+  ],
+  [
+   27.02,
+   27.18,
+   "más"
+  ],
+  [
+   27.18,
+   27.92,
+   "mortífero"
+  ],
+  [
+   27.92,
+   28.02,
+   "del"
+  ],
+  [
+   28.02,
+   28.38,
+   "metro"
+  ],
+  [
+   28.38,
+   28.5,
+   "en"
+  ],
+  [
+   28.5,
+   28.66,
+   "casi"
+  ],
+  [
+   28.66,
+   29.16,
+   "50"
+  ],
+  [
+   29.16,
+   29.68,
+   "años."
+  ],
+  [
+   30.24,
+   30.36,
+   "10"
+  ],
+  [
+   30.36,
+   31.02,
+   "exfuncionarios"
+  ],
+  [
+   31.02,
+   31.26,
+   "fueron"
+  ],
+  [
+   31.26,
+   31.74,
+   "acusados"
+  ],
+  [
+   31.74,
+   31.9,
+   "de"
+  ],
+  [
+   31.9,
+   32.74,
+   "homicidio."
+  ],
+  [
+   32.9,
+   33.16,
+   "Sigue"
+  ],
+  [
+   33.16,
+   33.64,
+   "Menritmer,"
+  ],
+  [
+   33.86,
+   33.98,
+   "para"
+  ],
+  [
+   33.98,
+   34.14,
+   "más."
+  ]
+ ]
+}
