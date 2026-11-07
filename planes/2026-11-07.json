@@ -1,0 +1,1352 @@
+{
+ "fecha": "2026-11-07",
+ "modo": "claude",
+ "videos": [
+  {
+   "eid": "fb1s",
+   "tipo": "short",
+   "encargo": "fb1",
+   "hora_youtube": "12:00",
+   "titulo_video": "LOS 43 DE AYOTZINAPA",
+   "titulo_youtube": "43 estudiantes desaparecieron… y el informe final señaló al Ejército #shorts",
+   "descripcion_youtube": "Iguala, México, 2014: 43 estudiantes desaparecen en una sola noche.\n#misterio #casosreales #ridmer #shorts",
+   "etiquetas": [
+    "misterio",
+    "casos reales",
+    "ridmer",
+    "Ayotzinapa",
+    "43",
+    "México",
+    "shorts"
+   ],
+   "texto_facebook": "",
+   "miniatura": {
+    "img": 12,
+    "texto": "SABÍAN DÓNDE ESTABAN"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Cuarenta y tres estudiantes desaparecieron en una sola noche… y la versión oficial se cayó.",
+     "escena": {
+      "tipo": "foto",
+      "img": 12
+     }
+    },
+    {
+     "texto": "Iguala, México, septiembre de dos mil catorce.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 18.345,
+      "lon": -99.539,
+      "lugar": "Iguala, Guerrero",
+      "km": 8
+     }
+    },
+    {
+     "texto": "La policía persiguió y atacó a estudiantes de Ayotzinapa.",
+     "escena": {
+      "tipo": "foto",
+      "img": 11
+     }
+    },
+    {
+     "texto": "Cuarenta y tres jóvenes nunca volvieron.",
+     "escena": {
+      "tipo": "contador",
+      "n": 43,
+      "texto": "DESAPARECIDOS",
+      "sub": "Iguala, 2014"
+     }
+    },
+    {
+     "texto": "Cinco expertos internacionales llegaron a investigar.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Descartaron el incendio en Cocula, la base de la versión oficial.",
+     "escena": {
+      "tipo": "foto",
+      "img": 9
+     },
+     "rotulo": "VERSIÓN DESCARTADA"
+    },
+    {
+     "texto": "Y denunciaron que el gobierno obstruyó su trabajo.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "Su informe final concluyó que el Ejército, la Marina y la policía sabían dónde estaban.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     }
+    },
+    {
+     "texto": "Y que contribuyeron a su desaparición. Sus familias siguen exigiendo justicia. Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "img": 7
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb1",
+   "tipo": "fb",
+   "hora_fb": "12:30",
+   "articulo": "Grupo Interdisciplinario de Expertos Independientes (México)",
+   "fuente": "https://es.wikipedia.org/wiki/Grupo_Interdisciplinario_de_Expertos_Independientes_(M%C3%A9xico)",
+   "titulo_video": "LA VERSIÓN OFICIAL SE CAYÓ",
+   "titulo_youtube": "43 estudiantes desaparecieron en una noche… y la versión oficial se cayó",
+   "descripcion_youtube": "Iguala, 2014: 43 estudiantes de Ayotzinapa desaparecen en una sola noche.\nCinco expertos internacionales llegaron a investigar… y lo que encontraron cambió todo.\nEsta es la historia del GIEI.\n#misterio #casosreales #ridmer",
+   "etiquetas": [
+    "misterio",
+    "casos reales",
+    "ridmer",
+    "Ayotzinapa",
+    "43 estudiantes",
+    "GIEI",
+    "Iguala",
+    "México"
+   ],
+   "texto_facebook": "43 estudiantes desaparecieron en una sola noche en México. Cinco expertos llegaron a investigar… y la versión oficial no resistió. #misterio #casosreales #ridmer",
+   "miniatura": {
+    "img": 12,
+    "texto": "SABÍAN DÓNDE ESTABAN"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Cuarenta y tres estudiantes desaparecieron en una sola noche en México… y la versión oficial no resistió la investigación.",
+     "escena": {
+      "tipo": "foto",
+      "img": 12
+     }
+    },
+    {
+     "texto": "Veintiséis de septiembre de dos mil catorce. Iguala, Guerrero.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "26 DE SEPTIEMBRE DE 2014",
+      "sub": "Iguala, Guerrero"
+     }
+    },
+    {
+     "texto": "Esa noche, la policía municipal persiguió y atacó a estudiantes de la Normal Rural de Ayotzinapa.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 18.345,
+      "lon": -99.539,
+      "lugar": "Iguala, Guerrero",
+      "km": 8
+     }
+    },
+    {
+     "texto": "Hubo al menos nueve muertos y veintisiete heridos.",
+     "escena": {
+      "tipo": "contador",
+      "n": 9,
+      "texto": "MUERTOS",
+      "sub": "y 27 heridos"
+     }
+    },
+    {
+     "texto": "Y cuarenta y tres jóvenes nunca volvieron a casa.",
+     "escena": {
+      "tipo": "foto",
+      "img": 11
+     },
+     "rotulo": "43 DESAPARECIDOS"
+    },
+    {
+     "texto": "Sus padres no creyeron lo que les decía el gobierno, y pidieron ayuda fuera del país.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=GIJiXPbLbn0",
+      "desde": 20,
+      "dur": 5,
+      "img": 8
+     }
+    },
+    {
+     "texto": "Así llegaron cinco expertos independientes, de Colombia, Guatemala, Chile y España.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Su misión: buscar con vida a los estudiantes y revisar toda la investigación.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "El seis de septiembre de dos mil quince presentaron sus resultados.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "6 DE SEPTIEMBRE DE 2015",
+      "sub": "Primer informe del GIEI"
+     }
+    },
+    {
+     "texto": "Y descartaron la hipótesis del incendio en Cocula, la base de la versión oficial.",
+     "escena": {
+      "tipo": "foto",
+      "img": 9
+     },
+     "rotulo": "VERSIÓN DESCARTADA"
+    },
+    {
+     "texto": "Después denunciaron que el gobierno obstruyó su trabajo a propósito.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "Uno de ellos lo dijo sin rodeos:",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "«Nos han mentido, nos han respondido con falsedades».",
+     "escena": {
+      "tipo": "cita",
+      "texto": "Nos han mentido, nos han respondido con falsedades.",
+      "autor": "Carlos Martín Beristain, GIEI"
+     }
+    },
+    {
+     "texto": "Su sexto y último informe llegó en julio de dos mil veintitrés.",
+     "escena": {
+      "tipo": "linea_tiempo",
+      "hitos": [
+       [
+        "2014",
+        "Desaparecen los 43"
+       ],
+       [
+        "2015",
+        "Llega el GIEI"
+       ],
+       [
+        "2016",
+        "Denuncian obstrucción"
+       ],
+       [
+        "2023",
+        "Último informe"
+       ]
+      ]
+     }
+    },
+    {
+     "texto": "Concluyó que el Ejército, la Marina y la policía sabían dónde estaban los estudiantes… y contribuyeron a su desaparición.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     },
+     "rotulo": "SABÍAN DÓNDE ESTABAN"
+    },
+    {
+     "texto": "Más de diez años después, sus familias siguen exigiendo la verdad.",
+     "escena": {
+      "tipo": "foto",
+      "img": 7
+     }
+    },
+    {
+     "texto": "Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 10
+     }
+    }
+   ]
+  },
+  {
+   "eid": "sh1",
+   "tipo": "short",
+   "hora_youtube": "15:00",
+   "titulo_video": "SE PARTIÓ CON EL TREN ENCIMA",
+   "articulo": "Accidente del Metro de la Ciudad de México de 2021",
+   "fuente": "https://es.wikipedia.org/wiki/Accidente_del_Metro_de_la_Ciudad_de_M%C3%A9xico_de_2021",
+   "titulo_youtube": "El puente del Metro se partió con el tren encima… y lo habían advertido #shorts",
+   "descripcion_youtube": "Línea 12 del Metro, Ciudad de México, 3 de mayo de 2021.\n#misterio #casosreales #ridmer #shorts",
+   "etiquetas": [
+    "misterio",
+    "casos reales",
+    "ridmer",
+    "Línea 12",
+    "Metro CDMX",
+    "Olivos",
+    "shorts"
+   ],
+   "texto_facebook": "",
+   "miniatura": {
+    "img": 3,
+    "texto": "LO ADVIRTIERON"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "El puente del Metro se partió con el tren encima… y lo habían advertido.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Tres de mayo de dos mil veintiuno, de noche.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "3 DE MAYO DE 2021",
+      "sub": "22:22 · Línea 12, Ciudad de México"
+     }
+    },
+    {
+     "texto": "La Línea 12 se desplomó cerca de la estación Olivos.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=ds8pw_O86yc",
+      "desde": 3,
+      "dur": 6,
+      "img": 9
+     }
+    },
+    {
+     "texto": "Dos vagones cayeron sobre la avenida Tláhuac.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Murieron veintiséis personas y hubo más de ochenta heridos.",
+     "escena": {
+      "tipo": "contador",
+      "n": 26,
+      "texto": "MUERTOS",
+      "sub": "y más de 80 heridos"
+     }
+    },
+    {
+     "texto": "Desde dos mil diecisiete, los vecinos reportaban daños.",
+     "escena": {
+      "tipo": "foto",
+      "img": 13
+     }
+    },
+    {
+     "texto": "Los peritos hallaron piezas faltantes y soldaduras de mala calidad.",
+     "escena": {
+      "tipo": "foto",
+      "img": 7
+     },
+     "rotulo": "SOLDADURAS FALLIDAS"
+    },
+    {
+     "texto": "Fue el accidente más mortífero del Metro en casi cincuenta años.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Diez exfuncionarios fueron acusados de homicidio. Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "img": 15
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb2s",
+   "tipo": "short",
+   "encargo": "fb2",
+   "hora_youtube": "17:00",
+   "titulo_video": "LO LLAMAN HONOR",
+   "titulo_youtube": "Su propia familia lo decide… y lo llaman honor #shorts",
+   "descripcion_youtube": "Crímenes de honor: miles de víctimas cada año.\n#misterio #casosreales #ridmer #shorts",
+   "etiquetas": [
+    "misterio",
+    "casos reales",
+    "ridmer",
+    "crimen de honor",
+    "shorts"
+   ],
+   "texto_facebook": "",
+   "miniatura": {
+    "seg": 0,
+    "texto": "LO LLAMAN HONOR"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Hay familias que matan a sus propias hijas… y lo llaman honor.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "honour killing protest",
+       "stop honour killing"
+      ]
+     }
+    },
+    {
+     "texto": "Basta con amar a alguien que no aprueban.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Pakistan women protest",
+       "women rights protest Pakistan"
+      ]
+     }
+    },
+    {
+     "texto": "A veces lo decide todo un consejo familiar.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "CONSEJO FAMILIAR",
+      "sub": "la decisión es colectiva"
+     }
+    },
+    {
+     "texto": "Y a menudo eligen a un niño de la familia para hacerlo.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "honor killing"
+      ]
+     }
+    },
+    {
+     "texto": "La ONU calculó cinco mil víctimas al año. Otros, más de veinte mil.",
+     "escena": {
+      "tipo": "contador",
+      "n": 5000,
+      "texto": "VÍCTIMAS AL AÑO",
+      "sub": "ONU · otros cálculos: +20 000"
+     }
+    },
+    {
+     "texto": "Muchos casos se registran como suicidios o accidentes.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "women protest violence candles"
+      ]
+     }
+    },
+    {
+     "texto": "Pasa sobre todo en India, Pakistán y Nepal.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 27.0,
+      "lon": 76.0,
+      "lugar": "India · Pakistán · Nepal",
+      "km": 1200
+     }
+    },
+    {
+     "texto": "Y casi nunca hay castigo. Es una violación de los derechos humanos. Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "International Women's Day march"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb2",
+   "tipo": "fb",
+   "hora_fb": "18:30",
+   "articulo": "Crimen de honor",
+   "fuente": "https://es.wikipedia.org/wiki/Crimen_de_honor",
+   "titulo_video": "LO LLAMAN HONOR",
+   "titulo_youtube": "Hay familias que matan a sus propias hijas… y lo llaman honor",
+   "descripcion_youtube": "Miles de mujeres mueren cada año a manos de su propia familia.\nLo deciden juntos, a veces en un consejo familiar… y casi nunca hay castigo.\n#misterio #casosreales #ridmer",
+   "etiquetas": [
+    "misterio",
+    "casos reales",
+    "ridmer",
+    "crimen de honor",
+    "derechos humanos",
+    "mujeres"
+   ],
+   "texto_facebook": "Hay familias que matan a sus propias hijas… y lo llaman honor. Lo más escalofriante: casi nunca lo hace una sola persona. #misterio #casosreales #ridmer",
+   "miniatura": {
+    "seg": 0,
+    "texto": "LO LLAMAN HONOR"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Hay familias que matan a sus propias hijas… y lo llaman honor.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "honour killing protest",
+       "stop honour killing"
+      ]
+     }
+    },
+    {
+     "texto": "Se llama crimen de honor: el asesinato de una persona a manos de su propia familia.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "CRIMEN DE HONOR",
+      "sub": "asesinato por parte de la propia familia"
+     }
+    },
+    {
+     "texto": "La familia cree que la víctima la deshonró.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "candlelight vigil women",
+       "vigil violence against women"
+      ]
+     }
+    },
+    {
+     "texto": "Basta con amar a alguien que la familia no aprueba.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Pakistan women protest",
+       "women rights protest Pakistan"
+      ]
+     }
+    },
+    {
+     "texto": "O con vestirse de una forma que consideran inapropiada.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "violence against women protest India"
+      ]
+     }
+    },
+    {
+     "texto": "Lo más escalofriante es que casi nunca lo hace una sola persona.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Aurat March"
+      ]
+     }
+    },
+    {
+     "texto": "A veces lo decide todo un consejo familiar.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "CONSEJO FAMILIAR",
+      "sub": "la decisión es colectiva"
+     }
+    },
+    {
+     "texto": "Y a menudo eligen a los niños de la familia para hacerlo.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "honor killing"
+      ]
+     }
+    },
+    {
+     "texto": "En el año dos mil, la ONU calculó cinco mil víctimas cada año.",
+     "escena": {
+      "tipo": "contador",
+      "n": 5000,
+      "texto": "VÍCTIMAS AL AÑO",
+      "sub": "cálculo de la ONU (2000)"
+     }
+    },
+    {
+     "texto": "Grupos de mujeres creen que son más de veinte mil.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "MÁS DE 20 000",
+      "sub": "según grupos de defensa de las mujeres"
+     }
+    },
+    {
+     "texto": "Muchos casos se registran como suicidios o accidentes.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "women protest violence candles"
+      ]
+     }
+    },
+    {
+     "texto": "Los países con más casos son India, Pakistán y Nepal, pero ocurre en todo el mundo.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 27.0,
+      "lon": 76.0,
+      "lugar": "India · Pakistán · Nepal",
+      "km": 1200
+     }
+    },
+    {
+     "texto": "Ya en la antigua Roma, el padre de familia tenía derecho a matar a su hija.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Roman Forum ruins"
+      ]
+     }
+    },
+    {
+     "texto": "Una abogada paquistaní, Hina Jilani, lo resumió así:",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Hina Jilani",
+      "sub": "Abogada y activista · Pakistán",
+      "buscar": "Hina Jilani"
+     }
+    },
+    {
+     "texto": "«El derecho a la vida de las mujeres en Pakistán está condicionado a su obediencia».",
+     "escena": {
+      "tipo": "cita",
+      "texto": "El derecho a la vida de las mujeres en Pakistán está condicionado a su obediencia de las normas y tradiciones sociales.",
+      "autor": "Hina Jilani"
+     }
+    },
+    {
+     "texto": "Y en la mayoría de los casos, los asesinos no enfrentan ningún castigo.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "justice for women protest"
+      ]
+     }
+    },
+    {
+     "texto": "Human Rights Watch lo dice claro: es una violación de los derechos humanos.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "International Women's Day march"
+      ]
+     }
+    },
+    {
+     "texto": "Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "candles memorial night"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "largo1",
+   "tipo": "largo",
+   "hora_youtube": "18:00",
+   "articulo": "Terremoto de México de 1985",
+   "fuente": "https://es.wikipedia.org/wiki/Terremoto_de_M%C3%A9xico_de_1985",
+   "titulo_video": "7:19 DE LA MAÑANA",
+   "titulo_youtube": "A las 7:19 la Ciudad de México empezó a caerse: el terremoto de 1985",
+   "descripcion_youtube": "19 de septiembre de 1985. En un par de minutos, la Ciudad de México cambió para siempre.\nEdificios en el suelo, un gobierno que minimizó la tragedia… y miles de voluntarios rescatando con sus manos.\nEsta es la historia real del terremoto de 1985.\n#misterio #casosreales #ridmer",
+   "etiquetas": [
+    "misterio",
+    "casos reales",
+    "ridmer",
+    "terremoto 1985",
+    "sismo 19 de septiembre",
+    "Ciudad de México",
+    "los topos",
+    "Hotel Regis",
+    "Tlatelolco"
+   ],
+   "texto_facebook": "",
+   "miniatura": {
+    "img": 5,
+    "texto": "7:19 A.M."
+   },
+   "gancho": 2,
+   "segmentos": [
+    {
+     "texto": "Eran las siete y diecinueve de la mañana cuando la Ciudad de México empezó a moverse… y en un par de minutos, miles de vidas cambiaron para siempre.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "Esta es la historia del terremoto de mil novecientos ochenta y cinco, el más destructivo en la historia escrita de México.",
+     "escena": {
+      "tipo": "foto",
+      "img": 20
+     }
+    },
+    {
+     "texto": "Jueves diecinueve de septiembre de mil novecientos ochenta y cinco.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "19 DE SEPTIEMBRE DE 1985",
+      "sub": "Jueves, 7:17 de la mañana"
+     }
+    },
+    {
+     "texto": "A las siete y diecisiete, frente a la costa de Michoacán, cerca del puerto de Lázaro Cárdenas, la tierra se rompió bajo el océano Pacífico.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 17.95,
+      "lon": -102.2,
+      "lugar": "Lázaro Cárdenas, Michoacán",
+      "km": 60
+     }
+    },
+    {
+     "texto": "La magnitud fue de ocho punto uno, y la sacudida duró cerca de dos minutos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     },
+     "rotulo": "MAGNITUD 8.1"
+    },
+    {
+     "texto": "La onda sísmica viajó tierra adentro, cientos de kilómetros, y llegó a la capital a las siete y diecinueve.",
+     "escena": {
+      "tipo": "ruta",
+      "a": [
+       17.95,
+       -102.2
+      ],
+      "b": [
+       19.43,
+       -99.13
+      ],
+      "na": "EPICENTRO",
+      "nb": "CIUDAD DE MÉXICO",
+      "centro": [
+       18.7,
+       -100.7
+      ],
+      "km": 260
+     }
+    },
+    {
+     "texto": "En la ciudad vivían más de diez millones de personas. Muchas seguían en casa, o iban camino al trabajo.",
+     "escena": {
+      "tipo": "foto",
+      "img": 12
+     }
+    },
+    {
+     "texto": "Los edificios empezaron a balancearse, de un lado a otro.",
+     "escena": {
+      "tipo": "foto",
+      "img": 14
+     }
+    },
+    {
+     "texto": "Y entonces, empezaron a caer.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=gJzj4_NwoHM",
+      "desde": 15,
+      "dur": 6,
+      "img": 18
+     }
+    },
+    {
+     "texto": "En Tlatelolco, el edificio Nuevo León, de trece pisos, se partió. Dos de sus tres secciones se vinieron abajo.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://youtube.com/watch?v=xDsk9fSLutY",
+      "desde": 10,
+      "dur": 6,
+      "img": 14
+     }
+    },
+    {
+     "texto": "En el centro, el Hotel Regis se derrumbó y después ardió en llamas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 8
+     }
+    },
+    {
+     "texto": "El Hospital Juárez perdió su torre de doce pisos, con pacientes, médicos y enfermeras adentro. Ahí se encontraron cientos de cuerpos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 19
+     }
+    },
+    {
+     "texto": "En la calzada de San Antonio Abad, los talleres de costura se desplomaron con las trabajadoras adentro. Cientos de talleres quedaron destruidos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 20
+     }
+    },
+    {
+     "texto": "Y en Pino Suárez, las torres de departamentos quedaron destrozadas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 13
+     }
+    },
+    {
+     "texto": "En el país no existía una cultura de protección civil, ni protocolos para una catástrofe así. Nadie sabía qué hacer.",
+     "escena": {
+      "tipo": "foto",
+      "img": 15
+     }
+    },
+    {
+     "texto": "Y el gobierno del presidente Miguel de la Madrid minimizó lo que estaba pasando.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Miguel de la Madrid",
+      "sub": "Presidente de México en 1985"
+     }
+    },
+    {
+     "texto": "Al principio, su gobierno incluso anunció que no pediría ayuda internacional.",
+     "escena": {
+      "tipo": "foto",
+      "img": 18
+     },
+     "rotulo": "SIN AYUDA"
+    },
+    {
+     "texto": "Las primeras cuarenta y ocho horas fueron de caos total, en toda la ciudad.",
+     "escena": {
+      "tipo": "contador",
+      "n": 48,
+      "texto": "HORAS DE CAOS",
+      "sub": "tras el sismo"
+     }
+    },
+    {
+     "texto": "Entonces, la gente hizo lo que el gobierno no hacía. Miles de voluntarios buscaron sobrevivientes con sus propias manos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 17
+     }
+    },
+    {
+     "texto": "En Tlatelolco, un grupo de jóvenes se metía entre los escombros, sin equipo y sin entrenamiento, buscando a quien siguiera con vida.",
+     "escena": {
+      "tipo": "foto",
+      "img": 19
+     }
+    },
+    {
+     "texto": "Los llamaron los Topos. Hoy son una brigada de rescate que ayuda en desastres de todo el mundo.",
+     "escena": {
+      "tipo": "foto",
+      "img": 16
+     },
+     "rotulo": "LOS TOPOS"
+    },
+    {
+     "texto": "Y entre tanta muerte, también hubo milagros.",
+     "escena": {
+      "tipo": "foto",
+      "img": 17
+     }
+    },
+    {
+     "texto": "Días después del sismo, rescataron con vida a casi todos los recién nacidos de los cuneros del Hospital Juárez. Los llamaron los bebés milagro.",
+     "escena": {
+      "tipo": "foto",
+      "img": 19
+     },
+     "rotulo": "BEBÉS MILAGRO"
+    },
+    {
+     "texto": "Pero la pesadilla no había terminado.",
+     "escena": {
+      "tipo": "foto",
+      "img": 20
+     }
+    },
+    {
+     "texto": "La noche del veinte de septiembre, una réplica muy fuerte volvió a sacudir la ciudad, y el miedo regresó.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "20 DE SEPTIEMBRE",
+      "sub": "La réplica, de noche"
+     }
+    },
+    {
+     "texto": "Los edificios que el primer sismo había debilitado terminaron de caer.",
+     "escena": {
+      "tipo": "foto",
+      "img": 18
+     }
+    },
+    {
+     "texto": "¿Cuántos murieron? Nadie lo sabe con certeza. La cifra oficial fue de tres mil ciento noventa y dos.",
+     "escena": {
+      "tipo": "contador",
+      "n": 3192,
+      "texto": "MUERTOS (CIFRA OFICIAL)",
+      "sub": "19 y 20 de septiembre de 1985"
+     }
+    },
+    {
+     "texto": "Pero algunas organizaciones calcularon veinte mil.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     },
+     "rotulo": "20 000 MUERTOS"
+    },
+    {
+     "texto": "Unas doscientas cincuenta mil personas se quedaron sin casa, y novecientas mil tuvieron que dejar sus hogares.",
+     "escena": {
+      "tipo": "contador",
+      "n": 250000,
+      "texto": "PERSONAS SIN CASA",
+      "sub": "y 900 000 fuera de sus hogares"
+     }
+    },
+    {
+     "texto": "Las pérdidas llegaron a unos ocho mil millones de dólares, en plena crisis económica, y a meses de que México recibiera el Mundial de mil novecientos ochenta y seis.",
+     "escena": {
+      "tipo": "foto",
+      "img": 12
+     }
+    },
+    {
+     "texto": "Los rescates siguieron hasta octubre. Y retirar los escombros tomó años. Todavía en dos mil diecisiete existían campamentos de damnificados.",
+     "escena": {
+      "tipo": "foto",
+      "img": 15
+     }
+    },
+    {
+     "texto": "Pero la ciudad que salió de las ruinas ya no era la misma. La gente aprendió a organizarse sola, y nacieron nuevas organizaciones ciudadanas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 10
+     }
+    },
+    {
+     "texto": "En mil novecientos ochenta y seis se creó el Sistema Nacional de Protección Civil, y se cambiaron las reglas de construcción en todo el país.",
+     "escena": {
+      "tipo": "linea_tiempo",
+      "hitos": [
+       [
+        "1985",
+        "El terremoto"
+       ],
+       [
+        "1986",
+        "Protección Civil"
+       ],
+       [
+        "1997",
+        "La capital elige gobierno"
+       ],
+       [
+        "2017",
+        "Otro 19 de septiembre"
+       ]
+      ]
+     }
+    },
+    {
+     "texto": "Y en mil novecientos noventa y siete, los capitalinos pudieron por fin elegir a sus gobernantes.",
+     "escena": {
+      "tipo": "foto",
+      "img": 11
+     }
+    },
+    {
+     "texto": "Desde entonces, cada diecinueve de septiembre se hace un simulacro en todo el país.",
+     "escena": {
+      "tipo": "foto",
+      "img": 9
+     }
+    },
+    {
+     "texto": "Y en dos mil diecisiete, el mismo diecinueve de septiembre, horas después del simulacro, otro terremoto volvió a sacudir la Ciudad de México.",
+     "escena": {
+      "tipo": "foto",
+      "img": 9
+     },
+     "rotulo": "OTRO 19 DE SEPTIEMBRE"
+    },
+    {
+     "texto": "Como si la tierra quisiera recordar esa fecha. Hoy, un memorial guarda la fecha que México no olvida.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    }
+   ]
+  },
+  {
+   "eid": "sh2",
+   "tipo": "short",
+   "encargo": "largo1",
+   "hora_youtube": "19:00",
+   "titulo_video": "LA CIUDAD EMPEZÓ A CAERSE",
+   "articulo": "Terremoto de México de 1985",
+   "fuente": "https://es.wikipedia.org/wiki/Terremoto_de_M%C3%A9xico_de_1985",
+   "titulo_youtube": "A las 7:19 la Ciudad de México empezó a caerse #shorts",
+   "descripcion_youtube": "19 de septiembre de 1985: el terremoto que cambió a México.\n#misterio #casosreales #ridmer #shorts",
+   "etiquetas": [
+    "misterio",
+    "casos reales",
+    "ridmer",
+    "terremoto 1985",
+    "sismo",
+    "Ciudad de México",
+    "shorts"
+   ],
+   "texto_facebook": "",
+   "miniatura": {
+    "img": 5,
+    "texto": "7:19 A.M."
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "A las siete y diecinueve de la mañana, la Ciudad de México empezó a caerse.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "Diecinueve de septiembre de mil novecientos ochenta y cinco.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "19 DE SEPTIEMBRE DE 1985",
+      "sub": "Magnitud 8.1"
+     }
+    },
+    {
+     "texto": "El epicentro estaba en la costa de Michoacán.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     }
+    },
+    {
+     "texto": "Pero en la capital se derrumbaron cientos de edificios.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=gJzj4_NwoHM",
+      "desde": 15,
+      "dur": 6,
+      "img": 20
+     }
+    },
+    {
+     "texto": "Los vecinos rescataban a la gente con sus propias manos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 17
+     }
+    },
+    {
+     "texto": "La noche siguiente, una réplica tiró edificios que ya estaban dañados.",
+     "escena": {
+      "tipo": "foto",
+      "img": 19
+     }
+    },
+    {
+     "texto": "Oficialmente, tres mil ciento noventa y dos muertos. Otros cálculos: veinte mil.",
+     "escena": {
+      "tipo": "contador",
+      "n": 3192,
+      "texto": "MUERTOS (CIFRA OFICIAL)",
+      "sub": "otros cálculos: 20 000"
+     }
+    },
+    {
+     "texto": "De esa tragedia nació Protección Civil y el simulacro de cada diecinueve de septiembre. Sígueme en Ridmer.",
+     "escena": {
+      "tipo": "foto",
+      "img": 9
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb3",
+   "tipo": "fb",
+   "hora_fb": "21:00",
+   "articulo": "Santa Muerte",
+   "fuente": "https://es.wikipedia.org/wiki/Santa_Muerte",
+   "titulo_video": "UN ESQUELETO VESTIDO DE VIRGEN",
+   "titulo_youtube": "Millones le rezan a un esqueleto… y la Iglesia no puede detenerla",
+   "descripcion_youtube": "Fue un secreto durante décadas. Hoy millones de personas le rezan.\nEl gobierno le quitó el registro y la Iglesia la condena… pero no deja de crecer.\n#misterio #casosreales #ridmer",
+   "etiquetas": [
+    "misterio",
+    "ridmer",
+    "Santa Muerte",
+    "México",
+    "Tepito",
+    "religión popular",
+    "Día de Muertos"
+   ],
+   "texto_facebook": "Durante décadas le rezaron en secreto. Hoy millones la siguen… y la Iglesia no ha podido detenerla. #misterio #mexico #ridmer",
+   "miniatura": {
+    "img": 3,
+    "texto": "LA SANTA MUERTE"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Tiene millones de seguidores… y es un esqueleto vestido como virgen.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "La llaman la Santa Muerte.",
+     "escena": {
+      "tipo": "foto",
+      "img": 7
+     }
+    },
+    {
+     "texto": "Casi siempre aparece como una figura esquelética femenina, con túnica larga, guadaña y un globo.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Sus devotos le piden curación, protección y una llegada segura al más allá.",
+     "escena": {
+      "tipo": "foto",
+      "img": 9
+     }
+    },
+    {
+     "texto": "Antropólogos de Estados Unidos reportaron su culto en México en los años cuarenta.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "AÑOS 40",
+      "sub": "primeros reportes en México"
+     }
+    },
+    {
+     "texto": "Durante décadas fue un secreto: se le rezaba en casa, en privado.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Hasta que en dos mil uno, una creyente llamada Enriqueta Romero abrió su famoso santuario en la Ciudad de México.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://m.youtube.com/watch?v=AwqbbrZG55c",
+      "desde": 30,
+      "dur": 6,
+      "img": 8
+     }
+    },
+    {
+     "texto": "Desde entonces, el culto salió a la calle.",
+     "escena": {
+      "tipo": "foto",
+      "img": 8
+     }
+    },
+    {
+     "texto": "En dos mil cinco, el gobierno mexicano le canceló el registro como asociación religiosa.",
+     "escena": {
+      "tipo": "foto",
+      "img": 12
+     },
+     "rotulo": "REGISTRO CANCELADO"
+    },
+    {
+     "texto": "La Iglesia católica la condena.",
+     "escena": {
+      "tipo": "foto",
+      "img": 11
+     }
+    },
+    {
+     "texto": "Y aun así, no ha dejado de crecer.",
+     "escena": {
+      "tipo": "foto",
+      "img": 9
+     }
+    },
+    {
+     "texto": "En Tultitlán, Estado de México, un templo guarda su imagen más grande.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Se calcula que tiene doce millones de seguidores en México, Centroamérica y Estados Unidos.",
+     "escena": {
+      "tipo": "contador",
+      "n": 12,
+      "texto": "MILLONES DE SEGUIDORES",
+      "sub": "México, Centroamérica y EE. UU."
+     }
+    },
+    {
+     "texto": "En Argentina y Paraguay tiene un pariente: San La Muerte.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": -27.0,
+      "lon": -58.0,
+      "lugar": "Argentina y Paraguay",
+      "km": 600
+     }
+    },
+    {
+     "texto": "Muchos la llaman con cariño «la virgencita».",
+     "escena": {
+      "tipo": "foto",
+      "img": 13
+     }
+    },
+    {
+     "texto": "Un periodista la bautizó como «la virgen de los olvidados».",
+     "escena": {
+      "tipo": "cita",
+      "texto": "La virgen de los olvidados.",
+      "autor": "José Gil Olmos, periodista"
+     }
+    },
+    {
+     "texto": "Y para el investigador Andrew Chesnut, es el movimiento religioso que más rápido crece en el mundo.",
+     "escena": {
+      "tipo": "foto",
+      "img": 10
+     },
+     "rotulo": "EL QUE MÁS CRECE"
+    },
+    {
+     "texto": "Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 7
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb3s",
+   "tipo": "short",
+   "encargo": "fb3",
+   "hora_youtube": "22:00",
+   "titulo_video": "LA SANTA MUERTE",
+   "titulo_youtube": "Millones le rezan a un esqueleto vestido de virgen #shorts",
+   "descripcion_youtube": "La Santa Muerte: de culto secreto a millones de fieles.\n#misterio #mexico #ridmer #shorts",
+   "etiquetas": [
+    "misterio",
+    "ridmer",
+    "Santa Muerte",
+    "México",
+    "shorts"
+   ],
+   "texto_facebook": "",
+   "miniatura": {
+    "img": 3,
+    "texto": "LA SANTA MUERTE"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Millones le rezan… a un esqueleto vestido como virgen.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Es la Santa Muerte, nacida en México.",
+     "escena": {
+      "tipo": "foto",
+      "img": 7
+     }
+    },
+    {
+     "texto": "Lleva túnica, guadaña y un globo en la mano.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Por décadas se le rezó en secreto, dentro de las casas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "En dos mil uno, Enriqueta Romero abrió su santuario en la Ciudad de México.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://m.youtube.com/watch?v=AwqbbrZG55c",
+      "desde": 30,
+      "dur": 6,
+      "img": 8
+     }
+    },
+    {
+     "texto": "El gobierno le canceló el registro religioso, y la Iglesia la condena.",
+     "escena": {
+      "tipo": "foto",
+      "img": 12
+     }
+    },
+    {
+     "texto": "Pero hoy se calcula que tiene doce millones de seguidores.",
+     "escena": {
+      "tipo": "contador",
+      "n": 12,
+      "texto": "MILLONES DE SEGUIDORES",
+      "sub": "México, Centroamérica y EE. UU."
+     }
+    },
+    {
+     "texto": "Dicen que es el culto que más rápido crece en el mundo. Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "img": 10
+     }
+    }
+   ]
+  }
+ ]
+}
