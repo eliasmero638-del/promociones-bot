@@ -1,0 +1,1364 @@
+{
+ "fecha": "2026-11-08",
+ "modo": "claude",
+ "videos": [
+  {
+   "eid": "fb1s",
+   "tipo": "short",
+   "encargo": "fb1",
+   "hora_youtube": "12:00",
+   "titulo_video": "EL SUEGRO DEL CHAPO",
+   "articulo": "Inés Coronel Barreras",
+   "fuente": "https://es.wikipedia.org/wiki/In%C3%A9s_Coronel_Barreras",
+   "titulo_youtube": "Decía ser ganadero… pero era el suegro del Chapo #shorts",
+   "descripcion_youtube": "Inés Coronel Barreras, suegro de Joaquín “El Chapo” Guzmán, fue detenido en Agua Prieta, Sonora, en 2013.\n#misterio #casosreales #ridmer #shorts",
+   "etiquetas": [
+    "misterio",
+    "casos reales",
+    "ridmer",
+    "El Chapo",
+    "Inés Coronel",
+    "Cártel de Sinaloa",
+    "Sonora",
+    "shorts"
+   ],
+   "texto_facebook": "",
+   "miniatura": {
+    "img": 1,
+    "texto": "EL SUEGRO DEL CHAPO"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Lo arrestaron sin disparar un solo tiro… y era el suegro del Chapo.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Inés Coronel Barreras decía ser ganadero en Durango.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Pero desde Sonora coordinaba cargamentos de marihuana hacia Arizona.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     }
+    },
+    {
+     "texto": "Su hija Emma se casó con Joaquín Guzmán.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "EMMA CORONEL",
+      "sub": "esposa de “El Chapo” Guzmán"
+     }
+    },
+    {
+     "texto": "En dos mil trece, la Policía Federal entró a su almacén en Agua Prieta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Hallaron rifles automáticos y al menos doscientos cincuenta kilos de marihuana.",
+     "escena": {
+      "tipo": "contador",
+      "n": 250,
+      "texto": "KILOS",
+      "sub": "de marihuana"
+     }
+    },
+    {
+     "texto": "En dos mil diecisiete lo condenaron a más de diez años de prisión.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "Su hijo también fue sentenciado.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "El suegro del Chapo terminó en la cárcel. Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb1",
+   "tipo": "fb",
+   "hora_fb": "12:30",
+   "articulo": "Inés Coronel Barreras",
+   "fuente": "https://es.wikipedia.org/wiki/In%C3%A9s_Coronel_Barreras",
+   "titulo_video": "EL SUEGRO DEL CHAPO",
+   "titulo_youtube": "Decía ser ganadero en Durango… pero era el suegro del Chapo",
+   "descripcion_youtube": "Oficialmente era ganadero. Lo apodaban “El Uno”. Y su hija estaba casada con el hombre más buscado de México.\nLa historia de Inés Coronel Barreras.\n#misterio #casosreales #ridmer",
+   "etiquetas": [
+    "misterio",
+    "casos reales",
+    "ridmer",
+    "El Chapo",
+    "Inés Coronel Barreras",
+    "Cártel de Sinaloa",
+    "Agua Prieta",
+    "México"
+   ],
+   "texto_facebook": "Decía ser ganadero en Durango… pero era el suegro del Chapo. Lo que encontraron en su almacén lo cambió todo. #misterio #mexico #ridmer",
+   "miniatura": {
+    "img": 1,
+    "texto": "EL SUEGRO DEL CHAPO"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Lo arrestaron en un almacén de Sonora… sin disparar un solo tiro.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Era el suegro de Joaquín, el Chapo, Guzmán.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Inés Coronel Barreras",
+      "sub": "“El Suegro” · Cártel de Sinaloa"
+     }
+    },
+    {
+     "texto": "Inés Coronel Barreras nació en Canelas, Durango, en mil novecientos sesenta y ocho.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 25.12,
+      "lon": -106.56,
+      "lugar": "Canelas, Durango",
+      "km": 30
+     }
+    },
+    {
+     "texto": "Oficialmente era ganadero en La Angostura.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Pero los vecinos decían que cultivaba marihuana y amapola.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Le decían El Uno… y El Suegro.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "“EL UNO”",
+      "sub": "también conocido como “El Suegro”"
+     }
+    },
+    {
+     "texto": "Su hija, Emma Coronel, se casó con el hombre más buscado de México.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "EMMA CORONEL",
+      "sub": "hija de Inés · esposa de “El Chapo”"
+     }
+    },
+    {
+     "texto": "Desde Agua Prieta, San Luis Río Colorado y Cananea coordinaba cargamentos hacia Arizona.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     }
+    },
+    {
+     "texto": "En enero de dos mil trece, Estados Unidos congeló sus bienes.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "9 DE ENERO DE 2013",
+      "sub": "Sancionado bajo la Ley Kingpin"
+     }
+    },
+    {
+     "texto": "Menos de cuatro meses después, la Policía Federal llegó por él.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Treinta de abril de dos mil trece. Agua Prieta, Sonora.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 31.33,
+      "lon": -109.55,
+      "lugar": "Agua Prieta, Sonora",
+      "km": 8
+     }
+    },
+    {
+     "texto": "Detuvieron también a su hijo y a otras tres personas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Adentro había cuatro rifles automáticos y una pistola…",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "…y al menos doscientos cincuenta kilos de marihuana.",
+     "escena": {
+      "tipo": "contador",
+      "n": 250,
+      "texto": "KILOS",
+      "sub": "de marihuana incautados"
+     }
+    },
+    {
+     "texto": "Esa tarde lo llevaron en avión a la Ciudad de México.",
+     "escena": {
+      "tipo": "ruta",
+      "centro": [
+       25.4,
+       -104.3
+      ],
+      "km": 900,
+      "a": [
+       31.33,
+       -109.55
+      ],
+      "b": [
+       19.43,
+       -99.13
+      ],
+      "na": "AGUA PRIETA",
+      "nb": "CDMX",
+      "corte": 1.0
+     }
+    },
+    {
+     "texto": "En dos mil catorce, la prensa dijo que se había fugado en Culiacán.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "26 DE MAYO DE 2014",
+      "sub": "¿Fuga en Culiacán?"
+     }
+    },
+    {
+     "texto": "El gobierno lo desmintió: seguía en un penal de máxima seguridad en Hermosillo.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     },
+     "rotulo": "ERA FALSO"
+    },
+    {
+     "texto": "En dos mil diecisiete lo condenaron a diez años, cinco meses y nueve días.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Su hijo, diez años y tres meses.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "El ganadero terminó condenado por narcotráfico. Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    }
+   ]
+  },
+  {
+   "eid": "sh1",
+   "tipo": "short",
+   "hora_youtube": "15:00",
+   "titulo_video": "CONDENADO Y ABSUELTO",
+   "articulo": "Caso Uribe",
+   "fuente": "https://es.wikipedia.org/wiki/Caso_Uribe",
+   "titulo_youtube": "Condenaron a un expresidente a 12 años… y 3 meses después lo absolvieron #shorts",
+   "descripcion_youtube": "El caso judicial contra Álvaro Uribe Vélez: de la condena en primera instancia a la absolución.\n#casosreales #colombia #ridmer #shorts",
+   "etiquetas": [
+    "misterio",
+    "casos reales",
+    "ridmer",
+    "Caso Uribe",
+    "Álvaro Uribe",
+    "Colombia",
+    "Iván Cepeda",
+    "shorts"
+   ],
+   "texto_facebook": "",
+   "miniatura": {
+    "img": 3,
+    "texto": "CONDENADO Y ABSUELTO"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Condenaron a un expresidente de Colombia… y luego lo absolvieron.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Todo empezó con un choque entre Álvaro Uribe e Iván Cepeda.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Cepeda lo vinculaba con paramilitares; Uribe lo denunció por manipular testigos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "En dos mil dieciocho, la Corte Suprema investigó a Uribe.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "2018",
+      "sub": "La Corte Suprema investiga a Uribe"
+     }
+    },
+    {
+     "texto": "En dos mil veinte pasó cerca de dos meses detenido.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "AGOSTO DE 2020",
+      "sub": "Detención domiciliaria"
+     }
+    },
+    {
+     "texto": "En julio de dos mil veinticinco, lo hallaron culpable.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Doce años de detención domiciliaria.",
+     "escena": {
+      "tipo": "contador",
+      "n": 12,
+      "texto": "AÑOS",
+      "sub": "condena en primera instancia"
+     }
+    },
+    {
+     "texto": "En octubre, el Tribunal de Bogotá lo absolvió de todo.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     },
+     "rotulo": "ABSUELTO"
+    },
+    {
+     "texto": "Uribe siempre alegó persecución política.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Ahora la Corte Suprema tiene la última palabra. Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb2s",
+   "tipo": "short",
+   "encargo": "fb2",
+   "hora_youtube": "17:00",
+   "titulo_video": "YA ESTABA MUERTO",
+   "articulo": "Caso Vegas Pérez",
+   "fuente": "https://es.wikipedia.org/wiki/Caso_Vegas_P%C3%A9rez",
+   "titulo_youtube": "Su familia pagó el rescate… pero el niño ya estaba muerto #shorts",
+   "descripcion_youtube": "El caso Vegas Pérez, Caracas 1973: un secuestro que sigue impune.\n#misterio #casosreales #ridmer #shorts",
+   "etiquetas": [
+    "misterio",
+    "casos reales",
+    "ridmer",
+    "Caso Vegas Pérez",
+    "Venezuela",
+    "Caracas",
+    "secuestro",
+    "shorts"
+   ],
+   "texto_facebook": "",
+   "miniatura": {
+    "img": 1,
+    "texto": "YA ESTABA MUERTO"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Pagaron el rescate a tiempo… pero el niño ya estaba muerto.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Caracas, mil novecientos setenta y tres. Carlos Vicente Vegas tenía trece años.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "FEBRERO DE 1973",
+      "sub": "Caracas, Venezuela"
+     }
+    },
+    {
+     "texto": "Desapareció cerca de su casa. Quizá aceptó un aventón.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Su familia pagó lo que pidieron los secuestradores.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "RESCATE PAGADO",
+      "sub": "26 de febrero de 1973"
+     }
+    },
+    {
+     "texto": "Días después lo hallaron sin vida en un barranco.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Había muerto antes del pago.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     },
+     "rotulo": "YA ESTABA MUERTO"
+    },
+    {
+     "texto": "Detuvieron a siete jóvenes de familias ricas de Caracas.",
+     "escena": {
+      "tipo": "contador",
+      "n": 7,
+      "texto": "DETENIDOS",
+      "sub": "de 18 a 24 años"
+     }
+    },
+    {
+     "texto": "Pero un tribunal anuló las detenciones por falta de pruebas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Más de cincuenta años después, el crimen sigue impune. Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     },
+     "rotulo": "IMPUNE"
+    }
+   ]
+  },
+  {
+   "eid": "fb2",
+   "tipo": "fb",
+   "hora_fb": "18:30",
+   "articulo": "Caso Vegas Pérez",
+   "fuente": "https://es.wikipedia.org/wiki/Caso_Vegas_P%C3%A9rez",
+   "titulo_video": "YA ESTABA MUERTO",
+   "titulo_youtube": "Su familia pagó el rescate a tiempo… pero el niño ya estaba muerto",
+   "descripcion_youtube": "Caracas, 1973. Un niño de 13 años desaparece cerca de su casa. Su familia paga el rescate… pero la verdad era otra.\nEl caso Vegas Pérez.\n#misterio #casosreales #ridmer",
+   "etiquetas": [
+    "misterio",
+    "casos reales",
+    "ridmer",
+    "Caso Vegas Pérez",
+    "Venezuela",
+    "Caracas",
+    "secuestro",
+    "crimen impune"
+   ],
+   "texto_facebook": "Su familia pagó el rescate a tiempo… pero el niño ya estaba muerto. Y los acusados eran de las familias más poderosas de Caracas. #misterio #casosreales #ridmer",
+   "miniatura": {
+    "img": 1,
+    "texto": "YA ESTABA MUERTO"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Su familia pagó el rescate a tiempo… pero el niño ya estaba muerto.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Caracas, Venezuela. Veintidós de febrero de mil novecientos setenta y tres.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "22 DE FEBRERO DE 1973",
+      "sub": "Caracas, Venezuela"
+     }
+    },
+    {
+     "texto": "Carlos Vicente Vegas Pérez tenía trece años.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Carlos Vicente Vegas Pérez",
+      "sub": "13 años · Caracas"
+     }
+    },
+    {
+     "texto": "Era hijo de Martín Vegas, el arquitecto de la Torre Polar.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Lo vieron por última vez cerca de su casa, en Lomas del Mirador.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 10.49,
+      "lon": -66.84,
+      "lugar": "Caracas, Venezuela",
+      "km": 8
+     }
+    },
+    {
+     "texto": "Se cree que pudo aceptar un aventón.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Los secuestradores pidieron dinero, y el veintiséis de febrero la familia pagó.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "26 DE FEBRERO",
+      "sub": "La familia paga el rescate"
+     }
+    },
+    {
+     "texto": "La policía había fotografiado cada billete.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "CADA BILLETE",
+      "sub": "fotografiado por la Policía Judicial"
+     }
+    },
+    {
+     "texto": "El primero de marzo encontraron su cuerpo en un barranco, a las afueras de Caracas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Fue en la Cortada del Guayabo, cerca de la autopista Coche–Las Tejerías.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 10.38,
+      "lon": -66.98,
+      "lugar": "Cortada del Guayabo",
+      "km": 15
+     }
+    },
+    {
+     "texto": "La investigación demostró que ya había muerto antes del pago.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     },
+     "rotulo": "YA ESTABA MUERTO"
+    },
+    {
+     "texto": "Detuvieron a siete jóvenes de entre dieciocho y veinticuatro años…",
+     "escena": {
+      "tipo": "contador",
+      "n": 7,
+      "texto": "DETENIDOS",
+      "sub": "de 18 a 24 años"
+     }
+    },
+    {
+     "texto": "…todos de familias ricas e ilustres de Caracas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Uno de los acusados era pariente de la primera dama.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "ALFREDO PARILLI PIETRI",
+      "sub": "acusado · pariente de la primera dama"
+     }
+    },
+    {
+     "texto": "Pero en enero de mil novecientos setenta y cuatro, un tribunal anuló las detenciones por falta de pruebas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Los jóvenes de familias poderosas salieron libres en menos de siete meses.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Solo dos, los que no tenían familias con poder, siguieron presos… por drogas, no por el secuestro.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "Hasta hoy, el crimen de Carlos Vicente sigue impune. Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     },
+     "rotulo": "IMPUNE"
+    }
+   ]
+  },
+  {
+   "eid": "largo1",
+   "tipo": "largo",
+   "hora_youtube": "18:00",
+   "articulo": "Autodefensas Unidas de Colombia",
+   "fuente": "https://es.wikipedia.org/wiki/Autodefensas_Unidas_de_Colombia",
+   "titulo_video": "LA SEXTA DIVISIÓN",
+   "titulo_youtube": "Los llamaron «la sexta división»: el ejército ilegal que marcó a Colombia",
+   "descripcion_youtube": "De los ejércitos privados de los años 50 a la desmovilización de 2006: la historia de las Autodefensas Unidas de Colombia (AUC).\nUn caso real, contado con los datos de las fuentes.\n#casosreales #colombia #ridmer",
+   "etiquetas": [
+    "misterio",
+    "casos reales",
+    "ridmer",
+    "AUC",
+    "Autodefensas Unidas de Colombia",
+    "paramilitares",
+    "Colombia",
+    "Castaño",
+    "historia"
+   ],
+   "texto_facebook": "",
+   "miniatura": {
+    "img": 3,
+    "texto": "LA SEXTA DIVISIÓN"
+   },
+   "gancho": 2,
+   "segmentos": [
+    {
+     "texto": "Human Rights Watch los llamó «la sexta división» de las fuerzas del Estado colombiano.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Pero eran un ejército ilegal de extrema derecha… y dejaron una de las huellas más sangrientas de la historia de Colombia.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Esta es la historia de las Autodefensas Unidas de Colombia, las AUC: cómo nacieron, qué hicieron y qué quedó de ellas.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "AUC",
+      "sub": "Autodefensas Unidas de Colombia"
+     }
+    },
+    {
+     "texto": "En los años cincuenta, en plena violencia entre liberales y conservadores, los grandes terratenientes ya pagaban ejércitos privados.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "AÑOS 50",
+      "sub": "Ejércitos privados de terratenientes"
+     }
+    },
+    {
+     "texto": "En febrero de mil novecientos sesenta y dos, el general estadounidense William Yarborough, de Fort Bragg, visitó Colombia.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "FEBRERO DE 1962",
+      "sub": "Visita del general William P. Yarborough"
+     }
+    },
+    {
+     "texto": "En un suplemento secreto de su informe pidió entrenar a civiles y militares en operaciones clandestinas de represión.",
+     "escena": {
+      "tipo": "cita",
+      "texto": "Debe crearse ahora mismo un equipo… para seleccionar personal civil y militar con miras a un entrenamiento clandestino en operaciones de represión.",
+      "autor": "Suplemento secreto, 1962"
+     }
+    },
+    {
+     "texto": "En mil novecientos sesenta y cinco, un decreto permitió entregar armas a civiles en zonas de conflicto.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "DECRETO 3398",
+      "sub": "25 de diciembre de 1965"
+     }
+    },
+    {
+     "texto": "Esa norma fue la base legal de las llamadas autodefensas… hasta que la declararon inconstitucional en mil novecientos ochenta y nueve.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "En mil novecientos setenta y nueve, en Amalfi, Antioquia, presuntamente un frente de las FARC secuestró al ganadero Jesús Castaño.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 6.91,
+      "lon": -75.08,
+      "lugar": "Amalfi, Antioquia",
+      "km": 20
+     }
+    },
+    {
+     "texto": "Sus hijos pagaron la mitad del rescate que pedían… pero aun así lo torturaron y lo asesinaron.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Sus hijos Fidel, Vicente y Carlos Castaño respondieron formando su propio grupo armado: Muerte a Revolucionarios del Nordeste.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "LOS CASTAÑO",
+      "sub": "Fidel, Vicente y Carlos"
+     }
+    },
+    {
+     "texto": "Mientras tanto, en el Magdalena Medio, entre mil novecientos ochenta y dos y mil novecientos noventa y tres, operaron las Autodefensas de Puerto Boyacá.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 5.98,
+      "lon": -74.59,
+      "lugar": "Puerto Boyacá, Magdalena Medio",
+      "km": 30
+     }
+    },
+    {
+     "texto": "Allí, con dinero del cartel de Medellín, contrataron instructores y mercenarios extranjeros para entrenar a sus hombres.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Los hermanos Castaño también se entrenaron con ese grupo, la experiencia piloto del paramilitarismo en Colombia.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "En Urabá, el primer reducto paramilitar nació en Las Tangas, una hacienda de los Castaño.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 8.09,
+      "lon": -76.73,
+      "lugar": "Urabá, Antioquia",
+      "km": 40
+     }
+    },
+    {
+     "texto": "En mil novecientos ochenta y ocho, bajo el nombre de Los Tangueros, cometieron la masacre de Honduras y La Negra, en Turbo.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "1988",
+      "sub": "Masacre de Honduras y La Negra · Turbo"
+     }
+    },
+    {
+     "texto": "En mil novecientos noventa y dos se aliaron con el cartel de Cali contra Pablo Escobar: eran Los Pepes.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "LOS PEPES",
+      "sub": "Perseguidos por Pablo Escobar · 1992"
+     }
+    },
+    {
+     "texto": "En mil novecientos noventa y cuatro asesinaron a Fidel Castaño, y su hermano Carlos tomó el mando de la organización.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "En mil novecientos noventa y cinco, con exguerrilleros desmovilizados del EPL, nacieron las Autodefensas Campesinas de Córdoba y Urabá.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "ACCU · 1995",
+      "sub": "Autodefensas Campesinas de Córdoba y Urabá"
+     }
+    },
+    {
+     "texto": "Y el dieciocho de abril de mil novecientos noventa y siete, varios grupos se unieron en uno solo: las AUC.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "18 DE ABRIL DE 1997",
+      "sub": "Nacen las AUC"
+     }
+    },
+    {
+     "texto": "Su objetivo declarado era combatir a las guerrillas: las FARC, el ELN y las disidencias del EPL.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Tuvieron el apoyo de políticos, militares, ganaderos, empresarios y personas comunes.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Y se financiaron con el narcotráfico, además de aportes de particulares.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "NARCOTRÁFICO",
+      "sub": "su principal fuente de dinero"
+     }
+    },
+    {
+     "texto": "El Gobierno de Colombia, la Unión Europea y Estados Unidos los declararon organización terrorista; Estados Unidos, hasta dos mil catorce.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "TERRORISTAS",
+      "sub": "Colombia · Unión Europea · Estados Unidos"
+     }
+    },
+    {
+     "texto": "Torturas, masacres, asesinatos, desplazamiento forzado y despojo de tierras marcaron su paso por el país.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Según la CODHES, fueron responsables del cuarenta y cuatro por ciento de los desalojos en Colombia.",
+     "escena": {
+      "tipo": "contador",
+      "n": 44,
+      "texto": "% DE LOS DESALOJOS",
+      "sub": "según CODHES"
+     }
+    },
+    {
+     "texto": "Y la Comisión de la Verdad les atribuye el cuarenta y cinco por ciento de los asesinatos de civiles del conflicto.",
+     "escena": {
+      "tipo": "contador",
+      "n": 45,
+      "texto": "% DE LOS CIVILES ASESINADOS",
+      "sub": "según la Comisión de la Verdad"
+     }
+    },
+    {
+     "texto": "Junto a otros grupos paramilitares, se les atribuyen noventa y cuatro mil setecientos cincuenta y cuatro asesinatos.",
+     "escena": {
+      "tipo": "contador",
+      "n": 94754,
+      "texto": "ASESINATOS",
+      "sub": "atribuidos a las AUC y otros paramilitares"
+     }
+    },
+    {
+     "texto": "Y todavía hoy se siguen encontrando fosas comunes, donde al parecer hay más de cuarenta mil cuerpos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Entre dos mil tres y dos mil seis, el gobierno de Álvaro Uribe negoció su desmovilización.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "2003 – 2006",
+      "sub": "Proceso de desmovilización"
+     }
+    },
+    {
+     "texto": "Según el alto comisionado para la paz, treinta mil ciento cincuenta hombres dejaron las armas.",
+     "escena": {
+      "tipo": "contador",
+      "n": 30150,
+      "texto": "DESMOVILIZADOS",
+      "sub": "según Luis Carlos Restrepo"
+     }
+    },
+    {
+     "texto": "Pero la historia de las AUC no terminó con esa entrega de armas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Varios de sus principales comandantes fueron extraditados a Estados Unidos como narcotraficantes.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "EXTRADITADOS",
+      "sub": "a Estados Unidos"
+     }
+    },
+    {
+     "texto": "Allá fueron juzgados por narcotráfico y pagaron condenas de prisión.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Otros volvieron a delinquir y formaron nuevos grupos, como las Águilas Negras y el Clan del Golfo.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "NEOPARAMILITARES",
+      "sub": "Águilas Negras · Clan del Golfo"
+     }
+    },
+    {
+     "texto": "Como organización existieron apenas nueve años, de mil novecientos noventa y siete a dos mil seis.",
+     "escena": {
+      "tipo": "linea_tiempo",
+      "hitos": [
+       [
+        "1965",
+        "Decreto 3398"
+       ],
+       [
+        "1997",
+        "Nacen las AUC"
+       ],
+       [
+        "2006",
+        "Desmovilización"
+       ],
+       [
+        "Hoy",
+        "Nuevos grupos"
+       ]
+      ]
+     }
+    },
+    {
+     "texto": "Pero las heridas que dejaron en Colombia siguen abiertas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    }
+   ]
+  },
+  {
+   "eid": "sh2",
+   "tipo": "short",
+   "hora_youtube": "19:00",
+   "titulo_video": "LA FUGA DE ALCATRAZ",
+   "articulo": "Fuga de Alcatraz de junio de 1962",
+   "fuente": "https://es.wikipedia.org/wiki/Fuga_de_Alcatraz_de_junio_de_1962",
+   "titulo_youtube": "Dejaron cabezas falsas en sus camas… y nunca los encontraron #shorts",
+   "descripcion_youtube": "Alcatraz, 11 de junio de 1962: Frank Morris y los hermanos Anglin desaparecen en la bahía de San Francisco.\n#misterio #casosreales #ridmer #shorts",
+   "etiquetas": [
+    "misterio",
+    "casos reales",
+    "ridmer",
+    "Alcatraz",
+    "fuga de Alcatraz",
+    "Frank Morris",
+    "hermanos Anglin",
+    "shorts"
+   ],
+   "texto_facebook": "",
+   "miniatura": {
+    "img": 2,
+    "texto": "NUNCA LOS HALLARON"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Dejaron cabezas falsas en sus camas… y escaparon de Alcatraz.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Mil novecientos sesenta y dos: Frank Morris y los hermanos Anglin.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Durante seis meses agrandaron los ductos bajo sus lavabos, tapando el ruido con un acordeón.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Con impermeables fabricaron una balsa.",
+     "escena": {
+      "tipo": "foto",
+      "img": 12
+     }
+    },
+    {
+     "texto": "La noche del once de junio salieron por el techo.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "En la oscuridad, remaron hacia la Isla de los Ángeles.",
+     "escena": {
+      "tipo": "foto",
+      "img": 14
+     }
+    },
+    {
+     "texto": "Al amanecer, los guardias descubrieron el engaño.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "Solo hallaron un remo, una billetera y restos de balsa.",
+     "escena": {
+      "tipo": "foto",
+      "img": 15
+     }
+    },
+    {
+     "texto": "El FBI cree que se ahogaron, pero nunca hallaron sus cuerpos. Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "img": 8
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb3",
+   "tipo": "fb",
+   "hora_fb": "21:00",
+   "articulo": "Asesinato de Luis Carlos Galán",
+   "fuente": "https://es.wikipedia.org/wiki/Asesinato_de_Luis_Carlos_Gal%C3%A1n",
+   "titulo_video": "LO MATARON ANTES DE HABLAR",
+   "titulo_youtube": "Iba a ser presidente de Colombia… y lo mataron antes de empezar su discurso",
+   "descripcion_youtube": "18 de agosto de 1989, Soacha. Luis Carlos Galán era el favorito para ser presidente de Colombia.\nLos asesinos estaban dentro de su propia seguridad.\n#casosreales #colombia #ridmer",
+   "etiquetas": [
+    "misterio",
+    "casos reales",
+    "ridmer",
+    "Luis Carlos Galán",
+    "Soacha",
+    "Pablo Escobar",
+    "Colombia",
+    "magnicidio"
+   ],
+   "texto_facebook": "Iba a ser presidente de Colombia… y lo mataron antes de empezar su discurso. Los asesinos estaban dentro de su propia seguridad. #casosreales #colombia #ridmer",
+   "miniatura": {
+    "img": 2,
+    "texto": "ANTES DE HABLAR"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Iba a ser el próximo presidente de Colombia… y lo mataron antes de empezar su discurso.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Dieciocho de agosto de mil novecientos ochenta y nueve. Soacha, Cundinamarca.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "18 DE AGOSTO DE 1989",
+      "sub": "Soacha, Cundinamarca"
+     }
+    },
+    {
+     "texto": "Luis Carlos Galán, líder del Nuevo Liberalismo, era el favorito para ser presidente.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Luis Carlos Galán",
+      "sub": "Nuevo Liberalismo · precandidato presidencial"
+     }
+    },
+    {
+     "texto": "Proponía extraditar a los narcotraficantes a Estados Unidos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     }
+    },
+    {
+     "texto": "Años antes, había rechazado a Pablo Escobar cuando quiso entrar a su movimiento.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "1982",
+      "sub": "Galán rechaza a Pablo Escobar"
+     }
+    },
+    {
+     "texto": "En mil novecientos ochenta y cuatro, el cartel asesinó al ministro Rodrigo Lara Bonilla, de su partido.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "RODRIGO LARA BONILLA",
+      "sub": "Ministro de Justicia · asesinado en 1984"
+     }
+    },
+    {
+     "texto": "Pablo Escobar y Gonzalo Rodríguez Gacha decidieron matar a Galán.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "El plan fue escalofriante: se infiltraron en su propio esquema de seguridad.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     },
+     "rotulo": "INFILTRADOS"
+    },
+    {
+     "texto": "Esa noche llegó a Soacha para un evento de campaña.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 4.58,
+      "lon": -74.22,
+      "lugar": "Soacha, Cundinamarca",
+      "km": 8
+     }
+    },
+    {
+     "texto": "Antes de comenzar a hablar, le dispararon.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "El candidato favorito de Colombia murió esa noche.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Años después, la justicia señaló a un político.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "En dos mil siete, Alberto Santofimio Botero fue condenado a veinticuatro años de cárcel.",
+     "escena": {
+      "tipo": "contador",
+      "n": 24,
+      "texto": "AÑOS DE CÁRCEL",
+      "sub": "Alberto Santofimio Botero · 2007"
+     }
+    },
+    {
+     "texto": "Quería deshacerse de su rival político.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     }
+    },
+    {
+     "texto": "También fue condenado el exdirector del DAS, Miguel Maza Márquez.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Habría contado con apoyo de policías, agentes del DAS y dinero del narcotráfico.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "En dos mil dieciséis, el Consejo de Estado lo declaró crimen de lesa humanidad.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "LESA HUMANIDAD",
+      "sub": "Consejo de Estado · 2016"
+     }
+    },
+    {
+     "texto": "Por eso, la Fiscalía todavía puede perseguir a los responsables. Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb3s",
+   "tipo": "short",
+   "encargo": "fb3",
+   "hora_youtube": "22:00",
+   "titulo_video": "LO MATARON ANTES DE HABLAR",
+   "articulo": "Asesinato de Luis Carlos Galán",
+   "fuente": "https://es.wikipedia.org/wiki/Asesinato_de_Luis_Carlos_Gal%C3%A1n",
+   "titulo_youtube": "Iba a ser presidente… y lo mataron antes de su discurso #shorts",
+   "descripcion_youtube": "El asesinato de Luis Carlos Galán, Soacha, 1989.\n#casosreales #colombia #ridmer #shorts",
+   "etiquetas": [
+    "misterio",
+    "casos reales",
+    "ridmer",
+    "Luis Carlos Galán",
+    "Colombia",
+    "Pablo Escobar",
+    "shorts"
+   ],
+   "texto_facebook": "",
+   "miniatura": {
+    "img": 2,
+    "texto": "ANTES DE HABLAR"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Iba a ser presidente de Colombia… y lo mataron antes de su discurso.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Luis Carlos Galán era el favorito para ser presidente.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Luis Carlos Galán",
+      "sub": "Nuevo Liberalismo · 1989"
+     }
+    },
+    {
+     "texto": "Quería extraditar a los narcos a Estados Unidos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     }
+    },
+    {
+     "texto": "Por eso el cartel de Medellín decidió matarlo.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Dieciocho de agosto de mil novecientos ochenta y nueve, en Soacha.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "18 DE AGOSTO DE 1989",
+      "sub": "Soacha, Cundinamarca"
+     }
+    },
+    {
+     "texto": "Llegó a un evento de campaña y le dispararon antes de hablar.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Los asesinos se habían infiltrado en su propia seguridad.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     },
+     "rotulo": "INFILTRADOS"
+    },
+    {
+     "texto": "En dos mil siete, Alberto Santofimio fue condenado a veinticuatro años.",
+     "escena": {
+      "tipo": "contador",
+      "n": 24,
+      "texto": "AÑOS DE CÁRCEL",
+      "sub": "Alberto Santofimio Botero"
+     }
+    },
+    {
+     "texto": "Hoy es un crimen de lesa humanidad. Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    }
+   ]
+  }
+ ]
+}
