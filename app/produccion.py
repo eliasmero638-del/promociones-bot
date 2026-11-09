@@ -567,7 +567,6 @@ def modo_claude(fecha, plan):
         clave = f"{fecha}:{v.get('eid')}:material"
         if clave in hechos or v.get('omitir'):
             continue
-        hechos.append(clave); F._guardar(HECHOS, hechos)
         with _lock:
             try:
                 preparar_material(fecha, v)
@@ -575,6 +574,8 @@ def modo_claude(fecha, plan):
                 log('error material', clave, e)
                 for c in C.get()['chat_ids']:
                     tg._api('sendMessage', chat_id=c, text=f"⚠️ Ridmer: no pude preparar el material de {v.get('eid')}: {str(e)[:300]}")
+        hechos = F._leer(HECHOS, [])          # se marca al TERMINAR (si el servidor se reinicia a medias, se rehace)
+        hechos.append(clave); F._guardar(HECHOS, hechos)
     _lista_material(fecha, plan)
     importar_entregas(fecha, plan)
     limite = C.get().get('claude_limite', '10:30')         # respaldo: si Claude no entregó, se arma automático
