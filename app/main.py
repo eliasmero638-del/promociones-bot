@@ -7,7 +7,7 @@ except Exception as _e:          # si la fábrica falla, el Clipero sigue funcio
     fabrica = None
     print('fabrica no disponible:', _e, flush=True)
 
-VERSION = 'v48-mansion'
+VERSION = 'v49-mansion'
 cola = queue.Queue()
 historial = []          # (hora, puntaje) de clips enviados, para límites por hora
 stats = {'pedazos': 0, 'clips': 0, 'ult_puntaje': None, 'ult_pedazo': None}
@@ -584,13 +584,16 @@ def comandos(tipo, chat, dato, raw):
         tg.texto('Ya estás registrado. /estado para ver cómo va.', chat)
 
 
+INICIO = time.time()
+
+
 def vigia_mansion():
     """Si La Mansión VIP 2 está en vivo pero el teléfono graba otra cosa, avisa por Telegram (máx. cada 6 h)."""
     ultimo = 0
     while True:
         time.sleep(600)
         try:
-            if C.perfil() == 'mansion' or time.time() - ultimo < 6 * 3600:
+            if C.perfil() == 'mansion' or time.time() - ultimo < 6 * 3600 or time.time() - INICIO < 1500:
                 continue
             out = subprocess.run(recorder.ytdlp_base() + ['--flat-playlist', '--playlist-end', '6', '--print',
                                  '%(live_status)s\t%(title)s', 'https://www.youtube.com/@hotspanishvlogs/streams'],

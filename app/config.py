@@ -187,6 +187,12 @@ def perfil():
         return _perfil_cache[1]
     p = 'casa593'
     try:
+        if time.time() - os.path.getmtime(os.path.join(DATA, 'srv_mansion.json')) < 90:   # la graba el servidor
+            _perfil_cache[:] = [time.time(), 'mansion']
+            return 'mansion'
+    except Exception:
+        pass
+    try:
         d = json.load(open(os.path.join(DATA, 'remoto.json'), encoding='utf-8'))
         txt = _norm(' '.join(str(d.get(k) or '') for k in ('titulo', 'canal')))
         claves = ((_cfg or {}).get('perfil_mansion') or {}).get('claves') or DEFAULTS['perfil_mansion']['claves']
