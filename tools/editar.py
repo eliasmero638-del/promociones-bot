@@ -23,7 +23,8 @@ Deja en SALIDA_DIR: fb.mp4 + short.mp4 (o largo.mp4), miniatura.jpg y revision_*
 """
 import json, os, re, subprocess, sys
 AQUI = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, os.path.join(AQUI, '..', 'app'))
+APP_DIR = os.path.abspath(os.path.join(AQUI, '..', 'app'))
+sys.path.insert(0, APP_DIR)
 os.environ.setdefault('CLIPERO_DATA', os.path.join(os.path.abspath(sys.argv[4] if len(sys.argv) > 4 else '.'), '_datos'))
 import produccion as P, montaje  # noqa: E402
 from PIL import Image, ImageDraw, ImageFont  # noqa: E402
@@ -134,7 +135,7 @@ def main():
     os.makedirs(out, exist_ok=True)
     plan = json.load(open(plan_p))
     v = next(x for x in plan['videos'] if x['eid'] == eid)
-    v = dict(v, **{k: cambios[k] for k in ('titulo_video', 'miniatura') if k in cambios}, pro=True)
+    v = dict(v, **{k: cambios[k] for k in ('titulo_video', 'miniatura', 'musica') if k in cambios}, pro=True)
     info = json.load(open(os.path.join(mat, 'info.json')))
     wav = os.path.join(out, 'voz.wav')
     subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', os.path.join(mat, 'voz.flac'), '-ar', '48000', '-ac', '1', wav], check=True)
@@ -201,7 +202,8 @@ def main():
             elif t == 'dibujo' and esc.get('script'):     # dibujo hecho a medida: python3 script salida seg W H
                 sc = esc['script'] if os.path.isabs(esc['script']) else os.path.join(os.path.dirname(os.path.abspath(
                     sys.argv[5])) if len(sys.argv) > 5 else mat, esc['script'])
-                subprocess.run([sys.executable, sc, sal, f'{dd:.2f}', str(W_), str(H_)], check=True)
+                env_ = dict(os.environ, PYTHONPATH=os.pathsep.join([APP_DIR, os.environ.get('PYTHONPATH', '')]))
+                subprocess.run([sys.executable, sc, sal, f'{dd:.2f}', str(W_), str(H_)], check=True, env=env_)  # import plano
             elif t == 'dibujo':
                 extra = {k_: x_ for k_, x_ in esc.items() if k_ not in ('tipo', 'nombre', 'img', 'letrero')}
                 dibujos.escena(esc['nombre'], sal, dd, W_, H_, letrero=esc.get('letrero', 'RECREACIÓN'), **extra)

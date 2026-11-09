@@ -6,6 +6,15 @@ APP = os.path.dirname(os.path.abspath(__file__))
 ASSETS = os.path.join(os.path.dirname(APP), 'assets')
 INTRO = os.path.join(ASSETS, 'intro_ridmer.mp4')
 MUSICA = os.path.join(ASSETS, 'musica_suspenso.mp3')
+MUSICAS = os.path.join(ASSETS, 'musica')
+
+
+def musica_ruta(nombre=None):
+    """'tension' | 'epico' | 'misterio' | 'suspenso' | ruta a un mp3. Sin nombre: tensión."""
+    if nombre and os.path.isfile(str(nombre)):
+        return nombre
+    p = os.path.join(MUSICAS, f'{nombre or "tension"}.mp3')
+    return p if os.path.exists(p) else MUSICA
 SFX = os.path.join(ASSETS, 'sfx')
 FUENTE = os.path.join(ASSETS, 'InterDisplay-Black.otf')
 FORMATOS = {'vertical': (1080, 1920), 'horizontal': (1920, 1080)}
@@ -381,7 +390,7 @@ SFX_ARCH = {'impacto': ('susp_impact.mp3', 0.55), 'whoosh': ('wh_deep.mp3', 0.30
             'latido': ('heart_slow.mp3', 0.40), 'riser': ('riser2.mp3', 0.35)}
 
 
-def render_pro(trabajo, voz, palabras, escenas, formato, titulo, hook_fin, salida, cola=0.6, intro=True):
+def render_pro(trabajo, voz, palabras, escenas, formato, titulo, hook_fin, salida, cola=0.6, intro=True, musica=None):
     """Como render(), pero editado "a mano": movimiento con easing por escena, transiciones (fundido, destello,
     negro), efectos de sonido de suspenso sincronizados con los cortes, viñeta y grano. Intro tras el gancho."""
     W, H = FORMATOS[formato]
@@ -420,11 +429,15 @@ def render_pro(trabajo, voz, palabras, escenas, formato, titulo, hook_fin, salid
             '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '19', '-pix_fmt', 'yuv420p', cuerpo])
     # audio: voz + música + golpe inicial + riser antes de la intro + efectos de cada corte
     mezcla = os.path.join(trabajo, 'mezcla.wav')
-    ins = ['-i', voz, '-stream_loop', '-1', '-i', MUSICA, '-i', os.path.join(SFX, 'golpe_terror.mp3'),
+    pista = musica_ruta(musica)
+    ins = ['-i', voz, '-stream_loop', '-1', '-i', pista, '-i', os.path.join(SFX, 'golpe_terror.mp3'),
            '-i', os.path.join(SFX, 'riser2.mp3')]
     r_ini = max(0.0, hook_fin - 4.0) if intro else D + 5
-    fa = (f"[0:a]aresample=48000,aformat=channel_layouts=stereo,apad=whole_dur={D:.2f}[v];"
-          f"[1:a]atrim=0:{D:.2f},volume=0.12,afade=t=in:d=2,afade=t=out:st={max(0, D - 3):.2f}:d=3[m];"
+    # música que SE NOTA (9-nov): fuerte en pausas, baja sola cuando habla la voz (sidechain)
+    fa = (f"[0:a]aresample=48000,aformat=channel_layouts=stereo,apad=whole_dur={D:.2f},asplit[v][vk];"
+          f"[1:a]aresample=48000,aformat=channel_layouts=stereo,atrim=0:{D:.2f},volume=0.42,afade=t=in:d=0.4,"
+          f"afade=t=out:st={max(0, D - 2.5):.2f}:d=2.5[m0];"
+          f"[m0][vk]sidechaincompress=threshold=0.025:ratio=5:attack=15:release=450:makeup=1[m];"
           f"[2:a]volume=0.45[s1];[3:a]volume=0.35,adelay={int(r_ini * 1000)}|{int(r_ini * 1000)}[s2];")
     etiquetas = ['[v]', '[m]', '[s1]', '[s2]']
     for k, (t, s) in enumerate(eventos):

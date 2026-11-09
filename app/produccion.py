@@ -156,6 +156,8 @@ def armar(carpeta, wav, palabras, segs, g, hook, v, foto_mini):
     D = montaje.dur(wav)
     rend = montaje.render_pro if v.get('pro') else montaje.render
     sin_intro = {'intro': False} if v.get('pro') else {}      # intro de Ridmer solo en los videos largos
+    if v.get('pro'):
+        sin_intro['musica'] = v.get('musica')
     extra = ('tipo', 'mov', 'trans', 'sfx', 'latido')
     escenas = [dict({'t0': s['t0'], 'img': s['img'], 'rotulo': s.get('rotulo', '')},
                     **{k: (s.get('escena') or {}).get('tipo', 'foto') if k == 'tipo' else s.get(k)
@@ -181,7 +183,8 @@ def armar(carpeta, wav, palabras, segs, g, hook, v, foto_mini):
         salidas.append(('short', out))
     elif v['tipo'] == 'largo':
         out = os.path.join(carpeta, 'largo.mp4')
-        rend(carpeta, wav, palabras, escenas, 'horizontal', titulo, hook, out)
+        rend(carpeta, wav, palabras, escenas, 'horizontal', titulo, hook, out,
+             **({'musica': v.get('musica')} if v.get('pro') else {}))
         salidas.append(('largo', out))
     else:
         out = os.path.join(carpeta, 'fb.mp4')
