@@ -683,3 +683,69 @@ def persona(img, x, suelo, u, tipo='policia', pose='quieto', phi=0.0, rim=(255, 
         img.alpha_composite(sd.filter(ImageFilter.GaussianBlur(0.08 * u)))
     img.alpha_composite(lay, (int(x - ox), int(suelo - sy)))
     return img
+
+
+# ------------------------------------------------------------------ fotos reales con estilo (nunca planas)
+def polaroid_anim(foto, salida, d, w=1080, h=1920, pie='', estilo='polaroid', dato='', semilla=0):
+    """Anima una foto real: 'polaroid' (cae con rebote, inclinada, con cinta y pie de foto) o 'duo' (teñida de color
+    con marco rojo y un DATO grande que entra de golpe). Fondo: la misma foto desenfocada y oscura."""
+    from PIL import ImageOps, ImageEnhance
+    lienzo(w, h)
+    rnd = random.Random(semilla)
+    src = Image.open(foto).convert('RGB')
+    fondo = ImageEnhance.Brightness(ImageOps.fit(src, (W, H)).filter(ImageFilter.GaussianBlur(28))).enhance(0.38).convert('RGBA')
+    vert = H >= W
+    if estilo == 'duo':
+        g = ImageOps.grayscale(ImageOps.fit(src, (int(W * 0.84), int(H * 0.56) if vert else int(H * 0.7))))
+        ph = ImageOps.colorize(g, black=(20, 10, 40), white=(255, 130, 90), mid=(160, 40, 80))
+        card = Image.new('RGBA', (ph.size[0] + 24, ph.size[1] + 24), (230, 40, 40, 255))
+        card.paste(ph, (12, 12))
+    else:
+        pw = int(W * 0.72) if vert else int(H * 0.62)
+        ph = ImageEnhance.Color(ImageOps.fit(src, (pw, int(pw * 1.02)))).enhance(0.9)
+        card = Image.new('RGBA', (pw + 70, int(pw * 1.02) + 70 + (110 if pie else 60)), (246, 243, 236, 255))
+        card.paste(ph, (35, 35))
+        if pie:
+            f = ImageFont.truetype(FUENTE, int(pw * 0.07))
+            ImageDraw.Draw(card).text((card.size[0] / 2, card.size[1] - 70), pie, font=f, fill=(40, 40, 50), anchor='mm')
+    rot_fin = rnd.choice((-1, 1)) * rnd.uniform(3, 6) if estilo != 'duo' else 0
+    cinta = Image.new('RGBA', (int(card.size[0] * 0.38), int(card.size[0] * 0.11)), (240, 230, 190, 185))
+    fdato = ImageFont.truetype(FUENTE, int(W * 0.13)) if dato else None
+
+    def cuadro(t):
+        img = fondo.copy()
+        p = min(1.0, t / 0.45)
+        caida = (1 - ease(p)) * (-H * 0.9) + (math.sin(min(1, (t - 0.45) / 0.35) * math.pi) * -18 if 0.45 < t < 0.8 else 0)
+        zoom = 1.0 + 0.06 * ease(t / max(d, 0.1))
+        ang = rot_fin + (1 - ease(p)) * 14 * (1 if rot_fin >= 0 else -1) + 0.6 * math.sin(t * 0.8)
+        c = card.resize((int(card.size[0] * zoom), int(card.size[1] * zoom)), Image.BICUBIC)
+        if estilo != 'duo' and t > 0.4:
+            ci = cinta.rotate(rnd.uniform(-4, 4) if False else 6, expand=True)
+            c.alpha_composite(ci, (int(c.size[0] / 2 - ci.size[0] / 2), 0))
+        c = c.rotate(ang, expand=True, resample=Image.BICUBIC)
+        x = int(W / 2 - c.size[0] / 2)
+        y = int((H * (0.44 if dato else 0.5)) - c.size[1] / 2 + caida)
+        sh = Image.new('RGBA', img.size, (0, 0, 0, 0))
+        sh.paste((0, 0, 0, 170), (x + 22, y + 30), c.split()[3])
+        img.alpha_composite(sh.filter(ImageFilter.GaussianBlur(26)))
+        img.alpha_composite(c, (x, y))
+        im = img.convert('RGB')
+        if dato and t > 0.5:
+            q = min(1.0, (t - 0.5) / 0.22)
+            esc = 1 + 0.7 * (1 - ease(q))
+            fd = ImageFont.truetype(FUENTE, int(W * 0.13 * esc))
+            dd = ImageDraw.Draw(im)
+            yd = y + c.size[1] + H * 0.06 if vert else H * 0.85
+            dd.text((W / 2 + 5, yd + 6), dato, font=fd, fill=(0, 0, 0), anchor='mm')
+            dd.text((W / 2, yd), dato, font=fd, fill=(255, 255, 255), anchor='mm')
+        if t < 0.08:
+            im = destello(im, 0.25)
+        return vineta(im, 0.45)
+    return grabar(cuadro, salida, d)
+
+
+# ------------------------------------------------------------------ personajes v3 (con cara, de frente / 3/4)
+try:
+    from gente3 import figura, PERSONAS  # noqa: F401  (ver gente3.py)
+except Exception:
+    pass

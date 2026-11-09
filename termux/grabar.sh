@@ -30,13 +30,43 @@ subir() {
 subir &
 SP=$!
 
+# Videos que pide el servidor para la edición de Ridmer (YouTube bloquea al servidor; el teléfono sí puede bajarlos)
+videos() {
+  mkdir -p $D/vped $D/vlisto $D/vhecho
+  while true; do
+    rsync -a --delete -e "$SSH" root@$S:/var/lib/clipero/pedidos_video/ $D/vped/ 2>/dev/null
+    for f in $D/vped/*.txt; do
+      [ -e "$f" ] || continue
+      ID=$(basename $f .txt)
+      [ -e $D/vhecho/$ID ] && continue
+      read U A B < $f
+      log "bajando video pedido $ID ($A-$B s)"
+      rm -f $D/vlisto/$ID.*
+      timeout 900 $YT -q --no-playlist --download-sections "*$A-$B" -f "bv*[height<=720]+ba/b[height<=720]/b" \
+        --merge-output-format mp4 -o "$D/vlisto/$ID.%(ext)s" "$U" 2>>$D/yt.log
+      F=$(ls $D/vlisto/$ID.* 2>/dev/null | head -1)
+      if [ -n "$F" ]; then
+        rsync -a -e "$SSH" "$F" root@$S:/var/lib/clipero/videos_listos/$ID.mp4 && log "video $ID subido"
+      else
+        echo falla > $D/vlisto/$ID.falla
+        rsync -a -e "$SSH" $D/vlisto/$ID.falla root@$S:/var/lib/clipero/videos_listos/ 2>/dev/null; log "video $ID falló"
+      fi
+      touch $D/vhecho/$ID; rm -f $D/vlisto/$ID.*
+    done
+    find $D/vhecho -mtime +3 -delete 2>/dev/null
+    sleep 30
+  done
+}
+videos &
+VP=$!
+
 en_vivo() { $YT --flat-playlist --playlist-end 6 --print "%(id)s|%(live_status)s|%(title)s" "$1" 2>>$D/yt.log | grep '|is_live|' | head -1; }
 
 actualizar() {
   N=$(curl -sL "$URL")
   if echo "$N" | grep -q segment_time && [ "$N" != "$(cat $D/grabar.sh 2>/dev/null)" ]; then
     echo "$N" > $D/grabar.sh; log "grabador actualizado, reinicio"
-    kill $SP 2>/dev/null; exec bash $D/grabar.sh
+    kill $SP $VP 2>/dev/null; exec bash $D/grabar.sh
   fi
 }
 

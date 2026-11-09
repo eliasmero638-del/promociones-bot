@@ -13,6 +13,8 @@ CAMBIOS.json (todo opcional) = decisiones de Claude tras revisar:
    "latido": {"9": true},               # latido de corazón debajo de la escena (tensión)
    "corregir": {"Rhythmert": "Ridmer", "Kopki": "Koepcke", "#57": ""},   # subtítulos mal oídos ("#N" = palabra N)
    "musica": "tension",                 # tension | epico | misterio (pistas propias, bajan solas bajo la voz)
+   "foto_estilo": "polaroid",           # fotos reales: polaroid que cae con cinta (por defecto) | "plano"
+   "estilo_foto": {"9": "duo"}, "dato": {"9": "1 DE 92"}, "pie": {"2": "Juliane, hoy"},   # por segmento
    (una imagen también puede ser v_NN.mp4: fragmento de video real en recuadro, máx. 7 s en movimiento)
 Escenas animadas (se piden en el plan; el servidor baja el mapa y aquí se animan):
    {"tipo": "ruta", "a": [lat, lon], "b": [lat, lon], "na": "AUSTIN", "nb": "BAHAMAS", "corte": 0.55,
@@ -238,6 +240,29 @@ def main():
             print('animación', k, t, round(dd, 1), 's')
         except Exception as e:
             print('animación falló', k, t, e)
+    # FOTOS REALES con estilo (regla del dueño, 9-nov): nunca planas a pantalla completa → polaroid que cae con cinta
+    # o "duo" (teñida + dato grande). cambios: "foto_estilo": "polaroid" (por defecto) | "plano";
+    # "estilo_foto": {"9": "duo"}, "pie": {"2": "Juliane, hoy"}, "dato": {"9": "1 DE 92"}
+    import plano as PL
+    est_g = cambios.get('foto_estilo', 'polaroid')
+    for k, s in enumerate(segs):
+        tipo_e = (s.get('escena') or {}).get('tipo', 'foto')
+        img_ = s.get('img') or ''
+        if tipo_e not in ('foto', None) or not img_.lower().endswith(('.jpg', '.jpeg', '.png')) or not os.path.exists(img_):
+            continue
+        est = cambios.get('estilo_foto', {}).get(str(k), est_g)
+        if est == 'plano':
+            continue
+        t1 = segs[k + 1]['t0'] if k + 1 < len(segs) else montaje.dur(wav)
+        dd = max(2.0, t1 - s['t0'] + 0.4)
+        sal = os.path.join(out, f'anim_foto_{k:02d}.mp4')
+        try:
+            PL.polaroid_anim(img_, sal, dd, W_, H_, pie=cambios.get('pie', {}).get(str(k), ''), estilo=est,
+                             dato=cambios.get('dato', {}).get(str(k), ''), semilla=k)
+            s['img'] = sal
+            print('foto con estilo', k, est, round(dd, 1), 's')
+        except Exception as e:
+            print('foto con estilo falló', k, e)
     fm = fm or next((r_ for r_ in reales if not r_.endswith('.mp4')), reales[0])
     if fm.endswith('.mp4'):
         cuadro = os.path.join(out, 'mini_fuente.jpg')

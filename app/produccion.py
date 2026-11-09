@@ -324,31 +324,115 @@ def _jpg(src, dst, maximo=1600):
 _videos_bajados = {}
 
 
-def _fragmento(esc, carpeta, i):
-    """Fragmento corto de un video real (yt-dlp): desde `desde` s, máx. `dur` s (≤ 7), sin audio, 720 p."""
-    import subprocess, glob
-    url = esc['url']
+def _telefono_vivo():
     try:
-        src = _videos_bajados.get(url)
-        if not (src and os.path.exists(src)):
-            base = os.path.join(carpeta, f'src_{len(_videos_bajados):02d}')
-            ck = ['--cookies', C.COOKIES] if os.path.exists(C.COOKIES) else []   # YouTube pide sesión en servidores
-            subprocess.run(['yt-dlp', '-q', '--no-playlist'] + ck + ['-f', 'bv*[height<=1080]+ba/b[height<=1080]/b',
-                            '--merge-output-format', 'mp4', '-o', base + '.%(ext)s', url], timeout=300, check=True)
-            src = (glob.glob(base + '.*') or [None])[0]
-            _videos_bajados[url] = src
+        return time.time() - json.load(open(os.path.join(C.DATA, 'remoto.json'))).get('hora', 0) < 300
+    except Exception:
+        return False
+
+
+def _por_telefono(url, desde, dur, espera=900):
+    """YouTube bloquea al servidor: el teléfono (Infinix) baja el pedazo y lo sube a videos_listos/."""
+    import hashlib
+    ped, lis = os.path.join(C.DATA, 'pedidos_video'), os.path.join(C.DATA, 'videos_listos')
+    os.makedirs(ped, exist_ok=True); os.makedirs(lis, exist_ok=True)
+    vid = hashlib.sha1(f'{url}|{desde:.1f}|{dur:.1f}'.encode()).hexdigest()[:12]
+    listo = os.path.join(lis, vid + '.mp4')
+    if os.path.exists(listo):
+        return listo
+    if not _telefono_vivo():
+        log('fragmento: el teléfono no está conectado', url)
+        return None
+    a, b = max(0.0, desde - 1.0), desde + dur + 1.0
+    with open(os.path.join(ped, vid + '.txt'), 'w') as f:
+        f.write(f'{url} {a:.1f} {b:.1f}\n')
+    log('fragmento pedido al teléfono', vid, url)
+    t0 = time.time()
+    try:
+        while time.time() - t0 < espera:
+            if os.path.exists(listo) and time.time() - os.path.getmtime(listo) > 5:
+                return listo
+            if os.path.exists(os.path.join(lis, vid + '.falla')):
+                return None
+            time.sleep(10)
+    finally:
+        try:
+            os.remove(os.path.join(ped, vid + '.txt'))
+        except Exception:
+            pass
+    return None
+
+
+def _video_commons(q, carpeta, i):
+    """Video libre de Wikimedia Commons (sin derechos) que coincida con la búsqueda."""
+    import requests
+    try:
+        r = requests.get('https://commons.wikimedia.org/w/api.php', headers=F.UA if hasattr(F, 'UA') else None, timeout=40, params={
+            'action': 'query', 'format': 'json', 'generator': 'search', 'gsrsearch': f'filetype:video {q}',
+            'gsrnamespace': 6, 'gsrlimit': 8, 'prop': 'imageinfo', 'iiprop': 'url|size|mime'}).json()
+        for pg in sorted((r.get('query') or {}).get('pages', {}).values(), key=lambda x: x.get('index', 0)):
+            ii = (pg.get('imageinfo') or [{}])[0]
+            if not ii.get('url') or ii.get('size', 0) > 150e6:
+                continue
+            dst = os.path.join(carpeta, f'cv_{i:02d}' + os.path.splitext(ii['url'])[1])
+            with requests.get(ii['url'], stream=True, timeout=300, headers={'User-Agent': 'RidmerVideos/1.0'}) as rr:
+                if rr.status_code != 200:
+                    continue
+                with open(dst, 'wb') as f:
+                    for blk in rr.iter_content(1 << 20):
+                        f.write(blk)
+            log('video de Commons', q, pg.get('title'))
+            return dst
+    except Exception as e:
+        log('Commons video falló', q, e)
+    return None
+
+
+def _fragmento(esc, carpeta, i):
+    """Fragmento corto de un video real: desde `desde` s, máx. `dur` s (≤ 7), sin audio, 720 p.
+    Orden: url con yt-dlp en el servidor (TikTok, X, Facebook…) → si es YouTube o falla, lo baja el teléfono →
+    si no hay url o todo falla, `buscar_video` en Wikimedia Commons (videos libres)."""
+    import subprocess, glob
+    url = esc.get('url') or ''
+    d = min(float(esc.get('dur', 6)), 7.0)
+    desde = float(esc.get('desde', 0))
+    src, ss = None, desde
+    try:
+        if url:
+            src = _videos_bajados.get(url)
+            yt = re.search(r'(youtube\.com|youtu\.be)', url)
+            if not (src and os.path.exists(src)) and not yt:
+                base = os.path.join(carpeta, f'src_{len(_videos_bajados):02d}')
+                ck = ['--cookies', C.COOKIES] if os.path.exists(C.COOKIES) else []
+                try:
+                    subprocess.run(['yt-dlp', '-q', '--no-playlist'] + ck + ['-f', 'bv*[height<=1080]+ba/b[height<=1080]/b',
+                                    '--merge-output-format', 'mp4', '-o', base + '.%(ext)s', url], timeout=300, check=True)
+                    src = (glob.glob(base + '.*') or [None])[0]
+                    _videos_bajados[url] = src
+                except Exception as e:
+                    log('yt-dlp en el servidor falló, lo pido al teléfono', url, e)
+            if not (src and os.path.exists(src)):
+                src = _por_telefono(url, desde, d)
+                ss = 1.0 if src else desde
+        if not src and esc.get('buscar_video'):
+            for q in ([esc['buscar_video']] if isinstance(esc['buscar_video'], str) else esc['buscar_video']):
+                src = _video_commons(q, carpeta, i)
+                if src:
+                    ss = float(esc.get('desde', 0))
+                    break
         if not src:
             return None
         out = f'v_{i:02d}.mp4'
-        d = min(float(esc.get('dur', 6)), 7.0)
-        montaje.sh(['ffmpeg', '-y', '-v', 'error', '-ss', f"{float(esc.get('desde', 0)):.2f}", '-i', src, '-t', f'{d:.2f}',
+        montaje.sh(['ffmpeg', '-y', '-v', 'error', '-ss', f'{ss:.2f}', '-i', src, '-t', f'{d:.2f}',
                     '-an', '-vf', 'scale=-2:720,fps=30', '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '20',
                     os.path.join(carpeta, out)])
+        if montaje.dur(os.path.join(carpeta, out)) < 1.0:
+            return None
         montaje.sh(['ffmpeg', '-y', '-v', 'error', '-ss', '1', '-i', os.path.join(carpeta, out), '-frames:v', '1',
                     os.path.join(carpeta, f'vf_{i:02d}.jpg')])
         return out
     except Exception as e:
-        log('fragmento de video falló', url, e)
+        log('fragmento de video falló', url or esc.get('buscar_video'), e)
         return None
 
 
@@ -361,9 +445,20 @@ def preparar_material(fecha, v):
     os.makedirs(tmp, exist_ok=True)
     segs = [dict(s) for s in v['segmentos'] if str(s.get('texto', '')).strip()]
     usados = set()
+    if _telefono_vivo():                      # pedir de una vez todos los pedazos de YouTube al teléfono (en paralelo)
+        os.makedirs(os.path.join(C.DATA, 'pedidos_video'), exist_ok=True)
+        import hashlib
+        for s in segs:
+            esc = s.get('escena') or {}
+            u = esc.get('url') or ''
+            if esc.get('tipo') == 'video' and re.search(r'(youtube\.com|youtu\.be)', u):
+                dd, de = min(float(esc.get('dur', 6)), 7.0), float(esc.get('desde', 0))
+                vid = hashlib.sha1(f'{u}|{de:.1f}|{dd:.1f}'.encode()).hexdigest()[:12]
+                with open(os.path.join(C.DATA, 'pedidos_video', vid + '.txt'), 'w') as f:
+                    f.write(f'{u} {max(0.0, de - 1.0):.1f} {de + dd + 1.0:.1f}\n')
     for i, s in enumerate(segs):
         esc = s.get('escena') or {}
-        if esc.get('tipo') == 'video' and esc.get('url'):
+        if esc.get('tipo') == 'video' and (esc.get('url') or esc.get('buscar_video')):
             frag = _fragmento(esc, tmp, i)
             if frag:
                 s['img'] = frag
