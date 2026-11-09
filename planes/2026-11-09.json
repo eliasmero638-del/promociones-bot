@@ -733,21 +733,6 @@
      }
     },
     {
-     "texto": "Se hacía llamar Doña Conchita o la Hermana María.",
-     "escena": {
-      "tipo": "fecha",
-      "texto": "«DOÑA CONCHITA»",
-      "sub": "o «La Hermana María»"
-     }
-    },
-    {
-     "texto": "Daba bebedizos, baños y rituales a cambio de dinero.",
-     "escena": {
-      "tipo": "foto",
-      "img": 2
-     }
-    },
-    {
      "texto": "A tres hermanas les sacó trece millones de pesos prometiendo salvar a su madre.",
      "escena": {
       "tipo": "contador",
