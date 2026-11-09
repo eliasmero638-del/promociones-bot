@@ -1832,6 +1832,72 @@
      }
     }
    ]
+  },
+  {
+   "eid": "kl1",
+   "tipo": "largo",
+   "hora_youtube": "ya",
+   "hora_fb": "ya",
+   "hora_short": "ya",
+   "nota": "PRUEBA de estilo realista: solo material, no publicar",
+   "gancho": 1,
+   "titulo_video": "PRUEBA",
+   "segmentos": [
+    {
+     "texto": "Una noche de diciembre de mil novecientos cincuenta y cuatro.",
+     "escena": {
+      "tipo": "ia",
+      "formato": "16:9",
+      "prompt": "Fotografía cinematográfica realista, estilo película de misterio, noche, colores fríos azulados, neblina, grano de película, 16:9, sin texto. Una mujer de los años cincuenta, de espaldas, con abrigo, de pie sobre una colina de pasto en las montañas Drakensberg de Sudáfrica, mirando el cielo nocturno nublado con luna; neblina en el valle."
+     }
+    },
+    {
+     "texto": "Una luz apareció detrás de las nubes.",
+     "escena": {
+      "tipo": "ia",
+      "formato": "16:9",
+      "prompt": "Fotografía cinematográfica realista, estilo película de misterio, noche, colores fríos azulados, neblina, grano de película, 16:9, sin texto. Cielo nocturno con nubes densas sobre montañas de cima plana; detrás de las nubes brilla una luz blanca azulada misteriosa con forma de disco, iluminando los bordes de las nubes."
+     }
+    },
+    {
+     "texto": "Y una nave plateada bajó sobre la colina.",
+     "escena": {
+      "tipo": "ia",
+      "formato": "16:9",
+      "prompt": "Fotografía cinematográfica realista, estilo película de misterio, noche, colores fríos azulados, neblina, grano de película, 16:9, sin texto. Un platillo volador metálico plateado estilo años cincuenta flota bajo sobre una colina de pasto de noche, con un haz de luz que ilumina la neblina; una pequeña silueta de mujer lo mira desde lejos."
+     }
+    },
+    {
+     "texto": "Las montañas Drakensberg.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Drakensberg night",
+       "Drakensberg amphitheatre",
+       "Drakensberg mountains"
+      ]
+     }
+    },
+    {
+     "texto": "Cathkin Peak.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Cathkin Peak",
+       "Champagne Castle Drakensberg"
+      ]
+     }
+    },
+    {
+     "texto": "Elizabeth Klarer.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Elizabeth Klarer"
+      ]
+     }
+    }
+   ]
   }
  ]
 }
