@@ -1734,6 +1734,104 @@
      }
     }
    ]
+  },
+  {
+   "eid": "jk1",
+   "tipo": "fb",
+   "hora_fb": "ya",
+   "hora_short": "ya",
+   "hora_youtube": "ya",
+   "nota": "MUESTRA del método nuevo: solo material, no publicar",
+   "articulo": "Juliane Koepcke",
+   "titulo_video": "CAYÓ DE UN AVIÓN",
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Cayó de un avión a tres mil metros de altura… y sobrevivió.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Era la víspera de Navidad de mil novecientos setenta y uno, en Perú.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "LANSA Flight 508",
+       "Lockheed L-188 Electra LANSA"
+      ]
+     }
+    },
+    {
+     "texto": "Juliane Koepcke, de diecisiete años, volaba con su mamá de Lima a Pucallpa.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Juliane Koepcke",
+       "Juliane Diller"
+      ]
+     }
+    },
+    {
+     "texto": "En plena tormenta, un rayo golpeó el avión… y se partió en el aire.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Juliane cayó atada a su asiento, girando, hacia la selva amazónica.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Despertó sola en el suelo de la selva, con la clavícula rota, sin lentes y con un solo zapato.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Amazon rainforest Peru",
+       "Selva amazónica Perú"
+      ]
+     }
+    },
+    {
+     "texto": "Entonces recordó lo que le enseñó su padre: si te pierdes, sigue el agua.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Caminó once días por la selva, siguiendo un arroyo río abajo.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Hasta que encontró una cabaña… y unos leñadores la rescataron.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Juliane Koepcke 1972",
+       "Panguana"
+      ]
+     }
+    },
+    {
+     "texto": "De noventa y dos personas a bordo… solo ella sobrevivió.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Juliane Koepcke"
+      ]
+     }
+    },
+    {
+     "texto": "Comparte esta historia y sigue a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    }
+   ]
   }
  ]
 }
