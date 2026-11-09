@@ -1,0 +1,1590 @@
+{
+ "fecha": "2026-11-09",
+ "modo": "claude",
+ "videos": [
+  {
+   "eid": "fb1s",
+   "tipo": "short",
+   "encargo": "fb1",
+   "hora_youtube": "12:00",
+   "articulo": "Luis Gregorio Ramírez Maestre",
+   "fuente": "https://es.wikipedia.org/wiki/Luis_Gregorio_Ram%C3%ADrez_Maestre",
+   "titulo_video": "EL DEXTER CRIOLLO",
+   "titulo_youtube": "Pedía un mototaxi… y el conductor nunca volvía #shorts",
+   "descripcion_youtube": "Lo llamaron «el Dexter criollo»: elegía mototaxistas jóvenes en el Caribe colombiano.\n#misterio #casosreales #ridmer #shorts",
+   "etiquetas": [
+    "misterio",
+    "casos reales",
+    "ridmer",
+    "crimen real",
+    "Colombia",
+    "asesinos en serie",
+    "Dexter criollo",
+    "mototaxistas",
+    "Valledupar",
+    "shorts"
+   ],
+   "texto_facebook": "",
+   "miniatura": {
+    "img": 7,
+    "texto": "PEDÍA UN MOTOTAXI"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Pedía un mototaxi… y el conductor nunca volvía a casa.",
+     "escena": {
+      "tipo": "foto",
+      "img": 7
+     }
+    },
+    {
+     "texto": "Luis Gregorio Ramírez Maestre elegía mototaxistas jóvenes y delgados.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Luis Gregorio Ramírez Maestre",
+      "sub": "«El Dexter criollo» · Valledupar"
+     }
+    },
+    {
+     "texto": "Se sentaba atrás y conversaba todo el camino.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "Hasta que la moto se detenía en un lugar solitario.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     }
+    },
+    {
+     "texto": "Los hallaban atados a árboles, con sogas en el cuello.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "ATADOS A ÁRBOLES",
+      "sub": "a las afueras de los pueblos"
+     }
+    },
+    {
+     "texto": "Le atribuyen treinta asesinatos en el Caribe colombiano.",
+     "escena": {
+      "tipo": "contador",
+      "n": 30,
+      "texto": "ASESINATOS",
+      "sub": "entre 2000 y 2012"
+     }
+    },
+    {
+     "texto": "Lo condenaron a cincuenta y siete años, rebajados a treinta y cuatro.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "57 → 34 AÑOS",
+      "sub": "por aceptar cargos"
+     }
+    },
+    {
+     "texto": "Y podría salir de prisión en dos mil treinta y dos.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "2032",
+      "sub": "podría salir de prisión"
+     }
+    },
+    {
+     "texto": "Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb1",
+   "tipo": "fb",
+   "hora_fb": "12:30",
+   "articulo": "Luis Gregorio Ramírez Maestre",
+   "fuente": "https://es.wikipedia.org/wiki/Luis_Gregorio_Ram%C3%ADrez_Maestre",
+   "titulo_video": "EL DEXTER CRIOLLO",
+   "titulo_youtube": "Pedía un mototaxi… y el conductor nunca volvía a casa",
+   "descripcion_youtube": "Se subía atrás, conversaba todo el camino y pedía ir a las afueras. Lo llamaron «el Dexter criollo».\nLa historia de Luis Gregorio Ramírez Maestre.\n#misterio #casosreales #ridmer",
+   "etiquetas": [
+    "misterio",
+    "casos reales",
+    "ridmer",
+    "crimen real",
+    "Colombia",
+    "asesinos en serie",
+    "Dexter criollo",
+    "Luis Gregorio Ramírez Maestre",
+    "mototaxistas",
+    "Valledupar"
+   ],
+   "texto_facebook": "Pedía un mototaxi, conversaba todo el camino… y el conductor nunca volvía a casa. Lo llamaron «el Dexter criollo». #misterio #casosreales #ridmer",
+   "miniatura": {
+    "img": 7,
+    "texto": "PEDÍA UN MOTOTAXI"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Se subía a un mototaxi, conversaba todo el camino… y el conductor nunca volvía a casa.",
+     "escena": {
+      "tipo": "foto",
+      "img": 7
+     }
+    },
+    {
+     "texto": "Lo llamaron el Dexter criollo.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Luis Gregorio Ramírez Maestre",
+      "sub": "Asesino en serie · Valledupar, 1980"
+     }
+    },
+    {
+     "texto": "Luis Gregorio Ramírez Maestre nació en Valledupar en mil novecientos ochenta.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 10.47,
+      "lon": -73.25,
+      "lugar": "Valledupar, Cesar",
+      "km": 8
+     }
+    },
+    {
+     "texto": "Entre dos mil y dos mil doce dejó un rastro de muerte por varios pueblos de Colombia.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "2000 – 2012",
+      "sub": "doce años de crímenes"
+     }
+    },
+    {
+     "texto": "Tenerife, Sabanalarga, Aguachica, Santa Marta, Valledupar, Puerto Wilches.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Siempre elegía al mismo tipo de víctima.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Mototaxistas jóvenes, de diecinueve a treinta años.",
+     "escena": {
+      "tipo": "foto",
+      "img": 7
+     },
+     "rotulo": "19 A 30 AÑOS"
+    },
+    {
+     "texto": "Ninguno medía más de un metro setenta ni pesaba más de sesenta kilos.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "MENOS DE 1,70 M",
+      "sub": "y menos de 60 kilos"
+     }
+    },
+    {
+     "texto": "Así podía dominarlos con facilidad.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "Se ganaba su confianza y pedía que lo llevaran a las afueras de la ciudad.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     }
+    },
+    {
+     "texto": "Iba sentado atrás, conversando todo el camino.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "Y cuando la moto se detenía… los atacaba por la espalda.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     }
+    },
+    {
+     "texto": "Los encontraban atados a árboles, con sogas en el cuello.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "ATADOS A ÁRBOLES",
+      "sub": "con sogas en el cuello"
+     }
+    },
+    {
+     "texto": "Se quedaba con sus billeteras, cédulas, celulares y cascos.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "SUS «TROFEOS»",
+      "sub": "billeteras, cédulas, celulares, cascos"
+     }
+    },
+    {
+     "texto": "Las autoridades le atribuyen treinta asesinatos.",
+     "escena": {
+      "tipo": "contador",
+      "n": 30,
+      "texto": "ASESINATOS",
+      "sub": "en varios municipios de Colombia"
+     }
+    },
+    {
+     "texto": "Su perfil fue analizado por especialistas del FBI.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "PERFIL DEL FBI",
+      "sub": "analizado junto al CTI"
+     }
+    },
+    {
+     "texto": "Lo condenaron a cincuenta y siete años, pero la pena bajó a treinta y cuatro por aceptar cargos.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "57 → 34 AÑOS",
+      "sub": "rebaja por aceptación de cargos"
+     }
+    },
+    {
+     "texto": "Hoy está preso en la cárcel de máxima seguridad de Valledupar.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Y podría salir en dos mil treinta y dos, con cincuenta y dos años.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "2032",
+      "sub": "podría salir de prisión"
+     }
+    },
+    {
+     "texto": "Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    }
+   ]
+  },
+  {
+   "eid": "sh1",
+   "tipo": "short",
+   "hora_youtube": "15:00",
+   "articulo": "Nepomuceno Matallana",
+   "fuente": "https://es.wikipedia.org/wiki/Nepomuceno_Matallana",
+   "titulo_video": "EL DOCTOR MATA",
+   "titulo_youtube": "Se hacía pasar por abogado… y sus clientes desaparecían #shorts",
+   "descripcion_youtube": "Nepomuceno Matallana, «el Doctor Mata», fue acusado de 35 asesinatos en Colombia.\n#misterio #casosreales #ridmer #shorts",
+   "etiquetas": [
+    "misterio",
+    "casos reales",
+    "ridmer",
+    "crimen real",
+    "Colombia",
+    "asesinos en serie",
+    "Doctor Mata",
+    "Nepomuceno Matallana",
+    "Bogotá",
+    "shorts"
+   ],
+   "texto_facebook": "",
+   "miniatura": {
+    "seg": 0,
+    "texto": "EL FALSO ABOGADO"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Se hacía pasar por abogado… y sus clientes desaparecían.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "EL DOCTOR MATA",
+      "sub": "Bogotá, Colombia"
+     }
+    },
+    {
+     "texto": "Era Nepomuceno Matallana, el Doctor Mata.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Nepomuceno Matallana",
+      "sub": "«El tinterillo asesino» · 1891–1960"
+     }
+    },
+    {
+     "texto": "Montó un bufete en el centro de Bogotá.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 4.598,
+      "lon": -74.076,
+      "lugar": "Centro de Bogotá",
+      "km": 2
+     }
+    },
+    {
+     "texto": "Convencía a sus víctimas de firmarle poderes sobre sus propiedades.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "PODERES FIRMADOS",
+      "sub": "con la excusa de grandes negocios"
+     }
+    },
+    {
+     "texto": "Después desaparecían… o aparecían muertas.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "DESAPARECIDOS",
+      "sub": "o encontrados muertos"
+     }
+    },
+    {
+     "texto": "Lo acusaron de treinta y cinco asesinatos.",
+     "escena": {
+      "tipo": "contador",
+      "n": 35,
+      "texto": "ASESINATOS",
+      "sub": "de los que fue acusado"
+     }
+    },
+    {
+     "texto": "Su juicio fue tan famoso que tuvieron que pedir prestado un teatro.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "UN TEATRO",
+      "sub": "para las audiencias"
+     }
+    },
+    {
+     "texto": "En mil novecientos cuarenta y nueve lo condenaron a veinticuatro años.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "1949",
+      "sub": "condenado a 24 años"
+     }
+    },
+    {
+     "texto": "Nunca aceptó nada. Murió preso en mil novecientos sesenta. Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "1960",
+      "sub": "murió en la cárcel La Modelo"
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb2s",
+   "tipo": "short",
+   "encargo": "fb2",
+   "hora_youtube": "17:00",
+   "articulo": "Tomás Maldonado Cera",
+   "fuente": "https://es.wikipedia.org/wiki/Tom%C3%A1s_Maldonado_Cera",
+   "titulo_video": "EL SATÁNICO",
+   "titulo_youtube": "Casi siempre mataba antes de Halloween #shorts",
+   "descripcion_youtube": "En Barranquilla lo llamaron «El Satánico». Esta es la historia de Tomás Maldonado Cera.\n#misterio #casosreales #ridmer #shorts",
+   "etiquetas": [
+    "misterio",
+    "casos reales",
+    "ridmer",
+    "crimen real",
+    "Colombia",
+    "asesinos en serie",
+    "El Satánico",
+    "Barranquilla",
+    "Brenda Pájaro",
+    "shorts"
+   ],
+   "texto_facebook": "",
+   "miniatura": {
+    "seg": 0,
+    "texto": "EL SATÁNICO"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Dejaba símbolos satánicos… y casi siempre mataba antes de Halloween.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "31 DE OCTUBRE",
+      "sub": "Barranquilla, Colombia"
+     }
+    },
+    {
+     "texto": "En Barranquilla lo llamaron El Satánico: Tomás Maldonado Cera.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Tomás Maldonado Cera",
+      "sub": "«El Satánico» · Barranquilla, 1971"
+     }
+    },
+    {
+     "texto": "Lo relacionan con diez asesinatos entre dos mil dos y dos mil dieciocho.",
+     "escena": {
+      "tipo": "contador",
+      "n": 10,
+      "texto": "ASESINATOS",
+      "sub": "entre 2002 y 2018"
+     }
+    },
+    {
+     "texto": "Marcaba los cuerpos con pentagramas invertidos y estrellas.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "SÍMBOLOS",
+      "sub": "pentagramas invertidos y estrellas"
+     }
+    },
+    {
+     "texto": "La mayoría de sus víctimas murió antes del treinta y uno de octubre.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "ANTES DEL 31 DE OCTUBRE",
+      "sub": "la mayoría de las víctimas"
+     }
+    },
+    {
+     "texto": "Su última víctima fue Brenda Pájaro, vista con él por última vez en dos mil dieciocho.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Brenda Pájaro",
+      "sub": "Vista por última vez el 25 de julio de 2018"
+     }
+    },
+    {
+     "texto": "Ciento cincuenta y siete pruebas lo señalaban.",
+     "escena": {
+      "tipo": "contador",
+      "n": 157,
+      "texto": "PRUEBAS",
+      "sub": "y 39 testimonios"
+     }
+    },
+    {
+     "texto": "En dos mil veintitrés lo condenaron a cuarenta y seis años de prisión.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "46 AÑOS",
+      "sub": "agosto de 2023"
+     }
+    },
+    {
+     "texto": "Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 10.98,
+      "lon": -74.8,
+      "lugar": "Barranquilla",
+      "km": 8
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb2",
+   "tipo": "fb",
+   "hora_fb": "18:30",
+   "articulo": "Tomás Maldonado Cera",
+   "fuente": "https://es.wikipedia.org/wiki/Tom%C3%A1s_Maldonado_Cera",
+   "titulo_video": "EL SATÁNICO",
+   "titulo_youtube": "Dejaba símbolos satánicos… y casi siempre mataba antes de Halloween",
+   "descripcion_youtube": "Pentagramas invertidos, estrellas y escritos en la arena. En Barranquilla lo llamaron «El Satánico».\nLa historia de Tomás Maldonado Cera.\n#misterio #casosreales #ridmer",
+   "etiquetas": [
+    "misterio",
+    "casos reales",
+    "ridmer",
+    "crimen real",
+    "Colombia",
+    "asesinos en serie",
+    "El Satánico",
+    "Tomás Maldonado Cera",
+    "Barranquilla",
+    "Brenda Pájaro"
+   ],
+   "texto_facebook": "Dejaba símbolos satánicos en la arena… y casi siempre mataba antes de Halloween. En Barranquilla lo llamaron «El Satánico». #misterio #casosreales #ridmer",
+   "miniatura": {
+    "seg": 0,
+    "texto": "EL SATÁNICO"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Dejaba símbolos satánicos en la arena… y casi siempre mataba antes de Halloween.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "31 DE OCTUBRE",
+      "sub": "Barranquilla, Colombia"
+     }
+    },
+    {
+     "texto": "En Barranquilla lo llamaron El Satánico.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 10.98,
+      "lon": -74.8,
+      "lugar": "Barranquilla, Atlántico",
+      "km": 8
+     }
+    },
+    {
+     "texto": "Es Tomás Manuel Maldonado Cera, nacido en mil novecientos setenta y uno.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Tomás Manuel Maldonado Cera",
+      "sub": "«El Satánico» · Barranquilla, 1971"
+     }
+    },
+    {
+     "texto": "Lo relacionan con el asesinato de diez personas, entre dos mil dos y dos mil dieciocho.",
+     "escena": {
+      "tipo": "contador",
+      "n": 10,
+      "texto": "ASESINATOS",
+      "sub": "entre 2002 y 2018"
+     }
+    },
+    {
+     "texto": "Atacaba a mujeres y a hombres gais, en lugares solitarios de la ciudad.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "LUGARES SOLITARIOS",
+      "sub": "a las afueras de Barranquilla"
+     }
+    },
+    {
+     "texto": "Su primera víctima fue Rolando Romero Romero.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "ROLANDO ROMERO",
+      "sub": "primera víctima"
+     }
+    },
+    {
+     "texto": "Le dejó escrita la letra zeta en la frente.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "«Z»",
+      "sub": "escrita en su frente"
+     }
+    },
+    {
+     "texto": "Después, los cuerpos aparecían marcados con pentagramas invertidos, estrellas y hexagramas.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "SÍMBOLOS",
+      "sub": "pentagramas, estrellas, hexagramas"
+     }
+    },
+    {
+     "texto": "Y con el signo de Voor, usado antiguamente para invocar dioses.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "SIGNO DE VOOR",
+      "sub": "usado para invocar a dioses"
+     }
+    },
+    {
+     "texto": "Donde los mataba, se encontraron escritos satánicos y símbolos en la arena.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "ESCRITOS SATÁNICOS",
+      "sub": "y símbolos en la arena"
+     }
+    },
+    {
+     "texto": "La mayoría murió antes del treinta y uno de octubre.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "ANTES DEL 31 DE OCTUBRE",
+      "sub": "noche de Halloween"
+     }
+    },
+    {
+     "texto": "Un familiar de una víctima aseguró que tenía un pacto con el diablo.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "«PACTO CON EL DIABLO»",
+      "sub": "según un familiar de una víctima"
+     }
+    },
+    {
+     "texto": "Su última víctima fue Brenda Pájaro.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Brenda Pájaro",
+      "sub": "última víctima · Barranquilla"
+     }
+    },
+    {
+     "texto": "Desapareció el veinticinco de julio de dos mil dieciocho. La vieron por última vez con él.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "25 DE JULIO DE 2018",
+      "sub": "vista por última vez con él"
+     }
+    },
+    {
+     "texto": "La hallaron en un lugar solitario de Miramar.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 11.01,
+      "lon": -74.83,
+      "lugar": "Barrio Miramar, Barranquilla",
+      "km": 2
+     }
+    },
+    {
+     "texto": "Treinta y nueve testimonios y ciento cincuenta y siete pruebas lo señalaban.",
+     "escena": {
+      "tipo": "contador",
+      "n": 157,
+      "texto": "PRUEBAS",
+      "sub": "y 39 testimonios"
+     }
+    },
+    {
+     "texto": "En agosto de dos mil veintitrés lo condenaron a cuarenta y seis años de prisión.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "46 AÑOS",
+      "sub": "agosto de 2023"
+     }
+    },
+    {
+     "texto": "Una de las condenas más altas para un asesino en el Caribe.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "46 AÑOS DE PRISIÓN",
+      "sub": "de las más altas del Caribe"
+     }
+    },
+    {
+     "texto": "Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 10.98,
+      "lon": -74.8,
+      "lugar": "Barranquilla",
+      "km": 8
+     }
+    }
+   ]
+  },
+  {
+   "eid": "sh2",
+   "tipo": "short",
+   "encargo": "largo1",
+   "hora_youtube": "19:00",
+   "articulo": "María Concepción Ladino",
+   "fuente": "https://es.wikipedia.org/wiki/Mar%C3%ADa_Concepci%C3%B3n_Ladino",
+   "titulo_video": "LA BRUJA ASESINA",
+   "titulo_youtube": "Prometía curarlos con rituales… pero los mataba #shorts",
+   "descripcion_youtube": "María Concepción Ladino, «la bruja asesina» de Bogotá, fue condenada a 40 años de prisión.\n#misterio #casosreales #ridmer #shorts",
+   "etiquetas": [
+    "misterio",
+    "casos reales",
+    "ridmer",
+    "crimen real",
+    "Colombia",
+    "asesinos en serie",
+    "bruja asesina",
+    "María Concepción Ladino",
+    "Bogotá",
+    "shorts"
+   ],
+   "texto_facebook": "",
+   "miniatura": {
+    "img": 1,
+    "texto": "LA BRUJA ASESINA"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Prometía curarlos con rituales… pero varios terminaron muertos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Era María Concepción Ladino, la bruja asesina de Bogotá.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "María Concepción Ladino",
+      "sub": "«La bruja asesina» · Bogotá"
+     }
+    },
+    {
+     "texto": "Se hacía llamar Doña Conchita o la Hermana María.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "«DOÑA CONCHITA»",
+      "sub": "o «La Hermana María»"
+     }
+    },
+    {
+     "texto": "Daba bebedizos, baños y rituales a cambio de dinero.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "A tres hermanas les sacó trece millones de pesos prometiendo salvar a su madre.",
+     "escena": {
+      "tipo": "contador",
+      "n": 13,
+      "texto": "MILLONES DE PESOS",
+      "sub": "prometiendo salvar a su madre"
+     }
+    },
+    {
+     "texto": "La madre murió. Y ella las citó a las afueras de Bogotá.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Con ayuda de dos cómplices, las asesinó.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "TRES HERMANAS",
+      "sub": "asesinadas a las afueras de Bogotá"
+     }
+    },
+    {
+     "texto": "En mil novecientos noventa y nueve la capturaron: seis asesinatos y más de veinte estafas.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "1999",
+      "sub": "capturada por la Fiscalía"
+     }
+    },
+    {
+     "texto": "La condenaron a cuarenta años de prisión. Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "40 AÑOS",
+      "sub": "cárcel El Buen Pastor"
+     }
+    }
+   ]
+  },
+  {
+   "eid": "largo1",
+   "tipo": "largo",
+   "hora_youtube": "18:00",
+   "articulo": "María Concepción Ladino",
+   "fuente": "https://es.wikipedia.org/wiki/Mar%C3%ADa_Concepci%C3%B3n_Ladino",
+   "titulo_video": "LA BRUJA ASESINA",
+   "titulo_youtube": "Prometía curarlos con rituales… pero los que confiaron en ella terminaron muertos",
+   "descripcion_youtube": "La llamaban «Doña Conchita» o «la Hermana María». Ofrecía bebedizos, baños y rituales para la salud y el dinero.\nLa historia de María Concepción Ladino, «la bruja asesina» de Bogotá.\n#misterio #casosreales #ridmer",
+   "etiquetas": [
+    "misterio",
+    "casos reales",
+    "ridmer",
+    "crimen real",
+    "Colombia",
+    "asesinos en serie",
+    "bruja asesina",
+    "María Concepción Ladino",
+    "Bogotá",
+    "Fontibón",
+    "Instinto asesino"
+   ],
+   "texto_facebook": "",
+   "miniatura": {
+    "img": 1,
+    "texto": "LA BRUJA ASESINA"
+   },
+   "gancho": 2,
+   "segmentos": [
+    {
+     "texto": "Ofrecía curar a los enfermos con bebidas, baños y rituales…",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "pero al menos seis personas que confiaron en ella terminaron muertas.",
+     "escena": {
+      "tipo": "contador",
+      "n": 6,
+      "texto": "VÍCTIMAS",
+      "sub": "según las autoridades"
+     }
+    },
+    {
+     "texto": "Esta es la historia de María Concepción Ladino, la bruja asesina de Bogotá.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "María Concepción Ladino",
+      "sub": "«La bruja asesina» · Bogotá"
+     }
+    },
+    {
+     "texto": "Según las autoridades, en los años noventa mató a seis personas, hombres y mujeres.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "AÑOS 90",
+      "sub": "seis víctimas, hombres y mujeres"
+     }
+    },
+    {
+     "texto": "Nació en Bogotá, en la década de mil novecientos sesenta.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 4.65,
+      "lon": -74.1,
+      "lugar": "Bogotá, Colombia",
+      "km": 20
+     }
+    },
+    {
+     "texto": "Para la gente de su entorno era la Hermana María… o Doña Conchita.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "«DOÑA CONCHITA»",
+      "sub": "también «La Hermana María»"
+     }
+    },
+    {
+     "texto": "Se ganaba la confianza de la gente con trabajos de hechicería.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Prometía protección, una vida mejor… y más ganancias en sus negocios.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "PROTECCIÓN Y DINERO",
+      "sub": "lo que prometía"
+     }
+    },
+    {
+     "texto": "Vivía en la localidad de Fontibón, al occidente de la ciudad.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Desde allí empezó todo.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Allí arrendaba un apartamento a un hombre llamado Carlos Montaña.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "CARLOS MONTAÑA",
+      "sub": "dueño de la residencia"
+     }
+    },
+    {
+     "texto": "Desde el principio le dijo que lo veía enfermo y demacrado.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Y le ofreció sus servicios de curandera.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Le preparaba tomas y bebedizos guardados en frascos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Y baños especiales, que también tomaron sus tres hijos.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "BAÑOS ESPECIALES",
+      "sub": "también para sus tres hijos"
+     }
+    },
+    {
+     "texto": "El trece de octubre de mil novecientos noventa y cuatro, le llevó una serie de bebidas a su cuarto.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "13 DE OCTUBRE DE 1994",
+      "sub": "Fontibón, Bogotá"
+     }
+    },
+    {
+     "texto": "Carlos las tomó. Y se quedó solo en la habitación.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Hasta que su esposa se dio cuenta de lo que pasaba.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Pero Concepción, en vez de huir, hizo sesiones espirituales por la salud de Carlos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Fue su primer asesinato.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "PRIMER ASESINATO",
+      "sub": "13 de octubre de 1994"
+     }
+    },
+    {
+     "texto": "Después intentó escapar. Uno de los hijos ya había llamado a las autoridades.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Pero al final, no hubo captura.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "SIN CAPTURA",
+      "sub": "1994"
+     }
+    },
+    {
+     "texto": "Así comenzó una cadena de engaños. Con cada víctima, cambiaba de lugar.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Se mudó a otro sector de Fontibón.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Allí conoció a un hombre dueño de dos automóviles: Nebardo Adalberto Guevara Torres.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Nebardo Adalberto Guevara Torres",
+      "sub": "dueño de dos automóviles"
+     }
+    },
+    {
+     "texto": "Le cobró un millón quinientos mil pesos por sus trabajos.",
+     "escena": {
+      "tipo": "contador",
+      "n": 1500000,
+      "texto": "PESOS",
+      "sub": "por sus «trabajos»"
+     }
+    },
+    {
+     "texto": "Como los trabajos no funcionaron, lo citó en el río Cáqueza para un último ritual.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Le prometió cambiarle el físico, para protegerlo de sus enemigos.",
+     "escena": {
+      "tipo": "cita",
+      "texto": "Cambiarle el físico y así protegerlo de sus enemigos",
+      "autor": "Lo que ella le prometió"
+     }
+    },
+    {
+     "texto": "Nebardo nunca apareció.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "NUNCA APARECIÓ",
+      "sub": "Nebardo Guevara Torres"
+     }
+    },
+    {
+     "texto": "Su esposa la denunció. Concepción fue detenida por estafa… pero la soltaron por falta de pruebas.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "LIBRE",
+      "sub": "por falta de pruebas"
+     }
+    },
+    {
+     "texto": "Entonces se fue a Bucaramanga.",
+     "escena": {
+      "tipo": "ruta",
+      "centro": [
+       5.9,
+       -73.6
+      ],
+      "km": 250,
+      "a": [
+       4.65,
+       -74.1
+      ],
+      "b": [
+       7.12,
+       -73.12
+      ],
+      "na": "BOGOTÁ",
+      "nb": "BUCARAMANGA",
+      "corte": 1.0
+     }
+    },
+    {
+     "texto": "Cambió de ciudad… y también de nombre.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Allí se hacía llamar la Hermana María.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "A finales de los noventa conoció a Heidy Forero, una mujer con problemas de dinero.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Heidy Forero",
+      "sub": "víctima · Bucaramanga"
+     }
+    },
+    {
+     "texto": "Le ofreció ayuda. La llevó en su carro a un lugar desolado.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "La adormeció con un somnífero… y la quemó.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "SOMNÍFERO",
+      "sub": "en un lugar desolado"
+     }
+    },
+    {
+     "texto": "Para despistar a las autoridades, volvió a Bogotá.",
+     "escena": {
+      "tipo": "ruta",
+      "centro": [
+       5.9,
+       -73.6
+      ],
+      "km": 250,
+      "a": [
+       7.12,
+       -73.12
+      ],
+      "b": [
+       4.65,
+       -74.1
+      ],
+      "na": "BUCARAMANGA",
+      "nb": "BOGOTÁ",
+      "corte": 1.0
+     }
+    },
+    {
+     "texto": "En un rancho conoció a una mujer que tenía dinero guardado.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "Le dio escopolamina. No la mató… pero la amenazó de muerte si hablaba.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "ESCOPOLAMINA",
+      "sub": "y amenazas de muerte"
+     }
+    },
+    {
+     "texto": "Luego llegó al barrio Ciudad Jardín.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Allí engañó a una pareja de ancianos y les robó quince millones de pesos.",
+     "escena": {
+      "tipo": "contador",
+      "n": 15,
+      "texto": "MILLONES DE PESOS",
+      "sub": "robados a una pareja de ancianos"
+     }
+    },
+    {
+     "texto": "Los dos fueron asesinados.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "DOS VÍCTIMAS MÁS",
+      "sub": "barrio Ciudad Jardín"
+     }
+    },
+    {
+     "texto": "Sus últimas víctimas fueron tres hermanas.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "TRES HERMANAS",
+      "sub": "sus últimas víctimas"
+     }
+    },
+    {
+     "texto": "Su madre tenía un tumor en el cuello, y la bruja prometió salvarla.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Les sacó trece millones de pesos. Pero la madre murió.",
+     "escena": {
+      "tipo": "contador",
+      "n": 13,
+      "texto": "MILLONES DE PESOS",
+      "sub": "que nunca devolvió"
+     }
+    },
+    {
+     "texto": "Y la bruja se quedó con el dinero.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Pero su plan era otro.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "EL PLAN",
+      "sub": "de la bruja"
+     }
+    },
+    {
+     "texto": "Entonces citó a las tres hermanas a las afueras de Bogotá, para devolverles el dinero.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Era una trampa. Con ayuda de otras dos personas, las asesinó con piedras enormes.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "ERA UNA TRAMPA",
+      "sub": "a las afueras de Bogotá"
+     }
+    },
+    {
+     "texto": "Esta vez, la acusación no sería solo por estafa.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "La Fiscalía la buscó durante varios meses.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "En mil novecientos noventa y nueve, por fin la capturaron.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "1999",
+      "sub": "capturada por la Fiscalía"
+     }
+    },
+    {
+     "texto": "Al ser capturada intentó hacerse daño, y dijo tener problemas mentales.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "No le creyeron. La declararon culpable de seis asesinatos…",
+     "escena": {
+      "tipo": "contador",
+      "n": 6,
+      "texto": "ASESINATOS",
+      "sub": "incluidas las tres hermanas"
+     }
+    },
+    {
+     "texto": "…y de estafar a más de veinte personas.",
+     "escena": {
+      "tipo": "contador",
+      "n": 20,
+      "texto": "ESTAFADOS",
+      "sub": "más de veinte personas"
+     }
+    },
+    {
+     "texto": "Un juzgado de Bogotá la condenó a cuarenta años de prisión, en la cárcel El Buen Pastor.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "40 AÑOS",
+      "sub": "cárcel El Buen Pastor, Bogotá"
+     }
+    },
+    {
+     "texto": "En dos mil once, Discovery Channel contó su historia en Instinto asesino, en un capítulo llamado Bruja asesina.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "7 DE FEBRERO DE 2011",
+      "sub": "«Instinto asesino» · Discovery Channel"
+     }
+    },
+    {
+     "texto": "Apareció en la segunda temporada del programa.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Seis muertos. Más de veinte estafados. Y una mujer que se presentaba como curandera.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "6 MUERTOS",
+      "sub": "más de 20 estafados"
+     }
+    },
+    {
+     "texto": "Prometía salud, protección y dinero. Lo que entregaba era la muerte.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb3",
+   "tipo": "fb",
+   "hora_fb": "21:00",
+   "articulo": "Johany Alexánder Acuña",
+   "fuente": "https://es.wikipedia.org/wiki/Johany_Alex%C3%A1nder_Acu%C3%B1a",
+   "titulo_video": "EL LOCO DE LA PIEDRA",
+   "titulo_youtube": "Atacaba a quienes dormían en la calle… y confesó por qué",
+   "descripcion_youtube": "Doscientas treinta y ocho horas entre el primer y el último crimen. Medellín, abril de 2021.\nLa historia del «Loco de la piedra».\n#misterio #casosreales #ridmer",
+   "etiquetas": [
+    "misterio",
+    "casos reales",
+    "ridmer",
+    "crimen real",
+    "Colombia",
+    "asesinos en serie",
+    "Loco de la piedra",
+    "Medellín",
+    "Johany Alexánder Acuña",
+    "habitantes de calle"
+   ],
+   "texto_facebook": "Atacaba a quienes dormían en la calle… y cuando lo atraparon, confesó por qué lo hacía. #misterio #casosreales #ridmer",
+   "miniatura": {
+    "img": 2,
+    "texto": "EL LOCO DE LA PIEDRA"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Atacaba a personas que dormían en la calle… con un solo golpe.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Medellín, abril de dos mil veintiuno.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 6.25,
+      "lon": -75.56,
+      "lugar": "Medellín, Antioquia",
+      "km": 8
+     }
+    },
+    {
+     "texto": "El quince de abril, en el barrio Sevilla, hallaron a César Augusto Tobón, de cuarenta y un años.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "15 DE ABRIL DE 2021",
+      "sub": "Barrio Sevilla, Aranjuez"
+     }
+    },
+    {
+     "texto": "Lo habían atacado con un bloque de cemento.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "BLOQUE DE CEMENTO",
+      "sub": "primera víctima"
+     }
+    },
+    {
+     "texto": "Cuatro días después, en el barrio San Pedro, murió Luis Miguel Osuna.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "El veinticuatro, Sandro Echavarría, de veintisiete años.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "24 DE ABRIL",
+      "sub": "Sandro Echavarría Gallego, 27 años"
+     }
+    },
+    {
+     "texto": "Y el veinticinco, cerca del Museo Cementerio San Pedro, Jhon Rigoberto González.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Ese mismo día, otro hombre fue golpeado con una piedra en Manrique. Lo hallaron vivo, con fracturas.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "25 DE ABRIL",
+      "sub": "Manrique Central"
+     }
+    },
+    {
+     "texto": "Todos eran habitantes de la calle. Casi todos dormían cuando los atacaron.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Entre el primer y el último crimen pasaron doscientas treinta y ocho horas.",
+     "escena": {
+      "tipo": "contador",
+      "n": 238,
+      "texto": "HORAS",
+      "sub": "entre el primer y el último crimen"
+     }
+    },
+    {
+     "texto": "Las autoridades concluyeron que era una sola persona.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Se llamaba Johany Alexánder Acuña y tenía veintitrés años.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Johany Alexánder Acuña",
+      "sub": "«El Loco de la piedra» · Mitú, 1997"
+     }
+    },
+    {
+     "texto": "Nació en Mitú, en el Vaupés.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Lo apodaron el Loco de la piedra. Y confesó los ataques.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "«EL LOCO DE LA PIEDRA»",
+      "sub": "confesó los ataques"
+     }
+    },
+    {
+     "texto": "Contó que de niño unos desconocidos lo hirieron de gravedad.",
+     "escena": {
+      "tipo": "cita",
+      "texto": "Dejándolo agonizando y luchando por su vida",
+      "autor": "Johany Acuña, sobre su infancia"
+     }
+    },
+    {
+     "texto": "Por eso, según él, los mataba de un solo golpe… para que no agonizaran como él.",
+     "escena": {
+      "tipo": "cita",
+      "texto": "Sin dejarlos agonizando como lo habían hecho con él",
+      "autor": "Su confesión"
+     }
+    },
+    {
+     "texto": "En febrero de dos mil veintidós, un juez de Medellín lo condenó a treinta y seis años de prisión.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "36 AÑOS",
+      "sub": "febrero de 2022"
+     }
+    },
+    {
+     "texto": "Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb3s",
+   "tipo": "short",
+   "encargo": "fb3",
+   "hora_youtube": "22:00",
+   "articulo": "Johany Alexánder Acuña",
+   "fuente": "https://es.wikipedia.org/wiki/Johany_Alex%C3%A1nder_Acu%C3%B1a",
+   "titulo_video": "EL LOCO DE LA PIEDRA",
+   "titulo_youtube": "Atacaba a quienes dormían en la calle… y confesó por qué #shorts",
+   "descripcion_youtube": "Medellín, abril de 2021: el caso del «Loco de la piedra».\n#misterio #casosreales #ridmer #shorts",
+   "etiquetas": [
+    "misterio",
+    "casos reales",
+    "ridmer",
+    "crimen real",
+    "Colombia",
+    "asesinos en serie",
+    "Loco de la piedra",
+    "Medellín",
+    "shorts"
+   ],
+   "texto_facebook": "",
+   "miniatura": {
+    "img": 2,
+    "texto": "EL LOCO DE LA PIEDRA"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Atacaba a quienes dormían en la calle… con un solo golpe.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Medellín, abril de dos mil veintiuno.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 6.25,
+      "lon": -75.56,
+      "lugar": "Medellín, Antioquia",
+      "km": 8
+     }
+    },
+    {
+     "texto": "En doscientas treinta y ocho horas, cuatro habitantes de calle aparecieron muertos.",
+     "escena": {
+      "tipo": "contador",
+      "n": 238,
+      "texto": "HORAS",
+      "sub": "entre el primer y el último crimen"
+     }
+    },
+    {
+     "texto": "Todos con golpes de piedra o cemento en la cabeza.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "El responsable: Johany Alexánder Acuña, el Loco de la piedra.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Johany Alexánder Acuña",
+      "sub": "«El Loco de la piedra»"
+     }
+    },
+    {
+     "texto": "Confesó que de niño lo dejaron agonizando…",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "y que por eso los mataba de un solo golpe.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "En dos mil veintidós lo condenaron a treinta y seis años de prisión.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "36 AÑOS",
+      "sub": "febrero de 2022"
+     }
+    },
+    {
+     "texto": "Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    }
+   ]
+  }
+ ]
+}
