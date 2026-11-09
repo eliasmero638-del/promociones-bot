@@ -5,15 +5,17 @@ import requests
 
 UA = {'User-Agent': 'RidmerVideos/1.0 (https://github.com/eliasmero638-del/promociones-bot)'}
 WIKI = 'https://es.wikipedia.org/w/api.php'
-BUSQUEDAS = ['desaparición misteriosa', 'caso sin resolver', 'misterio sin resolver', 'sobrevivió accidente aéreo',
-             'único superviviente', 'naufragio supervivientes', 'asesino en serie capturado', 'secuestro rescate',
-             'fenómeno inexplicable', 'muerte misteriosa', 'expedición desaparecida', 'barco fantasma',
-             'crimen sin resolver', 'leyenda urbana origen real', 'rescate milagroso', 'perdido en la selva sobrevivió',
-             'mina rescate atrapados', 'avión desaparecido', 'fraude famoso estafador', 'fuga de prisión famosa',
-             # el público es de México, Ecuador y Argentina: más casos de Latinoamérica
-             'caso criminal México', 'asesino en serie México', 'desaparición México caso', 'narcotraficante capturado',
-             'crimen Colombia caso', 'asesino en serie Colombia', 'caso policial Argentina', 'crimen Ecuador caso',
-             'secuestro México', 'tragedia México', 'misterio Perú', 'fuga de prisión México']
+# Lo que funciona en Facebook (números del 9-nov-2026): supervivencia, hazañas increíbles, misterios, fenómenos,
+# curiosidades y animales. Los crímenes, secuestros y narcos casi no se muestran: quedan fuera.
+BUSQUEDAS = ['sobrevivió accidente aéreo', 'único superviviente', 'naufragio supervivientes', 'rescate milagroso',
+             'perdido en la selva sobrevivió', 'mina rescate atrapados', 'náufrago sobrevivió meses', 'soldado rendición tardía',
+             'fenómeno inexplicable', 'avión desaparecido', 'barco fantasma', 'expedición desaparecida', 'misterio sin resolver',
+             'código sin descifrar', 'desaparición misteriosa', 'profecía fin del mundo', 'perro leal historia',
+             'animal salvó vidas', 'avistamiento ovni militar', 'hazaña increíble récord', 'leyenda urbana origen real',
+             'fraude famoso estafador', 'fuga de prisión famosa', 'objeto misterioso encontrado', 'ciudad abandonada misterio',
+             # el público es de México, Ecuador y Argentina: más historias de Latinoamérica (sin crímenes)
+             'sobrevivientes Andes accidente', 'rescate México', 'misterio México', 'ovni México', 'terremoto México rescate',
+             'misterio Argentina', 'sobreviviente Ecuador', 'misterio Perú', 'leyenda Colombia origen real', 'tesoro perdido América']
 
 
 def _get(params, timeout=30):
@@ -25,8 +27,8 @@ def candidatos(n=10, excluir=''):
     """Artículos reales de Wikipedia con suficiente historia (título, intro, url)."""
     excl = excluir.lower()
     vistos, res = set(), []
-    latam = [b for b in BUSQUEDAS if any(p in b for p in ('México', 'Colombia', 'Argentina', 'Ecuador', 'Perú', 'narco'))]
-    for q in random.sample(latam, 3) + random.sample([b for b in BUSQUEDAS if b not in latam], 2):
+    latam = [b for b in BUSQUEDAS if any(p in b for p in ('México', 'Colombia', 'Argentina', 'Ecuador', 'Perú', 'Andes', 'América'))]
+    for q in random.sample(latam, 2) + random.sample([b for b in BUSQUEDAS if b not in latam], 3):
         try:
             r = _get({'action': 'query', 'list': 'search', 'srsearch': q, 'srlimit': 25, 'srnamespace': 0})
         except Exception:

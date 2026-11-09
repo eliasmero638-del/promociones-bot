@@ -64,6 +64,8 @@ ULTIMO_ERROR = ''
 ELEGIR = """Eres productor del canal de YouTube "Ridmer" (misterio, casos reales, sobrevivientes, sucesos extraños).
 Estos son artículos REALES de Wikipedia. Elige el que dé el {formato} más impactante y que enganche más
 (misterio, giro, algo difícil de creer pero cierto). Evita temas aburridos, políticos o sin historia.
+PRIORIZA: supervivencia, hazañas increíbles, misterios, fenómenos extraños, curiosidades y animales.
+EVITA: asesinatos, secuestros, narcos, terrorismo y violencia contra niños o mujeres (Facebook casi no los muestra).
 {lista}
 Responde SOLO JSON: {{"elegido": número, "titulo": "título CLICKBAIT verdadero (máx 80 caracteres)",
  "resumen": "2 frases con lo clave", "puntaje": 0-100}}"""

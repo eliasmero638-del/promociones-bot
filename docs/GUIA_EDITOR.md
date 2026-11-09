@@ -5,6 +5,24 @@ El servidor ya preparó los ENCARGOS del día: tema real, texto fuente (Wikipedi
 candidatas numeradas. Tu trabajo: escribir el PLAN de edición (JSON). El servidor hace la voz (Gemini, Algenib),
 prepara el MATERIAL (voz y fotos) y **TÚ armas y revisas cada video** (modo "claude"). El servidor solo los entrega.
 
+## ⚠️ LO QUE DICEN LOS NÚMEROS DE FACEBOOK (9-nov-2026) — MANDA SOBRE TODO LO DEMÁS
+- Los Reels de Ridmer TV duran ~1:20 y la gente los mira **2 a 6 segundos** en promedio: desliza al inicio y Facebook
+  deja de mostrarlos (quedan en 3–20 vistas). El problema es el COMIENZO.
+- Los que pasaron de 700–1.300 vistas: soldado que peleó 29 años (Onoda), notas en código del FBI, cazas detrás de un
+  ovni, fin del mundo predicho por la ciencia, chica que cayó de un avión y sobrevivió. Los de crímenes, secuestros,
+  narcos y asesinatos quedaron en 3–10 vistas.
+- Reglas desde hoy:
+  1. **Segundo 0 en plena acción**: el primer segmento es un video real del hecho o una escena dibujada EN MOVIMIENTO
+     (nunca una foto quieta) y la primera frase es la más fuerte de la historia, de 3 a 7 palabras
+     (ej.: "Cayó de un avión a 3.000 metros…"). Nada de contexto antes del gancho.
+  2. **Facebook de 45–60 s (120–150 palabras)**. Shorts siguen en 25–40 s.
+  3. **Cambio de imagen cada 2–3 s** y frases cortas. Ningún plano quieto más de 3 s.
+  4. **Temas**: supervivencia, hazañas increíbles, misterios, fenómenos, curiosidades, animales, famosos. NO crímenes,
+     secuestros, narcos, terrorismo ni violencia contra niños o mujeres (si un encargo es de eso, cámbialo por la reserva).
+  5. **Descripción concreta**: di QUÉ pasó con un dato fuerte ("Cayó de un avión a 3.000 metros… y sobrevivió 😱"),
+     no frases vagas ("Lo dejaron atrás seguros de que…").
+  6. Cierre: "Comparte esta historia" + seguir la página.
+
 ## Qué entregas: `planes/AAAA-MM-DD.json` en la rama `planes`
 ```json
 {"fecha": "2026-10-29", "modo": "claude",
@@ -39,7 +57,7 @@ prepara el MATERIAL (voz y fotos) y **TÚ armas y revisas cada video** (modo "cl
 ## Duración (sin excepciones)
 | tipo | palabras narradas | segmentos | resultado |
 |---|---|---|---|
-| fb (Facebook) | 190–210 | 10–14 | ~1:30 con intro |
+| fb (Facebook) | 120–150 | 9–12 | 45–60 s, SIN intro (cambio del 9-nov) |
 | Short (subconjunto de fb) | ≤ 105 | 5–7 | < 60 s SIEMPRE |
 | largo (YouTube) | 620–760 | 28–38 | 4–5 min |
 
@@ -140,7 +158,7 @@ cada Facebook y Short, 4+ en el largo, siempre fieles a los hechos (nada de cifr
   historia lejana (piratería, ferry de Filipinas, niñas de Nigeria) tuvieron 10–35 vistas: la mitad desliza al inicio.
 - Por eso: Shorts de **25–40 s (70–95 palabras)**; la primera imagen es la más impactante y el gancho se entiende en
   2 segundos; SIN intro en Shorts ni Facebook (la intro va solo en el largo); fotos a pantalla completa.
-- Temas: prioriza **México y Latinoamérica**, crímenes reales y casos virales recientes, famosos y animales/rescates;
+- Temas: prioriza **México y Latinoamérica**, casos virales recientes, famosos y animales/rescates (crímenes NO, ver 9-nov);
   historia lejana solo si el gancho es universal. Si hay video real del hecho, úsalo (fragmentos ≤ 7 s).
 
 ## Escenas DIBUJADAS (estilo de los cuentos) — el dueño las pidió el 6-nov-2026, OBLIGATORIAS
