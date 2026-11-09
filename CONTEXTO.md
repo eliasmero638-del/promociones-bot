@@ -92,4 +92,6 @@ verdaderos.
 2. Short de prueba de Robert Hansen: hay un reintento en `pedidos.json` (id `prueba-hansen-2`, el 28-oct a las 7:30 EC).
 3. Conectar Ridmer TV en Facebook (nuevo token con las dos páginas).
 4. Pendiente opcional: WhatsApp (CallMeBot sin cupo; o el número de prueba de WhatsApp Cloud de Meta), reconocimiento
-   de caras, La Mansión VIP 2 (desde el 8 de noviembre).
+   de caras. HECHO (v47-mansion, 8-nov): La Mansión VIP 2 con perfil propio (config.perfil_mansion: reality,
+   país México, participantes); se activa sola si el teléfono graba @hotspanishvlogs (va primero en grabar.sh, que
+   ahora se actualiza solo desde GitHub). Comando /reality mansion|casa|auto.

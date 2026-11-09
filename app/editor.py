@@ -376,6 +376,7 @@ def hacer_clip(pedazos_info, centro, chat_textos, nombre=None, job_filtro=None, 
                            'humor': ('NADIE PUDO PARAR DE REÍR', 'momento épico en la casa'),
                            'conversacion_importante': ('CONVERSACIÓN TENSA EN LA CASA', 'lo que dijeron cambia todo')}
                 t_, s_ = neutros.get(cat, ('CONVERSACIÓN TENSA EN LA CASA', 'mira lo que pasó'))
+                t_ = t_.replace('LA CASA', cfg.get('lugar', 'LA CASA'))
                 log('nombres dudosos en el título', dudosos, '→ título neutral')
                 r['titulo'], r['subtitulo'] = t_, s_
                 r['texto_post'] = f"{t_.capitalize()} 😱 ¿Qué opinas? #{cfg['reality'].replace(' ', '')} #Reality"
@@ -387,7 +388,7 @@ def hacer_clip(pedazos_info, centro, chat_textos, nombre=None, job_filtro=None, 
                     r[k] = re.sub(r'(?i)\bpeleas?\b', 'conversación', str(r.get(k, '')))
             if not str(r.get('evidencia') or '').strip():
                 r['interes'] = min(int(r.get('interes', 0) or 0), 55)
-            info = {'titulo': str(r.get('titulo') or '¡SE PRENDIÓ LA CASA!').upper(),
+            info = {'titulo': str(r.get('titulo') or f"¡SE PRENDIÓ {cfg.get('lugar', 'LA CASA')}!").upper(),
                     'subtitulo': str(r.get('subtitulo') or C.get()['reality']),
                     'nombres': r.get('personajes') or [], 'tipo': r.get('categoria'),
                     'texto': ' '.join(w for _, _, w in palabras), 'interes': r.get('interes', 0),

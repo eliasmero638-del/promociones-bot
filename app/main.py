@@ -7,7 +7,7 @@ except Exception as _e:          # si la fábrica falla, el Clipero sigue funcio
     fabrica = None
     print('fabrica no disponible:', _e, flush=True)
 
-VERSION = 'v46-dibujos'
+VERSION = 'v47-mansion'
 cola = queue.Queue()
 historial = []          # (hora, puntaje) de clips enviados, para límites por hora
 stats = {'pedazos': 0, 'clips': 0, 'ult_puntaje': None, 'ult_pedazo': None}
@@ -497,10 +497,21 @@ def comandos(tipo, chat, dato, raw):
             tg.texto(f'🤖 Publicación automática activada: {cfg["auto_minimo"]}/100 o más, tras {cfg["auto_espera_min"]} min '
                      f'sin respuesta, máx {cfg["max_publicaciones_dia"]} al día. Nunca lo explícito.\n'
                      '/auto no – apagarla · /auto 90 – cambiar el mínimo', chat)
+    elif cmd == '/reality':
+        q = editor._norm(dato.partition(' ')[2].strip())
+        if q.startswith('mansi'):
+            C.save(perfil_forzado='mansion')
+        elif q.startswith('casa'):
+            C.save(perfil_forzado='casa593')
+        elif q.startswith('auto'):
+            C.save(perfil_forzado='')
+        tg.texto(f"🎥 Reality actual: <b>{C.get()['reality']}</b> "
+                 f"({'fijado a mano' if C.get().get('perfil_forzado') else 'automático según el en vivo que graba el teléfono'})\n"
+                 '/reality mansion · /reality casa · /reality auto', chat)
     elif cmd in ('/participantes', '/lista'):
         ps = cfg['participantes']
         ex = cfg.get('exparticipantes') or {}
-        tg.texto('🏠 Siguen en la casa:\n' + '\n'.join(f'• {n}' for n in ps) +
+        tg.texto(f"🏠 {cfg['reality']} · siguen dentro:\n" + '\n'.join(f'• {n}' for n in ps) +
                  ('\n\n🚪 Ya salieron:\n' + '\n'.join(f'• {n}' for n in ex) if ex else '') +
                  '\n\nSi alguien sale: /salio Nombre\nSi entra alguien: /entro Nombre, apodo1, apodo2', chat)
     elif cmd == '/salio':

@@ -1,5 +1,5 @@
 """Configuración del Clipero. Lo secreto (token, cookies) vive solo en DATA/secrets, nunca en GitHub."""
-import json, os, threading
+import json, os, threading, time
 
 DATA = os.environ.get('CLIPERO_DATA', '/var/lib/clipero')
 SECRETS = os.path.join(DATA, 'secrets')
@@ -75,6 +75,29 @@ DEFAULTS = {
     'invitados': {                     # visitas (se agregan con /invitado y se quitan con /fuera)
         'Aarón "El Chiche"': ['aarón', 'aaron', 'chiche'],
     },
+    'lugar': 'LA CASA',
+    'pais': 'Ecuador',
+    # La Mansión VIP 2 (HotSpanish Vlogs, México). Se usa sola cuando el teléfono está grabando su en vivo.
+    'perfil_mansion': {
+        'claves': ['mansion', 'hotspanish', 'vip 2'],
+        'reality': 'LA MANSIÓN VIP 2',
+        'lugar': 'LA MANSIÓN',
+        'pais': 'México',
+        'exparticipantes': {},
+        'invitados': {},
+        'participantes': {             # confirmados por la prensa el 8-nov-2026 (el resto se revela en el estreno)
+            'Karely Ruiz': ['karely', 'karelly', 'kareli'],
+            'Itatí López': ['itatí', 'itati'],
+            'Tony Aguirre': ['tony', 'aguirre'],
+            'João Ferreira': ['joão', 'joao', 'ferreira'],
+            'Edwin Mendoza': ['edwin', 'mendoza'],
+            'Paolita Suárez': ['paolita', 'paola', 'suárez', 'suarez'],
+            'Doña Alegría': ['doña alegría', 'alegría', 'alegria', 'leticia', 'guajardo'],
+            'Cintia Cossio': ['cintia', 'cinthia', 'cossio'],
+            'Rod Contreras': ['rod', 'contreras'],
+            'Bellakath': ['bellakath', 'bella kath', 'kath'],
+        },
+    },
     'participantes': {
         'Josselin "La Sabrosura" Jiménez': ['sabrosura', 'josselin', 'josselyn', 'joselin', 'joselyn'],
         'Bryan "La Firgense"': ['bryan', 'brayan', 'firgense', 'frigersen', 'frigerse'],
@@ -132,12 +155,58 @@ def get():
             c = dict(DEFAULTS)
             c.update(propio)
             _cfg = c
-        return _cfg
+    if perfil() == 'mansion':
+        v = dict(_cfg)
+        v.update(_mansion())
+        return v
+    return _cfg
+
+
+# ------------------------------------------------ qué reality se está grabando ahora (según el título del en vivo)
+PERFIL_CLAVES = ('reality', 'lugar', 'pais', 'participantes', 'exparticipantes', 'invitados')
+_perfil_cache = [0, 'casa593']
+
+
+def _norm(t):
+    import unicodedata
+    return ''.join(ch for ch in unicodedata.normalize('NFD', str(t).lower()) if unicodedata.category(ch) != 'Mn')
+
+
+def _mansion():
+    m = dict(DEFAULTS['perfil_mansion'])
+    m.update((_cfg or {}).get('perfil_mansion') or {})
+    return {k: m[k] for k in PERFIL_CLAVES if k in m}
+
+
+def perfil():
+    """'mansion' si el teléfono está grabando La Mansión VIP 2; si no, 'casa593'."""
+    forzado = (_cfg or {}).get('perfil_forzado')
+    if forzado in ('mansion', 'casa593'):
+        return forzado
+    if time.time() - _perfil_cache[0] < 20:
+        return _perfil_cache[1]
+    p = 'casa593'
+    try:
+        d = json.load(open(os.path.join(DATA, 'remoto.json'), encoding='utf-8'))
+        txt = _norm(' '.join(str(d.get(k) or '') for k in ('titulo', 'canal')))
+        claves = ((_cfg or {}).get('perfil_mansion') or {}).get('claves') or DEFAULTS['perfil_mansion']['claves']
+        if any(_norm(k) in txt for k in claves):
+            p = 'mansion'
+    except Exception:
+        pass
+    _perfil_cache[:] = [time.time(), p]
+    return p
 
 
 def save(**kw):
-    c = get()
+    get()
     with _lock:
-        c.update(kw)
+        if perfil() == 'mansion' and any(k in PERFIL_CLAVES for k in kw):
+            pm = dict(_cfg.get('perfil_mansion') or {})
+            for k in list(kw):
+                if k in PERFIL_CLAVES:
+                    pm[k] = kw.pop(k)
+            kw['perfil_mansion'] = pm
+        _cfg.update(kw)
         _propio.update(kw)
         _escribir()

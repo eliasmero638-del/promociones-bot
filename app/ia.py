@@ -54,7 +54,7 @@ def gustos_txt():
     return out
 
 PROMPT = """Eres el editor de una página de Facebook de clips de realities ("{marca}") que vive de las vistas.
-Estás viendo un pedazo de {seg} segundos del reality "{reality}" (Ecuador), transmitido en vivo.
+Estás viendo un pedazo de {seg} segundos del reality "{reality}" ({pais}), transmitido en vivo.
 
 Participantes que SIGUEN en la casa (nombre: apodos): {participantes}
 Exparticipantes que YA SALIERON (ya no aparecen en cámara, pero pueden ser mencionados): {exparticipantes}
@@ -207,7 +207,7 @@ def analizar(clip, chat_textos, seg):
     fotos = _fotos(clip)
     ex = cfg.get('exparticipantes') or {}
     ex_txt = '; '.join(f"{k}: {', '.join(v)}" for k, v in ex.items()) or '(ninguno)'
-    prompt = PROMPT.format(gustos=gustos_txt(), aprendizaje=aprendizaje(), exparticipantes=ex_txt, marca=cfg['marca'], reality=cfg['reality'], seg=int(seg), participantes=parts_txt,
+    prompt = PROMPT.format(gustos=gustos_txt(), aprendizaje=aprendizaje(), exparticipantes=ex_txt, marca=cfg['marca'], reality=cfg['reality'], pais=cfg.get('pais', 'Ecuador'), seg=int(seg), participantes=parts_txt,
                            chat=chat, nfotos=len(fotos), cmin=cfg.get('clip_min', 30), cmax=cfg.get('clip_max', 180))
     parts = [{'text': prompt}]
     parts += [{'inline_data': {'mime_type': 'image/jpeg', 'data': base64.b64encode(f).decode()}} for f in fotos]
@@ -334,7 +334,7 @@ def analizar_groq(palabras, chat_textos, seg):
             f"{k}: {', '.join(v)}" for k, v in cfg['invitados'].items())
     ex = cfg.get('exparticipantes') or {}
     ex_txt = '; '.join(f"{k}: {', '.join(v)}" for k, v in ex.items()) or '(ninguno)'
-    prompt = PROMPT.format(gustos=gustos_txt(), aprendizaje=aprendizaje(), exparticipantes=ex_txt, marca=cfg['marca'], reality=cfg['reality'],
+    prompt = PROMPT.format(gustos=gustos_txt(), aprendizaje=aprendizaje(), exparticipantes=ex_txt, marca=cfg['marca'], reality=cfg['reality'], pais=cfg.get('pais', 'Ecuador'),
                            seg=int(seg), participantes=parts_txt, chat=' | '.join(chat_textos[-80:])[:4000] or '(sin chat)',
                            nfotos=0, cmin=cfg.get('clip_min', 60), cmax=cfg.get('clip_max', 180))
     prompt = prompt.replace('Te doy 0 fotos del clip en orden y su audio.',
