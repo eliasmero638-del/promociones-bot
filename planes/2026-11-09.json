@@ -3,6 +3,170 @@
  "modo": "claude",
  "videos": [
   {
+   "eid": "urg1",
+   "tipo": "fb",
+   "hora_fb": "ya",
+   "hora_short": "ya",
+   "urgente": true,
+   "articulo": "Explosión en la siderúrgica Habaş de Aliağa",
+   "fuente": "https://www.aljazeera.com/news/2026/11/9/explosion-at-turkish-steel-plant-kills-at-least-16-people",
+   "titulo_video": "EXPLOSIÓN EN TURQUÍA",
+   "titulo_youtube": "Explosión en una planta de acero en Turquía deja al menos 16 muertos",
+   "descripcion_youtube": "Este lunes 9 de noviembre una explosión en la siderúrgica Habaş de Aliağa, al norte de Esmirna, dejó al menos 16 muertos y 13 heridos. Según el gobernador, una grúa cayó dentro de un horno industrial. Erdogan anunció una investigación.\n#noticias #turquia #ridmer",
+   "etiquetas": [
+    "Turquía",
+    "explosión",
+    "siderúrgica",
+    "Aliağa",
+    "Esmirna",
+    "Habaş",
+    "noticias",
+    "última hora",
+    "ridmer"
+   ],
+   "texto_facebook": "Última hora: una explosión en una planta de acero en Turquía deja al menos 16 muertos y 13 heridos. #Turquía #noticias #Ridmer",
+   "miniatura": {
+    "seg": 0,
+    "texto": "16 MUERTOS"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Una explosión sacudió una planta de acero en Turquía... y dejó al menos dieciséis muertos.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Habas Aliaga steel plant",
+       "steel mill furnace molten",
+       "Aliaga steel factory"
+      ]
+     },
+     "short": true
+    },
+    {
+     "texto": "Pasó este lunes, poco antes del mediodía, en la siderúrgica Habaş de Aliağa, en el oeste del país.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 38.8,
+      "lon": 26.97,
+      "lugar": "Aliağa · Turquía",
+      "km": 30
+     },
+     "short": true
+    },
+    {
+     "texto": "Aliağa está a unos sesenta kilómetros al norte de Esmirna, en la costa del mar Egeo.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Aliağa",
+       "Aliaga Izmir",
+       "Izmir aerial view"
+      ]
+     }
+    },
+    {
+     "texto": "Según el gobernador de Esmirna, una grúa cayó dentro de un gran horno industrial mientras se cambiaba una caldera.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "overhead crane steel mill",
+       "electric arc furnace steel plant",
+       "steel plant ladle crane"
+      ]
+     },
+     "short": true
+    },
+    {
+     "texto": "Eso provocó la explosión.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "molten steel furnace sparks",
+       "steelworks furnace fire"
+      ]
+     },
+     "rotulo": "EXPLOSIÓN"
+    },
+    {
+     "texto": "Un testigo contó que el estallido se sintió como un terremoto.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Aliaga Habas factory",
+       "Aliağa industrial zone",
+       "steel factory Turkey"
+      ]
+     },
+     "short": true
+    },
+    {
+     "texto": "El presidente Recep Tayyip Erdogan confirmó dieciséis muertos y trece heridos.",
+     "escena": {
+      "tipo": "contador",
+      "n": 16,
+      "texto": "MUERTOS",
+      "sub": "y 13 heridos"
+     },
+     "short": true
+    },
+    {
+     "texto": "Dos de los heridos están en estado grave.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Turkey ambulance 112",
+       "Turkish ambulance"
+      ]
+     }
+    },
+    {
+     "texto": "Erdogan anunció que se abrirá una investigación.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Recep Tayyip Erdogan",
+      "sub": "Presidente de Turquía",
+      "buscar": [
+       "Recep Tayyip Erdogan"
+      ]
+     },
+     "short": true
+    },
+    {
+     "texto": "El alcalde de Esmirna, Cemil Tugay, advirtió que la cifra final se conocerá cuando terminen de retirar los escombros.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Cemil Tugay",
+      "sub": "Alcalde de Esmirna",
+      "buscar": [
+       "Cemil Tugay"
+      ]
+     }
+    },
+    {
+     "texto": "La Unión Europea envió sus condolencias a Turquía.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Ursula von der Leyen",
+       "European Commission flags Berlaymont"
+      ]
+     }
+    },
+    {
+     "texto": "Nuestros pensamientos están con las familias de las víctimas. Suscríbete a Ridmer para más noticias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Aliaga Izmir coast",
+       "Izmir bay sunset"
+      ]
+     },
+     "short": true
+    }
+   ]
+  },
+  {
    "eid": "fb1s",
    "tipo": "short",
    "encargo": "fb1",
