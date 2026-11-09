@@ -5,6 +5,29 @@ El servidor ya preparó los ENCARGOS del día: tema real, texto fuente (Wikipedi
 candidatas numeradas. Tu trabajo: escribir el PLAN de edición (JSON). El servidor hace la voz (Gemini, Algenib),
 prepara el MATERIAL (voz y fotos) y **TÚ armas y revisas cada video** (modo "claude"). El servidor solo los entrega.
 
+## 🎬 EDICIÓN A MEDIDA (9-nov-2026) — EL DUEÑO LO EXIGE, MANDA SOBRE TODO
+"Quedamos que tú ibas a editar todos los videos… no que inicie con las fotos." Cada video lo editas TÚ como un editor
+humano, no solo eligiendo fotos para la plantilla:
+1. **Videos del día:** fb1, fb2, fb3 (Facebook) + 2 Shorts: fb1s y fb2s (misma historia que fb1/fb2, reutiliza sus
+   escenas) + largo1 SOLO los días que haya encargo de largo (día por medio). No hay sh1/sh2.
+2. **Inicio cinematográfico OBLIGATORIO (segmento 0):** una escena animada A MEDIDA de 2,5–4 s escrita por ti con
+   `app/plano.py` (estilo plano, personajes nuevos): acción repentina (algo cae, explota, corre, frena, un rayo, la
+   cámara entra rápido con sacudida) + `P.titulo_golpe(...)` con el título. Pon `"titulo_video": ""` en cambios.json
+   para que no salga el título dos veces. NUNCA empieces con una foto.
+3. **2–4 escenas animadas más a medida** de los momentos clave de ESA historia (no las escenas genéricas de dibujos.py),
+   mezcladas con fotos/videos reales. En cambios: `"dibujo": {"N": {"script": "esc_x.py"}}`. El script recibe
+   `salida segundos W H` y hace `import plano as P` (editar.py ya pone app/ en el PYTHONPATH).
+   Ejemplo completo y probado: `docs/ejemplos/jk_escenas.py` (avión en tormenta, rayo, caída, selva, contador de días).
+   Piezas del kit: ciudad_noche, cielo_tormenta, nubes, lluvia, rayo, avion, selva, arroyo, mar, persona (policia,
+   soldado, mujer, nino, anciano, encapuchado, medico, senor; poses camina/corre/apunta/rodilla/manos_arriba/cae/quieto,
+   `mira='izq'`, `giro`), carro (normal o policía), faro, luces_policia, niebla, camara (zoom, paneo, sacudida),
+   destello, vineta, titulo_golpe, grabar. Si algo no existe en el kit, dibújalo tú en el script con PIL.
+4. **Música que se note:** en cambios.json `"musica": "tension" | "epico" | "misterio"` (pistas propias en
+   assets/musica; ya bajan solas bajo la voz). Elige la que vaya con la historia.
+5. **Revisa como editor:** genera cada escena, mira 4–5 cuadros con Read (personajes bien puestos, nada cortado, nada
+   tapado), corrige y vuelve a generar. Después revisa `revision_*.jpg` del video final.
+6. Si se acaba el tiempo, prioriza: fb1 + fb1s completos y bien hechos antes que todo a medias.
+
 ## ⚠️ LO QUE DICEN LOS NÚMEROS DE FACEBOOK (9-nov-2026) — MANDA SOBRE TODO LO DEMÁS
 - Los Reels de Ridmer TV duran ~1:20 y la gente los mira **2 a 6 segundos** en promedio: desliza al inicio y Facebook
   deja de mostrarlos (quedan en 3–20 vistas). El problema es el COMIENZO.
