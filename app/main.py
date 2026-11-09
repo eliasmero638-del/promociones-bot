@@ -7,7 +7,7 @@ except Exception as _e:          # si la fábrica falla, el Clipero sigue funcio
     fabrica = None
     print('fabrica no disponible:', _e, flush=True)
 
-VERSION = 'v49-mansion'
+VERSION = 'v50-mansion'
 cola = queue.Queue()
 historial = []          # (hora, puntaje) de clips enviados, para límites por hora
 stats = {'pedazos': 0, 'clips': 0, 'ult_puntaje': None, 'ult_pedazo': None}
@@ -363,7 +363,8 @@ def texto_diag():
     ult = stats.get('ult_pedazo') or '—'
     sup = ', '.join(f'{k}: {v}' for k, v in d['supervisor'].most_common(4)) or '—'
     return (f"🩺 <b>Diagnóstico Clipero {VERSION}</b>\n"
-            f"📡 Grabación: {'✅ llegando' if e['grabando'] else '❌ NO llega (revisa el teléfono)'} · último pedazo {ult}\n"
+            f"📡 Grabación: {'✅ llegando' if e['grabando'] else '❌ NO llega: ' + str(e.get('error') or '')} · último pedazo {ult}\n"
+            f"🎥 Reality: {C.get()['reality']}{' (lo graba el servidor)' if recorder.srv_activo() else ''}\n"
             f"🧩 Pedazos analizados: {stats['pedazos']}\n"
             f"🔎 Momentos candidatos: {d['candidatos']} · descartados por el filtro gratis: {d['filtro_descarta']}\n"
             f"🤖 Revisados por IA: {d['a_ia']} · IA sin respuesta: {d['ia_error']} · interés bajo: {d['bajo_interes']}\n"
@@ -381,7 +382,9 @@ def vigilante():
         try:
             if not recorder.estado['grabando']:
                 sin_grab_desde = sin_grab_desde or time.time()
-                if time.time() - sin_grab_desde > 15 * 60 and not avisado:
+                if time.time() - sin_grab_desde > 15 * 60 and not avisado and recorder.estado.get('telefono_ok'):
+                    pass                                   # el teléfono está bien: solo no hay en vivo (no molestar)
+                elif time.time() - sin_grab_desde > 15 * 60 and not avisado:
                     avisado = True
                     for c in C.get()['chat_ids']:
                         tg._api('sendMessage', chat_id=c, parse_mode='HTML',

@@ -192,8 +192,14 @@ def bucle_remoto():
                 time.sleep(15)
                 continue
             vivo = d.get('grabando') and time.time() - d.get('hora', 0) < 300
-            estado.update(video=d.get('video'), titulo=d.get('titulo'), grabando=bool(vivo),
-                          error=None if vivo else 'el teléfono no está enviando grabación')
+            if vivo:
+                err = None
+            elif time.time() - d.get('hora', 0) < 180:
+                err = 'el teléfono está bien, pero no hay ningún en vivo ahora'
+            else:
+                err = 'el teléfono no se comunica desde las ' + (time.strftime('%H:%M', time.localtime(d['hora'])) if d.get('hora') else '?')
+            estado.update(video=d.get('video'), titulo=d.get('titulo'), grabando=bool(vivo), telefono_ok=time.time() - d.get('hora', 0) < 180,
+                          error=err)
         except Exception as e:
             estado['error'] = f'remoto: {e}'
         time.sleep(15)
