@@ -26,7 +26,12 @@ humano, no solo eligiendo fotos para la plantilla:
    assets/musica; ya bajan solas bajo la voz). Elige la que vaya con la historia.
 5. **Revisa como editor:** genera cada escena, mira 4–5 cuadros con Read (personajes bien puestos, nada cortado, nada
    tapado), corrige y vuelve a generar. Después revisa `revision_*.jpg` del video final.
-6. Si se acaba el tiempo, prioriza: fb1 + fb1s completos y bien hechos antes que todo a medias.
+6. **Subtítulos:** el transcriptor se equivoca con nombres ("Rhythmert" en vez de Ridmer, "Apocalpa" en vez de
+   a Pucallpa). Lee las palabras de `info.json` y corrígelas en cambios: `"corregir": {"Rhythmert": "Ridmer",
+   "#57": ""}` ("#N" = la palabra número N; "" la borra).
+7. **Tiempo:** cada Facebook con 6–7 animaciones tarda ~12 min en generarse. En los Shorts NO vuelvas a generar las
+   animaciones: reutiliza las del Facebook con `"dibujo": {"0": {"mp4": "<salida>/fb1/anim_00.mp4"}}`.
+8. Si se acaba el tiempo, prioriza: fb1 + fb1s completos y bien hechos antes que todo a medias.
 
 ## ⚠️ LO QUE DICEN LOS NÚMEROS DE FACEBOOK (9-nov-2026) — MANDA SOBRE TODO LO DEMÁS
 - Los Reels de Ridmer TV duran ~1:20 y la gente los mira **2 a 6 segundos** en promedio: desliza al inicio y Facebook

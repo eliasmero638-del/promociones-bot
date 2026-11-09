@@ -11,6 +11,8 @@ CAMBIOS.json (todo opcional) = decisiones de Claude tras revisar:
    "trans": {"4": "fadewhite"},         # transición al ENTRAR a la escena siguiente: fade, fadewhite, fadeblack, dissolve
    "sfx": {"5": "impacto"},             # efecto al entrar: impacto, whoosh, golpe, riser, "" (ninguno)
    "latido": {"9": true},               # latido de corazón debajo de la escena (tensión)
+   "corregir": {"Rhythmert": "Ridmer", "Kopki": "Koepcke", "#57": ""},   # subtítulos mal oídos ("#N" = palabra N)
+   "musica": "tension",                 # tension | epico | misterio (pistas propias, bajan solas bajo la voz)
    (una imagen también puede ser v_NN.mp4: fragmento de video real en recuadro, máx. 7 s en movimiento)
 Escenas animadas (se piden en el plan; el servidor baja el mapa y aquí se animan):
    {"tipo": "ruta", "a": [lat, lon], "b": [lat, lon], "na": "AUSTIN", "nb": "BAHAMAS", "corte": 0.55,
@@ -174,6 +176,23 @@ def main():
         segs, palabras = alinear(wav, segs, info['hook_fin'], g)
         for k, x in fijos.items():
             segs[k]['t0'] = x
+    # subtítulos: corrige palabras mal oídas por el transcriptor ("Rhythmert" → "Ridmer"). Clave = palabra sin
+    # signos, en minúsculas; valor = texto nuevo ("" la borra y su tiempo pasa a la anterior).
+    corr = {re.sub(r'[^\w]', '', k.lower()): x for k, x in (cambios.get('corregir') or {}).items()}
+    if corr:
+        nuevas = []
+        for n_, (a, b, w) in enumerate(palabras):
+            k = re.sub(r'[^\w]', '', w.lower())
+            if f'{n_}' in corr and (cambios.get('corregir') or {}).get(f'#{n_}') is not None:
+                k = f'{n_}'                                      # "#57": por posición (ver palabras en info.json)
+            if k in corr:
+                fin = w[-1] if w[-1] in '.,;:!?' and not corr[k][-1:] in '.,;:!?' else ''
+                if corr[k] == '' and nuevas:
+                    nuevas[-1] = (nuevas[-1][0], b, nuevas[-1][2] + fin)
+                    continue
+                w = corr[k] + fin
+            nuevas.append((a, b, w))
+        palabras = nuevas
     mi = v.get('miniatura') or {}
     fm = None
     if isinstance(mi.get('img'), str) and os.path.exists(os.path.join(mat, mi['img'])):
@@ -199,6 +218,10 @@ def main():
                 animar.caida(s['img'], esc.get('lugar', ''), sal, dd, W_, H_)
             elif t == 'contador':
                 animar.contador(int(esc.get('n', 0)), esc.get('texto', ''), esc.get('sub', ''), sal, min(dd, 5), W_, H_)
+            elif t == 'dibujo' and esc.get('mp4') and os.path.exists(esc['mp4']):   # reutilizar una animación ya hecha
+                subprocess.run(['ffmpeg', '-v', 'error', '-y', '-stream_loop', '-1', '-i', esc['mp4'], '-t', f'{dd:.2f}',
+                                '-an', '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '18', '-pix_fmt', 'yuv420p', sal],
+                               check=True)
             elif t == 'dibujo' and esc.get('script'):     # dibujo hecho a medida: python3 script salida seg W H
                 sc = esc['script'] if os.path.isabs(esc['script']) else os.path.join(os.path.dirname(os.path.abspath(
                     sys.argv[5])) if len(sys.argv) > 5 else mat, esc['script'])

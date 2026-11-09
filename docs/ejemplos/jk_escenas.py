@@ -170,4 +170,30 @@ def cierre():
     P.grabar(cuadro, sal, d)
 
 
-{'apertura': apertura, 'rayo': rayo, 'cae_selva': cae_selva, 'agua': agua, 'camina': camina, 'cierre': cierre}[escena]()
+# ------------------------------------------------------------------ 0b) despegue: 24 de diciembre de 1971
+def despegue():
+    from PIL import ImageFont
+    f = ImageFont.truetype(P.FUENTE, int(W * 0.075))
+    f2 = ImageFont.truetype(P.FUENTE, int(W * 0.04))
+    copa = P.selva(CW * 2, noche=False)
+
+    def cuadro(t):
+        p = t / d
+        img = P.degradado(CW, CH, (40, 50, 90), (230, 150, 110)).convert('RGBA')
+        piso = copa.crop((int(t * 120), 0, int(t * 120) + CW, CH)).resize((CW, int(CH * 0.35)))
+        img.alpha_composite(piso, (0, int(CH * 0.68)))
+        P.nubes(img, t, vel=160, alfa=70, semilla=12)
+        P.avion(img, CW * (0.2 + 0.55 * p), CH * (0.5 - 0.12 * p), 0.6, ang=-6, t=t)
+        im = P.camara(img, 1.08, CW * 0.5, CH * 0.5)
+        im = P.vineta(im, 0.5)
+        dd = ImageDraw.Draw(im)
+        a = min(1.0, t / 0.4)
+        y0 = H * 0.2
+        for txt, ff, col, dy in (('24 DIC 1971', f, (255, 255, 255), 0), ('LIMA  →  PUCALLPA · PERÚ', f2, (255, 210, 120), W * 0.1)):
+            dd.text((W / 2 + 4, y0 + dy + 4), txt, font=ff, fill=(0, 0, 0), anchor='mm')
+            dd.text((W / 2, y0 + dy), txt, font=ff, fill=tuple(int(c * a) for c in col), anchor='mm')
+        return im
+    P.grabar(cuadro, sal, d)
+
+
+{'despegue': despegue, 'apertura': apertura, 'rayo': rayo, 'cae_selva': cae_selva, 'agua': agua, 'camina': camina, 'cierre': cierre}[escena]()

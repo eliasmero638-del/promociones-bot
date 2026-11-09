@@ -1,0 +1,58 @@
+{
+ "titulo_video": "",
+ "musica": "tension",
+ "miniatura": {
+  "img": "esc_09.jpg",
+  "texto": "CAYÓ Y VIVIÓ"
+ },
+ "dibujo": {
+  "0": {
+   "script": "esc_apertura.py"
+  },
+  "1": {
+   "script": "esc_despegue.py"
+  },
+  "3": {
+   "script": "esc_rayo.py"
+  },
+  "4": {
+   "script": "esc_cae_selva.py"
+  },
+  "6": {
+   "script": "esc_agua.py"
+  },
+  "7": {
+   "script": "esc_camina.py"
+  },
+  "10": {
+   "script": "esc_cierre.py"
+  }
+ },
+ "img": {
+  "8": "b_01.jpg"
+ },
+ "rotulo": {
+  "2": "JULIANE HOY",
+  "5": "FOTO REAL",
+  "9": "1 DE 92"
+ },
+ "trans": {
+  "0": "fadewhite",
+  "3": "fadewhite",
+  "4": "fadeblack"
+ },
+ "sfx": {
+  "3": "impacto",
+  "4": "whoosh",
+  "9": "golpe"
+ },
+ "corregir": {
+  "Julian": "Juliane",
+  "Kopki": "Koepcke",
+  "Apocalpa": "a Pucallpa",
+  "mazónica": "amazónica",
+  "Rhythmert": "Ridmer",
+  "#57": "",
+  "#58": ""
+ }
+}
