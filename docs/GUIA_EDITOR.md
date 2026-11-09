@@ -26,6 +26,13 @@ humano, no solo eligiendo fotos para la plantilla:
    assets/musica; ya bajan solas bajo la voz). Elige la que vaya con la historia.
 5. **Revisa como editor:** genera cada escena, mira 4–5 cuadros con Read (personajes bien puestos, nada cortado, nada
    tapado), corrige y vuelve a generar. Después revisa `revision_*.jpg` del video final.
+5b. **VIDEO REAL OBLIGATORIO (9-nov): mínimo 2–3 fragmentos de video por Facebook/Short y 5+ en el largo.** "Sin
+   videos es un video muerto." En el plan: `{"tipo": "video", "url": "https://youtube.com/...", "desde": 12, "dur": 6}`
+   (YouTube ahora lo baja el teléfono del dueño; TikTok/X/Facebook los baja el servidor) y SIEMPRE un respaldo libre:
+   `"buscar_video": ["thunderstorm night", "Amazon rainforest"]` (Wikimedia Commons). Busca con WebSearch videos del
+   hecho (noticieros, rescates, archivo) y elige segundos con acción.
+5c. **Fotos reales con estilo (automático):** salen como polaroid que cae con cinta. Para un dato fuerte usa
+   `"estilo_foto": {"N": "duo"}, "dato": {"N": "1 DE 92"}`; pie de foto: `"pie": {"N": "Juliane, hoy"}`.
 6. **Subtítulos:** el transcriptor se equivoca con nombres ("Rhythmert" en vez de Ridmer, "Apocalpa" en vez de
    a Pucallpa). Lee las palabras de `info.json` y corrígelas en cambios: `"corregir": {"Rhythmert": "Ridmer",
    "#57": ""}` ("#N" = la palabra número N; "" la borra).
