@@ -55,6 +55,8 @@ DEFAULTS = {
     'clip_max': 900,                     # sin tope real: dura lo que dure el momento
     'paquete_hora': '09:00',             # Shorts y largo de YouTube llegan todos juntos a esta hora
     'shorts_extra': 2,
+    'ridmer_shorts_propios': 0,          # 9-nov: solo 2 Shorts al día (fb1s y fb2s, de las historias de fb1 y fb2)
+    'ridmer_largo_cada': 2,              # 9-nov: video largo día por medio
     'largo_cada_dias': 1,                # video largo de YouTube todos los días                   # Shorts con historia propia además de los 3 de Facebook
     'separacion_pub_min': 60,            # mínimo entre publicaciones en Facebook
     'pub_noche': [0, 7],                 # de 0:00 a 7:00 no se publica (se guarda para la mañana)

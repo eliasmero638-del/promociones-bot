@@ -17,8 +17,8 @@ def log(*a):
 
 def hay_largo(fecha):
     """Video largo todos los días (largo_cada_dias = 1) o un día sí y otro no (2)."""
-    cada = int(C.get().get('largo_cada_dias', 1) or 1)
-    return time.strptime(fecha, '%Y-%m-%d').tm_yday % cada == 0
+    cada = int(C.get().get('ridmer_largo_cada', 2) or 1)          # 9-nov-2026: el dueño pidió día por medio
+    return (time.strptime(fecha, '%Y-%m-%d').tm_yday + 1) % cada == 0     # 10-nov no, 11-nov sí, 12-nov no…
 
 
 def _historial():
@@ -136,7 +136,7 @@ def preparar_dia(fecha=None):
         except Exception:
             pass
     elegidos = elegidos or cands
-    total = n_fb + (1 if hay_largo(fecha) else 0) + C.get().get('shorts_extra', 2) + 1   # + Shorts propios + reserva res1
+    total = n_fb + (1 if hay_largo(fecha) else 0) + C.get().get('ridmer_shorts_propios', 0) + 1   # + Shorts propios + reserva res1
     k = 0
     for c in elegidos:
         if len(encargos) >= total:
@@ -148,7 +148,7 @@ def preparar_dia(fecha=None):
             tipo, eid = 'fb', f'fb{n_f + 1}'
         elif hay_largo(fecha) and not n_l:
             tipo, eid = 'largo', 'largo1'
-        elif n_s < C.get().get('shorts_extra', 2):
+        elif n_s < C.get().get('ridmer_shorts_propios', 0):
             tipo, eid = 'short', f'sh{n_s + 1}'
         else:
             tipo, eid = 'fb', 'res1'
