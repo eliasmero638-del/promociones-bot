@@ -7,7 +7,7 @@ except Exception as _e:          # si la fábrica falla, el Clipero sigue funcio
     fabrica = None
     print('fabrica no disponible:', _e, flush=True)
 
-VERSION = 'v47-mansion'
+VERSION = 'v48-mansion'
 cola = queue.Queue()
 historial = []          # (hora, puntaje) de clips enviados, para límites por hora
 stats = {'pedazos': 0, 'clips': 0, 'ult_puntaje': None, 'ult_pedazo': None}
@@ -584,6 +584,32 @@ def comandos(tipo, chat, dato, raw):
         tg.texto('Ya estás registrado. /estado para ver cómo va.', chat)
 
 
+def vigia_mansion():
+    """Si La Mansión VIP 2 está en vivo pero el teléfono graba otra cosa, avisa por Telegram (máx. cada 6 h)."""
+    ultimo = 0
+    while True:
+        time.sleep(600)
+        try:
+            if C.perfil() == 'mansion' or time.time() - ultimo < 6 * 3600:
+                continue
+            out = subprocess.run(recorder.ytdlp_base() + ['--flat-playlist', '--playlist-end', '6', '--print',
+                                 '%(live_status)s\t%(title)s', 'https://www.youtube.com/@hotspanishvlogs/streams'],
+                                 capture_output=True, text=True, timeout=120).stdout
+            vivo = [l.split('\t', 1)[-1] for l in out.splitlines() if l.startswith('is_live')]
+            if vivo:
+                ultimo = time.time()
+                d = {}
+                try:
+                    d = json.load(open(os.path.join(C.DATA, 'remoto.json')))
+                except Exception:
+                    pass
+                tg.texto(f"📺 La Mansión VIP 2 está EN VIVO ({vivo[0][:80]}), pero el teléfono está grabando: "
+                         f"{d.get('titulo') or 'nada'}.\nCuando tengas el teléfono, pega en Termux el comando de instalar "
+                         "del Clipero y se cambia solo a La Mansión.")
+        except Exception as e:
+            log('vigía mansión', e)
+
+
 def main():
     log('Clipero', VERSION, 'iniciando')
     with open(os.path.join(C.DATA, 'estado.json'), 'w') as f:
@@ -593,6 +619,7 @@ def main():
     threading.Thread(target=trabajador, daemon=True).start()
     threading.Thread(target=auto_publicador, daemon=True).start()
     threading.Thread(target=vigilante, daemon=True).start()
+    threading.Thread(target=vigia_mansion, daemon=True).start()
     web.iniciar(buscar_token, lambda cid: publicar_clip(cid, 'tú'), no_publicar,
                 {'buscar': fabrica.buscar_token, 'publicar': fabrica.publicar, 'no': fabrica.no_publicar}
                 if fabrica else None)
@@ -606,7 +633,7 @@ def main():
     if not C.get().get('solo_enviar'):
         tg.escuchar(comandos)
     if C.get()['chat_ids']:
-        tg.texto(f'🟢 Clipero {VERSION} encendido.')
+        tg.texto(f"🟢 Clipero {VERSION} encendido. Reality: {C.get()['reality']}")
     while True:
         time.sleep(60)
         with open(os.path.join(C.DATA, 'estado.json'), 'w') as f:
