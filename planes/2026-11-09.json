@@ -1898,6 +1898,110 @@
      }
     }
    ]
+  },
+  {
+   "eid": "vz1",
+   "tipo": "fb",
+   "hora_fb": "ya",
+   "hora_short": "ya",
+   "hora_youtube": "ya",
+   "nota": "muestra de voz, solo material",
+   "voz": "Algenib",
+   "estilo_voz": "Narra como un documental de misterio, en tono de suspenso, voz baja y pausada: \"{texto}\"",
+   "gancho": 1,
+   "titulo_video": "PRUEBA",
+   "segmentos": [
+    {
+     "texto": "El veintisiete de diciembre de mil novecientos cincuenta y cuatro, en las montañas de Sudáfrica, una mujer vio algo que, según ella, no venía de este mundo.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Lo que contó después… sigue dividiendo a los investigadores hasta hoy.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    }
+   ]
+  },
+  {
+   "eid": "vz2",
+   "tipo": "fb",
+   "hora_fb": "ya",
+   "hora_short": "ya",
+   "hora_youtube": "ya",
+   "nota": "muestra de voz, solo material",
+   "voz": "Gacrux",
+   "estilo_voz": "Narra como un documental de misterio, en tono de suspenso, voz baja y pausada: \"{texto}\"",
+   "gancho": 1,
+   "titulo_video": "PRUEBA",
+   "segmentos": [
+    {
+     "texto": "El veintisiete de diciembre de mil novecientos cincuenta y cuatro, en las montañas de Sudáfrica, una mujer vio algo que, según ella, no venía de este mundo.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Lo que contó después… sigue dividiendo a los investigadores hasta hoy.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    }
+   ]
+  },
+  {
+   "eid": "vz3",
+   "tipo": "fb",
+   "hora_fb": "ya",
+   "hora_short": "ya",
+   "hora_youtube": "ya",
+   "nota": "muestra de voz, solo material",
+   "voz": "Orus",
+   "estilo_voz": "Narra como un documental de misterio, en tono de suspenso, voz baja y pausada: \"{texto}\"",
+   "gancho": 1,
+   "titulo_video": "PRUEBA",
+   "segmentos": [
+    {
+     "texto": "El veintisiete de diciembre de mil novecientos cincuenta y cuatro, en las montañas de Sudáfrica, una mujer vio algo que, según ella, no venía de este mundo.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Lo que contó después… sigue dividiendo a los investigadores hasta hoy.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    }
+   ]
+  },
+  {
+   "eid": "vz4",
+   "tipo": "fb",
+   "hora_fb": "ya",
+   "hora_short": "ya",
+   "hora_youtube": "ya",
+   "nota": "muestra de voz, solo material",
+   "voz": "Charon",
+   "estilo_voz": "Narra como un documental de misterio, en tono de suspenso, voz baja y pausada: \"{texto}\"",
+   "gancho": 1,
+   "titulo_video": "PRUEBA",
+   "segmentos": [
+    {
+     "texto": "El veintisiete de diciembre de mil novecientos cincuenta y cuatro, en las montañas de Sudáfrica, una mujer vio algo que, según ella, no venía de este mundo.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Lo que contó después… sigue dividiendo a los investigadores hasta hoy.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    }
+   ]
   }
  ]
 }
