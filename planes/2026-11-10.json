@@ -580,6 +580,222 @@
      }
     }
    ]
+  },
+  {
+   "eid": "res1b",
+   "tipo": "fb",
+   "hora_fb": "14:00",
+   "articulo": "Escape en helicóptero de la prisión Mountjoy",
+   "fuente": "https://es.wikipedia.org/wiki/Escape_en_helic%C3%B3ptero_de_la_prisi%C3%B3n_Mountjoy",
+   "titulo_video": "ESCAPE EN HELICÓPTERO",
+   "titulo_youtube": "Un helicóptero aterrizó dentro de una cárcel… y nadie lo detuvo",
+   "descripcion_youtube": "Dublín, 1973. Un helicóptero baja en el patio de la prisión de Mountjoy en plena tarde y el guardia cree que llega el ministro.\nLo que pasó en los minutos siguientes lo llamaron «el escape del siglo».\n#misterio #historiasreales #ridmer",
+   "etiquetas": [
+    "escape",
+    "helicóptero",
+    "Mountjoy",
+    "Dublín",
+    "Irlanda",
+    "1973",
+    "historias reales",
+    "ridmer"
+   ],
+   "texto_facebook": "Un helicóptero aterrizó en el patio de una cárcel… y el guardia creyó que era el ministro 😱 #historiasreales #escape #Ridmer",
+   "miniatura": {
+    "img": 2,
+    "texto": "ATERRIZÓ EN LA CÁRCEL"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Un helicóptero aterrizó dentro de una cárcel.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Pasó el treinta y uno de octubre de mil novecientos setenta y tres, en la prisión de Mountjoy, en Dublín, Irlanda.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=95QzRcG6U0s",
+      "desde": 4,
+      "dur": 6,
+      "buscar_video": [
+       "Dublin 1970s",
+       "Dublin city aerial"
+      ]
+     }
+    },
+    {
+     "texto": "Esa mañana, un hombre con acento estadounidense alquiló un helicóptero, para unas supuestas fotos aéreas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Pero en pleno vuelo, el piloto fue obligado a cambiar de rumbo.",
+     "escena": {
+      "tipo": "foto",
+      "img": 7
+     }
+    },
+    {
+     "texto": "Le ordenaron seguir las vías del tren hasta Dublín, sin avisar a nadie.",
+     "escena": {
+      "tipo": "foto",
+      "img": 7
+     }
+    },
+    {
+     "texto": "En el patio de la cárcel, los presos miraban un partido de fútbol.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "A las tres y treinta y cinco de la tarde, el helicóptero bajó entre ellos.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=q7Oeu2Rwk3k",
+      "desde": 20,
+      "dur": 5,
+      "buscar_video": [
+       "helicopter landing",
+       "Alouette helicopter"
+      ]
+     }
+    },
+    {
+     "texto": "El guardia no hizo nada. Creyó que traía al ministro de Defensa.",
+     "escena": {
+      "tipo": "foto",
+      "img": 8
+     }
+    },
+    {
+     "texto": "Tres presos subieron, y un oficial gritó: «¡Cierren las puertas!».",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "¡CIERREN LAS PUERTAS!",
+      "sub": "Prisión de Mountjoy · 1973"
+     }
+    },
+    {
+     "texto": "El helicóptero despegó y desapareció rumbo al norte.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=t3mtMm5yiVU",
+      "desde": 10,
+      "dur": 5,
+      "buscar_video": [
+       "helicopter take off",
+       "Alouette II flight"
+      ]
+     }
+    },
+    {
+     "texto": "Lo llamaron «el escape del siglo», y hasta tuvo canción propia.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     }
+    },
+    {
+     "texto": "Comparte esta historia y sigue a Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    }
+   ],
+   "encargo": "res1"
+  },
+  {
+   "eid": "fb1sb",
+   "tipo": "short",
+   "encargo": "res1",
+   "hora_youtube": "14:00",
+   "articulo": "Escape en helicóptero de la prisión Mountjoy",
+   "fuente": "https://es.wikipedia.org/wiki/Escape_en_helic%C3%B3ptero_de_la_prisi%C3%B3n_Mountjoy",
+   "titulo_video": "ESCAPE EN HELICÓPTERO",
+   "titulo_youtube": "Un helicóptero aterrizó dentro de una cárcel… #shorts",
+   "descripcion_youtube": "Dublín, 1973: el escape del siglo.\n#shorts #historiasreales #ridmer",
+   "etiquetas": [
+    "shorts",
+    "escape",
+    "helicóptero",
+    "Mountjoy",
+    "ridmer"
+   ],
+   "miniatura": {
+    "img": 2,
+    "texto": "ATERRIZÓ EN LA CÁRCEL"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Un helicóptero aterrizó dentro de una cárcel.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Dublín, Irlanda, mil novecientos setenta y tres. Un hombre alquila un helicóptero para unas supuestas fotos aéreas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "En pleno vuelo, el piloto es obligado a ir hacia la prisión de Mountjoy.",
+     "escena": {
+      "tipo": "foto",
+      "img": 7
+     }
+    },
+    {
+     "texto": "En el patio, los presos miran un partido de fútbol, y el helicóptero baja entre ellos.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=q7Oeu2Rwk3k",
+      "desde": 20,
+      "dur": 5,
+      "buscar_video": [
+       "helicopter landing"
+      ]
+     }
+    },
+    {
+     "texto": "El guardia no reacciona. Cree que llega el ministro de Defensa.",
+     "escena": {
+      "tipo": "foto",
+      "img": 8
+     }
+    },
+    {
+     "texto": "Tres presos suben, y el helicóptero desaparece rumbo al norte.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=t3mtMm5yiVU",
+      "desde": 10,
+      "dur": 5,
+      "buscar_video": [
+       "helicopter take off"
+      ]
+     }
+    },
+    {
+     "texto": "Uno de ellos tardó cuatro años en ser capturado. Lo llamaron «el escape del siglo». Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     }
+    }
+   ]
   }
  ]
 }
