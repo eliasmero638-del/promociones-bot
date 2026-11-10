@@ -282,13 +282,16 @@ def _programar(fecha, v, jid, salidas, mini, guion, auto=False):
         hora = {'fb': v.get('hora_fb', '12:30'),
                 'short': v.get('hora_youtube') if v['tipo'] == 'short' else v.get('hora_short', '13:00'),
                 'largo': v.get('hora_youtube', '18:00')}[tipo] or '12:00'
+        desde = C.get().get('desde_hora_dia', {}).get(fecha)   # día con entrega retrasada (pedido del dueño)
+        if desde and hora != 'ya' and hora.zfill(5) < desde:
+            hora = desde
         if hora == 'ya':                     # urgente / prueba: avisar ahora (Facebook se publica a los 20 min)
             cuando = time.time() + (20 * 60 if tipo == 'fb' else 60)
         else:
             cuando = _epoch(fecha, hora)
         aviso = cuando - (20 * 60 if tipo == 'fb' else 0)
         if tipo != 'fb' and hora != 'ya':    # YouTube: todo junto en el paquete de la mañana
-            aviso = min(aviso, _epoch(fecha, C.get().get('paquete_hora', '09:00')))
+            aviso = min(aviso, _epoch(fecha, max(desde or '00:00', C.get().get('paquete_hora', '09:00'))))
         if auto:
             sub_ = sub + '_auto'
             if os.path.isdir(sub_):

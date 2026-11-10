@@ -55,6 +55,7 @@ DEFAULTS = {
     'radar_hora': 2,           # voz de Gemini elegida para Ridmer                     # tema secreto de la app ntfy
     'fb_page_token': '',
     'clip_max': 900,                     # sin tope real: dura lo que dure el momento
+    'desde_hora_dia': {'2026-11-10': '14:00'},   # 10-nov: ese día nada sale antes de las 14:00 (luego vuelve a lo normal)
     'paquete_hora': '09:00',             # Shorts y largo de YouTube llegan todos juntos a esta hora
     'shorts_extra': 2,
     'ridmer_shorts_propios': 0,          # 9-nov: solo 2 Shorts al día (fb1s y fb2s, de las historias de fb1 y fb2)
