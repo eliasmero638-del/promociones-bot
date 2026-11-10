@@ -41,6 +41,8 @@ DEFAULTS = {
     'web_puerto': 80,
     'ntfy_tema': '',
     'voz_narrador': 'Algenib',
+    # 9-nov: al dueño le encantó Algenib con este tono (voz 1). Si Gemini lee la instrucción, se recorta sola.
+    'estilo_voz_ridmer': 'Narra como un documental de misterio, en tono de suspenso, voz baja y pausada: "{texto}"',
     'ridmer_activo': False,              # fábrica automática apagada (los videos los edita Claude)
     'ridmer_horas_shorts': [8, 12, 16, 20],
     'ridmer_hora_largo': 18,

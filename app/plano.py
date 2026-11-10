@@ -696,7 +696,7 @@ def polaroid_anim(foto, salida, d, w=1080, h=1920, pie='', estilo='polaroid', da
     fondo = ImageEnhance.Brightness(ImageOps.fit(src, (W, H)).filter(ImageFilter.GaussianBlur(28))).enhance(0.38).convert('RGBA')
     vert = H >= W
     if estilo == 'duo':
-        g = ImageOps.grayscale(ImageOps.fit(src, (int(W * 0.84), int(H * 0.56) if vert else int(H * 0.7))))
+        g = ImageOps.grayscale(ImageOps.fit(src, (int(W * 0.84), int(H * 0.56)) if vert else (int(W * 0.55), int(H * 0.6))))
         ph = ImageOps.colorize(g, black=(20, 10, 40), white=(255, 130, 90), mid=(160, 40, 80))
         card = Image.new('RGBA', (ph.size[0] + 24, ph.size[1] + 24), (230, 40, 40, 255))
         card.paste(ph, (12, 12))
@@ -724,7 +724,7 @@ def polaroid_anim(foto, salida, d, w=1080, h=1920, pie='', estilo='polaroid', da
             c.alpha_composite(ci, (int(c.size[0] / 2 - ci.size[0] / 2), 0))
         c = c.rotate(ang, expand=True, resample=Image.BICUBIC)
         x = int(W / 2 - c.size[0] / 2)
-        y = int((H * (0.44 if dato else 0.5)) - c.size[1] / 2 + caida)
+        y = int((H * (0.44 if (dato and vert) else (0.42 if dato else 0.5))) - c.size[1] / 2 + caida)
         sh = Image.new('RGBA', img.size, (0, 0, 0, 0))
         sh.paste((0, 0, 0, 170), (x + 22, y + 30), c.split()[3])
         img.alpha_composite(sh.filter(ImageFilter.GaussianBlur(26)))
@@ -735,7 +735,7 @@ def polaroid_anim(foto, salida, d, w=1080, h=1920, pie='', estilo='polaroid', da
             esc = 1 + 0.7 * (1 - ease(q))
             fd = ImageFont.truetype(FUENTE, int(W * 0.13 * esc))
             dd = ImageDraw.Draw(im)
-            yd = y + c.size[1] + H * 0.06 if vert else H * 0.85
+            yd = y + c.size[1] + H * 0.06 if vert else H * 0.86
             dd.text((W / 2 + 5, yd + 6), dato, font=fd, fill=(0, 0, 0), anchor='mm')
             dd.text((W / 2, yd), dato, font=fd, fill=(255, 255, 255), anchor='mm')
         if t < 0.08:

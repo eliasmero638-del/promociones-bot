@@ -243,8 +243,10 @@ def producir(fecha, v):
             s['img'] = reales[min(i, len(reales) - 1)] if reales else montaje.tarjeta(v.get('titulo_video', 'Ridmer'),
                                                                                        os.path.join(carpeta, 'tj.jpg'))
     g = max(1, min(int(v.get('gancho', 1)), len(segs) - 1))
-    wav, hook = _narrar(segs, carpeta, g, v.get('voz'), v.get('estilo_voz', ''))                # voz Algenib (sin acelerar)
+    estilo_v = v.get('estilo_voz', C.get().get('estilo_voz_ridmer', ''))
+    wav, hook = _narrar(segs, carpeta, g, v.get('voz'), estilo_v)                # voz Algenib (sin acelerar)
     palabras = editor.transcribir(wav)
+    palabras, hook = _sin_instruccion(wav, palabras, estilo_v, hook)
     if not palabras:
         todas = ' '.join(s['texto'] for s in segs).split()
         d = montaje.dur(wav)
@@ -436,6 +438,47 @@ def _fragmento(esc, carpeta, i):
         return None
 
 
+def _sin_instruccion(wav, palabras, estilo, hook):
+    """Gemini a veces lee en voz alta la instrucción de tono ("narra como un documental…"). Si aparece en la
+    transcripción, se recorta ese pedazo del audio y se corren los tiempos. Devuelve (palabras, hook)."""
+    if not estilo or not palabras:
+        return palabras, hook
+    norm = lambda w: re.sub(r'[^a-záéíóúñü]', '', w.lower())
+    clave = [norm(w) for w in estilo.split('"')[0].split()[:3] if norm(w)]
+    fin_ = norm(estilo.split('"')[0].split()[-1]) if estilo.split('"')[0].split() else ''
+    ws = [norm(p[2]) for p in palabras]
+    cortes = []
+    i = 0
+    while i <= len(ws) - len(clave):
+        if clave and ws[i:i + len(clave)] == clave:
+            j = i
+            while j < len(ws) - 1 and j - i < 30 and not ws[j].startswith(fin_[:5] or '#'):
+                j += 1
+            a = max(0.0, palabras[i][0] - 0.05)
+            b = palabras[j + 1][0] - 0.08 if j + 1 < len(palabras) else palabras[j][1]
+            cortes.append((a, b, i, j))
+            i = j + 1
+        else:
+            i += 1
+    if not cortes:
+        return palabras, hook
+    filtro = '+'.join(f'between(t,{a:.3f},{b:.3f})' for a, b, _, _ in cortes)
+    tmp = wav + '.tmp.wav'
+    montaje.sh(['ffmpeg', '-y', '-v', 'error', '-i', wav, '-af', f"aselect='not({filtro})',asetpts=N/SR/TB", tmp])
+    os.replace(tmp, wav)
+    nuevas, quitar = [], set()
+    for _, _, i, j in cortes:
+        quitar.update(range(i, j + 1))
+
+    def mover(t):
+        return t - sum(min(b, t) - a for a, b, _, _ in cortes if t > a)
+    for k, (x, y, w) in enumerate(palabras):
+        if k not in quitar:
+            nuevas.append((mover(x), mover(y), w))
+    log('instrucción de tono recortada', len(cortes), 'vez/veces')
+    return nuevas, mover(hook)
+
+
 def preparar_material(fecha, v):
     eid = v['eid']
     carpeta_enc = os.path.join(radar.DIR, fecha, v.get('encargo') or eid)
@@ -472,8 +515,10 @@ def preparar_material(fecha, v):
             if re.match(r'c\d\d\.jpg$', f_):
                 _jpg(os.path.join(carpeta_enc, f_), os.path.join(tmp, f_))
     g = max(1, min(int(v.get('gancho', 1)), len(segs) - 1))
-    wav, hook = _narrar(segs, tmp, g, v.get('voz'), v.get('estilo_voz', ''))
+    estilo_v = v.get('estilo_voz', C.get().get('estilo_voz_ridmer', ''))
+    wav, hook = _narrar(segs, tmp, g, v.get('voz'), estilo_v)
     palabras = editor.transcribir(wav)
+    palabras, hook = _sin_instruccion(wav, palabras, estilo_v, hook)
     if not palabras:
         todas = ' '.join(s['texto'] for s in segs).split()
         d = montaje.dur(wav)
