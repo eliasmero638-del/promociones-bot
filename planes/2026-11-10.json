@@ -1271,6 +1271,260 @@
      }
     }
    ]
+  },
+  {
+   "eid": "kl5",
+   "tipo": "largo",
+   "hora_youtube": "ya",
+   "hora_fb": "ya",
+   "hora_short": "ya",
+   "nota": "video largo Klarer: solo material (Claude edita y entrega a mano)",
+   "articulo": "Elizabeth Klarer",
+   "titulo_video": "SE ENAMORÓ DE UN EXTRATERRESTRE",
+   "gancho": 2,
+   "segmentos": [
+    {
+     "texto": "Una noche de diciembre de mil novecientos cincuenta y cuatro, en las montañas de Sudáfrica, una mujer vio bajar una luz del cielo.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Años después, aseguró que se había enamorado del piloto de esa nave… y que tuvo un hijo con él.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Su nombre era Elizabeth Klarer. Nació el primero de julio de mil novecientos diez, en Mooi River, en la provincia de Natal.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Elizabeth Klarer",
+       "Beyond the Light Barrier book"
+      ]
+     }
+    },
+    {
+     "texto": "Creció en una granja, rodeada de las montañas Drakensberg, una de las cordilleras más imponentes de África.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Drakensberg farm",
+       "Drakensberg Natal 1950"
+      ]
+     }
+    },
+    {
+     "texto": "Según su propio relato, la primera vez que vio algo extraño en el cielo tenía apenas siete años. Estaba junto a su hermana Bárbara.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Nadie le dio importancia. Pero ella nunca lo olvidó.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=fZPBVkUTO-k",
+      "desde": 40,
+      "dur": 6,
+      "buscar_video": "night sky stars timelapse"
+     }
+    },
+    {
+     "texto": "Décadas después, a finales de mil novecientos cincuenta y cuatro, en la granja vecina hablaban de un \"pájaro de rayos\" que aparecía sobre las colinas.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Drakensberg hills",
+       "KwaZulu-Natal Midlands"
+      ]
+     }
+    },
+    {
+     "texto": "El veintisiete de diciembre, Elizabeth subió a una loma que hoy muchos llaman la Colina del Platillo Volador.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Ella contó que una nave plateada flotaba a unos tres metros del suelo. Y que en su interior había un hombre.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Él se presentó con un nombre: Akon.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Después de ese encuentro, la nave se fue. Pasó más de un año sin saber nada de él… hasta que, el siete de abril de mil novecientos cincuenta y seis, según su relato, Akon volvió.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Esta vez la invitó a subir a una nave de unos dieciocho metros. Y desde ahí, la llevó a una nave nodriza enorme… con un jardín en su interior.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Semanas después, varios testigos dijeron haber visto un brillo rojo sobre la misma colina, desde la tarde hasta las dos de la madrugada.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=BnsmzwXThJ4",
+      "desde": 90,
+      "dur": 6,
+      "buscar_video": "red glow night sky"
+     }
+    },
+    {
+     "texto": "Al día siguiente buscaron rastros de fuego. No encontraron nada.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Drakensberg grassland",
+       "Drakensberg hill"
+      ]
+     }
+    },
+    {
+     "texto": "El diecisiete de julio de ese año, Elizabeth tomó siete fotografías de la nave con una cámara sencilla.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Kodak Brownie camera",
+       "Brownie camera 1950s"
+      ]
+     }
+    },
+    {
+     "texto": "Pero un investigador de ovnis, Edgar Sievers, dudó: se preguntó si en realidad era un objeto lanzado al aire, como un tapacubos.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=EqmIoaS3A9M",
+      "desde": 115,
+      "dur": 6,
+      "buscar_video": "UFO 1950s"
+     }
+    },
+    {
+     "texto": "Lo más increíble llegó después. Elizabeth aseguró que en abril de mil novecientos cincuenta y ocho pasó un día entero con Akon en la meseta del Cathkin Peak.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Cathkin Peak",
+       "Champagne Castle Drakensberg"
+      ]
+     }
+    },
+    {
+     "texto": "Dijo que él le regaló un anillo… y que ese día quedó embarazada.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Según ella, en mil novecientos cincuenta y nueve fue llevada al planeta de Akon: Meton, que según su relato gira cerca de la estrella Próxima Centauri.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Proxima Centauri",
+       "Alpha Centauri"
+      ]
+     }
+    },
+    {
+     "texto": "Allí, dijo, nació su hijo. Lo llamaron Ayling. Y el niño se quedó en ese planeta para estudiar.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Su historia empezó a correr por el mundo. En mil novecientos setenta y cinco habló en un congreso internacional de ovnis en Wiesbaden, Alemania, invitada por el científico Hermann Oberth. Según los registros, la ovacionaron.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Hermann Oberth",
+       "Wiesbaden 1975"
+      ]
+     }
+    },
+    {
+     "texto": "Y en mil novecientos ochenta publicó su libro, donde lo contó todo: Más allá de la barrera de la luz.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Elizabeth Klarer Beyond the Light Barrier",
+       "Elizabeth Klarer"
+      ]
+     }
+    },
+    {
+     "texto": "Pero no todos le creyeron. En una charla en Johannesburgo, el grupo Mensa rechazó sus afirmaciones y el público la abucheó.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=L4HuCxdCzRA",
+      "desde": 140,
+      "dur": 6,
+      "buscar_video": "audience applause 1970s"
+     }
+    },
+    {
+     "texto": "Un investigador que al principio la apoyó terminó diciendo que no creía ni una palabra de sus supuestos contactos.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Johannesburg 1980s",
+       "Johannesburg skyline"
+      ]
+     }
+    },
+    {
+     "texto": "Y hay un detalle que pesa más que todo: su hijo aquí en la Tierra, David, dijo que no recuerda ninguna ausencia de su madre… ni ningún embarazo en mil novecientos cincuenta y nueve.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Elizabeth Klarer"
+      ]
+     }
+    },
+    {
+     "texto": "Elizabeth Klarer murió en Durban, el nueve de febrero de mil novecientos noventa y cuatro, a los ochenta y tres años.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Durban 1994",
+       "Durban beachfront"
+      ]
+     }
+    },
+    {
+     "texto": "Hasta el último día defendió su historia.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=fZPBVkUTO-k",
+      "desde": 165,
+      "dur": 6,
+      "buscar_video": "Drakensberg mountains"
+     }
+    },
+    {
+     "texto": "¿Fue una mujer con una imaginación desbordante… o alguien que vio algo que nadie más quiso creer?",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    },
+    {
+     "texto": "Déjanos en los comentarios qué piensas tú. Y suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "dibujo"
+     }
+    }
+   ]
   }
  ]
 }
