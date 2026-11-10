@@ -1,0 +1,101 @@
+{
+ "trueno": [
+  "trueno_01.mp3",
+  "trueno_02.mp3",
+  "trueno_03.mp3"
+ ],
+ "lluvia": [
+  "lluvia_01.mp3"
+ ],
+ "ventarron": [
+  "ventarron_01.mp3",
+  "ventarron_02.mp3"
+ ],
+ "gota": [
+  "gota_01.mp3"
+ ],
+ "foto": [
+  "foto_01.mp3",
+  "foto_02.mp3",
+  "foto_03.mp3"
+ ],
+ "pelicula": [
+  "pelicula_01.mp3",
+  "pelicula_02.mp3"
+ ],
+ "cine": [
+  "cine_01.mp3",
+  "cine_02.mp3",
+  "cine_03.mp3",
+  "cine_04.mp3",
+  "cine_05.mp3",
+  "cine_06.mp3",
+  "cine_07.mp3",
+  "cine_08.mp3",
+  "cine_09.mp3",
+  "cine_10.mp3"
+ ],
+ "subida": [
+  "subida_01.mp3",
+  "subida_02.mp3",
+  "subida_03.mp3",
+  "subida_04.mp3",
+  "subida_05.mp3",
+  "subida_06.mp3",
+  "subida_07.mp3"
+ ],
+ "terror": [
+  "terror_01.mp3",
+  "terror_02.mp3",
+  "terror_03.mp3",
+  "terror_04.mp3",
+  "terror_05.mp3",
+  "terror_06.mp3"
+ ],
+ "grillos": [
+  "grillos_01.mp3"
+ ],
+ "cuervo": [
+  "cuervo_01.mp3"
+ ],
+ "corazon": [
+  "corazon_01.mp3",
+  "corazon_02.mp3"
+ ],
+ "susurro": [
+  "susurro_01.mp3",
+  "susurro_02.mp3"
+ ],
+ "fuego": [
+  "fuego_01.mp3",
+  "fuego_02.mp3",
+  "fuego_03.mp3"
+ ],
+ "transicion": [
+  "transicion_01.mp3",
+  "transicion_02.mp3",
+  "transicion_03.mp3",
+  "transicion_04.mp3",
+  "transicion_05.mp3",
+  "transicion_06.mp3"
+ ],
+ "reloj": [
+  "reloj_01.mp3",
+  "reloj_02.mp3"
+ ],
+ "explosion": [
+  "explosion_01.mp3",
+  "explosion_02.mp3",
+  "explosion_03.mp3"
+ ],
+ "boom": [
+  "boom_01.mp3",
+  "boom_02.mp3",
+  "boom_03.mp3",
+  "boom_04.mp3"
+ ],
+ "drama": [
+  "drama_01.mp3",
+  "drama_02.mp3"
+ ]
+}

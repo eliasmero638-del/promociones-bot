@@ -1,5 +1,5 @@
 """Montaje de videos Ridmer: imágenes con movimiento, voz, música, efectos, subtítulos e intro después del gancho."""
-import os, re, subprocess, textwrap
+import json, os, re, subprocess, textwrap
 from PIL import Image, ImageDraw, ImageFilter, ImageFont, ImageOps
 
 APP = os.path.dirname(os.path.abspath(__file__))
@@ -382,8 +382,8 @@ def _auto(e, i):
     mov = e.get('mov') or ('mapa' if t == 'mapa' else 'golpe' if (t == 'fecha' or e.get('rotulo')) else
                            'in' if t in ('ficha', 'cita') else MOVS[i % 4])
     trans = e.get('trans') or ('fadewhite' if mov == 'golpe' else 'fadeblack' if t == 'fecha' else 'fade')
-    suaves = ['aire', 'whoosh', 'viento', 'aire', 'sordo', 'whoosh']          # se van turnando (no siempre el mismo)
-    sfx = e.get('sfx', 'sordo' if mov == 'golpe' and i % 2 else 'impacto' if mov == 'golpe' else
+    suaves = ['transicion', 'aire', 'cine', 'transicion', 'sordo', 'whoosh']   # se van turnando (no siempre el mismo)
+    sfx = e.get('sfx', 'boom' if mov == 'golpe' and i % 2 else 'terror' if mov == 'golpe' else
                 suaves[(i // 2) % len(suaves)] if (i % 2 == 0 or t in ('mapa', 'ficha')) else '')
     return mov, trans, sfx
 
@@ -393,6 +393,25 @@ SFX_ARCH = {'impacto': ('susp_impact.mp3', 0.28), 'whoosh': ('wh_deep.mp3', 0.15
             'latido': ('heart_slow.mp3', 0.20), 'riser': ('riser2.mp3', 0.18), 'viento': ('viento.mp3', 0.22),
             'tictac': ('tictac.mp3', 0.25), 'estatica': ('estatica.mp3', 0.12), 'camara': ('camara.mp3', 0.30),
             'dron': ('dron.mp3', 0.25), 'sordo': ('sordo.mp3', 0.30), 'aire': ('aire.mp3', 0.18), 'campana': ('campana.mp3', 0.18)}
+# Biblioteca del paquete de efectos del dueño (solo suspenso): assets/sfx/lib/<categoria>_NN.mp3 — trueno, lluvia,
+# ventarron, gota, foto, pelicula, cine, subida, terror, grillos, cuervo, corazon, susurro, fuego, transicion, reloj,
+# explosion, boom, drama. Cada vez que se usa una categoría sale un archivo distinto.
+try:
+    SFX_LIB = json.load(open(os.path.join(SFX, 'lib', 'indice.json')))
+except Exception:
+    SFX_LIB = {}
+SFX_LIB_VOL = {'susurro': 0.12, 'lluvia': 0.18, 'grillos': 0.15, 'corazon': 0.2, 'reloj': 0.2, 'explosion': 0.22}
+
+
+def sfx_archivo(nombre, k=0):
+    """(ruta, volumen) del efecto: de la biblioteca (variando con k) o de los propios. None si no existe."""
+    if nombre in SFX_LIB and SFX_LIB[nombre]:
+        lista = SFX_LIB[nombre]
+        return os.path.join(SFX, 'lib', lista[k % len(lista)]), SFX_LIB_VOL.get(nombre, 0.25)
+    if nombre in SFX_ARCH:
+        a, v = SFX_ARCH[nombre]
+        return os.path.join(SFX, a), v
+    return None
 
 
 def render_pro(trabajo, voz, palabras, escenas, formato, titulo, hook_fin, salida, cola=0.6, intro=True, musica=None):
@@ -412,7 +431,7 @@ def render_pro(trabajo, voz, palabras, escenas, formato, titulo, hook_fin, salid
         out = os.path.join(trabajo, f'p_{formato}_{i:03d}.mp4')
         _escena_pro(os.path.abspath(e['img']), d + tt, mov, W, H, out, completa=(e.get('tipo', 'foto') == 'foto'))
         clips.append(out); durs.append(d); trans.append(tr)
-        if sfx in SFX_ARCH and i > 0:
+        if (sfx in SFX_ARCH or sfx in SFX_LIB) and i > 0:
             eventos.append((max(0.0, e['t0'] - (0.25 if sfx == 'whoosh' else 0.02)), sfx))
         if e.get('latido'):
             eventos.append((e['t0'], 'latido'))
@@ -446,8 +465,8 @@ def render_pro(trabajo, voz, palabras, escenas, formato, titulo, hook_fin, salid
           f"[2:a]volume=0.22[s1];[3:a]volume=0.18,adelay={int(r_ini * 1000)}|{int(r_ini * 1000)}[s2];")
     etiquetas = ['[v]', '[m]', '[s1]', '[s2]']
     for k, (t, s) in enumerate(eventos):
-        arch, vol = SFX_ARCH[s]
-        ins += ['-i', os.path.join(SFX, arch)]
+        arch, vol = sfx_archivo(s, k)
+        ins += ['-i', arch]
         ms = int(t * 1000)
         fa += f"[{4 + k}:a]volume={vol},adelay={ms}|{ms}[e{k}];"
         etiquetas.append(f'[e{k}]')

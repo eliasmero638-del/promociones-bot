@@ -33,6 +33,10 @@ humano, no solo eligiendo fotos para la plantilla:
    hecho (noticieros, rescates, archivo) y elige segundos con acción.
 5c. **Fotos reales con estilo (automático):** salen como polaroid que cae con cinta. Para un dato fuerte usa
    `"estilo_foto": {"N": "duo"}, "dato": {"N": "1 DE 92"}`; pie de foto: `"pie": {"N": "Juliane, hoy"}`.
+5d. **Efectos de sonido (9-nov): suaves (ya están a la mitad) y que CONCUERDEN con la imagen.** Elige en cambios
+   `"sfx": {"N": ...}`: trueno/lluvia/ventarron (tormentas), foto/pelicula (fotos y archivo), fuego, explosion,
+   reloj (tiempo que pasa), corazon/susurro/grillos/cuervo (tensión, noche), terror/boom/drama (revelaciones),
+   cine/subida/transicion (cortes). Nunca efectos de comedia.
 6. **Subtítulos:** el transcriptor se equivoca con nombres ("Rhythmert" en vez de Ridmer, "Apocalpa" en vez de
    a Pucallpa). Lee las palabras de `info.json` y corrígelas en cambios: `"corregir": {"Rhythmert": "Ridmer",
    "#57": ""}` ("#N" = la palabra número N; "" la borra).

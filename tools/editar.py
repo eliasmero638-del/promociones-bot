@@ -9,7 +9,10 @@ CAMBIOS.json (todo opcional) = decisiones de Claude tras revisar:
    "t0": {"6": 31.2},                   # mover un corte de escena (segundos de la voz)
    "mov": {"4": "golpe"},               # movimiento: in, out, izq, der, golpe (impacto + temblor), mapa
    "trans": {"4": "fadewhite"},         # transición al ENTRAR a la escena siguiente: fade, fadewhite, fadeblack, dissolve
-   "sfx": {"5": "impacto"},             # efecto al entrar: impacto, whoosh, golpe, riser, "" (ninguno)
+   "sfx": {"5": "trueno"},              # efecto al entrar ("" = ninguno). Propios: impacto, whoosh, golpe, riser, viento,
+                                        # tictac, estatica, camara, dron, sordo, aire, campana. Biblioteca (varía sola):
+                                        # trueno, lluvia, ventarron, gota, foto, pelicula, cine, subida, terror, grillos,
+                                        # cuervo, corazon, susurro, fuego, transicion, reloj, explosion, boom, drama
    "latido": {"9": true},               # latido de corazón debajo de la escena (tensión)
    "corregir": {"Rhythmert": "Ridmer", "Kopki": "Koepcke", "#57": ""},   # subtítulos mal oídos ("#N" = palabra N)
    "musica": "tension",                 # tension | epico | misterio (pistas propias, bajan solas bajo la voz)
