@@ -575,7 +575,7 @@ def comandos(tipo, chat, dato, raw):
         n = 0
         for jid in os.listdir(fabrica.DIR):
             m = fabrica.leer_meta(jid) if os.path.isdir(os.path.join(fabrica.DIR, jid)) else None
-            if m and m.get('estado') == 'programado' and m.get('entrega') in ('short', 'largo'):
+            if m and m.get('estado') == 'programado' and m.get('entrega') in ('short', 'largo', 'tiktok'):
                 m['aviso_en'] = time.time(); fabrica._guardar(os.path.join(fabrica.DIR, jid, 'meta.json'), m); n += 1
         tg.texto(f'📦 Te mando ya {n} video(s) de YouTube pendientes.' if n else 'No hay videos de YouTube pendientes.', chat)
     elif cmd in ('/gusta', '/nogusta'):

@@ -24,7 +24,7 @@ def main():
     for c in carpetas:
         eid = os.path.basename(os.path.normpath(c))
         archivos = {}
-        for tipo in ('fb', 'short', 'largo'):
+        for tipo in ('fb', 'short', 'largo', 'tiktok'):
             mp4 = os.path.join(c, f'{tipo}.mp4')
             if not os.path.exists(mp4):
                 continue

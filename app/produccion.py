@@ -222,6 +222,10 @@ def armar(carpeta, wav, palabras, segs, g, hook, v, foto_mini):
         rend(carpeta, wav, palabras, escenas, 'horizontal', titulo, hook, out,
              **({'musica': v.get('musica'), 'subtitulos': v.get('subtitulos', True)} if v.get('pro') else {}))
         salidas.append(('largo', out))
+    elif v['tipo'] == 'tiktok':                   # 10-nov: avance de 1:30-2:00 del largo para TikTok (no va a Facebook)
+        out = os.path.join(carpeta, 'tiktok.mp4')
+        rend(carpeta, wav, palabras, escenas, 'vertical', titulo, hook, out, cola=1.5, **sin_intro)
+        salidas.append(('tiktok', out))
     else:
         out = os.path.join(carpeta, 'fb.mp4')
         rend(carpeta, wav, palabras, escenas, 'vertical', titulo, hook, out, **sin_intro)
@@ -317,7 +321,8 @@ def _programar(fecha, v, jid, salidas, mini, guion, auto=False):
         shutil.copy(mini, os.path.join(sub, 'miniatura.jpg'))
         hora = {'fb': v.get('hora_fb', '12:30'),
                 'short': v.get('hora_youtube') if v['tipo'] == 'short' else v.get('hora_short', '13:00'),
-                'largo': v.get('hora_youtube', '18:00')}[tipo] or '12:00'
+                'largo': v.get('hora_youtube', '18:00'),
+                'tiktok': v.get('hora_youtube', '18:00')}[tipo] or '12:00'
         desde = C.get().get('desde_hora_dia', {}).get(fecha) or C.get().get('desde_hora')   # 10-nov: nada antes de las 14:00
         if desde and hora != 'ya' and hora.zfill(5) < desde:
             hora = desde
@@ -333,7 +338,7 @@ def _programar(fecha, v, jid, salidas, mini, guion, auto=False):
             if os.path.isdir(sub_):
                 shutil.rmtree(sub_)
             os.replace(sub, sub_); sub = sub_
-        meta = {'id': os.path.basename(sub), 'auto': auto, 'formato': 'short' if tipo != 'largo' else 'largo', 'motivo': 'claude',
+        meta = {'id': os.path.basename(sub), 'auto': auto, 'formato': 'largo' if tipo == 'largo' else 'short', 'motivo': 'claude',
                 'entrega': tipo, 'titulo': titulo, 'titulo_youtube': v.get('titulo_youtube', titulo),
                 'descripcion_youtube': desc, 'etiquetas': v.get('etiquetas', []),
                 'texto_facebook': v.get('texto_facebook', ''), 'guion': guion,
@@ -700,11 +705,14 @@ def modo_claude(fecha, plan):
 def _avisar_youtube(meta):
     link = f"{C.get().get('web_url', 'http://173.249.44.95')}/r/{meta['token']}"
     largo = meta['entrega'] == 'largo'
+    tiktok = meta['entrega'] == 'tiktok'
     du = meta.get('duracion', 0)
     cuando = time.strftime('%I:%M %p', time.localtime(meta.get('publicar_en', time.time()))).lstrip('0')
     hora_txt = (f"⏰ <b>Prográmalo para las {cuando}</b>\n\n" if meta.get('publicar_en', 0) - time.time() > 600
                 else "⏰ Es buena hora: <b>súbelo ahora</b>.\n\n")
-    cap = (f"📺 <b>YOUTUBE · {'VIDEO LARGO' if largo else 'SHORT'}</b> · ⏱️ {du // 60}:{du % 60:02d}\n" +
+    cap = ((f"🎵 <b>TIKTOK · AVANCE DEL VIDEO LARGO</b> · ⏱️ {du // 60}:{du % 60:02d}\n"
+            "Súbelo a TikTok (termina con la intriga y manda a ver el video completo en YouTube).\n") if tiktok else
+           f"📺 <b>YOUTUBE · {'VIDEO LARGO' if largo else 'SHORT'}</b> · ⏱️ {du // 60}:{du % 60:02d}\n") + (
            ('🤖 <i>Versión automática de respaldo</i>\n' if meta.get('auto') else '✍️ <i>Editado por Claude</i>\n') + hora_txt +
            f"<b>{meta['titulo_youtube']}</b>\n\n👉 Video en calidad completa, miniatura y textos: {link}")
     texto = (f"📝 <b>Título:</b>\n{meta['titulo_youtube']}\n\n<b>Descripción:</b>\n{meta['descripcion_youtube']}\n\n"
@@ -723,7 +731,7 @@ def _avisar_youtube(meta):
                 tg._api('sendPhoto', files={'photo': f}, chat_id=c, caption='🖼️ Miniatura')
         tg._api('sendMessage', chat_id=c, text=texto[:4000], parse_mode='HTML')
     if ntfy.activo():
-        ntfy.enviar(f"📺 YouTube · {'largo' if largo else 'Short'} para subir", meta['titulo_youtube'], link)
+        ntfy.enviar(f"{'🎵 TikTok' if tiktok else '📺 YouTube · ' + ('largo' if largo else 'Short')} para subir", meta['titulo_youtube'], link)
 
 
 def entregas():
@@ -748,7 +756,8 @@ def entregas():
     yt.sort(key=lambda x: x[1].get('publicar_en', 0))
     if len(yt) > 1:
         lineas = [f"• <b>{time.strftime('%I:%M %p', time.localtime(m['publicar_en'])).lstrip('0')}</b> — "
-                  f"{'🎬 Largo' if m['entrega'] == 'largo' else '▶️ Short'}: {m['titulo_youtube'][:70]}" for _, m in yt]
+                  f"{'🎬 Largo' if m['entrega'] == 'largo' else '🎵 TikTok' if m['entrega'] == 'tiktok' else '▶️ Short'}: "
+                  f"{m['titulo_youtube'][:70]}" for _, m in yt]
         txt = ('📦 <b>PAQUETE DE YOUTUBE DE HOY</b>\nTe mando cada video con sus textos. Súbelos y '
                '<b>prográmalos a estas horas</b>:\n\n' + '\n'.join(lineas))
         for c in C.get()['chat_ids']:

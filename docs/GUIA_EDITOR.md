@@ -228,3 +228,16 @@ lo baja y lo pone en recuadro con borde y el crédito "video de redes sociales")
 foto o video real en el gancho → recreación dibujada de lo que pasó → video/foto real de las consecuencias.
 Si `v_NN.mp4` no llegó en el material, usa fotos reales en su lugar (y dilo en el resumen). Rotula las fotos del hecho
 con `"rotulo": "FOTO REAL"` cuando vengan justo después de una recreación.
+
+## AVANCE PARA TIKTOK (10-nov, pedido del dueño)
+Cada día que hay video largo (largo1), haz TAMBIÉN `largo1t`: un avance vertical para TikTok que deja la intriga y manda
+a ver el video completo en YouTube.
+- Plan: `{"eid": "largo1t", "tipo": "tiktok", "encargo": "largo1", "hora_youtube": "18:00", "gancho": 2, ...}` con los
+  mismos títulos/descripción del largo (descripción con "Video completo en YouTube: Ridmer").
+- Guion PROPIO de 230-300 palabras (1:30-2:00): el mismo gancho del largo + la historia hasta el punto de más tensión, y
+  ahí se corta. Último segmento (obligatorio, casi textual): "¿Qué pasó después? Lo que viene te va a dejar sin palabras.
+  Mira el video completo en YouTube, en el canal Ridmer." NUNCA cuentes el final.
+- Edición: igual que un Facebook (vertical, inicio cinematográfico, música, videos reales, fotos polaroid), reutiliza las
+  animaciones del largo en vertical. Pon en el último segmento `"rotulo": {"N": "VIDEO COMPLETO EN YOUTUBE · RIDMER"}`.
+- `editar.py` deja `tiktok.mp4`; entrégalo con `entregar.py` junto al largo. Llega al bot en el paquete de las 14:00
+  como "🎵 TIKTOK" (no se publica en Facebook).
