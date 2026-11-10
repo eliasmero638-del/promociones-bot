@@ -24,6 +24,562 @@
     "historias reales",
     "Ridmer"
    ]
+  },
+  {
+   "eid": "fb1",
+   "tipo": "fb",
+   "omitir": true,
+   "motivo_omitir": "Noticia de la siderúrgica de Turquía: ocurrió el 9-nov al mediodía (más de 24 h al publicar), no es tendencia mundial y ya salió ayer como urg1. Se usa res1 con las horas de fb1."
+  },
+  {
+   "eid": "res1",
+   "tipo": "fb",
+   "hora_fb": "14:00",
+   "articulo": "Escape en helicóptero de la prisión Mountjoy",
+   "fuente": "https://es.wikipedia.org/wiki/Escape_en_helic%C3%B3ptero_de_la_prisi%C3%B3n_Mountjoy",
+   "titulo_video": "ESCAPE EN HELICÓPTERO",
+   "titulo_youtube": "Un helicóptero aterrizó dentro de una cárcel… y nadie lo detuvo",
+   "descripcion_youtube": "Dublín, 1973. Un helicóptero baja en el patio de la prisión de Mountjoy en plena tarde y el guardia cree que llega el ministro.\nLo que pasó en los minutos siguientes lo llamaron «el escape del siglo».\n#misterio #historiasreales #ridmer",
+   "etiquetas": [
+    "escape",
+    "helicóptero",
+    "Mountjoy",
+    "Dublín",
+    "Irlanda",
+    "1973",
+    "historias reales",
+    "ridmer"
+   ],
+   "texto_facebook": "Un helicóptero aterrizó en el patio de una cárcel… y el guardia creyó que era el ministro 😱 #historiasreales #escape #Ridmer",
+   "miniatura": {
+    "img": 2,
+    "texto": "ATERRIZÓ EN LA CÁRCEL"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Un helicóptero aterrizó dentro de una cárcel.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Pasó el treinta y uno de octubre de mil novecientos setenta y tres, en la prisión de Mountjoy, en Dublín, Irlanda.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=95QzRcG6U0s",
+      "desde": 4,
+      "dur": 6,
+      "buscar_video": [
+       "Dublin 1970s",
+       "Dublin city aerial"
+      ]
+     }
+    },
+    {
+     "texto": "Esa mañana, un hombre con acento estadounidense alquiló un helicóptero, para unas supuestas fotos aéreas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Pero en pleno vuelo, dos hombres armados obligaron al piloto a cambiar de rumbo.",
+     "escena": {
+      "tipo": "foto",
+      "img": 7
+     }
+    },
+    {
+     "texto": "Le ordenaron seguir las vías del tren hasta Dublín, sin avisar a nadie.",
+     "escena": {
+      "tipo": "foto",
+      "img": 7
+     }
+    },
+    {
+     "texto": "En el patio de la cárcel, los presos miraban un partido de fútbol.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "A las tres y treinta y cinco de la tarde, el helicóptero bajó entre ellos.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=q7Oeu2Rwk3k",
+      "desde": 20,
+      "dur": 5,
+      "buscar_video": [
+       "helicopter landing",
+       "Alouette helicopter"
+      ]
+     }
+    },
+    {
+     "texto": "El guardia no hizo nada. Creyó que traía al ministro de Defensa.",
+     "escena": {
+      "tipo": "foto",
+      "img": 8
+     }
+    },
+    {
+     "texto": "Tres presos subieron, y un oficial gritó: «¡Cierren las puertas!».",
+     "escena": {
+      "tipo": "cita",
+      "texto": "¡Cierren las puertas, cierren las malditas puertas!",
+      "autor": "Un oficial de Mountjoy"
+     }
+    },
+    {
+     "texto": "El helicóptero despegó y desapareció rumbo al norte.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=t3mtMm5yiVU",
+      "desde": 10,
+      "dur": 5,
+      "buscar_video": [
+       "helicopter take off",
+       "Alouette II flight"
+      ]
+     }
+    },
+    {
+     "texto": "Lo llamaron «el escape del siglo», y hasta tuvo canción propia.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     }
+    },
+    {
+     "texto": "Comparte esta historia y sigue a Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb1s",
+   "tipo": "short",
+   "encargo": "res1",
+   "hora_youtube": "14:00",
+   "articulo": "Escape en helicóptero de la prisión Mountjoy",
+   "fuente": "https://es.wikipedia.org/wiki/Escape_en_helic%C3%B3ptero_de_la_prisi%C3%B3n_Mountjoy",
+   "titulo_video": "ESCAPE EN HELICÓPTERO",
+   "titulo_youtube": "Un helicóptero aterrizó dentro de una cárcel… #shorts",
+   "descripcion_youtube": "Dublín, 1973: el escape del siglo.\n#shorts #historiasreales #ridmer",
+   "etiquetas": [
+    "shorts",
+    "escape",
+    "helicóptero",
+    "Mountjoy",
+    "ridmer"
+   ],
+   "miniatura": {
+    "img": 2,
+    "texto": "ATERRIZÓ EN LA CÁRCEL"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Un helicóptero aterrizó dentro de una cárcel.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Dublín, Irlanda, mil novecientos setenta y tres. Un hombre alquila un helicóptero para unas supuestas fotos aéreas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "En pleno vuelo, el piloto es obligado a ir hacia la prisión de Mountjoy.",
+     "escena": {
+      "tipo": "foto",
+      "img": 7
+     }
+    },
+    {
+     "texto": "En el patio, los presos miran un partido de fútbol, y el helicóptero baja entre ellos.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=q7Oeu2Rwk3k",
+      "desde": 20,
+      "dur": 5,
+      "buscar_video": [
+       "helicopter landing"
+      ]
+     }
+    },
+    {
+     "texto": "El guardia no reacciona. Cree que llega el ministro de Defensa.",
+     "escena": {
+      "tipo": "foto",
+      "img": 8
+     }
+    },
+    {
+     "texto": "Tres presos suben, y el helicóptero desaparece rumbo al norte.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=t3mtMm5yiVU",
+      "desde": 10,
+      "dur": 5,
+      "buscar_video": [
+       "helicopter take off"
+      ]
+     }
+    },
+    {
+     "texto": "Uno de ellos tardó cuatro años en ser capturado. Lo llamaron «el escape del siglo». Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb2",
+   "tipo": "fb",
+   "hora_fb": "18:30",
+   "articulo": "Fuga de la cárcel de mujeres El Buen Pastor",
+   "fuente": "https://es.wikipedia.org/wiki/Fuga_de_la_c%C3%A1rcel_de_mujeres_El_Buen_Pastor",
+   "titulo_video": "26 PRESAS ESCAPARON",
+   "titulo_youtube": "26 presas escaparon en una sola noche… mientras afuera había una boda",
+   "descripcion_youtube": "Córdoba, Argentina, 24 de mayo de 1975. Sábanas colgadas, una boda frente a la cárcel y una señal a las ocho en punto.\nAsí fue la mayor fuga de presas de la historia argentina.\n#historiasreales #argentina #ridmer",
+   "etiquetas": [
+    "fuga",
+    "Buen Pastor",
+    "Córdoba",
+    "Argentina",
+    "1975",
+    "historias reales",
+    "ridmer"
+   ],
+   "texto_facebook": "26 presas escaparon en una sola noche… y nadie las vio salir 😱 La mayor fuga de mujeres de Argentina. #historiasreales #Argentina #Ridmer",
+   "miniatura": {
+    "img": 1,
+    "texto": "26 ESCAPARON"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Veintiséis presas escaparon en una sola noche.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Fue el veinticuatro de mayo de mil novecientos setenta y cinco, en la cárcel de mujeres El Buen Pastor, en Córdoba, Argentina.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=Av4e745Y6Rs",
+      "desde": 10,
+      "dur": 6,
+      "buscar_video": [
+       "Córdoba Argentina",
+       "Nueva Córdoba"
+      ]
+     }
+    },
+    {
+     "texto": "Eran presas políticas de entre diecisiete y treinta años.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Solo cuatro conocían el plan. Al resto se lo contaron pocas horas antes.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "SOLO 4 SABÍAN",
+      "sub": "El Buen Pastor · Córdoba"
+     }
+    },
+    {
+     "texto": "Ese mediodía lavaron las sábanas, y las colgaron en el patio.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Así, los guardias de los techos no podrían ver nada.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Frente a la cárcel, en la iglesia de los Capuchinos, había una boda, y la gente llenaba la esquina.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "A las ocho en punto, estallaron bombas de estruendo en las calles cercanas. Era la señal.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Desde la cocina, saltaron por una ventana a la calle.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=8SM2EkrB3a0",
+      "desde": 30,
+      "dur": 5,
+      "buscar_video": [
+       "Córdoba Argentina street night"
+      ]
+     }
+    },
+    {
+     "texto": "Afuera las esperaban autos, que las llevaron en grupos de cuatro a casas escondidas.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=pOKd8I7dTK8",
+      "desde": 40,
+      "dur": 5,
+      "buscar_video": [
+       "1970s cars street"
+      ]
+     }
+    },
+    {
+     "texto": "Fue la mayor fuga de presas de la historia argentina.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Comparte esta historia y sigue a Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb2s",
+   "tipo": "short",
+   "encargo": "fb2",
+   "hora_youtube": "19:00",
+   "articulo": "Fuga de la cárcel de mujeres El Buen Pastor",
+   "fuente": "https://es.wikipedia.org/wiki/Fuga_de_la_c%C3%A1rcel_de_mujeres_El_Buen_Pastor",
+   "titulo_video": "26 PRESAS ESCAPARON",
+   "titulo_youtube": "26 presas escaparon en una sola noche #shorts",
+   "descripcion_youtube": "Córdoba, 1975: la mayor fuga de presas de Argentina.\n#shorts #historiasreales #ridmer",
+   "etiquetas": [
+    "shorts",
+    "fuga",
+    "Buen Pastor",
+    "Córdoba",
+    "ridmer"
+   ],
+   "miniatura": {
+    "img": 1,
+    "texto": "26 ESCAPARON"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Veintiséis presas escaparon en una sola noche.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Córdoba, Argentina, mayo de mil novecientos setenta y cinco. Cárcel de mujeres El Buen Pastor.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=Av4e745Y6Rs",
+      "desde": 10,
+      "dur": 6,
+      "buscar_video": [
+       "Córdoba Argentina"
+      ]
+     }
+    },
+    {
+     "texto": "Ese mediodía colgaron sábanas en el patio, para tapar la vista de los guardias de los techos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Frente a la cárcel había una boda, y la esquina estaba llena de gente.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "A las ocho en punto, unas bombas de estruendo dieron la señal.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Saltaron por la ventana de la cocina, y subieron a autos que las esperaban.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=8SM2EkrB3a0",
+      "desde": 30,
+      "dur": 5,
+      "buscar_video": [
+       "Córdoba Argentina street night"
+      ]
+     }
+    },
+    {
+     "texto": "Fue la mayor fuga de presas de la historia argentina. Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb3",
+   "tipo": "fb",
+   "hora_fb": "21:00",
+   "articulo": "Isla de Alcatraz",
+   "fuente": "https://es.wikipedia.org/wiki/Isla_de_Alcatraz",
+   "titulo_video": "NUNCA LOS ENCONTRARON",
+   "titulo_youtube": "Escaparon de Alcatraz con cucharas… y nunca los encontraron",
+   "descripcion_youtube": "11 de junio de 1962. Tres presos dejan cabezas falsas en sus camas y se lanzan a la bahía de San Francisco en una balsa de impermeables.\nSus cuerpos jamás aparecieron.\n#misterio #alcatraz #ridmer",
+   "etiquetas": [
+    "Alcatraz",
+    "Frank Morris",
+    "hermanos Anglin",
+    "1962",
+    "fuga",
+    "misterio",
+    "ridmer"
+   ],
+   "texto_facebook": "Escaparon de Alcatraz cavando con cucharas… y sus cuerpos nunca aparecieron 😱 #misterio #Alcatraz #Ridmer",
+   "miniatura": {
+    "img": 7,
+    "texto": "NUNCA APARECIERON"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Tres presos escaparon de Alcatraz, y nunca los encontraron.",
+     "escena": {
+      "tipo": "foto",
+      "img": 7
+     }
+    },
+    {
+     "texto": "Alcatraz, «La Roca»: una prisión en medio de la bahía de San Francisco.",
+     "escena": {
+      "tipo": "foto",
+      "img": 8
+     }
+    },
+    {
+     "texto": "Once de junio de mil novecientos sesenta y dos. Frank Morris y los hermanos Anglin iban a intentarlo.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=cHPA1Li1iUA",
+      "desde": 8,
+      "dur": 6,
+      "buscar_video": [
+       "Alcatraz Island",
+       "San Francisco Bay Alcatraz"
+      ]
+     }
+    },
+    {
+     "texto": "Habían cavado el concreto de sus celdas con cucharas, y un taladro hecho con una aspiradora robada.",
+     "escena": {
+      "tipo": "foto",
+      "img": 12
+     }
+    },
+    {
+     "texto": "Para tapar el ruido, alguien tocaba el acordeón en la hora de música.",
+     "escena": {
+      "tipo": "foto",
+      "img": 14
+     }
+    },
+    {
+     "texto": "Y escondían los agujeros con paredes falsas de cartón.",
+     "escena": {
+      "tipo": "foto",
+      "img": 11
+     }
+    },
+    {
+     "texto": "Esa noche dejaron en sus camas cabezas falsas de papel maché, con pelo real de la peluquería.",
+     "escena": {
+      "tipo": "foto",
+      "img": 13
+     }
+    },
+    {
+     "texto": "Salieron al techo, y entraron al agua helada en una balsa hecha con impermeables.",
+     "escena": {
+      "tipo": "foto",
+      "img": 16
+     }
+    },
+    {
+     "texto": "Al día siguiente, los guardias descubrieron el engaño.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=v4IVg9_HvIg",
+      "desde": 15,
+      "dur": 5,
+      "buscar_video": [
+       "Alcatraz cellhouse",
+       "Alcatraz prison"
+      ]
+     }
+    },
+    {
+     "texto": "Aparecieron objetos suyos en la isla Ángel. Pero sus cuerpos, jamás.",
+     "escena": {
+      "tipo": "foto",
+      "img": 9
+     }
+    },
+    {
+     "texto": "El informe oficial dice que se ahogaron. Nadie pudo probarlo.",
+     "escena": {
+      "tipo": "foto",
+      "img": 20
+     }
+    },
+    {
+     "texto": "Comparte esta historia y sigue a Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "img": 19
+     }
+    }
+   ]
   }
  ]
 }
