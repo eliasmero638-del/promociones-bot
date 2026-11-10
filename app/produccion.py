@@ -220,7 +220,7 @@ def armar(carpeta, wav, palabras, segs, g, hook, v, foto_mini):
     elif v['tipo'] == 'largo':
         out = os.path.join(carpeta, 'largo.mp4')
         rend(carpeta, wav, palabras, escenas, 'horizontal', titulo, hook, out,
-             **({'musica': v.get('musica')} if v.get('pro') else {}))
+             **({'musica': v.get('musica'), 'subtitulos': v.get('subtitulos', True)} if v.get('pro') else {}))
         salidas.append(('largo', out))
     else:
         out = os.path.join(carpeta, 'fb.mp4')
