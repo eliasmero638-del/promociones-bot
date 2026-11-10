@@ -711,7 +711,9 @@
      }
     }
    ],
-   "encargo": "res1"
+   "encargo": "res1",
+   "omitir": true,
+   "motivo_omitir": "Reintento del material sin respuesta; queda res1/fb1s para el armado automático (evita duplicados)."
   },
   {
    "eid": "fb1sb",
@@ -795,7 +797,9 @@
       "img": 6
      }
     }
-   ]
+   ],
+   "omitir": true,
+   "motivo_omitir": "Reintento del material sin respuesta; queda res1/fb1s para el armado automático (evita duplicados)."
   }
  ]
 }
