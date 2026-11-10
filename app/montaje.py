@@ -382,12 +382,17 @@ def _auto(e, i):
     mov = e.get('mov') or ('mapa' if t == 'mapa' else 'golpe' if (t == 'fecha' or e.get('rotulo')) else
                            'in' if t in ('ficha', 'cita') else MOVS[i % 4])
     trans = e.get('trans') or ('fadewhite' if mov == 'golpe' else 'fadeblack' if t == 'fecha' else 'fade')
-    sfx = e.get('sfx', 'impacto' if mov == 'golpe' else 'whoosh' if (i % 2 == 0 or t in ('mapa', 'ficha')) else '')
+    suaves = ['aire', 'whoosh', 'viento', 'aire', 'sordo', 'whoosh']          # se van turnando (no siempre el mismo)
+    sfx = e.get('sfx', 'sordo' if mov == 'golpe' and i % 2 else 'impacto' if mov == 'golpe' else
+                suaves[(i // 2) % len(suaves)] if (i % 2 == 0 or t in ('mapa', 'ficha')) else '')
     return mov, trans, sfx
 
 
-SFX_ARCH = {'impacto': ('susp_impact.mp3', 0.55), 'whoosh': ('wh_deep.mp3', 0.30), 'golpe': ('golpe_terror.mp3', 0.45),
-            'latido': ('heart_slow.mp3', 0.40), 'riser': ('riser2.mp3', 0.35)}
+# 9-nov: el dueño pidió los efectos a la MITAD y más variados (pistas propias en assets/sfx, tools/sfx_cine.py)
+SFX_ARCH = {'impacto': ('susp_impact.mp3', 0.28), 'whoosh': ('wh_deep.mp3', 0.15), 'golpe': ('golpe_terror.mp3', 0.22),
+            'latido': ('heart_slow.mp3', 0.20), 'riser': ('riser2.mp3', 0.18), 'viento': ('viento.mp3', 0.22),
+            'tictac': ('tictac.mp3', 0.25), 'estatica': ('estatica.mp3', 0.12), 'camara': ('camara.mp3', 0.30),
+            'dron': ('dron.mp3', 0.25), 'sordo': ('sordo.mp3', 0.30), 'aire': ('aire.mp3', 0.18), 'campana': ('campana.mp3', 0.18)}
 
 
 def render_pro(trabajo, voz, palabras, escenas, formato, titulo, hook_fin, salida, cola=0.6, intro=True, musica=None):
@@ -438,7 +443,7 @@ def render_pro(trabajo, voz, palabras, escenas, formato, titulo, hook_fin, salid
           f"[1:a]aresample=48000,aformat=channel_layouts=stereo,atrim=0:{D:.2f},volume=0.42,afade=t=in:d=0.4,"
           f"afade=t=out:st={max(0, D - 2.5):.2f}:d=2.5[m0];"
           f"[m0][vk]sidechaincompress=threshold=0.025:ratio=5:attack=15:release=450:makeup=1[m];"
-          f"[2:a]volume=0.45[s1];[3:a]volume=0.35,adelay={int(r_ini * 1000)}|{int(r_ini * 1000)}[s2];")
+          f"[2:a]volume=0.22[s1];[3:a]volume=0.18,adelay={int(r_ini * 1000)}|{int(r_ini * 1000)}[s2];")
     etiquetas = ['[v]', '[m]', '[s1]', '[s2]']
     for k, (t, s) in enumerate(eventos):
         arch, vol = SFX_ARCH[s]
