@@ -101,7 +101,8 @@ humano, no solo eligiendo fotos para la plantilla:
 | largo (YouTube) | 620–760 | 28–38 | 4–5 min |
 
 ## Horarios (hora Ecuador)
-- fb1 → `hora_fb` 12:30, `hora_short` 13:00 · fb2 → 18:30 / 19:00 · fb3 → 21:00 (sin Short).
+- REGLA DEL DUEÑO (10-nov, permanente): NINGÚN video sale antes de las 14:00. El paquete de YouTube llega a las 14:00.
+- fb1 → `hora_fb` 14:00 · fb1s → `hora_youtube` 14:00 · fb2 → 18:30 · fb2s → 19:00 · fb3 → 21:00.
 - largo1 (días alternos) → `hora_youtube` 18:00.
 - Si un encargo es noticia urgente, va en fb1.
 
@@ -176,12 +177,12 @@ humano, no solo eligiendo fotos para la plantilla:
 - El Short cuenta la historia COMPLETA: gancho → contexto mínimo → giro → **final claro que cierra la historia** (qué
   pasó al final / qué se sabe hoy) → "Sígueme en Ridmer para más." Nunca termina en el aire.
 - 5 Shorts por día:
-  - `fb1s` (misma historia que fb1, `"encargo": "fb1"` para usar sus fotos) → `hora_youtube` 12:00
+  - `fb1s` (misma historia que fb1, `"encargo": "fb1"` para usar sus fotos) → `hora_youtube` 14:00
   - `sh1` (encargo propio) → 15:00
   - `fb2s` (`"encargo": "fb2"`) → 17:00
   - `sh2` (encargo propio) → 19:00
   - `fb3s` (`"encargo": "fb3"`) → 22:00
-- Largo (TODOS los días) → `hora_youtube` 18:00. El servidor manda a las 9:00 un resumen con las horas y luego cada video
+- Largo (TODOS los días) → `hora_youtube` 18:00. El servidor manda a las 14:00 un resumen con las horas y luego cada video
   con sus textos. Para llegar a tiempo, ENTREGA ANTES DE LAS 8:45.
 - `gancho`: en Shorts siempre 1 (la intro entra tras la primera frase).
 

@@ -282,7 +282,7 @@ def _programar(fecha, v, jid, salidas, mini, guion, auto=False):
         hora = {'fb': v.get('hora_fb', '12:30'),
                 'short': v.get('hora_youtube') if v['tipo'] == 'short' else v.get('hora_short', '13:00'),
                 'largo': v.get('hora_youtube', '18:00')}[tipo] or '12:00'
-        desde = C.get().get('desde_hora_dia', {}).get(fecha)   # día con entrega retrasada (pedido del dueño)
+        desde = C.get().get('desde_hora_dia', {}).get(fecha) or C.get().get('desde_hora')   # 10-nov: nada antes de las 14:00
         if desde and hora != 'ya' and hora.zfill(5) < desde:
             hora = desde
         if hora == 'ya':                     # urgente / prueba: avisar ahora (Facebook se publica a los 20 min)
