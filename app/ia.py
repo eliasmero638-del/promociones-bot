@@ -116,6 +116,25 @@ Te doy {nfotos} fotos del clip en orden y su audio. Tareas:
    cierre: la respuesta, la reacción, la conclusión o el remate. NUNCA lo cortes a la mitad de lo que está pasando.
    Mínimo {cmin} segundos y SIN máximo fijo: dura lo que dure el momento hasta su cierre natural (incluye la respuesta
    o reacción final). Si el momento sigue al final del audio y no termina, pon "sigue": true.
+8. MEME (aparte del clip normal): ¿hay dentro de este pedazo 5 a 25 segundos que sirvan como MEME para Facebook?
+   Formato: franja negra arriba con UNA frase cómica + abajo el momento de cerca, con su audio original.
+   SÍ sirve (lo que da 100 mil vistas en páginas de realities): una CARA o reacción fuerte de cerca (sorpresa, "no
+   puede ser", ojos en blanco, quedarse callado, cara pensativa); un remate o frase que la gente repetiría; alguien
+   que le responde a otro y lo deja sin palabras; algo ridículo o incómodo (un baile, una caída, cantar mal, que lo
+   obliguen a irse a dormir, que no lo dejen dormir); algo con lo que cualquiera se identifica (flojera, hambre,
+   plata, celos, la ex, el jefe, la mamá, diciembre, la quincena).
+   NO sirve: conversación larga, algo que necesita contexto, chistes internos, rutina sin cara ni reacción,
+   pantalla lejana donde no se ve a nadie de cerca.
+   La FRASE (máx. 14 palabras, español de calle de Latinoamérica, 1-2 emojis al final) le da el chiste a la cara.
+   Varía el estilo; ejemplos: "Tu pana que humilla a todos 💀" · "Tu pana que no deja dormir a nadie 😴" ·
+   "Tu pana cuando le tocan a la novia 😤" · "Tu pana que dice que no va a pelear… 2 segundos después:" ·
+   "Yo cuando me dicen que mañana hay que madrugar 😩" · "Cómo será que hago para ganarme 500 millones de aquí a
+   diciembre 🤔" · "Mi cara cuando llega la quincena y ya debía todo 😐" · "La cara de él cuando ella dijo eso 👀" ·
+   "Nadie: / Él: 💃" · "Ese man no tiene filtro 💀" · "No pues así sí 😂" · "Uno de aquí 😂".
+   El chiste va sobre la SITUACIÓN o la reacción, NUNCA sobre el físico, la discapacidad, el color de piel o la
+   orientación de alguien. Con niños, nada picante. Si dudas, "sirve": false.
+   "potencial" 0-100: 85+ solo si una persona cualquiera en Facebook se reiría y lo compartiría sin conocer el reality.
+   "cara_x": de 0 a 1, dónde está horizontalmente la cara o la acción principal (0 izquierda, 0.5 centro, 1 derecha).
 Reglas: si en el clip aparece un niño o niña, nunca le des un ángulo picante ni sexual al título o texto.
 
 Responde SOLO con este JSON:
@@ -127,7 +146,9 @@ Responde SOLO con este JSON:
  "con_quien": [{{"nombre": "...", "certeza": 0-100, "como_lo_sabes": "..."}}], "intensidad": 0-100, "novedad": 0-100, "sigue": false,
  "personajes": ["..."], "titulo": "...", "subtitulo": "...", "descripcion": "qué pasó en una frase",
  "texto_post": "...", "explicito": false, "inicio": 0.0, "fin": 0.0, "evidencia": "frase exacta", "primera_frase": "primeras palabras exactas del tema",
- "subtitulos": [{{"t0": 0.0, "t1": 2.1, "texto": "..."}}]}}"""
+ "subtitulos": [{{"t0": 0.0, "t1": 2.1, "texto": "..."}}],
+ "meme": {{"sirve": false, "potencial": 0-100, "inicio": 0.0, "fin": 0.0, "frase": "...", "cara_x": 0.5,
+          "texto_post": "frase corta + 2-4 hashtags con los nombres de los participantes (#NombreApellido)"}}}}"""
 
 
 APRENDE = os.path.join(C.DATA, 'aprendizaje.json')

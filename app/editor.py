@@ -226,6 +226,34 @@ def _buscar_frase(frase, palabras):
     return t if mejor >= max(2, len(ws) // 2 + 1) else None
 
 
+def _meme(r, crudo, d, cfg):
+    """10-nov: versión MEME del momento (franja negra con frase cómica + momento de cerca, audio original)."""
+    try:
+        m = r.get('meme') or {}
+        if not cfg.get('memes', True) or not m.get('sirve'):
+            return None
+        pot = int(m.get('potencial', 0) or 0)
+        frase = str(m.get('frase') or '').strip()
+        a, b = float(m.get('inicio') or 0), float(m.get('fin') or 0)
+        if pot < cfg.get('meme_minimo', 80) or not frase or b - a < 3:
+            log('meme descartado', pot, frase[:60])
+            return None
+        a, b = max(0.0, a - 0.5), b + 0.8
+        if b - a > 25:
+            b = a + 25
+        import meme
+        out = os.path.join(d, 'meme.mp4')
+        if not meme.hacer(crudo, a, b, frase, m.get('cara_x', 0.5), out):
+            return None
+        post = str(m.get('texto_post') or frase)
+        log('MEME listo', pot, frase)
+        return {'ruta': out, 'frase': frase, 'potencial': pot, 'texto_post': post, 'duracion': int(b - a),
+                'explicito': bool(r.get('explicito'))}
+    except Exception as e:
+        log('meme falló', e)
+        return None
+
+
 def hacer_clip(pedazos_info, centro, chat_textos, nombre=None, job_filtro=None, solo_ia=False, señales=None, extra=0):
     """Devuelve dict con ruta del clip y datos, o None."""
     cfg = C.get()
@@ -258,6 +286,9 @@ def hacer_clip(pedazos_info, centro, chat_textos, nombre=None, job_filtro=None, 
                 r = ia.analizar_groq(loc, chat_textos, dur)
                 log('Gemini no disponible → Groq', r.get('_modelo') or r.get('error'))
         local = _local.pop(crudo, None)
+        meme_info = None
+        if 'error' not in r and not (r.get('sigue') and extra < cfg.get('extension_max', 360)):
+            meme_info = _meme(r, crudo, d, cfg)
         if 'error' not in r and job_filtro is not None:
             # supervisor: reglas obligatorias antes de Telegram
             motivo = ''
@@ -281,7 +312,7 @@ def hacer_clip(pedazos_info, centro, chat_textos, nombre=None, job_filtro=None, 
                 log('supervisor descarta:', motivo, '·', r.get('titulo'))
                 diag['supervisor'][motivo.split('(')[0].strip()[:40]] += 1
                 diag['ultimos'].append(time.strftime('%H:%M ') + f"IA descarta ({motivo}): {r.get('titulo', '')}")
-                return {'descartado': True, 'motivo': motivo}
+                return {'descartado': True, 'motivo': motivo, 'meme': locals().get('meme_info')}
             if r.get('sigue') and extra < cfg.get('extension_max', 360):
                 return {'extender': True}
         if 'error' not in r:
@@ -364,7 +395,7 @@ def hacer_clip(pedazos_info, centro, chat_textos, nombre=None, job_filtro=None, 
                 log('supervisor descarta:', motivo, '·', r.get('titulo'))
                 diag['supervisor'][motivo] += 1
                 diag['ultimos'].append(time.strftime('%H:%M ') + f"IA descarta ({motivo}): {r.get('titulo', '')}")
-                return {'descartado': True, 'motivo': motivo}
+                return {'descartado': True, 'motivo': motivo, 'meme': locals().get('meme_info')}
             r['personajes'] = [n for n in r['personajes'] if n in conf] or actuales
             if dudosos:
                 cat = str(r.get('categoria', '')).lower()
@@ -414,7 +445,7 @@ def hacer_clip(pedazos_info, centro, chat_textos, nombre=None, job_filtro=None, 
         log('IA dice que no interesa:', info.get('interes'), info.get('descripcion'))
         diag['bajo_interes'] += 1
         diag['ultimos'].append(time.strftime('%H:%M ') + f"interés {info.get('interes')}: {info.get('titulo', '')}")
-        return {'descartado': True, **info}
+        return {'descartado': True, **info, 'meme': locals().get('meme_info')}
     ass = os.path.join(d, 'subs.ass')
     hacer_ass(palabras, info, dur, ass)
     final = os.path.join(d, 'clip.mp4')
@@ -433,6 +464,7 @@ def hacer_clip(pedazos_info, centro, chat_textos, nombre=None, job_filtro=None, 
         log('control de calidad falló: audio', tiene_audio, 'duración', d_final, 'esperada', dur)
         return None
     info['ruta'] = final
+    info['meme'] = locals().get('meme_info')
     info['duracion'] = int(dur)
     info['hora'] = time.strftime('%H:%M', time.localtime(centro))
     return info

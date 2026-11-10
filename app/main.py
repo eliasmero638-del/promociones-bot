@@ -1,5 +1,5 @@
 """Clipero: graba el reality, detecta los momentos fuertes, los edita y te los manda por Telegram."""
-import json, os, queue, re, secrets, subprocess, threading, time
+import json, os, queue, re, secrets, shutil, subprocess, threading, time
 import config as C, recorder, analyzer, editor, tg, ia, fb, wa, web, ntfy
 try:
     import fabrica
@@ -115,6 +115,11 @@ def trabajador():
                         break
                     time.sleep(15)
                 chat = [t for _, t in recorder.chat_mensajes(centro - 60, objetivo)]
+            if info and info.get('meme') and not job['manual']:
+                try:
+                    enviar_meme(info['meme'], info)
+                except Exception as e:
+                    log('error mandando meme', e)
             if info and info.get('descartado'):
                 continue
             if info and not job['manual'] and info.get('duracion', 999) < C.get()['clip_min'] - 5:
@@ -259,6 +264,31 @@ def guardar_meta(cid, m):
 _pub_lock = threading.Lock()
 
 
+def enviar_meme(mm, info):
+    """10-nov: versión MEME (franja negra + frase cómica + momento de cerca). Mientras 'memes_auto' esté apagado,
+    solo llega al Telegram como muestra (el dueño decide con el botón); encendido, entra a la cola automática."""
+    if mm.get('explicito'):
+        return
+    cid = time.strftime('%Y%m%d_%H%M%S') + '_meme'
+    dst = os.path.join(C.CLIPS, cid); os.makedirs(dst, exist_ok=True)
+    ruta = os.path.join(dst, 'clip.mp4')
+    shutil.copy(mm['ruta'], ruta)
+    cfg = C.get()
+    hay_fb = fb.activo()
+    cap = (f"😂 <b>MEME</b> · potencial <b>{mm.get('potencial', 0)}/100</b> · ⏱️ 0:{mm.get('duracion', 0):02d}\n"
+           f"<b>{mm['frase']}</b>\n\n📝 Para publicar:\n{mm['texto_post']}")
+    if hay_fb and cfg.get('memes_auto'):
+        cap += '\n\n⏳ Si no respondes, entra a la cola y se publica solo.'
+    elif hay_fb:
+        cap += '\n\n🧪 Muestra: solo se publica si tocas «Publicar ya».'
+    env = tg.video(ruta, cap, cid, publicar=hay_fb)
+    guardar_meta(cid, {'ruta': ruta, 'texto_post': mm['texto_post'], 'titulo': mm['frase'], 'subtitulo': '',
+                       'descripcion': info.get('descripcion', ''), 'duracion_txt': f"0:{mm.get('duracion', 0):02d}",
+                       'token': secrets.token_urlsafe(16), 'interes': mm.get('potencial', 0), 'explicito': False,
+                       'manual': False, 'meme': True, 'enviado': time.time(), 'estado': 'pendiente', 'mensajes': env})
+    log('meme enviado', cid, mm['frase'])
+
+
 def publicados_hoy():
     hoy = time.strftime('%Y%m%d')
     n = 0
@@ -337,6 +367,8 @@ def auto_publicador():
                     ultimo = max(ultimo, m.get('publicado', 0))
                     continue
                 if m.get('estado') != 'pendiente' or m.get('auto_fallo') or m.get('explicito'):
+                    continue
+                if m.get('meme') and not cfg.get('memes_auto'):     # memes: solo muestras hasta que el dueño apruebe
                     continue
                 if m.get('interes', 0) < cfg['auto_minimo'] or ahora - m.get('enviado', ahora) < cfg['auto_espera_min'] * 60:
                     continue

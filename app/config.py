@@ -55,6 +55,9 @@ DEFAULTS = {
     'radar_hora': 2,           # voz de Gemini elegida para Ridmer                     # tema secreto de la app ntfy
     'fb_page_token': '',
     'clip_max': 900,                     # sin tope real: dura lo que dure el momento
+    'memes': True,                      # 10-nov: versión MEME de los mejores momentos (franja negra + frase)
+    'meme_minimo': 80,                   # potencial mínimo de meme (0-100)
+    'memes_auto': False,                 # False = solo muestras al Telegram; True = entran a la cola automática
     'desde_hora': '14:00',               # 10-nov (pedido del dueño, permanente): ningún video sale antes de las 14:00
     'desde_hora_dia': {},                # excepciones por fecha, ej. {'2026-12-24': '10:00'}
     'paquete_hora': '14:00',             # Shorts y largo de YouTube llegan todos juntos a esta hora
