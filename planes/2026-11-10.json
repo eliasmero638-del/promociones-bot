@@ -1525,6 +1525,63 @@
      }
     }
    ]
+  },
+  {
+   "eid": "klv",
+   "tipo": "largo",
+   "hora_youtube": "ya",
+   "hora_fb": "ya",
+   "hora_short": "ya",
+   "urgente": true,
+   "nota": "solo para bajar videos reales de las Drakensberg para el largo de Klarer (no se entrega)",
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Uno.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=9vZPrWN_ea4",
+      "desde": 20,
+      "dur": 7
+     }
+    },
+    {
+     "texto": "Dos.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=er1Gazxzwbk",
+      "desde": 30,
+      "dur": 7
+     }
+    },
+    {
+     "texto": "Tres.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=f1B8DFGgMZQ",
+      "desde": 25,
+      "dur": 7
+     }
+    },
+    {
+     "texto": "Cuatro.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=9vZPrWN_ea4",
+      "desde": 70,
+      "dur": 7
+     }
+    },
+    {
+     "texto": "Cinco.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=er1Gazxzwbk",
+      "desde": 90,
+      "dur": 7
+     }
+    }
+   ]
   }
  ]
 }
