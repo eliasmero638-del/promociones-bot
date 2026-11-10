@@ -414,7 +414,7 @@ def sfx_archivo(nombre, k=0):
     return None
 
 
-def render_pro(trabajo, voz, palabras, escenas, formato, titulo, hook_fin, salida, cola=0.6, intro=True, musica=None):
+def render_pro(trabajo, voz, palabras, escenas, formato, titulo, hook_fin, salida, cola=0.6, intro=True, musica=None, subtitulos=True):
     """Como render(), pero editado "a mano": movimiento con easing por escena, transiciones (fundido, destello,
     negro), efectos de sonido de suspenso sincronizados con los cortes, viñeta y grano. Intro tras el gancho."""
     W, H = FORMATOS[formato]
@@ -477,7 +477,7 @@ def render_pro(trabajo, voz, palabras, escenas, formato, titulo, hook_fin, salid
     for i, e in enumerate(escenas):
         t1 = D if i == len(escenas) - 1 else escenas[i + 1]['t0']
         rot.append((e['t0'], t1, e.get('rotulo', '')))
-    _ass(palabras, W, H, titulo if formato == 'vertical' else '', ass, rotulos=rot)
+    _ass(palabras if subtitulos else [], W, H, titulo if formato == 'vertical' else '', ass, rotulos=rot)
     hf = min(max(hook_fin, 1.0), D - 1)
     if not intro:                                           # Shorts y Reels: sin intro (la gente se iba ahí)
         fc = (f"[0:v]subtitles='{ass}':fontsdir='{os.path.dirname(FUENTE)}',fps=30,format=yuv420p,setsar=1[v];"

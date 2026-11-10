@@ -3,7 +3,7 @@
 5:30  Claude (tarea programada) lee los encargos y escribe el PLAN de edición en la rama `planes` de GitHub
 luego el servidor baja el plan, hace la voz (Algenib), arma Facebook / Short / largo con las decisiones de Claude
 y los entrega a su hora: Facebook se avisa 20 min antes y se publica solo; YouTube se avisa para subir a mano."""
-import json, os, re, secrets, shutil, threading, time
+import json, os, re, secrets, shutil, subprocess, threading, time
 import requests
 import config as C, montaje, editor, fb, tg, ntfy, radar
 import fabrica as F
@@ -73,20 +73,37 @@ def _escena_img(esc, carpeta_enc, carpeta, i, usados=None):
     return foto
 
 
-def _parte_wav(texto, carpeta, k, voz=None, estilo=''):
+def _parte_wav(texto, carpeta, k, voz=None, estilo='', solo_gemini=False):
     """Una parte de la narración → wav limpio (sin silencio al inicio ni al final) + 0.35 s de pausa."""
     mp3 = os.path.join(carpeta, f'voz_{k:02d}.mp3')
-    ok, r = F.voz.gemini(texto, mp3, voz=voz, estilo=estilo or '')   # voz/estilo propios (p. ej. canal de terror)
-    if not ok:
+    for intento in range(5):                 # 10-nov: Gemini a veces falla por límite; reintentar antes de rendirse
+        ok, r = F.voz.gemini(texto, mp3, voz=voz, estilo=estilo or '')   # voz/estilo propios (p. ej. canal de terror)
+        if ok:
+            break
+        log('voz gemini falló, reintento', intento + 1, r)
+        time.sleep(30 * (intento + 1))
+    if not ok and not solo_gemini:
         log('voz gemini falló, uso Microsoft:', r)
         ok, r = F.voz.edge(texto, mp3)
-        if not ok:
-            raise RuntimeError('no se pudo hacer la voz: ' + str(r))
+    if not ok:                               # con varias partes: NUNCA mezclar dos voces distintas (queja del dueño)
+        raise RuntimeError('no se pudo hacer la voz de Gemini: ' + str(r))
     wav = os.path.join(carpeta, f'voz_{k:02d}.wav')
     lim = 'silenceremove=start_periods=1:start_threshold=-45dB'
     montaje.sh(['ffmpeg', '-y', '-v', 'error', '-i', mp3, '-af', f'{lim},areverse,{lim},areverse,apad=pad_dur=0.35',
                 '-ar', '48000', '-ac', '1', '-c:a', 'pcm_s16le', wav])
     return wav
+
+
+def _timbre(wav):
+    """Brillo medio de la voz (centroide espectral): sirve para notar si una parte salió con otra voz."""
+    import numpy as np
+    raw = subprocess.run(['ffmpeg', '-v', 'error', '-i', wav, '-ac', '1', '-ar', '16000', '-f', 's16le', '-'],
+                         capture_output=True).stdout
+    x = np.frombuffer(raw, np.int16).astype(float)
+    if len(x) < 16000:
+        return 1.0
+    S = np.abs(np.fft.rfft(x)); f = np.fft.rfftfreq(len(x), 1 / 16000)
+    return float((S * f).sum() / (S.sum() + 1e-9))
 
 
 def _narrar(segs, carpeta, g, voz=None, estilo=''):
@@ -99,9 +116,24 @@ def _narrar(segs, carpeta, g, voz=None, estilo=''):
         actual = (actual + ' ' + t).strip()
     if actual:
         bloques.append(actual)
-    partes = []
+    partes, ref = [], None
     for k, b in enumerate(bloques):
-        partes.append(_parte_wav(b, carpeta, k, voz, estilo))
+        # 10-nov: el dueño notó "dos voces" en el largo de Klarer (partes que sonaban distinto). Cada parte se compara
+        # con la primera (timbre); si suena distinta se vuelve a pedir, hasta 3 veces, y se queda la más parecida.
+        mejor = None
+        for intento in range(3 if k else 1):
+            w = _parte_wav(b, carpeta, k, voz, estilo, solo_gemini=len(bloques) > 1)
+            w2 = w.replace('.wav', f'_i{intento}.wav'); os.replace(w, w2)
+            dif = abs(_timbre(w2) - ref) / ref if ref else 0
+            log('voz parte', k, 'intento', intento + 1, 'diferencia de timbre', round(dif, 2))
+            if mejor is None or dif < mejor[1]:
+                mejor = (w2, dif)
+            if dif < 0.15:
+                break
+            time.sleep(8)
+        if ref is None:
+            ref = _timbre(mejor[0])
+        partes.append(mejor[0])
         time.sleep(4)
     lista = os.path.join(carpeta, 'voz.txt')
     with open(lista, 'w') as f:
@@ -158,6 +190,7 @@ def armar(carpeta, wav, palabras, segs, g, hook, v, foto_mini):
     sin_intro = {'intro': False} if v.get('pro') else {}      # intro de Ridmer solo en los videos largos
     if v.get('pro'):
         sin_intro['musica'] = v.get('musica')
+        sin_intro['subtitulos'] = v.get('subtitulos', True)
     extra = ('tipo', 'mov', 'trans', 'sfx', 'latido')
     escenas = [dict({'t0': s['t0'], 'img': s['img'], 'rotulo': s.get('rotulo', '')},
                     **{k: (s.get('escena') or {}).get('tipo', 'foto') if k == 'tipo' else s.get(k)

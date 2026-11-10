@@ -15,6 +15,7 @@ CAMBIOS.json (todo opcional) = decisiones de Claude tras revisar:
                                         # cuervo, corazon, susurro, fuego, transicion, reloj, explosion, boom, drama
    "latido": {"9": true},               # latido de corazón debajo de la escena (tensión)
    "corregir": {"Rhythmert": "Ridmer", "Kopki": "Koepcke", "#57": ""},   # subtítulos mal oídos ("#N" = palabra N)
+   "subtitulos": false,                 # sin subtítulos (el dueño los quitó del largo el 10-nov)
    "musica": "tension",                 # tension | epico | misterio (pistas propias, bajan solas bajo la voz)
    "foto_estilo": "polaroid",           # fotos reales: polaroid que cae con cinta (por defecto) | "plano"
    "estilo_foto": {"9": "duo"}, "dato": {"9": "1 DE 92"}, "pie": {"2": "Juliane, hoy"},   # por segmento
@@ -142,7 +143,7 @@ def main():
     os.makedirs(out, exist_ok=True)
     plan = json.load(open(plan_p))
     v = next(x for x in plan['videos'] if x['eid'] == eid)
-    v = dict(v, **{k: cambios[k] for k in ('titulo_video', 'miniatura', 'musica') if k in cambios}, pro=True)
+    v = dict(v, **{k: cambios[k] for k in ('titulo_video', 'miniatura', 'musica', 'subtitulos') if k in cambios}, pro=True)
     info = json.load(open(os.path.join(mat, 'info.json')))
     wav = os.path.join(out, 'voz.wav')
     subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', os.path.join(mat, 'voz.flac'), '-ar', '48000', '-ac', '1', wav], check=True)
