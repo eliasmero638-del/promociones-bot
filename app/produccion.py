@@ -35,6 +35,9 @@ def _escena_img(esc, carpeta_enc, carpeta, i, usados=None):
         foto = p if os.path.exists(p) else None
     if esc and not foto and esc.get('url'):          # foto exacta elegida por Claude (p. ej. Wikimedia)
         foto = F._bajar(esc['url'], carpeta, f'u_{i:02d}', usados)
+        if foto and not _imagen_ok(foto):           # 10-nov: el link no era una imagen (página web) → buscar otra
+            log('foto del link no es imagen, busco otra', esc['url'])
+            foto = None
     if esc and not foto and esc.get('buscar'):       # o búsqueda en Wikimedia Commons
         for q in ([esc['buscar']] if isinstance(esc['buscar'], str) else esc['buscar']):
             foto = F._commons(q, carpeta, f'b_{i:02d}', usados)
@@ -352,6 +355,16 @@ MAT = os.path.join(C.DATA, 'material')
 ENTREGAS_URL = 'https://raw.githubusercontent.com/eliasmero638-del/promociones-bot/entregas/entregas/{fecha}/{f}'
 
 
+def _imagen_ok(path):
+    try:
+        from PIL import Image
+        with Image.open(path) as im:
+            im.verify()
+        return True
+    except Exception:
+        return False
+
+
 def _jpg(src, dst, maximo=1600):
     from PIL import Image
     im = Image.open(src).convert('RGB')
@@ -544,12 +557,18 @@ def preparar_material(fecha, v):
                 continue
         img = _escena_img(esc, carpeta_enc, tmp, i, usados)
         if img:
-            _jpg(img, os.path.join(tmp, f'esc_{i:02d}.jpg'), 2000)
+            try:
+                _jpg(img, os.path.join(tmp, f'esc_{i:02d}.jpg'), 2000)
+            except Exception as e:                     # una imagen dañada ya no tumba todo el video
+                log('imagen dañada, la salto', img, e); img = None
         s['img'] = f'esc_{i:02d}.jpg' if img else None
     if os.path.isdir(carpeta_enc):                       # todas las fotos candidatas, por si Claude cambia alguna
         for f_ in sorted(os.listdir(carpeta_enc)):
             if re.match(r'c\d\d\.jpg$', f_):
-                _jpg(os.path.join(carpeta_enc, f_), os.path.join(tmp, f_))
+                try:
+                    _jpg(os.path.join(carpeta_enc, f_), os.path.join(tmp, f_))
+                except Exception:
+                    pass
     g = max(1, min(int(v.get('gancho', 1)), len(segs) - 1))
     estilo_v = v.get('estilo_voz', C.get().get('estilo_voz_ridmer', ''))
     wav, hook = _narrar(segs, tmp, g, v.get('voz'), estilo_v)
