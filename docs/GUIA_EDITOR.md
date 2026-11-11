@@ -290,3 +290,15 @@ publicaciones al mes en TOTAL. Reparto: ~15 AVANCES (cada día de largo) + 4 MEJ
 - Hackers: cuenta CÓMO logró entrar a nivel de historia (se hizo pasar por técnico y le dieron la contraseña, encontró
   una computadora olvidada sin clave, un empleado abrió un correo falso, etc.) y anímalo, pero NUNCA instrucciones
   técnicas, comandos, programas, códigos ni pasos que alguien pueda copiar para hackear.
+
+## QUÉ TEMAS FUNCIONAN — DATOS REALES DE FACEBOOK (11-nov, OBLIGATORIO)
+Reproducciones de los reels del 12-oct al 11-nov:
+- FUNCIONAN (700–1.400): Hiroo Onoda (soldado que siguió la guerra 29 años) 1.368 · Ricky McCormick (notas en código)
+  1.049 · "La ciencia predijo el fin del mundo" 1.018 · aviones/cazas misteriosos 1.003 · Juliane Koepcke (cayó del
+  avión y sobrevivió) 761 · Hiroshima/Nagasaki 215 · Somerton 224.
+- NO FUNCIONAN (1–15): asesinos en serie, "El Satánico", "Dexter criollo", secuestros, niños muertos, crímenes de
+  honor, narcos, magnicidios, desaparecidas. Desde que se pasó a #casosreales de crímenes (29-oct) las vistas cayeron.
+=> Elige SIEMPRE: supervivencia increíble, historia insólita, misterios sin resolver NO violentos (códigos, barcos
+   fantasma, personas sin identidad), ovnis/aviones/fenómenos, ciencia y "datos curiosos", récords. Hashtags tipo
+   #historiasreales #datoscuriosos #misterio. NUNCA crímenes, asesinos, secuestros, violencia ni muertes de niños,
+   aunque vengan en los encargos: cámbialos por la reserva o por un tema propio de la lista "FUNCIONAN".
