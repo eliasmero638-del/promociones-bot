@@ -246,6 +246,45 @@
     }
    ],
    "hoja": "res1/hoja.jpg"
+  },
+  {
+   "eid": "urg1",
+   "tipo": "fb",
+   "titulo": "Muerte del embajador de Rusia en EE. UU., Alexander Darchiev",
+   "titulo_sugerido": "Muerte del embajador de Rusia en EE. UU., Alexander Darchiev",
+   "fuente": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOVzNvQ1JFX0dObWVGN2JTNDZSWGNPZTFUWnhsSEo5WF9FX1MxbkwycUZJdVhncnFfeHNwdjJsZ1F0ZW45S1hEcC1YNmttcHJOSjdiMDM5eVdvcHVQeVlLcVpnekY0Q0N3V01vMndNSHRTV0RjS29NRTFTVVZYQkpEYklxZWZCeFhhM1o0SnB3?oc=5",
+   "texto": "- Muere el embajador de Rusia en EE.UU., según el Ministerio de Relaciones Exteriores - CNN en Español (CNN en Español, Wed, 11 Nov 2026 16:37:00 GMT):  Muere el embajador de Rusia en EE.UU., según el Ministerio de Relaciones Exteriores    CNN en Español \n- Muere embajador ruso en EEUU: ministerio de Asuntos Exteriores - Yahoo (Yahoo, Wed, 11 Nov 2026 16:38:41 GMT):  Muere embajador ruso en EEUU: ministerio de Asuntos Exteriores    Yahoo \n- Rusia.- Fallece el embajador de Rusia en EEUU, Alexander Darchiev, a los 66 años - Notimérica (Notimérica, Wed, 11 Nov 2026 16:59:16 GMT):  Rusia.- Fallece el embajador de Rusia en EEUU, Alexander Darchiev, a los 66 años    Notimérica \n- Muere el embajador ruso en Estados Unidos Alexandr Dárichev - Infobae (Infobae, Wed, 11 Nov 2026 17:01:00 GMT):  Muere el embajador ruso en Estados Unidos Alexandr Dárichev    Infobae \n- Muere a los 66 años el embajador de Rusia en Estados Unidos, Alexander Darchiev - 24horas (24horas, Wed, 11 Nov 2026 16:30:00 GMT):  Muere a los 66 años el embajador de Rusia en Estados Unidos, Alexander Darchiev    24horas \n- Russian ambassador to US dies, foreign ministry says - CNN (CNN, Wed, 11 Nov 2026 16:32:40 GMT):  Russian ambassador to US dies, foreign ministry says    CNN \n- Russian Ambassador to the United States Dies - The Moscow Times (The Moscow Times, Wed, 11 Nov 2026 16:20:49 GMT):  Russian Ambassador to the United States Dies    The Moscow Times \n- Alexander Darchiev, Russia’s ambassador to the United States, dead at 66 - ABC News - Breaking News, Latest News and Videos (ABC News - Breaking News, Latest News and Videos, Wed, 11 Nov 2026 16:44:22 GMT):  Alexander Darchiev, Russia’s ambassador to the United States, dead at 66    ABC News - Breaking News, Latest News and Videos ",
+   "candidatos": [
+    {
+     "n": 1,
+     "desc": "The Russian Ambassador in 1947.jpg",
+     "q": "Russian ambassador to United States 2026"
+    },
+    {
+     "n": 2,
+     "desc": "The Russian Ambassador arrives at New Delhi in December 1947.jpg",
+     "q": "Russian ambassador to United States 2026"
+    },
+    {
+     "n": 3,
+     "desc": "Mainela Petkova speaks to participants during the Strategic Competition in Russia cou",
+     "q": "Russian ambassador to United States 2026"
+    },
+    {
+     "n": 4,
+     "desc": "US Embassy in Moscow at night 09.jpg",
+     "q": "Russian flag at US embassy"
+    },
+    {
+     "n": 5,
+     "desc": "US Embassy in Moscow at night 06.jpg",
+     "q": "Russian flag at US embassy"
+    }
+   ],
+   "hoja": "urg1/hoja.jpg",
+   "urgente": true,
+   "creado": 1794416998.9805639,
+   "resumen": "El embajador de Rusia en Estados Unidos, Alexander Darchiev, falleció a los 66 años, según confirmó el Ministerio de Relaciones Exteriores."
   }
  ],
  "creado": 1794380492.5436187
