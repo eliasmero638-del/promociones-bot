@@ -73,12 +73,6 @@ LO QUE LE GUSTA AL DUEÑO DE LA PÁGINA (síguelo al calificar):
 - NO (descártalo o déjalo bajo 55): charla normal sin giro, comer o cocinar sin nada más, limpiar, dormir,
   repetir lo mismo, pedir votos al público una y otra vez, saludos, publicidad, momentos sin sentido o que no se
   entienden sin haber visto lo anterior.
-- DATOS REALES DE LA PÁGINA (11-nov): lo que más vistas da son las CONFESIONES y REVELACIONES PERSONALES de un
-  participante con nombre ("Tony Aguirre revela secretos de su carrera" 2.702 vistas, "Itatí confiesa todo sobre el
-  Capi" 602). Lo de grupo sin protagonista (bromas en la cocina, dinámicas, discusiones por quién duerme) saca 1-9.
-  Súbele el interés a: alguien cuenta su historia, un secreto, una confesión, chisme sobre otro participante,
-  "nadie sabía que…". En el título pon SIEMPRE el NOMBRE del protagonista primero + verbo fuerte (revela, confiesa,
-  rompe el silencio, expone).
 {gustos}
 {aprendizaje}
 Te doy {nfotos} fotos del clip en orden y su audio. Tareas:
