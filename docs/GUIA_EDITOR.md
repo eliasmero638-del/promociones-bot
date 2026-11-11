@@ -263,3 +263,14 @@ el plan un segmento con foto real de su cara), "recorte": "esc_NN.jpg" (opcional
 (`*palabra*` sale en amarillo; 2–3 líneas; la línea principal corta y en MAYÚSCULAS). Mírala con Read antes de entregar.
 El video largo se sube solo a YouTube y el dueño puede cambiar la portada desde el bot (botón «🖼️ Cambiar portada»).
 Horario YouTube (hora Ecuador): Short 1 → 14:00 · LARGO → 18:00 · Short 2 → 19:00.
+
+## TIKTOK CON METRICOOL (11-nov, plan del dueño: máx. 20 al mes)
+Metricool (marca Ridmer TV, blogId 7509545, zona America/Guayaquil) publica en TikTok (cuenta ridmer98). Plan gratis = 20
+publicaciones al mes en TOTAL. Reparto: ~15 AVANCES (cada día de largo) + 4 MEJORES DE LA SEMANA (domingo) + 1 de margen.
+- Cada día: guarda TODOS los Facebook del día (para elegir el mejor de la semana):
+  `python3 tools/tiktok.py guardar $HOY <salida>/fbN/fb.mp4 fbN "<título>" "<texto_facebook>"`
+- Día de largo: guarda también el avance (`... <salida>/largo1t/tiktok.mp4 largo1t ...`), mira `python3 tools/tiktok.py cuenta`;
+  si van menos de 19, prográmalo con la herramienta de Metricool createScheduledPost: providers [{"network":"tiktok"}],
+  media [link que imprimió guardar], hora 19:30 de hoy, text = título clickbait + "Video completo en YouTube: Ridmer" +
+  4-6 hashtags, tiktokData {"privacyOption":"PUBLIC_TO_EVERYONE","title": título corto, "autoAddMusic": false}.
+  Luego `python3 tools/tiktok.py sumar largo1t-$HOY`. Si ya van 19 o más, NO programes (se guarda el cupo del domingo).
