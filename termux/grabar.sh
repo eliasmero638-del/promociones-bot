@@ -83,10 +83,12 @@ while true; do
   log "grabando $VID $TIT"
   $YT --skip-download --write-subs --sub-langs live_chat -o "$D/chat/$VID" "https://www.youtube.com/watch?v=$VID" >/dev/null 2>>$D/yt.log &
   CH=$!
-  U=$($YT -f "bv*[height<=480]+ba/b[height<=480]/bv*+ba/b" -g "https://www.youtube.com/watch?v=$VID" 2>>$D/yt.log)
+  # 11-nov: primero el formato con video y audio JUNTOS (si vienen separados, el audio se adelantaba al video)
+  U=$($YT -f "b[height<=480]/b[height<=720]/bv*[height<=480]+ba/bv*+ba/b" -g "https://www.youtube.com/watch?v=$VID" 2>>$D/yt.log)
   V=$(echo "$U" | sed -n 1p); A=$(echo "$U" | sed -n 2p)
   if [ -z "$V" ]; then log "no pude obtener el video, reintento en 1 min"; tail -n 2 $D/yt.log; kill $CH 2>/dev/null; sleep 60; continue; fi
-  if [ -n "$A" ]; then IN="-i $V -i $A -map 0:v:0 -map 1:a:0"; else IN="-i $V -map 0:v:0? -map 0:a:0?"; fi
+  # con video y audio separados, -copyts mantiene sus tiempos originales (los dos van en la misma línea de tiempo)
+  if [ -n "$A" ]; then IN="-copyts -i $V -i $A -map 0:v:0 -map 1:a:0"; else IN="-i $V -map 0:v:0? -map 0:a:0?"; fi
   log "grabando video+audio"
   TZ=UTC ffmpeg -v error -reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 10 $IN -c copy -f segment -segment_time 120 \
     -segment_format mpegts -reset_timestamps 1 -strftime 1 "$D/rec/%Y%m%d_%H%M%S.ts" 2>>$D/ffmpeg.log &
