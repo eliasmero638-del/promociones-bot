@@ -622,6 +622,13 @@ def comandos(tipo, chat, dato, raw):
             except Exception as e:
                 tg.texto(f'❌ No se pudo conectar YouTube: {e}', chat)
         threading.Thread(target=_esp, daemon=True).start()
+    elif cmd == '/memes':                       # 11-nov: cómo va la búsqueda de memes desde que arrancó el servidor
+        import editor as E
+        st = E.MEME_STATS
+        tg.texto(f"😂 Memes desde el último arranque:\nmomentos revisados: {st['revisados']}\n"
+                 f"sin meme: {st['no_sirve']} · con meme pero bajo puntaje (&lt;{cfg.get('meme_minimo', 70)}): {st['bajo']}\n"
+                 f"memes hechos: {st['hechos']} · errores: {st['fallas']}\n\nÚltimos descartados:\n" +
+                 ('\n'.join(st['ultimas']) or '—'), chat)
     elif cmd == '/ytestado':
         import youtube as YT
         if not YT.conectado():

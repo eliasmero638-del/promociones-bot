@@ -130,7 +130,9 @@ Te doy {nfotos} fotos del clip en orden y su audio. Tareas:
    "Tu pana cuando le tocan a la novia 😤" · "Tu pana que dice que no va a pelear… 2 segundos después:" ·
    "Yo cuando me dicen que mañana hay que madrugar 😩" · "Cómo será que hago para ganarme 500 millones de aquí a
    diciembre 🤔" · "Mi cara cuando llega la quincena y ya debía todo 😐" · "La cara de él cuando ella dijo eso 👀" ·
-   "Nadie: / Él: 💃" · "Ese man no tiene filtro 💀" · "No pues así sí 😂" · "Uno de aquí 😂".
+   "Nadie: / Él: 💃" · "Ese man no tiene filtro 💀" · "No pues así sí 😂" · "Uno de aquí 😂" ·
+   "La vida me trata como trata al Tony, a puro golpe 🤣🙃" (esta frase real tuvo 15 mil likes: compara la vida de
+   uno con lo que le pasa a un participante con nombre).
    El chiste va sobre la SITUACIÓN o la reacción, NUNCA sobre el físico, la discapacidad, el color de piel o la
    orientación de alguien. Con niños, nada picante. Si dudas, "sirve": false.
    "potencial" 0-100: 85+ solo si una persona cualquiera en Facebook se reiría y lo compartiría sin conocer el reality.

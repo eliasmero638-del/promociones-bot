@@ -226,17 +226,24 @@ def _buscar_frase(frase, palabras):
     return t if mejor >= max(2, len(ws) // 2 + 1) else None
 
 
+MEME_STATS = {'revisados': 0, 'no_sirve': 0, 'bajo': 0, 'hechos': 0, 'fallas': 0, 'ultimas': []}
+
+
 def _meme(r, crudo, d, cfg):
     """10-nov: versión MEME del momento (franja negra con frase cómica + momento de cerca, audio original)."""
     try:
         m = r.get('meme') or {}
+        MEME_STATS['revisados'] += 1
         if not cfg.get('memes', True) or not m.get('sirve'):
+            MEME_STATS['no_sirve'] += 1
             return None
         pot = int(m.get('potencial', 0) or 0)
         frase = str(m.get('frase') or '').strip()
         a, b = float(m.get('inicio') or 0), float(m.get('fin') or 0)
-        if pot < cfg.get('meme_minimo', 80) or not frase or b - a < 3:
+        if pot < cfg.get('meme_minimo', 70) or not frase or b - a < 3:
             log('meme descartado', pot, frase[:60])
+            MEME_STATS['bajo'] += 1
+            MEME_STATS['ultimas'] = (MEME_STATS['ultimas'] + [f'{pot} · {frase[:70]}'])[-5:]
             return None
         a, b = max(0.0, a - 0.5), b + 0.8
         if b - a > 25:
@@ -247,10 +254,13 @@ def _meme(r, crudo, d, cfg):
             return None
         post = str(m.get('texto_post') or frase)
         log('MEME listo', pot, frase)
+        MEME_STATS['hechos'] += 1
         return {'ruta': out, 'frase': frase, 'potencial': pot, 'texto_post': post, 'duracion': int(b - a),
                 'explicito': bool(r.get('explicito'))}
     except Exception as e:
         log('meme falló', e)
+        MEME_STATS['fallas'] += 1
+        MEME_STATS['ultimas'] = (MEME_STATS['ultimas'] + [f'error: {str(e)[:80]}'])[-5:]
         return None
 
 
