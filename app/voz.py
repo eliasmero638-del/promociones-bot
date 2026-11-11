@@ -36,19 +36,20 @@ def _prompt(estilo, texto):
     return estilo.replace('{texto}', texto) if '{texto}' in estilo else estilo + texto
 
 
-def gemini(texto, salida_mp3, voz=None, estilo=ESTILO):
+def gemini(texto, salida_mp3, voz=None, estilo=ESTILO, modelo=None):
     voz = voz or C.get().get('voz_narrador', 'Algenib')
     key = C.get().get('gemini_key')
     if not key:
         return False, 'sin clave de Gemini'
     ult = ''
-    for m in modelos_tts(key)[:3]:
+    # 11-nov: con 'modelo' se usa SOLO ese (cambiar de modelo a mitad de una narración cambia la voz)
+    for m in ([modelo] if modelo else modelos_tts(key)[:3]):
         for intento in range(3):
             try:
                 r = requests.post(f'https://generativelanguage.googleapis.com/v1beta/models/{m}:generateContent',
                                   params={'key': key}, timeout=300, json={
                                       'contents': [{'parts': [{'text': _prompt(estilo, texto)}]}],
-                                      'generationConfig': {'responseModalities': ['AUDIO'], 'speechConfig': {
+                                      'generationConfig': {'responseModalities': ['AUDIO'], 'temperature': 0.6, 'speechConfig': {
                                           'voiceConfig': {'prebuiltVoiceConfig': {'voiceName': voz}}}}})
                 if r.status_code == 429:
                     ult = f'{m}: límite, espero'; time.sleep(20 * (intento + 1)); continue

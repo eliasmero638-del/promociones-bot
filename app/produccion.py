@@ -76,12 +76,13 @@ def _escena_img(esc, carpeta_enc, carpeta, i, usados=None):
     return foto
 
 
-def _parte_wav(texto, carpeta, k, voz=None, estilo='', solo_gemini=False):
+def _parte_wav(texto, carpeta, k, voz=None, estilo='', solo_gemini=False, modelo=None):
     """Una parte de la narración → wav limpio (sin silencio al inicio ni al final) + 0.35 s de pausa."""
     mp3 = os.path.join(carpeta, f'voz_{k:02d}.mp3')
-    for intento in range(5):                 # 10-nov: Gemini a veces falla por límite; reintentar antes de rendirse
-        ok, r = F.voz.gemini(texto, mp3, voz=voz, estilo=estilo or '')   # voz/estilo propios (p. ej. canal de terror)
+    for intento in range(6 if modelo else 5):   # 10-nov: Gemini a veces falla por límite; reintentar antes de rendirse
+        ok, r = F.voz.gemini(texto, mp3, voz=voz, estilo=estilo or '', modelo=modelo)   # voz/estilo propios
         if ok:
+            _modelo_usado[0] = r
             break
         log('voz gemini falló, reintento', intento + 1, r)
         time.sleep(30 * (intento + 1))
@@ -95,6 +96,9 @@ def _parte_wav(texto, carpeta, k, voz=None, estilo='', solo_gemini=False):
     montaje.sh(['ffmpeg', '-y', '-v', 'error', '-i', mp3, '-af', f'{lim},areverse,{lim},areverse,apad=pad_dur=0.35',
                 '-ar', '48000', '-ac', '1', '-c:a', 'pcm_s16le', wav])
     return wav
+
+
+_modelo_usado = [None]
 
 
 def _timbre(wav):
@@ -114,18 +118,21 @@ def _narrar(segs, carpeta, g, voz=None, estilo=''):
     textos = [s['texto'].strip() for s in segs]
     bloques, actual = [' '.join(textos[:g])], ''
     for t in textos[g:]:
-        if actual and len(actual) + len(t) > 900:
+        if actual and len(actual) + len(t) > 1800:     # 11-nov: partes más grandes = menos uniones de voz
             bloques.append(actual); actual = ''
         actual = (actual + ' ' + t).strip()
     if actual:
         bloques.append(actual)
-    partes, ref = [], None
+    partes, ref, fijo = [], None, None
+    _modelo_usado[0] = None
     for k, b in enumerate(bloques):
+        if k == 1:
+            fijo = _modelo_usado[0]          # 11-nov: TODA la narración con el mismo modelo de Gemini (si no, cambia la voz)
         # 10-nov: el dueño notó "dos voces" en el largo de Klarer (partes que sonaban distinto). Cada parte se compara
         # con la primera (timbre); si suena distinta se vuelve a pedir, hasta 3 veces, y se queda la más parecida.
         mejor = None
         for intento in range(3 if k else 1):
-            w = _parte_wav(b, carpeta, k, voz, estilo, solo_gemini=len(bloques) > 1)
+            w = _parte_wav(b, carpeta, k, voz, estilo, solo_gemini=len(bloques) > 1, modelo=fijo)
             w2 = w.replace('.wav', f'_i{intento}.wav'); os.replace(w, w2)
             dif = abs(_timbre(w2) - ref) / ref if ref else 0
             log('voz parte', k, 'intento', intento + 1, 'diferencia de timbre', round(dif, 2))

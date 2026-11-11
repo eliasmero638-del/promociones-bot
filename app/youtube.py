@@ -120,3 +120,10 @@ def poner_portada(vid, imagen):
                           headers=dict(h, **{'Content-Type': 'image/jpeg'}), data=f, timeout=120)
     if r.status_code >= 300:
         raise RuntimeError(f'YouTube no aceptó la portada ({r.status_code}): {r.text[:300]}')
+
+
+def canal_id():
+    h = {'Authorization': 'Bearer ' + _acceso()}
+    r = requests.get('https://www.googleapis.com/youtube/v3/channels', params={'part': 'id', 'mine': 'true'},
+                     headers=h, timeout=30).json()
+    return (r.get('items') or [{}])[0].get('id', '?')

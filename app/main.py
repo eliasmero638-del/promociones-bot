@@ -628,7 +628,7 @@ def comandos(tipo, chat, dato, raw):
             return tg.texto('YouTube no está conectado. Pasos: /ytllave y luego /ytconectar', chat)
         try:
             nombre, subs = YT.canal()
-            tg.texto(f'✅ Conectado a <b>{nombre}</b> ({subs} suscriptores).', chat)
+            tg.texto(f'✅ Conectado a <b>{nombre}</b> ({subs} suscriptores).\nID del canal: <code>{YT.canal_id()}</code>', chat)
         except Exception as e:
             tg.texto(f'⚠️ Hay llaves pero falló: {e}', chat)
     elif cmd == '/youtube' and fabrica:

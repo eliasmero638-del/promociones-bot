@@ -274,3 +274,17 @@ publicaciones al mes en TOTAL. Reparto: ~15 AVANCES (cada día de largo) + 4 MEJ
   media [link que imprimió guardar], hora 19:30 de hoy, text = título clickbait + "Video completo en YouTube: Ridmer" +
   4-6 hashtags, tiktokData {"privacyOption":"PUBLIC_TO_EVERYONE","title": título corto, "autoAddMusic": false}.
   Luego `python3 tools/tiktok.py sumar largo1t-$HOY`. Si ya van 19 o más, NO programes (se guarda el cupo del domingo).
+- REGLA DEL DUEÑO (11-nov): NADA se publica en TikTok antes de que su video de YouTube/Facebook YA ESTÉ PUBLICADO.
+  Por eso la sesión de la mañana SOLO guarda los videos (tools/tiktok.py guardar); la programación del avance la hace la
+  tarea de la tarde "TikTok avance del día" (19:13), que primero comprueba en el feed público del canal que el largo ya
+  está público en YouTube.
+
+
+## VIDEOS LARGOS DE 8 MINUTOS Y HISTORIAS EXPLICADAS PASO A PASO (11-nov, pedido del dueño)
+- El largo dura ~8 minutos: guion de 1100–1300 palabras (desde 8 min YouTube permite anuncios en medio del video).
+  No rellenes: más minutos = más DETALLE de la historia, no frases repetidas. Si la historia no da para 8 min, mejor 6–7.
+- Sé MUY ESPECÍFICO en todos los videos: si alguien escapó de la cárcel, cuenta CÓMO lo hizo, paso a paso (qué hizo
+  primero, qué usó, dónde estaban los guardias, por dónde salió) y muéstralo con ANIMACIONES a medida de cada paso.
+- Hackers: cuenta CÓMO logró entrar a nivel de historia (se hizo pasar por técnico y le dieron la contraseña, encontró
+  una computadora olvidada sin clave, un empleado abrió un correo falso, etc.) y anímalo, pero NUNCA instrucciones
+  técnicas, comandos, programas, códigos ni pasos que alguien pueda copiar para hackear.
