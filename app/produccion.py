@@ -895,3 +895,18 @@ def bucle_entregas():
 def iniciar():
     threading.Thread(target=bucle, daemon=True).start()
     threading.Thread(target=bucle_entregas, daemon=True).start()
+
+
+def estado_youtube():
+    """11-nov: videos subidos a YouTube en los últimos 3 días y si ya están públicos (para la tarea de TikTok)."""
+    import youtube as YT
+    lista = []
+    for jid in sorted(os.listdir(F.DIR))[-80:]:
+        m = F.leer_meta(jid) if os.path.isdir(os.path.join(F.DIR, jid)) else None
+        if m and m.get('youtube_id') and time.time() - m.get('publicar_en', 0) < 3 * 86400:
+            lista.append(m)
+    est = YT.estados([m['youtube_id'] for m in lista]) if lista else {}
+    return {'hora': time.strftime('%Y-%m-%d %H:%M'), 'videos': [
+        {'entrega': m['entrega'], 'titulo': m['titulo_youtube'], 'youtube_id': m['youtube_id'],
+         'fecha': time.strftime('%Y-%m-%d', time.localtime(m.get('publicar_en', 0))),
+         'publico': (est.get(m['youtube_id']) or {}).get('privacidad') == 'public'} for m in lista]}

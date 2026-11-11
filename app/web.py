@@ -200,6 +200,12 @@ class H(BaseHTTPRequestHandler):
         return self._send(200, open(p_, 'rb').read(), tipo)
 
     def do_GET(self):
+        if self.path.split('?')[0] == '/estado/yt.json':        # 11-nov: qué videos de YouTube ya están públicos
+            try:
+                import produccion
+                return self._send(200, json.dumps(produccion.estado_youtube(), ensure_ascii=False), 'application/json')
+            except Exception as e:
+                return self._send(500, json.dumps({'error': str(e)[:200]}), 'application/json')
         if self.path.startswith('/encargos/'):
             return self._encargos()
         if self.path.startswith('/material/'):

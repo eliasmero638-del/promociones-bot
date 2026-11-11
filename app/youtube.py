@@ -127,3 +127,14 @@ def canal_id():
     r = requests.get('https://www.googleapis.com/youtube/v3/channels', params={'part': 'id', 'mine': 'true'},
                      headers=h, timeout=30).json()
     return (r.get('items') or [{}])[0].get('id', '?')
+
+
+def estados(ids):
+    """{id: {'privacidad': 'public'|'private'|'unlisted', 'publicar_en': iso|None, 'titulo': ...}}"""
+    if not ids:
+        return {}
+    h = {'Authorization': 'Bearer ' + _acceso()}
+    r = requests.get('https://www.googleapis.com/youtube/v3/videos', params={'part': 'status,snippet', 'id': ','.join(ids[:50])},
+                     headers=h, timeout=30).json()
+    return {it['id']: {'privacidad': it['status'].get('privacyStatus'), 'publicar_en': it['status'].get('publishAt'),
+                       'titulo': it['snippet'].get('title')} for it in r.get('items', [])}
