@@ -69,7 +69,7 @@ def franja(frase, path):
                     im.paste(e, (int(x), int(y + tam * 0.08)), e)
                     x += lado + 6
             elif not es_emo:
-                d.text((x, y), t, font=f, fill=(255, 255, 255))
+                d.text((x, y), t, font=f, fill=(255, 214, 0))   # amarillo, como los memes que más pegan
                 x += f.getlength(t)
         y += tam * 1.18
     im.save(path)

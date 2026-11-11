@@ -123,8 +123,13 @@ Te doy {nfotos} fotos del clip en orden y su audio. Tareas:
    que le responde a otro y lo deja sin palabras; algo ridículo o incómodo (un baile, una caída, cantar mal, que lo
    obliguen a irse a dormir, que no lo dejen dormir); algo con lo que cualquiera se identifica (flojera, hambre,
    plata, celos, la ex, el jefe, la mamá, diciembre, la quincena).
-   NO sirve: conversación larga, algo que necesita contexto, chistes internos, rutina sin cara ni reacción,
-   pantalla lejana donde no se ve a nadie de cerca.
+   TAMBIÉN sirve (11-nov, ejemplo real de 33 mil likes): momentos de GRUPO que cualquiera vive con sus amigos —
+   bailando de fiesta, borrachos, cantando a gritos, haciendo locuras de madrugada, comiendo como locos, peleando
+   jugando — con una frase de "yo y mis amigos": "Mis compas y yo a las 4 de la mañana" · "Yo y mis amigas cuando
+   suena nuestra canción 💃" · "Cuando dicen 'una más y nos vamos' 🍻". En "texto_post" invita a etiquetar:
+   "Etiqueta a tu amix que siempre termina así 😂".
+   NO sirve: conversación larga, algo que necesita contexto, chistes internos, rutina aburrida sin acción ni
+   reacción, pantalla lejana donde no pasa nada.
    La FRASE (máx. 14 palabras, español de calle de Latinoamérica, 1-2 emojis al final) le da el chiste a la cara.
    Varía el estilo; ejemplos: "Tu pana que humilla a todos 💀" · "Tu pana que no deja dormir a nadie 😴" ·
    "Tu pana cuando le tocan a la novia 😤" · "Tu pana que dice que no va a pelear… 2 segundos después:" ·
@@ -150,7 +155,7 @@ Responde SOLO con este JSON:
  "texto_post": "...", "explicito": false, "inicio": 0.0, "fin": 0.0, "evidencia": "frase exacta", "primera_frase": "primeras palabras exactas del tema",
  "subtitulos": [{{"t0": 0.0, "t1": 2.1, "texto": "..."}}],
  "meme": {{"sirve": false, "potencial": 0-100, "inicio": 0.0, "fin": 0.0, "frase": "...", "cara_x": 0.5,
-          "texto_post": "frase corta + 2-4 hashtags con los nombres de los participantes (#NombreApellido)"}}}}"""
+          "texto_post": "frase corta + invitación a etiquetar a un amigo + 2-4 hashtags con los nombres de los participantes (#NombreApellido)"}}}}"""
 
 
 APRENDE = os.path.join(C.DATA, 'aprendizaje.json')
