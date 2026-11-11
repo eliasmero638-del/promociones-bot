@@ -775,7 +775,44 @@ def entregas():
     for jid, m in yt:
         m['estado'] = 'avisado_youtube'
         F._guardar(os.path.join(F.DIR, jid, 'meta.json'), m)
-        _avisar_youtube(m)
+        if m['entrega'] in ('short', 'largo') and C.get().get('yt_auto', True) and _yt_conectado():
+            threading.Thread(target=_subir_youtube, args=(jid, m), daemon=True).start()
+        else:
+            _avisar_youtube(m)
+
+
+def _yt_conectado():
+    try:
+        import youtube as YT
+        return YT.conectado()
+    except Exception:
+        return False
+
+
+def _subir_youtube(jid, m):
+    """11-nov: sube el Short/largo a YouTube con la API y lo deja programado a su hora."""
+    import youtube as YT
+    carpeta = os.path.join(F.DIR, jid)
+    try:
+        vid = YT.subir(os.path.join(carpeta, m['archivos']['video']), m['titulo_youtube'], m['descripcion_youtube'],
+                       m.get('etiquetas', []), m.get('publicar_en'),
+                       os.path.join(carpeta, 'miniatura.jpg') if m['entrega'] == 'largo' else None)
+    except Exception as e:
+        log('subida a YouTube falló', jid, e)
+        tg.texto(f'⚠️ No pude subir a YouTube automáticamente ({str(e)[:200]}). Te lo mando para que lo subas tú:')
+        return _avisar_youtube(m)
+    m['youtube_id'] = vid
+    m['estado'] = 'subido_youtube'
+    F._guardar(os.path.join(carpeta, 'meta.json'), m)
+    cuando = time.strftime('%I:%M %p', time.localtime(m.get('publicar_en', time.time()))).lstrip('0')
+    aud = C.get().get('yt_auditado')
+    txt = (f"✅ <b>SUBIDO A YOUTUBE</b> · {'🎬 Largo' if m['entrega'] == 'largo' else '▶️ Short'}\n"
+           f"<b>{m['titulo_youtube']}</b>\n"
+           + (f"⏰ Programado para las <b>{cuando}</b>.\n" if m.get('publicar_en', 0) - time.time() > 900 else '🌐 Ya está público.\n')
+           + ('' if aud else '⚠️ Mientras Google aprueba la revisión de la app, YouTube lo deja en <b>privado</b>: '
+                               'ábrelo en YouTube Studio y ponlo en Público.\n')
+           + f"✏️ Cambiar título o miniatura: https://studio.youtube.com/video/{vid}/edit\n\n" + _opciones(m))
+    tg.texto(txt[:4000])
 
 # ---------------------------------------------------------------- bucle
 def _bajar_plan(fecha):

@@ -570,6 +570,47 @@ def comandos(tipo, chat, dato, raw):
         ps[partes[0]] = [p.lower() for p in partes[1:]] + [partes[0].split()[0].lower()]
         C.save(participantes=ps)
         tg.texto(f'🆕 {partes[0]} agregado a la lista.', chat)
+    elif cmd == '/ytllave':                      # 11-nov: llaves de la API de YouTube (quedan solo en el servidor)
+        partes = dato.split()
+        if len(partes) < 3:
+            return tg.texto('Usa así: /ytllave ID_DE_CLIENTE SECRETO_DE_CLIENTE', chat)
+        C.save(yt_client_id=partes[1].strip(), yt_client_secret=partes[2].strip())
+        try:
+            tg._api('deleteMessage', chat_id=chat, message_id=(raw or {}).get('message_id'))   # no dejar la llave en el chat
+        except Exception:
+            pass
+        tg.texto('🔑 Llaves de YouTube guardadas en el servidor (borré tu mensaje). Ahora manda /ytconectar', chat)
+    elif cmd == '/ytconectar':
+        import youtube as YT
+        try:
+            codigo, url, dev, inter, vence = YT.pedir_codigo()
+        except Exception as e:
+            return tg.texto(f'❌ No pude pedir el código a Google: {e}', chat)
+        tg.texto(f'📺 Para conectar tu canal:\n1. Abre {url} en el celular (con la cuenta de tu canal).\n'
+                 f'2. Escribe este código: <b>{codigo}</b>\n3. Elige tu canal y toca Permitir.\n'
+                 f'(Si sale "Google no verificó esta app": toca Configuración avanzada → Ir a Ridmer.)', chat)
+
+        def _esp():
+            try:
+                ok = YT.esperar_permiso(dev, inter, vence)
+                if ok:
+                    nombre, subs = YT.canal()
+                    tg.texto(f'✅ YouTube conectado: <b>{nombre}</b> ({subs} suscriptores). Los Shorts y videos '
+                             f'largos se subirán y programarán solos.', chat)
+                else:
+                    tg.texto('⌛ Se venció el código. Manda /ytconectar otra vez.', chat)
+            except Exception as e:
+                tg.texto(f'❌ No se pudo conectar YouTube: {e}', chat)
+        threading.Thread(target=_esp, daemon=True).start()
+    elif cmd == '/ytestado':
+        import youtube as YT
+        if not YT.conectado():
+            return tg.texto('YouTube no está conectado. Pasos: /ytllave y luego /ytconectar', chat)
+        try:
+            nombre, subs = YT.canal()
+            tg.texto(f'✅ Conectado a <b>{nombre}</b> ({subs} suscriptores).', chat)
+        except Exception as e:
+            tg.texto(f'⚠️ Hay llaves pero falló: {e}', chat)
     elif cmd == '/youtube' and fabrica:
         import produccion as _pr
         n = 0
