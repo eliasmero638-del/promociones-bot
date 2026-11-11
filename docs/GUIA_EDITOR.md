@@ -265,7 +265,9 @@ El video largo se sube solo a YouTube y el dueño puede cambiar la portada desde
 Horario YouTube (hora Ecuador): Short 1 → 14:00 · LARGO → 18:00 · Short 2 → 19:00.
 
 ## TIKTOK CON METRICOOL (11-nov, plan del dueño: máx. 20 al mes)
-Metricool (marca Ridmer TV, blogId 7509545, zona America/Guayaquil) publica en TikTok (cuenta ridmer98). Plan gratis = 20
+Metricool (marca Ridmer TV, blogId 7509545, zona America/Guayaquil) publica en TikTok (cuenta ridmer98).
+ID del canal de YouTube Ridmer: UCSK2I0zrOSWCnVndYTMhAKw (feed público de videos ya publicados:
+https://www.youtube.com/feeds/videos.xml?channel_id=UCSK2I0zrOSWCnVndYTMhAKw). Plan gratis = 20
 publicaciones al mes en TOTAL. Reparto: ~15 AVANCES (cada día de largo) + 4 MEJORES DE LA SEMANA (domingo) + 1 de margen.
 - Cada día: guarda TODOS los Facebook del día (para elegir el mejor de la semana):
   `python3 tools/tiktok.py guardar $HOY <salida>/fbN/fb.mp4 fbN "<título>" "<texto_facebook>"`
