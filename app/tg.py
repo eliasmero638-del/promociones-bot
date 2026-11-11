@@ -66,6 +66,11 @@ def escuchar(manejador):
                     if 'message' in u and 'text' in u['message']:
                         m = u['message']
                         manejador('msg', m['chat']['id'], m['text'].strip(), m)
+                    elif 'message' in u and ('photo' in u['message'] or (u['message'].get('document') or {})
+                                              .get('mime_type', '').startswith('image/')):
+                        m = u['message']                          # 11-nov: portada nueva que manda el dueño
+                        fid = m['photo'][-1]['file_id'] if 'photo' in m else m['document']['file_id']
+                        manejador('foto', m['chat']['id'], fid, m)
                     elif 'callback_query' in u:
                         q = u['callback_query']
                         _api('answerCallbackQuery', callback_query_id=q['id'])
@@ -84,3 +89,13 @@ def editar_caption(q, extra):
 def agregar_nota(chat_id, message_id, caption_original, extra):
     _api('editMessageCaption', chat_id=chat_id, message_id=message_id,
          caption=(caption_original + '\n\n' + extra)[:1000])
+
+
+def bajar_archivo(file_id, destino):
+    r = _api('getFile', file_id=file_id)
+    ruta = r['result']['file_path']
+    tok = C.get()['telegram_token']
+    d = requests.get(f'https://api.telegram.org/file/bot{tok}/{ruta}', timeout=120)
+    with open(destino, 'wb') as f:
+        f.write(d.content)
+    return destino

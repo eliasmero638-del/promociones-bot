@@ -199,6 +199,14 @@ def main():
                 w = corr[k] + fin
             nuevas.append((a, b, w))
         palabras = nuevas
+    if cambios.get('portada'):                       # 11-nov: portada con fotos reales + texto clickbait (solo largos)
+        po = dict(cambios['portada'])
+        for k in ('fondo', 'foto', 'recorte'):
+            if po.get(k):
+                po[k] = po[k] if os.path.isabs(po[k]) else os.path.join(mat, po[k])
+                if not os.path.exists(po[k]):
+                    po[k] = None
+        v['portada'] = po
     mi = v.get('miniatura') or {}
     fm = None
     if isinstance(mi.get('img'), str) and os.path.exists(os.path.join(mat, mi['img'])):

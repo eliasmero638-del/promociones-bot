@@ -436,8 +436,28 @@ def vigilante():
             log('vigilante', ex)
 
 
+_esperando_portada = {}
+
+
 def comandos(tipo, chat, dato, raw):
     cfg = C.get()
+    if chat in cfg['chat_ids'] and tipo == 'boton' and dato.startswith('yport:'):      # 11-nov: cambiar portada
+        _esperando_portada[chat] = dato.split(':', 1)[1]
+        return tg.texto('🖼️ Mándame ahora la nueva portada como foto (1280x720 es lo ideal) y la pongo en YouTube.', chat)
+    if tipo == 'foto':
+        if chat not in cfg['chat_ids']:
+            return
+        vid = _esperando_portada.pop(chat, None)
+        if not vid:
+            return tg.texto('Si quieres cambiar la portada de un video largo, toca primero «🖼️ Cambiar portada» en su aviso.', chat)
+        try:
+            import youtube as YT
+            dst = tg.bajar_archivo(dato, os.path.join(C.DATA, f'portada_{vid}.jpg'))
+            YT.poner_portada(vid, dst)
+            tg.texto(f'✅ Portada cambiada en YouTube: https://studio.youtube.com/video/{vid}/edit', chat)
+        except Exception as e:
+            tg.texto(f'❌ No pude cambiar la portada: {str(e)[:300]}', chat)
+        return
     if tipo == 'boton' and dato.startswith(('rpub:', 'rno:')) and fabrica:
         accion, _, jid = dato.partition(':')
         if accion == 'rpub':

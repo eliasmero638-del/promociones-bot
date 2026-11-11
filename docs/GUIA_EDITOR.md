@@ -254,3 +254,12 @@ a ver el video completo en YouTube.
 - En TODOS los videos pon `"titulos_opciones"`: 6–8 títulos CLICKBAIT distintos (pero verdaderos) para que el dueño elija.
   Varía el estilo: pregunta, número impactante, "nadie sabía que…", "lo que hizo este muchacho de 15 años…", MAYÚSCULAS en
   la palabra clave, 1 emoji como mucho. El bot se los manda debajo de cada video.
+
+## PORTADA DE LOS VIDEOS LARGOS (11-nov, aprobada por el dueño)
+En el cambios.json de cada largo pon `"portada"` (FOTOS REALES, nunca dibujos ni IA):
+`{"fondo": "esc_NN.jpg" (lugar de la historia, se oscurece solo), "foto": "esc_NN.jpg" (LA PERSONA protagonista: pide en
+el plan un segmento con foto real de su cara), "recorte": "esc_NN.jpg" (opcional: objeto sobre fondo blanco),
+"lineas": ["Se *ENAMORÓ* de un", "*EXTRATERRESTRE*", "y dijo que tuvo un *HIJO* con él"], "etiqueta": "La historia de …"}`
+(`*palabra*` sale en amarillo; 2–3 líneas; la línea principal corta y en MAYÚSCULAS). Mírala con Read antes de entregar.
+El video largo se sube solo a YouTube y el dueño puede cambiar la portada desde el bot (botón «🖼️ Cambiar portada»).
+Horario YouTube (hora Ecuador): Short 1 → 14:00 · LARGO → 18:00 · Short 2 → 19:00.

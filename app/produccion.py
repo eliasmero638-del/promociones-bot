@@ -261,7 +261,17 @@ def armar(carpeta, wav, palabras, segs, g, hook, v, foto_mini):
                 os.replace(tmp, out_s)
             salidas.append(('short', out_s))
     mini = os.path.join(carpeta, 'miniatura.jpg')
-    montaje.miniatura(foto_mini, (v.get('miniatura') or {}).get('texto') or titulo, mini)
+    po = v.get('portada') or {}
+    hecho = False
+    if v['tipo'] == 'largo' and po.get('fondo') and po.get('lineas'):     # 11-nov: portada aprobada por el dueño
+        try:
+            import portada
+            portada.hacer(po['fondo'], mini, po['lineas'], po.get('etiqueta', ''), po.get('foto'), po.get('recorte'))
+            hecho = True
+        except Exception as e:
+            log('portada nueva falló, uso la simple:', e)
+    if not hecho:
+        montaje.miniatura(foto_mini, (v.get('miniatura') or {}).get('texto') or titulo, mini)
     return salidas, mini
 
 
@@ -812,7 +822,8 @@ def _subir_youtube(jid, m):
            + ('' if aud else '⚠️ Mientras Google aprueba la revisión de la app, YouTube lo deja en <b>privado</b>: '
                                'ábrelo en YouTube Studio y ponlo en Público.\n')
            + f"✏️ Cambiar título o miniatura: https://studio.youtube.com/video/{vid}/edit\n\n" + _opciones(m))
-    tg.texto(txt[:4000])
+    tg.texto(txt[:4000], botones=[[{'text': '🖼️ Cambiar portada', 'callback_data': f'yport:{vid}'}]]
+             if m['entrega'] == 'largo' else None)
 
 # ---------------------------------------------------------------- bucle
 def _bajar_plan(fecha):

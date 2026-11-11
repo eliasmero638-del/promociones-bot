@@ -107,3 +107,16 @@ def subir(video, titulo, descripcion, etiquetas, publicar_en=None, miniatura=Non
         except Exception:
             pass
     return vid
+
+
+def poner_portada(vid, imagen):
+    """Cambia la portada de un video ya subido (el dueño la manda por el bot)."""
+    from PIL import Image, ImageOps
+    tmp = imagen + '_yt.jpg'
+    ImageOps.fit(Image.open(imagen).convert('RGB'), (1280, 720)).save(tmp, quality=92)
+    h = {'Authorization': 'Bearer ' + _acceso()}
+    with open(tmp, 'rb') as f:
+        r = requests.post('https://www.googleapis.com/upload/youtube/v3/thumbnails/set', params={'videoId': vid},
+                          headers=dict(h, **{'Content-Type': 'image/jpeg'}), data=f, timeout=120)
+    if r.status_code >= 300:
+        raise RuntimeError(f'YouTube no aceptó la portada ({r.status_code}): {r.text[:300]}')
