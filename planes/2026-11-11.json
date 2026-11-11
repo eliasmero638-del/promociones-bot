@@ -1,0 +1,1193 @@
+{
+ "fecha": "2026-11-11",
+ "modo": "claude",
+ "videos": [
+  {
+   "eid": "fb1",
+   "tipo": "fb",
+   "hora_fb": "14:00",
+   "articulo": "Accidente del Mil Mi-17 de la Fuerza Aérea del Perú de 2026",
+   "fuente": "https://es.wikipedia.org/wiki/Accidente_del_Mil_Mi-17_de_la_Fuerza_A%C3%A9rea_del_Per%C3%BA_de_2026",
+   "titulo_video": " ",
+   "titulo_youtube": "15 murieron… y solo sobrevivió un perro",
+   "titulos_opciones": [
+    "15 murieron… y solo sobrevivió un perro 😱",
+    "El helicóptero desapareció del radar a las 4:30… y nadie volvió",
+    "SOLO UN PERRO sobrevivió a esta tragedia aérea",
+    "¿Qué pasó con el helicóptero FAP 614 sobre Chala?",
+    "Tenía 40 años de vuelo… y un día se perdió entre las nubes",
+    "Lo encontraron al amanecer: 15 muertos y un sobreviviente inesperado",
+    "La tragedia del Mi-17 que conmovió a Perú"
+   ],
+   "descripcion_youtube": "Perú, febrero de 2026. Un helicóptero Mi-17 de la Fuerza Aérea despegó de Pisco con 15 personas a bordo… y desapareció del radar sobre Chala.\nAl amanecer encontraron los restos, y una sorpresa.\n#peru #arequipa #ridmer",
+   "etiquetas": [
+    "helicóptero",
+    "FAP",
+    "Mi-17",
+    "Chala",
+    "Arequipa",
+    "Perú",
+    "tragedia aérea",
+    "ridmer"
+   ],
+   "texto_facebook": "Desapareció del radar sobre Chala con 15 personas a bordo… y entre los restos solo un pequeño perro seguía con vida 😢 #Perú #Arequipa #Ridmer",
+   "miniatura": {
+    "img": 2,
+    "texto": "SOLO ÉL VIVIÓ"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Quince murieron. Solo sobrevivió un perro.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Fue el veintidós de febrero de dos mil veintiséis, en Perú.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=k8y4m8wjDJE",
+      "desde": 8,
+      "dur": 6,
+      "buscar_video": [
+       "Peru helicopter"
+      ]
+     }
+    },
+    {
+     "texto": "Un helicóptero Mi diecisiete de la Fuerza Aérea despegó de Pisco, rumbo a Arequipa.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Era una misión de apoyo, tras las fuertes lluvias en la región.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "A bordo iban cuatro tripulantes, y once pasajeros, familiares de oficiales.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "15 A BORDO",
+      "sub": "4 tripulantes · 11 pasajeros"
+     }
+    },
+    {
+     "texto": "A las cuatro y media de la tarde, sobre Chala, envió su último reporte.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Y desapareció del radar.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Había nubes bajas, y casi no se veía nada.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "La búsqueda tuvo que detenerse por el mal tiempo.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=IY5wQ6HP9I8",
+      "desde": 20,
+      "dur": 6,
+      "buscar_video": [
+       "Peru mountains fog"
+      ]
+     }
+    },
+    {
+     "texto": "Al amanecer, hallaron los restos en Chala Viejo. Ninguna de las quince personas sobrevivió.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=fvPZbCOVRgY",
+      "desde": 10,
+      "dur": 6,
+      "buscar_video": [
+       "Peru desert coast"
+      ]
+     }
+    },
+    {
+     "texto": "Pero entre los restos, un pequeño perro seguía con vida.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "El helicóptero tenía cuarenta años, y la Fiscalía investiga qué pasó. Comparte esta historia, y sigue a Ridmer.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb1s",
+   "tipo": "short",
+   "encargo": "fb1",
+   "hora_youtube": "14:00",
+   "articulo": "Accidente del Mil Mi-17 de la Fuerza Aérea del Perú de 2026",
+   "fuente": "https://es.wikipedia.org/wiki/Accidente_del_Mil_Mi-17_de_la_Fuerza_A%C3%A9rea_del_Per%C3%BA_de_2026",
+   "titulo_video": " ",
+   "titulo_youtube": "15 murieron… y solo sobrevivió un perro #shorts",
+   "titulos_opciones": [
+    "15 murieron… y solo sobrevivió un perro 😱 #shorts",
+    "El helicóptero desapareció del radar a las 4:30… y nadie volvió #shorts",
+    "SOLO UN PERRO sobrevivió a esta tragedia aérea #shorts",
+    "¿Qué pasó con el helicóptero FAP 614 sobre Chala? #shorts",
+    "Tenía 40 años de vuelo… y un día se perdió entre las nubes #shorts",
+    "Lo encontraron al amanecer: 15 muertos y un sobreviviente inesperado #shorts",
+    "La tragedia del Mi-17 que conmovió a Perú #shorts"
+   ],
+   "descripcion_youtube": "Perú, 2026: el helicóptero FAP 614 desapareció del radar sobre Chala.\n#shorts #peru #ridmer",
+   "etiquetas": [
+    "shorts",
+    "helicóptero",
+    "FAP",
+    "Perú",
+    "ridmer"
+   ],
+   "miniatura": {
+    "img": 2,
+    "texto": "SOLO ÉL VIVIÓ"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Quince murieron. Solo sobrevivió un perro.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Perú, febrero de dos mil veintiséis. Un helicóptero de la Fuerza Aérea vuela de Pisco a Arequipa.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=k8y4m8wjDJE",
+      "desde": 8,
+      "dur": 6,
+      "buscar_video": [
+       "Peru helicopter"
+      ]
+     }
+    },
+    {
+     "texto": "Lleva quince personas a bordo, entre ellas familiares de los oficiales.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Sobre Chala, envía su último reporte… y desaparece del radar.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Había nubes bajas. Casi no se veía nada.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Al amanecer encontraron los restos. Nadie sobrevivió.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=fvPZbCOVRgY",
+      "desde": 10,
+      "dur": 6,
+      "buscar_video": [
+       "Peru desert coast"
+      ]
+     }
+    },
+    {
+     "texto": "Nadie… excepto un pequeño perro, que rescataron con vida. Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb2",
+   "tipo": "fb",
+   "hora_fb": "18:30",
+   "articulo": "Robo al Banco de Bangladés (2016)",
+   "fuente": "https://en.wikipedia.org/wiki/Bangladesh_Bank_robbery",
+   "titulo_video": " ",
+   "titulo_youtube": "Casi roban mil millones de dólares… y una letra los delató",
+   "titulos_opciones": [
+    "Casi roban MIL MILLONES de dólares… y una letra los delató",
+    "Un error de ortografía salvó millones de dólares 😱",
+    "Hackers vaciaron un banco central en un fin de semana",
+    "¿Cómo desaparecieron 81 millones de dólares en casinos?",
+    "La impresora que no funcionaba escondía el mayor robo digital",
+    "El robo al Banco de Bangladés: 35 órdenes, 951 millones",
+    "Estados Unidos acusó a Corea del Norte por este robo"
+   ],
+   "descripcion_youtube": "Febrero de 2016. Unos hackers enviaron 35 órdenes de pago a nombre del Banco Central de Bangladés.\nPedían 951 millones de dólares… pero un error de ortografía lo cambió todo.\n#hackers #misterio #ridmer",
+   "etiquetas": [
+    "hackers",
+    "Banco de Bangladés",
+    "Lazarus",
+    "Corea del Norte",
+    "robo",
+    "ciberataque",
+    "ridmer"
+   ],
+   "texto_facebook": "Pidieron 951 millones de dólares con 35 órdenes falsas… y una sola letra mal escrita los delató 😱 #Hackers #Misterio #Ridmer",
+   "miniatura": {
+    "texto": "UNA LETRA"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Casi roban mil millones de dólares.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Bangladesh Bank",
+       "Bangladesh Bank building Dhaka"
+      ]
+     }
+    },
+    {
+     "texto": "Febrero de dos mil dieciséis. Banco Central de Bangladés.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=x3yyQrtQFxk",
+      "desde": 5,
+      "dur": 6,
+      "buscar_video": [
+       "Dhaka city"
+      ]
+     }
+    },
+    {
+     "texto": "Unos piratas informáticos llevaban tiempo escondidos dentro de sus computadoras.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Bangladesh Bank",
+       "Dhaka Motijheel"
+      ]
+     }
+    },
+    {
+     "texto": "Un fin de semana, enviaron treinta y cinco órdenes de pago a la Reserva Federal de Nueva York.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Federal Reserve Bank of New York",
+       "Federal Reserve Bank of New York building"
+      ]
+     }
+    },
+    {
+     "texto": "En total, pedían novecientos cincuenta y un millones de dólares.",
+     "escena": {
+      "tipo": "contador",
+      "n": 951,
+      "texto": "MILLONES DE DÓLARES",
+      "sub": "35 órdenes falsas"
+     }
+    },
+    {
+     "texto": "En el banco, la impresora que mostraba los pagos no funcionaba. Nadie vio nada.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Bangladesh Bank"
+      ]
+     }
+    },
+    {
+     "texto": "Cinco órdenes pasaron. Ciento un millones de dólares desaparecieron.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=Sh4Gt27nxik",
+      "desde": 15,
+      "dur": 6,
+      "buscar_video": [
+       "money counting"
+      ]
+     }
+    },
+    {
+     "texto": "Pero en una escribieron fandation, en vez de foundation.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Bangladesh Bank"
+      ]
+     }
+    },
+    {
+     "texto": "Un banco sospechó por ese error, y frenó el envío.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Federal Reserve Bank of New York"
+      ]
+     }
+    },
+    {
+     "texto": "Ochenta y un millones llegaron a Filipinas, y se esfumaron en casinos.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Manila casino",
+       "Rizal Commercial Banking Corporation",
+       "Makati skyline"
+      ]
+     }
+    },
+    {
+     "texto": "Estados Unidos acusó a un programador de Corea del Norte, del grupo Lazarus.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Pyongyang",
+       "Pyongyang skyline"
+      ]
+     }
+    },
+    {
+     "texto": "La mayor parte del dinero nunca apareció. Comparte esta historia, y sigue a Ridmer.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Bangladesh Bank"
+      ]
+     }
+    }
+   ],
+   "nota": "Prueba hackers 11-17 nov: reemplaza el encargo fb2 (Frank Morris/Alcatraz, que además ya salió ayer como fb3)."
+  },
+  {
+   "eid": "fb2s",
+   "tipo": "short",
+   "encargo": "fb2",
+   "hora_youtube": "19:00",
+   "articulo": "Robo al Banco de Bangladés (2016)",
+   "fuente": "https://en.wikipedia.org/wiki/Bangladesh_Bank_robbery",
+   "titulo_video": " ",
+   "titulo_youtube": "Casi roban mil millones… y una letra los delató #shorts",
+   "titulos_opciones": [
+    "Casi roban MIL MILLONES de dólares… y una letra los delató #shorts",
+    "Un error de ortografía salvó millones de dólares 😱 #shorts",
+    "Hackers vaciaron un banco central en un fin de semana #shorts",
+    "¿Cómo desaparecieron 81 millones de dólares en casinos? #shorts",
+    "La impresora que no funcionaba escondía el mayor robo digital #shorts",
+    "El robo al Banco de Bangladés: 35 órdenes, 951 millones #shorts",
+    "Estados Unidos acusó a Corea del Norte por este robo #shorts"
+   ],
+   "descripcion_youtube": "Bangladés, 2016: el robo digital que un error de ortografía frenó.\n#shorts #hackers #ridmer",
+   "etiquetas": [
+    "shorts",
+    "hackers",
+    "Bangladés",
+    "Lazarus",
+    "ridmer"
+   ],
+   "miniatura": {
+    "texto": "UNA LETRA"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Casi roban mil millones de dólares.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Bangladesh Bank",
+       "Bangladesh Bank building Dhaka"
+      ]
+     }
+    },
+    {
+     "texto": "En dos mil dieciséis, unos hackers entraron a las computadoras del Banco Central de Bangladés.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=x3yyQrtQFxk",
+      "desde": 5,
+      "dur": 6,
+      "buscar_video": [
+       "Dhaka city"
+      ]
+     }
+    },
+    {
+     "texto": "Enviaron treinta y cinco órdenes de pago falsas: novecientos cincuenta y un millones.",
+     "escena": {
+      "tipo": "contador",
+      "n": 951,
+      "texto": "MILLONES DE DÓLARES",
+      "sub": "35 órdenes falsas"
+     }
+    },
+    {
+     "texto": "Cinco pasaron. Ciento un millones desaparecieron.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=Sh4Gt27nxik",
+      "desde": 15,
+      "dur": 6,
+      "buscar_video": [
+       "money counting"
+      ]
+     }
+    },
+    {
+     "texto": "Pero en una escribieron fandation, en vez de foundation, y un banco frenó el envío.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Bangladesh Bank"
+      ]
+     }
+    },
+    {
+     "texto": "Ochenta y un millones se esfumaron en casinos de Filipinas.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Manila casino",
+       "Makati skyline"
+      ]
+     }
+    },
+    {
+     "texto": "Estados Unidos acusó a un programador de Corea del Norte. Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Pyongyang"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb3",
+   "tipo": "fb",
+   "hora_fb": "21:00",
+   "articulo": "Naufragio del Droits de l'Homme",
+   "fuente": "https://es.wikipedia.org/wiki/Naufragio_del_Droits_de_l%27Homme",
+   "titulo_video": " ",
+   "titulo_youtube": "Pelearon 15 horas en plena tormenta… y el mar decidió el final",
+   "titulos_opciones": [
+    "Pelearon 15 horas en plena tormenta… y el mar decidió el final",
+    "1.300 hombres a bordo y el barco se partió en pedazos 🌊",
+    "El gigante de 74 cañones que no pudo usar sus cañones",
+    "¿Por qué un barco más poderoso perdió contra dos fragatas?",
+    "La noche que el mar destrozó a dos barcos de guerra",
+    "Murieron hasta 400 hombres frente a la costa de Francia",
+    "Nadie ganó esta batalla: la ganó la tormenta"
+   ],
+   "descripcion_youtube": "Enero de 1797. Un buque francés de 74 cañones contra dos fragatas británicas, en medio de un vendaval frente a Bretaña.\nLa batalla duró más de quince horas.\n#historia #naufragio #ridmer",
+   "etiquetas": [
+    "naufragio",
+    "Droits de l'Homme",
+    "1797",
+    "batalla naval",
+    "Bretaña",
+    "historia",
+    "ridmer"
+   ],
+   "texto_facebook": "1.300 hombres a bordo, quince horas de batalla y una tormenta brutal… el final lo decidió el mar 🌊 #Historia #Naufragio #Ridmer",
+   "miniatura": {
+    "img": 4,
+    "texto": "SE PARTIÓ"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Pelearon quince horas en plena tormenta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 9
+     }
+    },
+    {
+     "texto": "Enero de mil setecientos noventa y siete, frente a las costas de Bretaña, en Francia.",
+     "escena": {
+      "tipo": "foto",
+      "img": 9
+     }
+    },
+    {
+     "texto": "El Droits de l'Homme, un buque francés de setenta y cuatro cañones, volvía de un intento fallido de invadir Irlanda.",
+     "escena": {
+      "tipo": "foto",
+      "img": 7
+     }
+    },
+    {
+     "texto": "Llevaba a bordo mil trescientos hombres.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "1.300 A BORDO",
+      "sub": "Droits de l'Homme · 74 cañones"
+     }
+    },
+    {
+     "texto": "Entre la niebla, lo encontraron dos fragatas británicas: la Indefatigable y la Amazon.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     }
+    },
+    {
+     "texto": "El francés era más poderoso. Pero el mar estaba tan agitado, que no podía abrir sus cañones más fuertes.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=WK0bYPFGRmY",
+      "desde": 30,
+      "dur": 6,
+      "buscar_video": [
+       "storm sea waves"
+      ]
+     }
+    },
+    {
+     "texto": "Las fragatas, más rápidas, lo atacaron una y otra vez.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "El viento empujó al gigante hacia la costa rocosa.",
+     "escena": {
+      "tipo": "foto",
+      "img": 8
+     }
+    },
+    {
+     "texto": "Encalló en un banco de arena… y se partió en pedazos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Murieron entre doscientos cincuenta y cuatrocientos hombres.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "La Amazon, una de las fragatas, también terminó encallada.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "Comparte esta historia, y sigue a Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    }
+   ]
+  },
+  {
+   "eid": "largo1",
+   "tipo": "largo",
+   "hora_youtube": "18:00",
+   "articulo": "SS Aden",
+   "fuente": "https://es.wikipedia.org/wiki/SS_Aden",
+   "titulo_video": " ",
+   "titulo_youtube": "Sobrevivieron semanas en un barco destrozado… y dos barcos pasaron sin verlos",
+   "titulos_opciones": [
+    "Sobrevivieron 17 días en un barco destrozado… y dos barcos pasaron sin verlos",
+    "Estaban vivos… pero el barco que pasó a 4 km escribió: 'no hay señales de vida'",
+    "El naufragio del Aden: 78 muertos y 46 sobrevivientes que nadie veía",
+    "Los botes salvavidas se fueron… y NUNCA los volvieron a encontrar",
+    "¿Por qué nadie rescató a los náufragos del Aden durante semanas?",
+    "Atrapados frente a Socotra: la historia más angustiante del mar",
+    "1897: el barco que chocó de madrugada y desapareció del mundo"
+   ],
+   "descripcion_youtube": "Junio de 1897. El vapor Aden choca de madrugada contra las rocas de Socotra.\nLos botes salvavidas desaparecen, el capitán cae al mar… y los sobrevivientes esperan más de dos semanas mientras otros barcos pasan de largo.\n#naufragio #historiasreales #ridmer",
+   "etiquetas": [
+    "SS Aden",
+    "naufragio",
+    "Socotra",
+    "1897",
+    "P&O",
+    "supervivencia",
+    "historias reales",
+    "ridmer"
+   ],
+   "miniatura": {
+    "img": 2,
+    "texto": "NADIE LOS VIO"
+   },
+   "gancho": 2,
+   "segmentos": [
+    {
+     "texto": "Durante más de dos semanas, sobrevivieron atrapados en un barco destrozado.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Y otros barcos pasaron cerca… sin verlos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "Esta es la historia del Aden, un barco de vapor de la compañía británica P and O, construido en Inglaterra en mil ochocientos noventa y dos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "El ocho de abril de mil ochocientos noventa y siete, salió de Yokohama, en Japón, cargado de té, seda y estaño.",
+     "escena": {
+      "tipo": "ruta",
+      "a": [
+       35.44,
+       139.64
+      ],
+      "b": [
+       6.93,
+       79.85
+      ],
+      "na": "YOKOHAMA",
+      "nb": "COLOMBO"
+     }
+    },
+    {
+     "texto": "Hizo escala en puertos de China, y en Colombo, en la isla de Ceilán, cargó carbón.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Llevaba ochenta y tres tripulantes, y treinta y cuatro pasajeros. Catorce de ellos eran niños.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "117 A BORDO",
+      "sub": "83 tripulantes · 34 pasajeros · 14 niños"
+     }
+    },
+    {
+     "texto": "Al mando iba el capitán Hill, con diecisiete años en la compañía.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Capitán R. E. L. Hill",
+      "sub": "17 años en P&O",
+      "img": 6
+     }
+    },
+    {
+     "texto": "Salió de Colombo el dos de junio, rumbo al canal de Suez.",
+     "escena": {
+      "tipo": "ruta",
+      "a": [
+       6.93,
+       79.85
+      ],
+      "b": [
+       29.97,
+       32.55
+      ],
+      "na": "COLOMBO",
+      "nb": "SUEZ",
+      "corte": 0.62,
+      "c": [
+       12.5,
+       54.2
+      ],
+      "nc": "SOCOTRA"
+     }
+    },
+    {
+     "texto": "El ocho de junio, el barco redujo la velocidad, mientras pasaban carbón de la cubierta a los depósitos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Y a las tres menos diez de la madrugada del nueve de junio, el Aden chocó contra las rocas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "Estaba frente a Socotra, una isla del mar Arábigo, cerca de la entrada del golfo de Adén.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=VazPMhZuiXM",
+      "desde": 40,
+      "dur": 7,
+      "buscar_video": [
+       "Socotra"
+      ]
+     }
+    },
+    {
+     "texto": "El choque fue a un kilómetro y medio de la punta de Ras Radressa.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 12.45,
+      "lon": 54.4,
+      "lugar": "Socotra",
+      "km": 30
+     }
+    },
+    {
+     "texto": "La sala de máquinas se inundó en minutos, y todas las luces del barco se apagaron.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Las olas golpeaban el costado, y arrancaron los tres botes salvavidas de ese lado.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=SuZzQzIigRk",
+      "desde": 20,
+      "dur": 6,
+      "buscar_video": [
+       "storm waves ship"
+      ]
+     }
+    },
+    {
+     "texto": "El capitán ordenó preparar los otros botes, para bajarlos con la primera luz del día.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "Al amanecer bajaron el primero, con tres hombres. Pero una ola lo golpeó, y quedó a la deriva.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "El primer oficial, el señor Carden, tomó una cuerda y saltó al mar para intentar atarlo al barco.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "Ni él ni el bote fueron vistos nunca más.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "NUNCA MÁS",
+      "sub": "Primer oficial Carden"
+     }
+    },
+    {
+     "texto": "Bajaron un segundo bote, al mando del segundo oficial, para buscarlos. El mar también se lo llevó.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=WK0bYPFGRmY",
+      "desde": 60,
+      "dur": 6,
+      "buscar_video": [
+       "storm sea waves"
+      ]
+     }
+    },
+    {
+     "texto": "El tercer bote salió con oficiales, ingenieros, el médico… y diecisiete mujeres y niños.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Se alejó entre las olas, y tampoco se le volvió a ver.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "En el barco quedaban el capitán, dos ingenieros, diecisiete pasajeros y treinta y tres marineros indios.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Hacia las nueve de la mañana, una ola arrastró al capitán por la cubierta, y le rompió una pierna.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=PTuSJpQ2Ie8",
+      "desde": 120,
+      "dur": 6,
+      "buscar_video": [
+       "storm waves deck"
+      ]
+     }
+    },
+    {
+     "texto": "Lo llevaron a un refugio. Pero poco después, otra ola lo arrojó por la borda.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "El tercer ingeniero, el señor White, se dislocó el hombro intentando salvarlo. Otra ola derribó al cuarto ingeniero, que quedó inconsciente durante horas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "Ese primer día, el mar se llevó también a ocho pasajeros.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "8 PASAJEROS",
+      "sub": "Arrastrados por el mar · 9 de junio"
+     }
+    },
+    {
+     "texto": "Los sobrevivientes se refugiaron en la proa, en la popa, y en dos salones.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Buscaban agua y comida en las partes del barco a las que podían llegar sin peligro.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Así resistieron, día tras día, durante dos semanas y media.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "El trece de junio, un barco llamado Logician pasó a cuatro kilómetros. Su capitán anotó que no había señales de vida.",
+     "escena": {
+      "tipo": "foto",
+      "img": 8
+     }
+    },
+    {
+     "texto": "El diecisiete, el Volute se acercó a dos kilómetros. Buscó durante horas… y siguió su camino.",
+     "escena": {
+      "tipo": "foto",
+      "img": 8
+     }
+    },
+    {
+     "texto": "Mientras tanto, en Suez, la compañía notó el retraso. Pensó que era por el monzón.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "El veintidós de junio, por fin, pidió que salieran barcos a buscarlo.",
+     "escena": {
+      "tipo": "foto",
+      "img": 7
+     }
+    },
+    {
+     "texto": "El veintiséis de junio, el vapor Mayo encontró los restos frente a Socotra.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=RizAI2U_T0w",
+      "desde": 60,
+      "dur": 7,
+      "buscar_video": [
+       "Socotra coast"
+      ]
+     }
+    },
+    {
+     "texto": "El mar seguía peligroso, pero un bote del Mayo hizo dos viajes, y rescató a todos los que seguían con vida.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Al mando del bote iban dos tenientes, Dobbin y Goldsmith. Dobbin había sobrevivido a otro naufragio solo cinco meses antes.",
+     "escena": {
+      "tipo": "foto",
+      "img": 7
+     }
+    },
+    {
+     "texto": "Eran cuarenta y seis sobrevivientes. El veintinueve de junio llegaron, por fin, al puerto de Adén.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "La compañía envió otro barco, el Rohilla, a buscar los botes perdidos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Setenta y ocho personas murieron. Los botes desaparecidos nunca fueron encontrados, ni en Socotra, ni en las islas Kuria Muria.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=IFPD2Nt64Ac",
+      "desde": 30,
+      "dur": 6,
+      "buscar_video": [
+       "Socotra"
+      ]
+     }
+    },
+    {
+     "texto": "En la investigación se supo que muchos capitanes habían pedido un faro en el extremo este de Socotra.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     }
+    },
+    {
+     "texto": "El tribunal prefirió no opinar sobre eso.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    }
+   ]
+  },
+  {
+   "eid": "largo1t",
+   "tipo": "tiktok",
+   "encargo": "largo1",
+   "hora_youtube": "18:00",
+   "articulo": "SS Aden",
+   "fuente": "https://es.wikipedia.org/wiki/SS_Aden",
+   "titulo_video": " ",
+   "titulo_youtube": "Sobrevivieron semanas en un barco destrozado… y dos barcos pasaron sin verlos",
+   "titulos_opciones": [
+    "Sobrevivieron 17 días en un barco destrozado… y dos barcos pasaron sin verlos",
+    "Estaban vivos… pero el barco que pasó a 4 km escribió: 'no hay señales de vida'",
+    "El naufragio del Aden: 78 muertos y 46 sobrevivientes que nadie veía",
+    "Los botes salvavidas se fueron… y NUNCA los volvieron a encontrar",
+    "¿Por qué nadie rescató a los náufragos del Aden durante semanas?",
+    "Atrapados frente a Socotra: la historia más angustiante del mar",
+    "1897: el barco que chocó de madrugada y desapareció del mundo"
+   ],
+   "descripcion_youtube": "Junio de 1897: el vapor Aden choca contra las rocas de Socotra.\nVideo completo en YouTube: Ridmer.\n#naufragio #historia #ridmer",
+   "etiquetas": [
+    "SS Aden",
+    "naufragio",
+    "Socotra",
+    "1897",
+    "P&O",
+    "supervivencia",
+    "historias reales",
+    "ridmer"
+   ],
+   "miniatura": {
+    "img": 2,
+    "texto": "NADIE LOS VIO"
+   },
+   "gancho": 2,
+   "segmentos": [
+    {
+     "texto": "Durante más de dos semanas, sobrevivieron atrapados en un barco destrozado.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Y otros barcos pasaron cerca… sin verlos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "Junio de mil ochocientos noventa y siete. El vapor británico Aden navega hacia el canal de Suez, cargado de té, seda y estaño.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Lleva ciento diecisiete personas. Catorce son niños.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "117 A BORDO",
+      "sub": "14 niños"
+     }
+    },
+    {
+     "texto": "A las tres menos diez de la madrugada del nueve de junio, choca contra las rocas de Socotra.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "La sala de máquinas se inunda en minutos, y todas las luces se apagan.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Las olas arrancan los tres botes salvavidas de un costado.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=SuZzQzIigRk",
+      "desde": 20,
+      "dur": 6,
+      "buscar_video": [
+       "storm waves ship"
+      ]
+     }
+    },
+    {
+     "texto": "Al amanecer bajan otro bote, con tres hombres. Una ola lo golpea, y queda a la deriva.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "El primer oficial salta al mar con una cuerda para atarlo. Nunca más lo vuelven a ver.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "Un segundo bote sale a buscarlos. El mar también se lo lleva.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=WK0bYPFGRmY",
+      "desde": 60,
+      "dur": 6,
+      "buscar_video": [
+       "storm sea waves"
+      ]
+     }
+    },
+    {
+     "texto": "El tercero parte con diecisiete mujeres y niños… y desaparece entre las olas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "En el barco, una ola arroja al capitán por la borda. Ese día, el mar se lleva también a ocho pasajeros.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=PTuSJpQ2Ie8",
+      "desde": 120,
+      "dur": 6,
+      "buscar_video": [
+       "storm waves deck"
+      ]
+     }
+    },
+    {
+     "texto": "Los que quedan se refugian en la proa, en la popa y en dos salones, buscando agua y comida.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Pasan los días.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "El trece de junio, un barco pasa a cuatro kilómetros. Su capitán anota: no hay señales de vida.",
+     "escena": {
+      "tipo": "foto",
+      "img": 8
+     }
+    },
+    {
+     "texto": "Cuatro días después, otro barco se acerca a dos kilómetros. Busca durante horas… y se va.",
+     "escena": {
+      "tipo": "foto",
+      "img": 8
+     }
+    },
+    {
+     "texto": "Nadie en el mundo sabe que siguen vivos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "¿Qué pasó después? Lo que viene te va a dejar sin palabras. Mira el video completo en YouTube, en el canal Ridmer.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    }
+   ]
+  }
+ ]
+}
