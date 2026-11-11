@@ -4,7 +4,7 @@ name: Traer encargos
 on:
   push:
     branches: [encargos]
-    paths: ["pedir/**.txt"]
+    paths: ["pedir/2*.txt"]
 permissions:
   contents: write
 jobs:

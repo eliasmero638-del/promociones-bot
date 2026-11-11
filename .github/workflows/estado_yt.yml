@@ -1,0 +1,28 @@
+# Trae del servidor qué videos de YouTube ya están PÚBLICOS (para que TikTok publique solo después).
+# Se activa cuando Claude sube un archivo pedir/yt-AAAA-MM-DD-HHMM.txt
+name: Estado YouTube
+on:
+  push:
+    branches: [encargos]
+    paths: ["pedir/yt-*.txt"]
+permissions:
+  contents: write
+jobs:
+  estado:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Preguntar al servidor
+        run: |
+          mkdir -p estado
+          curl -sf --max-time 90 "http://173.249.44.95/estado/yt.json" -o estado/yt.json || echo '{"error": "servidor sin respuesta"}' > estado/yt.json
+          cat estado/yt.json
+          git rm -q pedir/yt-*.txt || true
+      - name: Guardar
+        run: |
+          git config user.name "encargos-bot"
+          git config user.email "encargos-bot@users.noreply.github.com"
+          git add -A estado pedir || true
+          git commit -qm "Estado de YouTube" || exit 0
+          git pull -q --rebase || true
+          git push
