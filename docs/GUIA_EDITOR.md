@@ -98,7 +98,7 @@ humano, no solo eligiendo fotos para la plantilla:
 |---|---|---|---|
 | fb (Facebook) | 120–150 | 9–12 | 45–60 s, SIN intro (cambio del 9-nov) |
 | Short (subconjunto de fb) | ≤ 105 | 5–7 | < 60 s SIEMPRE |
-| largo (YouTube) | 620–760 | 28–38 | 4–5 min |
+| largo (YouTube) | 1100–1300 | 45–60 | ~8 min |
 
 ## Horarios (hora Ecuador)
 - REGLA DEL DUEÑO (10-nov, permanente): NINGÚN video sale antes de las 14:00. El paquete de YouTube llega a las 14:00.
