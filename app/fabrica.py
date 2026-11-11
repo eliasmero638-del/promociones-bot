@@ -510,6 +510,12 @@ def avisar(meta):
             mensajes.append((c, r['result']['message_id'], r['result'].get('caption', '')))
         else:
             tg._api('sendMessage', chat_id=c, text=cap, parse_mode='HTML')
+    t = [x for x in meta.get('titulos') or [] if x]
+    if t:                                         # 10-nov: varios títulos clickbait para elegir
+        txt = '🔥 <b>TÍTULOS PARA ELEGIR</b> (toca y copia el que más te guste):\n' + '\n'.join(
+            f'{i}. <code>{x}</code>' for i, x in enumerate(t, 1))
+        for c in cfg['chat_ids']:
+            tg._api('sendMessage', chat_id=c, text=txt[:4000], parse_mode='HTML')
     meta['mensajes'] = mensajes
     _guardar(os.path.join(DIR, meta['id'], 'meta.json'), meta)
 

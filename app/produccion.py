@@ -342,6 +342,7 @@ def _programar(fecha, v, jid, salidas, mini, guion, auto=False):
                 'entrega': tipo, 'titulo': titulo, 'titulo_youtube': v.get('titulo_youtube', titulo),
                 'descripcion_youtube': desc, 'etiquetas': v.get('etiquetas', []),
                 'texto_facebook': v.get('texto_facebook', ''), 'guion': guion,
+                'titulos': v.get('titulos_opciones', []),
                 'archivos': {'video': os.path.basename(path), 'miniatura': 'miniatura.jpg'},
                 'token': secrets.token_urlsafe(16), 'estado': 'programado', 'hora': hora,
                 'aviso_en': aviso, 'publicar_en': cuando,
@@ -702,6 +703,15 @@ def modo_claude(fecha, plan):
 
 
 # ---------------------------------------------------------------- entregas a su hora
+def _opciones(meta):
+    """10-nov: varios títulos clickbait para que el dueño elija el mejor."""
+    t = [x for x in meta.get('titulos') or [] if x]
+    if not t:
+        return ''
+    return '🔥 <b>TÍTULOS PARA ELEGIR</b> (toca y copia el que más te guste):\n' + '\n'.join(
+        f'{i}. <code>{x}</code>' for i, x in enumerate(t, 1)) + '\n\n'
+
+
 def _avisar_youtube(meta):
     link = f"{C.get().get('web_url', 'http://173.249.44.95')}/r/{meta['token']}"
     largo = meta['entrega'] == 'largo'
@@ -715,7 +725,7 @@ def _avisar_youtube(meta):
            f"📺 <b>YOUTUBE · {'VIDEO LARGO' if largo else 'SHORT'}</b> · ⏱️ {du // 60}:{du % 60:02d}\n") + (
            ('🤖 <i>Versión automática de respaldo</i>\n' if meta.get('auto') else '✍️ <i>Editado por Claude</i>\n') + hora_txt +
            f"<b>{meta['titulo_youtube']}</b>\n\n👉 Video en calidad completa, miniatura y textos: {link}")
-    texto = (f"📝 <b>Título:</b>\n{meta['titulo_youtube']}\n\n<b>Descripción:</b>\n{meta['descripcion_youtube']}\n\n"
+    texto = (_opciones(meta) + f"📝 <b>Título:</b>\n{meta['titulo_youtube']}\n\n<b>Descripción:</b>\n{meta['descripcion_youtube']}\n\n"
              f"<b>Etiquetas:</b>\n{', '.join(meta.get('etiquetas', []))}")
     v = os.path.join(F.DIR, meta['id'], meta['archivos']['video'])
     for c in C.get()['chat_ids']:

@@ -241,3 +241,16 @@ a ver el video completo en YouTube.
   animaciones del largo en vertical. Pon en el último segmento `"rotulo": {"N": "VIDEO COMPLETO EN YOUTUBE · RIDMER"}`.
 - `editar.py` deja `tiktok.mp4`; entrégalo con `entregar.py` junto al largo. Llega al bot en el paquete de las 14:00
   como "🎵 TIKTOK" (no se publica en Facebook).
+
+## HACKERS Y DEEP WEB + TÍTULOS PARA ELEGIR (10-nov, pedido del dueño)
+- Prueba de una semana (desde el 11-nov): fb2 + fb2s de cada día son una HISTORIA REAL de hackers o de la Deep Web
+  (ej.: Kevin Mitnick, Jonathan James y la NASA, el robo al Banco de Bangladesh, Marcus Hutchins y WannaCry, Silk Road y
+  Ross Ulbricht, Gary McKinnon, Anonymous, el grupo Lazarus, el hackeo a Sony, el niño que hackeó... etc.). Elígela tú con
+  WebSearch: SOLO casos documentados por medios grandes; nunca leyendas (habitaciones rojas, etc.). NUNCA expliques cómo
+  hackear, cómo entrar a la Deep Web ni nada que sirva para hacerlo: se cuenta la HISTORIA (quién, qué pasó, cómo lo
+  atraparon, qué le pasó). No repitas una historia ya contada (mira el historial del plan de días anteriores).
+  Si no hay encargo para eso, el video lleva sus propios segmentos con "buscar" (fotos) y videos reales con links
+  directos de YouTube que muestren al protagonista o noticias del caso (nunca youtubers).
+- En TODOS los videos pon `"titulos_opciones"`: 6–8 títulos CLICKBAIT distintos (pero verdaderos) para que el dueño elija.
+  Varía el estilo: pregunta, número impactante, "nadie sabía que…", "lo que hizo este muchacho de 15 años…", MAYÚSCULAS en
+  la palabra clave, 1 emoji como mucho. El bot se los manda debajo de cada video.
