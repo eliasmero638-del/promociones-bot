@@ -314,3 +314,12 @@ Facebook también paga las FOTOS (una sola foto de La Mansión le dio $46 a otra
 - Imagen: `python3 tools/foto_post.py <foto real del material> "TITULAR con *PALABRA* en amarillo" <salida>/fb1f/foto.jpg
   [segunda foto real]` → 1080x1350 con la foto real arriba y el titular abajo. Mírala con Read. Entrégala con
   `tools/entregar.py $HOY <salida>/fb1f` (la carpeta solo necesita foto.jpg). Llega al bot y se publica sola a su hora.
+
+## VIDEOS LARGOS DE HACKERS (11-nov, pedido del dueño)
+Durante la prueba (hasta el 17-nov), los LARGOS del 13 y del 17 de noviembre son también de HACKERS / DEEP WEB (8 min,
+con portada, avance para TikTok, paso a paso con animaciones de CÓMO lo hizo a nivel de historia, nunca instrucciones).
+Para el 13-nov: "Kevin Mitnick, el hacker más buscado del mundo" (cómo engañaba por teléfono, la persecución del FBI,
+cómo lo atraparon y qué hace después). Para el 17-nov elige tú otra historia de hackers grande y documentada que no se
+haya contado (ej.: el robo al Banco de Bangladesh, Silk Road y Ross Ulbricht, Gary McKinnon y la NASA). El largo del
+15-nov sigue siendo de misterio normal (lista "FUNCIONAN"). Si el encargo de largo de esos días es de otro tema,
+reemplázalo por este; las fotos y videos los pides tú en el plan con "buscar" y links directos.
