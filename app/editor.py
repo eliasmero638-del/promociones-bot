@@ -226,6 +226,24 @@ def _buscar_frase(frase, palabras):
     return t if mejor >= max(2, len(ws) // 2 + 1) else None
 
 
+def _foto(r, crudo, d, cfg):
+    """11-nov: FOTO con chisme (el cuadro más llamativo + texto que hace comentar). Facebook también paga las fotos."""
+    try:
+        f = r.get('foto') or {}
+        if not cfg.get('fotos', True) or not f.get('sirve') or not str(f.get('texto') or '').strip():
+            return None
+        out = os.path.join(d, 'foto.jpg')
+        rr = subprocess.run(['ffmpeg', '-y', '-v', 'error', '-ss', f"{max(0.0, float(f.get('segundo') or 0)):.2f}", '-i', crudo,
+                             '-frames:v', '1', '-vf', 'scale=1280:-2,eq=contrast=1.06:saturation=1.12,unsharp=5:5:0.6',
+                             '-q:v', '2', out], capture_output=True)
+        if rr.returncode != 0 or not os.path.exists(out):
+            return None
+        return {'ruta': out, 'texto': str(f['texto']).strip()}
+    except Exception as e:
+        log('foto falló', e)
+        return None
+
+
 MEME_STATS = {'revisados': 0, 'no_sirve': 0, 'bajo': 0, 'hechos': 0, 'fallas': 0, 'ultimas': []}
 
 
@@ -299,6 +317,9 @@ def hacer_clip(pedazos_info, centro, chat_textos, nombre=None, job_filtro=None, 
         meme_info = None
         if 'error' not in r and not (r.get('sigue') and extra < cfg.get('extension_max', 360)):
             meme_info = _meme(r, crudo, d, cfg)
+            foto_info = _foto(r, crudo, d, cfg)
+            if foto_info:
+                meme_info = dict(meme_info or {}, foto=foto_info) if meme_info else {'solo_foto': True, 'foto': foto_info}
         if 'error' not in r and job_filtro is not None:
             # supervisor: reglas obligatorias antes de Telegram
             motivo = ''

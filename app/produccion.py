@@ -336,7 +336,7 @@ def _programar(fecha, v, jid, salidas, mini, guion, auto=False):
         os.makedirs(sub, exist_ok=True)
         shutil.move(path, os.path.join(sub, os.path.basename(path)))
         shutil.copy(mini, os.path.join(sub, 'miniatura.jpg'))
-        hora = {'fb': v.get('hora_fb', '12:30'),
+        hora = {'fb': v.get('hora_fb', '12:30'), 'foto': v.get('hora_foto') or v.get('hora_fb', '15:00'),
                 'short': v.get('hora_youtube') if v['tipo'] == 'short' else v.get('hora_short', '13:00'),
                 'largo': v.get('hora_youtube', '18:00'),
                 'tiktok': v.get('hora_youtube', '18:00')}[tipo] or '12:00'
@@ -344,11 +344,11 @@ def _programar(fecha, v, jid, salidas, mini, guion, auto=False):
         if desde and hora != 'ya' and hora.zfill(5) < desde:
             hora = desde
         if hora == 'ya':                     # urgente / prueba: avisar ahora (Facebook se publica a los 20 min)
-            cuando = time.time() + (20 * 60 if tipo == 'fb' else 60)
+            cuando = time.time() + (20 * 60 if tipo in ('fb', 'foto') else 60)
         else:
             cuando = _epoch(fecha, hora)
-        aviso = cuando - (20 * 60 if tipo == 'fb' else 0)
-        if tipo != 'fb' and hora != 'ya':    # YouTube: todo junto en el paquete de la mañana
+        aviso = cuando - (20 * 60 if tipo in ('fb', 'foto') else 0)
+        if tipo not in ('fb', 'foto') and hora != 'ya':    # YouTube: todo junto en el paquete de la mañana
             aviso = min(aviso, _epoch(fecha, max(desde or '00:00', C.get().get('paquete_hora', '09:00'))))
         if auto:
             sub_ = sub + '_auto'
@@ -358,12 +358,14 @@ def _programar(fecha, v, jid, salidas, mini, guion, auto=False):
         meta = {'id': os.path.basename(sub), 'auto': auto, 'formato': 'largo' if tipo == 'largo' else 'short', 'motivo': 'claude',
                 'entrega': tipo, 'titulo': titulo, 'titulo_youtube': v.get('titulo_youtube', titulo),
                 'descripcion_youtube': desc, 'etiquetas': v.get('etiquetas', []),
-                'texto_facebook': v.get('texto_facebook', ''), 'guion': guion,
+                'texto_facebook': (v.get('texto_foto') or v.get('texto_facebook', '')) if tipo == 'foto' else v.get('texto_facebook', ''),
+                'guion': guion,
                 'titulos': v.get('titulos_opciones', []),
-                'archivos': {'video': os.path.basename(path), 'miniatura': 'miniatura.jpg'},
+                'archivos': ({'foto': 'foto.jpg', 'miniatura': 'miniatura.jpg'} if tipo == 'foto' else
+                             {'video': os.path.basename(path), 'miniatura': 'miniatura.jpg'}),
                 'token': secrets.token_urlsafe(16), 'estado': 'programado', 'hora': hora,
                 'aviso_en': aviso, 'publicar_en': cuando,
-                'duracion': int(montaje.dur(os.path.join(sub, os.path.basename(path))))}
+                'duracion': 0 if tipo == 'foto' else int(montaje.dur(os.path.join(sub, os.path.basename(path))))}
         F._guardar(os.path.join(sub, 'meta.json'), meta)
     h = F._leer(F.HIST, [])
     h.append({'fecha': time.strftime('%Y-%m-%d %H:%M'), 'titulo': v.get('articulo', '') + ' · ' + titulo, 'formato': v['tipo']})
@@ -659,7 +661,7 @@ def importar_entregas(fecha, plan):
         try:
             salidas = []
             for tipo, partes in (e.get('archivos') or {}).items():
-                dst = os.path.join(carpeta, f'{tipo}.mp4')
+                dst = os.path.join(carpeta, 'foto.jpg' if tipo == 'foto' else f'{tipo}.mp4')
                 with open(dst, 'wb') as out:
                     for p in partes:                          # videos grandes van en partes de < 95 MB
                         pp = dst + '.parte'
@@ -668,7 +670,10 @@ def importar_entregas(fecha, plan):
                         with open(pp, 'rb') as f:
                             shutil.copyfileobj(f, out)
                         os.remove(pp)
-                if montaje.dur(dst) < 5:
+                if tipo == 'foto':
+                    if os.path.getsize(dst) < 5000:
+                        raise RuntimeError('foto.jpg llegó dañada')
+                elif montaje.dur(dst) < 5:
                     raise RuntimeError(f'{tipo}.mp4 llegó dañado')
                 salidas.append((tipo, dst))
             mini = os.path.join(carpeta, 'miniatura.jpg')
@@ -770,7 +775,7 @@ def entregas():
             continue
         if ahora - m.get('publicar_en', ahora) > 6 * 3600:       # muy atrasado: no publicar viejo
             m['estado'] = 'vencido'; F._guardar(os.path.join(F.DIR, jid, 'meta.json'), m); continue
-        if m['entrega'] == 'fb':
+        if m['entrega'] in ('fb', 'foto'):
             m['estado'] = 'pendiente'
             m['creado'] = ahora           # el publicador automático lo sube a los 20 min si no respondes
             m['destino'] = 'Facebook Ridmer TV (se publica solo)'

@@ -142,6 +142,12 @@ Te doy {nfotos} fotos del clip en orden y su audio. Tareas:
    orientación de alguien. Con niños, nada picante. Si dudas, "sirve": false.
    "potencial" 0-100: 85+ solo si una persona cualquiera en Facebook se reiría y lo compartiría sin conocer el reality.
    "cara_x": de 0 a 1, dónde está horizontalmente la cara o la acción principal (0 izquierda, 0.5 centro, 1 derecha).
+9. FOTO CON CHISME (11-nov): elige el SEGUNDO del audio donde la imagen es más llamativa (una cara con reacción
+   fuerte, dos personas muy cerca, alguien llorando, gritando o riendo, un momento raro) y escribe un texto corto
+   para publicarla como FOTO en Facebook: que dé curiosidad y haga comentar, con el NOMBRE de los participantes
+   ("Lo que le dijo Tony a Itatí cuando nadie lo veía 👀 ¿Ustedes qué opinan?", "Nadie esperaba esta reacción de
+   Joao 😳 ¿Se pasó o tiene razón?"). Termina SIEMPRE con una pregunta al público. Si la imagen es aburrida o lejana,
+   "sirve": false.
 Reglas: si en el clip aparece un niño o niña, nunca le des un ángulo picante ni sexual al título o texto.
 
 Responde SOLO con este JSON:
@@ -154,6 +160,7 @@ Responde SOLO con este JSON:
  "personajes": ["..."], "titulo": "...", "subtitulo": "...", "descripcion": "qué pasó en una frase",
  "texto_post": "...", "explicito": false, "inicio": 0.0, "fin": 0.0, "evidencia": "frase exacta", "primera_frase": "primeras palabras exactas del tema",
  "subtitulos": [{{"t0": 0.0, "t1": 2.1, "texto": "..."}}],
+ "foto": {{"sirve": false, "segundo": 0.0, "texto": "texto con nombres + pregunta + 2-3 hashtags"}},
  "meme": {{"sirve": false, "potencial": 0-100, "inicio": 0.0, "fin": 0.0, "frase": "...", "cara_x": 0.5,
           "texto_post": "frase corta + invitación a etiquetar a un amigo + 2-4 hashtags con los nombres de los participantes (#NombreApellido)"}}}}"""
 

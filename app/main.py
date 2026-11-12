@@ -117,9 +117,12 @@ def trabajador():
                 chat = [t for _, t in recorder.chat_mensajes(centro - 60, objetivo)]
             if info and info.get('meme') and not job['manual']:
                 try:
-                    enviar_meme(info['meme'], info)
+                    if (info['meme'] or {}).get('foto'):
+                        enviar_foto(info['meme']['foto'], info)
+                    if not info['meme'].get('solo_foto'):
+                        enviar_meme(info['meme'], info)
                 except Exception as e:
-                    log('error mandando meme', e)
+                    log('error mandando meme/foto', e)
             if info and info.get('descartado'):
                 continue
             if info and not job['manual'] and info.get('duracion', 999) < C.get()['clip_min'] - 5:
@@ -289,6 +292,33 @@ def enviar_meme(mm, info):
     log('meme enviado', cid, mm['frase'])
 
 
+def enviar_foto(fo, info):
+    """11-nov: FOTO con chisme para Pasión por los Realities. Mientras 'fotos_auto' esté apagado, solo muestra."""
+    cid = time.strftime('%Y%m%d_%H%M%S') + '_foto'
+    dst = os.path.join(C.CLIPS, cid); os.makedirs(dst, exist_ok=True)
+    ruta = os.path.join(dst, 'foto.jpg')
+    shutil.copy(fo['ruta'], ruta)
+    cfg = C.get()
+    hay_fb = fb.activo()
+    cap = (f"🖼️ <b>FOTO CON CHISME</b>\n\n📝 Para publicar:\n{fo['texto']}\n\n" +
+           ('⏳ Si no respondes, entra a la cola y se publica sola.' if hay_fb and cfg.get('fotos_auto')
+            else '🧪 Muestra: solo se publica si tocas «Publicar ya».'))
+    botones = json.dumps({'inline_keyboard': [[{'text': '📤 Publicar ya', 'callback_data': f'pub:{cid}'},
+                                               {'text': '🚫 No publicar', 'callback_data': f'no:{cid}'}]]})
+    env = []
+    for c in cfg['chat_ids']:
+        with open(ruta, 'rb') as f:
+            r = tg._api('sendPhoto', files={'photo': f}, chat_id=c, caption=cap[:1000], parse_mode='HTML',
+                        reply_markup=botones)
+        if r and r.get('ok'):
+            env.append((c, r['result']['message_id'], r['result'].get('caption', '')))
+    guardar_meta(cid, {'ruta': ruta, 'texto_post': fo['texto'], 'titulo': fo['texto'][:80], 'subtitulo': '',
+                       'descripcion': info.get('descripcion', ''), 'duracion_txt': 'foto',
+                       'token': secrets.token_urlsafe(16), 'interes': info.get('interes', 70), 'explicito': False,
+                       'manual': False, 'foto': True, 'enviado': time.time(), 'estado': 'pendiente', 'mensajes': env})
+    log('foto enviada', cid)
+
+
 def publicados_hoy():
     hoy = time.strftime('%Y%m%d')
     n = 0
@@ -306,7 +336,10 @@ def publicar_clip(cid, motivo):
         if not m or m.get('estado') != 'pendiente':
             return False, 'ya estaba ' + (m or {}).get('estado', 'borrado')
         m['estado'] = 'publicando'; guardar_meta(cid, m)
-    ok, res = fb.publicar(m['ruta'], m['texto_post'], m.get('titulo', ''))
+    if m.get('foto'):
+        ok, res = fb.publicar_foto(m['ruta'], m['texto_post'])
+    else:
+        ok, res = fb.publicar(m['ruta'], m['texto_post'], m.get('titulo', ''))
     m['estado'] = 'publicado' if ok else 'pendiente'
     if ok:
         m['publicado'] = time.time(); m['fb_id'] = res
@@ -369,6 +402,8 @@ def auto_publicador():
                 if m.get('estado') != 'pendiente' or m.get('auto_fallo') or m.get('explicito'):
                     continue
                 if m.get('meme') and not cfg.get('memes_auto'):     # memes: solo muestras hasta que el dueño apruebe
+                    continue
+                if m.get('foto') and not cfg.get('fotos_auto'):     # fotos: igual, solo muestras por ahora
                     continue
                 if m.get('interes', 0) < cfg['auto_minimo'] or ahora - m.get('enviado', ahora) < cfg['auto_espera_min'] * 60:
                     continue

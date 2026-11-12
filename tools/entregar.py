@@ -38,11 +38,16 @@ def main():
                     open(os.path.join(base, n), 'wb').write(b)
                     partes.append(n); k += 1
             archivos[tipo] = partes
+        if os.path.exists(os.path.join(c, 'foto.jpg')):            # 11-nov: publicación de foto en Ridmer TV
+            shutil.copy(os.path.join(c, 'foto.jpg'), os.path.join(base, f'{eid}_foto.jpg'))
+            archivos['foto'] = [f'{eid}_foto.jpg']
+        if not os.path.exists(os.path.join(c, 'miniatura.jpg')) and os.path.exists(os.path.join(c, 'foto.jpg')):
+            shutil.copy(os.path.join(c, 'foto.jpg'), os.path.join(c, 'miniatura.jpg'))
         shutil.copy(os.path.join(c, 'miniatura.jpg'), os.path.join(base, f'{eid}_miniatura.jpg'))
         guion = open(os.path.join(c, 'guion.txt')).read() if os.path.exists(os.path.join(c, 'guion.txt')) else ''
         cambios = json.load(open(os.path.join(c, 'cambios.json'))) if os.path.exists(os.path.join(c, 'cambios.json')) else {}
         videos.append({'eid': eid, 'archivos': archivos, 'miniatura': f'{eid}_miniatura.jpg', 'guion': guion,
-                       'cambios': {k: cambios[k] for k in ('titulo_video', 'titulo_youtube', 'texto_facebook') if k in cambios}})
+                       'cambios': {k: cambios[k] for k in ('titulo_video', 'titulo_youtube', 'texto_facebook', 'texto_foto') if k in cambios}})
     json.dump({'fecha': fecha, 'videos': videos}, open(os.path.join(base, 'manifest.json'), 'w'), ensure_ascii=False, indent=1)
     sh('git', 'add', '-A', cwd=tmp)
     sh('git', '-c', 'user.name=Claude', '-c', 'user.email=noreply@anthropic.com', 'commit', '-q', '-m',

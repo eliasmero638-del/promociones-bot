@@ -57,7 +57,9 @@ DEFAULTS = {
     'clip_max': 900,                     # sin tope real: dura lo que dure el momento
     'memes': True,                      # 10-nov: versión MEME de los mejores momentos (franja negra + frase)
     'meme_minimo': 70,                   # potencial mínimo de meme (0-100)
-    'memes_auto': False,                 # False = solo muestras al Telegram; True = entran a la cola automática
+    'memes_auto': False,
+    'fotos': True,                       # 11-nov: fotos con chisme (Facebook también paga las fotos)
+    'fotos_auto': False,                 # False = solo muestras; True = entran a la cola automática                 # False = solo muestras al Telegram; True = entran a la cola automática
     'claude_limite': '12:45',            # 10-nov: si a esta hora Claude no entregó, el servidor arma el respaldo
     'desde_hora': '14:00',               # 10-nov (pedido del dueño, permanente): ningún video sale antes de las 14:00
     'desde_hora_dia': {},                # excepciones por fecha, ej. {'2026-12-24': '10:00'}

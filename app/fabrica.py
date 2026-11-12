@@ -468,8 +468,33 @@ def _nota(meta, texto):
         tg.agregar_nota(chat_id, msg_id, cap, texto)
 
 
+def _avisar_foto(meta):
+    """11-nov: aviso de una publicación de FOTO para Ridmer TV (se publica sola a los 20 min)."""
+    cfg = C.get()
+    auto = fb.activo('ridmer') and cfg.get('ridmer_auto', True)
+    cap = (f"🖼️ <b>RIDMER TV · FOTO CON HISTORIA</b>\n"
+           + (f"⏳ Se publica sola en {cfg.get('ridmer_espera_min', 20)} min si no respondes\n\n" if auto else '\n')
+           + meta.get('texto_facebook', '')[:800])
+    botones = json.dumps({'inline_keyboard': [[
+        {'text': '✅ Publicar en Ridmer TV', 'callback_data': f"rpub:{meta['id']}"},
+        {'text': '❌ No publicar', 'callback_data': f"rno:{meta['id']}"}]]})
+    mensajes = []
+    for c in cfg['chat_ids']:
+        kw = dict(chat_id=c, caption=cap[:1000], parse_mode='HTML')
+        if not cfg.get('solo_enviar'):
+            kw['reply_markup'] = botones
+        with open(os.path.join(DIR, meta['id'], meta['archivos']['foto']), 'rb') as f:
+            r = tg._api('sendPhoto', files={'photo': f}, **kw)
+        if r and r.get('ok'):
+            mensajes.append((c, r['result']['message_id'], r['result'].get('caption', '')))
+    meta['mensajes'] = mensajes
+    _guardar(os.path.join(DIR, meta['id'], 'meta.json'), meta)
+
+
 def avisar(meta):
     cfg = C.get()
+    if 'foto' in (meta.get('archivos') or {}):
+        return _avisar_foto(meta)
     link = f"{cfg.get('web_url', 'http://173.249.44.95')}/r/{meta['token']}"
     du = meta.get('duracion', 0)
     corto = meta['formato'] == 'short'
@@ -526,8 +551,12 @@ def publicar(jid, motivo='tú'):
     if not m or m.get('estado') != 'pendiente':
         return False, 'ya estaba ' + (m or {}).get('estado', 'borrado')
     m['estado'] = 'publicando'; _guardar(os.path.join(carpeta, 'meta.json'), m)
-    ok, res = fb.publicar(os.path.join(carpeta, m['archivos']['video']), m.get('texto_facebook') or m['titulo_youtube'],
-                          m['titulo_youtube'], clave='ridmer')
+    if 'foto' in m['archivos']:
+        ok, res = fb.publicar_foto(os.path.join(carpeta, m['archivos']['foto']), m.get('texto_facebook') or m['titulo_youtube'],
+                                   clave='ridmer')
+    else:
+        ok, res = fb.publicar(os.path.join(carpeta, m['archivos']['video']), m.get('texto_facebook') or m['titulo_youtube'],
+                              m['titulo_youtube'], clave='ridmer')
     m['estado'] = 'publicado' if ok else 'pendiente'
     m['fb'] = res
     if not ok:

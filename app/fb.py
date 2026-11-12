@@ -136,3 +136,19 @@ def diagnostico():
                            f"copyright={st.get('copyright_check_status', {}).get('status') if isinstance(st.get('copyright_check_status'), dict) else st.get('copyright_check_status')} "
                            f"app={(v.get('application') or {}).get('name')}")
     return '\n'.join(out) or 'No hay páginas conectadas.'
+
+
+def publicar_foto(path, texto, clave=None):
+    """11-nov: publicación de FOTO con texto (Facebook también paga las fotos con la monetización de contenido)."""
+    pid, tok, _ = pagina(clave)
+    if not (pid and tok):
+        return False, 'Esa página de Facebook no está conectada'
+    try:
+        with open(path, 'rb') as f:
+            r = requests.post(f'{API}/{_v()}/{pid}/photos', data={'message': texto, 'access_token': tok, 'published': 'true'},
+                              files={'source': f}, timeout=120).json()
+        if 'id' not in r:
+            return False, str(r.get('error', r))[:300]
+        return True, r.get('post_id') or r['id']
+    except Exception as e:
+        return False, str(e)[:300]
