@@ -1,0 +1,639 @@
+{
+ "fecha": "2026-11-12",
+ "modo": "claude",
+ "videos": [
+  {
+   "eid": "fb1",
+   "tipo": "fb",
+   "hora_fb": "14:00",
+   "articulo": "Vuelo 965 de American Airlines",
+   "fuente": "https://es.wikipedia.org/wiki/Vuelo_965_de_American_Airlines",
+   "titulo_video": " ",
+   "titulo_youtube": "Una sola tecla mató a 159 personas… vuelo 965",
+   "titulos_opciones": [
+    "Una sola TECLA mató a 159 personas ✈️",
+    "Apretó la letra R… y el avión giró hacia la montaña",
+    "El piloto escribió UNA letra y nadie llegó a Cali",
+    "¿Cómo un error de una tecla estrelló un Boeing 757?",
+    "12 segundos antes sonó la alarma… y no alcanzó",
+    "Iban a casa por Navidad: solo 4 sobrevivieron",
+    "El avión chocó a metros de la cima: vuelo 965",
+    "La computadora eligió la R equivocada… a 270 km"
+   ],
+   "descripcion_youtube": "20 de diciembre de 1995. Un Boeing 757 de American Airlines vuela de Miami a Cali lleno de familias que vuelven por Navidad.\nEl capitán escribe una sola letra en la computadora… y el avión gira hacia las montañas.\n#historiasreales #aviones #ridmer",
+   "etiquetas": [
+    "vuelo 965",
+    "American Airlines",
+    "Cali",
+    "Buga",
+    "accidente aéreo",
+    "historias reales",
+    "ridmer"
+   ],
+   "texto_facebook": "El capitán escribió una sola letra en la computadora… y el avión giró hacia una montaña de 2.700 metros ✈️ #HistoriasReales #DatosCuriosos #Ridmer",
+   "miniatura": {
+    "img": 2,
+    "texto": "UNA SOLA TECLA"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Una sola tecla. Ciento cincuenta y nueve muertos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Veinte de diciembre de mil novecientos noventa y cinco.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "20 DIC 1995",
+      "sub": "Miami → Cali"
+     }
+    },
+    {
+     "texto": "El vuelo novecientos sesenta y cinco de American Airlines va de Miami a Cali, lleno de familias que vuelven por Navidad.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Es de noche, y en Cali no hay radar.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Les ofrecen aterrizar directo, y los pilotos aceptan, para ganar tiempo.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=4YrqXiHo1R8",
+      "desde": 20,
+      "dur": 6,
+      "buscar_video": [
+       "airplane night landing"
+      ]
+     }
+    },
+    {
+     "texto": "Pero al cambiar la ruta, borran de la computadora los puntos que los guiaban.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Buscan el punto Rozo, y el capitán escribe una sola letra: erre.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "La computadora elige otra erre: Romeo, cerca de Bogotá.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "El avión gira hacia el este, a oscuras, entre montañas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Doce segundos antes, suena la alarma. Suben con toda la potencia.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Pero los frenos de aire siguen abiertos. Chocan a metros de la cima.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Solo cuatro pasajeros sobrevivieron… y un perro en la bodega.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=WiuQK3E51Lo",
+      "desde": 40,
+      "dur": 6,
+      "buscar_video": [
+       "Andes mountains clouds"
+      ]
+     }
+    },
+    {
+     "texto": "Comparte esta historia, y sigue a Ridmer.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb1s",
+   "tipo": "short",
+   "encargo": "fb1",
+   "hora_youtube": "14:00",
+   "articulo": "Vuelo 965 de American Airlines",
+   "fuente": "https://es.wikipedia.org/wiki/Vuelo_965_de_American_Airlines",
+   "titulo_video": " ",
+   "titulo_youtube": "Una sola tecla mató a 159 personas #shorts",
+   "titulos_opciones": [
+    "Una sola TECLA mató a 159 personas ✈️ #shorts",
+    "Apretó la letra R… y el avión giró hacia la montaña #shorts",
+    "El piloto escribió UNA letra y nadie llegó a Cali #shorts",
+    "¿Cómo un error de una tecla estrelló un Boeing 757? #shorts",
+    "12 segundos antes sonó la alarma… y no alcanzó #shorts",
+    "Iban a casa por Navidad: solo 4 sobrevivieron #shorts",
+    "El avión chocó a metros de la cima: vuelo 965 #shorts",
+    "La computadora eligió la R equivocada… a 270 km #shorts"
+   ],
+   "descripcion_youtube": "Vuelo 965 de American Airlines, 1995: una sola letra cambió el rumbo.\n#shorts #aviones #ridmer",
+   "etiquetas": [
+    "shorts",
+    "vuelo 965",
+    "Cali",
+    "ridmer"
+   ],
+   "miniatura": {
+    "img": 2,
+    "texto": "UNA SOLA TECLA"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Una sola tecla. Ciento cincuenta y nueve muertos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Diciembre de mil novecientos noventa y cinco. Un avión vuela de Miami a Cali, de noche, y sin radar.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "El capitán busca el punto Rozo, y escribe una sola letra: erre.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "La computadora elige otra erre, cerca de Bogotá, y el avión gira hacia las montañas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Suena la alarma. Suben con todo… pero los frenos de aire siguen abiertos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Chocan a metros de la cima.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=4YrqXiHo1R8",
+      "desde": 20,
+      "dur": 6,
+      "buscar_video": [
+       "airplane wreck forest"
+      ]
+     }
+    },
+    {
+     "texto": "Solo cuatro sobrevivieron. Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb2",
+   "tipo": "fb",
+   "hora_fb": "18:30",
+   "articulo": "Marcus Hutchins y WannaCry (2017)",
+   "fuente": "https://en.wikipedia.org/wiki/Marcus_Hutchins",
+   "titulo_video": " ",
+   "titulo_youtube": "Detuvo un ciberataque mundial desde su cuarto… con 10 dólares",
+   "titulos_opciones": [
+    "Detuvo un ciberataque MUNDIAL desde su cuarto 😱",
+    "Gastó 10 dólares… y salvó 200.000 computadoras",
+    "El muchacho de 22 años que apagó el virus WannaCry",
+    "¿Cómo un joven encontró el botón de apagado de un virus?",
+    "Lo llamaron HÉROE… y meses después lo arrestó el FBI",
+    "Hospitales paralizados en 150 países… hasta que él hizo esto",
+    "Nadie sabía que el virus tenía un interruptor escondido"
+   ],
+   "descripcion_youtube": "Mayo de 2017. Un virus bloquea computadoras en 150 países y paraliza hospitales.\nUn muchacho de 22 años lo frena desde su cuarto… pero lo que vino después nadie lo esperaba.\n#hackers #historiasreales #ridmer",
+   "etiquetas": [
+    "hackers",
+    "WannaCry",
+    "Marcus Hutchins",
+    "ciberataque",
+    "historias reales",
+    "ridmer"
+   ],
+   "texto_facebook": "Un virus paralizó hospitales en 150 países… y un muchacho de 22 años lo apagó desde su cuarto con 10 dólares 😱 #Hackers #HistoriasReales #Ridmer",
+   "miniatura": {
+    "texto": "10 DÓLARES"
+   },
+   "gancho": 1,
+   "nota": "Prueba hackers 11-17 nov: reemplaza el encargo fb2 (vuelo 518 de Santa Bárbara). Historia contada, sin nada técnico copiable.",
+   "segmentos": [
+    {
+     "texto": "Detuvo un ciberataque mundial desde su cuarto.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "WannaCry",
+       "Wana Decrypt0r"
+      ]
+     }
+    },
+    {
+     "texto": "Doce de mayo de dos mil diecisiete. Un virus llamado WannaCry salta de computadora en computadora.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=IEAtGCkbq5Y",
+      "desde": 5,
+      "dur": 6,
+      "buscar_video": [
+       "computer screens"
+      ]
+     }
+    },
+    {
+     "texto": "Bloquea todos los archivos, y pide dinero para devolverlos.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "WannaCry",
+       "Wana Decrypt0r screenshot"
+      ]
+     }
+    },
+    {
+     "texto": "En horas, infecta más de doscientas mil computadoras, en ciento cincuenta países.",
+     "escena": {
+      "tipo": "contador",
+      "n": 200000,
+      "texto": "COMPUTADORAS",
+      "sub": "150 países"
+     }
+    },
+    {
+     "texto": "En Inglaterra, los hospitales tienen que cancelar operaciones.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=6GeWlG3qads",
+      "desde": 8,
+      "dur": 6,
+      "buscar_video": [
+       "hospital corridor"
+      ]
+     }
+    },
+    {
+     "texto": "En su cuarto, en Inglaterra, Marcus Hutchins, de veintidós años, estudia el virus.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Marcus Hutchins",
+       "Ilfracombe"
+      ]
+     }
+    },
+    {
+     "texto": "Y nota algo raro: antes de atacar, el virus busca una dirección de internet que no existe.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "WannaCry"
+      ]
+     }
+    },
+    {
+     "texto": "Marcus la compra a su nombre. Le cuesta diez dólares con sesenta y nueve centavos.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Ilfracombe"
+      ]
+     }
+    },
+    {
+     "texto": "Y el virus se detiene. Esa dirección era su botón de apagado.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=IEAtGCkbq5Y",
+      "desde": 40,
+      "dur": 6,
+      "buscar_video": [
+       "computer screens"
+      ]
+     }
+    },
+    {
+     "texto": "Lo llamaron héroe. Pero meses después, el FBI lo arrestó en Las Vegas.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Las Vegas Strip night",
+       "Las Vegas"
+      ]
+     }
+    },
+    {
+     "texto": "Por un virus que había creado de adolescente. Se declaró culpable.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Milwaukee federal courthouse",
+       "Milwaukee"
+      ]
+     }
+    },
+    {
+     "texto": "El juez no lo mandó a prisión. Comparte esta historia, y sigue a Ridmer.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Marcus Hutchins",
+       "Ilfracombe"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb2s",
+   "tipo": "short",
+   "encargo": "fb2",
+   "hora_youtube": "19:00",
+   "articulo": "Marcus Hutchins y WannaCry (2017)",
+   "fuente": "https://en.wikipedia.org/wiki/Marcus_Hutchins",
+   "titulo_video": " ",
+   "titulo_youtube": "Detuvo un ciberataque mundial con 10 dólares #shorts",
+   "titulos_opciones": [
+    "Detuvo un ciberataque MUNDIAL desde su cuarto 😱 #shorts",
+    "Gastó 10 dólares… y salvó 200.000 computadoras #shorts",
+    "El muchacho de 22 años que apagó el virus WannaCry #shorts",
+    "¿Cómo un joven encontró el botón de apagado de un virus? #shorts",
+    "Lo llamaron HÉROE… y meses después lo arrestó el FBI #shorts",
+    "Hospitales paralizados en 150 países… hasta que él hizo esto #shorts",
+    "Nadie sabía que el virus tenía un interruptor escondido #shorts"
+   ],
+   "descripcion_youtube": "WannaCry, 2017: un muchacho de 22 años encontró el botón de apagado.\n#shorts #hackers #ridmer",
+   "etiquetas": [
+    "shorts",
+    "hackers",
+    "WannaCry",
+    "ridmer"
+   ],
+   "miniatura": {
+    "texto": "10 DÓLARES"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Detuvo un ciberataque mundial desde su cuarto.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "WannaCry",
+       "Wana Decrypt0r"
+      ]
+     }
+    },
+    {
+     "texto": "Mayo de dos mil diecisiete. El virus WannaCry bloquea computadoras en ciento cincuenta países.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=IEAtGCkbq5Y",
+      "desde": 5,
+      "dur": 6,
+      "buscar_video": [
+       "computer screens"
+      ]
+     }
+    },
+    {
+     "texto": "Hasta hospitales cancelan operaciones.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=6GeWlG3qads",
+      "desde": 8,
+      "dur": 6,
+      "buscar_video": [
+       "hospital corridor"
+      ]
+     }
+    },
+    {
+     "texto": "Marcus Hutchins, de veintidós años, nota que el virus busca una dirección de internet que no existe.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Marcus Hutchins",
+       "WannaCry"
+      ]
+     }
+    },
+    {
+     "texto": "La compra por diez dólares… y el virus se detiene.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "WannaCry"
+      ]
+     }
+    },
+    {
+     "texto": "Meses después, el FBI lo arrestó por un virus que creó de adolescente.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Las Vegas"
+      ]
+     }
+    },
+    {
+     "texto": "El juez no lo mandó a prisión. Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Marcus Hutchins",
+       "Ilfracombe"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb3",
+   "tipo": "fb",
+   "encargo": "res1",
+   "hora_fb": "21:00",
+   "articulo": "Javier Methol",
+   "fuente": "https://es.wikipedia.org/wiki/Javier_Methol",
+   "titulo_video": " ",
+   "titulo_youtube": "Sobrevivió 72 días en la nieve… y perdió a su esposa",
+   "titulos_opciones": [
+    "Sobrevivió 72 DÍAS en la nieve… y perdió a su esposa",
+    "La avalancha los enterró mientras dormían 😢",
+    "Tenía 36 años y 4 hijos cuando cayó en los Andes",
+    "Lo llamaban DUMBO: el líder mayor de los Andes",
+    "Dos caminaron 10 días por las montañas para salvarlos",
+    "De 45 personas, solo 16 volvieron a casa",
+    "La historia de Javier Methol, sobreviviente de los Andes"
+   ],
+   "descripcion_youtube": "Octubre de 1972. Un avión uruguayo se estrella en los Andes con 45 personas.\nJavier Methol, de 36 años, resistió 72 días en la nieve.\n#historiasreales #supervivencia #ridmer",
+   "etiquetas": [
+    "Andes",
+    "vuelo 571",
+    "Javier Methol",
+    "supervivencia",
+    "sociedad de la nieve",
+    "ridmer"
+   ],
+   "texto_facebook": "Cayó en los Andes con su esposa… y resistió 72 días en la nieve a casi 4.000 metros 🏔️ #HistoriasReales #Supervivencia #Ridmer",
+   "miniatura": {
+    "img": 2,
+    "texto": "72 DÍAS"
+   },
+   "gancho": 1,
+   "nota": "fb3 usa la reserva res1 (Javier Methol) en vez del accidente de Air Class (historia débil y otro accidente aéreo el mismo día).",
+   "segmentos": [
+    {
+     "texto": "Sobrevivió setenta y dos días en la nieve.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Octubre de mil novecientos setenta y dos. Un avión uruguayo cruza los Andes con cuarenta y cinco personas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Va Javier Methol, de treinta y seis años, con su esposa Liliana. En casa los esperan cuatro hijos.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Javier Methol",
+      "sub": "36 años · 4 hijos"
+     }
+    },
+    {
+     "texto": "El avión se estrella en la cordillera. Su primo Panchito muere en el acto.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Los sobrevivientes se refugian dentro del fuselaje, en la nieve y el frío.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Javier, el mayor, se vuelve uno de los líderes. Lo llaman Dumbo.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Dieciséis días después, una avalancha entierra el avión mientras duermen.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Ahí muere Liliana.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "29 OCT 1972",
+      "sub": "La avalancha"
+     }
+    },
+    {
+     "texto": "Javier resiste. Dos compañeros cruzan las montañas a pie durante diez días, para pedir ayuda.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Y el veintidós de diciembre, llegan los helicópteros.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=e9RmTURr79w",
+      "desde": 30,
+      "dur": 6,
+      "buscar_video": [
+       "Andes snow helicopter"
+      ]
+     }
+    },
+    {
+     "texto": "De cuarenta y cinco personas, solo dieciséis volvieron. Javier era uno.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     }
+    },
+    {
+     "texto": "Volvió a casarse, y contó su historia hasta los setenta y nueve años. Comparte esta historia, y sigue a Ridmer.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb1f",
+   "tipo": "foto",
+   "omitir": true,
+   "hora_foto": "15:30",
+   "titulo_youtube": "El capitán escribió UNA letra… y el avión giró hacia la montaña",
+   "texto_foto": "Una sola letra estrelló este avión.\n\n20 de diciembre de 1995. El vuelo 965 de American Airlines iba de Miami a Cali, lleno de familias que volvían a casa por Navidad. Era de noche y en Cali no había radar.\n\nLos controladores ofrecieron un aterrizaje directo y los pilotos aceptaron para ganar tiempo. Al cambiar la ruta borraron los puntos que los guiaban. Buscaron el punto Rozo y el capitán escribió solo una letra: R. Pero la computadora eligió otra R: Romeo, cerca de Bogotá, a 270 kilómetros.\n\nEl Boeing 757 giró hacia el este, a oscuras, entre montañas. Doce segundos antes del choque sonó la alarma de terreno. Subieron con toda la potencia… pero nadie recordó cerrar los frenos de aire. Chocaron a metros de la cima del cerro El Diluvio, cerca de Buga.\n\nMurieron 159 personas. Solo cuatro pasajeros sobrevivieron… y un perro que viajaba en la bodega.\n\n¿Tú habrías revisado dos veces esa letra?\n#HistoriasReales #DatosCuriosos #Ridmer"
+  },
+  {
+   "eid": "fb2f",
+   "tipo": "foto",
+   "omitir": true,
+   "hora_foto": "20:00",
+   "titulo_youtube": "Sobrevivió 72 días en los Andes… y perdió a su esposa",
+   "texto_foto": "72 días en la nieve. Y una avalancha en plena noche.\n\n13 de octubre de 1972. Un avión de la Fuerza Aérea Uruguaya cruzaba los Andes con 45 personas. Entre ellos iba Javier Methol, de 36 años, con su esposa Liliana. En Montevideo los esperaban sus cuatro hijos.\n\nEl avión se estrelló en la cordillera. Su primo Panchito murió en el acto. Los sobrevivientes se refugiaron dentro del fuselaje y Javier, el mayor, se volvió uno de los líderes: los muchachos lo llamaban Dumbo.\n\nDieciséis días después, una avalancha enterró el avión mientras dormían. Ahí murió Liliana. Javier siguió resistiendo hasta que dos compañeros cruzaron las montañas a pie y trajeron los helicópteros.\n\nDe 45 personas, solo 16 volvieron. Javier volvió a casarse, tuvo cuatro hijos más y contó su historia hasta los 79 años.\n\n¿Tú habrías tenido la fuerza para seguir?\n#HistoriasReales #Supervivencia #Ridmer"
+  }
+ ]
+}
