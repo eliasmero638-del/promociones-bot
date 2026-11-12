@@ -1,5 +1,5 @@
 """Fábrica Ridmer: busca temas, escribe el guion, pone la voz, arma Short y video largo, y los publica en Ridmer TV."""
-import json, os, random, re, secrets, shutil, subprocess, sys, threading, time
+import html, json, os, random, re, secrets, shutil, subprocess, sys, threading, time
 import requests
 import config as C, ia, voz, montaje, editor, fb, ntfy, tg
 import fuentes as wiki
@@ -512,6 +512,12 @@ def avisar(meta):
     cap = (f"🔴 <b>RIDMER TV</b> · {tipo} · ⏱️ {du // 60}:{du % 60:02d}\n{destino}\n\n"
            f"<b>{meta['titulo_youtube']}</b>\n\n{extra}\n"
            f"👉 Video en calidad completa, miniatura, descripción y etiquetas: {link}")
+    es_fb = meta.get('entrega') == 'fb'
+    if es_fb:                                     # 12-nov: aviso corto + el texto listo para que él lo suba a TikTok
+        cuando = time.strftime('%I:%M %p', time.localtime(meta.get('publicar_en', time.time()))).lstrip('0')
+        cap = (f"📘 <b>SE PUBLICA EN FACEBOOK RIDMER TV</b> · {cuando} · ⏱️ {du // 60}:{du % 60:02d}\n"
+               f"<b>{meta['titulo_youtube']}</b>\n\n" + (f"⏳ Sale solo en {espera} min si no respondes.\n" if auto else extra + '\n')
+               + "📲 <b>Para TikTok:</b> descarga este video y súbelo con el texto que te mando abajo.")
     v = os.path.join(DIR, meta['id'], meta['archivos']['video'])
     if os.path.getsize(v) >= 48 * 1024 * 1024:
         # Telegram no deja mandar más de 50 MB: va una versión liviana para revisar
@@ -536,6 +542,17 @@ def avisar(meta):
         else:
             tg._api('sendMessage', chat_id=c, text=cap, parse_mode='HTML')
     t = [x for x in meta.get('titulos') or [] if x]
+    if es_fb:                                     # 12-nov: el dueño ya no elige títulos; recibe el texto de TikTok listo
+        tt = (meta.get('texto_tiktok') or '').strip()
+        if not tt:
+            base = (meta.get('texto_facebook') or '').strip()
+            tt = (t[0] if t else meta['titulo_youtube']) + '\n\n' + base
+            if '#' not in tt:
+                tt += '\n\n#historiasreales #misterio #ridmer #fyp #parati'
+        txt = '📲 <b>TEXTO PARA TIKTOK</b> (toca para copiar):\n\n<code>' + html.escape(tt[:2100]) + '</code>'
+        for c in cfg['chat_ids']:
+            tg._api('sendMessage', chat_id=c, text=txt[:4000], parse_mode='HTML')
+        t = []
     if t:                                         # 10-nov: varios títulos clickbait para elegir
         txt = '🔥 <b>TÍTULOS PARA ELEGIR</b> (toca y copia el que más te guste):\n' + '\n'.join(
             f'{i}. <code>{x}</code>' for i, x in enumerate(t, 1))

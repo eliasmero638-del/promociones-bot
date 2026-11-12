@@ -173,15 +173,41 @@ def _a_historias(clave, path, es_foto):
     threading.Thread(target=publicar_historia, args=(path, clave, es_foto), daemon=True).start()
 
 
+def _banda(ancho, alto, texto):
+    """PNG transparente con una franja amarilla abajo: 'MIRA EL VIDEO COMPLETO EN LA PÁGINA'."""
+    from PIL import Image, ImageDraw, ImageFont
+    letra = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'assets', 'InterDisplay-Black.otf')
+    im = Image.new('RGBA', (ancho, alto), (0, 0, 0, 0)); d = ImageDraw.Draw(im)
+    tam = int(ancho * 0.062)
+    f = ImageFont.truetype(letra, tam) if os.path.exists(letra) else ImageFont.load_default()
+    lineas = texto.split('\n')
+    h = int(len(lineas) * tam * 1.25 + tam)
+    y0 = int(alto * 0.80)
+    d.rectangle([0, y0, ancho, y0 + h], fill=(255, 214, 0, 240))
+    y = y0 + tam // 2
+    for l in lineas:
+        d.text(((ancho - d.textlength(l, font=f)) / 2, y), l, font=f, fill=(15, 15, 15, 255)); y += int(tam * 1.25)
+    p = tempfile.mktemp(suffix='.png'); im.save(p); return p
+
+
 def publicar_historia(path, clave=None, es_foto=False):
-    """Historia de la página (API de Page Stories). Video: máximo 60 s (si es más largo se usan los primeros 59 s)."""
+    """12-nov (corregido por el dueño): la historia NO lleva el video completo. Video → los primeros 10 s (el enganche)
+    con una franja 'MIRA EL VIDEO COMPLETO EN LA PÁGINA'. Foto → la misma foto con la franja."""
     pid, tok, nombre = pagina(clave)
     ok, det = False, ''
+    tmp = []
     try:
         if not (pid and tok):
             raise RuntimeError('página no conectada')
         if es_foto:
-            with open(path, 'rb') as f:
+            from PIL import Image
+            im = Image.open(path).convert('RGB')
+            fondo = Image.new('RGB', (1080, 1920), (12, 12, 14))
+            im.thumbnail((1080, 1500)); fondo.paste(im, ((1080 - im.width) // 2, (1920 - im.height) // 2 - 120))
+            b = _banda(1080, 1920, 'MIRA LA HISTORIA COMPLETA\nEN NUESTRA PÁGINA'); tmp.append(b)
+            fondo.paste(Image.open(b), (0, 0), Image.open(b))
+            src = tempfile.mktemp(suffix='.jpg'); fondo.save(src, quality=90); tmp.append(src)
+            with open(src, 'rb') as f:
                 r = requests.post(f'{API}/{_v()}/{pid}/photos', data={'published': 'false', 'access_token': tok},
                                   files={'source': f}, timeout=120).json()
             if 'id' not in r:
@@ -189,12 +215,14 @@ def publicar_historia(path, clave=None, es_foto=False):
             fin = requests.post(f'{API}/{_v()}/{pid}/photo_stories', data={'photo_id': r['id'], 'access_token': tok},
                                 timeout=60).json()
         else:
-            src, tmp = path, None
-            if _dur(path) > 60:
-                tmp = tempfile.mktemp(suffix='.mp4')
-                subprocess.run(['ffmpeg', '-y', '-v', 'error', '-i', path, '-t', '59', '-c:v', 'libx264', '-preset', 'veryfast',
-                                '-crf', '21', '-c:a', 'aac', '-ar', '48000', '-movflags', '+faststart', tmp], check=True)
-                src = tmp
+            b = _banda(720, 1280, 'MIRA EL VIDEO COMPLETO\nEN NUESTRA PÁGINA'); tmp.append(b)
+            src = tempfile.mktemp(suffix='.mp4'); tmp.append(src)
+            fc = ('[0:v]scale=720:1280:force_original_aspect_ratio=decrease,pad=720:1280:(ow-iw)/2:(oh-ih)/2,setsar=1,fps=30[v];'
+                  '[v][1:v]overlay=0:0:enable=gte(t\\,1.5),format=yuv420p[o]')
+            subprocess.run(['ffmpeg', '-y', '-v', 'error', '-t', '10', '-i', path, '-i', b, '-filter_complex', fc,
+                            '-map', '[o]', '-map', '0:a?', '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '21', '-t', '10',
+                            '-c:a', 'aac', '-ar', '48000', '-ac', '2', '-b:a', '128k', '-af', 'afade=t=out:st=9:d=1',
+                            '-movflags', '+faststart', src], check=True, capture_output=True)
             r = requests.post(f'{API}/{_v()}/{pid}/video_stories', data={'upload_phase': 'start', 'access_token': tok},
                               timeout=60).json()
             if 'video_id' not in r:
@@ -202,9 +230,6 @@ def publicar_historia(path, clave=None, es_foto=False):
             with open(src, 'rb') as f:
                 u = requests.post(r['upload_url'], headers={'Authorization': f'OAuth {tok}', 'offset': '0',
                                                             'file_size': str(os.path.getsize(src))}, data=f, timeout=600).json()
-            if tmp:
-                try: os.remove(tmp)
-                except Exception: pass
             if not u.get('success'):
                 raise RuntimeError(f'subida: {u}'[:200])
             fin = requests.post(f'{API}/{_v()}/{pid}/video_stories', data={'upload_phase': 'finish', 'video_id': r['video_id'],
@@ -214,6 +239,9 @@ def publicar_historia(path, clave=None, es_foto=False):
         ok, det = True, fin.get('post_id', '')
     except Exception as e:
         det = str(e)[:200]
+    for t in tmp:
+        try: os.remove(t)
+        except Exception: pass
     HISTORIAS.append((time.strftime('%d/%m %H:%M'), nombre or str(clave), ok, det))
     del HISTORIAS[:-10]
     print('[historia]', nombre, 'ok' if ok else 'FALLÓ', det, flush=True)

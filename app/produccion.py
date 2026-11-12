@@ -361,6 +361,7 @@ def _programar(fecha, v, jid, salidas, mini, guion, auto=False):
                 'texto_facebook': (v.get('texto_foto') or v.get('texto_facebook', '')) if tipo == 'foto' else v.get('texto_facebook', ''),
                 'guion': guion,
                 'titulos': v.get('titulos_opciones', []),
+                'texto_tiktok': v.get('texto_tiktok', ''),
                 'archivos': ({'foto': 'foto.jpg', 'miniatura': 'miniatura.jpg'} if tipo == 'foto' else
                              {'video': os.path.basename(path), 'miniatura': 'miniatura.jpg'}),
                 'token': secrets.token_urlsafe(16), 'estado': 'programado', 'hora': hora,
@@ -833,7 +834,7 @@ def _subir_youtube(jid, m):
            + (f"⏰ Programado para las <b>{cuando}</b>.\n" if m.get('publicar_en', 0) - time.time() > 900 else '🌐 Ya está público.\n')
            + ('' if aud else '⚠️ Mientras Google aprueba la revisión de la app, YouTube lo deja en <b>privado</b>: '
                                'ábrelo en YouTube Studio y ponlo en Público.\n')
-           + f"✏️ Cambiar título o miniatura: https://studio.youtube.com/video/{vid}/edit\n\n" + _opciones(m))
+           + f"✏️ Cambiar título o miniatura: https://studio.youtube.com/video/{vid}/edit")
     tg.texto(txt[:4000], botones=[[{'text': '🖼️ Cambiar portada', 'callback_data': f'yport:{vid}'}]]
              if m['entrega'] == 'largo' else None)
 
