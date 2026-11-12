@@ -741,10 +741,10 @@ def _avisar_youtube(meta):
     tiktok = meta['entrega'] == 'tiktok'
     du = meta.get('duracion', 0)
     cuando = time.strftime('%I:%M %p', time.localtime(meta.get('publicar_en', time.time()))).lstrip('0')
-    hora_txt = (f"⏰ <b>Prográmalo para las {cuando}</b>\n\n" if meta.get('publicar_en', 0) - time.time() > 600
+    hora_txt = ('\n' if tiktok else f"⏰ <b>Prográmalo para las {cuando}</b>\n\n" if meta.get('publicar_en', 0) - time.time() > 600
                 else "⏰ Es buena hora: <b>súbelo ahora</b>.\n\n")
     cap = ((f"🎵 <b>TIKTOK · AVANCE DEL VIDEO LARGO</b> · ⏱️ {du // 60}:{du % 60:02d}\n"
-            "Súbelo a TikTok (termina con la intriga y manda a ver el video completo en YouTube).\n") if tiktok else
+            "🤖 Se publica SOLO en TikTok (Metricool) apenas el largo esté público en YouTube. Te lo mando solo para que lo veas.\n") if tiktok else
            f"📺 <b>YOUTUBE · {'VIDEO LARGO' if largo else 'SHORT'}</b> · ⏱️ {du // 60}:{du % 60:02d}\n") + (
            ('🤖 <i>Versión automática de respaldo</i>\n' if meta.get('auto') else '✍️ <i>Editado por Claude</i>\n') + hora_txt +
            f"<b>{meta['titulo_youtube']}</b>\n\n👉 Video en calidad completa, miniatura y textos: {link}")
@@ -762,8 +762,9 @@ def _avisar_youtube(meta):
         if largo:
             with open(os.path.join(F.DIR, meta['id'], 'miniatura.jpg'), 'rb') as f:
                 tg._api('sendPhoto', files={'photo': f}, chat_id=c, caption='🖼️ Miniatura')
-        tg._api('sendMessage', chat_id=c, text=texto[:4000], parse_mode='HTML')
-    if ntfy.activo():
+        if not tiktok:
+            tg._api('sendMessage', chat_id=c, text=texto[:4000], parse_mode='HTML')
+    if ntfy.activo() and not tiktok:
         ntfy.enviar(f"{'🎵 TikTok' if tiktok else '📺 YouTube · ' + ('largo' if largo else 'Short')} para subir", meta['titulo_youtube'], link)
 
 
