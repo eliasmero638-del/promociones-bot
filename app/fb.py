@@ -1,5 +1,5 @@
 """Publicación en la página de Facebook (Graph API oficial de Meta)."""
-import html, os, subprocess, time
+import html, os, subprocess, tempfile, threading, time
 import requests
 import config as C
 
@@ -98,8 +98,11 @@ def publicar(path, texto, titulo='', clave=None):
         return False, 'Esa página de Facebook no está conectada'
     try:
         if _dur(path) <= 90:
-            return True, _reel(path, texto, pid, tok)
-        return True, _video(path, texto, titulo, pid, tok)
+            res = _reel(path, texto, pid, tok)
+        else:
+            res = _video(path, texto, titulo, pid, tok)
+        _a_historias(clave, path, False)
+        return True, res
     except Exception as e:
         return False, str(e)[:300]
 
@@ -149,6 +152,69 @@ def publicar_foto(path, texto, clave=None):
                               files={'source': f}, timeout=120).json()
         if 'id' not in r:
             return False, str(r.get('error', r))[:300]
+        _a_historias(clave, path, True)
         return True, r.get('post_id') or r['id']
     except Exception as e:
         return False, str(e)[:300]
+
+
+# ---------- 12-nov: todo lo que se publica en Ridmer TV también va a sus HISTORIAS (pedido del dueño) ----------
+HISTORIAS = []          # últimas historias: (hora, página, ok, detalle) para /historias
+
+
+def _a_historias(clave, path, es_foto):
+    """En segundo plano, para no demorar la publicación. Páginas: config 'historias_paginas' (por defecto solo Ridmer TV)."""
+    c = C.get()
+    if not c.get('historias', True):
+        return
+    nombre = (clave or 'realities').lower()
+    if not any(p.lower() in nombre or nombre in p.lower() for p in c.get('historias_paginas', ['ridmer'])):
+        return
+    threading.Thread(target=publicar_historia, args=(path, clave, es_foto), daemon=True).start()
+
+
+def publicar_historia(path, clave=None, es_foto=False):
+    """Historia de la página (API de Page Stories). Video: máximo 60 s (si es más largo se usan los primeros 59 s)."""
+    pid, tok, nombre = pagina(clave)
+    ok, det = False, ''
+    try:
+        if not (pid and tok):
+            raise RuntimeError('página no conectada')
+        if es_foto:
+            with open(path, 'rb') as f:
+                r = requests.post(f'{API}/{_v()}/{pid}/photos', data={'published': 'false', 'access_token': tok},
+                                  files={'source': f}, timeout=120).json()
+            if 'id' not in r:
+                raise RuntimeError(str(r.get('error', r))[:200])
+            fin = requests.post(f'{API}/{_v()}/{pid}/photo_stories', data={'photo_id': r['id'], 'access_token': tok},
+                                timeout=60).json()
+        else:
+            src, tmp = path, None
+            if _dur(path) > 60:
+                tmp = tempfile.mktemp(suffix='.mp4')
+                subprocess.run(['ffmpeg', '-y', '-v', 'error', '-i', path, '-t', '59', '-c:v', 'libx264', '-preset', 'veryfast',
+                                '-crf', '21', '-c:a', 'aac', '-ar', '48000', '-movflags', '+faststart', tmp], check=True)
+                src = tmp
+            r = requests.post(f'{API}/{_v()}/{pid}/video_stories', data={'upload_phase': 'start', 'access_token': tok},
+                              timeout=60).json()
+            if 'video_id' not in r:
+                raise RuntimeError(str(r.get('error', r))[:200])
+            with open(src, 'rb') as f:
+                u = requests.post(r['upload_url'], headers={'Authorization': f'OAuth {tok}', 'offset': '0',
+                                                            'file_size': str(os.path.getsize(src))}, data=f, timeout=600).json()
+            if tmp:
+                try: os.remove(tmp)
+                except Exception: pass
+            if not u.get('success'):
+                raise RuntimeError(f'subida: {u}'[:200])
+            fin = requests.post(f'{API}/{_v()}/{pid}/video_stories', data={'upload_phase': 'finish', 'video_id': r['video_id'],
+                                                                         'access_token': tok}, timeout=120).json()
+        if not fin.get('success'):
+            raise RuntimeError(str(fin.get('error', fin))[:200])
+        ok, det = True, fin.get('post_id', '')
+    except Exception as e:
+        det = str(e)[:200]
+    HISTORIAS.append((time.strftime('%d/%m %H:%M'), nombre or str(clave), ok, det))
+    del HISTORIAS[:-10]
+    print('[historia]', nombre, 'ok' if ok else 'FALLÓ', det, flush=True)
+    return ok, det

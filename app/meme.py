@@ -89,18 +89,40 @@ def hacer(entrada, ini, fin, frase, cara_x, salida):
     # recorte del video original con la proporción de la zona de abajo (720x880), centrado en la cara
     crop = (f"crop=w='min(iw,ih*{W}/{abajo})':h=ih:"
             f"x='max(0,min(iw-ow,iw*{cx:.3f}-ow/2))':y=0,scale={W}:{abajo},setsar=1")
-    fc = (f"[0:v]{crop}[v];[1:v]scale={W}:{FRANJA}[t];"
-          f"[t][v]vstack=inputs=2,format=yuv420p[o]")
-    r = subprocess.run(['ffmpeg', '-y', '-v', 'error', '-ss', f'{max(0.0, ini):.2f}', '-t', f'{dur:.2f}', '-i', entrada,
-                        '-loop', '1', '-t', f'{dur:.2f}', '-i', png, '-filter_complex', fc, '-map', '[o]', '-map', '0:a?',
-                        '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '22', '-maxrate', '3M', '-bufsize', '6M',
-                        '-c:a', 'aac', '-b:a', '128k', '-af', 'loudnorm=I=-14:TP=-1.5', '-shortest',
-                        '-movflags', '+faststart', salida], capture_output=True, text=True)
+    # 12-nov: el audio salía a 96 kHz (loudnorm sube la frecuencia) y el iPhone no lo reproducía en Telegram
+    # (cuadro gris, 0:00). Ahora: audio 48 kHz, 30 fps fijos y tiempos desde cero.
+    fc = (f"[0:v]setpts=PTS-STARTPTS,fps=30,{crop}[v];[1:v]scale={W}:{FRANJA},fps=30[t];"
+          f"[t][v]vstack=inputs=2:shortest=1,format=yuv420p[o]")
+    tiene_audio = bool(subprocess.run(['ffprobe', '-v', 'error', '-select_streams', 'a', '-show_entries', 'stream=index',
+                                       '-of', 'csv=p=0', entrada], capture_output=True, text=True).stdout.strip())
+    if tiene_audio:
+        fc += ';[0:a]asetpts=PTS-STARTPTS,loudnorm=I=-14:TP=-1.5,aresample=48000[a]'
+    r = None
+    for buscar_antes in (True, False):           # si el salto rápido falla, se corta con precisión
+        ss = ['-ss', f'{max(0.0, ini):.2f}', '-t', f'{dur:.2f}']
+        entrada_args = (ss + ['-i', entrada]) if buscar_antes else (['-i', entrada] + ss)
+        r = subprocess.run(['ffmpeg', '-y', '-v', 'error'] + entrada_args +
+                           ['-loop', '1', '-t', f'{dur:.2f}', '-i', png, '-filter_complex', fc, '-map', '[o]']
+                           + (['-map', '[a]', '-c:a', 'aac', '-b:a', '128k', '-ar', '48000', '-ac', '2'] if tiene_audio else [])
+                           + ['-c:v', 'libx264', '-profile:v', 'high', '-level', '4.0', '-preset', 'veryfast', '-crf', '22',
+                              '-maxrate', '3M', '-bufsize', '6M', '-r', '30', '-t', f'{dur:.2f}',
+                              '-movflags', '+faststart', salida], capture_output=True, text=True)
+        if r.returncode == 0 and _dura(salida) >= min(2.5, dur * 0.8):
+            break
+        print('[meme] salió vacío o corto, reintento', (r.stderr or '')[-300:], flush=True)
     try:
         os.remove(png)
     except Exception:
         pass
-    if r.returncode != 0:
-        print('[meme] error', r.stderr[-400:], flush=True)
+    if r.returncode != 0 or _dura(salida) < 2.5:
+        print('[meme] error', (r.stderr or '')[-400:], flush=True)
         return None
     return salida
+
+
+def _dura(p):
+    try:
+        return float(subprocess.run(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', p],
+                                    capture_output=True, text=True).stdout.strip())
+    except Exception:
+        return 0.0

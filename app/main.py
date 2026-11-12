@@ -664,6 +664,12 @@ def comandos(tipo, chat, dato, raw):
                  f"sin meme: {st['no_sirve']} · con meme pero bajo puntaje (&lt;{cfg.get('meme_minimo', 70)}): {st['bajo']}\n"
                  f"memes hechos: {st['hechos']} · errores: {st['fallas']}\n\nÚltimos descartados:\n" +
                  ('\n'.join(st['ultimas']) or '—'), chat)
+    elif cmd == '/historias':                   # 12-nov: últimas historias de Facebook publicadas (o por qué fallaron)
+        import html
+        h = fb.HISTORIAS
+        tg.texto('📲 Historias de Facebook (últimas):\n' + ('\n'.join(
+            f"{'✅' if ok else '❌'} {hora} · {pag} · {html.escape(str(det))[:120]}" for hora, pag, ok, det in h[::-1])
+            or 'Todavía ninguna desde el último arranque.'), chat)
     elif cmd == '/ytestado':
         import youtube as YT
         if not YT.conectado():

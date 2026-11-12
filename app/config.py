@@ -55,6 +55,8 @@ DEFAULTS = {
     'radar_hora': 2,           # voz de Gemini elegida para Ridmer                     # tema secreto de la app ntfy
     'fb_page_token': '',
     'clip_max': 900,                     # sin tope real: dura lo que dure el momento
+    'historias': True,                  # 12-nov: lo que se publica en Ridmer TV también va a sus historias
+    'historias_paginas': ['ridmer'],
     'memes': True,                      # 10-nov: versión MEME de los mejores momentos (franja negra + frase)
     'meme_minimo': 70,                   # potencial mínimo de meme (0-100)
     'memes_auto': False,

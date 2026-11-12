@@ -148,7 +148,7 @@ def vertical(entrada, ass, salida):
           f"subtitles='{ass}'[v]")
     r = subprocess.run(['ffmpeg', '-y', '-v', 'error', '-i', entrada, '-filter_complex', fc, '-map', '[v]', '-map', '0:a?',
                         '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '23', '-maxrate', '2.5M', '-bufsize', '5M',
-                        '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '128k', '-af', 'loudnorm=I=-14:TP=-1.5',
+                        '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '128k', '-af', 'loudnorm=I=-14:TP=-1.5,aresample=48000', '-ar', '48000',
                         '-movflags', '+faststart', salida], capture_output=True, text=True)
     if r.returncode != 0:
         log('error vertical:', r.stderr[-500:])
