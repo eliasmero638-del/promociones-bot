@@ -323,3 +323,39 @@ cómo lo atraparon y qué hace después). Para el 17-nov elige tú otra historia
 haya contado (ej.: el robo al Banco de Bangladesh, Silk Road y Ross Ulbricht, Gary McKinnon y la NASA). El largo del
 15-nov sigue siendo de misterio normal (lista "FUNCIONAN"). Si el encargo de largo de esos días es de otro tema,
 reemplázalo por este; las fotos y videos los pides tú en el plan con "buscar" y links directos.
+
+## 🎥 ESCENAS 3D CON PERSONAS REALISTAS (12-nov, APROBADO POR EL DUEÑO — reemplaza a las dibujadas en los momentos clave)
+El dueño vio la prueba (escape en helicóptero, enganche de Kevin Mitnick) y la quiere en todos los videos desde el 13-nov:
+personas 3D con cara, piel, pelo y ropa reales (Microsoft Rocketbox, licencia MIT = uso comercial libre) en escenarios 3D,
+con cámara que se mueve, luces, sombras, polvo, estilo "maqueta" como los videos virales de TikTok (cabecera arriba con
+la fecha en blanco y el título en NARANJA, palabras clave en naranja).
+- DÓNDE: el ENGANCHE (segmento 0) y 2–3 momentos donde NO hay video real o donde se explica CÓMO pasó (cómo escapó,
+  cómo entró, cómo lo atraparon). Todo lo demás sigue con videos reales (obligatorios) y fotos. En el largo 3–5 escenas 3D.
+- CÓMO: 1) al empezar: `python3 tools/tres_d.py preparar` (baja los modelos, ~1 min). 2) por cada escena escribe un
+   módulo `esc_N.js` junto a cambios.json copiando `docs/ejemplos/3d_mitnick.js` (y `app/tres_d/kit.js`: carcel,
+   calleNoche, carro (con antena = FBI), cuartoComputadora, pasillo, cono de luz, persona, cambiarClip, mirarArriba;
+   `motor.js`: helicoptero, polvo, caja, mat, texturas concreto/roca/arena/ladrillo). 3) revisa 2–3 cuadros:
+   `python3 tools/tres_d.py foto esc_N.js prueba.jpg 1.5 1920 1080 cabecera 6` (6 = duración del segmento) y míralos con Read (caras visibles, nada
+   tapado por el texto, nada flotando). 4) en cambios: `"dibujo": {"N": {"tres_d": "esc_N.js", "textos": "cabecera"}}`.
+   En los Shorts reutiliza el mp4 (`anim_NN.mp4`) como siempre.
+- `montar(ctx)` recibe ctx.dur (= duración del segmento): reparte los planos en proporción (ver el ejemplo).
+  ctx.W/ctx.H: el largo es HORIZONTAL (1920x1080, usa fov más chico) y Facebook/Shorts VERTICALES.
+- Textos: debajo de la voz usa "cabecera" (solo fecha/lugar/título arriba; la frase de abajo NO, la voz ya lo dice).
+- Personas (nombre corto): Male_Adult_01…12, Female_Adult_01…06, Male_Child_01, Female_Child_01, Police_Male_01…03,
+  Police_Female_01, Business_Male_01…03 (traje: agentes, ejecutivos), Business_Female_01/02, Pilot_Male_01/02,
+  Construction_Male_01/02 (casco: mineros, obreros), Military_Male_01/02, Medical_Male_01, Medical_Female_01,
+  Fire_Male_01, Security_Male_01. Lista exacta: rb/indice.json en la carpeta de modelos.
+- Movimientos (archivo .max.fbx de rb/Assets/Animations): m_idle_neutral_01, m_idle_look_around_01..03,
+  m_idle_nervous_01..03, m_wave_01, m_cheer_01, m_claphands_01, m_gestic_talk_excited_01, m_gestic_shrug_01,
+  m_cell_phone_talk_01, m_knock_door (levanta la mano a los 2,2 s y toca 3,0–4,1 s), m_listen_door, m_sit_chair_idle_*,
+  m_sit_table_idle_neutral_01 / _look_around, m_work_table, m_documents_check, m_take_picture, m_crouch_idle,
+  correr/caminar en `all_animations_max_motextr_xy/`: m_run_fast_01, m_run_neutral_01, m_walk_neutral_01,
+  m_walk_fast_01 (el kit los deja en su sitio: mueve tú la posición). Mujeres: f_idle_*, f_wave_01, f_run_fast_01,
+  f_walk_neutral_01. Mirar al cielo: `K.mirarArriba(p, 45)` después de setTime. Huesos: Bip01_Head, Bip01_R_UpperArm…
+- Tiempo: ~0,7 s por cuadro (24 fps) → 5 s de escena ≈ 1,5 min. Máximo ~3 min de 3D al día en total.
+- Reglas: personajes GENÉRICOS (nunca la cara de una persona real), fieles a los hechos, nada de sangre ni disparos.
+  Si armas un escenario nuevo que sirva para otras historias (mina, avión, barco, oficina, bosque…), agrégalo como
+  función a `app/tres_d/kit.js` y súbelo (SOLO ese archivo) para que la biblioteca crezca cada día.
+- 13-nov (largo de Kevin Mitnick): el segmento 0 (enganche, ~10 s) es `docs/ejemplos/3d_mitnick.js` tal cual (ya lo vio
+  el dueño), con "textos": "cabecera". Arma 2–4 escenas 3D más del paso a paso (cómo engañaba por teléfono haciéndose
+  pasar por técnico — a nivel de historia, sin instrucciones —, la persecución, la cárcel) reusando el kit.

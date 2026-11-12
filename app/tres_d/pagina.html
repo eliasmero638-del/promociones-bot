@@ -1,0 +1,54 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<script type="importmap">{"imports":{"three":"./tj/build/three.module.js"}}</script>
+<style>
+@font-face{font-family:Osw;src:url(Oswald.ttf)}
+@font-face{font-family:Maq;src:url(Maquina.ttf)}
+@font-face{font-family:Mar;src:url(Marker.ttf)}
+html,body{margin:0;background:#000;overflow:hidden}
+#cuadro{position:relative;overflow:hidden;background:#000}
+#lienzo canvas{display:block}
+.vin{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 45%,rgba(0,0,0,0) 45%,rgba(0,0,0,.55) 100%)}
+.grano{position:absolute;inset:0;width:100%;height:100%;opacity:.08;mix-blend-mode:overlay;pointer-events:none}
+.cab{position:absolute;left:0;right:0;top:calc(var(--h) * .086);text-align:center;font-family:Osw;text-transform:uppercase;text-shadow:0 3px 12px rgba(0,0,0,.7)}
+.cab .f{color:#fff;font-weight:600;font-size:calc(var(--k) * 22px);letter-spacing:2px}
+.cab .t{color:#f28c28;font-weight:700;font-size:calc(var(--k) * 58px);line-height:1.05;margin-top:4px}
+.cab .s{color:#f28c28;font-weight:600;font-size:calc(var(--k) * 22px);letter-spacing:1px;margin-top:4px}
+.sub{position:absolute;left:6%;right:6%;top:calc(var(--h) * var(--suby));text-align:center;font-family:Osw;font-weight:600;font-size:calc(var(--k) * 44px);
+ line-height:1.15;color:#fff;text-transform:uppercase;text-shadow:0 3px 10px rgba(0,0,0,.85),0 0 2px #000}
+.sub b{color:#f28c28;font-weight:600}
+.nota{position:absolute;background:#f4f1e8;box-shadow:0 25px 50px rgba(0,0,0,.6);box-sizing:border-box;font-family:Maq;color:#222}
+.nota .m{font-family:Mar;color:#c62020}
+</style></head>
+<body><div id="cuadro"><div id="lienzo"></div><div class="vin"></div><canvas class="grano" id="grano" width="360" height="640"></canvas><div id="capa"></div></div>
+<script type="module">
+import * as THREE from 'three';
+import * as M from './motor.js'; import * as G from './gente.js'; import * as K from './kit.js';
+const q = new URLSearchParams(location.search);
+const W = +q.get('W') || 720, H = +q.get('H') || 1280;
+const cuadro = document.getElementById('cuadro'); cuadro.style.width = W + 'px'; cuadro.style.height = H + 'px';
+cuadro.style.setProperty('--k', Math.min(W, H) / 720 * (W > H ? 0.8 : 1)); cuadro.style.setProperty('--h', H + 'px'); cuadro.style.setProperty('--suby', W > H ? .78 : .67);
+{ const g = document.getElementById('grano').getContext('2d'), im = g.createImageData(360, 640);
+  for (let i = 0; i < im.data.length; i += 4) { const v = Math.random() * 255; im.data[i] = im.data[i + 1] = im.data[i + 2] = v; im.data[i + 3] = 255; } g.putImageData(im, 0, 0); }
+const capa = document.getElementById('capa'); let ult = '';
+/** texto(cabecera, subtitulo): cabecera = {f: 'fecha', t: 'TÍTULO naranja', s: 'lugar'} o null; subtítulo con <b>palabra</b> en naranja. */
+const modo = q.get('textos') || 'todo';
+const texto = (cab, sub, extra = '') => {
+  if (modo === 'nada') { cab = null; sub = null; } else if (modo === 'cabecera') sub = null;
+  const c = cab ? `<div class="cab">${cab.f ? `<div class="f">${cab.f}</div>` : ''}${cab.t ? `<div class="t">${cab.t}</div>` : ''}${cab.s ? `<div class="s">${cab.s}</div>` : ''}</div>` : '';
+  const h = c + (sub ? `<div class="sub">${sub}</div>` : '') + extra;
+  if (h !== ult) { ult = h; capa.innerHTML = h; }
+};
+try {
+  const { renderer, scene, cam } = M.crear(W, H, { fov: 40, exposicion: 1.2 });
+  const r0 = renderer.render.bind(renderer);
+  renderer.render = (s, c) => { c.aspect = W / H; c.updateProjectionMatrix(); r0(s, c); };   // fov cambiado en frame() vale ya
+  const esc = await import('./' + q.get('escena'));
+  const ctx = { THREE, M, G, K, W, H, renderer, scene, cam, texto, textos: modo, dur: +q.get('dur') || 5 };
+  const frame = await esc.montar(ctx);
+  window.frame = t => frame(t);
+  await document.fonts.ready;
+  window.frame(+(q.get('t') || 0));
+} catch (e) { console.log('ERROR ' + (e.stack || e)); window.fallo = String(e.stack || e); }
+window.listo = true;
+</script></body></html>

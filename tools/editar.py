@@ -236,6 +236,11 @@ def main():
                 subprocess.run(['ffmpeg', '-v', 'error', '-y', '-stream_loop', '-1', '-i', esc['mp4'], '-t', f'{dd:.2f}',
                                 '-an', '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '18', '-pix_fmt', 'yuv420p', sal],
                                check=True)
+            elif t == 'dibujo' and esc.get('tres_d'):     # escena 3D (personas realistas): tools/tres_d.py
+                js = esc['tres_d'] if os.path.isabs(esc['tres_d']) else os.path.join(os.path.dirname(os.path.abspath(
+                    sys.argv[5])) if len(sys.argv) > 5 else mat, esc['tres_d'])
+                subprocess.run([sys.executable, os.path.join(AQUI, 'tres_d.py'), 'grabar', js, sal, f'{dd:.2f}', str(W_), str(H_),
+                                esc.get('textos', 'cabecera')], check=True)
             elif t == 'dibujo' and esc.get('script'):     # dibujo hecho a medida: python3 script salida seg W H
                 sc = esc['script'] if os.path.isabs(esc['script']) else os.path.join(os.path.dirname(os.path.abspath(
                     sys.argv[5])) if len(sys.argv) > 5 else mat, esc['script'])
