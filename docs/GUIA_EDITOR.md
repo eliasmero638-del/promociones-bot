@@ -302,3 +302,15 @@ Reproducciones de los reels del 12-oct al 11-nov:
    fantasma, personas sin identidad), ovnis/aviones/fenómenos, ciencia y "datos curiosos", récords. Hashtags tipo
    #historiasreales #datoscuriosos #misterio. NUNCA crímenes, asesinos, secuestros, violencia ni muertes de niños,
    aunque vengan en los encargos: cámbialos por la reserva o por un tema propio de la lista "FUNCIONAN".
+
+## FOTOS CON HISTORIA EN RIDMER TV (11-nov, pedido del dueño)
+Facebook también paga las FOTOS (una sola foto de La Mansión le dio $46 a otra página). Cada día, además de los videos,
+2 publicaciones de FOTO en Ridmer TV: fb1f (15:30) y fb2f (20:00), de las MISMAS historias de fb1 y fb3.
+- Plan: `{"eid": "fb1f", "tipo": "foto", "omitir": true, "hora_foto": "15:30", "titulo_youtube": "<titular>",
+  "texto_foto": "<historia>"}` (omitir = el servidor no le prepara material ni respaldo; la foto la haces tú).
+- texto_foto: 120–200 palabras. 1.ª línea = gancho brutal; luego la historia contada con detalle (qué pasó, cómo, el
+  dato más sorprendente) y SIEMPRE termina con una pregunta al público ("¿Tú qué habrías hecho?") + 3 hashtags.
+  Nada de crímenes (ver "QUÉ TEMAS FUNCIONAN").
+- Imagen: `python3 tools/foto_post.py <foto real del material> "TITULAR con *PALABRA* en amarillo" <salida>/fb1f/foto.jpg
+  [segunda foto real]` → 1080x1350 con la foto real arriba y el titular abajo. Mírala con Read. Entrégala con
+  `tools/entregar.py $HOY <salida>/fb1f` (la carpeta solo necesita foto.jpg). Llega al bot y se publica sola a su hora.
