@@ -1,0 +1,256 @@
+{
+ "fecha": "2026-11-12",
+ "hay_largo": false,
+ "encargos": [
+  {
+   "eid": "fb1",
+   "tipo": "fb",
+   "titulo": "Vuelo 965 de American Airlines",
+   "titulo_sugerido": "Vuelo 965 de American Airlines",
+   "fuente": "https://es.wikipedia.org/wiki/Vuelo_965_de_American_Airlines",
+   "texto": "El vuelo 965 de American Airlines era un vuelo regular desde el Aeropuerto Internacional de Miami en Miami, Florida, hasta el Aeropuerto Internacional Alfonso Bonilla Aragón en Cali, Colombia. El 20 de diciembre de 1995, el Boeing 757-200 que volaba esta ruta (matrícula N651AA​) se estrelló contra una montaña en Buga, Colombia, alrededor de las 9:40 p.m., matando a 151 de los 155 pasajeros y a los ocho miembros de la tripulación.​​\nHa sido el peor accidente aéreo registrado en Colombia superando el vuelo 410 de Avianca estrellado en 1988.\nEl accidente fue el primer accidente de un 757 propiedad de Estados Unidos y actualmente es el accidente de aviación más mortal ocurrido en Colombia.​​También fue el accidente más mortal que involucró a un Boeing 757 en ese momento,​pero fue superado por el vuelo 301 de Birgenair que se estrelló siete semanas después con 189 muertes.​El vuelo 965 fue el desastre aéreo más mortal que involucró a un avión estadounidense desde el bombardeo del vuelo 103 de Pan Am en 1988.​\nFue el desastre aéreo más grave de 1995, superando el accidente del Lockheed L-188 de Trans Service Airlift.\nLa Unidad Administrativa Especial de Aeronáutica Civil de Colombia investigó el accidente y determinó que fue causado por errores de navegación de la tripulación de vuelo.​\n\n\n== Aeronave ==\n\nEl avión accidentado fue un Boeing 757-223 de 4 años y 4 meses de antigüedad, matriculado N651AA. Su vuelo inaugural era el 12 de agosto de 1989 y era el Boeing 757 número 390 construido. Estaba propulsado por dos motores Rolls-Royce RB211.​​\n\n\n== Tripulación ==\nLa tripulación de la cabina estaba formada por el capitán Nicholas Tafuri (57 años) y el primer oficial Donald \"Don\" Williams (39 años).​Ambos pilotos eran considerados aviadores altamente cualificados. El capitán Tafuri contaba con más de 13.000 horas de vuelo (incluidas 2.260 horas en el Boeing 757/767), y el primer oficial Williams contaba con casi 6.000 horas, 2.286 de ellas en el Boeing 757/767.​\nEl capitán Tafuri había volado con la Fuerza Aérea de los Estados Unidos de 1963 a 1969 y sirvió en la guerra de Vietnam, y se unió a American Airlines en 1969. El primer oficial Williams había volado con la Fuerza Aérea de los Estados Unidos de 1979 a 1986, y se unió a American Airlines en 1986.\n\n\n== Historia del vuelo ==\n\n\n=== Salida ===\nEn ese momento, el vuelo 965 transportaba principalmente personas que regresaban a Colombia para las vacaciones de Navidad, vacacionistas y gente de negocios.​Una tormenta invernal en el Noreste de Estados Unidos provocó que la aerolínea retrasara la salida del avión durante 30 minutos para permitir que los pasajeros en conexión abordaran el vuelo, y la congestión estacional provocó más retrasos.​El avión se apartó de la puerta D33 de Miami a las 5:14 PM y luego rodó hasta la pista 27R, y el vuelo 965 despegó a las 6:35 p. m. EST (23:35 UTC), con casi dos horas de retraso.​​​Algunos de los pasajeros perdieron el avión debido a conexiones fallidas.\n\n\n=== Saliendo del rumbo ===\n\nLos controladores aéreos de Cali no tenían un radar funcional para monitorear el 757, ya que había sido explotado en 1992 por el grupo terrorista FARC.​La aproximación de Cali utiliza varias radiobalizas para guiar a los pilotos por las montañas y cañones que rodean la ciudad. La computadora de navegación del sistema de gestión de vuelo (FMS) del avión ya tenía estas radiobalizas programadas y, en teoría, debería haber indicado a los pilotos exactamente dónde virar, ascender y descender, desde Miami hasta la terminal de Cali.​\nComo el viento estaba en calma, los controladores de Cali preguntaron a los pilotos si querían volar una aproximación directa sin precisión a la pista 19 en lugar de dar la vuelta para una aproximación ILS de precisión a la pista 01. Los pilotos aceptaron la aproximación directa, con la esperanza de recuperar algo de tiempo. Luego, los pilotos borraron por error todos los puntos de referencia de aproximación programados del plan de vuelo en el FMS de la aeronave. Cuando el controlador pidió a los pilotos que informaran que pasaban sobre el VOR de Tulua (identificado como \"ULQ\") al norte de Cali, ya no estaba programado en el plan de vuelo del FMS, por lo que tuvieron que encontrar el identificador del VOR \"ULQ\" en su carta de aproximación. Mientras tanto, extendieron los frenos aerodinámicos de la aeronave para reducir la velocidad y acelerar su descenso.​\nPara cuando los pilotos seleccionaron el identificador VOR de Tulua \"ULQ\" en el plan de vuelo del FMS, ya lo habían sobrepasado. Los pilotos intentaron entonces seleccionar el siguiente punto de referencia de aproximación, Rozo, en el FMS. Sin embargo, la baliza no direccional (NDB) de Rozo se identificó como \"R\" en su carta de aproximación, pero no en el FMS. En su lugar, la base de datos del FMS utilizó una convención de nomenclatura diferente e identificó el NDB de Rozo como \"ROZO\". Colombia también había duplicado el identificador \"R\" para el NDB de Romeo cerca de Bogotá, a 170 millas (150 nmi; 270 km) de Cali, lo cual no está en línea con el estándar de la OACI vigente desde 1978 de solo duplicar identificadores si están separados por más de 690 millas (600 nmi; 1100 km). Al seleccionar \"R\" de la lista de puntos de referencia, el capitán hizo que el piloto automático comenzara a volar un curso a Bogotá, lo que provocó que el avión girara hacia el este en un amplio semicírculo. Los pilotos intentaron entonces corregirlo volviendo al sur. Para cuando se detectó el error, la aeronave se encontraba en un valle que corría aproximadamente de norte a sur, paralelo al que deberían haber estado. Los pilotos habían puesto la aeronave en rumbo de colisión con una montaña de 9800 pies (3000 m).​El controlador aéreo, Nelson Rivera Ramírez, consideró que algunas de las peticiones de los pilotos no tenían sentido, pero no sabía suficiente inglés no aeronáutico para transmitirlo.​\n\n\n=== Accidente ===\n\nDoce segundos antes de que el avión impactara contra la montaña, llamada El Diluvio, se activó el sistema de advertencia de proximidad al suelo (GPWS), anunciando una colisión inminente con el terreno y emitiendo una alarma. Un segundo después de esta advertencia, el copiloto desactivó el piloto automático y el capitán intentó ascender para alejarse de la montaña. Dos segundos después de la advertencia, se seleccionó la potencia de despegue y, al segundo siguiente, se incrementó el cabeceo a 20,6° hacia arriba, lo que provocó la activación del vibrador de la palanca de mando.​Este vibrador vibra mecánicamente la palanca de mando para advertir a la tripulación de una entrada en pérdida aerodinámica inminente.\n\nCuando se seleccionó la potencia de despegue, ninguno de los pilotos había recordado desactivar los frenos de velocidad desplegados previamente, que estaban completamente extendidos y redujeron significativamente la velocidad de ascenso. A las 9:41:28 p. m. EST, el avión chocó contra árboles a unos 8920 pies (2720 m) sobre el nivel medio del mar en el lado este de la montaña de 9000 pies (2700 m) de altura. El último registro en el registrador de datos de vuelo indicó que el avión volaba a 187 nudos (215 mph; 346 km/h) y con una actitud de cabeceo de casi 28.º El accidente fue a 6 millas (5 nmi; 10 km) al sur del VOR de Tulua y a 17 millas (15 nmi; 27 km) al norte del extremo de aproximación de la pista 19 en el Aeropuerto Internacional Alfonso Bonilla Aragón.​El avión impactó cerca de la cima y la mayor parte de los restos saltaron de la montaña y cayeron en el lado opuesto.​\nCinco pasajeros, todos sentados a dos filas de distancia entre sí, sobrevivieron al impacto inicial, pero uno murió dos días después a causa de sus heridas.​Además de los cuatro sobrevivientes humanos,​un perro, que estaba en un transportín en la bodega de carga en el momento del accidente, sobrevivió al accidente.​\nEl accidente se presentó a 46 km del Aeropuerto Internacional A. B. A de Cali (CLO), los municipios más cercanos era Buga a 24 km del accidente, Tuluá a 28 km, Sevilla a 51 km, Zarzal a 62 km.\n\n\n== Investigación e informe final ==\nEl accidente fue investigado por la Unidad Administrativa Especial de Aeronáutica Civil de la República de Colombia,​con la asistencia de la Junta Nacional de Seguridad en el Transporte de los Estados Unidos (NTSB), así como otras partes, incluida la Administración Federal de Aviación (FAA) de los Estados Unidos, la Asociación de Pilotos Aliados (APA), American Airlines, Boeing Commercial Airplanes Group y Rolls-Royce Engines.\nLas investigaciones revelaron que ni el simulador de base fija de Boeing ni el simulador del sistema de gestión de vuelo pudieron ser revertidos con los datos obtenidos directamente del registrador de datos de vuelo (FDR) del avión accidentado. Debido a que los simuladores de vuelo del 757 no pudieron ser revertidos durante las pruebas, no se pudo determinar con precisión si el avión habría evitado las copas de la montaña/árbol si los aerofrenos se hubieran retraído durant",
+   "candidatos": [
+    {
+     "n": 1,
+     "desc": "foto del artículo",
+     "q": "articulo"
+    },
+    {
+     "n": 2,
+     "desc": "foto del artículo",
+     "q": "articulo"
+    },
+    {
+     "n": 3,
+     "desc": "foto del artículo",
+     "q": "articulo"
+    },
+    {
+     "n": 4,
+     "desc": "CGI of N651AA before impact.png",
+     "q": "American Airlines Flight 965"
+    },
+    {
+     "n": 5,
+     "desc": "1995 collage V4.png",
+     "q": "American Airlines Flight 965"
+    },
+    {
+     "n": 6,
+     "desc": "1995 Events montage 16-grid version.jpg",
+     "q": "American Airlines Flight 965"
+    },
+    {
+     "n": 7,
+     "desc": "Commissioning ceremony for the U.S. Coast Guard Cutter Angela McShan 191026-G-LV348-1",
+     "q": "Donald Williams first officer"
+    },
+    {
+     "n": 8,
+     "desc": "USMC-120525-M-5479H-021.jpg",
+     "q": "Donald Williams first officer"
+    },
+    {
+     "n": 9,
+     "desc": "The Scottonian (1919) (14587439810).jpg",
+     "q": "Donald Williams first officer"
+    }
+   ],
+   "hoja": "fb1/hoja.jpg"
+  },
+  {
+   "eid": "fb2",
+   "tipo": "fb",
+   "titulo": "Vuelo 518 de Santa Bárbara Airlines",
+   "titulo_sugerido": "Vuelo 518 de Santa Bárbara Airlines",
+   "fuente": "https://es.wikipedia.org/wiki/Vuelo_518_de_Santa_B%C3%A1rbara_Airlines",
+   "texto": "El vuelo 518 de Santa Bárbara Airlines servía la ruta Mérida-Caracas, en Venezuela, cuando se accidentó fatalmente el 21 de febrero de 2008, en las montañas andinas que rodean la ciudad de Mérida pocos minutos después del despegue. Despegó a las 5:29 de la tarde del Aeropuerto Alberto Carnevalli en la ciudad de Mérida. Como es habitual, la aeronave informó su despegue con la torre de control. No obstante, poco después de su primer informe, la aeronave con matrícula YV-1449, de tipo Aeroespatiale ATR 42-300, no se comunicó con su punto de control siguiente (Aeropuerto Nacional Antonio Nicolás Briceño de la ciudad de Valera), por lo que el Instituto Nacional de Aeronáutica Civil (INAC) debió declararla en fase DETRESFA, lo cual se realiza cuando una aeronave deja de tener comunicaciones con un punto en específico por un determinado tiempo.\nAl principio, el avión fue considerado oficialmente como desaparecido, sin embargo, testigos informaron haber escuchado una explosión. El Instituto de Protección Civil y Administración de Desastres declaró que podrían haber sido hallados los restos del avión desaparecido en el Páramo de los Conejos, un sitio ubicado a unos diez kilómetros del aeropuerto de origen.​\nSanta Bárbara Airlines se pronunció en dos ocasiones; en su primer comunicado manifestaron las palabras de condolencia a los familiares de los pasajeros y tripulantes que fallecieron en el trágico accidente y, además, que se ofrecerían en toda disposición para el traslado de los mismos y para cualquier servicio que los mismos requirieran. En su segundo comunicado​ hizo alusión al levantamiento de la orden desprendida del Instituto Nacional de Aeronáutica Civil en la cual obligaban a la empresa a cesar las operaciones donde se utilizara el avión tipo Aeroespatiale ATR 42-300, por lo tanto, todos los vuelos nacionales habían sido cancelados. Los vuelos internacionales no se interrumpieron y posteriormente la ruta Mérida - Maiquetía estaría siendo cubierta con entera normalidad, aunque los vuelos serían redirigidos al Aeropuerto Internacional Juan Pablo Pérez Alfonso en El Vigía, a unos noventa kilómetros de Mérida.\nUno de los pasajeros era el alcalde del municipio Rangel Alexander Quintero (cuya capital es la ciudad de Mucuchíes, estado Mérida) y su hijo Eisberth Quintero de 11 años de edad. También perdió la vida en este accidente el conocido abogado y analista de geopolítica internacional Italo Luongo.\n\n\n== Desarrollo de los acontecimientos ==\n\n\n== Colaboración internacional ==\nEl día 22 de febrero de 2008 llegó a Venezuela una comisión de la Junta de Investigaciones de Accidentes Aéreos de Francia. Junto a ello también estará presente un representante de la fábrica del tipo de aeronave siniestrada Aérospatiale. Este compromiso está vigente por el Convenio sobre Aviación Civil Internacional de la Organización de Aviación Civil Internacional (OACI), que establece que pueden participar en el esclarecimiento de los hechos y de las causas del siniestro autoridades y miembros de los países intervinientes, en este caso, Francia por ser la fabricante de la aeronave y Venezuela, por ser quien solicitó tal colaboración.\n\n\n== Causas del accidente ==\n\nDebido a la aproximación del vuelo de Avior y que comprometía la salida a la hora estipulada del Vuelo de Santa Bárbara, el piloto Aldino Garanito y el copiloto Dennis Ferreira apresuraron su rodaje a pista, sin cumplir con los tres minutos reglamentarios de espera que indica el fabricante del avión para que los equipos de la aeronave se acoplen desde el momento del encendido.\nAl no estar acoplados los equipos, los giróscopos de la aeronave no emitían ninguna información digital, lo que para los pilotos significaba salir a oscuras tal y como lo reveló la caja de voz.\nSin embargo, cabe destacar que la ruta utilizada por el Vuelo 518 y el vuelo de Avior no era la ruta autorizada por el Instituto Nacional de Aeronáutica Civil para ir del Aeropuerto de Mérida a Maiquetía. La ruta autorizada sería: saliendo de Mérida con rumbo al oeste, se sobrevuela Lagunillas y Estanques, se vira al norte para tomar un corredor entre las montañas de Mesa Bolívar y Chiguará, se sigue hacia El Vigía y nuevamente un viraje hacia el este y se sobrevuela poco después Carora, Barquisimeto, para tomar el rumbo hacia el centro del país. La tripulación de Santa Bárbara Airlines tomó una ruta alterna, virando 180° en el corredor vial Río Chama —sobre Lagunillas—, pasando a través de un estrecho corredor en el Páramo de los Conejos. \nUna vez que despegaron, los pilotos decidieron dejar al avión de Avior volar pegado a la cordillera sur (Sierra Nevada), para que pudiese aterrizar, mientras que el avión de Santa Bárbara voló pegado a la cordillera norte (Cara del Indio). Una vez en el aire, comenzaron el viraje a la derecha muy cerca de la cordillera norte, y al no tener los giróscopos aún funcionando, se encontraron posiblemente con una nube que los desorientó espacialmente, lo que los llevó a colisionar contra la montaña.\n\n\n== Dramatización ==\nEste accidente fue presentado en el programa de televisión canadiense Mayday: catástrofes aéreas, en el episodio «28 segundos de vida». El accidente fue reexaminado en una temporada compilatoria posterior, en el episodio «Datos mortales».\n\n",
+   "candidatos": [
+    {
+     "n": 1,
+     "desc": "foto del artículo",
+     "q": "articulo"
+    },
+    {
+     "n": 2,
+     "desc": "Santa Barbara Airlines ATR 42-300 YV1449.jpg",
+     "q": "Santa Barbara Airlines Flight 518"
+    },
+    {
+     "n": 3,
+     "desc": "Portrait de Pierre-André de Suffren (1726-1788), amiral, S3518.jpg",
+     "q": "Santa Barbara Airlines Flight 518"
+    },
+    {
+     "n": 4,
+     "desc": "Santa Barbara Airlines ATR ATR-42-320 Callens-2.jpg",
+     "q": "Santa Barbara Airlines Flight 518"
+    },
+    {
+     "n": 5,
+     "desc": "Alberto Canevali airport.JPG",
+     "q": "Mérida Venezuela airport"
+    },
+    {
+     "n": 6,
+     "desc": "Aereal SW view Merida and airport 2011. - panoramio.jpg",
+     "q": "Mérida Venezuela airport"
+    },
+    {
+     "n": 7,
+     "desc": "154bk - LAI - Linea Aérea I.A.A.C.A. ATR 72; YV-1004C@MRD;15.10.2001 (4794016363).jpg",
+     "q": "Mérida Venezuela airport"
+    },
+    {
+     "n": 8,
+     "desc": "9M-MRD taxiing.jpg",
+     "q": "Alberto Carnevalli Airport"
+    },
+    {
+     "n": 9,
+     "desc": "Figura Pudu mephistophiles A74108720240108.jpg",
+     "q": "Páramo de los Conejos"
+    },
+    {
+     "n": 10,
+     "desc": "Mollizna en el páramo Los Conejos..jpg",
+     "q": "Páramo de los Conejos"
+    },
+    {
+     "n": 11,
+     "desc": "Pudua mephistophiles (J. Smit) (PZS 1896).jpg",
+     "q": "Páramo de los Conejos"
+    }
+   ],
+   "hoja": "fb2/hoja.jpg"
+  },
+  {
+   "eid": "fb3",
+   "tipo": "fb",
+   "titulo": "Accidente del Fairchild Metro III de Air Class Líneas aéreas",
+   "titulo_sugerido": "Accidente del Fairchild Metro III de Air Class Líneas aéreas",
+   "fuente": "https://es.wikipedia.org/wiki/Accidente_del_Fairchild_Metro_III_de_Air_Class_L%C3%ADneas_a%C3%A9reas",
+   "texto": "El accidente del Fairchild Metro III de Air Class Líneas aéreas ocurrió el miércoles 6 de junio de 2012 cuando un avión turbohélice de dicha empresa aeronáutica, se estrelló en las aguas del Río de la Plata poco después del despegue mientras se dirigía a realizar un vuelo de carga desde el aeropuerto de Montevideo, Uruguay, hasta el aeropuerto de Ezeiza en Buenos Aires, Argentina.​\n\n\n== Aeronave y tripulación ==\nEl aparato implicado era un Swearingen SA227-AC Metro III construido en 1982 haciendo su primer vuelo ese año. Antes de que Air Class lo obtuviera, el avión fue operado por otras ocho aerolíneas anteriormente, mencionando algunas como Trans-Colorado Airlines, Conquest Airlines o Flight International. En el momento del accidente, la aeronave estaba matriculada como CX-LAS.​ \nLos dos tripulantes a bordo eran:\n\nEl capitán y piloto al mando, Walter Rigo, de 63 años y tenía 16.177 horas de vuelo.\nEl copiloto, Martín Riva, de 34 años y acumuló 406 horas de vuelo.​\n\n\n== Acontecimientos y búsqueda prolongada ==\nComo se dijo al iniciar, el avión despegó de la pista 24 del Aeropuerto Internacional de Carrasco de la ciudad de Montevideo, Uruguay alrededor de las 19:55 hora local, haciendo un vuelo de carga que se hacía con frecuencia diaria, ya que eran envíos de correo internacional de la empresa de paquetería, DHL. Tenía como destino el Aeropuerto Internacional de Ezeiza en la capital argentina, Buenos Aires.\nMientras ascendía a la altitud asignada de FL80, el avión dio vuelta a la izquierda. El controlador se puso en contacto con el vuelo. La tripulación respondió que cambiarían de rumbo hacia el punto de ruta SARGO. Este fue el último contacto con el vuelo.\nLa aeronave impactó en el Río de la Plata, zona sur cercana de la Isla de Flores.\nBúsqueda\nLa Fuerza Aérea Uruguaya, la Armada y ADES realizaron la búsqueda de la aeronave sobre la costa uruguaya.​\nFinalizando la tercera semana de junio, se había relevado el 50% del área y todavía seguía sin aparecer el avión, y sin rastros de su tripulación.​\nEl viernes 20 de julio, los restos ubicados durante las tareas de búsqueda, se encontraban a una distancia aproximada de 2 km al sur de la Isla de Flores, concentrados en un área de aproximadamente 90 metros de radio. Se rescataron las partes significativas de todas las áreas de la Aeronave (motores, hélices, trenes de aterrizaje, puerta de carga, puerta de pasajeros, cono de cola, etc.), pero los cuerpos de ambos tripulantes nunca fueron encontrados, sólo hallándose partes de ropa que fueron identificadas por los familiares.​​\n\n\n== Investigación del Accidente ==\nSegún el reporte de la Comisión Investigadora de Accidentes e Incidentes de Aviación uruguaya, la aeronave resultó totalmente destruida debido al gran impacto contra la superficie del mar, golpeando con un ángulo aproximado de 88° nariz abajo.\nEl informe relata una omisión del pasaje de la tripulación por la Oficina de Meteorología a recabar la información de la situación climática, la no realización interactiva de listas de chequeo y que los instrumentos alimentados con 115 Volts AC, no se encontraban energizados, siendo este último un factor sumamente influyente para la ocurrencia del accidente. En conclusión la causa probable del accidente se determina como la Pérdida de Control de la Aeronave por encontrarse volando con indicaciones erróneas de los instrumentos de vuelo, sumado a la posible formación de hielo cristalino sobre su estructura, motivando una pérdida de conciencia situacional de la tripulación, junto a los siguientes factores contribuyentes: \n\nFalta de información meteorológica aeronáutica para el área en el momento de la operación.\nFalta de confianza en el Radar Meteorológico de la Aeronave (el PF había tomado varias notas en el RTV sobre su operatividad).\nDe acuerdo a los diferentes análisis, se pudo determinar que el sistema eléctrico de 115 Voltios AC no estaba energizado, por lo que se presume que el checklist no se realizó correctamente en diferentes procedimientos, lo que llevó a evitar elementos de control para el funcionamiento de la navegación. instrumentos. (El control de encendido de los inversores está marcado con un asterisco en las listas de verificación de la aeronave, lo que determina que el elemento debe realizarse con la ayuda del NFP).\nEl PF había realizado sus últimos cinco vuelos en otra aeronave, en la que aunque es el mismo modelo que el accidente, los inversores no energizan los Instrumentos de Navegación.\nEl Plan de Vuelo presentado que mostró la aeronave según lo planeado para realizar la Misión.\nSolicitud TWR de despegue antes de la hora determinada por el plan de vuelo.\nEl rodaje fue demasiado rápido, lo que condicionó la correcta verificación de los checklists para el despegue.\nNo reconociendo la falla de los Instrumentos, motivó a realizar un viraje que desvió la Aeronave de la ruta y la dirigió hacia un Sistema Nuboso con Condiciones de Hielo.\nNo percatarse de la posible formación de hielo cristalino en la estructura de la aeronave, realizando un viraje que agravó la situación.\nPosible exceso de confianza del PF acompañado de la corta experiencia del PNF y la falta de un CRM interactivo.\nPosible bloqueo del sistema Pitot estático, que generaría indicaciones erróneas de velocidad, altura y actitud.\nPosible pérdida de conciencia situacional (percepción de sí mismo y de la aeronave en relación con el entorno dinámico de vuelo y las amenazas, con capacidad de predecir lo que sucederá en función de la percepción)\nAl no energizar el Sistema de vuelo, el modelo de Instrumento de horizonte artificial (ADI) instalado en la Aeronave da una indicación de ascenso permanente. Este modelo de instrumento no tiene bandera de indicación cuando está fuera de operación, la inoperabilidad del instrumento se indica en la parte inferior del instrumento donde hay una barra que solo cambia de color de rojo (fuera de operación) a negro (operacional).\nMantener un vuelo con velocidades superiores al VMO, situación agravada por un giro; estar en condiciones climáticas donde la velocidad debe reducirse para mantener el control de la aeronave.\nUbicación de un GPS no habilitado en una posición que pudiera confundir a la tripulación por su luminosidad.​\n\n",
+   "candidatos": [
+    {
+     "n": 1,
+     "desc": "foto del artículo",
+     "q": "articulo"
+    },
+    {
+     "n": 2,
+     "desc": "VH-SEF Fairchild SA-227AC Metro III Brindabella Airlines (7961364586).jpg",
+     "q": "Fairchild Metro III 2012"
+    },
+    {
+     "n": 3,
+     "desc": "VH-TAG Fairchild SA-227AC Metro III Brindabella Airlines (9705100668).jpg",
+     "q": "Fairchild Metro III 2012"
+    },
+    {
+     "n": 4,
+     "desc": "Brindabella Airlines (VH-TAM) Fairchild SA227-AC Metro III at the Canberra Airport op",
+     "q": "Fairchild Metro III 2012"
+    },
+    {
+     "n": 5,
+     "desc": "Boeing 737-800 BCF, Paris Air Show 2019, Le Bourget (SIAE1216).jpg",
+     "q": "Air Class cargo plane"
+    },
+    {
+     "n": 6,
+     "desc": "50+61 German Air Force Transall C-160D ILA Berlin 2016 13.jpg",
+     "q": "Air Class cargo plane"
+    },
+    {
+     "n": 7,
+     "desc": "Antonov An-124 (Antonov Airlines) (6099370960).jpg",
+     "q": "Air Class cargo plane"
+    },
+    {
+     "n": 8,
+     "desc": "The tragedy of the seas; or, Sorrow on the ocean, lake, and river, from shipwreck, pl",
+     "q": "Río de la Plata wreck"
+    },
+    {
+     "n": 9,
+     "desc": "The tragedy of the seas; or, Sorrow on the ocean, lake, and river, from shipwreck, pl",
+     "q": "Río de la Plata wreck"
+    },
+    {
+     "n": 10,
+     "desc": "2012 01 03 Tamm Corrientes DSCI6740 k.JPG",
+     "q": "Río de la Plata wreck"
+    }
+   ],
+   "hoja": "fb3/hoja.jpg"
+  },
+  {
+   "eid": "res1",
+   "tipo": "fb",
+   "titulo": "Javier Methol",
+   "titulo_sugerido": "Javier Methol",
+   "fuente": "https://es.wikipedia.org/wiki/Javier_Methol",
+   "texto": "Javier Alfredo Methol Abal (Montevideo, 11 de diciembre de 1935-íb., 4 de junio de 2015) fue un empresario y conferencista uruguayo, conocido por ser uno de los 16 supervivientes del Vuelo 571 de la Fuerza Aérea Uruguaya.​\nSu vida fue llevada al cine en dos películas: ¡Viven!  y La sociedad de la nieve y es interpretado por Sam Behrens y el actor argentino Esteban Bigliardi, respectivamente.​\n\n\n== Biografía ==\nNació en Montevideo en 1935, en el seno de una familia de clase media-alta, de ascendencia vasco-francesa y gallega.\nCulminados sus estudios secundarios en la Escuela y Liceo Elbio Fernández, comenzó a trabajar en la fábrica de cigarrillos Abal Hnos S.A., perteneciente a su familia materna.​ A los 20 años de edad se trasladó a Cuba y Estados Unidos a tecnificarse en la industria tabacalera; mientras se encontraba en Estados Unidos fue diagnosticado de tuberculosis, razón por la cual debió permanecer hospitalizado allí durante cinco meses antes de regresar a Uruguay.​\n\n\n=== Accidente en los Andes ===\n\nFue una de las 45 personas que el 13 de octubre de 1972 abordaron el Fairchild Hiller FH-227 del Vuelo 571 de la Fuerza Aérea Uruguaya, junto con su esposa Liliana Navarro. En el momento del accidente contaba con 36 años de edad y tenía 4 hijos. En el accidente, su primo Francisco Panchito Abal, falleció de manera inmediata. En cambio, su esposa Liliana Navarro, perdió la vida durante el alud que también mató a otros de los supervivientes iniciales.​ Dentro de la comunidad que vivió en el Fairchild por más de 70 días, la figura madura de Javier Methol le permitió ser uno de los principales líderes. De manera cariñosa los muchachos lo llamaban Dumbo.\n\n\n=== Vida posterior y muerte ===\nTras su regreso a Uruguay después de los sucesos en la Cordillera de los Andes, siguió trabajando en Abal Hnos S.A., siendo integrante del directorio de la compañía y gerente de corporate affairs.​ En 1979, la misma fue adquirida por la tabacalera Philip Morris International.​ Asimismo, durante varios años se dedicó a realizar conferencias motivacionales basadas en su experiencia de supervivencia.​\nMethol falleció el día 4 de junio de 2015 a los 79 años, en el Hospital Británico de Montevideo.​ Un día más tarde se llevó a cabo el velatorio con una misa en la Parroquia San José de la Montaña de Carrasco y se realizó un cortejo fúnebre hasta el Cementerio del Buceo donde fueron enterrados sus restos.​\nFue el fundador y primer presidente de la Fundación ¡Viven! en 2007.​\n\n\n== Vida personal ==\nEn 1960 contrajo matrimonio con Liliana Beatriz Navarro, con quien tuvo cuatro hijos: María Laura, Pablo Javier, Anna Inés y Marie Noel.​\nTras la muerte de Navarro, cuatro años después, contrajo segundas nupcias con la argentina Ana María Amorrortu, con quien tuvo otros cuatro hijos: Guillermo Javier, Rafael Javier, Ignacio Javier y Ximena María.​\nEra primo de Francisco Abal, quien falleció durante el accidente.​ Profesaba la fe católica.​\n\n",
+   "candidatos": [
+    {
+     "n": 1,
+     "desc": "FokkerAnde1972.jpg",
+     "q": "Uruguayan Air Force Flight 571"
+    },
+    {
+     "n": 2,
+     "desc": "Restos del vuelo 571.jpg",
+     "q": "Uruguayan Air Force Flight 571"
+    },
+    {
+     "n": 3,
+     "desc": "Milagro en los Andes.jpg",
+     "q": "Uruguayan Air Force Flight 571"
+    },
+    {
+     "n": 4,
+     "desc": "Andes Plane Crash Victims Near Wreckage, Dec. 27, 1972.jpg",
+     "q": "Andes crash site 1972"
+    },
+    {
+     "n": 5,
+     "desc": "Andes survivors Venice.jpg",
+     "q": "Survivors of Flight 571"
+    },
+    {
+     "n": 6,
+     "desc": "Fernando Parrado.jpg",
+     "q": "Survivors of Flight 571"
+    },
+    {
+     "n": 7,
+     "desc": "Hospital Britanico visto desde Av. Italia esq. Avelino Miranda - panoramio.jpg",
+     "q": "Montevideo British Hospital"
+    },
+    {
+     "n": 8,
+     "desc": "Minister Wendy Morton officially opens the new wing of the British hospital in Montev",
+     "q": "Montevideo British Hospital"
+    },
+    {
+     "n": 9,
+     "desc": "Hospital Británico.jpg",
+     "q": "Montevideo British Hospital"
+    },
+    {
+     "n": 10,
+     "desc": "MONUMENTO A LOS MAZAHUAS.jpg",
+     "q": "Viven Foundation 2007"
+    },
+    {
+     "n": 11,
+     "desc": "Principaux Bidonvilles.png",
+     "q": "Viven Foundation 2007"
+    }
+   ],
+   "hoja": "res1/hoja.jpg"
+  }
+ ],
+ "creado": 1794466952.236604
+}
