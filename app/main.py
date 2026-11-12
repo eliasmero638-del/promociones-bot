@@ -267,6 +267,31 @@ def guardar_meta(cid, m):
 _pub_lock = threading.Lock()
 
 
+def subir_link(url, texto, chat):
+    """12-nov: baja un video de Facebook/TikTok/Instagram (link que manda el dueño) y lo publica en la página de realities."""
+    d = os.path.join(C.CLIPS, time.strftime('%Y%m%d_%H%M%S') + '_link'); os.makedirs(d, exist_ok=True)
+    try:
+        r = subprocess.run(recorder.ytdlp_base() + ['-f', 'bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4]/bv*+ba/b', '--merge-output-format', 'mp4',
+                            '--no-playlist', '-o', os.path.join(d, 'orig.%(ext)s'), '--print', 'after_move:filepath',
+                            '--print', 'description', '--no-simulate', url], capture_output=True, text=True, timeout=600)
+        lineas = [l for l in r.stdout.splitlines() if l.strip()]
+        orig = next((l for l in lineas if os.path.exists(l)), None)
+        if not orig:
+            return tg.texto('❌ No pude bajar ese video (puede ser privado o Facebook lo bloqueó).\n' + r.stderr[-300:], chat)
+        desc = ' '.join(l for l in lineas if l != orig and l != 'NA')[:500]
+        ruta = os.path.join(d, 'clip.mp4')
+        subprocess.run(['ffmpeg', '-y', '-v', 'error', '-i', orig, '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '21',
+                        '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-ar', '48000', '-ac', '2', '-b:a', '128k', '-movflags', '+faststart',
+                        ruta], check=True, timeout=900)
+        ok, res = fb.publicar(ruta, texto or desc or '🔥')
+        if ok:
+            tg.texto(f'✅ Publicado en {C.get().get("fb_page_nombre") or "Facebook"}: https://www.facebook.com/{res}', chat)
+        else:
+            tg.texto(f'❌ Facebook no lo aceptó: {res}', chat)
+    except Exception as e:
+        tg.texto(f'❌ Falló: {str(e)[:300]}', chat)
+
+
 def enviar_meme(mm, info):
     """10-nov: versión MEME (franja negra + frase cómica + momento de cerca). Mientras 'memes_auto' esté apagado,
     solo llega al Telegram como muestra (el dueño decide con el botón); encendido, entra a la cola automática."""
@@ -542,6 +567,13 @@ def comandos(tipo, chat, dato, raw):
                      '/umbral 70 – más alto = menos clips pero más fuertes', chat)
         else:
             tg.texto('Este bot es privado.', chat)
+        return
+    lk = re.search(r'https?://\S+', dato)
+    if lk and (dato.lower().startswith('/subir') or re.search(r'(facebook\.com|fb\.watch|tiktok\.com|instagram\.com)', lk.group(0))):
+        # 12-nov: el dueño pega un link de un video → se baja y se publica en la página de realities
+        texto = re.sub(r'^/subir\S*', '', dato.replace(lk.group(0), ''), flags=re.I).strip()
+        tg.texto('⬇️ Bajando el video y publicándolo en ' + (C.get().get('fb_page_nombre') or 'la página de realities') + '…', chat)
+        threading.Thread(target=subir_link, args=(lk.group(0), texto, chat), daemon=True).start()
         return
     cmd = dato.split()[0].lower()
     if cmd == '/estado':
