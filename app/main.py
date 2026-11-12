@@ -283,6 +283,12 @@ def subir_link(url, texto, chat):
         subprocess.run(['ffmpeg', '-y', '-v', 'error', '-i', orig, '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '21',
                         '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-ar', '48000', '-ac', '2', '-b:a', '128k', '-movflags', '+faststart',
                         ruta], check=True, timeout=900)
+        try:                                         # también se lo manda al dueño para que lo tenga descargado
+            if os.path.getsize(ruta) < 48 * 1024 * 1024:
+                with open(ruta, 'rb') as f:
+                    tg._api('sendVideo', files={'video': f}, chat_id=chat, caption='⬇️ Video descargado', supports_streaming='true')
+        except Exception:
+            pass
         ok, res = fb.publicar(ruta, texto or desc or '🔥')
         if ok:
             tg.texto(f'✅ Publicado en {C.get().get("fb_page_nombre") or "Facebook"}: https://www.facebook.com/{res}', chat)
