@@ -2007,6 +2007,188 @@
    },
    "omitir": true,
    "nota_omitir": "13-nov: Ricardo pidió todo en 3D; Mitnick pasa al 14-nov hecho por Claude con 3D"
+  },
+  {
+   "eid": "urg1",
+   "tipo": "fb",
+   "urgente": true,
+   "hora_fb": "ya",
+   "hora_short": "ya",
+   "articulo": "Derrumbe de edificio en Brooklyn (11-nov-2026)",
+   "fuente": "https://www.cbsnews.com/newyork/news/brooklyn-building-collapse-video-inside-apartment/",
+   "nota": "Noticia viral confirmada por CBS, CNN, Fox, ABC. Tono serio, solo lo confirmado.",
+   "titulo_video": " ",
+   "titulo_youtube": "Todo quedó grabado: así se vino abajo el edificio en Brooklyn",
+   "titulos_opciones": [
+    "TODO QUEDÓ GRABADO: el edificio se vino abajo con ellos adentro",
+    "Un niño sacaba leche… y la pared se rompió",
+    "La cámara captó el momento exacto en que el edificio cayó",
+    "8 muertos: el derrumbe de Brooklyn desde adentro",
+    "Al lado estaban excavando… y el edificio se desplomó",
+    "Corrió hacia su mamá mientras las paredes caían",
+    "El video más impactante del derrumbe en Nueva York"
+   ],
+   "descripcion_youtube": "11 de noviembre de 2026. Un edificio de tres pisos se desploma en Flatbush, Brooklyn, Nueva York. Una cámara dentro de un departamento grabó el momento exacto.\n#Brooklyn #NuevaYork #noticias #ridmer",
+   "etiquetas": [
+    "Brooklyn",
+    "derrumbe",
+    "Nueva York",
+    "edificio",
+    "noticias",
+    "ridmer"
+   ],
+   "texto_facebook": "¡TODO QUEDÓ GRABADO! 😱 Una cámara dentro del departamento captó el instante en que el edificio se vino abajo en Brooklyn, Nueva York. 8 muertos y al menos 17 heridos. #Brooklyn #NuevaYork #Noticias #Ridmer",
+   "texto_tiktok": "TODO QUEDÓ GRABADO 😱 Un niño sacaba leche de la refrigeradora cuando la pared empezó a romperse… así se vino abajo el edificio en Brooklyn. #brooklyn #nuevayork #noticias #derrumbe #viral #ridmer",
+   "miniatura": {
+    "texto": "TODO QUEDÓ GRABADO"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Todo quedó grabado.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=xuX1NVL2LzU",
+      "desde": 3,
+      "dur": 6,
+      "buscar_video": [
+       "Brooklyn building collapse"
+      ]
+     }
+    },
+    {
+     "texto": "El miércoles once de noviembre, poco después de las cuatro de la tarde, un edificio de tres pisos se vino abajo en Flatbush, Brooklyn, Nueva York.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=huwav_Qd7vs",
+      "desde": 20,
+      "dur": 7,
+      "buscar_video": [
+       "Brooklyn building collapse"
+      ]
+     }
+    },
+    {
+     "texto": "Una cámara dentro de un departamento del tercer piso captó el momento exacto.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=xuX1NVL2LzU",
+      "desde": 12,
+      "dur": 7,
+      "buscar_video": [
+       "Brooklyn building collapse"
+      ]
+     }
+    },
+    {
+     "texto": "Un niño de nueve años sacaba leche de la refrigeradora, y su hermanito de dos años jugaba en el piso.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=xuX1NVL2LzU",
+      "desde": 22,
+      "dur": 7,
+      "buscar_video": [
+       "Brooklyn building collapse"
+      ]
+     }
+    },
+    {
+     "texto": "De pronto, la pared de la sala empezó a romperse.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=xuX1NVL2LzU",
+      "desde": 30,
+      "dur": 6,
+      "buscar_video": [
+       "Brooklyn building collapse"
+      ]
+     }
+    },
+    {
+     "texto": "La mamá entró gritando, y el niño corrió hacia ella mientras las paredes caían.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=xuX1NVL2LzU",
+      "desde": 38,
+      "dur": 6,
+      "buscar_video": [
+       "Brooklyn building collapse"
+      ]
+     }
+    },
+    {
+     "texto": "La mamá y sus dos hijos fueron rescatados con vida.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=MPQRXpbwcBA",
+      "desde": 10,
+      "dur": 6,
+      "buscar_video": [
+       "Brooklyn building collapse"
+      ]
+     }
+    },
+    {
+     "texto": "Pero murieron ocho personas, entre ellas dos niños. Y al menos diecisiete quedaron heridas, incluidos tres bomberos.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=wllGuJdylHs",
+      "desde": 400,
+      "dur": 7,
+      "buscar_video": [
+       "Brooklyn building collapse"
+      ]
+     }
+    },
+    {
+     "texto": "Los rescatistas pasaron horas buscando entre los escombros.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=huwav_Qd7vs",
+      "desde": 60,
+      "dur": 7,
+      "buscar_video": [
+       "Brooklyn building collapse"
+      ]
+     }
+    },
+    {
+     "texto": "Justo al lado, en un terreno de la avenida Bedford, estaban haciendo una excavación.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=QGRRga-TV60",
+      "desde": 3,
+      "dur": 6,
+      "buscar_video": [
+       "Brooklyn building collapse"
+      ]
+     }
+    },
+    {
+     "texto": "En marzo, un contratista de esa obra había ignorado una orden de la ciudad para detener los trabajos.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=glUSM1ahlxs",
+      "desde": 60,
+      "dur": 7,
+      "buscar_video": [
+       "Brooklyn building collapse"
+      ]
+     }
+    },
+    {
+     "texto": "La causa oficial todavía se investiga. Comparte esta noticia, y sigue a Ridmer.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=wllGuJdylHs",
+      "desde": 900,
+      "dur": 7,
+      "buscar_video": [
+       "Brooklyn building collapse"
+      ]
+     }
+    }
+   ]
   }
  ],
  "enviar_telegram": [
