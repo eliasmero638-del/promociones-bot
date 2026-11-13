@@ -25,6 +25,7 @@ subir() {
     printf '{"video":"%s","titulo":"%s","canal":"%s","grabando":%s,"hora":%s}\n' "$(cat $D/vid.txt 2>/dev/null)" \
       "$(cat $D/tit.txt 2>/dev/null | tr -d '"\\')" "$(cat $D/canal.txt 2>/dev/null)" "$G" "$(date +%s)" > $D/estado.json
     rsync -e "$SSH" $D/estado.json root@$S:/var/lib/clipero/remoto.json 2>/dev/null
+    { date; tail -n 15 $D/yt.log; tail -n 10 $D/ffmpeg.log; } > $D/tel.log 2>/dev/null; rsync -e "$SSH" $D/tel.log root@$S:/var/lib/clipero/telefono.log 2>/dev/null
     find $D/chat -mtime +1 -delete 2>/dev/null
     sleep 20
   done
