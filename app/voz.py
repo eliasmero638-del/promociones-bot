@@ -66,9 +66,45 @@ def gemini(texto, salida_mp3, voz=None, estilo=ESTILO, modelo=None):
     return False, ult
 
 
+def _edge1(texto, salida_mp3, voz):
+    err = ''
+    for intento in range(4):
+        p = subprocess.run([sys.executable, '-m', 'edge_tts', '--voice', voz, '--rate=-5%', '--text=' + texto,
+                            '--write-media', salida_mp3], capture_output=True, text=True, timeout=300)
+        if p.returncode == 0 and os.path.exists(salida_mp3) and os.path.getsize(salida_mp3) > 1000:
+            return True, ''
+        err = p.stderr[-200:]; time.sleep(3 + 4 * intento)
+    return False, err
+
+
 def edge(texto, salida_mp3, voz='es-EC-LuisNeural'):
-    p = subprocess.run([sys.executable, '-m', 'edge_tts', '--voice', voz, '--rate=-5%', '--text', texto,
-                        '--write-media', salida_mp3], capture_output=True, text=True, timeout=300)
+    """13-nov: en pedazos cortos (frases) y con reintentos: con textos largos Microsoft a veces no devolvía audio."""
+    frases = re.split(r'(?<=[.!?…])\s+', texto.strip())
+    trozos, act = [], ''
+    for f in frases:
+        if act and len(act) + len(f) > 350:
+            trozos.append(act); act = ''
+        act = (act + ' ' + f).strip()
+    if act:
+        trozos.append(act)
+    if len(trozos) <= 1:
+        return _edge1(texto, salida_mp3, voz)
+    partes = []
+    for i, t in enumerate(trozos):
+        pm = salida_mp3 + f'.{i:02d}.mp3'
+        ok, err = _edge1(t, pm, voz)
+        if not ok:
+            return False, err
+        partes.append(pm)
+    lista = salida_mp3 + '.txt'
+    with open(lista, 'w') as f:
+        for pm in partes:
+            f.write(f"file '{os.path.abspath(pm)}'\n")
+    p = subprocess.run(['ffmpeg', '-y', '-v', 'error', '-f', 'concat', '-safe', '0', '-i', lista, '-c:a', 'libmp3lame',
+                        '-b:a', '128k', salida_mp3], capture_output=True, text=True)
+    for pm in partes + [lista]:
+        try: os.remove(pm)
+        except Exception: pass
     return p.returncode == 0, p.stderr[-200:]
 
 
