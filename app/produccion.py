@@ -76,18 +76,19 @@ def _escena_img(esc, carpeta_enc, carpeta, i, usados=None):
     return foto
 
 
-def _parte_wav(texto, carpeta, k, voz=None, estilo='', solo_gemini=False, modelo=None):
+def _parte_wav(texto, carpeta, k, voz=None, estilo='', solo_gemini=False, modelo=None, solo_edge=False):
     """Una parte de la narración → wav limpio (sin silencio al inicio ni al final) + 0.35 s de pausa."""
     mp3 = os.path.join(carpeta, f'voz_{k:02d}.mp3')
-    for intento in range(6 if modelo else 5):   # 10-nov: Gemini a veces falla por límite; reintentar antes de rendirse
+    ok, r = False, 'edge'
+    for intento in range(0 if solo_edge else (3 if modelo else 4)):   # 10-nov: Gemini a veces falla por límite; reintentar antes de rendirse
         ok, r = F.voz.gemini(texto, mp3, voz=voz, estilo=estilo or '', modelo=modelo)   # voz/estilo propios
         if ok:
             _modelo_usado[0] = r
             break
         log('voz gemini falló, reintento', intento + 1, r)
         time.sleep(30 * (intento + 1))
-    if not ok and not solo_gemini:
-        log('voz gemini falló, uso Microsoft:', r)
+    if not ok and (not solo_gemini or solo_edge):
+        log('voz: uso Microsoft' if solo_edge else 'voz gemini falló, uso Microsoft:', r)
         ok, r = F.voz.edge(texto, mp3)
     if not ok:                               # con varias partes: NUNCA mezclar dos voces distintas (queja del dueño)
         raise RuntimeError('no se pudo hacer la voz de Gemini: ' + str(r))
@@ -114,6 +115,27 @@ def _timbre(wav):
 
 
 def _narrar(segs, carpeta, g, voz=None, estilo=''):
+    """13-nov: si Gemini se queda sin cupo a mitad, se rehace TODA la narración con otro modelo de Gemini, y si
+    ninguno sirve, TODA con la voz de Microsoft (una sola voz en todo el video, nunca mezcladas). Así nunca falta el video."""
+    try:
+        return _narrar1(segs, carpeta, g, voz, estilo)
+    except RuntimeError as e:
+        log('narración falló:', e)
+    usados = {_modelo_usado[0]}
+    key = C.get().get('gemini_key')
+    for m in (F.voz.modelos_tts(key) if key else [])[:4]:
+        if m in usados or 'lite' in m:
+            continue
+        try:
+            log('rehago toda la narración con', m)
+            return _narrar1(segs, carpeta, g, voz, estilo, forzar=m)
+        except RuntimeError as e:
+            log('narración con', m, 'falló:', e)
+    log('Gemini sin cupo: TODA la narración con la voz de Microsoft')
+    return _narrar1(segs, carpeta, g, voz, estilo, solo_edge=True)
+
+
+def _narrar1(segs, carpeta, g, voz=None, estilo='', forzar=None, solo_edge=False):
     """El gancho se narra aparte: así sabemos al milisegundo dónde termina y la intro nunca corta una palabra."""
     textos = [s['texto'].strip() for s in segs]
     bloques, actual = [' '.join(textos[:g])], ''
@@ -126,13 +148,15 @@ def _narrar(segs, carpeta, g, voz=None, estilo=''):
     partes, ref, fijo = [], None, None
     _modelo_usado[0] = None
     for k, b in enumerate(bloques):
-        if k == 1:
+        if forzar:
+            fijo = forzar
+        elif k == 1:
             fijo = _modelo_usado[0]          # 11-nov: TODA la narración con el mismo modelo de Gemini (si no, cambia la voz)
         # 10-nov: el dueño notó "dos voces" en el largo de Klarer (partes que sonaban distinto). Cada parte se compara
         # con la primera (timbre); si suena distinta se vuelve a pedir, hasta 3 veces, y se queda la más parecida.
         mejor = None
-        for intento in range(3 if k else 1):
-            w = _parte_wav(b, carpeta, k, voz, estilo, solo_gemini=len(bloques) > 1, modelo=fijo)
+        for intento in range(1 if (solo_edge or not k) else 3):
+            w = _parte_wav(b, carpeta, k, voz, estilo, solo_gemini=len(bloques) > 1, modelo=fijo, solo_edge=solo_edge)
             w2 = w.replace('.wav', f'_i{intento}.wav'); os.replace(w, w2)
             dif = abs(_timbre(w2) - ref) / ref if ref else 0
             log('voz parte', k, 'intento', intento + 1, 'diferencia de timbre', round(dif, 2))
