@@ -99,6 +99,10 @@ while true; do
   n=0
   while kill -0 $FF 2>/dev/null; do
     sleep 20; n=$((n + 1))
+    # 13-nov: si ffmpeg sigue "vivo" pero no escribe nada en 4 min (el en vivo se colgó), se reconecta
+    if [ $n -ge 12 ] && [ -z "$(find $D/rec -name '*.ts' -mmin -4 2>/dev/null | head -1)" ]; then
+      log "sin video nuevo en 4 min, reconecto"; kill $FF 2>/dev/null; sleep 3; kill -9 $FF 2>/dev/null
+    fi
     if [ $((n % 15)) -eq 0 ]; then                      # cada 5 min
       if [ "$CANAL" != "$PRIMERO" ] && [ -n "$(en_vivo "$PRIMERO")" ]; then
         log "empezó el en vivo principal, cambio de canal"; kill $FF 2>/dev/null

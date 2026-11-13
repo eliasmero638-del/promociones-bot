@@ -220,7 +220,12 @@ class H(BaseHTTPRequestHandler):
                 limpio = [_re.sub(r'[A-Za-z0-9_\-]{30,}', '***', _re.sub(r'\?\S+', '?…', l))[:220] for l in j]
                 d = {'hora': time.strftime('%Y-%m-%d %H:%M'), 'grabador': {k: v for k, v in getattr(_rec, 'estado', {}).items()
                                                                      if isinstance(v, (str, int, float, bool, type(None)))},
-                     'stats': getattr(mm, 'stats', None), 'pausado': C.get().get('pausado'), 'perfil': C.perfil(),
+                     'stats': getattr(mm, 'stats', None),
+                     'rec': (lambda r: {'archivos': len(r), 'ultimo': max(r, key=os.path.getmtime)[-30:] if r else None,
+                                        'hace_seg': int(time.time() - max(map(os.path.getmtime, r))) if r else None})(
+                         [os.path.join(C.DATA, 'rec', f) for f in os.listdir(os.path.join(C.DATA, 'rec'))]
+                         if os.path.isdir(os.path.join(C.DATA, 'rec')) else []),
+                     'remoto': (lambda p: open(p).read()[:300] if os.path.exists(p) else None)(os.path.join(C.DATA, 'remoto.json')), 'pausado': C.get().get('pausado'), 'perfil': C.perfil(),
                      'log': limpio}
                 return self._send(200, json.dumps(d, ensure_ascii=False, default=str), 'application/json')
             except Exception as e:
