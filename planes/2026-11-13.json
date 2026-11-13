@@ -10,7 +10,7 @@
    "urgente": true,
    "articulo": "Derrumbe de edificio en Flatbush, Brooklyn (11-nov-2026)",
    "fuente": "https://abcnews.com/US/rescue-operations-underway-after-building-collapses-brooklyn-new/story?id=138059620",
-   "nota": "Pedido directo del dueño (13-nov): noticia del derrumbe en Brooklyn con el video original. No vino como urgN. not2 = versión con mejores fragmentos de video (not1 queda omitido).",
+   "nota": "Pedido directo del dueño (13-nov): noticia del derrumbe en Brooklyn con el video original. No vino como urgN. not2 = versión con mejores fragmentos de video (not1 queda omitido). Omitido: la misma noticia ya va como urg1 (otra sesión), para no publicarla dos veces.",
    "titulo_video": "SE VINO ABAJO EN BROOKLYN",
    "titulo_youtube": "La cámara grabó cómo se vino abajo un edificio en Brooklyn: 8 muertos",
    "titulos_opciones": [
@@ -162,7 +162,8 @@
      },
      "short": true
     }
-   ]
+   ],
+   "omitir": true
   },
   {
    "eid": "not1",
