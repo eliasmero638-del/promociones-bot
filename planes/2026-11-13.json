@@ -1,0 +1,1463 @@
+{
+ "fecha": "2026-11-13",
+ "modo": "claude",
+ "videos": [
+  {
+   "eid": "fb1",
+   "tipo": "fb",
+   "encargo": "fb2",
+   "hora_fb": "14:00",
+   "articulo": "Caso Roswell",
+   "fuente": "https://es.wikipedia.org/wiki/Caso_Roswell",
+   "titulo_video": " ",
+   "titulo_youtube": "El ejército dijo: capturamos un platillo volador… Roswell 1947",
+   "titulos_opciones": [
+    "El ejército dijo: \"capturamos un PLATILLO VOLADOR\" 🛸",
+    "Encontró restos extraños en su rancho… y el mundo habló de extraterrestres",
+    "Roswell, 1947: ¿qué cayó de verdad en ese rancho?",
+    "Un día era un platillo volador… al siguiente, un globo",
+    "50 años después revelaron el secreto de Roswell",
+    "El periódico tituló: la Fuerza Aérea captura un platillo volante",
+    "Nadie sabía que ese \"globo\" espiaba a los soviéticos"
+   ],
+   "descripcion_youtube": "Julio de 1947. Un granjero encuentra restos extraños en su rancho de Roswell, Nuevo México.\nEl ejército anuncia que capturó un platillo volador… y al día siguiente lo desmiente.\n#ovnis #misterio #ridmer",
+   "etiquetas": [
+    "Roswell",
+    "ovni",
+    "platillo volador",
+    "1947",
+    "Proyecto Mogul",
+    "misterio",
+    "historias reales",
+    "ridmer"
+   ],
+   "texto_facebook": "El ejército anunció que había capturado un platillo volador… y al día siguiente dijo que era un globo 🛸 #Misterio #HistoriasReales #Ridmer",
+   "texto_tiktok": "El ejército dijo: capturamos un platillo volador 🛸 Roswell, 1947. Un granjero encontró restos extraños en su rancho… y 50 años después se supo qué eran de verdad. #roswell #ovnis #misterio #historiasreales #datoscuriosos #ridmer",
+   "miniatura": {
+    "img": 19,
+    "texto": "PLATILLO VOLADOR"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "El ejército dijo: capturamos un platillo volador.",
+     "escena": {
+      "tipo": "foto",
+      "img": 19
+     }
+    },
+    {
+     "texto": "Julio de mil novecientos cuarenta y siete. Roswell, Nuevo México.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=2U23ylt1sqw",
+      "desde": 10,
+      "dur": 6,
+      "buscar_video": [
+       "weather balloon launch"
+      ]
+     }
+    },
+    {
+     "texto": "El granjero Mac Brazel encuentra restos extraños en su rancho.",
+     "escena": {
+      "tipo": "foto",
+      "img": 10
+     }
+    },
+    {
+     "texto": "Tiras de goma, papel de aluminio, cartón y varillas de madera, pegadas con cinta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 13
+     }
+    },
+    {
+     "texto": "Avisa al sheriff, y el mayor Jesse Marcel va a recogerlos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     }
+    },
+    {
+     "texto": "El ocho de julio, el periódico de Roswell publica: la Fuerza Aérea captura un platillo volador.",
+     "escena": {
+      "tipo": "foto",
+      "img": 15
+     }
+    },
+    {
+     "texto": "Pero al día siguiente, el general Ramey lo desmiente. Era un globo meteorológico.",
+     "escena": {
+      "tipo": "foto",
+      "img": 12
+     }
+    },
+    {
+     "texto": "Fotografían los restos, y el caso se olvida por treinta años.",
+     "escena": {
+      "tipo": "foto",
+      "img": 13
+     }
+    },
+    {
+     "texto": "En mil novecientos setenta y ocho, Marcel habla con un investigador de ovnis… y nace la leyenda.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "En los años noventa, la Fuerza Aérea revela el secreto: era el Proyecto Mogul.",
+     "escena": {
+      "tipo": "foto",
+      "img": 20
+     }
+    },
+    {
+     "texto": "Globos gigantes que volaban muy alto, para detectar las pruebas nucleares soviéticas.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=RIgG4NJNH44",
+      "desde": 30,
+      "dur": 6,
+      "buscar_video": [
+       "weather balloon"
+      ]
+     }
+    },
+    {
+     "texto": "Pero Roswell sigue siendo el ovni más famoso del mundo. Comparte esta historia, y sigue a Ridmer.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb1s",
+   "tipo": "short",
+   "encargo": "fb2",
+   "hora_youtube": "14:00",
+   "articulo": "Caso Roswell",
+   "fuente": "https://es.wikipedia.org/wiki/Caso_Roswell",
+   "titulo_video": " ",
+   "titulo_youtube": "El ejército dijo: capturamos un platillo volador #shorts",
+   "titulos_opciones": [
+    "El ejército dijo: \"capturamos un PLATILLO VOLADOR\" 🛸 #shorts",
+    "Encontró restos extraños en su rancho… y el mundo habló de extraterrestres #shorts",
+    "Roswell, 1947: ¿qué cayó de verdad en ese rancho? #shorts",
+    "Un día era un platillo volador… al siguiente, un globo #shorts",
+    "50 años después revelaron el secreto de Roswell #shorts",
+    "El periódico tituló: la Fuerza Aérea captura un platillo volante #shorts",
+    "Nadie sabía que ese \"globo\" espiaba a los soviéticos #shorts"
+   ],
+   "descripcion_youtube": "Roswell, 1947: el platillo volador que se volvió globo… y el secreto que se supo 50 años después.\n#shorts #ovnis #ridmer",
+   "etiquetas": [
+    "shorts",
+    "Roswell",
+    "ovni",
+    "ridmer"
+   ],
+   "miniatura": {
+    "img": 19,
+    "texto": "PLATILLO VOLADOR"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "El ejército dijo: capturamos un platillo volador.",
+     "escena": {
+      "tipo": "foto",
+      "img": 19
+     }
+    },
+    {
+     "texto": "Julio de mil novecientos cuarenta y siete. Un granjero de Roswell encuentra restos extraños en su rancho.",
+     "escena": {
+      "tipo": "foto",
+      "img": 10
+     }
+    },
+    {
+     "texto": "Goma, papel de aluminio y varillas de madera.",
+     "escena": {
+      "tipo": "foto",
+      "img": 13
+     }
+    },
+    {
+     "texto": "El periódico publica: la Fuerza Aérea captura un platillo volador.",
+     "escena": {
+      "tipo": "foto",
+      "img": 15
+     }
+    },
+    {
+     "texto": "Al día siguiente, el general lo desmiente. Era un globo meteorológico.",
+     "escena": {
+      "tipo": "foto",
+      "img": 12
+     }
+    },
+    {
+     "texto": "Décadas después se supo la verdad: globos secretos para espiar las pruebas nucleares soviéticas.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=2U23ylt1sqw",
+      "desde": 10,
+      "dur": 6,
+      "buscar_video": [
+       "weather balloon launch"
+      ]
+     }
+    },
+    {
+     "texto": "Pero muchos todavía creen en los extraterrestres. Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb2",
+   "tipo": "fb",
+   "hora_fb": "18:30",
+   "articulo": "Gary McKinnon",
+   "fuente": "https://es.wikipedia.org/wiki/Gary_McKinnon",
+   "nota": "Prueba hackers 11-17 nov: reemplaza el encargo fb2 (Roswell pasa a fb1). Historia contada, nada técnico copiable.",
+   "titulo_video": " ",
+   "titulo_youtube": "Hackeó a la NASA buscando ovnis… y casi pasa 70 años preso",
+   "titulos_opciones": [
+    "Hackeó a la NASA buscando OVNIS 👽",
+    "Entró a 97 computadoras militares… buscando extraterrestres",
+    "Dejó un mensaje en el Pentágono: \"su seguridad es una basura\"",
+    "¿Qué encontró el hacker que buscaba ovnis en la NASA?",
+    "Podía pasar 70 años preso… por buscar extraterrestres",
+    "El escocés que hackeó al ejército de EE. UU. desde su casa",
+    "Nadie sabía que esas computadoras NO tenían contraseña",
+    "10 años de pelea: el hacker de los ovnis que nunca entregaron"
+   ],
+   "descripcion_youtube": "2001. Desde su casa en Londres, un técnico escocés entra a computadoras del ejército de Estados Unidos y de la NASA.\nNo buscaba dinero: buscaba pruebas de extraterrestres.\n#hackers #ovnis #ridmer",
+   "etiquetas": [
+    "hackers",
+    "Gary McKinnon",
+    "NASA",
+    "ovnis",
+    "historias reales",
+    "ridmer"
+   ],
+   "texto_facebook": "Entró a 97 computadoras del ejército de EE. UU. y de la NASA… buscando pruebas de extraterrestres 👽 #Hackers #HistoriasReales #Ridmer",
+   "texto_tiktok": "Hackeó a la NASA buscando ovnis 👽 Gary McKinnon entró a 97 computadoras militares desde su casa… y lo que dijo haber visto todavía da que hablar. #hackers #nasa #ovnis #historiasreales #datoscuriosos #ridmer",
+   "miniatura": {
+    "texto": "BUSCABA OVNIS"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Hackeó a la NASA buscando ovnis.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "NASA Johnson Space Center"
+      ]
+     }
+    },
+    {
+     "texto": "Gary McKinnon era un técnico de computadoras escocés, que vivía en Londres.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=rE14vUWHt3U",
+      "desde": 15,
+      "dur": 6,
+      "buscar_video": [
+       "London night"
+      ]
+     }
+    },
+    {
+     "texto": "Estaba convencido de que Estados Unidos escondía pruebas de extraterrestres.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Pentagon",
+       "The Pentagon"
+      ]
+     }
+    },
+    {
+     "texto": "Entre dos mil uno y dos mil dos, desde su casa, buscó computadoras del gobierno sin contraseña.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "NASA Johnson Space Center"
+      ]
+     }
+    },
+    {
+     "texto": "Y las encontró. Entró a noventa y siete computadoras del ejército, la marina y la NASA.",
+     "escena": {
+      "tipo": "contador",
+      "n": 97,
+      "texto": "COMPUTADORAS",
+      "sub": "Ejército · Marina · NASA"
+     }
+    },
+    {
+     "texto": "Firmaba como Solo. Y en una dejó un mensaje: su seguridad es una basura.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Pentagon"
+      ]
+     }
+    },
+    {
+     "texto": "Dijo haber visto una lista de oficiales no terrestres.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=RwWyhAEt49Q",
+      "desde": 40,
+      "dur": 6,
+      "buscar_video": [
+       "satellite earth orbit"
+      ]
+     }
+    },
+    {
+     "texto": "Pero el ejército lo acusó de tumbar dos mil computadoras en Washington.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Pentagon"
+      ]
+     }
+    },
+    {
+     "texto": "En noviembre de dos mil dos, la policía británica tocó su puerta.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "London street night"
+      ]
+     }
+    },
+    {
+     "texto": "Estados Unidos lo quería juzgar. Podía pasar setenta años en prisión.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=rE14vUWHt3U",
+      "desde": 60,
+      "dur": 6,
+      "buscar_video": [
+       "courthouse"
+      ]
+     }
+    },
+    {
+     "texto": "La pelea duró diez años. En dos mil doce, el Reino Unido se negó a entregarlo.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Royal Courts of Justice"
+      ]
+     }
+    },
+    {
+     "texto": "Nunca pisó una prisión. Comparte esta historia, y sigue a Ridmer.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=rE14vUWHt3U",
+      "desde": 90,
+      "dur": 6,
+      "buscar_video": [
+       "London"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb2s",
+   "tipo": "short",
+   "encargo": "fb2",
+   "hora_youtube": "19:00",
+   "articulo": "Gary McKinnon",
+   "fuente": "https://es.wikipedia.org/wiki/Gary_McKinnon",
+   "titulo_video": " ",
+   "titulo_youtube": "Hackeó a la NASA buscando ovnis #shorts",
+   "titulos_opciones": [
+    "Hackeó a la NASA buscando OVNIS 👽 #shorts",
+    "Entró a 97 computadoras militares… buscando extraterrestres #shorts",
+    "Dejó un mensaje en el Pentágono: \"su seguridad es una basura\" #shorts",
+    "¿Qué encontró el hacker que buscaba ovnis en la NASA? #shorts",
+    "Podía pasar 70 años preso… por buscar extraterrestres #shorts",
+    "El escocés que hackeó al ejército de EE. UU. desde su casa #shorts",
+    "Nadie sabía que esas computadoras NO tenían contraseña #shorts",
+    "10 años de pelea: el hacker de los ovnis que nunca entregaron #shorts"
+   ],
+   "descripcion_youtube": "Gary McKinnon entró a 97 computadoras militares buscando extraterrestres.\n#shorts #hackers #ridmer",
+   "etiquetas": [
+    "shorts",
+    "hackers",
+    "Gary McKinnon",
+    "NASA",
+    "ridmer"
+   ],
+   "miniatura": {
+    "texto": "BUSCABA OVNIS"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Hackeó a la NASA buscando ovnis.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "NASA Johnson Space Center"
+      ]
+     }
+    },
+    {
+     "texto": "Gary McKinnon, un técnico escocés, buscaba pruebas de extraterrestres desde su casa en Londres.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=rE14vUWHt3U",
+      "desde": 15,
+      "dur": 6,
+      "buscar_video": [
+       "London night"
+      ]
+     }
+    },
+    {
+     "texto": "Encontró computadoras del gobierno de Estados Unidos sin contraseña.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Pentagon"
+      ]
+     }
+    },
+    {
+     "texto": "Entró a noventa y siete, del ejército, la marina y la NASA.",
+     "escena": {
+      "tipo": "contador",
+      "n": 97,
+      "texto": "COMPUTADORAS",
+      "sub": "Ejército · Marina · NASA"
+     }
+    },
+    {
+     "texto": "Y dejó un mensaje: su seguridad es una basura.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Pentagon"
+      ]
+     }
+    },
+    {
+     "texto": "La policía lo atrapó en dos mil dos. Podía pasar setenta años en prisión.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "London street night"
+      ]
+     }
+    },
+    {
+     "texto": "Pero tras diez años de pelea, nunca lo entregaron. Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=rE14vUWHt3U",
+      "desde": 90,
+      "dur": 6,
+      "buscar_video": [
+       "London"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb3",
+   "tipo": "fb",
+   "hora_fb": "21:00",
+   "articulo": "Incidente ovni de Kecksburg",
+   "fuente": "https://es.wikipedia.org/wiki/Incidente_ovni_de_Kecksburg",
+   "titulo_video": " ",
+   "titulo_youtube": "Una bola de fuego cayó en el bosque… y el ejército cerró todo",
+   "titulos_opciones": [
+    "Una BOLA DE FUEGO cayó en el bosque… y llegó el ejército 🔥",
+    "Tenía forma de bellota gigante: el misterio de Kecksburg",
+    "La vieron miles en 6 estados… y el ejército dijo \"no hay nada\"",
+    "¿Qué se llevó el camión militar tapado con una lona?",
+    "El \"Roswell\" de Pensilvania: lo que cayó en Kecksburg",
+    "Un niño dijo: \"parecía una estrella en llamas\"",
+    "Cerraron el bosque de noche… y al día siguiente, nada"
+   ],
+   "descripcion_youtube": "9 de diciembre de 1965. Miles de personas ven una bola de fuego cruzar el cielo.\nCae en un bosque de Kecksburg, Pensilvania… y esa noche llegan los soldados.\n#ovnis #misterio #ridmer",
+   "etiquetas": [
+    "Kecksburg",
+    "ovni",
+    "bellota",
+    "1965",
+    "Pensilvania",
+    "misterio",
+    "ridmer"
+   ],
+   "texto_facebook": "Una bola de fuego cayó en un bosque de Pensilvania… y esa noche llegaron los soldados y cerraron todo 🔥 #Misterio #HistoriasReales #Ridmer",
+   "texto_tiktok": "Una bola de fuego cayó en el bosque 🔥 Kecksburg, 1965: testigos vieron algo con forma de bellota gigante… y un camión militar se llevó algo tapado con una lona. #kecksburg #ovnis #misterio #historiasreales #datoscuriosos #ridmer",
+   "miniatura": {
+    "texto": "¿QUÉ CAYÓ?"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Una bola de fuego cayó en el bosque.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Nueve de diciembre de mil novecientos sesenta y cinco. Miles la ven, en seis estados y en Canadá.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=HX_RrO7ZQaU",
+      "desde": 20,
+      "dur": 6,
+      "buscar_video": [
+       "fireball meteor"
+      ]
+     }
+    },
+    {
+     "texto": "Cayó cerca de Kecksburg, un pueblito de Pensilvania.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 40.1848,
+      "lon": -79.4614,
+      "lugar": "Kecksburg, Pensilvania",
+      "km": 8
+     }
+    },
+    {
+     "texto": "Un niño de ocho años le dijo a la radio: parecía una estrella en llamas.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Kecksburg, Pennsylvania",
+       "Kecksburg"
+      ]
+     }
+    },
+    {
+     "texto": "Un camionero dijo que bajó al bosque, y la vio a pocos metros, detrás de un árbol.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Tenía forma de bellota enorme, del tamaño de un carro, con un anillo de símbolos raros.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Kecksburg UFO replica",
+       "Kecksburg acorn"
+      ]
+     }
+    },
+    {
+     "texto": "Esa noche llegaron soldados y policías, y sacaron a todos del bosque.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Un muchacho de dieciséis años vio salir un camión militar, con algo grande tapado con una lona.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "El periódico tituló: objeto volador no identificado cae cerca de Kecksburg.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Kecksburg UFO replica",
+       "Kecksburg"
+      ]
+     }
+    },
+    {
+     "texto": "Pero los militares dijeron que no encontraron absolutamente nada. Que fue un meteoro.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=Dg5eRU2-5kQ",
+      "desde": 10,
+      "dur": 6,
+      "buscar_video": [
+       "forest Pennsylvania winter"
+      ]
+     }
+    },
+    {
+     "texto": "Hoy, en Kecksburg, hay una réplica de la bellota. Comparte esta historia, y sigue a Ridmer.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=lsHWrkQWiQs",
+      "desde": 30,
+      "dur": 6,
+      "buscar_video": [
+       "forest"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb1f",
+   "tipo": "foto",
+   "omitir": true,
+   "hora_foto": "15:30",
+   "titulo_youtube": "El ejército dijo: capturamos un platillo volador",
+   "texto_foto": "El ejército anunció que había capturado un platillo volador.\n\nJulio de 1947. El granjero Mac Brazel encontró restos extraños regados por su rancho, cerca de Roswell, Nuevo México: tiras de goma, papel de aluminio, cartón y varillas de madera, pegadas con cinta. Avisó al sheriff, y el mayor Jesse Marcel, de la base aérea, fue en persona a recogerlos.\n\nEl 8 de julio el periódico de Roswell publicó en portada: \"La Fuerza Aérea captura un platillo volante en un rancho\". Pero al día siguiente el general Ramey lo desmintió: era un globo meteorológico, y los restos se fotografiaron en el suelo para la prensa.\n\nEl caso se olvidó por 30 años, hasta que en 1978 Marcel habló con un investigador de ovnis y nació la leyenda de los extraterrestres. En los años noventa la Fuerza Aérea reveló el secreto: era el Proyecto Mogul, globos gigantes que volaban muy alto para detectar pruebas nucleares soviéticas.\n\n¿Tú qué crees que cayó en Roswell?\n#Misterio #HistoriasReales #Ridmer"
+  },
+  {
+   "eid": "fb2f",
+   "tipo": "foto",
+   "omitir": true,
+   "hora_foto": "20:00",
+   "titulo_youtube": "Una bola de fuego cayó en el bosque… y el ejército cerró todo",
+   "texto_foto": "Una bola de fuego cayó en este bosque… y esa noche llegó el ejército.\n\n9 de diciembre de 1965. Miles de personas en seis estados de Estados Unidos y en Ontario, Canadá, vieron una enorme bola de fuego cruzar el cielo. Los vecinos de Kecksburg, un pueblito de Pensilvania, aseguraron que algo cayó en el bosque cercano.\n\nUn niño de 8 años le contó a la radio que parecía \"una estrella en llamas\". Un camionero dijo que la vio a pocos metros, detrás de un árbol: tenía forma de bellota gigante, del tamaño de un Volkswagen, sin ventanas ni remaches, con un anillo que parecía escritura egipcia.\n\nEsa noche llegaron militares y policías y sacaron a todos del bosque. Un muchacho de 16 años contó que vio salir un camión militar con algo grande tapado con una lona. El periódico tituló: \"Objeto volador no identificado cae cerca de Kecksburg\". Pero los militares dijeron que no encontraron \"absolutamente nada\": fue un meteoro.\n\n¿Tú qué crees que se llevaron esa noche?\n#Misterio #HistoriasReales #Ridmer"
+  },
+  {
+   "eid": "largo1",
+   "tipo": "largo",
+   "hora_youtube": "18:00",
+   "descripcion_youtube": "15 de febrero de 1995. Agentes del FBI tocan una puerta en Raleigh, Carolina del Norte.\nDetrás está Kevin Mitnick, el hacker más buscado de Estados Unidos: engañaba a cualquiera con una llamada, vivió dos años con nombres falsos… y lo encontraron por la señal de su celular.\n#hackers #historiasreales #ridmer",
+   "gancho": 2,
+   "segmentos": [
+    {
+     "texto": "Quince de febrero de mil novecientos noventa y cinco. De madrugada, agentes del FBI tocan la puerta de un departamento en Raleigh, Carolina del Norte.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Kevin Mitnick",
+       "Kevin Mitnick 2008"
+      ]
+     }
+    },
+    {
+     "texto": "Detrás está el hacker más buscado de Estados Unidos. Un hombre del que llegaron a decir que podía empezar una guerra nuclear… silbando por un teléfono.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Kevin Mitnick",
+       "Kevin Mitnick 2008"
+      ]
+     }
+    },
+    {
+     "texto": "Esta es la historia de Kevin Mitnick. Y de cómo engañó a medio mundo, casi sin nada más que un teléfono.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=BBR1SJsqoVM",
+      "desde": 5,
+      "dur": 7,
+      "buscar_video": [
+       "telephone 1980s"
+      ]
+     }
+    },
+    {
+     "texto": "Kevin nació el seis de agosto de mil novecientos sesenta y tres, en Van Nuys, en Los Ángeles, California.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Van Nuys",
+       "Van Nuys Boulevard"
+      ]
+     }
+    },
+    {
+     "texto": "Sus padres se separaron cuando era pequeño, y creció con su mamá, que trabajaba largas horas como mesera.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Los Angeles 1970s",
+       "San Fernando Valley"
+      ]
+     }
+    },
+    {
+     "texto": "A los doce años descubrió su primer truco. Quería viajar gratis en los autobuses de Los Ángeles.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "RTD bus Los Angeles",
+       "Southern California Rapid Transit District bus"
+      ]
+     }
+    },
+    {
+     "texto": "Le preguntó a un chofer, como quien no quiere la cosa, dónde se compraba la perforadora de los boletos de transbordo.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "bus transfer ticket",
+       "RTD bus Los Angeles"
+      ]
+     }
+    },
+    {
+     "texto": "El chofer le dijo. Kevin la compró, y en la basura de la terminal encontró talonarios de boletos sin usar.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "bus terminal Los Angeles"
+      ]
+     }
+    },
+    {
+     "texto": "Con eso recorrió toda la ciudad sin pagar. Pero lo importante no era el autobús: aprendió que si preguntas con confianza, la gente te responde.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Los Angeles bus 1975",
+       "RTD bus Los Angeles"
+      ]
+     }
+    },
+    {
+     "texto": "Eso tiene un nombre: ingeniería social. Y Kevin se volvió el mejor del mundo en eso.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Kevin Mitnick",
+       "Kevin Mitnick 2008"
+      ]
+     }
+    },
+    {
+     "texto": "En la secundaria se obsesionó con los teléfonos. Era la época de los phreakers, jóvenes que exploraban las redes telefónicas.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "payphone 1970s",
+       "telephone booth"
+      ]
+     }
+    },
+    {
+     "texto": "Kevin aprendió cómo hablaban los empleados de la compañía telefónica: sus palabras, sus departamentos, sus nombres.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "telephone switchboard operators",
+       "telephone exchange"
+      ]
+     }
+    },
+    {
+     "texto": "En mil novecientos ochenta y uno, con diecisiete años, entró con unos amigos a un centro de la compañía telefónica en Los Ángeles, y se llevó sus manuales. Lo atraparon. Fue su primer problema con la justicia.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Pacific Telephone building",
+       "telephone exchange"
+      ]
+     }
+    },
+    {
+     "texto": "Y empezó a llamar. Se hacía pasar por un técnico de otra oficina, con prisa y con un problema urgente. Del otro lado, un empleado amable quería ayudar.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "telephone 1980s office"
+      ]
+     }
+    },
+    {
+     "texto": "Y sin darse cuenta, le daba un número, un dato, un acceso. Kevin nunca necesitó romper nada. Solo una voz segura y la información correcta.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "rotary telephone"
+      ]
+     }
+    },
+    {
+     "texto": "En mil novecientos setenta y nueve, con dieciséis años, un amigo le pasó el número de acceso de una red de Digital Equipment Corporation, una gigante de las computadoras.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Digital Equipment Corporation",
+       "DEC PDP-11"
+      ]
+     }
+    },
+    {
+     "texto": "Kevin entró, y copió programas que la empresa estaba desarrollando.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "DEC VAX",
+       "Digital Equipment Corporation VAX"
+      ]
+     }
+    },
+    {
+     "texto": "No necesitó adivinar nada: tenía el número y una clave que le habían pasado. El resto lo hizo su curiosidad.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "DEC PDP-11"
+      ]
+     }
+    },
+    {
+     "texto": "Años después, eso lo llevó a juicio. En mil novecientos ochenta y ocho lo condenaron a doce meses de prisión, y a tres años de libertad vigilada.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=m6gmjvLXvVY",
+      "desde": 20,
+      "dur": 7,
+      "buscar_video": [
+       "courthouse exterior"
+      ]
+     }
+    },
+    {
+     "texto": "Parecía que su historia terminaba ahí. Pero apenas estaba empezando.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Kevin Mitnick",
+       "Kevin Mitnick 2008"
+      ]
+     }
+    },
+    {
+     "texto": "En mil novecientos noventa y dos, casi al final de su libertad vigilada, lo investigaban por meterse otra vez en los sistemas de la compañía telefónica Pacific Bell.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Pacific Bell",
+       "Pacific Telephone building"
+      ]
+     }
+    },
+    {
+     "texto": "Emitieron una orden para arrestarlo. Y Kevin desapareció.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "PRÓFUGO",
+      "sub": "1992 · orden de arresto"
+     }
+    },
+    {
+     "texto": "Durante más de dos años vivió como fugitivo, con nombres falsos, mudándose de ciudad en ciudad.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Denver skyline 1990s",
+       "Denver"
+      ]
+     }
+    },
+    {
+     "texto": "En Denver trabajó en un bufete de abogados con el nombre de Eric Weiss: el verdadero nombre del mago Harry Houdini.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Harry Houdini",
+       "Houdini"
+      ]
+     }
+    },
+    {
+     "texto": "Usaba teléfonos celulares clonados, para que nadie pudiera rastrear sus llamadas.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Motorola MicroTAC",
+       "1990s cell phone"
+      ]
+     }
+    },
+    {
+     "texto": "Y según contó él mismo, hasta escuchaba a los agentes que lo buscaban, para saber cuándo se estaban acercando.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=achtNF2OyHY",
+      "desde": 15,
+      "dur": 7,
+      "buscar_video": [
+       "FBI building"
+      ]
+     }
+    },
+    {
+     "texto": "Mientras huía, entraba a las computadoras de empresas como Motorola, Nokia y Sun Microsystems, y copiaba el código secreto de sus programas.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Motorola headquarters",
+       "Sun Microsystems"
+      ]
+     }
+    },
+    {
+     "texto": "Muchas veces bastaba una llamada: decía que era un compañero de otra sede, y un empleado le enviaba los archivos.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Motorola MicroTAC"
+      ]
+     }
+    },
+    {
+     "texto": "No lo hacía por dinero. Nunca vendió nada de lo que copió. Decía que lo hacía por el reto, por saber que podía.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Kevin Mitnick",
+       "Kevin Mitnick 2008"
+      ]
+     }
+    },
+    {
+     "texto": "Para el gobierno, era el criminal informático más buscado de la historia de Estados Unidos.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=BBR1SJsqoVM",
+      "desde": 40,
+      "dur": 7,
+      "buscar_video": [
+       "FBI headquarters"
+      ]
+     }
+    },
+    {
+     "texto": "Su cara salió en la portada del New York Times, y los periódicos lo pintaban como un genio peligroso.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "The New York Times building"
+      ]
+     }
+    },
+    {
+     "texto": "Y entonces cometió el error que lo hundió.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Kevin Mitnick",
+       "Kevin Mitnick 2008"
+      ]
+     }
+    },
+    {
+     "texto": "El día de Navidad de mil novecientos noventa y cuatro, alguien entró a las computadoras de Tsutomu Shimomura, un experto en seguridad de San Diego.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Tsutomu Shimomura",
+       "San Diego Supercomputer Center"
+      ]
+     }
+    },
+    {
+     "texto": "Shimomura se lo tomó como algo personal. Y decidió cazar al intruso él mismo.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Tsutomu Shimomura",
+       "San Diego Supercomputer Center"
+      ]
+     }
+    },
+    {
+     "texto": "Lo ayudaba el periodista John Markoff, del New York Times, que después contó toda la cacería en un libro.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "The New York Times building"
+      ]
+     }
+    },
+    {
+     "texto": "Siguió el rastro por internet, de computadora en computadora, hasta una ciudad: Raleigh, en Carolina del Norte.",
+     "escena": {
+      "tipo": "ruta",
+      "a": [
+       32.72,
+       -117.16
+      ],
+      "b": [
+       35.78,
+       -78.64
+      ],
+      "na": "SAN DIEGO",
+      "nb": "RALEIGH"
+     }
+    },
+    {
+     "texto": "Ahí, la pista llevaba a la red de celulares de la ciudad.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Raleigh North Carolina skyline",
+       "Raleigh, North Carolina"
+      ]
+     }
+    },
+    {
+     "texto": "Shimomura recorrió las calles de noche, en un carro, con una antena que detecta la señal de los celulares. Cada vez que el fugitivo se conectaba, la señal se hacía más fuerte… hasta un edificio de departamentos.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Raleigh, North Carolina"
+      ]
+     }
+    },
+    {
+     "texto": "En la madrugada del quince de febrero, los agentes tocaron la puerta.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=achtNF2OyHY",
+      "desde": 60,
+      "dur": 7,
+      "buscar_video": [
+       "apartment building night"
+      ]
+     }
+    },
+    {
+     "texto": "Kevin abrió. Tenía treinta y un años.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Kevin Mitnick",
+       "Kevin Mitnick 2008"
+      ]
+     }
+    },
+    {
+     "texto": "Días después, en una audiencia, vio por primera vez la cara de Shimomura. Y le dijo: Tsutomu, respeto tus habilidades.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Tsutomu Shimomura"
+      ]
+     }
+    },
+    {
+     "texto": "Adentro encontraron computadoras, teléfonos celulares y documentos con nombres falsos.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "1990s laptop computer",
+       "Toshiba laptop 1990s"
+      ]
+     }
+    },
+    {
+     "texto": "Lo acusaron de fraude informático y de robar programas de grandes empresas de tecnología.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=m6gmjvLXvVY",
+      "desde": 45,
+      "dur": 7,
+      "buscar_video": [
+       "courthouse"
+      ]
+     }
+    },
+    {
+     "texto": "Pero lo que vino después fue casi tan increíble como su fuga.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Kevin Mitnick",
+       "Kevin Mitnick 2008"
+      ]
+     }
+    },
+    {
+     "texto": "Pasó más de cuatro años preso sin juicio. Le negaron la fianza.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Metropolitan Detention Center Los Angeles",
+       "prison cell"
+      ]
+     }
+    },
+    {
+     "texto": "Según contó Kevin, un fiscal llegó a decirle al juez que él podía empezar una guerra nuclear silbando códigos por un teléfono público.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "payphone",
+       "telephone booth"
+      ]
+     }
+    },
+    {
+     "texto": "Por eso lo tuvieron ocho meses en aislamiento, sin poder usar ni siquiera un teléfono.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "prison cell"
+      ]
+     }
+    },
+    {
+     "texto": "Afuera, miles de personas pegaban calcomanías que decían: Liberen a Kevin.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Free Kevin",
+       "Free Kevin Mitnick"
+      ]
+     }
+    },
+    {
+     "texto": "En mil novecientos noventa y nueve aceptó su culpa. Lo condenaron a cuarenta y seis meses, más veintidós por violar su libertad vigilada.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=m6gmjvLXvVY",
+      "desde": 60,
+      "dur": 7,
+      "buscar_video": [
+       "courthouse"
+      ]
+     }
+    },
+    {
+     "texto": "Salió libre el veintiuno de enero del año dos mil. Pero con una condición rarísima: durante tres años no podía usar internet, ni computadoras, ni siquiera un celular.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Lompoc Federal Correctional Complex",
+       "prison fence"
+      ]
+     }
+    },
+    {
+     "texto": "Cuando por fin recuperó el acceso, Kevin cambió de lado.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Kevin Mitnick",
+       "Kevin Mitnick 2008"
+      ]
+     }
+    },
+    {
+     "texto": "Fundó su propia empresa de seguridad. Las mismas compañías que antes engañaba, ahora le pagaban para encontrar sus fallas antes que otros.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=pd0Ee6pERuo",
+      "desde": 20,
+      "dur": 7,
+      "buscar_video": [
+       "office computers"
+      ]
+     }
+    },
+    {
+     "texto": "Escribió libros como El arte del engaño, y daba conferencias en todo el mundo, demostrando lo fácil que es engañar a una persona.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Kevin Mitnick conference",
+       "Kevin Mitnick"
+      ]
+     }
+    },
+    {
+     "texto": "En dos mil once publicó su autobiografía, Fantasma en los cables, donde contó su fuga paso a paso.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Kevin Mitnick",
+       "Kevin Mitnick 2008"
+      ]
+     }
+    },
+    {
+     "texto": "Y fue jefe de hackeo de una empresa que enseña a millones de empleados a no caer en engaños por teléfono o por correo.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=pd0Ee6pERuo",
+      "desde": 50,
+      "dur": 7,
+      "buscar_video": [
+       "office"
+      ]
+     }
+    },
+    {
+     "texto": "Su lección siempre fue la misma: la parte más débil de cualquier sistema no es la computadora. Es la persona.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=LFiJPscdCSs",
+      "desde": 20,
+      "dur": 7,
+      "buscar_video": [
+       "computer keyboard"
+      ]
+     }
+    },
+    {
+     "texto": "Kevin Mitnick murió el dieciséis de julio de dos mil veintitrés, a los cincuenta y nueve años. Su esposa esperaba a su primer hijo.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=m6gmjvLXvVY",
+      "desde": 5,
+      "dur": 7,
+      "buscar_video": [
+       "candle"
+      ]
+     }
+    },
+    {
+     "texto": "Pasó de ser el hacker más buscado del planeta… a ser el hombre al que las empresas llamaban para protegerse de gente como él.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Kevin Mitnick",
+       "Kevin Mitnick 2008"
+      ]
+     }
+    },
+    {
+     "texto": "Y tú, ¿le habrías dado la contraseña a esa voz amable del teléfono? Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "rotary telephone"
+      ]
+     }
+    }
+   ],
+   "nota": "13-nov: reemplaza el encargo largo1 (McMinnville) por Kevin Mitnick, como dice la guía.",
+   "articulo": "Kevin Mitnick",
+   "fuente": "https://es.wikipedia.org/wiki/Kevin_Mitnick",
+   "titulo_video": " ",
+   "titulo_youtube": "El hacker más buscado de Estados Unidos… y solo usaba un teléfono",
+   "titulos_opciones": [
+    "El hacker MÁS BUSCADO de Estados Unidos… y solo usaba un teléfono 📞",
+    "Lo encerraron 8 meses porque decían que podía empezar una guerra nuclear SILBANDO",
+    "Kevin Mitnick: engañaba a cualquiera con una llamada",
+    "Fue el fugitivo más buscado… y lo encontraron por la señal de su celular",
+    "¿Cómo atraparon al hacker que escuchaba al FBI?",
+    "De criminal más buscado a experto que las empresas contrataban",
+    "Vivió 2 años con nombres falsos… hasta que tocaron su puerta",
+    "Nadie sabía que la parte más débil de una computadora… eras TÚ"
+   ],
+   "etiquetas": [
+    "Kevin Mitnick",
+    "hackers",
+    "ingeniería social",
+    "FBI",
+    "Tsutomu Shimomura",
+    "historias reales",
+    "ridmer"
+   ],
+   "miniatura": {
+    "texto": "EL MÁS BUSCADO"
+   }
+  },
+  {
+   "eid": "largo1t",
+   "tipo": "tiktok",
+   "encargo": "largo1",
+   "hora_youtube": "18:00",
+   "descripcion_youtube": "15 de febrero de 1995. Agentes del FBI tocan una puerta en Raleigh, Carolina del Norte.\nDetrás está Kevin Mitnick, el hacker más buscado de Estados Unidos: engañaba a cualquiera con una llamada, vivió dos años con nombres falsos… y lo encontraron por la señal de su celular.\nVideo completo en YouTube: Ridmer.\n#hackers #historiasreales #ridmer",
+   "gancho": 2,
+   "segmentos": [
+    {
+     "texto": "Quince de febrero de mil novecientos noventa y cinco. De madrugada, agentes del FBI tocan la puerta de un departamento en Raleigh, Carolina del Norte.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Kevin Mitnick",
+       "Kevin Mitnick 2008"
+      ]
+     }
+    },
+    {
+     "texto": "Detrás está el hacker más buscado de Estados Unidos. Un hombre del que llegaron a decir que podía empezar una guerra nuclear… silbando por un teléfono.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Kevin Mitnick",
+       "Kevin Mitnick 2008"
+      ]
+     }
+    },
+    {
+     "texto": "Esta es la historia de Kevin Mitnick, el hombre que engañaba a cualquiera… con una simple llamada.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=BBR1SJsqoVM",
+      "desde": 5,
+      "dur": 7,
+      "buscar_video": [
+       "telephone 1980s"
+      ]
+     }
+    },
+    {
+     "texto": "A los doce años ya viajaba gratis en los autobuses de Los Ángeles, solo por hacerle la pregunta correcta a un chofer.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "RTD bus Los Angeles",
+       "Southern California Rapid Transit District bus"
+      ]
+     }
+    },
+    {
+     "texto": "Después vinieron los teléfonos. Se hacía pasar por un técnico de otra oficina, con prisa y con un problema urgente.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "telephone 1980s office"
+      ]
+     }
+    },
+    {
+     "texto": "Y del otro lado, un empleado amable le daba un número, un dato, un acceso. Sin romper nada.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "rotary telephone"
+      ]
+     }
+    },
+    {
+     "texto": "En mil novecientos noventa y dos, la justicia emitió una orden para arrestarlo. Y Kevin desapareció.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "PRÓFUGO",
+      "sub": "1992 · orden de arresto"
+     }
+    },
+    {
+     "texto": "Vivió más de dos años con nombres falsos. En Denver se llamó Eric Weiss, el verdadero nombre del mago Houdini.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Harry Houdini",
+       "Houdini"
+      ]
+     }
+    },
+    {
+     "texto": "Usaba celulares clonados, y según contó, hasta escuchaba a los agentes que lo buscaban.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=achtNF2OyHY",
+      "desde": 15,
+      "dur": 7,
+      "buscar_video": [
+       "FBI building"
+      ]
+     }
+    },
+    {
+     "texto": "Era el criminal informático más buscado de la historia de Estados Unidos.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=BBR1SJsqoVM",
+      "desde": 40,
+      "dur": 7,
+      "buscar_video": [
+       "FBI headquarters"
+      ]
+     }
+    },
+    {
+     "texto": "Hasta que, en Navidad de mil novecientos noventa y cuatro, alguien entró a las computadoras de Tsutomu Shimomura, un experto en seguridad.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Tsutomu Shimomura",
+       "San Diego Supercomputer Center"
+      ]
+     }
+    },
+    {
+     "texto": "Shimomura siguió el rastro hasta Raleigh, y recorrió las calles de noche con una antena que detecta celulares. La señal se hacía cada vez más fuerte.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Raleigh, North Carolina"
+      ]
+     }
+    },
+    {
+     "texto": "De madrugada, los agentes tocaron la puerta.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=achtNF2OyHY",
+      "desde": 60,
+      "dur": 7,
+      "buscar_video": [
+       "apartment building night"
+      ]
+     }
+    },
+    {
+     "texto": "¿Qué pasó después? Lo que viene te va a dejar sin palabras. Mira el video completo en YouTube, en el canal Ridmer.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Kevin Mitnick",
+       "Kevin Mitnick 2008"
+      ]
+     }
+    }
+   ],
+   "articulo": "Kevin Mitnick",
+   "fuente": "https://es.wikipedia.org/wiki/Kevin_Mitnick",
+   "titulo_video": " ",
+   "titulo_youtube": "El hacker más buscado de Estados Unidos… y solo usaba un teléfono",
+   "titulos_opciones": [
+    "El hacker MÁS BUSCADO de Estados Unidos… y solo usaba un teléfono 📞",
+    "Lo encerraron 8 meses porque decían que podía empezar una guerra nuclear SILBANDO",
+    "Kevin Mitnick: engañaba a cualquiera con una llamada",
+    "Fue el fugitivo más buscado… y lo encontraron por la señal de su celular",
+    "¿Cómo atraparon al hacker que escuchaba al FBI?",
+    "De criminal más buscado a experto que las empresas contrataban",
+    "Vivió 2 años con nombres falsos… hasta que tocaron su puerta",
+    "Nadie sabía que la parte más débil de una computadora… eras TÚ"
+   ],
+   "etiquetas": [
+    "Kevin Mitnick",
+    "hackers",
+    "ingeniería social",
+    "FBI",
+    "Tsutomu Shimomura",
+    "historias reales",
+    "ridmer"
+   ],
+   "miniatura": {
+    "texto": "EL MÁS BUSCADO"
+   }
+  }
+ ]
+}
