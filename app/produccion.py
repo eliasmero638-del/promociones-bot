@@ -384,9 +384,31 @@ def _programar(fecha, v, jid, salidas, mini, guion, auto=False):
                 'aviso_en': aviso, 'publicar_en': cuando,
                 'duracion': 0 if tipo == 'foto' else int(montaje.dur(os.path.join(sub, os.path.basename(path))))}
         F._guardar(os.path.join(sub, 'meta.json'), meta)
+        _sin_duplicar(sub, auto)
     h = F._leer(F.HIST, [])
     h.append({'fecha': time.strftime('%Y-%m-%d %H:%M'), 'titulo': v.get('articulo', '') + ' · ' + titulo, 'formato': v['tipo']})
     F._guardar(F.HIST, h[-400:])
+
+
+def _sin_duplicar(sub, auto):
+    """13-nov: si llega la versión editada por Claude, la automática (sin 3D) ya no se publica; y al revés,
+    si Claude ya entregó, la automática se descarta."""
+    try:
+        if auto:
+            otra, esta = sub[:-len('_auto')], sub
+        else:
+            otra, esta = sub, sub + '_auto'
+        mo, me = F._leer(os.path.join(otra, 'meta.json'), None), F._leer(os.path.join(esta, 'meta.json'), None)
+        if mo and me and me.get('estado') in ('programado', 'pendiente'):
+            me['estado'] = 'reemplazado'
+            F._guardar(os.path.join(esta, 'meta.json'), me)
+            log('versión automática reemplazada por la de Claude', os.path.basename(esta))
+        elif mo and me and mo.get('estado') == 'programado' and me.get('estado') not in ('reemplazado', 'omitido', 'vencido'):
+            mo['estado'] = 'ya_salio_automatico'          # la automática ya se publicó: no publicar dos veces
+            F._guardar(os.path.join(otra, 'meta.json'), mo)
+            log('la automática ya salió; no se publica otra vez', os.path.basename(otra))
+    except Exception as e:
+        log('sin_duplicar falló', sub, e)
 
 
 # ---------------------------------------------------------------- modo "Claude edita el 100 %"
