@@ -206,6 +206,20 @@ class H(BaseHTTPRequestHandler):
                 return self._send(200, json.dumps(produccion.estado_youtube(), ensure_ascii=False), 'application/json')
             except Exception as e:
                 return self._send(500, json.dumps({'error': str(e)[:200]}), 'application/json')
+        if self.path.split('?')[0] == '/estado/clipero.json':   # 12-nov: diagnóstico del Clipero (sin claves)
+            try:
+                import re as _re, subprocess as _sp, sys as _sys, recorder as _rec
+                mm = _sys.modules.get('__main__')
+                j = _sp.run(['journalctl', '-u', 'clipero', '-n', '60', '--no-pager', '-o', 'cat'],
+                            capture_output=True, text=True, timeout=20).stdout.splitlines()
+                limpio = [_re.sub(r'[A-Za-z0-9_\-]{30,}', '***', _re.sub(r'\?\S+', '?…', l))[:220] for l in j]
+                d = {'hora': time.strftime('%Y-%m-%d %H:%M'), 'grabador': {k: v for k, v in getattr(_rec, 'estado', {}).items()
+                                                                     if isinstance(v, (str, int, float, bool, type(None)))},
+                     'stats': getattr(mm, 'stats', None), 'pausado': C.get().get('pausado'), 'perfil': C.perfil(),
+                     'log': limpio}
+                return self._send(200, json.dumps(d, ensure_ascii=False, default=str), 'application/json')
+            except Exception as e:
+                return self._send(500, json.dumps({'error': str(e)[:200]}), 'application/json')
         if self.path.startswith('/encargos/'):
             return self._encargos()
         if self.path.startswith('/material/'):
