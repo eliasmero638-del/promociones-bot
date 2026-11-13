@@ -212,7 +212,8 @@ class H(BaseHTTPRequestHandler):
                 mm = _sys.modules.get('__main__')
                 j = _sp.run(['journalctl', '-u', 'clipero', '-n', '3000', '--no-pager', '-o', 'cat'],
                             capture_output=True, text=True, timeout=30).stdout.splitlines()
-                j = [l for l in j if not l.startswith(('[produccion]', 'telegram error')) and '[produccion]' not in l][-70:]
+                prod = [l for l in j if '[produccion]' in l or '[ridmer]' in l or '[fabrica]' in l][-45:]
+                j = [l for l in j if not l.startswith(('[produccion]', 'telegram error')) and '[produccion]' not in l][-40:] + ['--- producción ---'] + prod
                 try:
                     j += ['--- teléfono ---'] + open(os.path.join(C.DATA, 'telefono.log'), errors='replace').read().splitlines()[-26:]
                 except Exception:
