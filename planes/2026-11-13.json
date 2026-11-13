@@ -41,11 +41,11 @@
      "texto": "Una cámara grabó el instante en que un edificio se vino abajo.",
      "escena": {
       "tipo": "video",
-      "url": "https://www.youtube.com/watch?v=po71cnBx8sY",
+      "url": "https://www.youtube.com/watch?v=lwSj1YLvWsQ",
       "desde": 0,
       "dur": 6,
       "buscar_video": [
-       "building demolition collapse"
+       "building collapse"
       ]
      },
      "short": true
@@ -65,8 +65,8 @@
      "texto": "Un edificio de tres pisos, de casi cien años, se deslizó hacia la excavación de una obra vecina.",
      "escena": {
       "tipo": "video",
-      "url": "https://www.youtube.com/watch?v=5GuoX8zQvcQ",
-      "desde": 0,
+      "url": "https://www.youtube.com/watch?v=nvEesPKJ7Is",
+      "desde": 4,
       "dur": 6,
       "buscar_video": [
        "building collapse"
@@ -88,12 +88,11 @@
      "texto": "Más de doscientos cincuenta bomberos y paramédicos buscaron entre los escombros durante casi un día.",
      "escena": {
       "tipo": "video",
-      "url": "https://www.youtube.com/watch?v=nvEesPKJ7Is",
+      "url": "https://www.youtube.com/watch?v=po71cnBx8sY",
       "desde": 0,
       "dur": 6,
       "buscar_video": [
-       "firefighters rescue rubble",
-       "FDNY"
+       "firefighters rescue rubble"
       ]
      }
     },
@@ -129,22 +128,23 @@
      "texto": "Hay dieciocho heridos, entre ellos cuatro bomberos.",
      "escena": {
       "tipo": "video",
-      "url": "https://www.youtube.com/watch?v=lwSj1YLvWsQ",
+      "url": "https://www.youtube.com/watch?v=XReVFd0nFZA",
       "desde": 0,
       "dur": 6,
       "buscar_video": [
-       "firefighters rescue",
-       "ambulance New York"
+       "fire truck New York"
       ]
      }
     },
     {
      "texto": "Meses antes, la ciudad había ordenado parar esa obra vecina. Pero los trabajos siguieron.",
      "escena": {
-      "tipo": "foto",
-      "buscar": [
-       "New York City Department of Buildings",
-       "construction site excavation New York"
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=po71cnBx8sY",
+      "desde": 10,
+      "dur": 6,
+      "buscar_video": [
+       "construction site excavation"
       ]
      },
      "rotulo": "ORDEN DE PARAR"
@@ -154,7 +154,7 @@
      "escena": {
       "tipo": "video",
       "url": "https://www.youtube.com/watch?v=XReVFd0nFZA",
-      "desde": 0,
+      "desde": 8,
       "dur": 6,
       "buscar_video": [
        "New York city street"
