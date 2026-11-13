@@ -739,6 +739,52 @@ def importar_entregas(fecha, plan):
             shutil.rmtree(carpeta, ignore_errors=True)
 
 
+def _vistas_previas(fecha, plan):
+    """13-nov: si el plan trae "enviar_telegram": ["fb2", ...], manda YA al Telegram del dueño una vista previa de esos
+    videos (los editados por Claude), con su hora y el texto para TikTok. Cada uno se manda una sola vez."""
+    pide = plan.get('enviar_telegram') or []
+    if not pide:
+        return
+    est = F._leer(ESTADO, {}); hechas = est.get('previas', [])
+    for eid in pide:
+        clave = f'{fecha}:{eid}'
+        if clave in hechas:
+            continue
+        base = f'{fecha.replace("-", "")}_{eid}_'
+        jobs = sorted(j for j in os.listdir(F.DIR) if j.startswith(base) and not j.endswith('_auto'))
+        if not jobs:
+            continue
+        for jid in jobs:
+            m = F.leer_meta(jid)
+            if not m or not (m.get('archivos') or {}).get('video'):
+                continue
+            v = os.path.join(F.DIR, jid, m['archivos']['video'])
+            if os.path.getsize(v) >= 48 * 1024 * 1024:
+                prev = os.path.join(F.DIR, jid, 'vista_previa.mp4')
+                if not os.path.exists(prev):
+                    montaje.sh(['ffmpeg', '-y', '-v', 'error', '-i', v, '-vf', 'scale=-2:854', '-c:v', 'libx264', '-preset',
+                                'veryfast', '-b:v', '1800k', '-maxrate', '2M', '-bufsize', '4M', '-c:a', 'aac', '-b:a', '128k',
+                                '-movflags', '+faststart', prev])
+                v = prev
+            cuando = time.strftime('%I:%M %p', time.localtime(m.get('publicar_en', time.time()))).lstrip('0')
+            dest = 'Facebook Ridmer TV' if m.get('entrega') == 'fb' else 'YouTube'
+            cap = (f"👀 <b>VISTA PREVIA · HECHO EN 3D</b>\n<b>{m.get('titulo_youtube', '')}</b>\n"
+                   f"📅 Se publica solo en {dest} a las <b>{cuando}</b> (reemplaza al automático).")
+            for c in C.get()['chat_ids']:
+                with open(v, 'rb') as f:
+                    r = tg._api('sendVideo', files={'video': f}, chat_id=c, caption=cap[:1000], parse_mode='HTML',
+                                supports_streaming='true')
+                if not (r and r.get('ok')):
+                    tg._api('sendMessage', chat_id=c, text=cap, parse_mode='HTML')
+                tt = (m.get('texto_tiktok') or '').strip()
+                if tt:
+                    import html as _h
+                    tg._api('sendMessage', chat_id=c, text='📲 <b>TEXTO PARA TIKTOK</b> (toca para copiar):\n\n<code>'
+                            + _h.escape(tt[:2100]) + '</code>', parse_mode='HTML')
+        log('vista previa enviada a Telegram', clave)
+        est = F._leer(ESTADO, {}); est.setdefault('previas', []).append(clave); F._guardar(ESTADO, est)
+
+
 def modo_claude(fecha, plan):
     """Material para Claude, videos editados por Claude y, si Claude no entregó a tiempo, armado automático."""
     hechos = F._leer(HECHOS, [])
@@ -757,6 +803,10 @@ def modo_claude(fecha, plan):
         hechos.append(clave); F._guardar(HECHOS, hechos)
     _lista_material(fecha, plan)
     importar_entregas(fecha, plan)
+    try:
+        _vistas_previas(fecha, plan)
+    except Exception as e:
+        log('vista previa falló', e)
     limite = C.get().get('claude_limite', '10:30')         # respaldo: si Claude no entregó, se arma automático
     if time.strftime('%H:%M') >= limite:
         hechos = F._leer(HECHOS, [])
