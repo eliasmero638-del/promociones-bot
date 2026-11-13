@@ -86,7 +86,7 @@ def _parte_wav(texto, carpeta, k, voz=None, estilo='', solo_gemini=False, modelo
             _modelo_usado[0] = r
             break
         log('voz gemini falló, reintento', intento + 1, r)
-        time.sleep(30 * (intento + 1))
+        time.sleep(20)
     if not ok and (not solo_gemini or solo_edge):
         log('voz: uso Microsoft' if solo_edge else 'voz gemini falló, uso Microsoft:', r)
         ok, r = F.voz.edge(texto, mp3)
@@ -100,6 +100,7 @@ def _parte_wav(texto, carpeta, k, voz=None, estilo='', solo_gemini=False, modelo
 
 
 _modelo_usado = [None]
+_en_curso = set()
 
 
 def _timbre(wav):
@@ -121,16 +122,7 @@ def _narrar(segs, carpeta, g, voz=None, estilo=''):
         return _narrar1(segs, carpeta, g, voz, estilo)
     except RuntimeError as e:
         log('narración falló:', e)
-    usados = {_modelo_usado[0]}
-    key = C.get().get('gemini_key')
-    for m in (F.voz.modelos_tts(key) if key else [])[:4]:
-        if m in usados or 'lite' in m:
-            continue
-        try:
-            log('rehago toda la narración con', m)
-            return _narrar1(segs, carpeta, g, voz, estilo, forzar=m)
-        except RuntimeError as e:
-            log('narración con', m, 'falló:', e)
+    # 13-nov: sin perder más tiempo (los videos tienen hora): TODA la narración con la voz de Microsoft
     log('Gemini sin cupo: TODA la narración con la voz de Microsoft')
     return _narrar1(segs, carpeta, g, voz, estilo, solo_edge=True)
 
@@ -739,14 +731,20 @@ def modo_claude(fecha, plan):
             if clave in hechos or v.get('omitir') or v.get('urgente') or 'ya' in (v.get('hora_fb'), v.get('hora_youtube'),
                                                                                    v.get('hora_short')):
                 continue
-            hechos.append(clave); F._guardar(HECHOS, hechos)
+            if clave in _en_curso:
+                continue
+            _en_curso.add(clave)                 # 13-nov: se marca como hecho solo AL TERMINAR (un reinicio ya no lo pierde)
             with _lock:
                 try:
                     producir(fecha, v)
+                    hechos = F._leer(HECHOS, []); hechos.append(clave); F._guardar(HECHOS, hechos)
                     for c in C.get()['chat_ids']:
                         tg._api('sendMessage', chat_id=c, text=f"ℹ️ Ridmer: Claude no entregó {v.get('eid')} a tiempo; lo armé automático.")
                 except Exception as e:
                     log('error produciendo', clave, e)
+                    hechos = F._leer(HECHOS, []); hechos.append(clave); F._guardar(HECHOS, hechos)
+                finally:
+                    _en_curso.discard(clave)
 
 
 # ---------------------------------------------------------------- entregas a su hora
