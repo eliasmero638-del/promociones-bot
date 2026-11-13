@@ -2008,5 +2008,9 @@
    "omitir": true,
    "nota_omitir": "13-nov: Ricardo pidió todo en 3D; Mitnick pasa al 14-nov hecho por Claude con 3D"
   }
+ ],
+ "enviar_telegram": [
+  "fb2",
+  "fb3"
  ]
 }
