@@ -208,7 +208,7 @@ class H(BaseHTTPRequestHandler):
                 return self._send(500, json.dumps({'error': str(e)[:200]}), 'application/json')
         if self.path.split('?')[0] == '/estado/clipero.json':   # 12-nov: diagnóstico del Clipero (sin claves)
             try:
-                import re as _re, subprocess as _sp, sys as _sys, recorder as _rec
+                import re as _re, subprocess as _sp, sys as _sys, time, recorder as _rec
                 mm = _sys.modules.get('__main__')
                 j = _sp.run(['journalctl', '-u', 'clipero', '-n', '60', '--no-pager', '-o', 'cat'],
                             capture_output=True, text=True, timeout=20).stdout.splitlines()
