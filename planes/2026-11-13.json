@@ -136,6 +136,139 @@
    ]
   },
   {
+   "eid": "fb1b",
+   "tipo": "fb",
+   "encargo": "fb2",
+   "hora_fb": "14:00",
+   "articulo": "Caso Roswell",
+   "fuente": "https://es.wikipedia.org/wiki/Caso_Roswell",
+   "titulo_video": " ",
+   "titulo_youtube": "El ejército dijo: capturamos un platillo volador… Roswell 1947",
+   "titulos_opciones": [
+    "El ejército dijo: \"capturamos un PLATILLO VOLADOR\" 🛸",
+    "Encontró restos extraños en su rancho… y el mundo habló de extraterrestres",
+    "Roswell, 1947: ¿qué cayó de verdad en ese rancho?",
+    "Un día era un platillo volador… al siguiente, un globo",
+    "50 años después revelaron el secreto de Roswell",
+    "El periódico tituló: la Fuerza Aérea captura un platillo volante",
+    "Nadie sabía que ese \"globo\" espiaba a los soviéticos"
+   ],
+   "descripcion_youtube": "Julio de 1947. Un granjero encuentra restos extraños en su rancho de Roswell, Nuevo México.\nEl ejército anuncia que capturó un platillo volador… y al día siguiente lo desmiente.\n#ovnis #misterio #ridmer",
+   "etiquetas": [
+    "Roswell",
+    "ovni",
+    "platillo volador",
+    "1947",
+    "Proyecto Mogul",
+    "misterio",
+    "historias reales",
+    "ridmer"
+   ],
+   "texto_facebook": "El ejército anunció que había capturado un platillo volador… y al día siguiente dijo que era un globo 🛸 #Misterio #HistoriasReales #Ridmer",
+   "texto_tiktok": "El ejército dijo: capturamos un platillo volador 🛸 Roswell, 1947. Un granjero encontró restos extraños en su rancho… y 50 años después se supo qué eran de verdad. #roswell #ovnis #misterio #historiasreales #datoscuriosos #ridmer",
+   "miniatura": {
+    "img": 19,
+    "texto": "PLATILLO VOLADOR"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "El ejército dijo: capturamos un platillo volador.",
+     "escena": {
+      "tipo": "foto",
+      "img": 19
+     }
+    },
+    {
+     "texto": "Julio de mil novecientos cuarenta y siete. Roswell, Nuevo México.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=2U23ylt1sqw",
+      "desde": 10,
+      "dur": 6,
+      "buscar_video": [
+       "weather balloon launch"
+      ]
+     }
+    },
+    {
+     "texto": "El granjero Mac Brazel encuentra restos extraños en su rancho.",
+     "escena": {
+      "tipo": "foto",
+      "img": 10
+     }
+    },
+    {
+     "texto": "Tiras de goma, papel de aluminio, cartón y varillas de madera, pegadas con cinta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 13
+     }
+    },
+    {
+     "texto": "Avisa al sheriff, y el mayor Jesse Marcel va a recogerlos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     }
+    },
+    {
+     "texto": "El ocho de julio, el periódico de Roswell publica: la Fuerza Aérea captura un platillo volador.",
+     "escena": {
+      "tipo": "foto",
+      "img": 15
+     }
+    },
+    {
+     "texto": "Pero al día siguiente, el general Ramey lo desmiente. Era un globo meteorológico.",
+     "escena": {
+      "tipo": "foto",
+      "img": 12
+     }
+    },
+    {
+     "texto": "Fotografían los restos, y el caso se olvida por treinta años.",
+     "escena": {
+      "tipo": "foto",
+      "img": 13
+     }
+    },
+    {
+     "texto": "En mil novecientos setenta y ocho, Marcel habla con un investigador de ovnis… y nace la leyenda.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "En los años noventa, la Fuerza Aérea revela el secreto: era el Proyecto Mogul.",
+     "escena": {
+      "tipo": "foto",
+      "img": 20
+     }
+    },
+    {
+     "texto": "Globos gigantes que volaban muy alto, para detectar las pruebas nucleares soviéticas.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=RIgG4NJNH44",
+      "desde": 30,
+      "dur": 6,
+      "buscar_video": [
+       "weather balloon"
+      ]
+     }
+    },
+    {
+     "texto": "Pero Roswell sigue siendo el ovni más famoso del mundo. Comparte esta historia, y sigue a Ridmer.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    }
+   ]
+  },
+  {
    "eid": "fb1s",
    "tipo": "short",
    "encargo": "fb2",
