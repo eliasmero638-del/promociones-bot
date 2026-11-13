@@ -1498,7 +1498,9 @@
    ],
    "miniatura": {
     "texto": "EL MÁS BUSCADO"
-   }
+   },
+   "omitir": true,
+   "nota_omitir": "13-nov: Ricardo pidió todo en 3D; Mitnick pasa al 14-nov hecho por Claude con 3D"
   },
   {
    "eid": "largo1t",
@@ -1677,7 +1679,9 @@
    ],
    "miniatura": {
     "texto": "EL MÁS BUSCADO"
-   }
+   },
+   "omitir": true,
+   "nota_omitir": "13-nov: Ricardo pidió todo en 3D; Mitnick pasa al 14-nov hecho por Claude con 3D"
   }
  ]
 }
