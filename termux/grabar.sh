@@ -10,6 +10,8 @@ SSH="ssh -p $P -o BatchMode=yes -o ServerAliveInterval=30 -o ConnectTimeout=20"
 YT="yt-dlp --cookies $C --no-warnings --js-runtimes node"
 log() { echo "$(date +%H:%M:%S) $*"; }
 mkdir -p $D/rec $D/chat
+# 13-nov: que Android no congele la grabación cuando la pantalla se apaga (pasó la noche del 12 a las 23:02)
+termux-wake-lock 2>/dev/null
 
 subir() {
   while true; do
