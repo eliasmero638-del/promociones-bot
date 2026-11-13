@@ -269,6 +269,93 @@
    ]
   },
   {
+   "eid": "fb1sb",
+   "tipo": "short",
+   "encargo": "fb2",
+   "hora_youtube": "14:00",
+   "articulo": "Caso Roswell",
+   "fuente": "https://es.wikipedia.org/wiki/Caso_Roswell",
+   "titulo_video": " ",
+   "titulo_youtube": "El ejército dijo: capturamos un platillo volador #shorts",
+   "titulos_opciones": [
+    "El ejército dijo: \"capturamos un PLATILLO VOLADOR\" 🛸 #shorts",
+    "Encontró restos extraños en su rancho… y el mundo habló de extraterrestres #shorts",
+    "Roswell, 1947: ¿qué cayó de verdad en ese rancho? #shorts",
+    "Un día era un platillo volador… al siguiente, un globo #shorts",
+    "50 años después revelaron el secreto de Roswell #shorts",
+    "El periódico tituló: la Fuerza Aérea captura un platillo volante #shorts",
+    "Nadie sabía que ese \"globo\" espiaba a los soviéticos #shorts"
+   ],
+   "descripcion_youtube": "Roswell, 1947: el platillo volador que se volvió globo… y el secreto que se supo 50 años después.\n#shorts #ovnis #ridmer",
+   "etiquetas": [
+    "shorts",
+    "Roswell",
+    "ovni",
+    "ridmer"
+   ],
+   "miniatura": {
+    "img": 19,
+    "texto": "PLATILLO VOLADOR"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "El ejército dijo: capturamos un platillo volador.",
+     "escena": {
+      "tipo": "foto",
+      "img": 19
+     }
+    },
+    {
+     "texto": "Julio de mil novecientos cuarenta y siete. Un granjero de Roswell encuentra restos extraños en su rancho.",
+     "escena": {
+      "tipo": "foto",
+      "img": 10
+     }
+    },
+    {
+     "texto": "Goma, papel de aluminio y varillas de madera.",
+     "escena": {
+      "tipo": "foto",
+      "img": 13
+     }
+    },
+    {
+     "texto": "El periódico publica: la Fuerza Aérea captura un platillo volador.",
+     "escena": {
+      "tipo": "foto",
+      "img": 15
+     }
+    },
+    {
+     "texto": "Al día siguiente, el general lo desmiente. Era un globo meteorológico.",
+     "escena": {
+      "tipo": "foto",
+      "img": 12
+     }
+    },
+    {
+     "texto": "Décadas después se supo la verdad: globos secretos para espiar las pruebas nucleares soviéticas.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=2U23ylt1sqw",
+      "desde": 10,
+      "dur": 6,
+      "buscar_video": [
+       "weather balloon launch"
+      ]
+     }
+    },
+    {
+     "texto": "Pero muchos todavía creen en los extraterrestres. Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    }
+   ]
+  },
+  {
    "eid": "fb1s",
    "tipo": "short",
    "encargo": "fb2",
