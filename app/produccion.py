@@ -790,6 +790,26 @@ def _avisar_youtube(meta):
         ntfy.enviar(f"{'🎵 TikTok' if tiktok else '📺 YouTube · ' + ('largo' if largo else 'Short')} para subir", meta['titulo_youtube'], link)
 
 
+_omit_cache = {}
+
+
+def _omitido(jid):
+    """13-nov: si el plan marca el video con "omitir" (aunque ya esté armado), no se publica."""
+    try:
+        f, eid = jid.split('_')[0], jid.split('_')[1]
+        fecha = f'{f[:4]}-{f[4:6]}-{f[6:8]}'
+    except Exception:
+        return False
+    c = _omit_cache.get(fecha)
+    if not c or time.time() - c[0] > 120:
+        plan = _bajar_plan(fecha)
+        if plan is None and c:
+            return eid in c[1]
+        c = (time.time(), {v.get('eid') for v in (plan or {}).get('videos', []) if v.get('omitir')})
+        _omit_cache[fecha] = c
+    return eid in c[1]
+
+
 def entregas():
     ahora = time.time()
     yt = []
@@ -797,6 +817,9 @@ def entregas():
         m = F.leer_meta(jid) if os.path.isdir(os.path.join(F.DIR, jid)) else None
         if not m or m.get('estado') != 'programado' or ahora < m.get('aviso_en', 0):
             continue
+        if _omitido(jid):
+            m['estado'] = 'omitido'; F._guardar(os.path.join(F.DIR, jid, 'meta.json'), m)
+            log('omitido por el plan, no se publica', jid); continue
         if ahora - m.get('publicar_en', ahora) > 6 * 3600:       # muy atrasado: no publicar viejo
             m['estado'] = 'vencido'; F._guardar(os.path.join(F.DIR, jid, 'meta.json'), m); continue
         if m['entrega'] in ('fb', 'foto'):
