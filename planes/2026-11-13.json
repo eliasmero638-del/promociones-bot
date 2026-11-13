@@ -3,6 +3,168 @@
  "modo": "claude",
  "videos": [
   {
+   "eid": "not2",
+   "tipo": "fb",
+   "hora_fb": "ya",
+   "hora_short": "ya",
+   "urgente": true,
+   "articulo": "Derrumbe de edificio en Flatbush, Brooklyn (11-nov-2026)",
+   "fuente": "https://abcnews.com/US/rescue-operations-underway-after-building-collapses-brooklyn-new/story?id=138059620",
+   "nota": "Pedido directo del dueño (13-nov): noticia del derrumbe en Brooklyn con el video original. No vino como urgN. not2 = versión con mejores fragmentos de video (not1 queda omitido).",
+   "titulo_video": "SE VINO ABAJO EN BROOKLYN",
+   "titulo_youtube": "La cámara grabó cómo se vino abajo un edificio en Brooklyn: 8 muertos",
+   "titulos_opciones": [
+    "La cámara grabó el instante en que se vino abajo 😱",
+    "Se derrumbó en segundos: 8 muertos en Brooklyn",
+    "Dos ecuatorianos y dos niños entre las víctimas del derrumbe en Brooklyn",
+    "Le habían ordenado PARAR la obra… y siguió",
+    "Así cayó el edificio de Flatbush, Nueva York",
+    "8 muertos: lo que se sabe del derrumbe en Brooklyn",
+    "Un edificio de casi 100 años se deslizó hacia una excavación"
+   ],
+   "descripcion_youtube": "Este miércoles 11 de noviembre, un edificio de tres pisos se derrumbó en Flatbush, Brooklyn, Nueva York.\nOcho personas murieron, entre ellas dos niños y dos jóvenes ecuatorianos. La causa se investiga.\n#Brooklyn #NuevaYork #noticias",
+   "etiquetas": [
+    "Brooklyn",
+    "Nueva York",
+    "derrumbe",
+    "Flatbush",
+    "noticias",
+    "ecuatorianos"
+   ],
+   "texto_facebook": "Una cámara grabó el instante en que un edificio se vino abajo en Brooklyn 😱 Ocho muertos, entre ellos dos niños y dos ecuatorianos. #Brooklyn #NuevaYork #Noticias",
+   "miniatura": {
+    "texto": "SE VINO ABAJO"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Una cámara grabó el instante en que un edificio se vino abajo.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=lwSj1YLvWsQ",
+      "desde": 0,
+      "dur": 6,
+      "buscar_video": [
+       "building collapse"
+      ]
+     },
+     "short": true
+    },
+    {
+     "texto": "Pasó este miércoles, poco después de las cuatro de la tarde, en Flatbush, Brooklyn, Nueva York.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 40.64,
+      "lon": -73.955,
+      "lugar": "Flatbush, Brooklyn",
+      "km": 3
+     },
+     "short": true
+    },
+    {
+     "texto": "Un edificio de tres pisos, de casi cien años, se deslizó hacia la excavación de una obra vecina.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=nvEesPKJ7Is",
+      "desde": 4,
+      "dur": 6,
+      "buscar_video": [
+       "building collapse"
+      ]
+     },
+     "short": true
+    },
+    {
+     "texto": "Abajo había locales. Arriba vivían familias.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Flatbush Avenue Brooklyn",
+       "Flatbush Brooklyn"
+      ]
+     }
+    },
+    {
+     "texto": "Más de doscientos cincuenta bomberos y paramédicos buscaron entre los escombros durante casi un día.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=po71cnBx8sY",
+      "desde": 0,
+      "dur": 6,
+      "buscar_video": [
+       "firefighters rescue rubble"
+      ]
+     }
+    },
+    {
+     "texto": "Ocho personas murieron.",
+     "escena": {
+      "tipo": "contador",
+      "n": 8,
+      "texto": "MUERTOS",
+      "sub": "Flatbush, Brooklyn · 11 de noviembre"
+     },
+     "short": true
+    },
+    {
+     "texto": "Entre ellas, dos niños colombianos: Nicole, de nueve años, y Kevin, de diez.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "2 NIÑOS",
+      "sub": "Nicole, 9 años · Kevin, 10 años"
+     },
+     "short": true
+    },
+    {
+     "texto": "Y dos jóvenes ecuatorianos: José Luis Caguana, de Tungurahua, y Gabriel Sigüencia, de Cañar.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "2 ECUATORIANOS",
+      "sub": "José Luis Caguana, 26 · Gabriel Sigüencia, 22"
+     },
+     "short": true
+    },
+    {
+     "texto": "Hay dieciocho heridos, entre ellos cuatro bomberos.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=XReVFd0nFZA",
+      "desde": 0,
+      "dur": 6,
+      "buscar_video": [
+       "fire truck New York"
+      ]
+     }
+    },
+    {
+     "texto": "Meses antes, la ciudad había ordenado parar esa obra vecina. Pero los trabajos siguieron.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=po71cnBx8sY",
+      "desde": 10,
+      "dur": 6,
+      "buscar_video": [
+       "construction site excavation"
+      ]
+     },
+     "rotulo": "ORDEN DE PARAR"
+    },
+    {
+     "texto": "La causa todavía se investiga. Comparte esta noticia, y sigue a Ridmer.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=XReVFd0nFZA",
+      "desde": 8,
+      "dur": 6,
+      "buscar_video": [
+       "New York city street"
+      ]
+     },
+     "short": true
+    }
+   ]
+  },
+  {
    "eid": "not1",
    "tipo": "fb",
    "hora_fb": "ya",
@@ -162,7 +324,8 @@
      },
      "short": true
     }
-   ]
+   ],
+   "omitir": true
   },
   {
    "eid": "fb1",
