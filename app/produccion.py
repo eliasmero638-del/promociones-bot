@@ -556,17 +556,29 @@ def _sin_instruccion(wav, palabras, estilo, hook):
     transcripción, se recorta ese pedazo del audio y se corren los tiempos. Devuelve (palabras, hook)."""
     if not estilo or not palabras:
         return palabras, hook
-    norm = lambda w: re.sub(r'[^a-záéíóúñü]', '', w.lower())
-    clave = [norm(w) for w in estilo.split('"')[0].split()[:3] if norm(w)]
-    fin_ = norm(estilo.split('"')[0].split()[-1]) if estilo.split('"')[0].split() else ''
+    norm = lambda w: re.sub(r'[^a-záéíóúñü0-9]', '', w.lower())
+    inst = [norm(w) for w in estilo.split('"')[0].split() if norm(w)]
     ws = [norm(p[2]) for p in palabras]
-    cortes = []
-    i = 0
-    while i <= len(ws) - len(clave):
-        if clave and ws[i:i + len(clave)] == clave:
-            j = i
-            while j < len(ws) - 1 and j - i < 30 and not ws[j].startswith(fin_[:5] or '#'):
+    # 13-nov: whisper oye "Nara" en vez de "Narra": se busca por varias palabras de la instrucción, no solo las 3 primeras
+    def parecido(a, b):
+        return a == b or (len(a) > 3 and len(b) > 3 and (a[:4] == b[:4] or a in b or b in a))
+    cortes, i, n = [], 0, len(inst)
+    while i < len(ws):
+        aciertos, j, k = 0, i, 0
+        while j < len(ws) and k < n and j - i < n + 4:
+            if parecido(ws[j], inst[k]):
+                aciertos += 1; k += 1; j += 1
+            elif k + 1 < n and parecido(ws[j], inst[k + 1]):
+                k += 2; aciertos += 1; j += 1
+            elif j + 1 < len(ws) and parecido(ws[j + 1], inst[k]):
                 j += 1
+            else:
+                break
+        if aciertos >= max(4, int(n * 0.6)):
+            j -= 1
+            if i > 0 and ws[i - 1][:2] == inst[0][:2] and palabras[i][0] - palabras[i - 1][0] < 1.2 and \
+                    (not cortes or cortes[-1][3] < i - 1):
+                i -= 1                                   # "Nara" = "Narra"
             a = max(0.0, palabras[i][0] - 0.05)
             b = palabras[j + 1][0] - 0.08 if j + 1 < len(palabras) else palabras[j][1]
             cortes.append((a, b, i, j))
