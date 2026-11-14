@@ -326,3 +326,173 @@ export function excavadora(sc, x, z, giro = 0) {
   g.position.set(x, 0, z); g.rotation.y = giro; sc.add(g);
   return { g, mover(k) { brazo.rotation.z = -0.5 + Math.sin(k * Math.PI * 2) * 0.35; ant.rotation.z = 0.3 + Math.cos(k * Math.PI * 2) * 0.3; } };
 }
+
+// ======================= 14-nov: selva y río, balsa, bote, sala de computadoras, posada con vela, celda, oficina =======================
+function _azar(s0 = 11) { let s = s0; return () => { s = (s * 9301 + 49297) % 233280; return s / 233280; }; }
+function _texAgua(base = '#5b4a33', vetas = 'rgba(230,220,190,0.35)') {
+  const c = document.createElement('canvas'); c.width = 256; c.height = 512; const g = c.getContext('2d');
+  g.fillStyle = base; g.fillRect(0, 0, 256, 512); const az = _azar(5);
+  for (let i = 0; i < 260; i++) { g.strokeStyle = vetas; g.lineWidth = 1 + az() * 2.5; g.beginPath(); const x = az() * 256, y = az() * 512, l = 20 + az() * 70;
+    g.moveTo(x, y); g.bezierCurveTo(x + 6, y + l * 0.3, x - 6, y + l * 0.6, x + (az() - 0.5) * 10, y + l); g.stroke(); }
+  const t = new THREE.CanvasTexture(c); t.wrapS = t.wrapT = THREE.RepeatWrapping; t.colorSpace = THREE.SRGBColorSpace; return t;
+}
+/** Árbol de selva (tronco alto + copas redondas). */
+export function arbolSelva(sc, x, z, h = 12, az = Math.random) {
+  const g = new THREE.Group(), tr = M.mat(0x4a3a2a, { roughness: 1 });
+  const t = new THREE.Mesh(new THREE.CylinderGeometry(0.18, 0.35, h, 7), tr); t.position.y = h / 2; t.castShadow = true; g.add(t);
+  const verdes = [0x2f5a24, 0x3d6b2a, 0x264a1d, 0x4c7a32, 0x1f3d18];
+  for (let k = 0; k < 5; k++) { const r = 1.6 + az() * 2.2, m = new THREE.Mesh(new THREE.IcosahedronGeometry(r, 1), M.mat(verdes[Math.floor(az() * 5)], { roughness: 1, flatShading: true }));
+    m.position.set((az() - 0.5) * 3, h - 0.5 + (az() - 0.3) * 2.5, (az() - 0.5) * 3); m.scale.y = 0.7; m.castShadow = true; g.add(m); }
+  g.position.set(x, 0, z); sc.add(g); return g;
+}
+/** Río en la selva (de día, nublado). El agua corre hacia +Z, el cauce va de x=-ancho/2 a ancho/2.
+ *  caida = z donde termina el río en una cascada (null = sin cascada). Llama a rio.mover(t) cada cuadro. */
+export function rioSelva(sc, { ancho = 14, caida = null, semilla = 3, rapidos = true, dia = 1 } = {}) {
+  M.cielo(sc, '#8fa3a8', '#d4d8c8'); sc.fog = new THREE.Fog(0xb7bfae, 25, 110);
+  M.luces(sc, { sol: 2.2 * dia, cielo_: 1.3 * dia, dir: [-12, 20, 8], color: 0xfff3dc });
+  const az = _azar(semilla), largo = 200, zfin = caida ?? 100;
+  const tex = _texAgua('#7d6d50', 'rgba(235,228,205,0.22)'); tex.repeat.set(3, 12);
+  const agua = new THREE.Mesh(new THREE.PlaneGeometry(ancho + 6, largo), new THREE.MeshStandardMaterial({ map: tex, color: 0xd8c8a4, roughness: 0.15, metalness: 0.25 }));
+  agua.rotation.x = -Math.PI / 2; agua.position.set(0, 0, zfin - largo / 2); agua.receiveShadow = true; sc.add(agua);
+  const tierra = M.matTex(M.TEX.arena(), [20, 40], 0x5e5236);
+  for (const lado of [-1, 1]) {
+    M.caja(sc, 60, 1.2, caida != null ? largo + 1 : largo + 60, lado * (ancho / 2 + 30), 0.2, caida != null ? zfin - largo / 2 + 0.5 : zfin - largo / 2, tierra);
+    const roca = M.matTex(M.TEX.roca(), [6, 2], 0x8a7a66);
+    for (let z = zfin - 4; z > zfin - 140; z -= 6 + az() * 6) { const r = new THREE.Mesh(new THREE.DodecahedronGeometry(1.2 + az() * 1.8, 0), roca);
+      r.position.set(lado * (ancho / 2 + 0.6 + az()), 0.3, z); r.rotation.set(az(), az(), az()); r.castShadow = true; sc.add(r); }
+    for (let i = 0; i < 70; i++) { const z = zfin - (caida != null ? 2 : -8) - az() * 150, x = lado * (ancho / 2 + 2.5 + az() * 22); arbolSelva(sc, x, z, 9 + az() * 10, az); }
+    for (let i = 0; i < 60; i++) { const m = new THREE.Mesh(new THREE.IcosahedronGeometry(0.8 + az() * 1.2, 0), M.mat(az() < 0.5 ? 0x3a6a28 : 0x2c5220, { flatShading: true }));
+      m.position.set(lado * (ancho / 2 + 1.2 + az() * 4), 0.7, zfin - (caida != null ? 1.5 : -6) - az() * 140); m.scale.y = 0.6; sc.add(m); }
+  }
+  const espuma = [], rocas = [];
+  const mEsp = new THREE.MeshBasicMaterial({ color: 0xf2efe6, transparent: true, opacity: 0.6, depthWrite: false });
+  if (rapidos) for (let i = 0; i < 26; i++) {
+    const x = (az() - 0.5) * (ancho - 2), z = zfin - 3 - az() * 40;
+    const r = new THREE.Mesh(new THREE.DodecahedronGeometry(0.4 + az() * 0.7, 0), M.matTex(M.TEX.roca(), [1, 1], 0x6a6258)); r.position.set(x, 0.05, z); r.castShadow = true; sc.add(r); rocas.push(r);
+    for (let k = 0; k < 3; k++) { const e = new THREE.Mesh(new THREE.CircleGeometry(0.5 + az() * 0.8, 10), mEsp); e.rotation.x = -Math.PI / 2; e.position.set(x + (az() - 0.5) * 1.5, 0.03 + k * 0.002, z + 0.8 + k * 0.7); sc.add(e); espuma.push(e); }
+  }
+  let cascada = null, bruma = [];
+  if (caida != null) {                      // cascada: el agua cae 8 m después de zfin a una poza
+    const tc = _texAgua('#b9c2bf', 'rgba(255,255,255,0.75)'); tc.repeat.set(4, 2);
+    cascada = new THREE.Mesh(new THREE.PlaneGeometry(ancho + 6, 9), new THREE.MeshStandardMaterial({ map: tc, color: 0xffffff, roughness: 0.3, transparent: true, opacity: 0.8 }));
+    cascada.position.set(0, -4.4, zfin + 0.6); cascada.rotation.x = -0.12; sc.add(cascada);
+    M.caja(sc, 220, 0.5, 90, 0, -9.3, zfin + 46, tierra);
+    for (let i = 0; i < 40; i++) { const lado = az() < 0.5 ? -1 : 1; arbolSelva(sc, lado * (ancho / 2 + 6 + az() * 30), zfin + 6 + az() * 40, 9 + az() * 8, az).position.y = -9; }
+    const poza = new THREE.Mesh(new THREE.PlaneGeometry(ancho + 8, 60), new THREE.MeshStandardMaterial({ map: tex, color: 0x7f735a, roughness: 0.3 }));
+    poza.rotation.x = -Math.PI / 2; poza.position.set(0, -8.8, zfin + 20); sc.add(poza);
+    M.caja(sc, 60, 9, 2, -(ancho / 2 + 30), -4.4, zfin + 1, M.matTex(M.TEX.roca(), [10, 2], 0x6e665c));
+    M.caja(sc, 60, 9, 2, (ancho / 2 + 30), -4.4, zfin + 1, M.matTex(M.TEX.roca(), [10, 2], 0x6e665c));
+    for (let i = 0; i < 30; i++) { const b = brilloSprite('#e8eee8', 4 + az() * 4, 0.1); b.material.blending = THREE.NormalBlending; b.position.set((az() - 0.5) * ancho, -7 + az() * 3, zfin + 1.5 + az() * 3); sc.add(b); bruma.push(b); }
+  }
+  return { agua, tex, espuma, cascada, bruma, zfin, mover(t, vel = 1) {
+    tex.offset.y = -t * 0.35 * vel; if (cascada) cascada.material.map.offset.y = t * 1.6;
+    espuma.forEach((e, i) => { e.material.opacity = 0.45 + 0.25 * Math.sin(t * 6 + i); e.scale.setScalar(1 + 0.15 * Math.sin(t * 5 + i * 2)); });
+    bruma.forEach((b, i) => { b.position.y += Math.sin(t * 2 + i) * 0.01; }); } };
+}
+/** Balsa de troncos (frente hacia +Z). */
+export function balsa(sc) {
+  const g = new THREE.Group(), m = M.mat(0x6b5133, { roughness: 1 }), soga = M.mat(0xb59a6a);
+  for (let i = 0; i < 7; i++) { const l = new THREE.Mesh(new THREE.CylinderGeometry(0.13, 0.13, 3.4, 10), m); l.rotation.x = Math.PI / 2; l.position.set(-0.78 + i * 0.26, 0.12, 0); l.castShadow = true; l.receiveShadow = true; g.add(l); }
+  for (const z of [-1.2, 0, 1.2]) { const s = new THREE.Mesh(new THREE.BoxGeometry(1.9, 0.06, 0.08), soga); s.position.set(0, 0.25, z); g.add(s); }
+  const mo = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.35, 0.4), M.mat(0x5a6a3a)); mo.position.set(0.4, 0.42, -1.1); mo.castShadow = true; g.add(mo);
+  sc.add(g); return g;
+}
+/** Bote de madera con motor fuera de borda (frente hacia +X). */
+export function bote(sc, color = 0x7a5a3a) {
+  const g = new THREE.Group(), m = M.mat(color, { roughness: 0.8 });
+  const add = (w, h, d, x, y, z, mm = m) => { const b = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mm); b.position.set(x, y, z); b.castShadow = true; g.add(b); return b; };
+  add(5, 0.12, 1.4, 0, 0.1, 0); add(5, 0.6, 0.1, 0, 0.4, 0.7); add(5, 0.6, 0.1, 0, 0.4, -0.7); add(0.1, 0.6, 1.4, -2.5, 0.4, 0);
+  const proa = new THREE.Mesh(new THREE.ConeGeometry(0.75, 1.4, 4), m); proa.rotation.z = -Math.PI / 2; proa.rotation.x = Math.PI / 4; proa.position.set(3.1, 0.4, 0); g.add(proa);
+  add(0.4, 0.6, 0.35, -2.75, 0.75, 0, M.mat(0x222222)); add(0.12, 0.8, 0.12, -2.8, 0.1, 0, M.mat(0x333333));
+  sc.add(g); return g;
+}
+/** Sala de computadoras de universidad de noche (filas de escritorios con monitores). sala.pantallas(k): 0..1 cuántas se encienden. */
+export function salaComputadoras(sc, filas = 4, cols = 6) {
+  sc.background = new THREE.Color(0x05070b); sc.add(new THREE.HemisphereLight(0x3a4a66, 0x0a0a0c, 0.35));
+  const piso = M.matTex(M.TEX.concreto(), [6, 6], 0x3d3a40), pared = M.matTex(M.TEX.concreto(), [4, 1], 0x5a5a62);
+  M.caja(sc, 20, 0.1, 20, 0, -0.05, 0, piso); M.caja(sc, 20, 4, 0.2, 0, 2, -7, pared); M.caja(sc, 0.2, 4, 20, -8, 2, 0, pared);
+  for (let i = 0; i < 4; i++) M.caja(sc, 0.06, 1.4, 1.8, -7.9, 2.0, -4 + i * 3, emis(0x1d2c4a, 0.5), false);
+  const madera = M.mat(0x6a5a48), pantallas = [], az = _azar(17);
+  for (let f = 0; f < filas; f++) for (let c = 0; c < cols; c++) {
+    const x = -5 + c * 2.0, z = -5 + f * 2.4;
+    M.caja(sc, 1.6, 0.05, 0.8, x, 0.75, z, madera); M.caja(sc, 0.05, 0.75, 0.7, x - 0.75, 0.375, z, madera); M.caja(sc, 0.05, 0.75, 0.7, x + 0.75, 0.375, z, madera);
+    M.caja(sc, 0.5, 0.42, 0.42, x, 1.0, z - 0.15, M.mat(0xcfc8b6, { roughness: 0.5 }));
+    const scr = new THREE.Mesh(new THREE.PlaneGeometry(0.4, 0.31), new THREE.MeshBasicMaterial({ color: 0x0b0f0b })); scr.position.set(x, 1.0, z + 0.065); sc.add(scr);
+    const l = new THREE.PointLight(0x4cff88, 0, 2.2, 1.6); l.position.set(x, 1.05, z + 0.4); sc.add(l);
+    M.caja(sc, 0.45, 0.03, 0.16, x, 0.79, z + 0.25, M.mat(0xd8d2c0));
+    pantallas.push({ scr, l, orden: az() });
+  }
+  pantallas.sort((a, b) => a.orden - b.orden);
+  return { pantallas(k, t = 0) { pantallas.forEach((p, i) => { const on = i / pantallas.length < k;
+    const parp = on ? 0.75 + 0.25 * Math.sin(t * 20 + i * 3) : 0; p.scr.material.color.setHex(on ? 0x3cff7a : 0x0b0f0b); p.scr.material.color.multiplyScalar(on ? parp : 1);
+    p.l.intensity = on ? 1.4 * parp : 0; }); } };
+}
+/** Caja de hierro con tapa que se abre (tapa.rotation.x). Devuelve {g, abrir(k)}. */
+export function cajaHierro(sc, x = 0, y = 0, z = 0, tam = 0.5) {
+  const g = new THREE.Group(), hi = M.mat(0x3a3530, { metalness: 0.7, roughness: 0.55 }), rem = M.mat(0x6a5a40, { metalness: 0.8, roughness: 0.4 });
+  const cu = new THREE.Mesh(new THREE.BoxGeometry(tam * 1.4, tam * 0.7, tam), hi); cu.position.y = tam * 0.35; cu.castShadow = true; g.add(cu);
+  for (const xx of [-0.5, 0.5]) { const b = new THREE.Mesh(new THREE.BoxGeometry(tam * 0.08, tam * 0.72, tam * 1.02), rem); b.position.set(xx * tam, tam * 0.35, 0); g.add(b); }
+  const piv = new THREE.Group(); piv.position.set(0, tam * 0.7, -tam / 2); g.add(piv);
+  const tapa = new THREE.Mesh(new THREE.BoxGeometry(tam * 1.42, tam * 0.12, tam * 1.02), hi); tapa.position.set(0, tam * 0.06, tam / 2); tapa.castShadow = true; piv.add(tapa);
+  const cand = new THREE.Mesh(new THREE.BoxGeometry(tam * 0.18, tam * 0.2, tam * 0.05), rem); cand.position.set(0, tam * 0.55, tam * 0.52); g.add(cand);
+  g.position.set(x, y, z); sc.add(g); return { g, abrir(k) { piv.rotation.x = -ease(k) * 1.9; } };
+}
+/** Hoja de papel viejo llena de números (como los papeles de Beale). */
+export function hojaNumeros(sc, x, y, z, semilla = 1, ancho = 0.42) {
+  const c = document.createElement('canvas'); c.width = 512; c.height = 660; const g = c.getContext('2d');
+  g.fillStyle = '#d9c9a0'; g.fillRect(0, 0, 512, 660); const az = _azar(semilla * 7 + 3);
+  for (let i = 0; i < 400; i++) { g.fillStyle = `rgba(120,90,40,${az() * 0.08})`; g.beginPath(); g.arc(az() * 512, az() * 660, 4 + az() * 30, 0, 6.3); g.fill(); }
+  g.fillStyle = '#2a1e12'; g.font = 'italic 25px Georgia, serif';
+  for (let l = 0; l < 20; l++) { let s = ''; for (let k = 0; k < 9; k++) s += Math.floor(1 + az() * 980) + ', '; g.fillText(s, 22, 50 + l * 30); }
+  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace;
+  const m = new THREE.Mesh(new THREE.PlaneGeometry(ancho, ancho * 1.29), new THREE.MeshStandardMaterial({ map: t, roughness: 0.95 }));
+  m.rotation.x = -Math.PI / 2; m.position.set(x, y, z); m.receiveShadow = true; sc.add(m); return m;
+}
+/** Cuarto de posada antigua de noche, iluminado por una vela sobre la mesa (mesa en 0,0; cara de lectura hacia +Z). vela.mover(t) titila. */
+export function posadaVela(sc) {
+  sc.background = new THREE.Color(0x070504); sc.add(new THREE.HemisphereLight(0x5a4630, 0x0c0806, 0.25));
+  const tabla = M.mat(0x5a3e26, { roughness: 0.9 }), pared = M.matTex(M.TEX.concreto(), [3, 2], 0x7a6a56);
+  M.caja(sc, 10, 0.1, 10, 0, -0.05, 0, M.matTex(M.TEX.arena(), [4, 4], 0x5a4632)); M.caja(sc, 10, 3.2, 0.2, 0, 1.6, -2.6, pared); M.caja(sc, 0.2, 3.2, 10, -3.2, 1.6, 0, pared);
+  for (let i = 0; i < 6; i++) M.caja(sc, 10, 0.18, 0.18, 0, 3.0, -2.4 + i * 1.2, tabla);
+  M.caja(sc, 1.8, 0.08, 1.0, 0, 0.78, 0, tabla); for (const [x, z] of [[-0.8, -0.42], [0.8, -0.42], [-0.8, 0.42], [0.8, 0.42]]) M.caja(sc, 0.08, 0.78, 0.08, x, 0.39, z, tabla);
+  M.caja(sc, 0.6, 1.8, 0.4, -2.6, 0.9, -2.2, tabla); M.caja(sc, 0.8, 0.05, 0.3, -2.0, 1.6, -2.45, tabla);
+  const vela = new THREE.Mesh(new THREE.CylinderGeometry(0.035, 0.035, 0.22, 12), M.mat(0xefe6cf)); vela.position.set(-0.55, 0.93, -0.2); sc.add(vela);
+  const llama = brilloSprite('#ffb04a', 0.18); llama.position.set(-0.55, 1.08, -0.2); sc.add(llama);
+  const halo = brilloSprite('#ff9a30', 1.4, 0.35); halo.position.copy(llama.position); sc.add(halo);
+  const luz = new THREE.PointLight(0xffa34a, 6, 7, 1.6); luz.position.set(-0.55, 1.15, -0.2); luz.castShadow = true; luz.shadow.mapSize.set(1024, 1024); sc.add(luz);
+  return { mover(t) { const f = 0.85 + 0.1 * Math.sin(t * 13) + 0.05 * Math.sin(t * 31); luz.intensity = 6 * f; llama.scale.set(0.12, 0.2 * f, 1); } };
+}
+/** Celda de prisión pequeña: catre, inodoro, foco arriba y puerta de barrotes en z=+1.6 (el preso adentro, mirando a +Z). */
+export function celda(sc) {
+  sc.background = new THREE.Color(0x050506); sc.add(new THREE.HemisphereLight(0xc8d0d8, 0x101010, 0.3));
+  const con = M.matTex(M.TEX.concreto(), [2, 1], 0x8c8a86);
+  M.caja(sc, 8, 0.1, 8, 0, -0.05, 0, M.matTex(M.TEX.concreto(), [3, 3], 0x5f5d5a));
+  M.caja(sc, 0.2, 3, 3.4, -1.3, 1.5, 0, con); M.caja(sc, 0.2, 3, 3.4, 1.3, 1.5, 0, con); M.caja(sc, 2.8, 3, 0.2, 0, 1.5, -1.6, con); M.caja(sc, 2.8, 0.2, 3.4, 0, 3, 0, con);
+  M.caja(sc, 0.8, 0.12, 2.0, -0.8, 0.45, -0.4, M.mat(0x6a6a6a, { metalness: 0.5 })); M.caja(sc, 0.75, 0.12, 1.9, -0.8, 0.56, -0.4, M.mat(0x8a8f96));
+  M.caja(sc, 0.4, 0.45, 0.5, 0.95, 0.22, -1.2, M.mat(0xb8b8b8, { metalness: 0.7, roughness: 0.3 }));
+  const barra = M.mat(0x4f4f4f, { metalness: 0.7, roughness: 0.4 });
+  for (let x = -1.15; x <= 1.16; x += 0.16) M.caja(sc, 0.04, 3, 0.04, x, 1.5, 1.6, barra, false);
+  M.caja(sc, 2.6, 0.08, 0.08, 0, 1.0, 1.6, barra, false); M.caja(sc, 2.6, 0.08, 0.08, 0, 2.2, 1.6, barra, false);
+  M.caja(sc, 0.3, 0.05, 0.3, 0, 2.93, 0, emis(0xf4f0e0, 2), false);
+  const l = new THREE.SpotLight(0xf0ecdc, 18, 6, 0.9, 0.6, 1.4); l.position.set(0, 2.9, 0); const tg = new THREE.Object3D(); tg.position.set(0, 0, 0); sc.add(tg); l.target = tg; l.castShadow = true; sc.add(l);
+  M.caja(sc, 8, 3, 0.2, 0, 1.5, 4.5, M.matTex(M.TEX.concreto(), [3, 1], 0x4a4846));
+}
+/** Oficina de empresa de los 80 (luz de tubo, escritorios con teléfonos). El escritorio principal está en (0, 0) mirando a +Z. */
+export function oficina(sc) {
+  sc.background = new THREE.Color(0x15171a); sc.add(new THREE.HemisphereLight(0xe8f0ff, 0x30302c, 0.7));
+  M.caja(sc, 16, 0.1, 16, 0, -0.05, 0, M.matTex(M.TEX.arena(), [6, 6], 0x6a6a5e)); M.caja(sc, 16, 3, 0.2, 0, 1.5, -3, M.matTex(M.TEX.concreto(), [4, 1], 0xb8b2a2));
+  M.caja(sc, 0.2, 3, 16, -5, 1.5, 0, M.matTex(M.TEX.concreto(), [4, 1], 0xb8b2a2));
+  for (const [x, z] of [[-2, -1.5], [1.5, 2.5], [0, 5], [3.5, 0]]) { M.caja(sc, 2.0, 1.4, 0.06, x, 0.7, z - 0.8, M.mat(0x5a6e7a)); }
+  for (let i = 0; i < 3; i++) for (let j = 0; j < 2; j++) { M.caja(sc, 1.6, 0.06, 0.2, -2 + i * 3, 2.95, -1 + j * 3, emis(0xf6faff, 2.2), false);
+    const l = new THREE.PointLight(0xeef4ff, 5, 7, 1.5); l.position.set(-2 + i * 3, 2.7, -1 + j * 3); sc.add(l); }
+  const esc = (x, z) => { M.caja(sc, 1.6, 0.05, 0.8, x, 0.75, z, M.mat(0x8a7a62)); M.caja(sc, 1.6, 0.7, 0.05, x, 0.37, z - 0.38, M.mat(0x6a5e4c));
+    M.caja(sc, 0.22, 0.08, 0.18, x + 0.5, 0.82, z, M.mat(0x1d1d1d)); M.caja(sc, 0.06, 0.05, 0.2, x + 0.5, 0.89, z, M.mat(0x1d1d1d));
+    for (let k = 0; k < 3; k++) M.caja(sc, 0.3, 0.01, 0.22, x - 0.3 + k * 0.02, 0.79 + k * 0.012, z + 0.05, M.mat(0xece6d6), false); };
+  esc(0, 0); esc(-2, -1.5); esc(3.5, 0); esc(1.5, 2.5);
+}
+/** Teléfono en la mano derecha (auricular). Llama a tel.seguir() después de setTime. */
+export function telefonoMano(sc, p, color = 0x1d1d1d) {
+  const m = new THREE.Mesh(new THREE.BoxGeometry(0.05, 0.2, 0.06), M.mat(color, { roughness: 0.5 })); sc.add(m);
+  const v = new THREE.Vector3(), q = new THREE.Quaternion();
+  return { seguir() { p.updateMatrixWorld(true); const mano = p.getObjectByName('Bip01_R_Hand') || p; mano.getWorldPosition(v); mano.getWorldQuaternion(q); m.position.copy(v); m.quaternion.copy(q); } };
+}
