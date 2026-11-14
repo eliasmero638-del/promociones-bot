@@ -138,3 +138,26 @@ def estados(ids):
                      headers=h, timeout=30).json()
     return {it['id']: {'privacidad': it['status'].get('privacyStatus'), 'publicar_en': it['status'].get('publishAt'),
                        'titulo': it['snippet'].get('title')} for it in r.get('items', [])}
+
+
+def estadisticas(n=50):
+    """13-nov: números del canal y de los últimos videos (vistas, likes, comentarios, duración) para diagnosticar alcance."""
+    h = {'Authorization': 'Bearer ' + _acceso()}
+    G = lambda u, **p: requests.get('https://www.googleapis.com/youtube/v3/' + u, params=p, headers=h, timeout=30).json()
+    ch = (G('channels', part='snippet,statistics,contentDetails,status,brandingSettings', mine='true').get('items') or [{}])[0]
+    up = ch.get('contentDetails', {}).get('relatedPlaylists', {}).get('uploads')
+    ids = [it['contentDetails']['videoId'] for it in G('playlistItems', part='contentDetails', playlistId=up, maxResults=n).get('items', [])] if up else []
+    vids = []
+    for i in range(0, len(ids), 50):
+        for it in G('videos', part='snippet,statistics,contentDetails,status', id=','.join(ids[i:i + 50])).get('items', []):
+            s, st = it.get('statistics', {}), it.get('status', {})
+            vids.append({'id': it['id'], 'titulo': it['snippet'].get('title'), 'publicado': it['snippet'].get('publishedAt'),
+                         'duracion': it['contentDetails'].get('duration'), 'vistas': int(s.get('viewCount', 0)),
+                         'likes': int(s.get('likeCount', 0)), 'comentarios': int(s.get('commentCount', 0)),
+                         'privacidad': st.get('privacyStatus'), 'para_ninos': st.get('madeForKids'),
+                         'subido_por': st.get('uploadStatus'), 'licencia': st.get('license'),
+                         'idioma_audio': it['snippet'].get('defaultAudioLanguage'), 'categoria': it['snippet'].get('categoryId')})
+    return {'canal': {'titulo': ch.get('snippet', {}).get('title'), 'pais': ch.get('snippet', {}).get('country'),
+                      'creado': ch.get('snippet', {}).get('publishedAt'), 'estadisticas': ch.get('statistics'),
+                      'estado': ch.get('status'), 'idioma': ch.get('snippet', {}).get('defaultLanguage')},
+            'videos': vids}

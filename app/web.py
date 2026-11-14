@@ -206,6 +206,12 @@ class H(BaseHTTPRequestHandler):
                 return self._send(200, json.dumps(produccion.estado_youtube(), ensure_ascii=False), 'application/json')
             except Exception as e:
                 return self._send(500, json.dumps({'error': str(e)[:200]}), 'application/json')
+        if self.path.split('?')[0] == '/estado/ytstats.json':   # 13-nov: vistas del canal (diagnóstico de alcance)
+            try:
+                import youtube as _yt
+                return self._send(200, json.dumps(_yt.estadisticas(), ensure_ascii=False, default=str), 'application/json')
+            except Exception as e:
+                return self._send(500, json.dumps({'error': str(e)[:200]}), 'application/json')
         if self.path.split('?')[0] == '/estado/clipero.json':   # 12-nov: diagnóstico del Clipero (sin claves)
             try:
                 import re as _re, subprocess as _sp, sys as _sys, time, recorder as _rec
