@@ -1,0 +1,1301 @@
+{
+ "eid": "largo1t",
+ "hook_fin": 25.896,
+ "duracion_voz": 139.218,
+ "segmentos": [
+  {
+   "texto": "Quince de febrero de mil novecientos noventa y cinco. De madrugada, agentes del FBI tocan la puerta de un departamento en Raleigh, Carolina del Norte.",
+   "t0": 0.0,
+   "img": "esc_00.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "Kevin Mitnick",
+     "Kevin Mitnick 2008"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Detrás está el hacker más buscado de Estados Unidos. Un hombre del que llegaron a decir que podía empezar una guerra nuclear… silbando por un teléfono.",
+   "t0": 25.36,
+   "img": "esc_01.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "Kevin Mitnick",
+     "Kevin Mitnick 2008"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Esta es la historia de Kevin Mitnick, el hombre que engañaba a cualquiera… con una simple llamada.",
+   "t0": 26.16,
+   "img": null,
+   "escena": {
+    "tipo": "video",
+    "url": "https://www.youtube.com/watch?v=BBR1SJsqoVM",
+    "desde": 5,
+    "dur": 7,
+    "buscar_video": [
+     "telephone 1980s"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "A los doce años ya viajaba gratis en los autobuses de Los Ángeles, solo por hacerle la pregunta correcta a un chofer.",
+   "t0": 35.5,
+   "img": "esc_03.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "RTD bus Los Angeles",
+     "Southern California Rapid Transit District bus"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Después vinieron los teléfonos. Se hacía pasar por un técnico de otra oficina, con prisa y con un problema urgente.",
+   "t0": 46.46,
+   "img": "esc_04.jpg",
+   "escena": {
+    "tipo": "fecha",
+    "texto": "LA LLAMADA",
+    "sub": "Los Ángeles · años ochenta"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Y del otro lado, un empleado amable le daba un número, un dato, un acceso. Sin romper nada.",
+   "t0": 57.32,
+   "img": "esc_05.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "rotary telephone"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "En mil novecientos noventa y dos, la justicia emitió una orden para arrestarlo. Y Kevin desapareció.",
+   "t0": 67.88,
+   "img": "esc_06.jpg",
+   "escena": {
+    "tipo": "fecha",
+    "texto": "PRÓFUGO",
+    "sub": "1992 · orden de arresto"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Vivió más de dos años con nombres falsos. En Denver se llamó Eric Weiss, el verdadero nombre del mago Houdini.",
+   "t0": 77.28,
+   "img": "esc_07.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "Harry Houdini",
+     "Houdini"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Usaba celulares clonados, y según contó, hasta escuchaba a los agentes que lo buscaban.",
+   "t0": 87.28,
+   "img": "v_08.mp4",
+   "escena": {
+    "tipo": "video",
+    "url": "https://www.youtube.com/watch?v=achtNF2OyHY",
+    "desde": 15,
+    "dur": 7,
+    "buscar_video": [
+     "FBI building"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Era el criminal informático más buscado de la historia de Estados Unidos.",
+   "t0": 94.82,
+   "img": null,
+   "escena": {
+    "tipo": "video",
+    "url": "https://www.youtube.com/watch?v=BBR1SJsqoVM",
+    "desde": 40,
+    "dur": 7,
+    "buscar_video": [
+     "FBI headquarters"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Hasta que, en Navidad de mil novecientos noventa y cuatro, alguien entró a las computadoras de Tsutomu Shimomura, un experto en seguridad.",
+   "t0": 100.3,
+   "img": "esc_10.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "Tsutomu Shimomura",
+     "San Diego Supercomputer Center"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Shimomura siguió el rastro hasta Raleigh, y recorrió las calles de noche con una antena que detecta celulares. La señal se hacía cada vez más fuerte.",
+   "t0": 111.7,
+   "img": "esc_11.jpg",
+   "escena": {
+    "tipo": "fecha",
+    "texto": "LA ANTENA",
+    "sub": "Raleigh · febrero de 1995"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "De madrugada, los agentes tocaron la puerta.",
+   "t0": 124.6,
+   "img": "v_12.mp4",
+   "escena": {
+    "tipo": "video",
+    "url": "https://www.youtube.com/watch?v=achtNF2OyHY",
+    "desde": 60,
+    "dur": 7,
+    "buscar_video": [
+     "apartment building night"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "¿Qué pasó después? Lo que viene te va a dejar sin palabras. Mira el video completo en YouTube, en el canal Ridmer.",
+   "t0": 130.92,
+   "img": "esc_13.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "Kevin Mitnick",
+     "Kevin Mitnick 2008"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  }
+ ],
+ "palabras": [
+  [
+   0.0,
+   0.46,
+   "15"
+  ],
+  [
+   0.46,
+   1.1,
+   "de"
+  ],
+  [
+   1.1,
+   1.82,
+   "febrero"
+  ],
+  [
+   1.82,
+   2.34,
+   "de"
+  ],
+  [
+   2.34,
+   4.32,
+   "1995"
+  ],
+  [
+   6.21,
+   6.74,
+   "de"
+  ],
+  [
+   6.74,
+   7.68,
+   "madrugada"
+  ],
+  [
+   7.68,
+   9.06,
+   "agentes"
+  ],
+  [
+   9.06,
+   9.38,
+   "del"
+  ],
+  [
+   9.38,
+   10.16,
+   "FBI"
+  ],
+  [
+   11.6,
+   12.14,
+   "tocan"
+  ],
+  [
+   25.61,
+   26.13,
+   "Esta"
+  ],
+  [
+   26.13,
+   26.63,
+   "es"
+  ],
+  [
+   26.63,
+   26.83,
+   "la"
+  ],
+  [
+   26.83,
+   27.37,
+   "historia"
+  ],
+  [
+   27.37,
+   28.01,
+   "de"
+  ],
+  [
+   28.01,
+   28.49,
+   "Kevin"
+  ],
+  [
+   28.49,
+   29.35,
+   "Mitnick,"
+  ],
+  [
+   29.95,
+   30.25,
+   "el"
+  ],
+  [
+   30.25,
+   30.61,
+   "hombre"
+  ],
+  [
+   30.61,
+   30.89,
+   "que"
+  ],
+  [
+   30.89,
+   31.69,
+   "engañaba"
+  ],
+  [
+   31.69,
+   31.91,
+   "a"
+  ],
+  [
+   31.91,
+   32.63,
+   "cualquiera"
+  ],
+  [
+   33.16,
+   33.69,
+   "con"
+  ],
+  [
+   33.69,
+   34.05,
+   "una"
+  ],
+  [
+   34.05,
+   34.61,
+   "simple"
+  ],
+  [
+   34.61,
+   35.43,
+   "llamada."
+  ],
+  [
+   35.75,
+   36.27,
+   "A"
+  ],
+  [
+   36.27,
+   36.49,
+   "los"
+  ],
+  [
+   36.49,
+   36.81,
+   "12"
+  ],
+  [
+   36.81,
+   37.29,
+   "años"
+  ],
+  [
+   37.29,
+   38.01,
+   "ya"
+  ],
+  [
+   38.01,
+   38.61,
+   "viajaba"
+  ],
+  [
+   38.61,
+   39.27,
+   "gratis"
+  ],
+  [
+   39.27,
+   39.41,
+   "en"
+  ],
+  [
+   39.41,
+   39.55,
+   "los"
+  ],
+  [
+   39.55,
+   40.23,
+   "autobuses"
+  ],
+  [
+   40.23,
+   40.51,
+   "de"
+  ],
+  [
+   40.51,
+   40.63,
+   "Los"
+  ],
+  [
+   40.63,
+   41.17,
+   "Ángeles."
+  ],
+  [
+   41.77,
+   42.41,
+   "Solo"
+  ],
+  [
+   42.41,
+   42.79,
+   "por"
+  ],
+  [
+   42.79,
+   43.29,
+   "hacerle"
+  ],
+  [
+   43.29,
+   43.45,
+   "la"
+  ],
+  [
+   43.45,
+   43.87,
+   "pregunta"
+  ],
+  [
+   43.87,
+   44.81,
+   "correcta"
+  ],
+  [
+   44.81,
+   45.27,
+   "a"
+  ],
+  [
+   45.27,
+   45.49,
+   "un"
+  ],
+  [
+   45.49,
+   45.91,
+   "chofer."
+  ],
+  [
+   46.71,
+   47.31,
+   "Después"
+  ],
+  [
+   47.31,
+   47.97,
+   "vinieron"
+  ],
+  [
+   47.97,
+   48.25,
+   "los"
+  ],
+  [
+   48.25,
+   49.07,
+   "teléfonos."
+  ],
+  [
+   49.71,
+   50.03,
+   "Se"
+  ],
+  [
+   50.03,
+   50.39,
+   "hacía"
+  ],
+  [
+   50.39,
+   50.77,
+   "pasar"
+  ],
+  [
+   50.77,
+   51.15,
+   "por"
+  ],
+  [
+   51.15,
+   51.31,
+   "un"
+  ],
+  [
+   51.31,
+   51.89,
+   "técnico"
+  ],
+  [
+   51.89,
+   52.07,
+   "de"
+  ],
+  [
+   52.07,
+   52.35,
+   "otra"
+  ],
+  [
+   52.35,
+   53.09,
+   "oficina,"
+  ],
+  [
+   53.77,
+   54.07,
+   "con"
+  ],
+  [
+   54.07,
+   54.57,
+   "prisa"
+  ],
+  [
+   54.57,
+   55.15,
+   "y"
+  ],
+  [
+   55.15,
+   55.41,
+   "con"
+  ],
+  [
+   55.41,
+   55.57,
+   "un"
+  ],
+  [
+   55.57,
+   56.07,
+   "problema"
+  ],
+  [
+   56.07,
+   56.81,
+   "urgente."
+  ],
+  [
+   57.57,
+   57.83,
+   "Y"
+  ],
+  [
+   57.83,
+   57.99,
+   "del"
+  ],
+  [
+   57.99,
+   58.25,
+   "otro"
+  ],
+  [
+   58.25,
+   58.65,
+   "lado,"
+  ],
+  [
+   59.17,
+   59.33,
+   "un"
+  ],
+  [
+   59.33,
+   59.93,
+   "empleado"
+  ],
+  [
+   59.93,
+   60.57,
+   "amable"
+  ],
+  [
+   60.57,
+   61.17,
+   "le"
+  ],
+  [
+   61.17,
+   61.49,
+   "daba"
+  ],
+  [
+   61.49,
+   61.75,
+   "un"
+  ],
+  [
+   61.75,
+   62.17,
+   "número,"
+  ],
+  [
+   62.89,
+   63.29,
+   "un"
+  ],
+  [
+   63.29,
+   63.63,
+   "dato,"
+  ],
+  [
+   64.65,
+   64.85,
+   "un"
+  ],
+  [
+   64.85,
+   65.31,
+   "acceso,"
+  ],
+  [
+   66.19,
+   66.55,
+   "sin"
+  ],
+  [
+   66.55,
+   67.03,
+   "romper"
+  ],
+  [
+   67.03,
+   67.51,
+   "nada."
+  ],
+  [
+   68.13,
+   68.59,
+   "En"
+  ],
+  [
+   68.59,
+   70.13,
+   "1992,"
+  ],
+  [
+   70.95,
+   71.37,
+   "la"
+  ],
+  [
+   71.37,
+   72.01,
+   "justicia"
+  ],
+  [
+   72.01,
+   72.59,
+   "emitió"
+  ],
+  [
+   72.59,
+   72.83,
+   "una"
+  ],
+  [
+   72.83,
+   73.29,
+   "orden"
+  ],
+  [
+   73.29,
+   73.59,
+   "para"
+  ],
+  [
+   73.59,
+   74.37,
+   "arrestarlo."
+  ],
+  [
+   75.07,
+   75.31,
+   "Y"
+  ],
+  [
+   75.31,
+   75.67,
+   "Kevin"
+  ],
+  [
+   75.67,
+   76.67,
+   "desapareció."
+  ],
+  [
+   77.53,
+   77.97,
+   "Vivió"
+  ],
+  [
+   77.97,
+   78.27,
+   "más"
+  ],
+  [
+   78.27,
+   78.51,
+   "de"
+  ],
+  [
+   78.51,
+   78.75,
+   "dos"
+  ],
+  [
+   78.75,
+   79.13,
+   "años"
+  ],
+  [
+   79.13,
+   79.45,
+   "con"
+  ],
+  [
+   79.45,
+   79.89,
+   "nombres"
+  ],
+  [
+   79.89,
+   80.47,
+   "falsos."
+  ],
+  [
+   81.33,
+   81.55,
+   "En"
+  ],
+  [
+   81.55,
+   81.89,
+   "Denver"
+  ],
+  [
+   81.89,
+   82.17,
+   "se"
+  ],
+  [
+   82.17,
+   82.57,
+   "llamó"
+  ],
+  [
+   82.57,
+   83.07,
+   "Eric"
+  ],
+  [
+   83.07,
+   83.53,
+   "Wise,"
+  ],
+  [
+   84.39,
+   84.51,
+   "el"
+  ],
+  [
+   84.51,
+   85.09,
+   "verdadero"
+  ],
+  [
+   85.09,
+   85.51,
+   "nombre"
+  ],
+  [
+   85.51,
+   85.77,
+   "del"
+  ],
+  [
+   85.77,
+   86.21,
+   "mago"
+  ],
+  [
+   86.21,
+   86.71,
+   "judini."
+  ],
+  [
+   87.53,
+   88.01,
+   "Usaba"
+  ],
+  [
+   88.01,
+   88.59,
+   "celulares"
+  ],
+  [
+   88.59,
+   89.27,
+   "clonados."
+  ],
+  [
+   89.91,
+   90.19,
+   "Y"
+  ],
+  [
+   90.19,
+   90.43,
+   "según"
+  ],
+  [
+   90.43,
+   91.09,
+   "contó,"
+  ],
+  [
+   91.65,
+   91.97,
+   "hasta"
+  ],
+  [
+   91.97,
+   92.67,
+   "escuchaba"
+  ],
+  [
+   92.67,
+   92.85,
+   "a"
+  ],
+  [
+   92.85,
+   92.97,
+   "los"
+  ],
+  [
+   92.97,
+   93.45,
+   "agentes"
+  ],
+  [
+   93.45,
+   93.73,
+   "que"
+  ],
+  [
+   93.73,
+   93.85,
+   "lo"
+  ],
+  [
+   93.85,
+   94.37,
+   "buscaban."
+  ],
+  [
+   95.07,
+   95.51,
+   "Era"
+  ],
+  [
+   95.51,
+   95.71,
+   "el"
+  ],
+  [
+   95.71,
+   96.15,
+   "criminal"
+  ],
+  [
+   96.15,
+   97.01,
+   "informático"
+  ],
+  [
+   97.01,
+   97.45,
+   "más"
+  ],
+  [
+   97.45,
+   98.01,
+   "buscado"
+  ],
+  [
+   98.01,
+   98.23,
+   "de"
+  ],
+  [
+   98.23,
+   98.35,
+   "la"
+  ],
+  [
+   98.35,
+   98.77,
+   "historia"
+  ],
+  [
+   98.77,
+   99.01,
+   "de"
+  ],
+  [
+   99.01,
+   99.35,
+   "Estados"
+  ],
+  [
+   99.35,
+   99.95,
+   "Unidos."
+  ],
+  [
+   100.55,
+   101.13,
+   "Hasta"
+  ],
+  [
+   101.13,
+   101.47,
+   "que,"
+  ],
+  [
+   101.93,
+   102.03,
+   "en"
+  ],
+  [
+   102.03,
+   102.53,
+   "Navidad"
+  ],
+  [
+   102.53,
+   102.79,
+   "de"
+  ],
+  [
+   102.79,
+   103.89,
+   "1994,"
+  ],
+  [
+   105.31,
+   105.79,
+   "alguien"
+  ],
+  [
+   105.79,
+   106.25,
+   "entró"
+  ],
+  [
+   106.25,
+   106.35,
+   "a"
+  ],
+  [
+   106.35,
+   106.49,
+   "las"
+  ],
+  [
+   106.49,
+   107.35,
+   "computadoras"
+  ],
+  [
+   107.35,
+   107.51,
+   "de"
+  ],
+  [
+   107.51,
+   108.19,
+   "Tsutomu"
+  ],
+  [
+   108.19,
+   108.81,
+   "Shimomura."
+  ],
+  [
+   109.61,
+   109.91,
+   "Un"
+  ],
+  [
+   109.91,
+   110.49,
+   "experto"
+  ],
+  [
+   110.49,
+   110.63,
+   "en"
+  ],
+  [
+   110.63,
+   111.13,
+   "seguridad."
+  ],
+  [
+   111.95,
+   112.71,
+   "Shimomura"
+  ],
+  [
+   112.71,
+   113.21,
+   "siguió"
+  ],
+  [
+   113.21,
+   113.35,
+   "el"
+  ],
+  [
+   113.35,
+   113.83,
+   "rastro"
+  ],
+  [
+   113.83,
+   114.09,
+   "hasta"
+  ],
+  [
+   114.09,
+   114.47,
+   "Rally"
+  ],
+  [
+   115.03,
+   115.47,
+   "y"
+  ],
+  [
+   115.47,
+   115.99,
+   "recorrió"
+  ],
+  [
+   115.99,
+   116.27,
+   "las"
+  ],
+  [
+   116.27,
+   116.71,
+   "calles"
+  ],
+  [
+   116.71,
+   116.83,
+   "de"
+  ],
+  [
+   116.83,
+   117.13,
+   "noche"
+  ],
+  [
+   117.77,
+   118.21,
+   "con"
+  ],
+  [
+   118.21,
+   118.53,
+   "una"
+  ],
+  [
+   118.53,
+   119.07,
+   "antena"
+  ],
+  [
+   119.07,
+   119.27,
+   "que"
+  ],
+  [
+   119.27,
+   119.81,
+   "detecta"
+  ],
+  [
+   119.81,
+   120.35,
+   "celulares."
+  ],
+  [
+   121.27,
+   121.55,
+   "La"
+  ],
+  [
+   121.55,
+   122.03,
+   "señal"
+  ],
+  [
+   122.03,
+   122.21,
+   "se"
+  ],
+  [
+   122.21,
+   122.57,
+   "hacía"
+  ],
+  [
+   122.57,
+   122.97,
+   "cada"
+  ],
+  [
+   122.97,
+   123.33,
+   "vez"
+  ],
+  [
+   123.33,
+   123.57,
+   "más"
+  ],
+  [
+   123.57,
+   124.07,
+   "fuerte."
+  ],
+  [
+   124.85,
+   125.17,
+   "De"
+  ],
+  [
+   125.17,
+   125.83,
+   "madrugada,"
+  ],
+  [
+   126.47,
+   126.71,
+   "los"
+  ],
+  [
+   126.71,
+   127.25,
+   "agentes"
+  ],
+  [
+   127.25,
+   127.87,
+   "tocaron"
+  ],
+  [
+   127.87,
+   128.01,
+   "la"
+  ],
+  [
+   128.01,
+   128.35,
+   "puerta."
+  ],
+  [
+   129.27,
+   129.45,
+   "¿Qué"
+  ],
+  [
+   129.45,
+   129.77,
+   "pasó"
+  ],
+  [
+   129.77,
+   130.11,
+   "después?"
+  ],
+  [
+   131.17,
+   131.37,
+   "Lo"
+  ],
+  [
+   131.37,
+   131.51,
+   "que"
+  ],
+  [
+   131.51,
+   131.81,
+   "viene"
+  ],
+  [
+   131.81,
+   132.05,
+   "te"
+  ],
+  [
+   132.05,
+   132.25,
+   "va"
+  ],
+  [
+   132.25,
+   132.33,
+   "a"
+  ],
+  [
+   132.33,
+   132.61,
+   "dejar"
+  ],
+  [
+   132.61,
+   132.89,
+   "sin"
+  ],
+  [
+   132.89,
+   133.29,
+   "palabras."
+  ],
+  [
+   134.19,
+   134.55,
+   "Mira"
+  ],
+  [
+   134.55,
+   134.75,
+   "el"
+  ],
+  [
+   134.75,
+   135.03,
+   "vídeo"
+  ],
+  [
+   135.03,
+   135.59,
+   "completo"
+  ],
+  [
+   135.59,
+   135.87,
+   "en"
+  ],
+  [
+   135.87,
+   136.25,
+   "YouTube."
+  ],
+  [
+   137.07,
+   137.27,
+   "En"
+  ],
+  [
+   137.27,
+   137.39,
+   "el"
+  ],
+  [
+   137.39,
+   137.77,
+   "canal"
+  ],
+  [
+   137.77,
+   138.73,
+   "Ritmer."
+  ]
+ ]
+}

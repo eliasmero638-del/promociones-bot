@@ -1,0 +1,883 @@
+{
+ "eid": "fb3",
+ "hook_fin": 3.293,
+ "duracion_voz": 72.939,
+ "segmentos": [
+  {
+   "texto": "Un tesoro enterrado, escondido en un código.",
+   "t0": 0.0,
+   "img": "esc_00.jpg",
+   "escena": {
+    "tipo": "fecha",
+    "texto": "CONDADO DE BEDFORD",
+    "sub": "Virginia · EE. UU."
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Virginia, mil ochocientos veintidós. Thomas Beale le deja una caja de hierro a un posadero de Lynchburg.",
+   "t0": 3.293,
+   "img": "esc_01.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "Lynchburg Virginia historic",
+     "Lynchburg, Virginia"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Le pide que no la abra, a menos que él no vuelva en diez años.",
+   "t0": 11.37,
+   "img": "v_02.mp4",
+   "escena": {
+    "tipo": "video",
+    "url": "https://www.youtube.com/watch?v=rjHA_KgF49s",
+    "desde": 40,
+    "dur": 6,
+    "buscar_video": [
+     "Blue Ridge Mountains Virginia"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Beale nunca volvió.",
+   "t0": 19.05,
+   "img": "esc_03.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "Blue Ridge Mountains Virginia",
+     "Bedford County Virginia"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "En mil ochocientos cuarenta y cinco, Morriss abrió la caja: tres hojas llenas de números.",
+   "t0": 20.93,
+   "img": "esc_04.jpg",
+   "escena": {
+    "tipo": "fecha",
+    "texto": "1845",
+    "sub": "La caja de hierro"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Un amigo suyo pasó veinte años intentando descifrarlas.",
+   "t0": 24.34,
+   "img": "esc_05.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 6
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Y logró resolver una. La clave era la Declaración de Independencia de Estados Unidos.",
+   "t0": 32.45,
+   "img": "esc_06.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "United States Declaration of Independence"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Cada número señalaba una palabra. Y el mensaje hablaba de oro, plata y joyas enterradas en Bedford.",
+   "t0": 36.97,
+   "img": "v_07.mp4",
+   "escena": {
+    "tipo": "video",
+    "url": "https://www.youtube.com/watch?v=Lu4_LTyqpfk",
+    "desde": 60,
+    "dur": 6,
+    "buscar_video": [
+     "gold coins"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Un tesoro que hoy valdría entre cuarenta y cincuenta millones de dólares.",
+   "t0": 45.37,
+   "img": "esc_08.jpg",
+   "escena": {
+    "tipo": "fecha",
+    "texto": "40 A 50 MILLONES",
+    "sub": "de dólares de hoy"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Pero las otras dos hojas, con el lugar exacto, nunca se pudieron descifrar.",
+   "t0": 50.43,
+   "img": "esc_09.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 6
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Desde mil ochocientos ochenta y cinco, muchos lo han intentado. Nadie lo logró.",
+   "t0": 57.19,
+   "img": "esc_10.jpg",
+   "escena": {
+    "tipo": "fecha",
+    "texto": "BUSCADORES",
+    "sub": "Bedford, Virginia"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Muchos creen que fue un engaño. Pero el código sigue sin resolverse. Comparte esta historia, y sigue a Ridmer.",
+   "t0": 61.75,
+   "img": "v_11.mp4",
+   "escena": {
+    "tipo": "video",
+    "url": "https://www.youtube.com/watch?v=EboyDU1dZ00",
+    "desde": 100,
+    "dur": 6,
+    "buscar_video": [
+     "Virginia forest"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  }
+ ],
+ "palabras": [
+  [
+   0.0,
+   0.14,
+   "Un"
+  ],
+  [
+   0.14,
+   0.52,
+   "tesoro"
+  ],
+  [
+   0.52,
+   1.14,
+   "enterrado,"
+  ],
+  [
+   1.52,
+   2.08,
+   "escondido"
+  ],
+  [
+   2.08,
+   2.26,
+   "en"
+  ],
+  [
+   2.26,
+   2.4,
+   "un"
+  ],
+  [
+   2.4,
+   2.7,
+   "código."
+  ],
+  [
+   3.32,
+   3.78,
+   "Virginia,"
+  ],
+  [
+   4.34,
+   5.64,
+   "1822."
+  ],
+  [
+   6.94,
+   7.34,
+   "Tomas"
+  ],
+  [
+   7.34,
+   7.52,
+   "Ball"
+  ],
+  [
+   7.52,
+   7.72,
+   "le"
+  ],
+  [
+   7.72,
+   7.96,
+   "deja"
+  ],
+  [
+   7.96,
+   8.22,
+   "una"
+  ],
+  [
+   8.22,
+   8.58,
+   "caja"
+  ],
+  [
+   8.58,
+   8.76,
+   "de"
+  ],
+  [
+   8.76,
+   9.12,
+   "hierro"
+  ],
+  [
+   9.12,
+   9.24,
+   "a"
+  ],
+  [
+   9.24,
+   9.38,
+   "un"
+  ],
+  [
+   9.38,
+   9.9,
+   "posadero"
+  ],
+  [
+   9.9,
+   10.04,
+   "de"
+  ],
+  [
+   10.04,
+   10.62,
+   "Lynchburg."
+  ],
+  [
+   11.62,
+   11.86,
+   "Le"
+  ],
+  [
+   11.86,
+   12.12,
+   "pide"
+  ],
+  [
+   12.12,
+   12.3,
+   "que"
+  ],
+  [
+   12.3,
+   12.5,
+   "no"
+  ],
+  [
+   12.5,
+   12.66,
+   "la"
+  ],
+  [
+   12.66,
+   12.94,
+   "abra,"
+  ],
+  [
+   13.32,
+   13.44,
+   "a"
+  ],
+  [
+   13.44,
+   13.68,
+   "menos"
+  ],
+  [
+   13.68,
+   13.96,
+   "que"
+  ],
+  [
+   13.96,
+   14.12,
+   "él"
+  ],
+  [
+   14.12,
+   14.28,
+   "no"
+  ],
+  [
+   14.28,
+   14.6,
+   "vuelva"
+  ],
+  [
+   14.6,
+   14.76,
+   "en"
+  ],
+  [
+   14.76,
+   15.0,
+   "diez"
+  ],
+  [
+   15.0,
+   15.32,
+   "años."
+  ],
+  [
+   16.5,
+   16.82,
+   "Ball"
+  ],
+  [
+   16.82,
+   17.1,
+   "nunca"
+  ],
+  [
+   17.1,
+   17.74,
+   "volvió."
+  ],
+  [
+   19.3,
+   19.92,
+   "En"
+  ],
+  [
+   19.92,
+   20.54,
+   "1845,"
+  ],
+  [
+   21.18,
+   21.4,
+   "Maurice"
+  ],
+  [
+   21.4,
+   21.82,
+   "abrió"
+  ],
+  [
+   21.82,
+   22.0,
+   "la"
+  ],
+  [
+   22.0,
+   22.42,
+   "caja,"
+  ],
+  [
+   22.82,
+   23.0,
+   "tres"
+  ],
+  [
+   23.0,
+   23.34,
+   "hojas"
+  ],
+  [
+   23.34,
+   23.74,
+   "llenas"
+  ],
+  [
+   23.74,
+   23.94,
+   "de"
+  ],
+  [
+   23.94,
+   24.32,
+   "números."
+  ],
+  [
+   24.32,
+   25.74,
+   "Un"
+  ],
+  [
+   25.74,
+   25.98,
+   "amigo"
+  ],
+  [
+   25.98,
+   26.48,
+   "suyo"
+  ],
+  [
+   26.48,
+   26.68,
+   "pasó"
+  ],
+  [
+   26.68,
+   27.18,
+   "veinte"
+  ],
+  [
+   27.18,
+   27.5,
+   "años"
+  ],
+  [
+   27.5,
+   28.24,
+   "intentando"
+  ],
+  [
+   28.24,
+   29.1,
+   "descifrarlas"
+  ],
+  [
+   29.1,
+   30.46,
+   "y"
+  ],
+  [
+   30.46,
+   30.86,
+   "logró"
+  ],
+  [
+   30.86,
+   31.28,
+   "resolver"
+  ],
+  [
+   31.28,
+   31.6,
+   "una."
+  ],
+  [
+   32.7,
+   32.92,
+   "La"
+  ],
+  [
+   32.92,
+   33.2,
+   "clave"
+  ],
+  [
+   33.2,
+   33.42,
+   "era"
+  ],
+  [
+   33.42,
+   33.58,
+   "la"
+  ],
+  [
+   33.58,
+   34.22,
+   "declaración"
+  ],
+  [
+   34.22,
+   34.38,
+   "de"
+  ],
+  [
+   34.38,
+   35.18,
+   "independencia"
+  ],
+  [
+   35.18,
+   35.34,
+   "de"
+  ],
+  [
+   35.34,
+   35.66,
+   "Estados"
+  ],
+  [
+   35.66,
+   36.18,
+   "Unidos."
+  ],
+  [
+   37.22,
+   37.64,
+   "Cada"
+  ],
+  [
+   37.64,
+   38.0,
+   "número"
+  ],
+  [
+   38.0,
+   38.72,
+   "señalaba"
+  ],
+  [
+   38.72,
+   38.98,
+   "una"
+  ],
+  [
+   38.98,
+   39.4,
+   "palabra"
+  ],
+  [
+   39.4,
+   40.7,
+   "y"
+  ],
+  [
+   40.7,
+   40.88,
+   "el"
+  ],
+  [
+   40.88,
+   41.36,
+   "mensaje"
+  ],
+  [
+   41.36,
+   41.76,
+   "hablaba"
+  ],
+  [
+   41.76,
+   41.92,
+   "de"
+  ],
+  [
+   41.92,
+   42.14,
+   "oro,"
+  ],
+  [
+   42.64,
+   42.84,
+   "plata"
+  ],
+  [
+   42.84,
+   43.04,
+   "y"
+  ],
+  [
+   43.04,
+   43.46,
+   "joyas"
+  ],
+  [
+   43.46,
+   44.06,
+   "enterradas"
+  ],
+  [
+   44.06,
+   44.34,
+   "en"
+  ],
+  [
+   44.34,
+   44.74,
+   "Bedford."
+  ],
+  [
+   45.62,
+   46.0,
+   "Un"
+  ],
+  [
+   46.0,
+   46.36,
+   "tesoro"
+  ],
+  [
+   46.36,
+   46.6,
+   "que"
+  ],
+  [
+   46.6,
+   46.8,
+   "hoy"
+  ],
+  [
+   46.8,
+   47.3,
+   "valdría"
+  ],
+  [
+   47.3,
+   47.52,
+   "entre"
+  ],
+  [
+   47.52,
+   47.82,
+   "40"
+  ],
+  [
+   47.82,
+   48.1,
+   "y"
+  ],
+  [
+   48.1,
+   48.56,
+   "50"
+  ],
+  [
+   48.56,
+   49.04,
+   "millones"
+  ],
+  [
+   49.04,
+   49.3,
+   "de"
+  ],
+  [
+   49.3,
+   49.72,
+   "dólares."
+  ],
+  [
+   50.68,
+   51.14,
+   "Pero"
+  ],
+  [
+   51.14,
+   51.4,
+   "las"
+  ],
+  [
+   51.4,
+   51.68,
+   "otras"
+  ],
+  [
+   51.68,
+   51.9,
+   "dos"
+  ],
+  [
+   51.9,
+   52.38,
+   "hojas,"
+  ],
+  [
+   52.7,
+   52.84,
+   "con"
+  ],
+  [
+   52.84,
+   53.0,
+   "el"
+  ],
+  [
+   53.0,
+   53.2,
+   "lugar"
+  ],
+  [
+   53.2,
+   53.86,
+   "exacto,"
+  ],
+  [
+   54.2,
+   54.4,
+   "nunca"
+  ],
+  [
+   54.4,
+   54.64,
+   "se"
+  ],
+  [
+   54.64,
+   55.1,
+   "pudieron"
+  ],
+  [
+   55.1,
+   55.66,
+   "descifrar."
+  ],
+  [
+   57.44,
+   58.16,
+   "Desde"
+  ],
+  [
+   58.16,
+   58.88,
+   "1885,"
+  ],
+  [
+   59.4,
+   59.76,
+   "muchos"
+  ],
+  [
+   59.76,
+   60.0,
+   "lo"
+  ],
+  [
+   60.0,
+   60.18,
+   "han"
+  ],
+  [
+   60.18,
+   60.84,
+   "intentado."
+  ],
+  [
+   62.0,
+   62.36,
+   "Nadie"
+  ],
+  [
+   62.36,
+   62.52,
+   "lo"
+  ],
+  [
+   62.52,
+   62.94,
+   "logró."
+  ],
+  [
+   63.94,
+   64.42,
+   "Muchos"
+  ],
+  [
+   64.42,
+   64.76,
+   "creen"
+  ],
+  [
+   64.76,
+   64.92,
+   "que"
+  ],
+  [
+   64.92,
+   65.12,
+   "fue"
+  ],
+  [
+   65.12,
+   65.3,
+   "un"
+  ],
+  [
+   65.3,
+   65.76,
+   "engaño."
+  ],
+  [
+   66.64,
+   67.0,
+   "Pero"
+  ],
+  [
+   67.0,
+   67.16,
+   "el"
+  ],
+  [
+   67.16,
+   67.4,
+   "código"
+  ],
+  [
+   67.4,
+   67.92,
+   "sigue"
+  ],
+  [
+   67.92,
+   68.18,
+   "sin"
+  ],
+  [
+   68.18,
+   68.82,
+   "resolverse."
+  ],
+  [
+   69.94,
+   70.54,
+   "Comparte"
+  ],
+  [
+   70.54,
+   70.76,
+   "esta"
+  ],
+  [
+   70.76,
+   71.26,
+   "historia"
+  ],
+  [
+   71.26,
+   71.76,
+   "y"
+  ],
+  [
+   71.76,
+   72.08,
+   "sigue"
+  ],
+  [
+   72.08,
+   72.22,
+   "a"
+  ],
+  [
+   72.22,
+   72.5,
+   "Reamer."
+  ]
+ ]
+}

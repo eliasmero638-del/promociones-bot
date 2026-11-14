@@ -1,0 +1,872 @@
+{
+ "eid": "fb1",
+ "hook_fin": 3.03,
+ "duracion_voz": 68.51,
+ "segmentos": [
+  {
+   "texto": "Lo arrastró una cascada en plena selva.",
+   "t0": 0.0,
+   "img": "esc_00.jpg",
+   "escena": {
+    "tipo": "fecha",
+    "texto": "RÍO TUICHI",
+    "sub": "Bolivia · 1981"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Bolivia, mil novecientos ochenta y uno. Yossi Ghinsberg, un israelí de veintiún años, buscaba aventura en el Amazonas.",
+   "t0": 3.03,
+   "img": "esc_01.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 1
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Con su amigo Kevin Gale, bajaba en balsa por el río Tuichi.",
+   "t0": 12.96,
+   "img": "v_02.mp4",
+   "escena": {
+    "tipo": "video",
+    "url": "https://www.youtube.com/watch?v=sRZYyHtC1sk",
+    "desde": 300,
+    "dur": 6,
+    "buscar_video": [
+     "Tuichi River",
+     "Amazon river raft"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Pero la corriente los llevó directo a los rápidos. Perdieron el control.",
+   "t0": 17.14,
+   "img": "esc_03.jpg",
+   "escena": {
+    "tipo": "fecha",
+    "texto": "LOS RÁPIDOS",
+    "sub": "Río Tuichi"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Kevin alcanzó la orilla. A Yossi, el río lo arrastró por la cascada.",
+   "t0": 22.88,
+   "img": "v_04.mp4",
+   "escena": {
+    "tipo": "video",
+    "url": "https://www.youtube.com/watch?v=sRZYyHtC1sk",
+    "desde": 420,
+    "dur": 6,
+    "buscar_video": [
+     "waterfall jungle"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Quedó solo, sin comida y sin equipo, en una selva que nadie había explorado.",
+   "t0": 28.8,
+   "img": "esc_05.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 2
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Comía huevos y frutas. Esperaba a que los monos dejaran caer algo para comer.",
+   "t0": 34.78,
+   "img": "esc_06.jpg",
+   "escena": {
+    "tipo": "fecha",
+    "texto": "SIN COMIDA",
+    "sub": "Selva de Bolivia"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Casi se ahoga en una inundación, y se hundió dos veces en un pantano.",
+   "t0": 40.88,
+   "img": "v_07.mp4",
+   "escena": {
+    "tipo": "video",
+    "url": "https://www.youtube.com/watch?v=_WiNzlpRQ7Q",
+    "desde": 60,
+    "dur": 6,
+    "buscar_video": [
+     "Amazon rainforest flood"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Los hongos le pudrían los pies. Veía cosas que no existían.",
+   "t0": 46.74,
+   "img": "esc_08.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "Madidi National Park",
+     "Amazon rainforest Bolivia"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "A las tres semanas, escuchó un motor.",
+   "t0": 52.04,
+   "img": "esc_09.jpg",
+   "escena": {
+    "tipo": "fecha",
+    "texto": "TRES SEMANAS",
+    "sub": "Río Tuichi"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Era Kevin, con un bote. Estaban a punto de rendirse. Lo encontraron.",
+   "t0": 55.12,
+   "img": "v_10.mp4",
+   "escena": {
+    "tipo": "video",
+    "url": "https://www.youtube.com/watch?v=sRZYyHtC1sk",
+    "desde": 2400,
+    "dur": 6,
+    "buscar_video": [
+     "boat river jungle"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Los otros dos compañeros nunca aparecieron. Comparte esta historia, y sigue a Ridmer.",
+   "t0": 61.34,
+   "img": "esc_11.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "Madidi National Park",
+     "Tuichi River"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  }
+ ],
+ "palabras": [
+  [
+   0.08,
+   0.88,
+   "Lo"
+  ],
+  [
+   0.88,
+   1.46,
+   "arrastró"
+  ],
+  [
+   1.46,
+   1.78,
+   "una"
+  ],
+  [
+   1.78,
+   2.42,
+   "cascada"
+  ],
+  [
+   2.42,
+   2.66,
+   "en"
+  ],
+  [
+   2.66,
+   3.03,
+   "plena"
+  ],
+  [
+   3.11,
+   3.91,
+   "Bolivia,"
+  ],
+  [
+   4.45,
+   5.59,
+   "1981."
+  ],
+  [
+   6.95,
+   7.31,
+   "Yossi"
+  ],
+  [
+   7.31,
+   7.89,
+   "Ginzberg,"
+  ],
+  [
+   8.37,
+   8.55,
+   "un"
+  ],
+  [
+   8.55,
+   9.29,
+   "israelí"
+  ],
+  [
+   9.29,
+   9.39,
+   "de"
+  ],
+  [
+   9.39,
+   9.71,
+   "21"
+  ],
+  [
+   9.71,
+   10.21,
+   "años,"
+  ],
+  [
+   10.21,
+   10.91,
+   "buscaba"
+  ],
+  [
+   10.91,
+   11.59,
+   "aventura"
+  ],
+  [
+   11.59,
+   11.93,
+   "en"
+  ],
+  [
+   11.93,
+   12.07,
+   "el"
+  ],
+  [
+   12.07,
+   12.77,
+   "Amazonas."
+  ],
+  [
+   13.21,
+   13.55,
+   "Con"
+  ],
+  [
+   13.55,
+   13.69,
+   "su"
+  ],
+  [
+   13.69,
+   13.99,
+   "amigo"
+  ],
+  [
+   13.99,
+   14.33,
+   "Kevin"
+  ],
+  [
+   14.33,
+   14.75,
+   "Gale,"
+  ],
+  [
+   14.91,
+   15.41,
+   "bajaba"
+  ],
+  [
+   15.41,
+   15.57,
+   "en"
+  ],
+  [
+   15.57,
+   15.89,
+   "balsa"
+  ],
+  [
+   15.89,
+   16.13,
+   "por"
+  ],
+  [
+   16.13,
+   16.23,
+   "el"
+  ],
+  [
+   16.23,
+   16.41,
+   "río"
+  ],
+  [
+   16.41,
+   16.81,
+   "Tuichi,"
+  ],
+  [
+   17.39,
+   17.69,
+   "pero"
+  ],
+  [
+   17.69,
+   17.85,
+   "la"
+  ],
+  [
+   17.85,
+   18.27,
+   "corriente"
+  ],
+  [
+   18.27,
+   18.47,
+   "los"
+  ],
+  [
+   18.47,
+   18.81,
+   "llevó"
+  ],
+  [
+   18.81,
+   19.79,
+   "directo"
+  ],
+  [
+   19.79,
+   19.99,
+   "a"
+  ],
+  [
+   19.99,
+   20.13,
+   "los"
+  ],
+  [
+   20.13,
+   20.59,
+   "rápidos."
+  ],
+  [
+   21.29,
+   21.83,
+   "Perdieron"
+  ],
+  [
+   21.83,
+   22.03,
+   "el"
+  ],
+  [
+   22.03,
+   22.35,
+   "control."
+  ],
+  [
+   23.13,
+   23.53,
+   "Kevin"
+  ],
+  [
+   23.53,
+   24.39,
+   "alcanzó"
+  ],
+  [
+   24.39,
+   24.53,
+   "la"
+  ],
+  [
+   24.53,
+   24.85,
+   "orilla."
+  ],
+  [
+   25.57,
+   26.07,
+   "Ayossi,"
+  ],
+  [
+   26.45,
+   26.53,
+   "el"
+  ],
+  [
+   26.53,
+   26.73,
+   "río"
+  ],
+  [
+   26.73,
+   26.91,
+   "lo"
+  ],
+  [
+   26.91,
+   27.43,
+   "arrastró"
+  ],
+  [
+   27.43,
+   27.63,
+   "por"
+  ],
+  [
+   27.63,
+   27.79,
+   "la"
+  ],
+  [
+   27.79,
+   28.21,
+   "cascada."
+  ],
+  [
+   29.05,
+   29.27,
+   "Quedó"
+  ],
+  [
+   29.27,
+   29.65,
+   "solo,"
+  ],
+  [
+   30.09,
+   30.31,
+   "sin"
+  ],
+  [
+   30.31,
+   30.67,
+   "comida"
+  ],
+  [
+   30.67,
+   30.97,
+   "y"
+  ],
+  [
+   30.97,
+   31.21,
+   "sin"
+  ],
+  [
+   31.21,
+   31.57,
+   "equipo,"
+  ],
+  [
+   32.03,
+   32.11,
+   "en"
+  ],
+  [
+   32.11,
+   32.27,
+   "una"
+  ],
+  [
+   32.27,
+   32.59,
+   "selva"
+  ],
+  [
+   32.59,
+   32.77,
+   "que"
+  ],
+  [
+   32.77,
+   33.21,
+   "nadie"
+  ],
+  [
+   33.21,
+   33.65,
+   "había"
+  ],
+  [
+   33.65,
+   34.27,
+   "explorado."
+  ],
+  [
+   35.03,
+   35.45,
+   "Comía"
+  ],
+  [
+   35.45,
+   36.13,
+   "huevos"
+  ],
+  [
+   36.13,
+   36.57,
+   "y"
+  ],
+  [
+   36.57,
+   37.07,
+   "frutas."
+  ],
+  [
+   37.59,
+   38.05,
+   "Esperaba"
+  ],
+  [
+   38.05,
+   38.21,
+   "que"
+  ],
+  [
+   38.21,
+   38.37,
+   "los"
+  ],
+  [
+   38.37,
+   38.83,
+   "monos"
+  ],
+  [
+   38.83,
+   39.21,
+   "dejaran"
+  ],
+  [
+   39.21,
+   39.49,
+   "caer"
+  ],
+  [
+   39.49,
+   39.77,
+   "algo"
+  ],
+  [
+   39.77,
+   40.11,
+   "para"
+  ],
+  [
+   40.11,
+   40.39,
+   "comer."
+  ],
+  [
+   41.13,
+   41.63,
+   "Casi"
+  ],
+  [
+   41.63,
+   41.85,
+   "se"
+  ],
+  [
+   41.85,
+   42.17,
+   "ahoga"
+  ],
+  [
+   42.17,
+   42.51,
+   "en"
+  ],
+  [
+   42.51,
+   42.65,
+   "una"
+  ],
+  [
+   42.65,
+   43.23,
+   "inundación"
+  ],
+  [
+   43.23,
+   43.91,
+   "y"
+  ],
+  [
+   43.91,
+   44.05,
+   "se"
+  ],
+  [
+   44.05,
+   44.33,
+   "hundió"
+  ],
+  [
+   44.33,
+   44.71,
+   "dos"
+  ],
+  [
+   44.71,
+   45.15,
+   "veces"
+  ],
+  [
+   45.15,
+   45.53,
+   "en"
+  ],
+  [
+   45.53,
+   45.65,
+   "un"
+  ],
+  [
+   45.65,
+   46.13,
+   "pantano."
+  ],
+  [
+   46.99,
+   47.15,
+   "Los"
+  ],
+  [
+   47.15,
+   47.67,
+   "hongos"
+  ],
+  [
+   47.67,
+   48.03,
+   "le"
+  ],
+  [
+   48.03,
+   48.43,
+   "podrían"
+  ],
+  [
+   48.43,
+   48.63,
+   "los"
+  ],
+  [
+   48.63,
+   48.87,
+   "pies."
+  ],
+  [
+   49.65,
+   50.01,
+   "Veía"
+  ],
+  [
+   50.01,
+   50.39,
+   "cosas"
+  ],
+  [
+   50.39,
+   50.73,
+   "que"
+  ],
+  [
+   50.73,
+   50.87,
+   "no"
+  ],
+  [
+   50.87,
+   51.41,
+   "existían."
+  ],
+  [
+   52.29,
+   52.43,
+   "A"
+  ],
+  [
+   52.43,
+   52.59,
+   "las"
+  ],
+  [
+   52.59,
+   52.75,
+   "tres"
+  ],
+  [
+   52.75,
+   53.07,
+   "semanas"
+  ],
+  [
+   53.07,
+   53.93,
+   "escuchó"
+  ],
+  [
+   53.93,
+   54.19,
+   "un"
+  ],
+  [
+   54.19,
+   54.51,
+   "motor."
+  ],
+  [
+   55.37,
+   55.53,
+   "Era"
+  ],
+  [
+   55.53,
+   55.77,
+   "Kevin,"
+  ],
+  [
+   56.33,
+   56.53,
+   "con"
+  ],
+  [
+   56.53,
+   56.67,
+   "un"
+  ],
+  [
+   56.67,
+   56.91,
+   "bote."
+  ],
+  [
+   57.53,
+   57.87,
+   "Estaban"
+  ],
+  [
+   57.87,
+   57.97,
+   "a"
+  ],
+  [
+   57.97,
+   58.25,
+   "punto"
+  ],
+  [
+   58.25,
+   58.55,
+   "de"
+  ],
+  [
+   58.55,
+   59.03,
+   "rendirse."
+  ],
+  [
+   59.83,
+   60.01,
+   "Lo"
+  ],
+  [
+   60.01,
+   60.71,
+   "encontraron."
+  ],
+  [
+   61.59,
+   61.79,
+   "Los"
+  ],
+  [
+   61.79,
+   62.03,
+   "otros"
+  ],
+  [
+   62.03,
+   62.25,
+   "dos"
+  ],
+  [
+   62.25,
+   62.85,
+   "compañeros"
+  ],
+  [
+   62.85,
+   63.51,
+   "nunca"
+  ],
+  [
+   63.51,
+   64.39,
+   "aparecieron."
+  ],
+  [
+   65.17,
+   65.81,
+   "Comparte"
+  ],
+  [
+   65.81,
+   65.97,
+   "esta"
+  ],
+  [
+   65.97,
+   66.33,
+   "historia"
+  ],
+  [
+   66.33,
+   66.71,
+   "y"
+  ],
+  [
+   66.71,
+   67.03,
+   "sigue"
+  ],
+  [
+   67.03,
+   67.31,
+   "a"
+  ],
+  [
+   67.31,
+   67.61,
+   "Riedmer."
+  ]
+ ]
+}

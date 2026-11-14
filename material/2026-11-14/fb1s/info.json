@@ -1,0 +1,539 @@
+{
+ "eid": "fb1s",
+ "hook_fin": 3.57,
+ "duracion_voz": 44.178,
+ "segmentos": [
+  {
+   "texto": "Lo arrastró una cascada en plena selva.",
+   "t0": 0.0,
+   "img": "esc_00.jpg",
+   "escena": {
+    "tipo": "fecha",
+    "texto": "RÍO TUICHI",
+    "sub": "Bolivia · 1981"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Bolivia, mil novecientos ochenta y uno. Yossi Ghinsberg bajaba en balsa por el río Tuichi con su amigo Kevin.",
+   "t0": 3.57,
+   "img": "esc_01.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 1
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Perdieron el control en los rápidos. Kevin llegó a la orilla. Yossi cayó por la cascada.",
+   "t0": 12.64,
+   "img": "v_02.mp4",
+   "escena": {
+    "tipo": "video",
+    "url": "https://www.youtube.com/watch?v=sRZYyHtC1sk",
+    "desde": 420,
+    "dur": 6,
+    "buscar_video": [
+     "waterfall jungle"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Tres semanas solo, sin comida, esperando las frutas que dejaban caer los monos.",
+   "t0": 23.4,
+   "img": "esc_03.jpg",
+   "escena": {
+    "tipo": "fecha",
+    "texto": "SIN COMIDA",
+    "sub": "Selva de Bolivia"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Casi se ahoga en una inundación, y los hongos le pudrían los pies.",
+   "t0": 26.8,
+   "img": "esc_04.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 2
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Un día escuchó un motor. Era Kevin, que volvió a buscarlo en un bote. Lo encontraron cuando iban a rendirse.",
+   "t0": 35.14,
+   "img": "esc_05.jpg",
+   "escena": {
+    "tipo": "fecha",
+    "texto": "TRES SEMANAS",
+    "sub": "Río Tuichi"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Sígueme en Ridmer para más.",
+   "t0": 41.64,
+   "img": "v_06.mp4",
+   "escena": {
+    "tipo": "video",
+    "url": "https://www.youtube.com/watch?v=sRZYyHtC1sk",
+    "desde": 2400,
+    "dur": 6,
+    "buscar_video": [
+     "boat river jungle"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  }
+ ],
+ "palabras": [
+  [
+   0.08,
+   0.9,
+   "Lo"
+  ],
+  [
+   0.9,
+   1.5,
+   "arrastró"
+  ],
+  [
+   1.5,
+   1.8,
+   "una"
+  ],
+  [
+   1.8,
+   2.48,
+   "cascada"
+  ],
+  [
+   2.48,
+   3.0,
+   "en"
+  ],
+  [
+   3.0,
+   3.57,
+   "plena"
+  ],
+  [
+   3.65,
+   4.13,
+   "Bolivia,"
+  ],
+  [
+   4.91,
+   6.17,
+   "1981."
+  ],
+  [
+   7.39,
+   8.07,
+   "Josie"
+  ],
+  [
+   8.07,
+   8.47,
+   "Ginsburg"
+  ],
+  [
+   8.47,
+   9.39,
+   "bajaba"
+  ],
+  [
+   9.39,
+   9.55,
+   "en"
+  ],
+  [
+   9.55,
+   9.81,
+   "balsa"
+  ],
+  [
+   9.81,
+   10.11,
+   "por"
+  ],
+  [
+   10.11,
+   10.23,
+   "el"
+  ],
+  [
+   10.23,
+   10.47,
+   "río"
+  ],
+  [
+   10.47,
+   11.21,
+   "Twitchy"
+  ],
+  [
+   11.21,
+   11.47,
+   "con"
+  ],
+  [
+   11.47,
+   11.63,
+   "su"
+  ],
+  [
+   11.63,
+   11.89,
+   "amigo"
+  ],
+  [
+   11.89,
+   12.19,
+   "Kevin."
+  ],
+  [
+   12.89,
+   13.45,
+   "Perdieron"
+  ],
+  [
+   13.45,
+   13.63,
+   "el"
+  ],
+  [
+   13.63,
+   14.09,
+   "control"
+  ],
+  [
+   14.09,
+   14.33,
+   "en"
+  ],
+  [
+   14.33,
+   14.45,
+   "los"
+  ],
+  [
+   14.45,
+   14.95,
+   "rápidos."
+  ],
+  [
+   15.63,
+   15.97,
+   "Kevin"
+  ],
+  [
+   15.97,
+   16.19,
+   "llegó"
+  ],
+  [
+   16.19,
+   16.35,
+   "a"
+  ],
+  [
+   16.35,
+   16.41,
+   "la"
+  ],
+  [
+   16.41,
+   16.73,
+   "orilla."
+  ],
+  [
+   17.47,
+   17.87,
+   "Josie"
+  ],
+  [
+   17.87,
+   18.17,
+   "cayó"
+  ],
+  [
+   18.17,
+   18.39,
+   "por"
+  ],
+  [
+   18.39,
+   18.57,
+   "la"
+  ],
+  [
+   18.57,
+   19.03,
+   "cascada."
+  ],
+  [
+   19.75,
+   20.13,
+   "Tres"
+  ],
+  [
+   20.13,
+   20.55,
+   "semanas"
+  ],
+  [
+   20.55,
+   21.27,
+   "solo,"
+  ],
+  [
+   22.01,
+   22.31,
+   "sin"
+  ],
+  [
+   22.31,
+   22.77,
+   "comida."
+  ],
+  [
+   23.65,
+   24.17,
+   "Esperando"
+  ],
+  [
+   24.17,
+   24.37,
+   "las"
+  ],
+  [
+   24.37,
+   24.81,
+   "frutas"
+  ],
+  [
+   24.81,
+   24.95,
+   "que"
+  ],
+  [
+   24.95,
+   25.31,
+   "dejaban"
+  ],
+  [
+   25.31,
+   25.67,
+   "caer"
+  ],
+  [
+   25.67,
+   25.87,
+   "los"
+  ],
+  [
+   25.87,
+   26.41,
+   "monos."
+  ],
+  [
+   27.05,
+   27.39,
+   "Casi"
+  ],
+  [
+   27.39,
+   27.59,
+   "se"
+  ],
+  [
+   27.59,
+   27.87,
+   "ahoga"
+  ],
+  [
+   27.87,
+   28.09,
+   "en"
+  ],
+  [
+   28.09,
+   28.25,
+   "una"
+  ],
+  [
+   28.25,
+   28.77,
+   "inundación"
+  ],
+  [
+   28.77,
+   29.79,
+   "y"
+  ],
+  [
+   29.79,
+   29.97,
+   "los"
+  ],
+  [
+   29.97,
+   30.45,
+   "hongos"
+  ],
+  [
+   30.45,
+   30.65,
+   "le"
+  ],
+  [
+   30.65,
+   31.11,
+   "pudrían"
+  ],
+  [
+   31.11,
+   31.31,
+   "los"
+  ],
+  [
+   31.31,
+   31.55,
+   "pies."
+  ],
+  [
+   31.55,
+   32.75,
+   "Un"
+  ],
+  [
+   32.75,
+   33.03,
+   "día"
+  ],
+  [
+   33.03,
+   34.17,
+   "escuchó"
+  ],
+  [
+   34.17,
+   34.31,
+   "un"
+  ],
+  [
+   34.31,
+   34.63,
+   "motor."
+  ],
+  [
+   35.39,
+   35.53,
+   "Era"
+  ],
+  [
+   35.53,
+   35.87,
+   "Kevin,"
+  ],
+  [
+   36.43,
+   36.71,
+   "que"
+  ],
+  [
+   36.71,
+   37.15,
+   "volvió"
+  ],
+  [
+   37.15,
+   37.23,
+   "a"
+  ],
+  [
+   37.23,
+   37.85,
+   "buscarlo"
+  ],
+  [
+   37.85,
+   37.97,
+   "en"
+  ],
+  [
+   37.97,
+   38.11,
+   "un"
+  ],
+  [
+   38.11,
+   38.43,
+   "bote."
+  ],
+  [
+   39.23,
+   39.35,
+   "Lo"
+  ],
+  [
+   39.35,
+   39.93,
+   "encontraron"
+  ],
+  [
+   39.93,
+   40.09,
+   "cuando"
+  ],
+  [
+   40.09,
+   40.49,
+   "iban"
+  ],
+  [
+   40.49,
+   40.63,
+   "a"
+  ],
+  [
+   40.63,
+   41.03,
+   "rendirse."
+  ],
+  [
+   41.89,
+   42.27,
+   "Sigueme"
+  ],
+  [
+   42.27,
+   42.37,
+   "en"
+  ],
+  [
+   42.37,
+   42.63,
+   "Ritmer,"
+  ],
+  [
+   42.93,
+   43.09,
+   "para"
+  ],
+  [
+   43.09,
+   43.29,
+   "más."
+  ]
+ ]
+}

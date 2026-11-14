@@ -1,0 +1,547 @@
+{
+ "eid": "fb2s",
+ "hook_fin": 2.772,
+ "duracion_voz": 43.086,
+ "segmentos": [
+  {
+   "texto": "Un niño de quince años apagó internet.",
+   "t0": 0.0,
+   "img": "esc_00.jpg",
+   "escena": {
+    "tipo": "fecha",
+    "texto": "FEBRERO 2000",
+    "sub": "Montreal, Canadá"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Febrero del año dos mil. Yahoo, eBay, Amazon y CNN se caen, una tras otra.",
+   "t0": 2.772,
+   "img": "v_01.mp4",
+   "escena": {
+    "tipo": "video",
+    "url": "https://www.youtube.com/watch?v=S5_pw6S9qkI",
+    "desde": 20,
+    "dur": 6,
+    "buscar_video": [
+     "Yahoo"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "El FBI buscaba a una banda de expertos.",
+   "t0": 10.23,
+   "img": "esc_02.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "J. Edgar Hoover Building",
+     "FBI headquarters"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Pero era Michael Calce, un estudiante de Montreal que se hacía llamar Mafiaboy.",
+   "t0": 13.87,
+   "img": "v_03.mp4",
+   "escena": {
+    "tipo": "video",
+    "url": "https://www.youtube.com/watch?v=q0pKpqebwMI",
+    "desde": 30,
+    "dur": 6,
+    "buscar_video": [
+     "Montreal"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Usó computadoras de universidades para inundar esas páginas. No quería dinero: quería presumir.",
+   "t0": 19.61,
+   "img": "esc_04.jpg",
+   "escena": {
+    "tipo": "fecha",
+    "texto": "UNIVERSIDADES",
+    "sub": "Computadoras tomadas"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Y presumiendo lo atraparon: en un chat se atribuyó un ataque que nadie conocía.",
+   "t0": 27.81,
+   "img": "esc_05.jpg",
+   "escena": {
+    "tipo": "fecha",
+    "texto": "EL CHAT",
+    "sub": "Mafiaboy"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Pasó ocho meses en un centro para menores. Hoy protege empresas de ataques. Sígueme en Ridmer para más.",
+   "t0": 33.99,
+   "img": "v_06.mp4",
+   "escena": {
+    "tipo": "video",
+    "url": "https://www.youtube.com/watch?v=q0pKpqebwMI",
+    "desde": 90,
+    "dur": 6,
+    "buscar_video": [
+     "computer screen"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  }
+ ],
+ "palabras": [
+  [
+   0.0,
+   0.14,
+   "Un"
+  ],
+  [
+   0.14,
+   0.4,
+   "niño"
+  ],
+  [
+   0.4,
+   0.58,
+   "de"
+  ],
+  [
+   0.58,
+   0.92,
+   "15"
+  ],
+  [
+   0.92,
+   1.3,
+   "años"
+  ],
+  [
+   1.3,
+   1.78,
+   "apagó"
+  ],
+  [
+   1.78,
+   2.28,
+   "internet,"
+  ],
+  [
+   2.72,
+   3.18,
+   "febrero"
+  ],
+  [
+   3.18,
+   3.38,
+   "del"
+  ],
+  [
+   3.38,
+   3.64,
+   "año"
+  ],
+  [
+   3.64,
+   4.14,
+   "2000."
+  ],
+  [
+   5.18,
+   5.6,
+   "Yahoo,"
+  ],
+  [
+   6.04,
+   6.22,
+   "eBay,"
+  ],
+  [
+   6.68,
+   6.94,
+   "Amazon"
+  ],
+  [
+   6.94,
+   7.34,
+   "y"
+  ],
+  [
+   7.34,
+   7.6,
+   "CNN"
+  ],
+  [
+   7.6,
+   7.9,
+   "se"
+  ],
+  [
+   7.9,
+   8.32,
+   "caen,"
+  ],
+  [
+   8.58,
+   8.74,
+   "una"
+  ],
+  [
+   8.74,
+   8.98,
+   "tras"
+  ],
+  [
+   8.98,
+   9.36,
+   "otra."
+  ],
+  [
+   10.48,
+   10.68,
+   "El"
+  ],
+  [
+   10.68,
+   11.04,
+   "AdVIA"
+  ],
+  [
+   11.04,
+   11.54,
+   "buscaba"
+  ],
+  [
+   11.54,
+   11.74,
+   "a"
+  ],
+  [
+   11.74,
+   11.92,
+   "una"
+  ],
+  [
+   11.92,
+   12.26,
+   "banda"
+  ],
+  [
+   12.26,
+   12.46,
+   "de"
+  ],
+  [
+   12.46,
+   13.22,
+   "expertos."
+  ],
+  [
+   14.12,
+   14.44,
+   "Pero"
+  ],
+  [
+   14.44,
+   14.66,
+   "era"
+  ],
+  [
+   14.66,
+   15.0,
+   "Maco"
+  ],
+  [
+   15.0,
+   15.48,
+   "Cowes,"
+  ],
+  [
+   15.82,
+   15.96,
+   "un"
+  ],
+  [
+   15.96,
+   16.5,
+   "estudiante"
+  ],
+  [
+   16.5,
+   16.68,
+   "de"
+  ],
+  [
+   16.68,
+   17.08,
+   "Montreal"
+  ],
+  [
+   17.08,
+   17.38,
+   "que"
+  ],
+  [
+   17.38,
+   17.54,
+   "se"
+  ],
+  [
+   17.54,
+   17.84,
+   "hacía"
+  ],
+  [
+   17.84,
+   18.3,
+   "llamar"
+  ],
+  [
+   18.3,
+   18.6,
+   "Mafia"
+  ],
+  [
+   18.6,
+   18.8,
+   "Boy."
+  ],
+  [
+   19.86,
+   20.2,
+   "Usó"
+  ],
+  [
+   20.2,
+   21.0,
+   "computadoras"
+  ],
+  [
+   21.0,
+   21.1,
+   "de"
+  ],
+  [
+   21.1,
+   21.86,
+   "universidades"
+  ],
+  [
+   21.86,
+   22.24,
+   "para"
+  ],
+  [
+   22.24,
+   22.72,
+   "inundar"
+  ],
+  [
+   22.72,
+   22.98,
+   "esas"
+  ],
+  [
+   22.98,
+   23.68,
+   "páginas."
+  ],
+  [
+   24.64,
+   24.98,
+   "No"
+  ],
+  [
+   24.98,
+   25.24,
+   "quería"
+  ],
+  [
+   25.24,
+   25.6,
+   "dinero,"
+  ],
+  [
+   26.18,
+   26.44,
+   "quería"
+  ],
+  [
+   26.44,
+   27.1,
+   "presumir."
+  ],
+  [
+   28.06,
+   28.42,
+   "Y"
+  ],
+  [
+   28.42,
+   29.02,
+   "presumiendo"
+  ],
+  [
+   29.02,
+   29.18,
+   "lo"
+  ],
+  [
+   29.18,
+   29.74,
+   "atraparon,"
+  ],
+  [
+   30.1,
+   30.24,
+   "en"
+  ],
+  [
+   30.24,
+   30.36,
+   "un"
+  ],
+  [
+   30.36,
+   30.64,
+   "chat"
+  ],
+  [
+   30.64,
+   30.88,
+   "se"
+  ],
+  [
+   30.88,
+   31.38,
+   "atribuyó"
+  ],
+  [
+   31.38,
+   31.56,
+   "un"
+  ],
+  [
+   31.56,
+   31.88,
+   "ataque"
+  ],
+  [
+   31.88,
+   32.16,
+   "que"
+  ],
+  [
+   32.16,
+   32.48,
+   "nadie"
+  ],
+  [
+   32.48,
+   33.2,
+   "conocía."
+  ],
+  [
+   34.24,
+   34.6,
+   "Pasó"
+  ],
+  [
+   34.6,
+   34.9,
+   "8"
+  ],
+  [
+   34.9,
+   35.26,
+   "meses"
+  ],
+  [
+   35.26,
+   35.56,
+   "en"
+  ],
+  [
+   35.56,
+   35.7,
+   "un"
+  ],
+  [
+   35.7,
+   36.04,
+   "centro"
+  ],
+  [
+   36.04,
+   36.32,
+   "para"
+  ],
+  [
+   36.32,
+   36.88,
+   "menores."
+  ],
+  [
+   38.0,
+   38.18,
+   "Hoy"
+  ],
+  [
+   38.18,
+   38.72,
+   "protege"
+  ],
+  [
+   38.72,
+   39.14,
+   "empresas"
+  ],
+  [
+   39.14,
+   39.4,
+   "de"
+  ],
+  [
+   39.4,
+   39.84,
+   "ataques."
+  ],
+  [
+   41.0,
+   41.56,
+   "Sígueme"
+  ],
+  [
+   41.56,
+   41.72,
+   "en"
+  ],
+  [
+   41.72,
+   41.98,
+   "Rimmer"
+  ],
+  [
+   41.98,
+   42.32,
+   "para"
+  ],
+  [
+   42.32,
+   42.54,
+   "más."
+  ]
+ ]
+}
