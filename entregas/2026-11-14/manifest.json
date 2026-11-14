@@ -1,0 +1,27 @@
+{
+ "fecha": "2026-11-14",
+ "videos": [
+  {
+   "eid": "fb1f",
+   "archivos": {
+    "foto": [
+     "fb1f_foto.jpg"
+    ]
+   },
+   "miniatura": "fb1f_miniatura.jpg",
+   "guion": "",
+   "cambios": {}
+  },
+  {
+   "eid": "fb2f",
+   "archivos": {
+    "foto": [
+     "fb2f_foto.jpg"
+    ]
+   },
+   "miniatura": "fb2f_miniatura.jpg",
+   "guion": "",
+   "cambios": {}
+  }
+ ]
+}
