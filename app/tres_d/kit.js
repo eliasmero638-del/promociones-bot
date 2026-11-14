@@ -423,9 +423,9 @@ export function salaComputadoras(sc, filas = 4, cols = 6) {
     pantallas.push({ scr, l, orden: az() });
   }
   pantallas.sort((a, b) => a.orden - b.orden);
-  return { pantallas(k, t = 0) { pantallas.forEach((p, i) => { const on = i / pantallas.length < k;
-    const parp = on ? 0.75 + 0.25 * Math.sin(t * 20 + i * 3) : 0; p.scr.material.color.setHex(on ? 0x3cff7a : 0x0b0f0b); p.scr.material.color.multiplyScalar(on ? parp : 1);
-    p.l.intensity = on ? 1.4 * parp : 0; }); } };
+  return { pantallas(k, t = 0, color = 0x3cff7a) { pantallas.forEach((p, i) => { const on = i / pantallas.length < k;
+    const parp = on ? 0.75 + 0.25 * Math.sin(t * 20 + i * 3) : 0; p.scr.material.color.setHex(on ? color : 0x0b0f0b); p.scr.material.color.multiplyScalar(on ? parp : 1);
+    p.l.color.setHex(color); p.l.intensity = on ? 1.4 * parp : 0; }); } };
 }
 /** Caja de hierro con tapa que se abre (tapa.rotation.x). Devuelve {g, abrir(k)}. */
 export function cajaHierro(sc, x = 0, y = 0, z = 0, tam = 0.5) {
