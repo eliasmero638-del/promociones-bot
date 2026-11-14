@@ -1,0 +1,1499 @@
+{
+ "fecha": "2026-11-14",
+ "videos": [
+  {
+   "eid": "fb1",
+   "tipo": "fb",
+   "hora_fb": "14:00",
+   "articulo": "Yossi Ghinsberg",
+   "fuente": "https://es.wikipedia.org/wiki/Yossi_Ghinsberg",
+   "titulo_video": " ",
+   "titulo_youtube": "Lo arrastró una cascada… y pasó 3 semanas solo en la selva",
+   "titulos_opciones": [
+    "Lo arrastró una cascada… y pasó 3 semanas solo en la selva",
+    "Perdido 3 SEMANAS en el Amazonas, sin comida y sin nada",
+    "Comía lo que dejaban caer los MONOS para no morir 🐒",
+    "¿Cómo sobrevivió 3 semanas solo en la selva de Bolivia?",
+    "Fueron 4 a buscar oro en la selva… solo 2 volvieron",
+    "Iban a rendirse… y entonces escuchó un motor",
+    "Nadie había explorado esa selva… y él quedó atrapado ahí",
+    "La historia real que inspiró la película Jungle"
+   ],
+   "descripcion_youtube": "Bolivia, 1981. Yossi Ghinsberg bajaba en balsa por el río Tuichi cuando la corriente lo arrastró por una cascada.\nTres semanas solo, sin comida, en una selva sin explorar.\n#historiasreales #datoscuriosos #ridmer",
+   "etiquetas": [
+    "Yossi Ghinsberg",
+    "supervivencia",
+    "selva amazónica",
+    "Bolivia",
+    "río Tuichi",
+    "historias reales",
+    "ridmer"
+   ],
+   "texto_facebook": "Cayó por una cascada y pasó 3 semanas solo en la selva de Bolivia, sin comida 😱 ¿Cómo sobrevivió? #Supervivencia #HistoriasReales #Ridmer",
+   "texto_tiktok": "Lo arrastró una cascada… y pasó 3 semanas solo en el Amazonas 😱 Yossi Ghinsberg comía lo que dejaban caer los monos. Lo que pasó al final te va a sorprender. #supervivencia #amazonas #historiasreales #datoscuriosos #bolivia #ridmer",
+   "miniatura": {
+    "img": 1,
+    "texto": "3 SEMANAS SOLO"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Lo arrastró una cascada en plena selva.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "RÍO TUICHI",
+      "sub": "Bolivia · 1981"
+     }
+    },
+    {
+     "texto": "Bolivia, mil novecientos ochenta y uno. Yossi Ghinsberg, un israelí de veintiún años, buscaba aventura en el Amazonas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Con su amigo Kevin Gale, bajaba en balsa por el río Tuichi.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=sRZYyHtC1sk",
+      "desde": 300,
+      "dur": 6,
+      "buscar_video": [
+       "Tuichi River",
+       "Amazon river raft"
+      ]
+     }
+    },
+    {
+     "texto": "Pero la corriente los llevó directo a los rápidos. Perdieron el control.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "LOS RÁPIDOS",
+      "sub": "Río Tuichi"
+     }
+    },
+    {
+     "texto": "Kevin alcanzó la orilla. A Yossi, el río lo arrastró por la cascada.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=sRZYyHtC1sk",
+      "desde": 420,
+      "dur": 6,
+      "buscar_video": [
+       "waterfall jungle"
+      ]
+     }
+    },
+    {
+     "texto": "Quedó solo, sin comida y sin equipo, en una selva que nadie había explorado.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Comía huevos y frutas. Esperaba a que los monos dejaran caer algo para comer.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "SIN COMIDA",
+      "sub": "Selva de Bolivia"
+     }
+    },
+    {
+     "texto": "Casi se ahoga en una inundación, y se hundió dos veces en un pantano.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=_WiNzlpRQ7Q",
+      "desde": 60,
+      "dur": 6,
+      "buscar_video": [
+       "Amazon rainforest flood"
+      ]
+     }
+    },
+    {
+     "texto": "Los hongos le pudrían los pies. Veía cosas que no existían.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Madidi National Park",
+       "Amazon rainforest Bolivia"
+      ]
+     }
+    },
+    {
+     "texto": "A las tres semanas, escuchó un motor.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "TRES SEMANAS",
+      "sub": "Río Tuichi"
+     }
+    },
+    {
+     "texto": "Era Kevin, con un bote. Estaban a punto de rendirse. Lo encontraron.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=sRZYyHtC1sk",
+      "desde": 2400,
+      "dur": 6,
+      "buscar_video": [
+       "boat river jungle"
+      ]
+     }
+    },
+    {
+     "texto": "Los otros dos compañeros nunca aparecieron. Comparte esta historia, y sigue a Ridmer.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Madidi National Park",
+       "Tuichi River"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb1s",
+   "tipo": "short",
+   "encargo": "fb1",
+   "hora_youtube": "14:00",
+   "articulo": "Yossi Ghinsberg",
+   "fuente": "https://es.wikipedia.org/wiki/Yossi_Ghinsberg",
+   "titulo_video": " ",
+   "titulo_youtube": "Lo arrastró una cascada… y pasó 3 semanas solo en la selva #shorts",
+   "titulos_opciones": [
+    "Lo arrastró una cascada… y pasó 3 semanas solo en la selva",
+    "Perdido 3 SEMANAS en el Amazonas, sin comida y sin nada",
+    "Comía lo que dejaban caer los MONOS para no morir 🐒",
+    "¿Cómo sobrevivió 3 semanas solo en la selva de Bolivia?",
+    "Fueron 4 a buscar oro en la selva… solo 2 volvieron",
+    "Iban a rendirse… y entonces escuchó un motor",
+    "Nadie había explorado esa selva… y él quedó atrapado ahí",
+    "La historia real que inspiró la película Jungle"
+   ],
+   "descripcion_youtube": "Bolivia, 1981. Yossi Ghinsberg bajaba en balsa por el río Tuichi cuando la corriente lo arrastró por una cascada.\nTres semanas solo, sin comida, en una selva sin explorar.\n#historiasreales #datoscuriosos #ridmer",
+   "etiquetas": [
+    "Yossi Ghinsberg",
+    "supervivencia",
+    "selva amazónica",
+    "Bolivia",
+    "río Tuichi",
+    "historias reales",
+    "ridmer"
+   ],
+   "miniatura": {
+    "img": 1,
+    "texto": "3 SEMANAS SOLO"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Lo arrastró una cascada en plena selva.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "RÍO TUICHI",
+      "sub": "Bolivia · 1981"
+     }
+    },
+    {
+     "texto": "Bolivia, mil novecientos ochenta y uno. Yossi Ghinsberg bajaba en balsa por el río Tuichi con su amigo Kevin.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Perdieron el control en los rápidos. Kevin llegó a la orilla. Yossi cayó por la cascada.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=sRZYyHtC1sk",
+      "desde": 420,
+      "dur": 6,
+      "buscar_video": [
+       "waterfall jungle"
+      ]
+     }
+    },
+    {
+     "texto": "Tres semanas solo, sin comida, esperando las frutas que dejaban caer los monos.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "SIN COMIDA",
+      "sub": "Selva de Bolivia"
+     }
+    },
+    {
+     "texto": "Casi se ahoga en una inundación, y los hongos le pudrían los pies.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Un día escuchó un motor. Era Kevin, que volvió a buscarlo en un bote. Lo encontraron cuando iban a rendirse.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "TRES SEMANAS",
+      "sub": "Río Tuichi"
+     }
+    },
+    {
+     "texto": "Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=sRZYyHtC1sk",
+      "desde": 2400,
+      "dur": 6,
+      "buscar_video": [
+       "boat river jungle"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb2",
+   "tipo": "fb",
+   "hora_fb": "18:30",
+   "articulo": "Michael Calce (Mafiaboy)",
+   "fuente": "https://en.wikipedia.org/wiki/Michael_Calce",
+   "nota": "Prueba hackers 11-17 nov: reemplaza el encargo fb2 (Beale pasa a fb3). Historia contada, nada técnico copiable.",
+   "titulo_video": " ",
+   "titulo_youtube": "Un niño de 15 años apagó Yahoo, Amazon y eBay… desde su cuarto",
+   "titulos_opciones": [
+    "Un niño de 15 años apagó Yahoo, Amazon y eBay… desde su cuarto",
+    "El FBI buscaba una banda de expertos… y era un niño de 15 AÑOS",
+    "Mafiaboy: el adolescente que tumbó internet en el año 2000",
+    "¿Cómo atraparon al niño que apagó Yahoo?",
+    "Lo atrapó su propia boca: presumió en un chat 💻",
+    "Tumbó las páginas más grandes del mundo… y no quería dinero",
+    "Hasta el presidente Clinton tuvo que reunirse por culpa de este niño",
+    "Nadie sabía que el ataque venía de una casa en Montreal"
+   ],
+   "descripcion_youtube": "Febrero del año 2000. Yahoo, eBay, Amazon y CNN se caen una tras otra.\nEl FBI buscaba a una banda de expertos… y era un estudiante de 15 años en Montreal.\n#hackers #historiasreales #ridmer",
+   "etiquetas": [
+    "Mafiaboy",
+    "Michael Calce",
+    "hackers",
+    "Yahoo",
+    "historias reales",
+    "ridmer"
+   ],
+   "texto_facebook": "En el año 2000 Yahoo, Amazon y eBay se cayeron… y el culpable era un niño de 15 años 💻 #Hackers #HistoriasReales #Ridmer",
+   "texto_tiktok": "Un niño de 15 años apagó Yahoo, Amazon y eBay 💻 El FBI buscaba a una banda de expertos… y lo atraparon porque presumió en un chat. #hackers #mafiaboy #historiasreales #datoscuriosos #internet #ridmer",
+   "miniatura": {
+    "texto": "TENÍA 15 AÑOS"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Un niño de quince años apagó internet.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "FEBRERO 2000",
+      "sub": "Montreal, Canadá"
+     }
+    },
+    {
+     "texto": "Siete de febrero del año dos mil. Yahoo, la página más visitada del mundo, deja de funcionar.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=S5_pw6S9qkI",
+      "desde": 20,
+      "dur": 6,
+      "buscar_video": [
+       "Yahoo"
+      ]
+     }
+    },
+    {
+     "texto": "En los días siguientes caen eBay, Amazon, CNN y otras más.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "eBay headquarters",
+       "Amazon.com 2000"
+      ]
+     }
+    },
+    {
+     "texto": "El FBI buscaba a una banda de expertos.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "J. Edgar Hoover Building",
+       "FBI headquarters"
+      ]
+     }
+    },
+    {
+     "texto": "Pero el culpable estaba en Montreal: Michael Calce, un estudiante que se hacía llamar Mafiaboy.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=q0pKpqebwMI",
+      "desde": 30,
+      "dur": 6,
+      "buscar_video": [
+       "Montreal"
+      ]
+     }
+    },
+    {
+     "texto": "Había tomado el control de computadoras de universidades, y las usó todas juntas para inundar esas páginas.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "UNIVERSIDADES",
+      "sub": "Computadoras tomadas"
+     }
+    },
+    {
+     "texto": "No lo hizo por dinero. Dijo que quería asustar a otros grupos de hackers.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=q0pKpqebwMI",
+      "desde": 90,
+      "dur": 6,
+      "buscar_video": [
+       "computer screen"
+      ]
+     }
+    },
+    {
+     "texto": "Lo delató su propia boca: en un chat se atribuyó un ataque que nadie había publicado.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "EL CHAT",
+      "sub": "Mafiaboy"
+     }
+    },
+    {
+     "texto": "Hasta el presidente Bill Clinton reunió a expertos por los ataques.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Bill Clinton 2000",
+       "Bill Clinton"
+      ]
+     }
+    },
+    {
+     "texto": "En abril, la policía de Canadá llegó a su casa.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "ABRIL 2000",
+      "sub": "Montreal"
+     }
+    },
+    {
+     "texto": "Lo condenaron a ocho meses en un centro para menores. Hoy trabaja protegiendo empresas de ataques.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=S5_pw6S9qkI",
+      "desde": 70,
+      "dur": 6,
+      "buscar_video": [
+       "Montreal"
+      ]
+     }
+    },
+    {
+     "texto": "Comparte esta historia, y sigue a Ridmer.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Montreal skyline",
+       "Montreal"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb2s",
+   "tipo": "short",
+   "encargo": "fb2",
+   "hora_youtube": "19:00",
+   "articulo": "Michael Calce (Mafiaboy)",
+   "fuente": "https://en.wikipedia.org/wiki/Michael_Calce",
+   "titulo_video": " ",
+   "titulo_youtube": "Un niño de 15 años apagó Yahoo, Amazon y eBay #shorts",
+   "titulos_opciones": [
+    "Un niño de 15 años apagó Yahoo, Amazon y eBay… desde su cuarto",
+    "El FBI buscaba una banda de expertos… y era un niño de 15 AÑOS",
+    "Mafiaboy: el adolescente que tumbó internet en el año 2000",
+    "¿Cómo atraparon al niño que apagó Yahoo?",
+    "Lo atrapó su propia boca: presumió en un chat 💻",
+    "Tumbó las páginas más grandes del mundo… y no quería dinero",
+    "Hasta el presidente Clinton tuvo que reunirse por culpa de este niño",
+    "Nadie sabía que el ataque venía de una casa en Montreal"
+   ],
+   "descripcion_youtube": "Febrero del año 2000. Yahoo, eBay, Amazon y CNN se caen una tras otra.\nEl FBI buscaba a una banda de expertos… y era un estudiante de 15 años en Montreal.\n#hackers #historiasreales #ridmer",
+   "etiquetas": [
+    "Mafiaboy",
+    "Michael Calce",
+    "hackers",
+    "Yahoo",
+    "historias reales",
+    "ridmer"
+   ],
+   "miniatura": {
+    "texto": "TENÍA 15 AÑOS"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Un niño de quince años apagó internet.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "FEBRERO 2000",
+      "sub": "Montreal, Canadá"
+     }
+    },
+    {
+     "texto": "Febrero del año dos mil. Yahoo, eBay, Amazon y CNN se caen, una tras otra.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=S5_pw6S9qkI",
+      "desde": 20,
+      "dur": 6,
+      "buscar_video": [
+       "Yahoo"
+      ]
+     }
+    },
+    {
+     "texto": "El FBI buscaba a una banda de expertos.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "J. Edgar Hoover Building",
+       "FBI headquarters"
+      ]
+     }
+    },
+    {
+     "texto": "Pero era Michael Calce, un estudiante de Montreal que se hacía llamar Mafiaboy.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=q0pKpqebwMI",
+      "desde": 30,
+      "dur": 6,
+      "buscar_video": [
+       "Montreal"
+      ]
+     }
+    },
+    {
+     "texto": "Usó computadoras de universidades para inundar esas páginas. No quería dinero: quería presumir.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "UNIVERSIDADES",
+      "sub": "Computadoras tomadas"
+     }
+    },
+    {
+     "texto": "Y presumiendo lo atraparon: en un chat se atribuyó un ataque que nadie conocía.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "EL CHAT",
+      "sub": "Mafiaboy"
+     }
+    },
+    {
+     "texto": "Pasó ocho meses en un centro para menores. Hoy protege empresas de ataques. Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=q0pKpqebwMI",
+      "desde": 90,
+      "dur": 6,
+      "buscar_video": [
+       "computer screen"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb3",
+   "tipo": "fb",
+   "encargo": "fb2",
+   "hora_fb": "21:00",
+   "articulo": "Papeles de Beale",
+   "fuente": "https://es.wikipedia.org/wiki/Beale_ciphers",
+   "titulo_video": " ",
+   "titulo_youtube": "Un tesoro de 40 millones escondido en un código… que nadie ha podido descifrar",
+   "titulos_opciones": [
+    "Un tesoro de 40 millones escondido en un código… que nadie ha podido descifrar",
+    "3 hojas llenas de NÚMEROS… y un tesoro enterrado en Virginia",
+    "Dejó una caja de hierro… y nunca volvió",
+    "¿Dónde está el tesoro de Beale? Nadie lo sabe desde hace 200 años",
+    "La clave era la Declaración de Independencia 😳",
+    "Descifraron 1 de 3 hojas… y decía que había oro enterrado",
+    "El código que nadie ha podido romper en 200 años",
+    "¿Tesoro real o el engaño más grande de Estados Unidos?"
+   ],
+   "descripcion_youtube": "Virginia, 1822. Thomas Beale deja una caja de hierro con un posadero… y desaparece para siempre.\nAdentro, tres hojas llenas de números. Una dice dónde hay un tesoro enterrado.\n#historiasreales #datoscuriosos #ridmer",
+   "etiquetas": [
+    "papeles de Beale",
+    "tesoro",
+    "código",
+    "misterio",
+    "Virginia",
+    "historias reales",
+    "ridmer"
+   ],
+   "texto_facebook": "Tres hojas llenas de números… una describe un tesoro de 40 millones enterrado en Virginia. Nadie ha descifrado las otras dos 🔐 #Misterio #HistoriasReales #Ridmer",
+   "texto_tiktok": "Un tesoro de 40 millones escondido en un código 🔐 Thomas Beale dejó una caja de hierro y nunca volvió. Descifraron una hoja… las otras dos siguen sin resolver. #misterio #tesoro #historiasreales #datoscuriosos #enigma #ridmer",
+   "miniatura": {
+    "img": 6,
+    "texto": "NADIE LO DESCIFRA"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Un tesoro enterrado, escondido en un código.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "CONDADO DE BEDFORD",
+      "sub": "Virginia · EE. UU."
+     }
+    },
+    {
+     "texto": "Virginia, mil ochocientos veintidós. Thomas Beale le deja una caja de hierro a un posadero de Lynchburg.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Lynchburg Virginia historic",
+       "Lynchburg, Virginia"
+      ]
+     }
+    },
+    {
+     "texto": "Le pide que no la abra, a menos que él no vuelva en diez años.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=rjHA_KgF49s",
+      "desde": 40,
+      "dur": 6,
+      "buscar_video": [
+       "Blue Ridge Mountains Virginia"
+      ]
+     }
+    },
+    {
+     "texto": "Beale nunca volvió.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Blue Ridge Mountains Virginia",
+       "Bedford County Virginia"
+      ]
+     }
+    },
+    {
+     "texto": "En mil ochocientos cuarenta y cinco, Morriss abrió la caja: tres hojas llenas de números.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "1845",
+      "sub": "La caja de hierro"
+     }
+    },
+    {
+     "texto": "Un amigo suyo pasó veinte años intentando descifrarlas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     }
+    },
+    {
+     "texto": "Y logró resolver una. La clave era la Declaración de Independencia de Estados Unidos.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "United States Declaration of Independence"
+      ]
+     }
+    },
+    {
+     "texto": "Cada número señalaba una palabra. Y el mensaje hablaba de oro, plata y joyas enterradas en Bedford.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=Lu4_LTyqpfk",
+      "desde": 60,
+      "dur": 6,
+      "buscar_video": [
+       "gold coins"
+      ]
+     }
+    },
+    {
+     "texto": "Un tesoro que hoy valdría entre cuarenta y cincuenta millones de dólares.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "40 A 50 MILLONES",
+      "sub": "de dólares de hoy"
+     }
+    },
+    {
+     "texto": "Pero las otras dos hojas, con el lugar exacto, nunca se pudieron descifrar.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     }
+    },
+    {
+     "texto": "Desde mil ochocientos ochenta y cinco, muchos lo han intentado. Nadie lo logró.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "BUSCADORES",
+      "sub": "Bedford, Virginia"
+     }
+    },
+    {
+     "texto": "Muchos creen que fue un engaño. Pero el código sigue sin resolverse. Comparte esta historia, y sigue a Ridmer.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=EboyDU1dZ00",
+      "desde": 100,
+      "dur": 6,
+      "buscar_video": [
+       "Virginia forest"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb1f",
+   "tipo": "foto",
+   "omitir": true,
+   "hora_foto": "15:30",
+   "titulo_youtube": "Lo arrastró una cascada y pasó 3 semanas solo en la selva",
+   "texto_foto": "Lo arrastró una cascada… y quedó solo en una selva que nadie había explorado.\n\nBolivia, 1981. Yossi Ghinsberg, un israelí de 21 años, se metió al Amazonas con tres hombres que acababa de conocer. Uno decía saber dónde había oro. El grupo se separó, y Yossi siguió en balsa por el río Tuichi con su amigo Kevin Gale.\n\nEn los rápidos perdieron el control. Kevin llegó a la orilla; a Yossi la corriente lo arrastró por la cascada.\n\nPasó tres semanas solo, sin comida ni equipo. Comía huevos, frutas y lo que dejaban caer los monos. Casi se ahoga en una inundación, se hundió dos veces en un pantano y los hongos le pudrían los pies.\n\nHasta que escuchó un motor: era Kevin, que había vuelto con un bote y gente de la zona. Estaban a punto de rendirse.\n\nLos otros dos compañeros nunca aparecieron. Su historia inspiró la película Jungle.\n\n¿Tú habrías aguantado tres semanas solo en la selva?\n#Supervivencia #HistoriasReales #Ridmer"
+  },
+  {
+   "eid": "fb2f",
+   "tipo": "foto",
+   "omitir": true,
+   "hora_foto": "20:00",
+   "titulo_youtube": "Tres hojas llenas de números… y un tesoro enterrado que nadie encuentra",
+   "texto_foto": "Dejó una caja de hierro con un posadero… y nunca volvió.\n\nVirginia, 1822. Thomas J. Beale le entregó la caja a Robert Morriss, dueño de una posada en Lynchburg, y le pidió que no la abriera a menos que él no regresara en diez años.\n\nBeale desapareció para siempre. En 1845 Morriss abrió la caja: había tres hojas llenas de números.\n\nUn amigo suyo pasó veinte años intentando descifrarlas y logró resolver una. La clave era la Declaración de Independencia de Estados Unidos: cada número señalaba una palabra. El mensaje describía oro, plata y joyas enterradas en el condado de Bedford, un tesoro que hoy valdría entre 40 y 50 millones de dólares.\n\nLas otras dos hojas, con el lugar exacto y los nombres de los dueños, nunca se han descifrado. Los papeles se publicaron en 1885 y desde entonces nadie ha encontrado nada. Muchos expertos creen que todo fue un engaño.\n\n¿Tú crees que el tesoro existe?\n#Misterio #HistoriasReales #Ridmer"
+  },
+  {
+   "eid": "largo1",
+   "tipo": "largo",
+   "hora_youtube": "18:00",
+   "descripcion_youtube": "15 de febrero de 1995. Agentes del FBI tocan una puerta en Raleigh, Carolina del Norte.\nDetrás está Kevin Mitnick, el hacker más buscado de Estados Unidos: engañaba a cualquiera con una llamada, vivió dos años con nombres falsos… y lo encontraron por la señal de su celular.\n#hackers #historiasreales #ridmer",
+   "gancho": 2,
+   "segmentos": [
+    {
+     "texto": "Quince de febrero de mil novecientos noventa y cinco. De madrugada, agentes del FBI tocan la puerta de un departamento en Raleigh, Carolina del Norte.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Kevin Mitnick",
+       "Kevin Mitnick 2008"
+      ]
+     }
+    },
+    {
+     "texto": "Detrás está el hacker más buscado de Estados Unidos. Un hombre del que llegaron a decir que podía empezar una guerra nuclear… silbando por un teléfono.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Kevin Mitnick",
+       "Kevin Mitnick 2008"
+      ]
+     }
+    },
+    {
+     "texto": "Esta es la historia de Kevin Mitnick. Y de cómo engañó a medio mundo, casi sin nada más que un teléfono.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=BBR1SJsqoVM",
+      "desde": 5,
+      "dur": 7,
+      "buscar_video": [
+       "telephone 1980s"
+      ]
+     }
+    },
+    {
+     "texto": "Kevin nació el seis de agosto de mil novecientos sesenta y tres, en Van Nuys, en Los Ángeles, California.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Van Nuys",
+       "Van Nuys Boulevard"
+      ]
+     }
+    },
+    {
+     "texto": "Sus padres se separaron cuando era pequeño, y creció con su mamá, que trabajaba largas horas como mesera.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Los Angeles 1970s",
+       "San Fernando Valley"
+      ]
+     }
+    },
+    {
+     "texto": "A los doce años descubrió su primer truco. Quería viajar gratis en los autobuses de Los Ángeles.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "RTD bus Los Angeles",
+       "Southern California Rapid Transit District bus"
+      ]
+     }
+    },
+    {
+     "texto": "Le preguntó a un chofer, como quien no quiere la cosa, dónde se compraba la perforadora de los boletos de transbordo.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "bus transfer ticket",
+       "RTD bus Los Angeles"
+      ]
+     }
+    },
+    {
+     "texto": "El chofer le dijo. Kevin la compró, y en la basura de la terminal encontró talonarios de boletos sin usar.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "bus terminal Los Angeles"
+      ]
+     }
+    },
+    {
+     "texto": "Con eso recorrió toda la ciudad sin pagar. Pero lo importante no era el autobús: aprendió que si preguntas con confianza, la gente te responde.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Los Angeles bus 1975",
+       "RTD bus Los Angeles"
+      ]
+     }
+    },
+    {
+     "texto": "Eso tiene un nombre: ingeniería social. Y Kevin se volvió el mejor del mundo en eso.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Kevin Mitnick",
+       "Kevin Mitnick 2008"
+      ]
+     }
+    },
+    {
+     "texto": "En la secundaria se obsesionó con los teléfonos. Era la época de los phreakers, jóvenes que exploraban las redes telefónicas.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "payphone 1970s",
+       "telephone booth"
+      ]
+     }
+    },
+    {
+     "texto": "Kevin aprendió cómo hablaban los empleados de la compañía telefónica: sus palabras, sus departamentos, sus nombres.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "telephone switchboard operators",
+       "telephone exchange"
+      ]
+     }
+    },
+    {
+     "texto": "En mil novecientos setenta y nueve, con dieciséis años, un amigo le pasó el número de acceso de una red de Digital Equipment Corporation, una gigante de las computadoras.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Digital Equipment Corporation",
+       "DEC PDP-11"
+      ]
+     }
+    },
+    {
+     "texto": "Kevin entró, y copió programas que la empresa estaba desarrollando. Años después, eso lo llevaría a juicio.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "DEC VAX",
+       "Digital Equipment Corporation VAX"
+      ]
+     }
+    },
+    {
+     "texto": "No necesitó adivinar nada: tenía el número y una clave que le habían pasado. El resto lo hizo su curiosidad.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "DEC PDP-11"
+      ]
+     }
+    },
+    {
+     "texto": "En mil novecientos ochenta y uno, con diecisiete años, entró con unos amigos a un centro de la compañía telefónica en Los Ángeles, y se llevó sus manuales. Lo atraparon.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Pacific Telephone building",
+       "telephone exchange"
+      ]
+     }
+    },
+    {
+     "texto": "Y empezó a llamar. Se hacía pasar por un técnico de otra oficina, con prisa y con un problema urgente. Del otro lado, un empleado amable quería ayudar.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "LA LLAMADA",
+      "sub": "Los Ángeles · años ochenta"
+     }
+    },
+    {
+     "texto": "Y sin darse cuenta, le daba un número, un dato, un acceso. Kevin nunca necesitó romper nada. Solo una voz segura y la información correcta.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "rotary telephone"
+      ]
+     }
+    },
+    {
+     "texto": "En mil novecientos ochenta y ocho lo condenaron por eso a doce meses de prisión, y a tres años de libertad vigilada.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=m6gmjvLXvVY",
+      "desde": 20,
+      "dur": 7,
+      "buscar_video": [
+       "courthouse exterior"
+      ]
+     }
+    },
+    {
+     "texto": "Parecía que su historia terminaba ahí. Pero apenas estaba empezando.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Kevin Mitnick",
+       "Kevin Mitnick 2008"
+      ]
+     }
+    },
+    {
+     "texto": "En mil novecientos noventa y dos, casi al final de su libertad vigilada, lo investigaban por meterse otra vez en los sistemas de la compañía telefónica Pacific Bell.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Pacific Bell",
+       "Pacific Telephone building"
+      ]
+     }
+    },
+    {
+     "texto": "Emitieron una orden para arrestarlo. Y Kevin desapareció.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "PRÓFUGO",
+      "sub": "1992 · orden de arresto"
+     }
+    },
+    {
+     "texto": "Durante más de dos años vivió como fugitivo, con nombres falsos, mudándose de ciudad en ciudad.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "FUGITIVO",
+      "sub": "1992 – 1995"
+     }
+    },
+    {
+     "texto": "En Denver trabajó en un bufete de abogados con el nombre de Eric Weiss: el verdadero nombre del mago Harry Houdini.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Harry Houdini",
+       "Houdini"
+      ]
+     }
+    },
+    {
+     "texto": "Usaba teléfonos celulares clonados, para que nadie pudiera rastrear sus llamadas.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Motorola MicroTAC",
+       "1990s cell phone"
+      ]
+     }
+    },
+    {
+     "texto": "Y según contó él mismo, hasta escuchaba a los agentes que lo buscaban, para saber cuándo se estaban acercando.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=achtNF2OyHY",
+      "desde": 15,
+      "dur": 7,
+      "buscar_video": [
+       "FBI building"
+      ]
+     }
+    },
+    {
+     "texto": "Mientras huía, entraba a las computadoras de empresas como Motorola, Nokia y Sun Microsystems, y copiaba el código secreto de sus programas.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Motorola headquarters",
+       "Sun Microsystems"
+      ]
+     }
+    },
+    {
+     "texto": "Muchas veces bastaba una llamada: decía que era un compañero de otra sede, y un empleado le enviaba los archivos.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Motorola MicroTAC"
+      ]
+     }
+    },
+    {
+     "texto": "No lo hacía por dinero. Nunca vendió nada de lo que copió. Decía que lo hacía por el reto, por saber que podía.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Kevin Mitnick",
+       "Kevin Mitnick 2008"
+      ]
+     }
+    },
+    {
+     "texto": "Para el gobierno, era el criminal informático más buscado de la historia de Estados Unidos.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=BBR1SJsqoVM",
+      "desde": 40,
+      "dur": 7,
+      "buscar_video": [
+       "FBI headquarters"
+      ]
+     }
+    },
+    {
+     "texto": "Su cara salió en la portada del New York Times, y los periódicos lo pintaban como un genio peligroso.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "The New York Times building"
+      ]
+     }
+    },
+    {
+     "texto": "Y entonces cometió el error que lo hundió.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Kevin Mitnick",
+       "Kevin Mitnick 2008"
+      ]
+     }
+    },
+    {
+     "texto": "El día de Navidad de mil novecientos noventa y cuatro, alguien entró a las computadoras de Tsutomu Shimomura, un experto en seguridad de San Diego.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Tsutomu Shimomura",
+       "San Diego Supercomputer Center"
+      ]
+     }
+    },
+    {
+     "texto": "Shimomura se lo tomó como algo personal. Y decidió cazar al intruso él mismo.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Tsutomu Shimomura",
+       "San Diego Supercomputer Center"
+      ]
+     }
+    },
+    {
+     "texto": "Lo ayudaba el periodista John Markoff, del New York Times, que después contó toda la cacería en un libro.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "The New York Times building"
+      ]
+     }
+    },
+    {
+     "texto": "Siguió el rastro por internet, de computadora en computadora, hasta una ciudad: Raleigh, en Carolina del Norte.",
+     "escena": {
+      "tipo": "ruta",
+      "a": [
+       32.72,
+       -117.16
+      ],
+      "b": [
+       35.78,
+       -78.64
+      ],
+      "na": "SAN DIEGO",
+      "nb": "RALEIGH"
+     }
+    },
+    {
+     "texto": "Ahí, la pista llevaba a la red de celulares de la ciudad.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Raleigh North Carolina skyline",
+       "Raleigh, North Carolina"
+      ]
+     }
+    },
+    {
+     "texto": "Shimomura recorrió las calles de noche, en un carro, con una antena que detecta la señal de los celulares. Cada vez que el fugitivo se conectaba, la señal se hacía más fuerte… hasta un edificio de departamentos.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "LA ANTENA",
+      "sub": "Raleigh · febrero de 1995"
+     }
+    },
+    {
+     "texto": "En la madrugada del quince de febrero, los agentes tocaron la puerta.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=achtNF2OyHY",
+      "desde": 60,
+      "dur": 7,
+      "buscar_video": [
+       "apartment building night"
+      ]
+     }
+    },
+    {
+     "texto": "Kevin Mitnick, de treinta y un años, quedó arrestado.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Kevin Mitnick",
+       "Kevin Mitnick 2008"
+      ]
+     }
+    },
+    {
+     "texto": "Adentro encontraron computadoras, teléfonos celulares y documentos con nombres falsos.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "1990s laptop computer",
+       "Toshiba laptop 1990s"
+      ]
+     }
+    },
+    {
+     "texto": "Días después, en una audiencia, vio por primera vez la cara de Shimomura. Y le dijo: Tsutomu, respeto tus habilidades.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Tsutomu Shimomura"
+      ]
+     }
+    },
+    {
+     "texto": "Lo acusaron de fraude informático y de robar programas de grandes empresas de tecnología.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=m6gmjvLXvVY",
+      "desde": 45,
+      "dur": 7,
+      "buscar_video": [
+       "courthouse"
+      ]
+     }
+    },
+    {
+     "texto": "Pero lo que vino después fue casi tan increíble como su fuga.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Kevin Mitnick",
+       "Kevin Mitnick 2008"
+      ]
+     }
+    },
+    {
+     "texto": "Pasó más de cuatro años preso sin juicio. Le negaron la fianza.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Metropolitan Detention Center Los Angeles",
+       "prison cell"
+      ]
+     }
+    },
+    {
+     "texto": "Según contó Kevin, un fiscal llegó a decirle al juez que él podía empezar una guerra nuclear silbando códigos por un teléfono público.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "payphone",
+       "telephone booth"
+      ]
+     }
+    },
+    {
+     "texto": "Por eso lo tuvieron ocho meses en aislamiento, sin poder usar ni siquiera un teléfono.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "AISLAMIENTO",
+      "sub": "Ocho meses"
+     }
+    },
+    {
+     "texto": "Afuera, miles de personas pegaban calcomanías que decían: Liberen a Kevin.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Free Kevin",
+       "Free Kevin Mitnick"
+      ]
+     }
+    },
+    {
+     "texto": "En mil novecientos noventa y nueve aceptó su culpa. Lo condenaron a cuarenta y seis meses, más veintidós por violar su libertad vigilada.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=m6gmjvLXvVY",
+      "desde": 60,
+      "dur": 7,
+      "buscar_video": [
+       "courthouse"
+      ]
+     }
+    },
+    {
+     "texto": "Salió libre el veintiuno de enero del año dos mil. Pero con una condición rarísima: durante tres años no podía usar internet, ni computadoras, ni siquiera un celular.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Lompoc Federal Correctional Complex",
+       "prison fence"
+      ]
+     }
+    },
+    {
+     "texto": "Cuando por fin recuperó el acceso, Kevin cambió de lado.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Kevin Mitnick",
+       "Kevin Mitnick 2008"
+      ]
+     }
+    },
+    {
+     "texto": "Fundó su propia empresa de seguridad. Las mismas compañías que antes engañaba, ahora le pagaban para encontrar sus fallas antes que otros.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=pd0Ee6pERuo",
+      "desde": 20,
+      "dur": 7,
+      "buscar_video": [
+       "office computers"
+      ]
+     }
+    },
+    {
+     "texto": "Escribió libros como El arte del engaño, y daba conferencias en todo el mundo, demostrando lo fácil que es engañar a una persona.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Kevin Mitnick conference",
+       "Kevin Mitnick"
+      ]
+     }
+    },
+    {
+     "texto": "En dos mil once publicó su autobiografía, Fantasma en los cables, donde contó su fuga paso a paso.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Kevin Mitnick",
+       "Kevin Mitnick 2008"
+      ]
+     }
+    },
+    {
+     "texto": "Y fue jefe de hackeo de una empresa que enseña a millones de empleados a no caer en engaños por teléfono o por correo.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=pd0Ee6pERuo",
+      "desde": 50,
+      "dur": 7,
+      "buscar_video": [
+       "office"
+      ]
+     }
+    },
+    {
+     "texto": "Su lección siempre fue la misma: la parte más débil de cualquier sistema no es la computadora. Es la persona.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=LFiJPscdCSs",
+      "desde": 20,
+      "dur": 7,
+      "buscar_video": [
+       "computer keyboard"
+      ]
+     }
+    },
+    {
+     "texto": "Kevin Mitnick murió el dieciséis de julio de dos mil veintitrés, a los cincuenta y nueve años. Su esposa esperaba a su primer hijo.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=m6gmjvLXvVY",
+      "desde": 5,
+      "dur": 7,
+      "buscar_video": [
+       "candle"
+      ]
+     }
+    },
+    {
+     "texto": "Pasó de ser el hacker más buscado del planeta… a ser el hombre al que las empresas llamaban para protegerse de gente como él.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Kevin Mitnick",
+       "Kevin Mitnick 2008"
+      ]
+     }
+    },
+    {
+     "texto": "Y tú, ¿le habrías dado la contraseña a esa voz amable del teléfono? Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "rotary telephone"
+      ]
+     }
+    }
+   ],
+   "articulo": "Kevin Mitnick",
+   "fuente": "https://es.wikipedia.org/wiki/Kevin_Mitnick",
+   "titulo_video": " ",
+   "titulo_youtube": "El hacker más buscado de Estados Unidos… y solo usaba un teléfono",
+   "titulos_opciones": [
+    "El hacker MÁS BUSCADO de Estados Unidos… y solo usaba un teléfono 📞",
+    "Lo encerraron 8 meses porque decían que podía empezar una guerra nuclear SILBANDO",
+    "Kevin Mitnick: engañaba a cualquiera con una llamada",
+    "Fue el fugitivo más buscado… y lo encontraron por la señal de su celular",
+    "¿Cómo atraparon al hacker que escuchaba al FBI?",
+    "De criminal más buscado a experto que las empresas contrataban",
+    "Vivió 2 años con nombres falsos… hasta que tocaron su puerta",
+    "Nadie sabía que la parte más débil de una computadora… eras TÚ"
+   ],
+   "etiquetas": [
+    "Kevin Mitnick",
+    "hackers",
+    "ingeniería social",
+    "FBI",
+    "Tsutomu Shimomura",
+    "historias reales",
+    "ridmer"
+   ],
+   "miniatura": {
+    "texto": "EL MÁS BUSCADO"
+   },
+   "nota": "14-nov: Mitnick hecho por Claude con 3D (5 escenas 3D). Base del plan del 13-nov, reordenado."
+  },
+  {
+   "eid": "largo1t",
+   "tipo": "tiktok",
+   "encargo": "largo1",
+   "hora_youtube": "18:00",
+   "descripcion_youtube": "15 de febrero de 1995. Agentes del FBI tocan una puerta en Raleigh, Carolina del Norte.\nDetrás está Kevin Mitnick, el hacker más buscado de Estados Unidos: engañaba a cualquiera con una llamada, vivió dos años con nombres falsos… y lo encontraron por la señal de su celular.\nVideo completo en YouTube: Ridmer.\n#hackers #historiasreales #ridmer",
+   "gancho": 2,
+   "segmentos": [
+    {
+     "texto": "Quince de febrero de mil novecientos noventa y cinco. De madrugada, agentes del FBI tocan la puerta de un departamento en Raleigh, Carolina del Norte.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Kevin Mitnick",
+       "Kevin Mitnick 2008"
+      ]
+     }
+    },
+    {
+     "texto": "Detrás está el hacker más buscado de Estados Unidos. Un hombre del que llegaron a decir que podía empezar una guerra nuclear… silbando por un teléfono.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Kevin Mitnick",
+       "Kevin Mitnick 2008"
+      ]
+     }
+    },
+    {
+     "texto": "Esta es la historia de Kevin Mitnick, el hombre que engañaba a cualquiera… con una simple llamada.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=BBR1SJsqoVM",
+      "desde": 5,
+      "dur": 7,
+      "buscar_video": [
+       "telephone 1980s"
+      ]
+     }
+    },
+    {
+     "texto": "A los doce años ya viajaba gratis en los autobuses de Los Ángeles, solo por hacerle la pregunta correcta a un chofer.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "RTD bus Los Angeles",
+       "Southern California Rapid Transit District bus"
+      ]
+     }
+    },
+    {
+     "texto": "Después vinieron los teléfonos. Se hacía pasar por un técnico de otra oficina, con prisa y con un problema urgente.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "LA LLAMADA",
+      "sub": "Los Ángeles · años ochenta"
+     }
+    },
+    {
+     "texto": "Y del otro lado, un empleado amable le daba un número, un dato, un acceso. Sin romper nada.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "rotary telephone"
+      ]
+     }
+    },
+    {
+     "texto": "En mil novecientos noventa y dos, la justicia emitió una orden para arrestarlo. Y Kevin desapareció.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "PRÓFUGO",
+      "sub": "1992 · orden de arresto"
+     }
+    },
+    {
+     "texto": "Vivió más de dos años con nombres falsos. En Denver se llamó Eric Weiss, el verdadero nombre del mago Houdini.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Harry Houdini",
+       "Houdini"
+      ]
+     }
+    },
+    {
+     "texto": "Usaba celulares clonados, y según contó, hasta escuchaba a los agentes que lo buscaban.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=achtNF2OyHY",
+      "desde": 15,
+      "dur": 7,
+      "buscar_video": [
+       "FBI building"
+      ]
+     }
+    },
+    {
+     "texto": "Era el criminal informático más buscado de la historia de Estados Unidos.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=BBR1SJsqoVM",
+      "desde": 40,
+      "dur": 7,
+      "buscar_video": [
+       "FBI headquarters"
+      ]
+     }
+    },
+    {
+     "texto": "Hasta que, en Navidad de mil novecientos noventa y cuatro, alguien entró a las computadoras de Tsutomu Shimomura, un experto en seguridad.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Tsutomu Shimomura",
+       "San Diego Supercomputer Center"
+      ]
+     }
+    },
+    {
+     "texto": "Shimomura siguió el rastro hasta Raleigh, y recorrió las calles de noche con una antena que detecta celulares. La señal se hacía cada vez más fuerte.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "LA ANTENA",
+      "sub": "Raleigh · febrero de 1995"
+     }
+    },
+    {
+     "texto": "De madrugada, los agentes tocaron la puerta.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=achtNF2OyHY",
+      "desde": 60,
+      "dur": 7,
+      "buscar_video": [
+       "apartment building night"
+      ]
+     }
+    },
+    {
+     "texto": "¿Qué pasó después? Lo que viene te va a dejar sin palabras. Mira el video completo en YouTube, en el canal Ridmer.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Kevin Mitnick",
+       "Kevin Mitnick 2008"
+      ]
+     }
+    }
+   ],
+   "articulo": "Kevin Mitnick",
+   "fuente": "https://es.wikipedia.org/wiki/Kevin_Mitnick",
+   "titulo_video": " ",
+   "titulo_youtube": "El hacker más buscado de Estados Unidos… y solo usaba un teléfono",
+   "titulos_opciones": [
+    "El hacker MÁS BUSCADO de Estados Unidos… y solo usaba un teléfono 📞",
+    "Lo encerraron 8 meses porque decían que podía empezar una guerra nuclear SILBANDO",
+    "Kevin Mitnick: engañaba a cualquiera con una llamada",
+    "Fue el fugitivo más buscado… y lo encontraron por la señal de su celular",
+    "¿Cómo atraparon al hacker que escuchaba al FBI?",
+    "De criminal más buscado a experto que las empresas contrataban",
+    "Vivió 2 años con nombres falsos… hasta que tocaron su puerta",
+    "Nadie sabía que la parte más débil de una computadora… eras TÚ"
+   ],
+   "etiquetas": [
+    "Kevin Mitnick",
+    "hackers",
+    "ingeniería social",
+    "FBI",
+    "Tsutomu Shimomura",
+    "historias reales",
+    "ridmer"
+   ],
+   "miniatura": {
+    "texto": "EL MÁS BUSCADO"
+   }
+  }
+ ],
+ "modo": "claude"
+}
