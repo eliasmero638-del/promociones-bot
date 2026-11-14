@@ -16,6 +16,7 @@ jobs:
           mkdir -p estado
           curl -sf --max-time 90 "http://173.249.44.95/estado/clipero.json" -o estado/clipero.json || echo '{"error": "servidor sin respuesta"}' > estado/clipero.json
           cat estado/clipero.json
+          curl -sf --max-time 120 "http://173.249.44.95/estado/ytstats.json" -o estado/ytstats.json || echo '{"error": "sin respuesta"}' > estado/ytstats.json
           git rm -q pedir/cl-*.txt || true
       - name: Guardar
         run: |
