@@ -98,7 +98,10 @@
       "desde": 40,
       "dur": 6,
       "buscar_video": [
-       "underwater shipwreck"
+       "tugboat at sea",
+       "tugboat",
+       "saturation diving",
+       "diving bell"
       ]
      }
     },
@@ -118,7 +121,10 @@
       "desde": 95,
       "dur": 6,
       "buscar_video": [
-       "diver underwater"
+       "tugboat",
+       "saturation diving",
+       "diving bell",
+       "tugboat at sea"
       ]
      }
     },
@@ -130,7 +136,10 @@
       "desde": 150,
       "dur": 6,
       "buscar_video": [
-       "diver underwater"
+       "saturation diving",
+       "diving bell",
+       "tugboat at sea",
+       "tugboat"
       ]
      }
     },
@@ -142,7 +151,10 @@
       "desde": 330,
       "dur": 6,
       "buscar_video": [
-       "decompression chamber"
+       "diving bell",
+       "tugboat at sea",
+       "tugboat",
+       "saturation diving"
       ]
      }
     },
@@ -234,7 +246,9 @@
       "desde": 150,
       "dur": 6,
       "buscar_video": [
-       "diver underwater"
+       "tugboat at sea",
+       "tugboat",
+       "saturation diving"
       ]
      }
     },
@@ -246,7 +260,9 @@
       "desde": 330,
       "dur": 6,
       "buscar_video": [
-       "decompression chamber"
+       "tugboat",
+       "saturation diving",
+       "tugboat at sea"
       ]
      }
     }
@@ -303,7 +319,10 @@
       "desde": 8,
       "dur": 6,
       "buscar_video": [
-       "Twitter logo"
+       "Bitcoin",
+       "cryptocurrency",
+       "computer keyboard typing",
+       "smartphone call"
       ]
      }
     },
@@ -325,7 +344,10 @@
       "desde": 30,
       "dur": 6,
       "buscar_video": [
-       "Twitter"
+       "cryptocurrency",
+       "computer keyboard typing",
+       "smartphone call",
+       "Bitcoin"
       ]
      }
     },
@@ -363,7 +385,10 @@
       "desde": 20,
       "dur": 6,
       "buscar_video": [
-       "computer screen"
+       "computer keyboard typing",
+       "smartphone call",
+       "Bitcoin",
+       "cryptocurrency"
       ]
      }
     },
@@ -392,7 +417,10 @@
       "desde": 45,
       "dur": 6,
       "buscar_video": [
-       "Tampa Florida"
+       "smartphone call",
+       "Bitcoin",
+       "cryptocurrency",
+       "computer keyboard typing"
       ]
      }
     },
@@ -404,7 +432,10 @@
       "desde": 10,
       "dur": 6,
       "buscar_video": [
-       "Twitter"
+       "Bitcoin",
+       "cryptocurrency",
+       "computer keyboard typing",
+       "smartphone call"
       ]
      }
     }
@@ -459,7 +490,9 @@
       "desde": 8,
       "dur": 6,
       "buscar_video": [
-       "Twitter logo"
+       "Bitcoin",
+       "cryptocurrency",
+       "computer keyboard typing"
       ]
      }
     },
@@ -496,7 +529,9 @@
       "desde": 45,
       "dur": 6,
       "buscar_video": [
-       "Tampa Florida"
+       "cryptocurrency",
+       "computer keyboard typing",
+       "Bitcoin"
       ]
      }
     }
@@ -553,7 +588,10 @@
       "desde": 15,
       "dur": 6,
       "buscar_video": [
-       "Phoenix Arizona night"
+       "A-10 Thunderbolt II flares",
+       "flares night",
+       "A-10 Thunderbolt II",
+       "Phoenix Arizona"
       ]
      }
     },
@@ -581,7 +619,10 @@
       "desde": 20,
       "dur": 6,
       "buscar_video": [
-       "night sky lights"
+       "flares night",
+       "A-10 Thunderbolt II",
+       "Phoenix Arizona",
+       "A-10 Thunderbolt II flares"
       ]
      }
     },
@@ -593,7 +634,10 @@
       "desde": 45,
       "dur": 6,
       "buscar_video": [
-       "Phoenix Arizona night"
+       "A-10 Thunderbolt II",
+       "Phoenix Arizona",
+       "A-10 Thunderbolt II flares",
+       "flares night"
       ]
      }
     },
@@ -635,7 +679,10 @@
       "desde": 10,
       "dur": 6,
       "buscar_video": [
-       "night sky lights"
+       "Phoenix Arizona",
+       "A-10 Thunderbolt II flares",
+       "flares night",
+       "A-10 Thunderbolt II"
       ]
      }
     },
@@ -735,7 +782,10 @@
       "desde": 10,
       "dur": 6,
       "buscar_video": [
-       "Seattle street"
+       "vending machine",
+       "soda vending machine",
+       "Seattle light rail",
+       "Capitol Hill Seattle"
       ]
      }
     },
@@ -762,7 +812,10 @@
       "desde": 15,
       "dur": 6,
       "buscar_video": [
-       "Seattle street"
+       "soda vending machine",
+       "Seattle light rail",
+       "Capitol Hill Seattle",
+       "vending machine"
       ]
      }
     },
@@ -838,7 +891,10 @@
       "desde": 20,
       "dur": 6,
       "buscar_video": [
-       "soda can"
+       "Seattle light rail",
+       "Capitol Hill Seattle",
+       "vending machine",
+       "soda vending machine"
       ]
      }
     },
@@ -911,7 +967,10 @@
       "desde": 30,
       "dur": 6,
       "buscar_video": [
-       "locksmith shop"
+       "Capitol Hill Seattle",
+       "vending machine",
+       "soda vending machine",
+       "Seattle light rail"
       ]
      }
     },
@@ -939,7 +998,10 @@
       "desde": 15,
       "dur": 6,
       "buscar_video": [
-       "soda machine"
+       "vending machine",
+       "soda vending machine",
+       "Seattle light rail",
+       "Capitol Hill Seattle"
       ]
      }
     },
@@ -1033,7 +1095,10 @@
       "desde": 12,
       "dur": 6,
       "buscar_video": [
-       "Seattle street"
+       "soda vending machine",
+       "Seattle light rail",
+       "Capitol Hill Seattle",
+       "vending machine"
       ]
      }
     },
@@ -1076,7 +1141,10 @@
       "desde": 50,
       "dur": 6,
       "buscar_video": [
-       "empty sidewalk"
+       "Seattle light rail",
+       "Capitol Hill Seattle",
+       "vending machine",
+       "soda vending machine"
       ]
      }
     },
@@ -1202,7 +1270,10 @@
       "desde": 40,
       "dur": 6,
       "buscar_video": [
-       "Seattle sidewalk"
+       "Capitol Hill Seattle",
+       "vending machine",
+       "soda vending machine",
+       "Seattle light rail"
       ]
      }
     },
@@ -1297,7 +1368,9 @@
       "desde": 10,
       "dur": 6,
       "buscar_video": [
-       "Seattle street"
+       "vending machine",
+       "soda vending machine",
+       "Capitol Hill Seattle"
       ]
      }
     },
@@ -1356,7 +1429,9 @@
       "desde": 15,
       "dur": 6,
       "buscar_video": [
-       "soda machine"
+       "soda vending machine",
+       "Capitol Hill Seattle",
+       "vending machine"
       ]
      }
     },
