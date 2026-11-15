@@ -1,2 +1,2 @@
 2026-11-15
-fb2 fb3 fb1s fb2s
+fb1 fb1s fb2 fb2s fb3 largo1 largo1t
