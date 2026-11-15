@@ -1,0 +1,1420 @@
+{
+ "fecha": "2026-11-15",
+ "modo": "claude",
+ "videos": [
+  {
+   "eid": "fb1",
+   "tipo": "fb",
+   "hora_fb": "14:00",
+   "articulo": "Harrison Okene (Jascon-4, 2013)",
+   "fuente": "https://gcaptain.com/new-video-surfaces-of-amazing-jascon-4-rescue",
+   "nota": "Encargo fb1 (Loan Peña, niño desaparecido) descartado: caso de secuestro/trata. Tema propio de supervivencia.",
+   "titulo_video": " ",
+   "titulo_youtube": "Quedó atrapado en el fondo del mar… y sobrevivió 3 días",
+   "titulos_opciones": [
+    "Quedó atrapado en el fondo del mar… y sobrevivió 3 días",
+    "Se hundió a 30 metros… y respiró de una BURBUJA de aire 60 horas",
+    "El buzo vio una mano en el agua… y la mano lo agarró 😱",
+    "¿Cómo sobrevivió 3 días dentro de un barco hundido?",
+    "Sus 11 compañeros murieron. Él estaba en el baño",
+    "Nadie sabía que alguien seguía VIVO en el fondo del mar",
+    "Los buzos llegaron por cadáveres… y encontraron a un hombre vivo"
+   ],
+   "descripcion_youtube": "Mayo de 2013, frente a Nigeria. Un remolcador se voltea y se hunde a 30 metros.\nEl cocinero quedó atrapado en una burbuja de aire… casi tres días.\n#supervivencia #historiasreales #ridmer",
+   "etiquetas": [
+    "Harrison Okene",
+    "supervivencia",
+    "barco hundido",
+    "Nigeria",
+    "historias reales",
+    "ridmer"
+   ],
+   "texto_facebook": "Se hundió a 30 metros dentro de un barco… y sobrevivió casi 3 días respirando una burbuja de aire 😱 #Supervivencia #HistoriasReales #Ridmer",
+   "texto_tiktok": "Quedó atrapado en el fondo del mar… y sobrevivió casi 3 días 😱 Los buzos llegaron a sacar cuerpos, y una mano los agarró. #supervivencia #historiasreales #datoscuriosos #mar #nigeria #ridmer",
+   "miniatura": {
+    "texto": "60 HORAS BAJO EL MAR"
+   },
+   "gancho": 1,
+   "musica": "tension",
+   "segmentos": [
+    {
+     "texto": "Quedó atrapado en el fondo del mar.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "26 DE MAYO 2013",
+      "sub": "Costa de Nigeria"
+     }
+    },
+    {
+     "texto": "Veintiséis de mayo de dos mil trece. Un remolcador, el Jascon cuatro, trabaja frente a Nigeria.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Jascon 4",
+       "tugboat Nigeria",
+       "tugboat at sea"
+      ]
+     }
+    },
+    {
+     "texto": "Antes del amanecer, el mar se pone bravo. El barco se voltea y se hunde.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "SE HUNDE",
+      "sub": "Golfo de Guinea"
+     }
+    },
+    {
+     "texto": "Harrison Okene, el cocinero, estaba en el baño. Todo quedó oscuro y el agua empezó a entrar.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Harrison Okene",
+       "Harrison Odjegba Okene"
+      ]
+     }
+    },
+    {
+     "texto": "A tientas, llegó a una cabina donde quedó atrapada una burbuja de aire.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "UNA BURBUJA DE AIRE",
+      "sub": "Dentro del barco"
+     }
+    },
+    {
+     "texto": "El barco tocó fondo a treinta metros. Sus once compañeros no sobrevivieron.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "30 METROS",
+      "sub": "11 tripulantes muertos"
+     }
+    },
+    {
+     "texto": "En calzoncillos, helado, en la oscuridad total, respiraba ese aire que se gastaba poco a poco.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=0u2NacNDcmY",
+      "desde": 40,
+      "dur": 6,
+      "buscar_video": [
+       "underwater shipwreck"
+      ]
+     }
+    },
+    {
+     "texto": "Pasaron casi tres días. Hasta que vio una luz.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "60 HORAS",
+      "sub": "Bajo el mar"
+     }
+    },
+    {
+     "texto": "Eran buzos. Habían llegado a sacar los cuerpos.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=0u2NacNDcmY",
+      "desde": 95,
+      "dur": 6,
+      "buscar_video": [
+       "diver underwater"
+      ]
+     }
+    },
+    {
+     "texto": "Uno vio una mano y pensó que era otro muerto… y la mano lo agarró.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=0u2NacNDcmY",
+      "desde": 150,
+      "dur": 6,
+      "buscar_video": [
+       "diver underwater"
+      ]
+     }
+    },
+    {
+     "texto": "Estaba vivo. Pasó dos días más en una cámara de descompresión.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=9dG5KSD-8J4",
+      "desde": 330,
+      "dur": 6,
+      "buscar_video": [
+       "decompression chamber"
+      ]
+     }
+    },
+    {
+     "texto": "Comparte esta historia y sigue a Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Harrison Okene",
+       "tugboat at sea"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb1s",
+   "tipo": "short",
+   "encargo": "fb1",
+   "hora_youtube": "14:00",
+   "articulo": "Harrison Okene (Jascon-4, 2013)",
+   "fuente": "https://gcaptain.com/new-video-surfaces-of-amazing-jascon-4-rescue",
+   "titulo_video": " ",
+   "titulo_youtube": "Sobrevivió 3 días en el fondo del mar #shorts",
+   "titulos_opciones": [
+    "Quedó atrapado en el fondo del mar… y sobrevivió 3 días",
+    "Se hundió a 30 metros… y respiró de una BURBUJA de aire 60 horas",
+    "El buzo vio una mano en el agua… y la mano lo agarró 😱",
+    "¿Cómo sobrevivió 3 días dentro de un barco hundido?",
+    "Sus 11 compañeros murieron. Él estaba en el baño",
+    "Nadie sabía que alguien seguía VIVO en el fondo del mar",
+    "Los buzos llegaron por cadáveres… y encontraron a un hombre vivo"
+   ],
+   "descripcion_youtube": "Mayo de 2013, frente a Nigeria. Un remolcador se voltea y se hunde a 30 metros.\nEl cocinero quedó atrapado en una burbuja de aire… casi tres días.\n#supervivencia #historiasreales #ridmer",
+   "etiquetas": [
+    "Harrison Okene",
+    "supervivencia",
+    "barco hundido",
+    "Nigeria",
+    "historias reales",
+    "ridmer"
+   ],
+   "miniatura": {
+    "texto": "60 HORAS BAJO EL MAR"
+   },
+   "gancho": 1,
+   "musica": "tension",
+   "segmentos": [
+    {
+     "texto": "Quedó atrapado en el fondo del mar.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "26 DE MAYO 2013",
+      "sub": "Costa de Nigeria"
+     }
+    },
+    {
+     "texto": "Nigeria, dos mil trece. Un remolcador se voltea antes del amanecer y se hunde.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Jascon 4",
+       "tugboat Nigeria",
+       "tugboat at sea"
+      ]
+     }
+    },
+    {
+     "texto": "El cocinero, Harrison Okene, llega a oscuras a una cabina con una burbuja de aire.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "UNA BURBUJA DE AIRE",
+      "sub": "Dentro del barco"
+     }
+    },
+    {
+     "texto": "A treinta metros de profundidad, pasa casi tres días respirando ese aire.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "60 HORAS",
+      "sub": "Bajo el mar"
+     }
+    },
+    {
+     "texto": "Llegan buzos a sacar los cuerpos. Uno ve una mano… y la mano lo agarra.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=0u2NacNDcmY",
+      "desde": 150,
+      "dur": 6,
+      "buscar_video": [
+       "diver underwater"
+      ]
+     }
+    },
+    {
+     "texto": "Estaba vivo. Fue el único de los doce que sobrevivió. Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=9dG5KSD-8J4",
+      "desde": 330,
+      "dur": 6,
+      "buscar_video": [
+       "decompression chamber"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb2",
+   "tipo": "fb",
+   "hora_fb": "18:30",
+   "articulo": "Hackeo de Twitter de 2020 (Graham Ivan Clark)",
+   "fuente": "https://en.wikipedia.org/wiki/2020_Twitter_account_hijacking",
+   "nota": "Prueba hackers 11-17 nov. Encargo fb2 (familia Godard, sangre) descartado. Historia contada, sin nada técnico copiable.",
+   "titulo_video": " ",
+   "titulo_youtube": "Un chico de 17 años hackeó a Obama, Elon Musk y Bill Gates… con una llamada",
+   "titulos_opciones": [
+    "Un chico de 17 años hackeó a Obama, Elon Musk y Bill Gates… con una llamada",
+    "Hackeó TWITTER desde su cuarto y tenía 17 años",
+    "¿Cómo un adolescente tomó las cuentas de Obama y Elon Musk?",
+    "No rompió ninguna computadora: solo hizo una LLAMADA 📞",
+    "Twitter tuvo que silenciar a todo el mundo por culpa de este chico",
+    "Ganó más de 100 mil dólares en horas… y el bitcoin lo delató",
+    "El día que Obama, Biden y Bezos pidieron bitcoin en Twitter"
+   ],
+   "descripcion_youtube": "15 de julio de 2020. Las cuentas de Obama, Elon Musk y Bill Gates piden bitcoin.\nDetrás había un chico de 17 años en Florida… y no rompió ninguna computadora: llamó por teléfono.\n#hackers #historiasreales #ridmer",
+   "etiquetas": [
+    "hackeo de Twitter",
+    "Graham Ivan Clark",
+    "hackers",
+    "bitcoin",
+    "historias reales",
+    "ridmer"
+   ],
+   "texto_facebook": "Un chico de 17 años tomó las cuentas de Obama, Elon Musk y Bill Gates… con una simple llamada 📞 #Hackers #HistoriasReales #Ridmer",
+   "texto_tiktok": "Un chico de 17 años hackeó Twitter con una llamada 📞 Obama, Elon Musk y Bill Gates pidieron bitcoin… y el dinero lo delató. #hackers #twitter #historiasreales #datoscuriosos #bitcoin #ridmer",
+   "miniatura": {
+    "texto": "TENÍA 17 AÑOS"
+   },
+   "gancho": 1,
+   "musica": "tension",
+   "segmentos": [
+    {
+     "texto": "Un chico de diecisiete años hackeó Twitter.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "15 DE JULIO 2020",
+      "sub": "Tampa, Florida"
+     }
+    },
+    {
+     "texto": "Quince de julio de dos mil veinte. Las cuentas de Obama, Elon Musk y Bill Gates publican lo mismo.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=PPN8XI0UROA",
+      "desde": 8,
+      "dur": 6,
+      "buscar_video": [
+       "Twitter logo"
+      ]
+     }
+    },
+    {
+     "texto": "Mándame bitcoin y te devuelvo el doble.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Bitcoin",
+       "Bitcoin logo"
+      ]
+     }
+    },
+    {
+     "texto": "Después caen Joe Biden, Jeff Bezos, Apple y Uber.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=PPN8XI0UROA",
+      "desde": 30,
+      "dur": 6,
+      "buscar_video": [
+       "Twitter"
+      ]
+     }
+    },
+    {
+     "texto": "Twitter tuvo que bloquear a todas las cuentas verificadas del mundo por horas.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Twitter headquarters San Francisco",
+       "Twitter headquarters"
+      ]
+     }
+    },
+    {
+     "texto": "¿Cómo entró? No rompió ninguna computadora. Llamó por teléfono.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "LA LLAMADA",
+      "sub": "Julio de 2020"
+     }
+    },
+    {
+     "texto": "Se hacía pasar por alguien del equipo técnico de la empresa, y convenció a empleados de darle su acceso.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "SE HIZO PASAR",
+      "sub": "por un técnico"
+     }
+    },
+    {
+     "texto": "Con eso llegó al panel interno que controla las cuentas.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=S6kJ98BJruA",
+      "desde": 20,
+      "dur": 6,
+      "buscar_video": [
+       "computer screen"
+      ]
+     }
+    },
+    {
+     "texto": "En pocas horas, la estafa juntó más de cien mil dólares.",
+     "escena": {
+      "tipo": "contador",
+      "n": 100000,
+      "texto": "DÓLARES",
+      "sub": "en pocas horas"
+     }
+    },
+    {
+     "texto": "Pero el bitcoin deja rastro. El FBI siguió el dinero hasta Tampa, Florida.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "TAMPA",
+      "sub": "Florida"
+     }
+    },
+    {
+     "texto": "Graham Ivan Clark fue arrestado dos semanas después. Lo condenaron a tres años de prisión.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=S6kJ98BJruA",
+      "desde": 45,
+      "dur": 6,
+      "buscar_video": [
+       "Tampa Florida"
+      ]
+     }
+    },
+    {
+     "texto": "Comparte esta historia y sigue a Ridmer para más.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=u_v1XiWMxkw",
+      "desde": 10,
+      "dur": 6,
+      "buscar_video": [
+       "Twitter"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb2s",
+   "tipo": "short",
+   "encargo": "fb2",
+   "hora_youtube": "19:00",
+   "articulo": "Hackeo de Twitter de 2020 (Graham Ivan Clark)",
+   "fuente": "https://en.wikipedia.org/wiki/2020_Twitter_account_hijacking",
+   "titulo_video": " ",
+   "titulo_youtube": "Un chico de 17 años hackeó Twitter con una llamada #shorts",
+   "titulos_opciones": [
+    "Un chico de 17 años hackeó a Obama, Elon Musk y Bill Gates… con una llamada",
+    "Hackeó TWITTER desde su cuarto y tenía 17 años",
+    "¿Cómo un adolescente tomó las cuentas de Obama y Elon Musk?",
+    "No rompió ninguna computadora: solo hizo una LLAMADA 📞",
+    "Twitter tuvo que silenciar a todo el mundo por culpa de este chico",
+    "Ganó más de 100 mil dólares en horas… y el bitcoin lo delató",
+    "El día que Obama, Biden y Bezos pidieron bitcoin en Twitter"
+   ],
+   "descripcion_youtube": "15 de julio de 2020. Las cuentas de Obama, Elon Musk y Bill Gates piden bitcoin.\nDetrás había un chico de 17 años en Florida… y no rompió ninguna computadora: llamó por teléfono.\n#hackers #historiasreales #ridmer",
+   "etiquetas": [
+    "hackeo de Twitter",
+    "Graham Ivan Clark",
+    "hackers",
+    "bitcoin",
+    "historias reales",
+    "ridmer"
+   ],
+   "miniatura": {
+    "texto": "TENÍA 17 AÑOS"
+   },
+   "gancho": 1,
+   "musica": "tension",
+   "segmentos": [
+    {
+     "texto": "Un chico de diecisiete años hackeó Twitter.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "15 DE JULIO 2020",
+      "sub": "Tampa, Florida"
+     }
+    },
+    {
+     "texto": "Obama, Elon Musk y Bill Gates publican lo mismo: mándame bitcoin y te devuelvo el doble.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=PPN8XI0UROA",
+      "desde": 8,
+      "dur": 6,
+      "buscar_video": [
+       "Twitter logo"
+      ]
+     }
+    },
+    {
+     "texto": "¿Cómo entró? Llamó por teléfono, se hizo pasar por técnico de la empresa, y unos empleados le dieron su acceso.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "LA LLAMADA",
+      "sub": "Julio de 2020"
+     }
+    },
+    {
+     "texto": "En horas juntó más de cien mil dólares.",
+     "escena": {
+      "tipo": "contador",
+      "n": 100000,
+      "texto": "DÓLARES",
+      "sub": "en pocas horas"
+     }
+    },
+    {
+     "texto": "Pero el FBI siguió el rastro del bitcoin hasta su casa en Florida.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "TAMPA",
+      "sub": "Florida"
+     }
+    },
+    {
+     "texto": "Graham Ivan Clark fue condenado a tres años de prisión. Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=S6kJ98BJruA",
+      "desde": 45,
+      "dur": 6,
+      "buscar_video": [
+       "Tampa Florida"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb3",
+   "tipo": "fb",
+   "hora_fb": "21:00",
+   "articulo": "Luces de Phoenix (1997)",
+   "fuente": "https://en.wikipedia.org/wiki/Phoenix_Lights",
+   "nota": "Encargo fb3 (Laureen Rahn, adolescente desaparecida) descartado. Tema propio: ovnis (FUNCIONAN).",
+   "titulo_video": " ",
+   "titulo_youtube": "Miles vieron algo GIGANTE en el cielo de Arizona… y nadie lo explica",
+   "titulos_opciones": [
+    "Miles vieron algo GIGANTE en el cielo de Arizona… y nadie lo explica",
+    "Las luces de Phoenix: el ovni que vio una ciudad entera",
+    "El gobernador se burló… y 10 años después confesó que también lo vio 👽",
+    "¿Qué cruzó el cielo de Arizona la noche del 13 de marzo de 1997?",
+    "Una nave de más de un kilómetro… y no hizo ningún ruido",
+    "Dijeron que eran bengalas. Miles de testigos no les creen",
+    "Lo grabaron cientos de personas y sigue sin explicación"
+   ],
+   "descripcion_youtube": "13 de marzo de 1997. Miles de personas en Arizona ven cinco luces en forma de V cruzar el cielo en silencio.\nLa Fuerza Aérea dijo que eran bengalas. El gobernador se burló… y diez años después confesó que él también lo vio.\n#misterio #ovni #ridmer",
+   "etiquetas": [
+    "luces de Phoenix",
+    "ovni",
+    "Arizona",
+    "misterio",
+    "historias reales",
+    "ridmer"
+   ],
+   "texto_facebook": "Miles vieron algo gigante cruzar el cielo de Arizona… y el gobernador que se burló confesó 10 años después que él también lo vio 👽 #Misterio #Ovni #Ridmer",
+   "texto_tiktok": "Miles vieron algo gigante en el cielo de Arizona 👽 Dijeron que eran bengalas… pero el gobernador confesó años después que él también lo vio. #ovni #misterio #phoenixlights #historiasreales #datoscuriosos #ridmer",
+   "miniatura": {
+    "texto": "LO VIO TODA LA CIUDAD"
+   },
+   "gancho": 1,
+   "musica": "misterio",
+   "segmentos": [
+    {
+     "texto": "Miles vieron algo gigante en el cielo.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "13 DE MARZO 1997",
+      "sub": "Arizona, EE. UU."
+     }
+    },
+    {
+     "texto": "Trece de marzo de mil novecientos noventa y siete. Arizona, Estados Unidos.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=bvKLeaPWPyw",
+      "desde": 15,
+      "dur": 6,
+      "buscar_video": [
+       "Phoenix Arizona night"
+      ]
+     }
+    },
+    {
+     "texto": "Pasadas las ocho de la noche, cinco luces en forma de V cruzan el estado, de norte a sur.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "EN FORMA DE V",
+      "sub": "8:15 de la noche"
+     }
+    },
+    {
+     "texto": "Una familia de Prescott Valley contó que pasaron bajito sobre sus cabezas, sin hacer ningún ruido.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "SIN RUIDO",
+      "sub": "Prescott Valley"
+     }
+    },
+    {
+     "texto": "Otros describieron una nave enorme, de más de un kilómetro.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=oQOnv2t6AXA",
+      "desde": 20,
+      "dur": 6,
+      "buscar_video": [
+       "night sky lights"
+      ]
+     }
+    },
+    {
+     "texto": "A las diez, nueve luces quedan quietas sobre Phoenix. Muchos las graban.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=bvKLeaPWPyw",
+      "desde": 45,
+      "dur": 6,
+      "buscar_video": [
+       "Phoenix Arizona night"
+      ]
+     }
+    },
+    {
+     "texto": "La Fuerza Aérea dijo que eran bengalas, lanzadas por aviones en un entrenamiento.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "A-10 Thunderbolt II flare",
+       "A-10 Thunderbolt II"
+      ]
+     }
+    },
+    {
+     "texto": "El gobernador, Fife Symington, se burló: presentó a un ayudante disfrazado de extraterrestre.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Fife Symington",
+       "Arizona State Capitol"
+      ]
+     }
+    },
+    {
+     "texto": "Pero diez años después confesó: él también vio la nave. Dijo que no eran bengalas.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Fife Symington",
+       "Fife Symington 2007"
+      ]
+     }
+    },
+    {
+     "texto": "Hasta hoy, nadie ha explicado del todo lo que cruzó el cielo de Arizona.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=x5fi-9CxozU",
+      "desde": 10,
+      "dur": 6,
+      "buscar_video": [
+       "night sky lights"
+      ]
+     }
+    },
+    {
+     "texto": "¿Tú qué crees que era? Comparte esta historia y sigue a Ridmer.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Phoenix Arizona skyline night",
+       "Phoenix Arizona"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "largo1",
+   "tipo": "largo",
+   "hora_youtube": "18:00",
+   "articulo": "Máquina misteriosa de refrescos de Capitol Hill",
+   "fuente": "https://en.wikipedia.org/wiki/Capitol_Hill_mystery_soda_machine",
+   "titulo_video": " ",
+   "titulo_youtube": "Nadie sabía quién llenaba esta máquina… y un día desapareció",
+   "titulos_opciones": [
+    "Nadie sabía quién llenaba esta máquina… y un día desapareció",
+    "La máquina MISTERIOSA de Seattle: 20 años sin dueño y una nota final",
+    "Vendía refrescos que ya no existían… y nadie sabe quién la llenaba",
+    "Desapareció de noche y dejó una nota: \"Salí a caminar\"",
+    "¿Quién llenó esta máquina durante 20 años?",
+    "La máquina 'embrujada' que vendía refrescos del pasado 🥤",
+    "La ciudad no tenía permisos, la tienda no era la dueña… ¿entonces quién?",
+    "Sus botones decían MISTERIO… y el misterio nunca se resolvió"
+   ],
+   "descripcion_youtube": "Durante veinte años, una vieja máquina de Coca-Cola vendió refrescos misteriosos en una calle de Seattle. No tenía permiso, nadie se hacía dueño… y nunca se quedaba vacía.\nUna noche de 2018 desapareció y dejó una nota: \"Salí a caminar\".\n#misterio #historiasreales #ridmer #datoscuriosos",
+   "etiquetas": [
+    "máquina misteriosa",
+    "Seattle",
+    "Capitol Hill",
+    "misterio",
+    "historias reales",
+    "datos curiosos",
+    "ridmer"
+   ],
+   "miniatura": {
+    "img": 1,
+    "texto": "¿QUIÉN LA LLENABA?"
+   },
+   "gancho": 2,
+   "musica": "misterio",
+   "segmentos": [
+    {
+     "texto": "Durante veinte años, alguien llenó esta máquina. Nadie sabe quién.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "JUNIO DE 2018",
+      "sub": "Seattle, EE. UU."
+     }
+    },
+    {
+     "texto": "Y una noche de verano, desapareció. En su lugar quedó una nota con tres palabras.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "UNA NOTA",
+      "sub": "Calle John · Capitol Hill"
+     }
+    },
+    {
+     "texto": "Esta es la historia de la máquina misteriosa de refrescos de Capitol Hill.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Una historia sin violencia y sin crimen… pero con una pregunta que nadie ha podido responder en más de veinte años.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "MÁS DE 20 AÑOS",
+      "sub": "Sin respuesta"
+     }
+    },
+    {
+     "texto": "Seattle, Estados Unidos. Capitol Hill es uno de los barrios más famosos de la ciudad: bares, música, tiendas raras y gente de todo tipo.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Capitol Hill Seattle Broadway",
+       "Broadway Capitol Hill Seattle"
+      ]
+     }
+    },
+    {
+     "texto": "En la calle John, frente a una cerrajería llamada Broadway Locksmith, había una vieja máquina de refrescos.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=cDLg-E_cCzA",
+      "desde": 10,
+      "dur": 6,
+      "buscar_video": [
+       "Seattle street"
+      ]
+     }
+    },
+    {
+     "texto": "Era una máquina roja de Coca-Cola, fabricada en los años setenta. Con el logo antiguo, gastada por el sol y la lluvia.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Nadie recuerda exactamente cuándo apareció. Unos dicen que a mediados de los noventa. Otros, a finales.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "AÑOS 90",
+      "sub": "Nadie sabe cuándo llegó"
+     }
+    },
+    {
+     "texto": "Pero desde entonces, estuvo ahí. Día y noche. Año tras año.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=thXKLkkK-yw",
+      "desde": 15,
+      "dur": 6,
+      "buscar_video": [
+       "Seattle street"
+      ]
+     }
+    },
+    {
+     "texto": "A simple vista, era una máquina como cualquier otra. Metías unas monedas, apretabas un botón y caía una lata.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "METÍAS UNAS MONEDAS",
+      "sub": "y apretabas un botón"
+     }
+    },
+    {
+     "texto": "Pero tenía algo raro. Uno de sus botones no decía Coca-Cola ni Sprite. Decía: misterio.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Y lo que salía de ese botón… nadie lo podía adivinar.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "MISTERIO",
+      "sub": "El botón"
+     }
+    },
+    {
+     "texto": "En el año dos mil dos, un periodista del diario local The Stranger escribió sobre ella. Los refrescos costaban cincuenta y cinco centavos.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "2002",
+      "sub": "55 centavos"
+     }
+    },
+    {
+     "texto": "En ese tiempo solo un botón era misterio. Los otros cinco tenían nombres normales.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Coca-Cola vending machine 1970s",
+       "vintage soda machine"
+      ]
+     }
+    },
+    {
+     "texto": "En dos mil doce, la máquina inspiró hasta un cortometraje.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "2012",
+      "sub": "Un cortometraje"
+     }
+    },
+    {
+     "texto": "Pero mientras más gente hablaba de la máquina, más botones cambiaban. Uno por uno.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Hasta que los seis botones dijeron lo mismo: misterio.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "6 DE 6",
+      "sub": "Todos los botones"
+     }
+    },
+    {
+     "texto": "Y lo que caía era cada vez más extraño. Bebidas de otras marcas, de otros países, de otras épocas.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=dYUeWH5WFWI",
+      "desde": 20,
+      "dur": 6,
+      "buscar_video": [
+       "soda can"
+      ]
+     }
+    },
+    {
+     "texto": "La gente subía fotos con lo que le había tocado. Fanta de piña. Nestea de frambuesa. Hawaiian Punch. Fresca. Cheerwine.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Cheerwine can",
+       "Fanta pineapple can"
+      ]
+     }
+    },
+    {
+     "texto": "Algunos juraban que les había salido Crystal Pepsi, una bebida transparente que ya casi nadie vendía.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Crystal Pepsi",
+       "Crystal Pepsi bottle"
+      ]
+     }
+    },
+    {
+     "texto": "Un escritor contó que a alguien le salió Pepsi A M, una bebida que se dejó de fabricar en mil novecientos noventa.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "PEPSI AM",
+      "sub": "Dejó de fabricarse en 1990"
+     }
+    },
+    {
+     "texto": "Bebidas que ya no estaban en ninguna tienda… seguían apareciendo dentro de esa máquina.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Y aquí empieza la verdadera pregunta: ¿quién la llenaba?",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "¿QUIÉN LA LLENABA?",
+      "sub": "Nadie lo sabía"
+     }
+    },
+    {
+     "texto": "La máquina estaba conectada a la electricidad de la cerrajería. Lo lógico era pensar que los dueños eran ellos.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Broadway Locksmith Seattle",
+       "Capitol Hill Seattle storefront"
+      ]
+     }
+    },
+    {
+     "texto": "Pero los empleados de Broadway Locksmith repetían siempre lo mismo: no sabemos de quién es, ni quién la llena.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "NO ES NUESTRA",
+      "sub": "Broadway Locksmith"
+     }
+    },
+    {
+     "texto": "Le daban la luz a una máquina de la que, según ellos, no sabían nada.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=cDLg-E_cCzA",
+      "desde": 30,
+      "dur": 6,
+      "buscar_video": [
+       "locksmith shop"
+      ]
+     }
+    },
+    {
+     "texto": "Nadie veía a nadie llenarla. Pero nunca se quedaba vacía.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "NUNCA SE VACIABA",
+      "sub": "Capitol Hill"
+     }
+    },
+    {
+     "texto": "En dos mil catorce, la revista Vice publicó un artículo que la llamó la máquina de refrescos embrujada de Seattle.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "2014",
+      "sub": "La máquina embrujada"
+     }
+    },
+    {
+     "texto": "La historia dio la vuelta al mundo. La revista alemana Der Spiegel escribió sobre ella. Hasta la propia empresa Coca-Cola publicó un artículo.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=G1L4sfJ-sG0",
+      "desde": 15,
+      "dur": 6,
+      "buscar_video": [
+       "soda machine"
+      ]
+     }
+    },
+    {
+     "texto": "Ese mismo año aparecieron en internet fotos de personas desconocidas llenando la máquina. Nunca se supo quiénes eran.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "FOTOS",
+      "sub": "Desconocidos la llenan"
+     }
+    },
+    {
+     "texto": "Vecinos contaron que, a veces, muy temprano en la mañana, se detenía un camión frente a la máquina.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "AL AMANECER",
+      "sub": "Un camión"
+     }
+    },
+    {
+     "texto": "Nadie logró probarlo. Y el precio subió a setenta y cinco centavos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "En dos mil quince, un periódico, The Seattle Times, le preguntó a la ciudad quién tenía el permiso para esa máquina.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Seattle City Hall",
+       "Seattle Municipal Tower"
+      ]
+     }
+    },
+    {
+     "texto": "La respuesta fue increíble: no había ningún permiso registrado.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "CERO PERMISOS",
+      "sub": "Ciudad de Seattle"
+     }
+    },
+    {
+     "texto": "La máquina no existía en ningún papel. No tenía dueño conocido. Pero seguía vendiendo refrescos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Para entonces ya tenía su propia página de Facebook, con miles de seguidores, y hasta una cuenta en Twitter.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "MILES DE SEGUIDORES",
+      "sub": "Facebook y Twitter"
+     }
+    },
+    {
+     "texto": "Las teorías se multiplicaron. Que la cerrajería la manejaba en secreto. Que era un experimento. Que estaba embrujada.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "LAS TEORÍAS",
+      "sub": "Capitol Hill"
+     }
+    },
+    {
+     "texto": "Un blog del barrio llegó a investigar, medio en broma, si la máquina viajaba en el tiempo.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "¿VIAJABA EN EL TIEMPO?",
+      "sub": "Capitol Hill Seattle"
+     }
+    },
+    {
+     "texto": "Mientras tanto, el barrio cambiaba. Derrumbaron edificios y construyeron una estación del tren ligero a pocos pasos.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Capitol Hill station Seattle",
+       "Capitol Hill light rail station"
+      ]
+     }
+    },
+    {
+     "texto": "Todo a su alrededor se transformó. Pero la máquina seguía en su lugar.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=205LKLWmzxs",
+      "desde": 12,
+      "dur": 6,
+      "buscar_video": [
+       "Seattle street"
+      ]
+     }
+    },
+    {
+     "texto": "En enero de dos mil dieciocho, el precio subió a un dólar. Justo el mes en que Seattle aprobó un impuesto a las bebidas azucaradas.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "ENERO 2018",
+      "sub": "1 dólar"
+     }
+    },
+    {
+     "texto": "Como si quien la llenaba estuviera atento a cada noticia de la ciudad.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Según contó un escritor, en sus últimos días la máquina se tragaba las monedas… y no entregaba nada.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "SE TRAGABA LAS MONEDAS",
+      "sub": "Sus últimos días"
+     }
+    },
+    {
+     "texto": "A finales de junio de dos mil dieciocho, unos obreros trabajaron en la vereda y en la parada de bus de al lado.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "JUNIO DE 2018",
+      "sub": "Obras en la vereda"
+     }
+    },
+    {
+     "texto": "Un sábado por la mañana, los vecinos pasaron por la calle John… y la máquina ya no estaba.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=cDLg-E_cCzA",
+      "desde": 50,
+      "dur": 6,
+      "buscar_video": [
+       "empty sidewalk"
+      ]
+     }
+    },
+    {
+     "texto": "Solo quedaba un papel amarrado a un tubo de metal. Decía tres palabras en inglés: salí a caminar.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "\"SALÍ A CAMINAR\"",
+      "sub": "La nota"
+     }
+    },
+    {
+     "texto": "Ese mismo día, su página de Facebook publicó: Salí a caminar. Necesito encontrarme. Tal vez hasta me dé una ducha.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "\"NECESITO ENCONTRARME\"",
+      "sub": "Su página de Facebook"
+     }
+    },
+    {
+     "texto": "La reportera del Seattle Times llamó a la cerrajería, pero estaba cerrada: era fin de semana. Después, los empleados dijeron que ni sabían que se había ido, y que la máquina era difícil de mover.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Broadway Locksmith Seattle",
+       "Capitol Hill Seattle storefront"
+      ]
+     }
+    },
+    {
+     "texto": "Un empleado de la cerrajería dijo que la máquina estaba bien conectada, y que alguien tuvo que sacarla con cuidado, y a propósito.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "A PROPÓSITO",
+      "sub": "Broadway Locksmith"
+     }
+    },
+    {
+     "texto": "Nadie vio a quién se la llevó. Nadie dijo a dónde.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "NADIE VIO NADA",
+      "sub": "Capitol Hill"
+     }
+    },
+    {
+     "texto": "En internet, algunos creían que un periodista se había quedado vigilando la máquina para descubrir al dueño, y que eso lo había espantado.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "LA TEORÍA",
+      "sub": "Un periodista vigilando"
+     }
+    },
+    {
+     "texto": "Después, su página empezó a publicar fotos de la máquina en otros lugares: en un ferry, en el zoológico junto a los osos, hasta en Machu Picchu.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Machu Picchu",
+       "Washington State Ferry"
+      ]
+     }
+    },
+    {
+     "texto": "Una la mostraba frente a la Space Needle. El Seattle Times confirmó que era una foto falsa.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Space Needle",
+       "Space Needle Seattle"
+      ]
+     }
+    },
+    {
+     "texto": "Eran montajes, hechos con programas de edición. Pero su página llegó a tener unos treinta y cuatro mil seguidores, esperando una señal.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "34 MIL SEGUIDORES",
+      "sub": "Esperando una señal"
+     }
+    },
+    {
+     "texto": "En octubre de dos mil veinte escribió: tal vez debería volver a casa, pero no sé si quiero que me toquen.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "OCTUBRE 2020",
+      "sub": "\"Tal vez debería volver\""
+     }
+    },
+    {
+     "texto": "Y en dos mil veintidós publicó una foto de la máquina golpeada, con un mensaje: el doctor dice que probablemente me pueda arreglar.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "2022",
+      "sub": "\"Me pueden arreglar\""
+     }
+    },
+    {
+     "texto": "En dos mil veintitrés, un periodista volvió a la cerrajería. Le dijeron que nadie la había vuelto a ver.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Broadway Locksmith Seattle",
+       "Capitol Hill Seattle storefront"
+      ]
+     }
+    },
+    {
+     "texto": "La periodista escribió que Capitol Hill se volvió más comercial, y se preguntó si el barrio todavía es lo bastante raro para un misterio así.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Capitol Hill Seattle Broadway",
+       "Broadway Capitol Hill Seattle"
+      ]
+     }
+    },
+    {
+     "texto": "El lugar donde estuvo sigue ahí, en la calle John. Hay espacio de sobra para que vuelva.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=thXKLkkK-yw",
+      "desde": 40,
+      "dur": 6,
+      "buscar_video": [
+       "Seattle sidewalk"
+      ]
+     }
+    },
+    {
+     "texto": "Nunca se supo quién la puso, quién la llenó durante veinte años, ni de dónde sacaba bebidas que ya no existían.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Tal vez era un vecino con un gran sentido del humor. Tal vez alguien de la cerrajería. Tal vez alguien que nunca vamos a conocer.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "¿QUIÉN ERA?",
+      "sub": "Nadie lo sabe"
+     }
+    },
+    {
+     "texto": "Lo único seguro es que se fue igual que llegó: sin que nadie lo viera.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "¿Tú qué crees que pasó con la máquina? Déjalo en los comentarios. Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    }
+   ]
+  },
+  {
+   "eid": "largo1t",
+   "tipo": "tiktok",
+   "encargo": "largo1",
+   "hora_youtube": "18:00",
+   "articulo": "Máquina misteriosa de refrescos de Capitol Hill",
+   "fuente": "https://en.wikipedia.org/wiki/Capitol_Hill_mystery_soda_machine",
+   "titulo_video": " ",
+   "titulo_youtube": "Nadie sabía quién llenaba esta máquina… y un día desapareció",
+   "titulos_opciones": [
+    "Nadie sabía quién llenaba esta máquina… y un día desapareció",
+    "La máquina MISTERIOSA de Seattle: 20 años sin dueño y una nota final",
+    "Vendía refrescos que ya no existían… y nadie sabe quién la llenaba",
+    "Desapareció de noche y dejó una nota: \"Salí a caminar\"",
+    "¿Quién llenó esta máquina durante 20 años?",
+    "La máquina 'embrujada' que vendía refrescos del pasado 🥤",
+    "La ciudad no tenía permisos, la tienda no era la dueña… ¿entonces quién?",
+    "Sus botones decían MISTERIO… y el misterio nunca se resolvió"
+   ],
+   "descripcion_youtube": "Durante veinte años, alguien llenó una vieja máquina de refrescos en Seattle. Nadie sabe quién.\nVideo completo en YouTube: Ridmer.\n#misterio #historiasreales #ridmer",
+   "etiquetas": [
+    "máquina misteriosa",
+    "Seattle",
+    "Capitol Hill",
+    "misterio",
+    "historias reales",
+    "datos curiosos",
+    "ridmer"
+   ],
+   "miniatura": {
+    "img": 1,
+    "texto": "¿QUIÉN LA LLENABA?"
+   },
+   "gancho": 2,
+   "musica": "misterio",
+   "segmentos": [
+    {
+     "texto": "Durante veinte años, alguien llenó esta máquina. Nadie sabe quién.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "SEATTLE",
+      "sub": "Capitol Hill"
+     }
+    },
+    {
+     "texto": "Y una noche de verano, desapareció. En su lugar quedó una nota con tres palabras.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "UNA NOTA",
+      "sub": "Calle John"
+     }
+    },
+    {
+     "texto": "Seattle, Estados Unidos. En la calle John, frente a una cerrajería, había una vieja máquina roja de Coca-Cola de los años setenta.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=cDLg-E_cCzA",
+      "desde": 10,
+      "dur": 6,
+      "buscar_video": [
+       "Seattle street"
+      ]
+     }
+    },
+    {
+     "texto": "Nadie recuerda bien cuándo apareció. Pero estuvo ahí, día y noche, año tras año.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Tenía un botón que no decía Coca-Cola ni Sprite. Decía: misterio.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Con el tiempo, los seis botones dijeron lo mismo. Y lo que caía era cada vez más extraño.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Fanta de piña, Nestea de frambuesa, Cheerwine. Algunos juraban que les salieron bebidas que ya no se fabricaban.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Cheerwine can",
+       "Fanta pineapple can"
+      ]
+     }
+    },
+    {
+     "texto": "La máquina estaba conectada a la luz de la cerrajería. Pero los empleados decían: no es nuestra, no sabemos quién la llena.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "NO ES NUESTRA",
+      "sub": "Broadway Locksmith"
+     }
+    },
+    {
+     "texto": "Su página de Facebook tenía miles de seguidores. Una revista la llamó la máquina embrujada de Seattle.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "LA MÁQUINA EMBRUJADA",
+      "sub": "Seattle"
+     }
+    },
+    {
+     "texto": "Nadie veía a nadie llenarla. Pero nunca se quedaba vacía.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=G1L4sfJ-sG0",
+      "desde": 15,
+      "dur": 6,
+      "buscar_video": [
+       "soda machine"
+      ]
+     }
+    },
+    {
+     "texto": "En dos mil quince, el periódico de Seattle le preguntó a la ciudad quién tenía el permiso. No había ningún permiso.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "CERO PERMISOS",
+      "sub": "Ciudad de Seattle"
+     }
+    },
+    {
+     "texto": "Una máquina sin dueño, sin papeles… que funcionó durante veinte años.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Hasta que, en junio de dos mil dieciocho, un sábado por la mañana, los vecinos pasaron por la calle John… y ya no estaba.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "JUNIO 2018",
+      "sub": "Ya no estaba"
+     }
+    },
+    {
+     "texto": "Solo quedaba un papel, amarrado a un tubo de metal.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "UN PAPEL",
+      "sub": "Calle John"
+     }
+    },
+    {
+     "texto": "¿Qué pasó después? Lo que viene te va a dejar sin palabras. Mira el video completo en YouTube, en el canal Ridmer.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb1f",
+   "tipo": "foto",
+   "omitir": true,
+   "hora_foto": "15:30",
+   "titulo_youtube": "Quedó atrapado en el fondo del mar… y respiró de una burbuja casi 3 días",
+   "texto_foto": "Quedó atrapado en el fondo del mar… y nadie sabía que seguía vivo.\n\nNigeria, 26 de mayo de 2013. Antes del amanecer, el remolcador Jascon 4 se volteó en el mar y se hundió a 30 metros de profundidad.\n\nHarrison Okene, el cocinero, estaba en el baño. Todo quedó a oscuras y el agua entró de golpe. A tientas llegó a una cabina donde había quedado atrapada una burbuja de aire. En calzoncillos, helado y sin ver nada, se quedó ahí, respirando ese aire que se gastaba poco a poco.\n\nSus once compañeros no sobrevivieron.\n\nCasi tres días después llegaron buzos a sacar los cuerpos. Uno de ellos vio una mano en el agua y pensó que era otro muerto… y la mano lo agarró.\n\nPasó dos días más en una cámara de descompresión antes de volver a la superficie. Vivo.\n\n¿Tú habrías aguantado tres días en la oscuridad?\n#Supervivencia #HistoriasReales #Ridmer"
+  },
+  {
+   "eid": "fb2f",
+   "tipo": "foto",
+   "omitir": true,
+   "hora_foto": "20:00",
+   "titulo_youtube": "Miles vieron algo gigante en el cielo de Arizona… y sigue sin explicación",
+   "texto_foto": "Miles de personas vieron algo gigante cruzar el cielo… y nadie lo ha explicado.\n\nArizona, 13 de marzo de 1997. Pasadas las ocho de la noche, cinco luces en forma de V cruzaron el estado de norte a sur, en silencio. Una familia de Prescott Valley contó que pasaron bajito sobre sus cabezas. Otros hablaron de una nave enorme, de más de un kilómetro.\n\nA las diez, nueve luces quedaron quietas sobre la ciudad de Phoenix, y mucha gente las grabó.\n\nLa Fuerza Aérea dijo que eran bengalas lanzadas por aviones en un entrenamiento. El gobernador, Fife Symington, se burló en una conferencia con un ayudante disfrazado de extraterrestre.\n\nPero diez años después confesó que él también vio la nave, y que no eran bengalas.\n\n¿Tú qué crees que cruzó el cielo esa noche?\n#Misterio #Ovni #HistoriasReales"
+  }
+ ]
+}
