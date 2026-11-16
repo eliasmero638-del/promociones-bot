@@ -662,3 +662,193 @@ export function furgon(sc, color = 0xd8d4c8, faros = true) {
   if (faros) for (const z of [0.7, -0.7]) { cono(g, 2.5, 0.85, z, 8, 1.4, 0xfff2d0, 0.04, [0, 0, Math.PI / 2 - 0.08]); }
   sc.add(g); return g;
 }
+
+// ===================== 16-nov: base aérea en el desierto, caza a reacción, esfera ovni, túnel de mina con canastilla, estudio de radio, deportivo, supermercado =====================
+/** Base aérea en el desierto al amanecer (tipo La Joya, Arequipa): pista a lo largo de X en z≈0, hangares y torre atrás (z≈-25),
+ *  volcanes al fondo (-Z). cielo: 'amanecer' | 'dia' | 'alto' (estratosfera azul oscuro, sin suelo cerca). */
+export function baseAereaDesierto(sc, { cielo = 'amanecer', semilla = 6 } = {}) {
+  const az = _azar(semilla);
+  if (cielo === 'alto') { M.cielo(sc, '#020a24', '#4d7fc4'); M.luces(sc, { sol: 3.0, cielo_: 1.1, dir: [20, 10, 10], color: 0xfff4e4 }); return {}; }
+  if (cielo === 'amanecer') { M.cielo(sc, '#5d7fae', '#f2c49a'); sc.fog = new THREE.Fog(0xe7c7a6, 60, 420); M.luces(sc, { sol: 2.6, cielo_: 1.1, dir: [30, 9, 14], color: 0xffd9b0 }); }
+  else { M.cielo(sc, '#6f9fd8', '#dfe6ee'); sc.fog = new THREE.Fog(0xdde2e6, 80, 500); M.luces(sc, { sol: 3, cielo_: 1.2, dir: [10, 20, 8] }); }
+  const arena = M.matTex(M.TEX.arena(), [60, 60], 0xc7a27a);
+  M.caja(sc, 1200, 0.2, 1200, 0, -0.1, 0, arena);
+  M.caja(sc, 400, 0.04, 22, 0, 0.02, 0, M.matTex(M.TEX.concreto(), [80, 4], 0x6c6b68), false);
+  for (let x = -190; x < 190; x += 12) M.caja(sc, 6, 0.02, 0.5, x, 0.05, 0, M.mat(0xe8e4d8), false);
+  M.caja(sc, 400, 0.02, 0.4, 0, 0.05, 10, M.mat(0xe8e4d8), false); M.caja(sc, 400, 0.02, 0.4, 0, 0.05, -10, M.mat(0xe8e4d8), false);
+  const gris = M.matTex(M.TEX.concreto(), [4, 2], 0xb5b0a6);
+  for (const x of [-60, -30, 0, 30]) { M.caja(sc, 22, 9, 18, x, 4.5, -38, gris);
+    const techo = new THREE.Mesh(new THREE.CylinderGeometry(11, 11, 18, 32), M.mat(0x8f8d88, { metalness: 0.4, roughness: 0.5 }));
+    techo.rotation.x = Math.PI / 2; techo.scale.set(1, 1, 0.35); techo.position.set(x, 9, -38); techo.castShadow = true; sc.add(techo);
+    M.caja(sc, 16, 7, 0.2, x, 3.5, -28.9, M.mat(0x3a3a3c)); }
+  M.caja(sc, 4, 16, 4, 55, 8, -32, gris); M.caja(sc, 7, 3, 7, 55, 17.5, -32, M.mat(0x2d3a44, { metalness: 0.5, roughness: 0.2 })); M.caja(sc, 7.6, 0.4, 7.6, 55, 19.2, -32, M.mat(0x555555));
+  const cerro = M.matTex(M.TEX.roca(), [6, 3], 0x9c7f66);
+  for (let i = 0; i < 14; i++) { const h = 30 + az() * 60, r = 60 + az() * 90, m = new THREE.Mesh(new THREE.ConeGeometry(r, h, 9), cerro);
+    m.position.set(-500 + i * 75 + az() * 30, h / 2 - 2, -260 - az() * 120); sc.add(m); }
+  const misti = new THREE.Mesh(new THREE.ConeGeometry(230, 220, 24), M.matTex(M.TEX.roca(), [8, 4], 0x8a7462)); misti.position.set(-80, 108, -520); sc.add(misti);
+  const nieve = new THREE.Mesh(new THREE.ConeGeometry(48, 46, 24), M.mat(0xf4f1ee)); nieve.position.set(-80, 196, -520); sc.add(nieve);
+  return {};
+}
+/** Caza a reacción de los 80 tipo Sukhoi 22 (alas en flecha, toma de aire en la nariz). Frente hacia +X, ~19 m de largo.
+ *  c.g = grupo; c.fuego(k) = brillo de la tobera (0..1). */
+export function cazaReaccion(sc, { camuflaje = true } = {}) {
+  const g = new THREE.Group(), c1 = M.mat(camuflaje ? 0x9aa58f : 0xa0a4a8, { roughness: 0.55, metalness: 0.35 }), c2 = M.mat(0x5d6e52, { roughness: 0.6, metalness: 0.3 });
+  const osc = M.mat(0x2a2c2e, { roughness: 0.4, metalness: 0.6 });
+  const fus = new THREE.Mesh(new THREE.CylinderGeometry(0.85, 0.75, 15, 20), c1); fus.rotation.z = Math.PI / 2; g.add(fus);
+  const nariz = new THREE.Mesh(new THREE.CylinderGeometry(0.62, 0.85, 2.4, 20, 1, true), c1); nariz.rotation.z = -Math.PI / 2; nariz.position.x = 8.7; g.add(nariz);
+  const toma = new THREE.Mesh(new THREE.CylinderGeometry(0.6, 0.6, 0.1, 20), osc); toma.rotation.z = Math.PI / 2; toma.position.x = 9.9; g.add(toma);
+  const cono = new THREE.Mesh(new THREE.ConeGeometry(0.3, 0.9, 16), M.mat(0xb0281e, { roughness: 0.4 })); cono.rotation.z = -Math.PI / 2; cono.position.x = 10.2; g.add(cono);
+  const cab = new THREE.Mesh(new THREE.SphereGeometry(0.62, 20, 14), new THREE.MeshStandardMaterial({ color: 0x1b2a38, roughness: 0.05, metalness: 0.9 }));
+  cab.scale.set(2.4, 0.9, 0.8); cab.position.set(5.0, 0.85, 0); g.add(cab);
+  const lomo = new THREE.Mesh(new THREE.BoxGeometry(7, 0.5, 0.7), c1); lomo.position.set(0.5, 0.8, 0); g.add(lomo);
+  const ala = (lado) => { const s = new THREE.Shape(); s.moveTo(2.2, 0); s.lineTo(-3.2, 5.6 * lado); s.lineTo(-4.6, 5.6 * lado); s.lineTo(-3.4, 0); s.lineTo(2.2, 0);
+    const m = new THREE.Mesh(new THREE.ExtrudeGeometry(s, { depth: 0.14, bevelEnabled: false }), lado > 0 ? c2 : c1); m.rotation.x = -Math.PI / 2; m.position.set(0, -0.15, 0); g.add(m); };
+  ala(1); ala(-1);
+  const deriva = new THREE.Shape(); deriva.moveTo(-4.0, 0); deriva.lineTo(-6.8, 3.6); deriva.lineTo(-7.8, 3.6); deriva.lineTo(-7.4, 0); deriva.lineTo(-4.0, 0);
+  const dv = new THREE.Mesh(new THREE.ExtrudeGeometry(deriva, { depth: 0.14, bevelEnabled: false }), c2); dv.position.set(0, 0.6, -0.07); g.add(dv);
+  for (const lado of [1, -1]) { const s = new THREE.Shape(); s.moveTo(-5.4, 0); s.lineTo(-7.4, 2.6 * lado); s.lineTo(-8.0, 2.6 * lado); s.lineTo(-7.6, 0); s.lineTo(-5.4, 0);
+    const m = new THREE.Mesh(new THREE.ExtrudeGeometry(s, { depth: 0.1, bevelEnabled: false }), c1); m.rotation.x = -Math.PI / 2; m.position.y = 0; g.add(m); }
+  const tob = new THREE.Mesh(new THREE.CylinderGeometry(0.62, 0.55, 0.6, 20), osc); tob.rotation.z = Math.PI / 2; tob.position.x = -7.8; g.add(tob);
+  const llama = brilloSprite('#ff9a40', 2.4, 0.95), halo = brilloSprite('#ffd27a', 1.2, 1); llama.position.x = -8.6; halo.position.x = -8.3; g.add(llama); g.add(halo);
+  const luz = new THREE.PointLight(0xff9a40, 0, 12, 1.6); luz.position.x = -9; g.add(luz);
+  g.traverse(o => { if (o.isMesh) { o.castShadow = true; o.receiveShadow = true; } });
+  sc.add(g);
+  return { g, fuego(k) { llama.scale.setScalar(1.2 + 3.2 * k + Math.random() * 0.3); llama.material.opacity = 0.3 + 0.65 * k; halo.material.opacity = k; luz.intensity = 30 * k; } };
+}
+/** Objeto plateado redondo (relato de La Joya 1980): esfera de metal pulido con cúpula color crema arriba y base ancha de metal.
+ *  Sin alas, ventanas ni motores. o.g = grupo; o.brillo(k) = resplandor. Diámetro ~10 m con escala 1. */
+export function esferaOvni(sc, escala = 1) {
+  const g = new THREE.Group();
+  const plata = new THREE.MeshStandardMaterial({ color: 0xd4d8de, metalness: 0.75, roughness: 0.26, emissive: 0x6a7280, emissiveIntensity: 0.35 });
+  const cuerpo = new THREE.Mesh(new THREE.SphereGeometry(4.2, 48, 32), plata); cuerpo.scale.y = 0.78; g.add(cuerpo);
+  const base = new THREE.Mesh(new THREE.CylinderGeometry(5.0, 3.4, 1.2, 48), plata); base.position.y = -2.2; g.add(base);
+  const anillo = new THREE.Mesh(new THREE.TorusGeometry(4.95, 0.18, 12, 64), plata); anillo.rotation.x = Math.PI / 2; anillo.position.y = -1.65; g.add(anillo);
+  const cup = new THREE.Mesh(new THREE.SphereGeometry(2.2, 32, 18, 0, Math.PI * 2, 0, Math.PI / 2), new THREE.MeshStandardMaterial({ color: 0xf1e2bc, metalness: 0.2, roughness: 0.08, emissive: 0x6d5a30, emissiveIntensity: 0.5, transparent: true, opacity: 0.92 }));
+  cup.position.y = 2.9; g.add(cup);
+  const halo = brilloSprite('#fff4dc', 19, 0.3); g.add(halo);
+  g.scale.setScalar(escala); g.traverse(o => { if (o.isMesh) { o.castShadow = true; } }); sc.add(g);
+  return { g, brillo(k) { halo.material.opacity = 0.1 + 0.3 * k; plata.emissiveIntensity = 0.25 + 0.3 * k; } };
+}
+/** Avión que pasa: estela de vapor blanca detrás de un punto (k 0..1 de largo). */
+export function estela(sc, n = 30) {
+  const ps = []; for (let i = 0; i < n; i++) { const s = brilloSprite('#ffffff', 2, 0.25); s.material.blending = THREE.NormalBlending; sc.add(s); ps.push(s); }
+  return { poner(pos, dir, largo = 30) { const d = dir.clone().normalize(); ps.forEach((s, i) => { s.position.copy(pos).addScaledVector(d, -(i + 1) * largo / n); s.scale.setScalar(2.6 + i * 0.2); s.material.opacity = 0.3 * (1 - i / n); }); } };
+}
+/** Nubes bajas (alfombra de nubes vista desde arriba, a la altura y). */
+export function marNubes(sc, y = -40, n = 120, semilla = 3) {
+  const az = _azar(semilla), c = document.createElement('canvas'); c.width = c.height = 128; const x = c.getContext('2d');
+  const gr = x.createRadialGradient(64, 64, 0, 64, 64, 64); gr.addColorStop(0, 'rgba(255,255,255,0.95)'); gr.addColorStop(1, 'rgba(255,255,255,0)'); x.fillStyle = gr; x.fillRect(0, 0, 128, 128);
+  const tx = new THREE.CanvasTexture(c); const g = new THREE.Group();
+  for (let i = 0; i < n; i++) { const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: tx, transparent: true, depthWrite: false, opacity: 0.85, fog: false }));
+    s.position.set((az() - 0.5) * 900, y + az() * 10, (az() - 0.5) * 900 - 150); s.scale.setScalar(80 + az() * 120); g.add(s); }
+  sc.add(g); return g;
+}
+
+/** Túnel de mina subterránea de roca dura (a casi 1 km), de noche total: galería a lo largo de Z (de z=-30 a 10), ancho 5, alto 4.5.
+ *  Malla de acero en el techo, tubo de ventilación, luces débiles. Devuelve {caerRocas(t), polvo}. */
+export function minaTunel(sc, { luz = 0.6 } = {}) {
+  sc.background = new THREE.Color(0x020202); sc.fog = new THREE.FogExp2(0x0b0907, 0.06);
+  sc.add(new THREE.HemisphereLight(0x8a7e70, 0x0c0a08, 0.18 * luz));
+  const roca = M.matTex(M.TEX.roca(), [8, 2], 0x7a7068), az = _azar(21);
+  M.caja(sc, 6, 0.3, 50, 0, -0.15, -10, M.matTex(M.TEX.arena(), [3, 20], 0x5a5048));
+  for (let z = -34; z < 12; z += 1.6) for (const lado of [-1, 1]) {
+    const r = new THREE.Mesh(new THREE.DodecahedronGeometry(1.4 + az() * 0.6, 1), roca); r.position.set(lado * (3.0 + az() * 0.5), 1.0 + az() * 2.6, z); r.scale.set(1, 1.6, 1.2); r.receiveShadow = true; r.castShadow = true; sc.add(r);
+    const t = new THREE.Mesh(new THREE.DodecahedronGeometry(1.5 + az() * 0.5, 1), roca); t.position.set(lado * (1.2 + az()), 5.0 + az() * 0.4, z); t.receiveShadow = true; sc.add(t); }
+  const malla = M.mat(0x6a6a66, { metalness: 0.7, roughness: 0.5 });
+  for (let z = -34; z < 12; z += 2.2) { M.caja(sc, 4.8, 0.06, 0.06, 0, 4.15, z, malla, false); }
+  for (let x = -2.2; x <= 2.2; x += 0.55) M.caja(sc, 0.04, 0.04, 46, x, 4.12, -11, malla, false);
+  const tubo = new THREE.Mesh(new THREE.CylinderGeometry(0.4, 0.4, 46, 16), M.mat(0xc9b23a, { roughness: 0.7 })); tubo.rotation.x = Math.PI / 2; tubo.position.set(1.9, 3.6, -11); sc.add(tubo);
+  for (const z of [-24, -12, 2]) { M.caja(sc, 0.25, 0.12, 0.25, -2.1, 3.4, z, emis(0xffd890, 1.6), false); const l = new THREE.PointLight(0xffc880, 3 * luz, 9, 1.6); l.position.set(-2.0, 3.2, z); sc.add(l); }
+  const caidas = []; for (let i = 0; i < 26; i++) { const r = new THREE.Mesh(new THREE.DodecahedronGeometry(0.2 + az() * 0.7, 0), roca); r.castShadow = true;
+    r.userData = { x: (az() - 0.5) * 4.4, z: -3.2 + (az() - 0.5) * 2.4, d: az() * 0.8, v: 0.5 + az(), r: [az() * 4, az() * 4] }; r.visible = false; sc.add(r); caidas.push(r); }
+  const n0 = sc.children.length, polvo = nubePolvo(sc, 0, 3.0, -3.5, 26, 2.6);
+  sc.children.slice(n0).forEach(o => { if (o.material) { o.material.color.setHex(0x6a6052); } });
+  return { caerRocas(t) { caidas.forEach(r => { const u = r.userData, k = t - u.d; r.visible = k > 0; if (k <= 0) return;
+      const y = Math.max(0.25, 4.2 - 4.9 * k * k * u.v); r.position.set(u.x, y, u.z); r.rotation.set(u.r[0] * k, u.r[1] * k, 0); }); polvo.poner(t > 0 ? t * 0.9 : -1); } };
+}
+/** Canastilla metálica (jaula de 1,2 m de alto) en la punta del brazo de un manipulador telescópico. Base en (x,0,z). */
+export function canastilla(sc, x = 0, z = 0, { brazo = true } = {}) {
+  const g = new THREE.Group(), ac = M.mat(0xd9a521, { metalness: 0.4, roughness: 0.5 }), gr = M.mat(0x5d5f60, { metalness: 0.7, roughness: 0.4 });
+  M.caja(g, 2.2, 0.08, 1.4, 0, 0.04, 0, gr);
+  for (const [px, pz] of [[-1.05, -0.65], [1.05, -0.65], [-1.05, 0.65], [1.05, 0.65]]) M.caja(g, 0.07, 1.2, 0.07, px, 0.6, pz, ac);
+  for (const y of [0.6, 1.2]) { M.caja(g, 2.2, 0.06, 0.06, 0, y, -0.65, ac); M.caja(g, 2.2, 0.06, 0.06, 0, y, 0.65, ac); M.caja(g, 0.06, 0.06, 1.4, -1.05, y, 0, ac); M.caja(g, 0.06, 0.06, 1.4, 1.05, y, 0, ac); }
+  for (let i = -1; i <= 1; i += 0.25) { M.caja(g, 0.025, 1.15, 0.025, i, 0.6, -0.65, gr, false); }
+  if (brazo) { const b = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.5, 6), ac); b.position.set(0, 0.9, -3.6); b.rotation.x = -0.12; b.castShadow = true; g.add(b); }
+  g.position.set(x, 0, z); sc.add(g); return g;
+}
+/** Linterna de casco minero en una persona realista (casco amarillo + foco). l.seguir() después de setTime. */
+export function cascoMinero(sc, p, { color = 0xf2c230, potencia = 30 } = {}) {
+  const casco = new THREE.Mesh(new THREE.SphereGeometry(0.135, 20, 12, 0, Math.PI * 2, 0, Math.PI / 2), M.mat(color ?? 0xf2c230, { roughness: 0.4 }));
+  const ala = new THREE.Mesh(new THREE.CylinderGeometry(0.16, 0.16, 0.012, 24), M.mat(color ?? 0xf2c230, { roughness: 0.4 })); casco.add(ala);
+  const foco = new THREE.Mesh(new THREE.SphereGeometry(0.03, 10, 8), new THREE.MeshBasicMaterial({ color: 0xfff6d8 })); foco.position.set(0, 0.06, 0.13); casco.add(foco);
+  sc.add(casco); if (color === null) { casco.material.visible = false; ala.material.visible = false; }
+  const l = new THREE.SpotLight(0xfff1cf, potencia, 12, 0.42, 0.5, 1.4); l.castShadow = true; l.shadow.mapSize.set(512, 512); sc.add(l); const tg = new THREE.Object3D(); sc.add(tg); l.target = tg;
+  const haz = cono(sc, 0, 0, 0, 5, 1.0, 0xfff1cf, 0.035);
+  const v = new THREE.Vector3(), q = new THREE.Quaternion(), d = new THREE.Vector3();
+  return { seguir() { p.updateMatrixWorld(true); const h = p.getObjectByName('Bip01_Head') || p; h.getWorldPosition(v); h.getWorldQuaternion(q);
+    casco.position.copy(v).add(new THREE.Vector3(0, 0.1, 0)); d.set(0, 0, 1).applyQuaternion(p.quaternion); d.y = -0.2; d.normalize();
+    casco.rotation.set(0, p.rotation.y, 0); l.position.copy(casco.position).addScaledVector(d, 0.15); l.position.y += 0.06; tg.position.copy(l.position).addScaledVector(d, 8);
+    haz.position.copy(l.position); haz.lookAt(tg.position); haz.rotateX(-Math.PI / 2); } };
+}
+/** Estudio de radio de 1990 de noche: consola con perillas, micrófono en brazo, letrero ON AIR rojo, tablero de líneas telefónicas
+ *  con focos (tab.lineas(k, t, especial) → k = cuántas prenden). Locutor en (0, -0.9) mirando a +Z hacia la cámara. */
+export function estudioRadio(sc, { letrero = 'ON AIR' } = {}) {
+  sc.background = new THREE.Color(0x07070a); sc.add(new THREE.HemisphereLight(0x8090b0, 0x141018, 0.4));
+  const pared = M.matTex(M.TEX.concreto(), [4, 2], 0x3f3a48), piso = M.matTex(M.TEX.arena(), [4, 4], 0x3a3036);
+  M.caja(sc, 10, 0.1, 10, 0, -0.05, 0, piso); M.caja(sc, 10, 3.2, 0.2, 0, 1.6, -2.6, pared); M.caja(sc, 0.2, 3.2, 10, -3.6, 1.6, 0, pared);
+  for (let i = 0; i < 18; i++) for (let j = 0; j < 6; j++) M.caja(sc, 0.45, 0.45, 0.12, -4 + i * 0.5, 0.6 + j * 0.5, -2.45, M.mat(j % 2 === i % 2 ? 0x2a2630 : 0x34303c, { roughness: 1 }), false);
+  const cv = document.createElement('canvas'); cv.width = 256; cv.height = 96; const c2 = cv.getContext('2d');
+  c2.fillStyle = '#300'; c2.fillRect(0, 0, 256, 96); c2.fillStyle = '#ff3a2a'; c2.font = 'bold 56px Arial'; c2.textAlign = 'center'; c2.fillText(letrero, 128, 68);
+  const tl = new THREE.CanvasTexture(cv); tl.colorSpace = THREE.SRGBColorSpace;
+  const onair = new THREE.Mesh(new THREE.PlaneGeometry(1.0, 0.38), new THREE.MeshBasicMaterial({ map: tl })); onair.position.set(0.9, 2.55, -2.38); sc.add(onair);
+  const lr = new THREE.PointLight(0xff3020, 3, 4, 1.6); lr.position.set(0.9, 2.5, -2.0); sc.add(lr);
+  const consola = M.mat(0x2b2c30, { roughness: 0.5, metalness: 0.3 });
+  M.caja(sc, 2.6, 0.12, 1.0, 0, 0.82, -0.1, consola); M.caja(sc, 2.6, 0.8, 0.1, 0, 0.42, 0.38, consola);
+  const tabla = new THREE.Mesh(new THREE.BoxGeometry(2.3, 0.08, 0.55), M.mat(0x3a3c42, { metalness: 0.4 })); tabla.position.set(0, 0.92, -0.2); tabla.rotation.x = 0.25; sc.add(tabla);
+  for (let i = 0; i < 12; i++) { M.caja(sc, 0.05, 0.03, 0.18, -1.0 + i * 0.18, 0.98, -0.18 + (i % 3) * 0.02, M.mat(0xdcdcdc), false); M.caja(sc, 0.04, 0.04, 0.04, -1.0 + i * 0.18, 1.0, -0.36, emis(i % 4 ? 0x4cff7a : 0xffb030, 1.2), false); }
+  const brazoM = M.mat(0x161616, { metalness: 0.6 });
+  M.caja(sc, 0.04, 0.6, 0.04, -0.55, 1.2, -0.25, brazoM); const bm = M.caja(sc, 0.04, 0.04, 0.55, -0.42, 1.48, -0.5, brazoM); bm.rotation.y = -0.5;
+  const mic = new THREE.Mesh(new THREE.CylinderGeometry(0.06, 0.05, 0.22, 16), M.mat(0x222222, { metalness: 0.6, roughness: 0.4 })); mic.rotation.x = Math.PI / 2.4; mic.position.set(-0.25, 1.46, -0.72); sc.add(mic);
+  const lc = document.createElement('canvas'); lc.width = 512; lc.height = 256; const lg = lc.getContext('2d');
+  const lt = new THREE.CanvasTexture(lc); lt.colorSpace = THREE.SRGBColorSpace;
+  const panel = new THREE.Mesh(new THREE.PlaneGeometry(1.1, 0.55), new THREE.MeshBasicMaterial({ map: lt })); panel.position.set(-1.7, 1.75, -2.36); sc.add(panel);
+  const lp = new THREE.PointLight(0xff5a3a, 0, 3, 1.6); lp.position.set(-1.7, 1.75, -1.9); sc.add(lp);
+  for (const x of [-1.6, 1.6]) { const l = new THREE.SpotLight(0xffe6c0, 14, 7, 0.6, 0.7, 1.4); l.position.set(x, 3, 1.2); const tg = new THREE.Object3D(); tg.position.set(0, 1, -1); sc.add(tg); l.target = tg; l.castShadow = x < 0; sc.add(l); }
+  const telefono = new THREE.Group(); M.caja(telefono, 0.3, 0.1, 0.22, 0, 0, 0, M.mat(0xdedad0)); M.caja(telefono, 0.32, 0.06, 0.07, 0, 0.08, 0, M.mat(0xdedad0)); telefono.position.set(0.95, 0.93, -0.25); sc.add(telefono);
+  return { lineas(k, t, especial = null) {
+    lg.fillStyle = '#121214'; lg.fillRect(0, 0, 512, 256); lg.font = 'bold 26px Arial'; lg.fillStyle = '#bbb'; lg.fillText('LÍNEAS', 18, 34);
+    for (let i = 0; i < 10; i++) { const x = 40 + (i % 5) * 96, y = 100 + Math.floor(i / 5) * 90, on = i / 10 < k;
+      const parp = on && Math.sin(t * 14 + i * 2.3) > -0.2; lg.fillStyle = parp ? '#ff3a22' : '#401010'; lg.beginPath(); lg.arc(x, y, 26, 0, 6.3); lg.fill();
+      lg.fillStyle = '#888'; lg.font = '18px Arial'; lg.fillText(String(i + 1), x - 6, y + 50); }
+    if (especial) { lg.fillStyle = 'rgba(0,0,0,0.75)'; lg.fillRect(0, 0, 512, 256); lg.fillStyle = '#4cff7a'; lg.font = 'bold 92px Arial'; lg.textAlign = 'center'; lg.fillText(especial, 256, 160); lg.textAlign = 'left'; }
+    lt.needsUpdate = true; lp.intensity = k > 0 ? 2 + Math.sin(t * 14) : 0; } };
+}
+/** Deportivo de los 80 en cuña (tipo Porsche 944), frente hacia +X, rojo por defecto. */
+export function deportivo(sc, color = 0xc4161c) {
+  const g = new THREE.Group(), m = M.mat(color, { roughness: 0.22, metalness: 0.55 }), v = M.mat(0x3a4a5c, { roughness: 0.12, metalness: 0.3 });
+  const add = (geo, mm, x, y, z) => { const b = new THREE.Mesh(geo, mm); b.position.set(x, y, z); b.castShadow = true; b.receiveShadow = true; g.add(b); return b; };
+  add(new THREE.BoxGeometry(4.2, 0.55, 1.75), m, 0, 0.55, 0);
+  add(new THREE.BoxGeometry(1.7, 0.1, 1.7), m, 1.3, 0.86, 0);
+  add(new THREE.BoxGeometry(1.9, 0.5, 1.5), v, -0.45, 1.05, 0);
+  const vid = add(new THREE.BoxGeometry(0.9, 0.06, 1.5), v, 0.75, 1.02, 0); vid.rotation.z = -0.55;
+  add(new THREE.BoxGeometry(1.4, 0.06, 1.52), m, -0.5, 1.31, 0); const tr = add(new THREE.BoxGeometry(1.0, 0.06, 1.5), v, -1.4, 1.08, 0); tr.rotation.z = 0.4;
+  for (const [x, z] of [[1.35, 0.82], [1.35, -0.82], [-1.3, 0.82], [-1.3, -0.82]]) { const r = add(new THREE.CylinderGeometry(0.33, 0.33, 0.26, 22), M.mat(0x121212), x, 0.33, z); r.rotation.x = Math.PI / 2;
+    const l = add(new THREE.CylinderGeometry(0.2, 0.2, 0.27, 12), M.mat(0x9a9a9a, { metalness: 0.9, roughness: 0.3 }), x, 0.33, z); l.rotation.x = Math.PI / 2; }
+  add(new THREE.BoxGeometry(0.05, 0.12, 1.5), emis(0xff2a1a, 1.5), -2.11, 0.68, 0); add(new THREE.BoxGeometry(0.05, 0.1, 0.35), emis(0xfff4d0, 2), 2.11, 0.62, 0.6); add(new THREE.BoxGeometry(0.05, 0.1, 0.35), emis(0xfff4d0, 2), 2.11, 0.62, -0.6);
+  sc.add(g); return g;
+}
+/** Pasillo de supermercado (luz de tubo blanca): estantes con cajas de colores a ambos lados de X=±1.6, a lo largo de Z. */
+export function supermercado(sc) {
+  sc.background = new THREE.Color(0xdfe3e6); sc.add(new THREE.HemisphereLight(0xffffff, 0x8a8a84, 1.1));
+  M.caja(sc, 30, 0.1, 40, 0, -0.05, 0, M.matTex(M.TEX.concreto(), [8, 10], 0xd8d4cc)); M.caja(sc, 30, 0.1, 40, 0, 3.6, 0, M.mat(0xe8e8e4));
+  const az = _azar(8), cols = [0xd12b2b, 0xf0b417, 0x2a6fd1, 0x2fa04a, 0xf07a1a, 0xffffff, 0x8a3fb0];
+  for (const x of [-1.8, 1.8]) { M.caja(sc, 0.3, 2.4, 24, x + Math.sign(x) * 0.3, 1.2, -6, M.mat(0xc7c9cc, { metalness: 0.3 }));
+    for (let n = 0; n < 5; n++) M.caja(sc, 0.5, 0.04, 24, x + Math.sign(x) * 0.05, 0.28 + n * 0.55, -6, M.mat(0xb8bcc0, { metalness: 0.4 }), false);
+    for (let n = 0; n < 4; n++) for (let z = -17.5; z < 5.5; z += 0.32) { const h = 0.22 + az() * 0.18;
+      M.caja(sc, 0.25, h, 0.28, x, 0.3 + n * 0.55 + h / 2, z, M.mat(cols[Math.floor(az() * cols.length)], { roughness: 0.6 }), false); } }
+  for (let z = -16; z < 6; z += 4) { M.caja(sc, 0.3, 0.05, 2.4, 0, 3.52, z, emis(0xffffff, 2), false); const l = new THREE.PointLight(0xffffff, 6, 8, 1.4); l.position.set(0, 3.2, z); sc.add(l); }
+  const carrito = new THREE.Group(), ac = M.mat(0xb0b4b8, { metalness: 0.8, roughness: 0.3 });
+  M.caja(carrito, 0.55, 0.45, 0.85, 0, 0.75, 0, M.mat(0x9aa0a6, { metalness: 0.7, roughness: 0.35, transparent: true, opacity: 0.7 })); M.caja(carrito, 0.04, 0.6, 0.04, -0.25, 0.35, 0.35, ac); M.caja(carrito, 0.04, 0.6, 0.04, 0.25, 0.35, 0.35, ac);
+  M.caja(carrito, 0.04, 0.6, 0.04, -0.25, 0.35, -0.35, ac); M.caja(carrito, 0.04, 0.6, 0.04, 0.25, 0.35, -0.35, ac); M.caja(carrito, 0.6, 0.04, 0.04, 0, 1.1, 0.5, ac);
+  sc.add(carrito); return { carrito };
+}
