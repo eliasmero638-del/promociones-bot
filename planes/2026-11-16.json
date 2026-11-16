@@ -1,0 +1,722 @@
+{
+ "fecha": "2026-11-16",
+ "modo": "claude",
+ "videos": [
+  {
+   "eid": "fb1",
+   "tipo": "fb",
+   "hora_fb": "14:00",
+   "articulo": "Incidente ovni de La Joya (Arequipa, 1980)",
+   "fuente": "https://es.wikipedia.org/wiki/Incidente_ovni_de_la_Joya_-_Arequipa",
+   "titulo_video": " ",
+   "titulo_youtube": "Le disparó a un ovni… y el ovni no cayó",
+   "titulos_opciones": [
+    "Le disparó a un ovni… y el ovni no cayó",
+    "El único piloto del mundo que le DISPARÓ a un ovni",
+    "Perú, 1980: un caza persiguió a un objeto plateado por 20 minutos",
+    "Le disparó 64 ráfagas… y el objeto ni se inmutó 🛸",
+    "¿Qué era lo que flotaba sobre la base de La Joya?",
+    "1.800 personas lo vieron… y el radar no detectó NADA",
+    "El ovni lo esperaba cada vez que iba a disparar"
+   ],
+   "descripcion_youtube": "11 de abril de 1980, base aérea de La Joya, Arequipa (Perú). Un objeto plateado flota sobre la base.\nUn piloto de 23 años despega en su Sukhoi 22 para derribarlo… y lo que pasó sigue sin explicación.\n#ovnis #misterio #historiasreales #ridmer",
+   "etiquetas": [
+    "ovni",
+    "La Joya",
+    "Arequipa",
+    "Perú",
+    "Oscar Santa María",
+    "misterio",
+    "ridmer"
+   ],
+   "texto_facebook": "Le disparó 64 ráfagas a un ovni sobre Arequipa… y el objeto ni se inmutó 🛸 #Ovnis #Misterio #HistoriasReales",
+   "texto_tiktok": "El único piloto que le disparó a un ovni 🛸 Perú, 1980: 64 ráfagas, 20 minutos de persecución… y el radar no vio nada. #ovnis #misterio #peru #arequipa #historiasreales #ridmer",
+   "miniatura": {
+    "texto": "LE DISPARÓ A UN OVNI"
+   },
+   "gancho": 1,
+   "musica": "misterio",
+   "segmentos": [
+    {
+     "texto": "Le disparó a un ovni.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "11 DE ABRIL 1980",
+      "sub": "Arequipa, Perú"
+     }
+    },
+    {
+     "texto": "Once de abril de mil novecientos ochenta. Base aérea de La Joya, Perú.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=oSiIkg8DUIM",
+      "desde": 20,
+      "dur": 6,
+      "buscar_video": [
+       "Sukhoi Su-22",
+       "fighter jet takeoff",
+       "jet fighter flying",
+       "Arequipa"
+      ]
+     }
+    },
+    {
+     "texto": "Siete de la mañana. Cientos de militares ven algo brillante, quieto en el cielo.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=OTEi6k-4roo",
+      "desde": 40,
+      "dur": 6,
+      "buscar_video": [
+       "Sukhoi Su-22",
+       "fighter jet takeoff",
+       "jet fighter flying",
+       "Arequipa"
+      ]
+     }
+    },
+    {
+     "texto": "Le ordenan al teniente Óscar Santa María, de veintitrés años, que lo derribe.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Oscar Santa María Huertas",
+       "Óscar Santa María Huertas piloto"
+      ]
+     }
+    },
+    {
+     "texto": "Despega en su Sukhoi veintidós, un caza de última generación.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Se acerca y le dispara sesenta y cuatro ráfagas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Nada. El objeto no se rompe y empieza a subir.",
+     "escena": {
+      "tipo": "foto",
+      "img": 10
+     }
+    },
+    {
+     "texto": "Lo persigue hasta casi diecinueve mil metros de altura.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "19.000 METROS",
+      "sub": "sobre Arequipa"
+     }
+    },
+    {
+     "texto": "Cada vez que lo tenía en la mira, se frenaba de golpe y tenía que esquivarlo.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=SS0Ws1WSuyI",
+      "desde": 30,
+      "dur": 6,
+      "buscar_video": [
+       "Sukhoi Su-22",
+       "fighter jet takeoff",
+       "jet fighter flying",
+       "Arequipa"
+      ]
+     }
+    },
+    {
+     "texto": "A cien metros lo vio: plateado, con una cúpula. Sin alas, sin ventanas, sin motores.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "El radar nunca lo detectó. Casi sin combustible, tuvo que volver a la base.",
+     "escena": {
+      "tipo": "foto",
+      "img": 9
+     }
+    },
+    {
+     "texto": "Hasta hoy nadie sabe qué era. Comparte esta historia y sigue a Ridmer para más.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=oSiIkg8DUIM",
+      "desde": 90,
+      "dur": 6,
+      "buscar_video": [
+       "Sukhoi Su-22",
+       "fighter jet takeoff",
+       "jet fighter flying",
+       "Arequipa"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb1s",
+   "tipo": "short",
+   "encargo": "fb1",
+   "hora_youtube": "14:00",
+   "articulo": "Incidente ovni de La Joya (Arequipa, 1980)",
+   "fuente": "https://es.wikipedia.org/wiki/Incidente_ovni_de_la_Joya_-_Arequipa",
+   "titulo_video": " ",
+   "titulo_youtube": "Le disparó a un ovni… y el ovni no cayó #shorts",
+   "titulos_opciones": [
+    "Le disparó a un ovni… y el ovni no cayó",
+    "El único piloto del mundo que le DISPARÓ a un ovni",
+    "Perú, 1980: un caza persiguió a un objeto plateado por 20 minutos",
+    "Le disparó 64 ráfagas… y el objeto ni se inmutó 🛸",
+    "¿Qué era lo que flotaba sobre la base de La Joya?",
+    "1.800 personas lo vieron… y el radar no detectó NADA",
+    "El ovni lo esperaba cada vez que iba a disparar"
+   ],
+   "descripcion_youtube": "11 de abril de 1980, base aérea de La Joya, Arequipa (Perú). Un objeto plateado flota sobre la base.\nUn piloto de 23 años despega en su Sukhoi 22 para derribarlo… y lo que pasó sigue sin explicación.\n#ovnis #misterio #historiasreales #ridmer",
+   "etiquetas": [
+    "ovni",
+    "La Joya",
+    "Arequipa",
+    "Perú",
+    "Oscar Santa María",
+    "misterio",
+    "ridmer"
+   ],
+   "miniatura": {
+    "texto": "LE DISPARÓ A UN OVNI"
+   },
+   "gancho": 1,
+   "musica": "misterio",
+   "segmentos": [
+    {
+     "texto": "Le disparó a un ovni.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "11 DE ABRIL 1980",
+      "sub": "Arequipa, Perú"
+     }
+    },
+    {
+     "texto": "Perú, mil novecientos ochenta. Algo brillante flota quieto sobre la base aérea de La Joya.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=oSiIkg8DUIM",
+      "desde": 20,
+      "dur": 6,
+      "buscar_video": [
+       "Sukhoi Su-22",
+       "fighter jet takeoff",
+       "jet fighter flying",
+       "Arequipa"
+      ]
+     }
+    },
+    {
+     "texto": "Un piloto de veintitrés años despega en su Sukhoi y le dispara sesenta y cuatro ráfagas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Nada. El objeto sube, y cada vez que lo tiene en la mira, se frena de golpe.",
+     "escena": {
+      "tipo": "foto",
+      "img": 10
+     }
+    },
+    {
+     "texto": "A cien metros lo ve: plateado, con una cúpula, sin alas ni motores.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "El radar nunca lo detectó. Sin combustible, tuvo que volver.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=SS0Ws1WSuyI",
+      "desde": 30,
+      "dur": 6,
+      "buscar_video": [
+       "Sukhoi Su-22",
+       "fighter jet takeoff",
+       "jet fighter flying",
+       "Arequipa"
+      ]
+     }
+    },
+    {
+     "texto": "Nadie sabe qué era. Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=oSiIkg8DUIM",
+      "desde": 90,
+      "dur": 6,
+      "buscar_video": [
+       "Sukhoi Su-22",
+       "fighter jet takeoff",
+       "jet fighter flying",
+       "Arequipa"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb2",
+   "tipo": "fb",
+   "hora_fb": "18:30",
+   "articulo": "Kevin Poulsen y el Porsche de KIIS-FM (1990)",
+   "fuente": "https://en.wikipedia.org/wiki/Kevin_Poulsen",
+   "nota": "Prueba hackers 11-17 nov. Encargo fb2 (desastre minero de Springhill, muchas muertes) reemplazado por historia de hackers. Sin nada técnico copiable.",
+   "titulo_video": " ",
+   "titulo_youtube": "Hackeó una radio para ganarse un PORSCHE… y el FBI lo buscaba",
+   "titulos_opciones": [
+    "Hackeó una radio para ganarse un PORSCHE… y el FBI lo buscaba",
+    "Bloqueó los teléfonos de una radio… y fue la llamada número 102",
+    "Ganó 2 Porsches y viajes a Hawái sin tener suerte",
+    "¿Cómo un muchacho de 24 años 'ganaba' todos los concursos de radio?",
+    "El hacker que se ganaba los concursos… hasta que lo reconocieron en el súper 🛒",
+    "Salió en la tele como prófugo… y unos cajeros lo delataron",
+    "De hacker buscado por el FBI a periodista famoso"
+   ],
+   "descripcion_youtube": "Los Ángeles, 1990. Una radio regala un Porsche a la llamada número 102.\nUn muchacho de 24 años ya tenía el control de los teléfonos… y el FBI lo buscaba.\n#hackers #historiasreales #ridmer",
+   "etiquetas": [
+    "Kevin Poulsen",
+    "Dark Dante",
+    "hackers",
+    "Porsche",
+    "KIIS FM",
+    "historias reales",
+    "ridmer"
+   ],
+   "texto_facebook": "Hackeó los teléfonos de una radio para ganarse un Porsche… y el FBI ya lo estaba buscando 🚗 #Hackers #HistoriasReales #Ridmer",
+   "texto_tiktok": "Hackeó una radio para ganarse un Porsche 🚗 Bloqueó las líneas y su llamada fue la número 102… hasta que unos cajeros lo reconocieron. #hackers #historiasreales #datoscuriosos #porsche #fbi #ridmer",
+   "miniatura": {
+    "texto": "SE GANÓ UN PORSCHE"
+   },
+   "gancho": 1,
+   "musica": "tension",
+   "segmentos": [
+    {
+     "texto": "Hackeó una radio para ganarse un Porsche.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "1 DE JUNIO 1990",
+      "sub": "Los Ángeles, EE. UU."
+     }
+    },
+    {
+     "texto": "Los Ángeles, mil novecientos noventa.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Los Angeles 1990",
+       "Los Angeles skyline night"
+      ]
+     }
+    },
+    {
+     "texto": "La radio KIIS FM regala un Porsche a la persona que llame en el puesto ciento dos.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Porsche 944",
+       "Porsche 944 S2"
+      ]
+     }
+    },
+    {
+     "texto": "Miles de personas marcan al mismo tiempo.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=X3yGsQtoRo0",
+      "desde": 15,
+      "dur": 6,
+      "buscar_video": [
+       "Porsche 944",
+       "rotary telephone",
+       "radio studio",
+       "telephone switchboard"
+      ]
+     }
+    },
+    {
+     "texto": "Pero un muchacho de veinticuatro años, Kevin Poulsen, ya lo tenía todo controlado.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Kevin Poulsen",
+       "Kevin Poulsen hacker"
+      ]
+     }
+    },
+    {
+     "texto": "Conocía tan bien el sistema telefónico, que tomó el control de las líneas de la radio.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "DARK DANTE",
+      "sub": "así le decían"
+     }
+    },
+    {
+     "texto": "Solo su llamada entró. Fue la número ciento dos. Ganó el Porsche.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "LLAMADA 102",
+      "sub": "KIIS FM"
+     }
+    },
+    {
+     "texto": "Con el mismo truco ganó otro Porsche, viajes a Hawái y miles de dólares.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Porsche 944",
+       "Hawaii beach"
+      ]
+     }
+    },
+    {
+     "texto": "Pero el FBI ya lo buscaba por meterse en sistemas del gobierno. Su cara salió en la televisión.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=X3yGsQtoRo0",
+      "desde": 60,
+      "dur": 6,
+      "buscar_video": [
+       "Porsche 944",
+       "rotary telephone",
+       "radio studio",
+       "telephone switchboard"
+      ]
+     }
+    },
+    {
+     "texto": "En abril de mil novecientos noventa y uno, empleados de un supermercado lo reconocieron.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "ABRIL 1991",
+      "sub": "Sherman Oaks, Los Ángeles"
+     }
+    },
+    {
+     "texto": "Lo condenaron a cincuenta y un meses de prisión.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "51 MESES",
+      "sub": "de prisión"
+     }
+    },
+    {
+     "texto": "Al salir se volvió periodista de tecnología. Comparte esta historia y sigue a Ridmer para más.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=X3yGsQtoRo0",
+      "desde": 120,
+      "dur": 6,
+      "buscar_video": [
+       "Porsche 944",
+       "rotary telephone",
+       "radio studio",
+       "telephone switchboard"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb2s",
+   "tipo": "short",
+   "encargo": "fb2",
+   "hora_youtube": "19:00",
+   "articulo": "Kevin Poulsen y el Porsche de KIIS-FM (1990)",
+   "fuente": "https://en.wikipedia.org/wiki/Kevin_Poulsen",
+   "titulo_video": " ",
+   "titulo_youtube": "Hackeó una radio para ganarse un Porsche #shorts",
+   "titulos_opciones": [
+    "Hackeó una radio para ganarse un PORSCHE… y el FBI lo buscaba",
+    "Bloqueó los teléfonos de una radio… y fue la llamada número 102",
+    "Ganó 2 Porsches y viajes a Hawái sin tener suerte",
+    "¿Cómo un muchacho de 24 años 'ganaba' todos los concursos de radio?",
+    "El hacker que se ganaba los concursos… hasta que lo reconocieron en el súper 🛒",
+    "Salió en la tele como prófugo… y unos cajeros lo delataron",
+    "De hacker buscado por el FBI a periodista famoso"
+   ],
+   "descripcion_youtube": "Los Ángeles, 1990. Una radio regala un Porsche a la llamada número 102.\nUn muchacho de 24 años ya tenía el control de los teléfonos… y el FBI lo buscaba.\n#hackers #historiasreales #ridmer",
+   "etiquetas": [
+    "Kevin Poulsen",
+    "Dark Dante",
+    "hackers",
+    "Porsche",
+    "KIIS FM",
+    "historias reales",
+    "ridmer"
+   ],
+   "miniatura": {
+    "texto": "SE GANÓ UN PORSCHE"
+   },
+   "gancho": 1,
+   "musica": "tension",
+   "segmentos": [
+    {
+     "texto": "Hackeó una radio para ganarse un Porsche.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "1 DE JUNIO 1990",
+      "sub": "Los Ángeles, EE. UU."
+     }
+    },
+    {
+     "texto": "Mil novecientos noventa. Una radio de Los Ángeles regala un Porsche a la llamada número ciento dos.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Porsche 944",
+       "Porsche 944 S2"
+      ]
+     }
+    },
+    {
+     "texto": "Kevin Poulsen, de veinticuatro años, tomó el control de las líneas de la radio.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Kevin Poulsen",
+       "Kevin Poulsen hacker"
+      ]
+     }
+    },
+    {
+     "texto": "Solo su llamada entró. Ganó el Porsche.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "LLAMADA 102",
+      "sub": "KIIS FM"
+     }
+    },
+    {
+     "texto": "Pero el FBI ya lo buscaba. Su cara salió en la televisión, y unos empleados de un supermercado lo reconocieron.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=X3yGsQtoRo0",
+      "desde": 60,
+      "dur": 6,
+      "buscar_video": [
+       "Porsche 944",
+       "rotary telephone",
+       "radio studio",
+       "telephone switchboard"
+      ]
+     }
+    },
+    {
+     "texto": "Pasó más de cuatro años preso, y hoy es periodista. Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=X3yGsQtoRo0",
+      "desde": 120,
+      "dur": 6,
+      "buscar_video": [
+       "Porsche 944",
+       "rotary telephone",
+       "radio studio",
+       "telephone switchboard"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb3",
+   "tipo": "fb",
+   "hora_fb": "21:00",
+   "articulo": "Derrumbe de la mina de Beaconsfield (2006)",
+   "fuente": "https://en.wikipedia.org/wiki/Beaconsfield_Mine_collapse",
+   "titulo_video": " ",
+   "titulo_youtube": "Atrapados a casi 1 km bajo tierra… y salieron caminando",
+   "titulos_opciones": [
+    "Atrapados a casi 1 km bajo tierra… y salieron caminando",
+    "14 noches enterrados en una jaula de metal",
+    "Una roca les cayó encima… y les SALVÓ la vida",
+    "Todos los creían muertos… al sexto día gritaron: '¡Estamos aquí!'",
+    "Les mandaron comida e iPods por un tubo de 9 centímetros",
+    "¿Cómo sobrevivieron 321 horas bajo tierra?",
+    "Salieron de la mina y marcaron su ficha como al final de un turno ⛏️"
+   ],
+   "descripcion_youtube": "Tasmania, Australia, abril de 2006. Un sismo derrumba la mina de oro de Beaconsfield.\nDos mineros quedan atrapados en una canastilla de metal a casi un kilómetro bajo tierra… durante 14 noches.\n#supervivencia #historiasreales #ridmer",
+   "etiquetas": [
+    "Beaconsfield",
+    "mineros atrapados",
+    "supervivencia",
+    "Tasmania",
+    "rescate",
+    "historias reales",
+    "ridmer"
+   ],
+   "texto_facebook": "Atrapados a casi un kilómetro bajo tierra durante 14 noches… y salieron caminando ⛏️ #Supervivencia #HistoriasReales #Ridmer",
+   "texto_tiktok": "Atrapados a casi 1 km bajo tierra ⛏️ Una roca cayó sobre su jaula de metal… y les salvó la vida. 14 noches después salieron caminando. #supervivencia #rescate #mineros #historiasreales #australia #ridmer",
+   "miniatura": {
+    "texto": "14 NOCHES BAJO TIERRA"
+   },
+   "gancho": 1,
+   "musica": "tension",
+   "segmentos": [
+    {
+     "texto": "Atrapados a casi un kilómetro bajo tierra.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "25 DE ABRIL 2006",
+      "sub": "Tasmania, Australia"
+     }
+    },
+    {
+     "texto": "Abril de dos mil seis. Mina de oro de Beaconsfield, Tasmania, Australia.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "De noche, un pequeño sismo sacude la mina y el techo se viene abajo.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=-tXIza7TkIo",
+      "desde": 20,
+      "dur": 6,
+      "buscar_video": [
+       "gold mine Tasmania",
+       "underground mine tunnel",
+       "mine rescue",
+       "miners helmet lamp"
+      ]
+     }
+    },
+    {
+     "texto": "Larry Knight muere. Todd Russell y Brant Webb quedan atrapados en una canastilla de metal.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Todd Russell Brant Webb",
+       "Beaconsfield miners"
+      ]
+     }
+    },
+    {
+     "texto": "Una roca enorme cae encima y forma un techo que les salva la vida.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "925 METROS",
+      "sub": "bajo tierra"
+     }
+    },
+    {
+     "texto": "Afuera, muchos los creen muertos. Pasan cinco días.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Al sexto día, los rescatistas gritan… y una voz responde: ¡Estamos aquí!",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=rRpZ658Uvx4",
+      "desde": 15,
+      "dur": 6,
+      "buscar_video": [
+       "gold mine Tasmania",
+       "underground mine tunnel",
+       "mine rescue",
+       "miners helmet lamp"
+      ]
+     }
+    },
+    {
+     "texto": "Perforan un agujero de nueve centímetros. Por un tubo les mandan agua, comida y hasta iPods.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "9 CENTÍMETROS",
+      "sub": "un tubo de vida"
+     }
+    },
+    {
+     "texto": "La roca era durísima. El último tramo lo cavaron casi a mano, para evitar otro derrumbe.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=tQdr6uY6pSI",
+      "desde": 30,
+      "dur": 6,
+      "buscar_video": [
+       "gold mine Tasmania",
+       "underground mine tunnel",
+       "mine rescue",
+       "miners helmet lamp"
+      ]
+     }
+    },
+    {
+     "texto": "Nueve de mayo: salen caminando por su propio pie.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=tQdr6uY6pSI",
+      "desde": 70,
+      "dur": 6,
+      "buscar_video": [
+       "gold mine Tasmania",
+       "underground mine tunnel",
+       "mine rescue",
+       "miners helmet lamp"
+      ]
+     }
+    },
+    {
+     "texto": "Catorce noches bajo tierra. Al salir, movieron sus fichas a 'a salvo', como al terminar un turno.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Comparte esta historia y sigue a Ridmer para más.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=-tXIza7TkIo",
+      "desde": 60,
+      "dur": 6,
+      "buscar_video": [
+       "gold mine Tasmania",
+       "underground mine tunnel",
+       "mine rescue",
+       "miners helmet lamp"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb1f",
+   "tipo": "foto",
+   "omitir": true,
+   "hora_foto": "15:30",
+   "titulo_youtube": "El único piloto que le disparó a un ovni… y el objeto ni se inmutó",
+   "texto_foto": "Le disparó 64 ráfagas a un ovni… y el objeto siguió como si nada.\n\nArequipa, Perú, 11 de abril de 1980. A las siete de la mañana, cientos de militares de la base aérea de La Joya vieron algo brillante, quieto en el cielo, como un globo.\n\nLe ordenaron al teniente Óscar Santa María, de 23 años, que lo derribara. Despegó en su Sukhoi 22, uno de los cazas más modernos de su época, y le disparó. Nada. El objeto empezó a subir.\n\nLo persiguió hasta casi 19.000 metros de altura. Cada vez que lo tenía en la mira, el objeto se frenaba de golpe y él tenía que esquivarlo para no chocar.\n\nA unos cien metros lo vio bien: plateado, de unos diez metros, con una cúpula arriba. Sin alas, sin ventanas, sin motores. El radar nunca lo detectó. Casi sin combustible, tuvo que volver a la base.\n\nHasta hoy nadie sabe qué era.\n\n¿Tú qué crees que era?\n#Ovnis #Misterio #HistoriasReales"
+  },
+  {
+   "eid": "fb2f",
+   "tipo": "foto",
+   "omitir": true,
+   "hora_foto": "20:00",
+   "titulo_youtube": "Atrapados a casi un kilómetro bajo tierra… y salieron caminando 14 noches después",
+   "texto_foto": "Una roca les cayó encima… y eso les salvó la vida.\n\nTasmania, Australia, 25 de abril de 2006. A las 9:26 de la noche, un pequeño sismo sacudió la mina de oro de Beaconsfield y el techo se vino abajo, a casi un kilómetro bajo tierra.\n\nLarry Knight murió. Todd Russell y Brant Webb quedaron atrapados dentro de una canastilla de metal. Una roca enorme cayó encima y formó un techo que evitó que los aplastaran.\n\nAfuera, muchos los creían muertos. Al sexto día, los rescatistas gritaron… y escucharon: \"¡Estamos aquí!\".\n\nPerforaron un agujero de unos 9 centímetros y por un tubo les mandaron agua, comida, ropa seca… y hasta iPods con música. La roca era tan dura que el último tramo del túnel lo cavaron casi a mano, para no provocar otro derrumbe.\n\nEl 9 de mayo, antes del amanecer, salieron caminando por su propio pie. Antes de irse, pusieron sus fichas en \"a salvo\", como al terminar un turno.\n\n¿Tú habrías aguantado 14 noches ahí abajo?\n#Supervivencia #HistoriasReales #Ridmer"
+  }
+ ]
+}
