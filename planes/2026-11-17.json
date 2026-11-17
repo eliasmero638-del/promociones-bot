@@ -1,0 +1,1819 @@
+{
+ "fecha": "2026-11-17",
+ "modo": "claude",
+ "videos": [
+  {
+   "eid": "fb1",
+   "tipo": "fb",
+   "encargo": "fb2",
+   "hora_fb": "14:00",
+   "titulo_youtube": "Un DIAMANTE de fuego bajó del cielo… y los dejó enfermos",
+   "texto_facebook": "Vieron un objeto que soltaba llamas sobre la carretera… y luego llegaron 23 helicópteros militares 🛸 #Ovnis #Misterio #HistoriasReales",
+   "texto_tiktok": "Un diamante de fuego bajó del cielo 🛸 Texas, 1980: dos mujeres y un niño lo vieron soltar llamas, el auto quemaba al tocarlo y 23 helicópteros militares lo rodearon. Esa noche los tres enfermaron. #ovnis #misterio #historiasreales #texas #datoscuriosos #ridmer",
+   "articulo": "Incidente ovni Cash-Landrum",
+   "fuente": "https://es.wikipedia.org/wiki/Incidente_ovni_Cash-Landrum",
+   "titulo_video": " ",
+   "titulos_opciones": [
+    "Un DIAMANTE de fuego bajó del cielo… y los dejó enfermos",
+    "Vieron un ovni que soltaba llamas… y 23 helicópteros militares lo rodearon",
+    "Texas, 1980: dos mujeres y un niño vieron algo que el gobierno nunca explicó",
+    "El auto quemaba al tocarlo… ¿qué flotaba sobre esa carretera?",
+    "Demandaron al gobierno por 20 MILLONES… por un ovni 🛸",
+    "Esa noche los tres enfermaron… y nadie quiso decirles qué vieron",
+    "¿De quién eran los 23 helicópteros que siguieron al objeto?"
+   ],
+   "descripcion_youtube": "29 de diciembre de 1980, una carretera rodeada de bosque en Texas. Dos mujeres y un niño de 7 años ven un objeto enorme en forma de diamante que suelta llamas.\nDespués llegan 23 helicópteros militares… y esa noche los tres enferman.\n#ovnis #misterio #historiasreales #ridmer",
+   "etiquetas": [
+    "Cash-Landrum",
+    "ovni",
+    "Texas",
+    "Betty Cash",
+    "Vickie Landrum",
+    "helicópteros Chinook",
+    "misterio",
+    "ridmer"
+   ],
+   "miniatura": {
+    "texto": "DIAMANTE DE FUEGO"
+   },
+   "gancho": 1,
+   "musica": "misterio",
+   "segmentos": [
+    {
+     "texto": "Un diamante de fuego bajó del cielo.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "29 DIC 1980",
+      "sub": "Texas, EE. UU."
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Diciembre de mil novecientos ochenta. Una carretera de bosque en Texas.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Texas pine forest road",
+       "East Texas forest highway"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Betty Cash, Vickie Landrum y su nieto de siete años vuelven a casa.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=UJdhk3_DurE",
+      "desde": 20,
+      "dur": 6,
+      "buscar_video": [
+       "Chinook helicopter",
+       "forest road night"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Sobre los árboles ven una luz. Cada vez más cerca.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "UNA LUZ",
+      "sub": "sobre los árboles"
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Era un objeto enorme, con forma de diamante, del tamaño del tanque de agua del pueblo.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Cash-Landrum UFO",
+       "Cash Landrum incident drawing"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Por debajo soltaba llamas. Y cada vez que lanzaba fuego, subía.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Betty se baja a mirarlo. El auto quema tanto que abre la puerta con su abrigo.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "EL CALOR",
+      "sub": "el auto quemaba"
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Entonces llegan helicópteros militares. Cuentan veintitrés. Y rodean al objeto.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "23 HELICÓPTEROS",
+      "sub": "doble hélice, tipo Chinook"
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Esa noche los tres enferman: vómitos, ardor en los ojos, la piel quemada.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=UJdhk3_DurE",
+      "desde": 70,
+      "dur": 6,
+      "buscar_video": [
+       "Chinook helicopter"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Betty termina en el hospital, con ampollas y perdiendo mechones de pelo.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Betty Cash UFO",
+       "Betty Cash Vickie Landrum"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Demandaron al gobierno por veinte millones de dólares. El gobierno dijo que no tenía nada parecido.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "20 MILLONES",
+      "sub": "demanda al gobierno"
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Hasta hoy nadie sabe qué era. Comparte esta historia y sigue a Ridmer para más.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=TiYo1kdnk8I",
+      "desde": 60,
+      "dur": 6,
+      "buscar_video": [
+       "Chinook helicopter flying",
+       "CH-47 Chinook"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    }
+   ]
+  },
+  {
+   "eid": "fb1s",
+   "tipo": "short",
+   "encargo": "fb2",
+   "hora_youtube": "14:00",
+   "titulo_youtube": "Un diamante de fuego bajó del cielo… #shorts",
+   "articulo": "Incidente ovni Cash-Landrum",
+   "fuente": "https://es.wikipedia.org/wiki/Incidente_ovni_Cash-Landrum",
+   "titulo_video": " ",
+   "titulos_opciones": [
+    "Un DIAMANTE de fuego bajó del cielo… y los dejó enfermos",
+    "Vieron un ovni que soltaba llamas… y 23 helicópteros militares lo rodearon",
+    "Texas, 1980: dos mujeres y un niño vieron algo que el gobierno nunca explicó",
+    "El auto quemaba al tocarlo… ¿qué flotaba sobre esa carretera?",
+    "Demandaron al gobierno por 20 MILLONES… por un ovni 🛸",
+    "Esa noche los tres enfermaron… y nadie quiso decirles qué vieron",
+    "¿De quién eran los 23 helicópteros que siguieron al objeto?"
+   ],
+   "descripcion_youtube": "29 de diciembre de 1980, una carretera rodeada de bosque en Texas. Dos mujeres y un niño de 7 años ven un objeto enorme en forma de diamante que suelta llamas.\nDespués llegan 23 helicópteros militares… y esa noche los tres enferman.\n#ovnis #misterio #historiasreales #ridmer",
+   "etiquetas": [
+    "Cash-Landrum",
+    "ovni",
+    "Texas",
+    "Betty Cash",
+    "Vickie Landrum",
+    "helicópteros Chinook",
+    "misterio",
+    "ridmer"
+   ],
+   "miniatura": {
+    "texto": "DIAMANTE DE FUEGO"
+   },
+   "gancho": 1,
+   "musica": "misterio",
+   "segmentos": [
+    {
+     "texto": "Un diamante de fuego bajó del cielo.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "29 DIC 1980",
+      "sub": "Texas, EE. UU."
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Texas, mil novecientos ochenta. Dos mujeres y un niño de siete años vuelven a casa de noche.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=UJdhk3_DurE",
+      "desde": 20,
+      "dur": 6,
+      "buscar_video": [
+       "forest road night"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Sobre los árboles flota un objeto enorme que suelta llamas.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Cash-Landrum UFO",
+       "Cash Landrum incident drawing"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "El calor es tan fuerte que el auto quema al tocarlo.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Luego llegan veintitrés helicópteros militares y lo rodean.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "23 HELICÓPTEROS",
+      "sub": "tipo Chinook"
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Esa noche los tres enferman: vómitos, ampollas, pérdida de cabello.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=UJdhk3_DurE",
+      "desde": 70,
+      "dur": 6,
+      "buscar_video": [
+       "Chinook helicopter"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Demandaron al gobierno, pero dijo que no tenía nada así. Hasta hoy nadie sabe qué era. Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Betty Cash UFO",
+       "Betty Cash Vickie Landrum"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    }
+   ]
+  },
+  {
+   "eid": "fb2",
+   "tipo": "fb",
+   "hora_fb": "18:30",
+   "titulo_youtube": "Un estudiante de 23 años APAGÓ internet… sin querer",
+   "texto_facebook": "Un estudiante de 23 años soltó un pequeño programa… y en pocas horas congeló miles de computadoras 💻 #Hackers #HistoriasReales #DatosCuriosos",
+   "texto_tiktok": "Un estudiante apagó internet 💻 1988: Robert Morris, de 23 años, soltó un programa para medir internet… un error congeló 6.000 computadoras. Y su papá trabajaba en la NSA. #hackers #historiasreales #datoscuriosos #internet #tecnologia #ridmer",
+   "articulo": "Gusano Morris (1988)",
+   "fuente": "https://es.wikipedia.org/wiki/Gusano_Morris",
+   "nota": "Prueba hackers 11-17 nov. Historia propia (no hay encargo). Sin nada técnico copiable.",
+   "titulo_video": " ",
+   "titulos_opciones": [
+    "Un estudiante de 23 años APAGÓ internet… sin querer",
+    "1988: un programa de un estudiante congeló 6.000 computadoras en una noche",
+    "Lo soltó desde otra universidad para que no lo descubrieran… y su papá trabajaba en la NSA",
+    "Quería medir internet… y lo rompió 💻",
+    "El primer condenado de la historia por un 'gusano' informático",
+    "La NASA, el ejército y las universidades, paralizados por un solo estudiante",
+    "Hoy es profesor en la misma universidad desde donde lo lanzó"
+   ],
+   "descripcion_youtube": "2 de noviembre de 1988. Un estudiante de 23 años suelta un pequeño programa en internet desde una computadora del MIT.\nEn pocas horas, miles de computadoras quedan congeladas… y su papá trabajaba en la Agencia de Seguridad Nacional.\n#hackers #historiasreales #datoscuriosos #ridmer",
+   "etiquetas": [
+    "Robert Morris",
+    "gusano Morris",
+    "hackers",
+    "internet",
+    "1988",
+    "historias reales",
+    "ridmer"
+   ],
+   "miniatura": {
+    "texto": "APAGÓ INTERNET"
+   },
+   "gancho": 1,
+   "musica": "tension",
+   "segmentos": [
+    {
+     "texto": "Un estudiante apagó internet.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "2 NOV 1988",
+      "sub": "Massachusetts, EE. UU."
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Noviembre de mil novecientos ochenta y ocho. De noche.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Massachusetts Institute of Technology Great Dome",
+       "MIT Building 10"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Robert Morris, un estudiante de veintitrés años, suelta un pequeño programa en internet.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Robert Tappan Morris",
+       "Robert Morris Y Combinator"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Para que no lo rastrearan, lo lanza desde una computadora de otra universidad: el MIT.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "DESDE EL MIT",
+      "sub": "para que no lo rastrearan"
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Quería saber qué tan grande era internet. Pero cometió un error.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=51f1HblHmjs",
+      "desde": 40,
+      "dur": 6,
+      "buscar_video": [
+       "1980s computer",
+       "VAX computer"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "El programa se copiaba una y otra vez en la misma computadora, hasta dejarla congelada.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "CONGELADAS",
+      "sub": "una tras otra"
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "En pocas horas, unas seis mil computadoras quedaron congeladas. Una de cada diez de internet.",
+     "escena": {
+      "tipo": "contador",
+      "n": 6000,
+      "texto": "COMPUTADORAS",
+      "sub": "congeladas en horas"
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Universidades, bases militares y laboratorios de la NASA quedaron paralizados.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=fiE4xVyLtWs",
+      "desde": 60,
+      "dur": 6,
+      "buscar_video": [
+       "1980s computer room",
+       "mainframe computer"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Y lo más increíble: su papá era un científico de la Agencia de Seguridad Nacional.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "National Security Agency headquarters",
+       "NSA headquarters Fort Meade"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "En mil novecientos noventa fue el primer condenado por esa ley de delitos informáticos.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Morris worm floppy disk",
+       "Morris worm source code disk"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Tres años de libertad condicional y más de diez mil dólares de multa.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "3 AÑOS",
+      "sub": "libertad condicional"
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Hoy es profesor del MIT. Comparte esta historia y sigue a Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Robert Tappan Morris",
+       "MIT Stata Center"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    }
+   ]
+  },
+  {
+   "eid": "fb2s",
+   "tipo": "short",
+   "encargo": "fb2",
+   "hora_youtube": "19:00",
+   "titulo_youtube": "Un estudiante de 23 años apagó internet #shorts",
+   "articulo": "Gusano Morris (1988)",
+   "fuente": "https://es.wikipedia.org/wiki/Gusano_Morris",
+   "nota": "Prueba hackers 11-17 nov. Historia propia (no hay encargo). Sin nada técnico copiable.",
+   "titulo_video": " ",
+   "titulos_opciones": [
+    "Un estudiante de 23 años APAGÓ internet… sin querer",
+    "1988: un programa de un estudiante congeló 6.000 computadoras en una noche",
+    "Lo soltó desde otra universidad para que no lo descubrieran… y su papá trabajaba en la NSA",
+    "Quería medir internet… y lo rompió 💻",
+    "El primer condenado de la historia por un 'gusano' informático",
+    "La NASA, el ejército y las universidades, paralizados por un solo estudiante",
+    "Hoy es profesor en la misma universidad desde donde lo lanzó"
+   ],
+   "descripcion_youtube": "2 de noviembre de 1988. Un estudiante de 23 años suelta un pequeño programa en internet desde una computadora del MIT.\nEn pocas horas, miles de computadoras quedan congeladas… y su papá trabajaba en la Agencia de Seguridad Nacional.\n#hackers #historiasreales #datoscuriosos #ridmer",
+   "etiquetas": [
+    "Robert Morris",
+    "gusano Morris",
+    "hackers",
+    "internet",
+    "1988",
+    "historias reales",
+    "ridmer"
+   ],
+   "miniatura": {
+    "texto": "APAGÓ INTERNET"
+   },
+   "gancho": 1,
+   "musica": "tension",
+   "segmentos": [
+    {
+     "texto": "Un estudiante apagó internet.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "2 NOV 1988",
+      "sub": "Massachusetts, EE. UU."
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Mil novecientos ochenta y ocho. Robert Morris, de veintitrés años, suelta un pequeño programa desde una computadora del MIT.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Robert Tappan Morris",
+       "Robert Morris Y Combinator"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Quería medir el tamaño de internet. Pero un error hizo que se copiara sin parar.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=51f1HblHmjs",
+      "desde": 40,
+      "dur": 6,
+      "buscar_video": [
+       "1980s computer"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "En horas, seis mil computadoras quedaron congeladas. Casi una de cada diez de todo internet.",
+     "escena": {
+      "tipo": "contador",
+      "n": 6000,
+      "texto": "COMPUTADORAS",
+      "sub": "congeladas"
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Su papá trabajaba en la Agencia de Seguridad Nacional.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "National Security Agency headquarters",
+       "NSA headquarters Fort Meade"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Fue el primer condenado por esa ley. Hoy es profesor del MIT. Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=fiE4xVyLtWs",
+      "desde": 60,
+      "dur": 6,
+      "buscar_video": [
+       "1980s computer room"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    }
+   ]
+  },
+  {
+   "eid": "fb3",
+   "tipo": "fb",
+   "hora_fb": "21:00",
+   "titulo_youtube": "Le tomó DOS fotos a un platillo volador… y nadie ha podido demostrar que son falsas",
+   "texto_facebook": "Un granjero corrió por su cámara y le tomó dos fotos a un platillo volador… más de 70 años después, nadie ha podido demostrar que son falsas 🛸 #Ovnis #Misterio #HistoriasReales",
+   "texto_tiktok": "Le tomó dos fotos a un platillo volador 🛸 Oregón, 1950: los negativos 'se perdieron' 17 años y dos científicos las analizaron… sin encontrar el truco. #ovnis #misterio #historiasreales #fotos #datoscuriosos #ridmer",
+   "articulo": "Fotografías de ovnis de McMinnville",
+   "fuente": "https://es.wikipedia.org/wiki/Fotograf%C3%ADas_de_ovnis_de_McMinnville",
+   "titulo_video": " ",
+   "titulos_opciones": [
+    "Le tomó DOS fotos a un platillo volador… y nadie ha podido demostrar que son falsas",
+    "Las fotos de ovni más famosas de la historia salieron de una granja",
+    "Oregón, 1950: un granjero corrió por su cámara… y fotografió ESTO",
+    "Los negativos 'se perdieron' 17 años… y luego los analizó un astrónomo",
+    "Nunca cobraron un centavo por estas fotos 🛸",
+    "¿Un ovni de verdad o un modelo colgado de un cable?",
+    "Dos científicos las estudiaron… y ninguno encontró el truco"
+   ],
+   "descripcion_youtube": "11 de mayo de 1950, una granja en Oregón. Evelyn Trent ve un objeto metálico en el cielo y su esposo alcanza a tomarle dos fotos.\nSon de las fotos de ovnis más famosas de la historia… y más de 70 años después siguen en discusión.\n#ovnis #misterio #historiasreales #ridmer",
+   "etiquetas": [
+    "McMinnville",
+    "ovni",
+    "Paul Trent",
+    "Evelyn Trent",
+    "Oregón",
+    "1950",
+    "misterio",
+    "ridmer"
+   ],
+   "miniatura": {
+    "texto": "DOS FOTOS"
+   },
+   "gancho": 1,
+   "musica": "misterio",
+   "segmentos": [
+    {
+     "texto": "Le tomó dos fotos a un platillo volador.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "11 MAYO 1950",
+      "sub": "Oregón, EE. UU."
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Mayo de mil novecientos cincuenta. Una granja en Oregón.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Evelyn Trent vuelve de alimentar a los animales y ve algo metálico en el cielo.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "ALGO METÁLICO",
+      "sub": "venía del noreste"
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Le grita a su esposo, Paul. Él corre a la casa y saca su cámara.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "LA CÁMARA",
+      "sub": "Paul Trent"
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Alcanza a tomar dos fotos antes de que el objeto se vaya hacia el oeste.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     },
+     "rotulo": [
+      "FOTO REAL"
+     ]
+    },
+    {
+     "texto": "Creyeron que era un avión secreto del ejército.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Un mes después salieron en el periódico… y luego en la revista Life.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=NYU0bbEKVu0",
+      "desde": 30,
+      "dur": 6,
+      "buscar_video": [
+       "1950s newspaper printing press",
+       "vintage camera"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Los negativos se perdieron. Aparecieron diecisiete años después.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "17 AÑOS",
+      "sub": "negativos perdidos"
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Un astrónomo del gobierno los analizó: el objeto parecía real, metálico y enorme.",
+     "escena": {
+      "tipo": "foto",
+      "img": 10
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Aunque advirtió que podía ser un modelo pequeño colgado de un cable.",
+     "escena": {
+      "tipo": "foto",
+      "img": 11
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "En mil novecientos setenta y cinco, un físico de la Marina no encontró ningún hilo.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Los Trent nunca cobraron un centavo. ¿Truco u ovni? Comparte esta historia y sigue a Ridmer para más.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=nJe27-tIHBE",
+      "desde": 20,
+      "dur": 6,
+      "buscar_video": [
+       "Oregon farm",
+       "farm sunset"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    }
+   ]
+  },
+  {
+   "eid": "largo1",
+   "tipo": "largo",
+   "hora_youtube": "18:00",
+   "titulo_youtube": "Trabajaba para el Servicio Secreto… y les robó 170 MILLONES de tarjetas",
+   "articulo": "Albert González (hacker)",
+   "fuente": "https://en.wikipedia.org/wiki/Albert_Gonzalez",
+   "nota": "17-nov: largo de hackers (guía 11-nov). Encargo de largo (luces de Colón 1492) reemplazado. Sin nada técnico copiable.",
+   "titulo_video": " ",
+   "titulos_opciones": [
+    "Trabajaba para el Servicio Secreto… y les robó 170 MILLONES de tarjetas",
+    "El informante que engañó al gobierno: robaba tarjetas mientras atrapaba hackers",
+    "Le pagaban para atrapar hackers… y él era el más grande de todos",
+    "Enterró más de UN MILLÓN de dólares en el patio de sus padres 💰",
+    "Lo delató un apodo que usaba a los 14 años",
+    "Se estacionaba frente a las tiendas con una laptop… y se llevó millones de tarjetas",
+    "Albert González: el robo de tarjetas más grande de la historia de EE. UU.",
+    "Su propio jefe no lo podía creer: el héroe del Servicio Secreto era el ladrón"
+   ],
+   "descripcion_youtube": "7 de mayo de 2008, un hotel de Miami Beach. Agentes federales entran a la habitación 1508.\nAdentro está Albert González, un joven al que el Servicio Secreto le pagaba para atrapar hackers… y que estaba detrás del robo de tarjetas más grande de la historia de Estados Unidos.\n#hackers #historiasreales #ridmer",
+   "etiquetas": [
+    "Albert González",
+    "hackers",
+    "Servicio Secreto",
+    "TJX",
+    "Heartland",
+    "tarjetas robadas",
+    "historias reales",
+    "ridmer"
+   ],
+   "miniatura": {
+    "texto": "EL INFORMANTE"
+   },
+   "gancho": 2,
+   "musica": "tension",
+   "segmentos": [
+    {
+     "texto": "Siete de mayo de dos mil ocho. Miami Beach. Agentes federales llegan a la puerta de la habitación mil quinientos ocho de un hotel.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "7 DE MAYO 2008",
+      "sub": "Miami Beach, Florida"
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Adentro está un joven al que el propio gobierno de Estados Unidos le había pagado un sueldo… para atrapar hackers.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Albert Gonzalez hacker",
+       "Albert Gonzalez TJX hacker"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Y lo que esos agentes acababan de descubrir era increíble: ese mismo joven estaba detrás del robo de tarjetas más grande de la historia del país.",
+     "escena": {
+      "tipo": "contador",
+      "n": 170,
+      "texto": "MILLONES DE TARJETAS",
+      "sub": "robadas"
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Esta es la historia de Albert González. El informante que engañó al Servicio Secreto.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=wPHizDHZnMc",
+      "desde": 30,
+      "dur": 7,
+      "buscar_video": [
+       "Miami skyline night"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Albert nació en mil novecientos ochenta y uno, en Miami, hijo de padres cubanos.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Miami 1990s",
+       "Miami skyline"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "A los doce años compró su primera computadora. Y desde el primer día quiso entender cómo funcionaba todo por dentro.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "1990s personal computer",
+       "IBM PC 1990s"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Según contó la prensa, a los catorce años logró meterse en una computadora de la NASA.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "NASA headquarters",
+       "NASA logo building"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Agentes del FBI fueron a buscarlo a su colegio en Miami. Era apenas un adolescente, y no lo acusaron de nada.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "South Miami Senior High School",
+       "South Miami High School"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Pero no se detuvo. En internet empezó a usar un apodo extraño, sacado de una serie de televisión: soupnazi.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "SOUPNAZI",
+      "sub": "su apodo de adolescente"
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Recuerda ese apodo. Años después, sería su perdición.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "SOUPNAZI",
+      "sub": "recuerda este nombre"
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "A comienzos de los dos mil, Albert se fue a Nueva Jersey, y entró a un foro secreto de internet llamado Shadowcrew.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "New Jersey 2000s",
+       "Newark New Jersey"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Era un mercado negro. Unas cuatro mil personas compraban y vendían ahí números de tarjetas robadas, documentos falsos y datos de bancos.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "SHADOWCREW",
+      "sub": "4.000 usuarios"
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Albert era uno de los jefes del foro. Ahí nadie lo conocía como Albert. Se hacía llamar CumbaJohnny.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "CUMBAJOHNNY",
+      "sub": "su nombre en Shadowcrew"
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Verano de dos mil tres, Nueva York. Un policía encubierto sigue a un joven que se porta raro, y lo ve entrar a un cajero automático de Manhattan.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "VERANO 2003",
+      "sub": "Manhattan, Nueva York"
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Desde afuera lo observa. El joven saca dinero con una tarjeta. Luego con otra. Y con otra más. Durante varios minutos.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "ATM machine 2000s",
+       "automated teller machine"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Lo detienen. Llevaba tarjetas falsas, con números robados. Era Albert González.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Albert Gonzalez hacker",
+       "Albert Gonzalez TJX hacker"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Y ahí tuvo que elegir: enfrentar una condena… o trabajar para el gobierno.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "LA DECISIÓN",
+      "sub": "prisión o colaborar"
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Eligió colaborar. Se convirtió en informante del Servicio Secreto de Estados Unidos, la agencia que persigue los delitos con tarjetas.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "United States Secret Service",
+       "US Secret Service building"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Le llegaron a pagar unos setenta y cinco mil dólares al año. Trabajaba con los agentes, les daba charlas y les explicaba cómo pensaban los hackers.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "$75.000",
+      "sub": "al año, como informante"
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Para ganarse su confianza, les ayudó a vigilar a su propio grupo desde adentro.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "computer monitor dark room",
+       "laptop at night"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "En octubre de dos mil cuatro, gracias a él, cayó la Operación Firewall.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "OPERACIÓN FIREWALL",
+      "sub": "octubre de 2004"
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Veintiocho personas fueron arrestadas en varios países, en un operativo coordinado. Shadowcrew se derrumbó.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "28 ARRESTOS",
+      "sub": "en varios países"
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Para el Servicio Secreto, Albert era un héroe. Uno de los suyos.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "United States Secret Service badge",
+       "Secret Service agents"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Pero Albert tenía una segunda vida.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "LA SEGUNDA VIDA",
+      "sub": "Miami · 2005"
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "De regreso en Miami, junto a un grupo de amigos, empezó a recorrer de noche la carretera US uno, en carro, con una laptop encendida.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "CARRETERA US 1",
+      "sub": "Miami, de noche"
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Se estacionaban frente a tiendas grandes. Buscaban una cosa: una red de wifi mal protegida.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "US Route 1 Miami",
+       "South Dixie Highway Miami"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "En esa época, muchas tiendas usaban redes inalámbricas viejas, con una protección que ya se sabía débil.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "WIFI DÉBIL",
+      "sub": "en tiendas de todo el país"
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "En dos mil cinco la encontraron, en una tienda Marshalls de Miami, de la cadena TJX.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Marshalls store",
+       "Marshalls department store"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Desde el estacionamiento, sin poner un pie en la tienda, entraron al sistema de la empresa.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "store parking lot night",
+       "parking lot at night"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Y desde ahí, durante más de un año, se fueron llevando en silencio los datos de las tarjetas de millones de clientes.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "credit cards",
+       "credit card payment terminal"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Solo de TJX salieron más de cuarenta y cinco millones de números de tarjetas.",
+     "escena": {
+      "tipo": "contador",
+      "n": 45,
+      "texto": "MILLONES DE TARJETAS",
+      "sub": "solo de TJX"
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Después vinieron otras tiendas: OfficeMax, DSW, Barnes and Noble, y los restaurantes Dave and Buster's.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "OfficeMax store",
+       "DSW Shoe Warehouse store"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Los números se los mandaban a un vendedor en Ucrania, Maksym Yastremskiy, que los revendía por internet.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Kyiv",
+       "Kiev city"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Y el dinero volvía a Albert por mensajeros. En efectivo.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "hundred dollar bills",
+       "stack of cash"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Luego vino el golpe más grande: Heartland Payment Systems, una empresa que procesaba los pagos con tarjeta de miles de comercios.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Heartland Payment Systems",
+       "Princeton New Jersey"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "De ahí salieron unos ciento treinta millones de números de tarjetas. El robo de datos más grande hasta ese momento.",
+     "escena": {
+      "tipo": "contador",
+      "n": 130,
+      "texto": "MILLONES DE TARJETAS",
+      "sub": "Heartland"
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Nadie lo notó durante meses. La empresa recién lo descubrió a comienzos de dos mil nueve, cuando Albert ya estaba preso.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Heartland Payment Systems",
+       "credit card payment terminal"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Mientras tanto, Albert seguía cobrando como informante. Nadie en el Servicio Secreto sospechaba de él.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Albert Gonzalez hacker",
+       "Albert Gonzalez TJX hacker"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Gastaba como millonario. Se hizo una fiesta de cumpleaños de setenta y cinco mil dólares.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Miami Beach night",
+       "South Beach Miami night"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Y una vez se quejó con un cómplice de que se le había dañado la máquina de contar billetes… y tuvo que contar trescientos cuarenta mil dólares a mano.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "$340.000",
+      "sub": "contados a mano"
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Pero en San Diego, un agente encubierto del Servicio Secreto llevaba dos años comprándole tarjetas al vendedor ucraniano.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "San Diego skyline",
+       "San Diego"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "En un viaje, el agente logró copiar el disco duro de su laptop.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "LA LAPTOP",
+      "sub": "copiada en secreto"
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "En julio de dos mil siete, Yastremskiy viajó a Turquía. Lo arrestaron en una discoteca.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Turkey nightclub",
+       "Antalya Turkey night"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Para los investigadores fue un tesoro: tenían los secretos de uno de los mayores vendedores de tarjetas robadas del mundo.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "EL TESORO",
+      "sub": "Turquía · julio de 2007"
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "En sus conversaciones aparecía su mayor proveedor de tarjetas. Un desconocido, que solo aparecía con un número de registro.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "EL PROVEEDOR",
+      "sub": "sin nombre"
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Siguiendo ese hilo, los agentes encontraron a un mensajero preso en Carolina del Norte. Lo habían atrapado con doscientos mil dólares en efectivo.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "$200.000",
+      "sub": "en efectivo"
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "En su memoria USB tenía la dirección de una hermana de Albert en Miami… y una foto de Albert González.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Albert Gonzalez hacker",
+       "Albert Gonzalez TJX hacker"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Y en diciembre de dos mil siete apareció el correo con el que se había registrado ese proveedor misterioso. Empezaba con una palabra: soupnazi.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "SOUPNAZI",
+      "sub": "el apodo de su adolescencia"
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "El mismo apodo que Albert usaba de adolescente. La gente del Servicio Secreto que trabajaba con él no lo podía creer.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "ERA ÉL",
+      "sub": "el informante"
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Por eso, aquel siete de mayo de dos mil ocho, los agentes tocaron la puerta de la habitación mil quinientos ocho.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "HABITACIÓN 1508",
+      "sub": "Miami Beach"
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Encontraron laptops y miles de dólares en efectivo. Pero lo mejor estaba escondido en otra parte.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "laptop cash table",
+       "laptops"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Días después, Albert llevó a los agentes a la casa de sus padres en Miami. En el patio había un barril enterrado.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "EL BARRIL",
+      "sub": "en el patio"
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Adentro, envueltos en bolsas de plástico, había más de un millón de dólares en billetes.",
+     "escena": {
+      "tipo": "contador",
+      "n": 1,
+      "texto": "MILLÓN DE DÓLARES",
+      "sub": "enterrado en el patio"
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "En total, le incautaron más de un millón seiscientos mil dólares.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "hundred dollar bills",
+       "stack of cash"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "En marzo de dos mil diez, una jueza de Boston lo condenó a veinte años de prisión.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "John Joseph Moakley United States Courthouse",
+       "Boston federal courthouse"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Fue la condena más larga que se había dado en Estados Unidos por un delito informático hasta ese momento.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "20 AÑOS",
+      "sub": "de prisión"
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Al día siguiente le dieron otros veinte años por el caso Heartland, que cumpliría al mismo tiempo.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "+20 AÑOS",
+      "sub": "al mismo tiempo"
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Pasó trece años en una prisión federal de Kentucky. Salió en septiembre de dos mil veintitrés.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Federal Medical Center Lexington",
+       "Lexington Kentucky"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Las empresas afectadas gastaron cientos de millones de dólares en reparar el daño, devolver dinero y proteger a sus clientes.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "credit cards",
+       "credit card payment terminal"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Para el Servicio Secreto fue una lección dolorosa: el hombre en el que más confiaban… era el que más les estaba robando.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Albert Gonzalez hacker",
+       "Albert Gonzalez TJX hacker"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Y para millones de personas, la prueba de que pagar con tarjeta en una tienda podía abrirle la puerta a un ladrón que estaba sentado en el estacionamiento.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "credit card payment terminal",
+       "credit cards"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "¿Tú qué opinas: Albert era un genio, o solo alguien que traicionó a todos? Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Albert Gonzalez hacker",
+       "Albert Gonzalez TJX hacker"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    }
+   ]
+  },
+  {
+   "eid": "largo1t",
+   "tipo": "tiktok",
+   "encargo": "largo1",
+   "hora_youtube": "18:00",
+   "titulo_youtube": "Trabajaba para el Servicio Secreto… y les robó 170 MILLONES de tarjetas",
+   "articulo": "Albert González (hacker)",
+   "fuente": "https://en.wikipedia.org/wiki/Albert_Gonzalez",
+   "nota": "17-nov: largo de hackers (guía 11-nov). Encargo de largo (luces de Colón 1492) reemplazado. Sin nada técnico copiable.",
+   "titulo_video": " ",
+   "titulos_opciones": [
+    "Trabajaba para el Servicio Secreto… y les robó 170 MILLONES de tarjetas",
+    "El informante que engañó al gobierno: robaba tarjetas mientras atrapaba hackers",
+    "Le pagaban para atrapar hackers… y él era el más grande de todos",
+    "Enterró más de UN MILLÓN de dólares en el patio de sus padres 💰",
+    "Lo delató un apodo que usaba a los 14 años",
+    "Se estacionaba frente a las tiendas con una laptop… y se llevó millones de tarjetas",
+    "Albert González: el robo de tarjetas más grande de la historia de EE. UU.",
+    "Su propio jefe no lo podía creer: el héroe del Servicio Secreto era el ladrón"
+   ],
+   "descripcion_youtube": "7 de mayo de 2008, un hotel de Miami Beach. Agentes federales entran a la habitación 1508.\nAdentro está Albert González, un joven al que el Servicio Secreto le pagaba para atrapar hackers… y que estaba detrás del robo de tarjetas más grande de la historia de Estados Unidos.\nVideo completo en YouTube: Ridmer.\n#hackers #historiasreales #ridmer",
+   "etiquetas": [
+    "Albert González",
+    "hackers",
+    "Servicio Secreto",
+    "TJX",
+    "Heartland",
+    "tarjetas robadas",
+    "historias reales",
+    "ridmer"
+   ],
+   "miniatura": {
+    "texto": "EL INFORMANTE"
+   },
+   "gancho": 2,
+   "musica": "tension",
+   "segmentos": [
+    {
+     "texto": "Siete de mayo de dos mil ocho. Miami Beach. Agentes federales llegan a la puerta de la habitación mil quinientos ocho de un hotel.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "7 DE MAYO 2008",
+      "sub": "Miami Beach, Florida"
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Adentro está un joven al que el propio gobierno de Estados Unidos le había pagado un sueldo… para atrapar hackers.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Albert Gonzalez hacker",
+       "Albert Gonzalez TJX hacker"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Esta es la historia de Albert González. El informante que engañó al Servicio Secreto.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=wPHizDHZnMc",
+      "desde": 30,
+      "dur": 7,
+      "buscar_video": [
+       "Miami skyline night"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "A los catorce años, según la prensa, ya se había metido en una computadora de la NASA. En internet usaba un apodo: soupnazi.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "SOUPNAZI",
+      "sub": "recuerda este nombre"
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "En dos mil tres, un policía lo vio en un cajero de Nueva York sacando dinero con una tarjeta falsa tras otra.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "VERANO 2003",
+      "sub": "Manhattan, Nueva York"
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Lo detuvieron. Y tuvo que elegir: enfrentar una condena… o trabajar para el gobierno.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "LA DECISIÓN",
+      "sub": "prisión o colaborar"
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Se volvió informante del Servicio Secreto. Le pagaban unos setenta y cinco mil dólares al año.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "United States Secret Service",
+       "US Secret Service building"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Gracias a él cayó Shadowcrew, un mercado negro de tarjetas robadas. Veintiocho arrestados en varios países.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "28 ARRESTOS",
+      "sub": "Operación Firewall"
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Para los agentes, era un héroe. Pero Albert tenía una segunda vida.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "LA SEGUNDA VIDA",
+      "sub": "Miami · 2005"
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "De noche recorría Miami en carro, con una laptop. Se estacionaba frente a tiendas grandes, buscando una red de wifi mal protegida.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "CARRETERA US 1",
+      "sub": "Miami, de noche"
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Desde el estacionamiento de una tienda Marshalls, sin poner un pie adentro, entró al sistema de toda la cadena.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Marshalls store",
+       "Marshalls department store"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Más de cuarenta y cinco millones de tarjetas. Y después, ciento treinta millones más.",
+     "escena": {
+      "tipo": "contador",
+      "n": 170,
+      "texto": "MILLONES DE TARJETAS",
+      "sub": "robadas"
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "Y nadie en el Servicio Secreto sospechaba de él… hasta que apareció una sola palabra.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "SOUPNAZI",
+      "sub": "una sola palabra"
+     },
+     "rotulo": [
+      ""
+     ]
+    },
+    {
+     "texto": "¿Qué pasó después? Lo que viene te va a dejar sin palabras. Mira el video completo en YouTube, en el canal Ridmer.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Albert Gonzalez hacker",
+       "Albert Gonzalez TJX hacker"
+      ]
+     },
+     "rotulo": [
+      ""
+     ]
+    }
+   ]
+  },
+  {
+   "eid": "fb1f",
+   "tipo": "foto",
+   "omitir": true,
+   "hora_foto": "15:30",
+   "titulo_youtube": "Un diamante de fuego sobre la carretera… y 23 helicópteros militares detrás",
+   "texto_foto": "Un objeto en forma de diamante soltaba llamas sobre la carretera… y el auto quemaba al tocarlo.\n\nTexas, 29 de diciembre de 1980, nueve de la noche. Betty Cash, Vickie Landrum y Colby, su nieto de 7 años, volvían a casa por una carretera rodeada de bosque.\n\nSobre los árboles vieron una luz. Al acercarse, era un objeto enorme, plateado, con forma de diamante, del tamaño del tanque de agua del pueblo. Por debajo lanzaba llamas, y cada vez que soltaba fuego, subía.\n\nBetty se bajó a mirarlo. El calor era tan fuerte que tuvo que abrir la puerta del auto con su abrigo. Después llegaron helicópteros militares de doble hélice: contaron 23, y rodearon al objeto.\n\nEsa misma noche los tres se enfermaron: vómitos, ardor en los ojos, ampollas. Betty terminó en el hospital. Demandaron al gobierno por 20 millones de dólares, pero el gobierno dijo que no tenía nada parecido.\n\nHasta hoy nadie sabe qué era.\n\n¿Tú qué crees que vieron esa noche?\n#Ovnis #Misterio #HistoriasReales"
+  },
+  {
+   "eid": "fb2f",
+   "tipo": "foto",
+   "omitir": true,
+   "hora_foto": "20:00",
+   "titulo_youtube": "Le tomó dos fotos a un platillo volador… y nadie encuentra el truco",
+   "texto_foto": "Corrió por su cámara y le tomó dos fotos a un platillo volador… y más de 70 años después nadie ha podido demostrar que son falsas.\n\nOregón, Estados Unidos, 11 de mayo de 1950, siete y media de la tarde. Evelyn Trent volvía de darle de comer a los animales de su granja cuando vio un objeto metálico, en forma de disco, moviéndose despacio en el cielo.\n\nLe gritó a su esposo, Paul. Él corrió a la casa, sacó su cámara Kodak y alcanzó a tomar dos fotos antes de que el objeto se fuera hacia el oeste.\n\nPensaron que era un avión secreto del ejército y tuvieron miedo. Pero un mes después las fotos salieron en el periódico del pueblo y luego en la revista Life. Los negativos se perdieron durante 17 años.\n\nUn astrónomo de una investigación del gobierno dijo que el objeto parecía real, metálico y enorme, aunque no descartó un modelo colgado de un cable. Años después, un físico de la Marina no encontró ningún hilo. Los Trent nunca cobraron un centavo.\n\n¿Tú qué crees: truco u ovni?\n#Ovnis #Misterio #HistoriasReales"
+  }
+ ],
+ "nota": "Encargo fb1 (Jaime Rodríguez, ufólogo: poca historia) no usado; fb1 = Cash-Landrum (encargo fb2). Encargo largo1 (luces de Colón) reemplazado por largo de hackers (Albert González), según la guía. fb2 = gusano Morris (prueba hackers)."
+}
