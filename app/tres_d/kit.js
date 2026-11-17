@@ -852,3 +852,176 @@ export function supermercado(sc) {
   M.caja(carrito, 0.04, 0.6, 0.04, -0.25, 0.35, -0.35, ac); M.caja(carrito, 0.04, 0.6, 0.04, 0.25, 0.35, -0.35, ac); M.caja(carrito, 0.6, 0.04, 0.04, 0, 1.1, 0.5, ac);
   sc.add(carrito); return { carrito };
 }
+
+// ===================== 17-nov: carretera en bosque de pinos (Texas), objeto diamante con fuego, helicóptero Chinook, granja al atardecer (Oregón),
+// platillo de McMinnville, cajero automático de noche, laptop con pantalla, patio de casa de noche con barril enterrado =====================
+/** Carretera de dos carriles a lo largo de X (z≈0) entre pinos densos (este de Texas), de noche y mojada. Los árboles empiezan en |z|>4.5. */
+export function carreteraBosque(sc, { semilla = 21, luna = 1 } = {}) {
+  M.cielo(sc, '#04060c', '#141b2a'); sc.fog = new THREE.FogExp2(0x0a0f18, 0.03);
+  sc.add(new THREE.HemisphereLight(0x5a6f99, 0x15141a, 0.5 * luna));
+  const l = new THREE.DirectionalLight(0x8fa8ff, 0.9 * luna); l.position.set(-10, 22, 8); l.castShadow = true; l.shadow.mapSize.set(2048, 2048);
+  Object.assign(l.shadow.camera, { left: -30, right: 30, top: 30, bottom: -30 }); sc.add(l);
+  M.caja(sc, 200, 0.2, 140, 0, -0.12, 0, M.matTex(M.TEX.arena(), [50, 40], 0x2c2a22));
+  M.caja(sc, 200, 0.05, 6.4, 0, 0.0, 0, M.matTex(M.TEX.concreto(), [50, 2], 0x2a2b2e, { roughness: 0.35, metalness: 0.15 }));
+  for (let x = -100; x < 100; x += 5) M.caja(sc, 2.4, 0.02, 0.12, x, 0.03, 0, emis(0xd6b04a, 0.12), false);
+  for (const z of [3.0, -3.0]) M.caja(sc, 200, 0.02, 0.1, 0, 0.03, z, M.mat(0xbdb8a8), false);
+  const az = _azar(semilla), tronco = M.mat(0x2b2018, { roughness: 1 }), h1 = M.mat(0x16281c, { roughness: 1 }), h2 = M.mat(0x1d3424, { roughness: 1 });
+  for (let i = 0; i < 380; i++) {
+    const lado = az() < 0.5 ? -1 : 1, z = lado * (4.8 + az() * 40), x = (az() - 0.5) * 160, h = 9 + az() * 10, g = new THREE.Group();
+    const t = new THREE.Mesh(new THREE.CylinderGeometry(0.14, 0.28, h, 7), tronco); t.position.y = h / 2; t.castShadow = true; g.add(t);
+    for (let k = 0; k < 3; k++) { const c = new THREE.Mesh(new THREE.ConeGeometry(1.7 - k * 0.4, 2.8, 8), k % 2 ? h1 : h2); c.position.y = h * 0.55 + k * 1.6; c.castShadow = true; g.add(c); }
+    g.position.set(x, 0, z); g.rotation.y = az() * 6; sc.add(g);
+  }
+}
+/** Objeto plateado gigante con forma de diamante (Cash-Landrum 1980): puntas cortadas, luces azules en el centro y llamas por debajo.
+ *  d.mover(t, fuego 0..1). d.g = grupo (alto ≈ 9 m). La luz de las llamas ilumina el suelo. */
+export function diamante(sc, escala = 1) {
+  const g = new THREE.Group(); sc.add(g);
+  const met = M.mat(0xb8bcc4, { metalness: 0.45, roughness: 0.35, emissive: 0x1a1e26, flatShading: true });
+  const arr = new THREE.Mesh(new THREE.CylinderGeometry(1.2, 4.2, 4.0, 4, 1), met); arr.position.y = 2.0; g.add(arr);
+  const aba = new THREE.Mesh(new THREE.CylinderGeometry(4.2, 1.0, 4.4, 4, 1), met); aba.position.y = -2.2; g.add(aba);
+  const luces = [];
+  for (let i = 0; i < 16; i++) { const a = i / 16 * Math.PI * 2, r = 3.0 * (Math.abs(Math.cos(a)) + Math.abs(Math.sin(a))) ** -1 * 1.42;
+    const sp = brilloSprite('#5aa8ff', 0.9, 1); sp.position.set(Math.cos(a) * r, 0, Math.sin(a) * r); g.add(sp); luces.push(sp); }
+  const llama = []; for (let i = 0; i < 18; i++) { const sp = brilloSprite(i < 6 ? '#fff0b0' : i < 12 ? '#ff9a30' : '#ff4a10', 3.2 - i * 0.08, 0.9 - i * 0.03); g.add(sp); llama.push(sp); }
+  const luz = new THREE.PointLight(0xff8a3a, 0, 90, 1.3); luz.position.set(0, -10, 0); g.add(luz);
+  const plata = new THREE.PointLight(0xc8d4ff, 40, 14, 1.2); plata.position.set(6, 1, 6); g.add(plata);
+  const azul = new THREE.PointLight(0x7ab0ff, 60, 40, 1.5); g.add(azul);
+  g.rotation.y = Math.PI / 4; g.scale.setScalar(escala);
+  return { g, mover(t, fuego = 1) {
+    llama.forEach((sp, i) => { const k = i / llama.length; sp.visible = fuego > 0.02;
+      sp.position.set(Math.sin(t * 17 + i) * 0.25 * k, -4.6 - k * 7 * fuego, Math.cos(t * 13 + i * 2) * 0.25 * k);
+      sp.scale.setScalar((3.6 - k * 1.6) * (0.6 + fuego * 0.6) * (0.9 + 0.15 * Math.sin(t * 25 + i))); });
+    luz.intensity = 1100 * fuego * (0.85 + 0.15 * Math.sin(t * 30));
+    luces.forEach((sp, i) => sp.material.opacity = 0.5 + 0.5 * Math.sin(t * 6 + i * 0.8)); } };
+}
+/** Helicóptero militar de doble hélice tipo Chinook (verde oliva), frente hacia +X, ~15 m. h.userData.mover(t) gira las hélices. */
+export function chinook(sc, { foco = true } = {}) {
+  const g = new THREE.Group(), olivo = M.mat(0x3d4430, { roughness: 0.7 }), osc = M.mat(0x1c1e18);
+  const add = (geo, m, x, y, z, p = g) => { const o = new THREE.Mesh(geo, m); o.position.set(x, y, z); o.castShadow = true; p.add(o); return o; };
+  const cu = add(new THREE.BoxGeometry(11, 2.6, 2.5), olivo, 0, 2.2, 0);
+  add(new THREE.CylinderGeometry(1.3, 1.3, 2.5, 16, 1, false, 0, Math.PI), olivo, 5.5, 2.2, 0).rotation.x = Math.PI / 2;
+  add(new THREE.BoxGeometry(1.4, 0.9, 2.3), M.mat(0x0b0d10, { metalness: 0.7, roughness: 0.15 }), 5.9, 2.9, 0);
+  add(new THREE.BoxGeometry(2.2, 4.4, 1.0), olivo, -5.2, 3.6, 0); add(new THREE.BoxGeometry(2.0, 1.4, 2.0), olivo, 4.6, 3.8, 0);
+  for (const z of [1.3, -1.3]) add(new THREE.BoxGeometry(7, 1.2, 0.5), olivo, -0.5, 1.4, z);
+  for (const [x, z] of [[3.5, 1.2], [3.5, -1.2], [-3.5, 1.3], [-3.5, -1.3]]) { add(new THREE.CylinderGeometry(0.4, 0.4, 0.3, 14), osc, x, 0.4, z).rotation.x = Math.PI / 2; }
+  const rotores = [];
+  for (const [x, y] of [[4.6, 4.7], [-5.2, 6.0]]) { const r = new THREE.Group(); r.position.set(x, y, 0); g.add(r); rotores.push(r);
+    for (let i = 0; i < 3; i++) { const p = new THREE.Mesh(new THREE.BoxGeometry(9.0, 0.06, 0.5), osc); p.position.x = 4.5; const gg = new THREE.Group(); gg.rotation.y = i * 2 * Math.PI / 3; gg.add(p); r.add(gg); }
+    const d = new THREE.Mesh(new THREE.CircleGeometry(9, 40), new THREE.MeshBasicMaterial({ color: 0x0a0a0a, transparent: true, opacity: 0.12, side: THREE.DoubleSide, depthWrite: false })); d.rotation.x = -Math.PI / 2; r.add(d); }
+  add(new THREE.BoxGeometry(0.1, 0.1, 0.1), emis(0xff2a1a, 4), -5.3, 5.9, 0); add(new THREE.BoxGeometry(0.15, 0.15, 0.15), emis(0x30ff60, 3), 0, 2.2, 1.3);
+  add(new THREE.BoxGeometry(0.15, 0.15, 0.15), emis(0xff3020, 3), 0, 2.2, -1.3);
+  const parp = brilloSprite('#ffffff', 3.5, 1); parp.position.set(0, 3.7, 0); g.add(parp);
+  const roja = brilloSprite('#ff3020', 1.6, 0.9); roja.position.set(-5.3, 6.1, 0); g.add(roja);
+  if (foco) { const l = new THREE.SpotLight(0xfff2d8, 300, 60, 0.25, 0.4, 1.2); l.position.set(5, 0.9, 0); const tg = new THREE.Object3D(); tg.position.set(14, -20, 0); g.add(tg); l.target = tg; g.add(l);
+    cono(g, 5, 0.9, 0, 30, 4, 0xfff2d8, 0.035, [0, 0, 0.45]); }
+  g.userData.mover = t => { rotores[0].rotation.y = t * 22; rotores[1].rotation.y = -t * 22; parp.visible = Math.floor(t * 2.5) % 2 === 0; };
+  sc.add(g); return g;
+}
+/** Granja en el campo al atardecer (Oregón 1950): pasto, galpón con tanque de agua, casa de madera, poste de teléfono con cables y cerros.
+ *  La casa está en (0, -14), el galpón con tanque en (-8, -6), el poste en (9, -8). Devuelve {cables: [y alto]}. */
+export function granja(sc, { semilla = 5 } = {}) {
+  M.cielo(sc, '#6f7f96', '#e8c9a0'); sc.fog = new THREE.Fog(0xcfb79a, 40, 170);
+  M.luces(sc, { sol: 1.6, cielo_: 1.1, dir: [-20, 10, -12], color: 0xffd6a0 });
+  M.caja(sc, 300, 0.2, 300, 0, -0.1, 0, M.matTex(M.TEX.arena(), [60, 60], 0x6c7244));
+  const az = _azar(semilla), mad = M.matTex(M.TEX.ladrillo(), [3, 2], 0x8a7a64), techo = M.mat(0x3a302a, { roughness: 0.9 });
+  M.caja(sc, 8, 4, 6, 0, 2, -16, M.mat(0xd8d0c0)); const t1 = new THREE.Mesh(new THREE.CylinderGeometry(0.01, 4.6, 2.2, 4, 1), techo); t1.rotation.y = Math.PI / 4; t1.scale.set(1.25, 1, 0.95); t1.position.set(0, 5.1, -16); sc.add(t1);
+  for (const x of [-2.2, 0, 2.2]) M.caja(sc, 0.9, 1.1, 0.06, x, 2.2, -12.95, emis(0xffc070, 0.45), false);
+  M.caja(sc, 6, 3.4, 5, -8, 1.7, -7, M.mat(0x7a5236, { roughness: 0.95 })); M.caja(sc, 6.4, 0.3, 5.6, -8, 3.5, -7, techo);
+  const tq = new THREE.Mesh(new THREE.CylinderGeometry(1.4, 1.4, 2.6, 20), M.mat(0x9a9890, { metalness: 0.5, roughness: 0.5 })); tq.rotation.z = Math.PI / 2; tq.position.set(-7.6, 1.4, -3.8); tq.castShadow = true; sc.add(tq);
+  const poste = M.mat(0x3a2c20); M.caja(sc, 0.25, 9, 0.25, 9, 4.5, -8, poste); M.caja(sc, 2.2, 0.15, 0.15, 9, 8.4, -8, poste);
+  const cab = M.mat(0x1a1a1a);
+  for (const [dz, y] of [[-0.9, 8.5], [0.9, 8.5]]) { const c = new THREE.Mesh(new THREE.CylinderGeometry(0.015, 0.015, 60, 4), cab); c.rotation.z = Math.PI / 2; c.rotation.y = 0.35; c.position.set(-15, y - 0.4, -8 + dz - 8); sc.add(c); }
+  for (let i = 0; i < 8; i++) { const r = 30 + az() * 30, c = new THREE.Mesh(new THREE.SphereGeometry(r, 16, 8, 0, Math.PI * 2, 0, Math.PI / 2), M.mat(0x48503a, { roughness: 1 }));
+    c.scale.y = 0.18 + az() * 0.1; c.position.set(-140 + i * 40 + az() * 20, -1, -120 - az() * 30); sc.add(c); }
+  for (let i = 0; i < 40; i++) { const x = (az() - 0.5) * 120, z = -25 - az() * 60; if (Math.abs(x) < 6) continue; const h = 5 + az() * 7, gg = new THREE.Group();
+    const tr = new THREE.Mesh(new THREE.CylinderGeometry(0.15, 0.25, h, 6), M.mat(0x3a2c20)); tr.position.y = h / 2; gg.add(tr);
+    const co = new THREE.Mesh(new THREE.ConeGeometry(1.8, h * 0.8, 8), M.mat(0x2e4024)); co.position.y = h * 0.75; gg.add(co); gg.position.set(x, 0, z); sc.add(gg); }
+  for (let x = -20; x < 20; x += 2.5) { M.caja(sc, 0.12, 1.2, 0.12, x, 0.6, 3, M.mat(0x6a5440)); }
+  M.caja(sc, 40, 0.08, 0.06, 0, 1.0, 3, M.mat(0x6a5440)); M.caja(sc, 40, 0.08, 0.06, 0, 0.6, 3, M.mat(0x6a5440));
+  return {};
+}
+/** Platillo metálico de McMinnville: disco plano con una torre pequeña desplazada arriba (diámetro 2*r). Devuelve el grupo. */
+export function platillo(sc, r = 4) {
+  const g = new THREE.Group(), met = M.mat(0x9a9ea6, { metalness: 0.85, roughness: 0.28 });
+  const d = new THREE.Mesh(new THREE.SphereGeometry(r, 40, 16), met); d.scale.y = 0.16; g.add(d);
+  const b = new THREE.Mesh(new THREE.CylinderGeometry(r * 0.55, r * 0.75, r * 0.12, 32), M.mat(0x5a5e66, { metalness: 0.8, roughness: 0.4 })); b.position.y = -r * 0.08; g.add(b);
+  const to = new THREE.Mesh(new THREE.CylinderGeometry(r * 0.06, r * 0.1, r * 0.35, 10), met); to.position.set(r * 0.12, r * 0.28, 0); g.add(to);
+  g.traverse(o => { if (o.isMesh) o.castShadow = true; }); sc.add(g); return g;
+}
+/** Laptop abierta (pantalla hacia +Z). lap.pantalla(t, texto) dibuja texto que se escribe (no es código real). lap.g = grupo. */
+export function laptop(sc, x = 0, y = 0, z = 0, giro = 0) {
+  const g = new THREE.Group(), neg = M.mat(0x1d1f24, { roughness: 0.4, metalness: 0.4 });
+  const base = new THREE.Mesh(new THREE.BoxGeometry(0.36, 0.02, 0.25), neg); base.position.y = 0.01; g.add(base);
+  const piv = new THREE.Group(); piv.position.set(0, 0.02, -0.12); piv.rotation.x = -0.25; g.add(piv);
+  const tapa = new THREE.Mesh(new THREE.BoxGeometry(0.36, 0.24, 0.012), neg); tapa.position.y = 0.12; piv.add(tapa);
+  const cv = document.createElement('canvas'); cv.width = 512; cv.height = 320; const tx = new THREE.CanvasTexture(cv); tx.colorSpace = THREE.SRGBColorSpace;
+  const scr = new THREE.Mesh(new THREE.PlaneGeometry(0.33, 0.21), new THREE.MeshBasicMaterial({ map: tx })); scr.position.set(0, 0.12, 0.007); piv.add(scr);
+  const luz = new THREE.PointLight(0x7fb8ff, 1.6, 2.2, 1.6); luz.position.set(0, 0.2, 0.25); g.add(luz);
+  g.position.set(x, y, z); g.rotation.y = giro; sc.add(g);
+  return { g, luz, pantalla(t, texto = 'BUSCANDO REDES...', color = '#7fd0ff') {
+    const c = cv.getContext('2d'); c.fillStyle = '#06101c'; c.fillRect(0, 0, 512, 320); c.fillStyle = color; c.font = 'bold 30px monospace';
+    c.fillText(texto.slice(0, Math.floor(t * 14)) + (Math.floor(t * 3) % 2 ? '_' : ''), 24, 60);
+    for (let i = 0; i < 6; i++) { const w = 120 + ((Math.sin(i * 7.1 + Math.floor(t * 2)) + 1) * 150); c.fillStyle = 'rgba(127,208,255,0.35)'; c.fillRect(24, 100 + i * 34, w, 18); }
+    tx.needsUpdate = true; } };
+}
+/** Vestíbulo de cajeros automáticos de noche (Manhattan 2003): 3 cajeros en la pared del fondo (z=-2), vidriera a la calle en z=+2.5.
+ *  Los cajeros están en x = -1.4, 0, 1.4 (pantalla a y≈1.35). Afuera, calle de noche. */
+export function cajeros(sc) {
+  sc.background = new THREE.Color(0x06080d); sc.add(new THREE.HemisphereLight(0xdfe8ff, 0x202024, 0.45));
+  const piso = M.matTex(M.TEX.concreto(), [3, 3], 0x8a8478, { roughness: 0.4 }), pared = M.matTex(M.TEX.concreto(), [2, 1], 0xc8c2b4);
+  M.caja(sc, 30, 0.1, 30, 0, -0.05, 0, piso); M.caja(sc, 5, 3, 0.2, 0, 1.5, -2.2, pared); M.caja(sc, 0.2, 3, 4.6, -2.5, 1.5, 0.1, pared); M.caja(sc, 0.2, 3, 4.6, 2.5, 1.5, 0.1, pared);
+  M.caja(sc, 5, 0.1, 4.6, 0, 3, 0.1, M.mat(0xe8e6e0));
+  for (const x of [-1.2, 1.2]) { M.caja(sc, 1.6, 0.05, 0.25, x, 2.95, 0, emis(0xf2f6ff, 2.5), false); const l = new THREE.PointLight(0xeef4ff, 7, 7, 1.5); l.position.set(x, 2.7, 0.2); sc.add(l); }
+  const cvs = [];
+  for (const x of [-1.4, 0, 1.4]) { M.caja(sc, 0.9, 1.9, 0.5, x, 0.95, -1.9, M.mat(0x4a4e56, { metalness: 0.6, roughness: 0.4 }));
+    M.caja(sc, 0.9, 0.35, 0.06, x, 2.05, -1.66, emis(0x2a5aa8, 0.9), false);
+    M.caja(sc, 0.42, 0.32, 0.03, x, 1.38, -1.64, emis(0x4a9aff, 1.1), false); M.caja(sc, 0.35, 0.08, 0.2, x, 1.05, -1.55, M.mat(0x2a2d33));
+    M.caja(sc, 0.18, 0.02, 0.04, x + 0.25, 1.2, -1.64, M.mat(0x111111), false); }
+  const vid = new THREE.MeshStandardMaterial({ color: 0x9fb4c8, transparent: true, opacity: 0.18, roughness: 0.05, metalness: 0.3 });
+  M.caja(sc, 5, 3, 0.05, 0, 1.5, 2.4, vid, false); M.caja(sc, 5, 0.12, 0.12, 0, 3, 2.4, M.mat(0x2a2a2a)); M.caja(sc, 0.1, 3, 0.12, 0.6, 1.5, 2.4, M.mat(0x2a2a2a));
+  M.caja(sc, 60, 0.05, 20, 0, -0.02, 14, M.matTex(M.TEX.concreto(), [20, 6], 0x2a2a2e));
+  for (let i = 0; i < 6; i++) { M.caja(sc, 6, 10 + (i % 3) * 3, 4, -15 + i * 6, 5, 22, M.mat(0x1a1c22)); for (let j = 0; j < 8; j++) M.caja(sc, 0.8, 1.0, 0.05, -17 + i * 6 + (j % 3) * 1.8, 2 + Math.floor(j / 3) * 3, 19.95, emis(j % 2 ? 0xffb465 : 0x2a3040, 0.6), false); }
+  for (const x of [-8, 6]) { const l = new THREE.SpotLight(0xffa85a, 80, 16, 0.7, 0.6, 1.4); l.position.set(x, 6, 8); const tg = new THREE.Object3D(); tg.position.set(x, 0, 8); sc.add(tg); l.target = tg; sc.add(l); }
+}
+/** Patio trasero de una casa de Miami de noche: pasto, cerca de madera, pared con ventana encendida, palmera, un hueco con tierra y un barril azul.
+ *  El hueco está en (0, 0); b.subir(k) saca el barril del hueco (k 0..1). */
+export function patioBarril(sc) {
+  M.cielo(sc, '#04060c', '#1a2236'); sc.fog = new THREE.FogExp2(0x0b0f18, 0.03);
+  sc.add(new THREE.HemisphereLight(0x6f86b8, 0x1a1a14, 0.55));
+  const luna = new THREE.DirectionalLight(0x9ab0ff, 1.0); luna.position.set(-8, 18, 6); luna.castShadow = true; luna.shadow.mapSize.set(2048, 2048);
+  Object.assign(luna.shadow.camera, { left: -15, right: 15, top: 15, bottom: -15 }); sc.add(luna);
+  M.caja(sc, 60, 0.2, 60, 0, -0.1, 0, M.matTex(M.TEX.arena(), [20, 20], 0x34482a));
+  M.caja(sc, 14, 3.2, 0.3, 0, 1.6, -6, M.matTex(M.TEX.concreto(), [4, 1], 0xd8cdb8)); M.caja(sc, 14.6, 0.3, 2.0, 0, 3.25, -5.4, M.mat(0x6a4a3a));
+  M.caja(sc, 1.4, 1.1, 0.06, -3, 1.7, -5.83, emis(0xffc070, 0.7), false); M.caja(sc, 1.0, 2.1, 0.06, 2.5, 1.05, -5.83, M.mat(0x4a3a2a));
+  const lv = new THREE.PointLight(0xffb060, 10, 9, 1.6); lv.position.set(-3, 1.8, -4.8); sc.add(lv);
+  const mad = M.mat(0x6a5038, { roughness: 1 }); for (let x = -9; x <= 9; x += 0.32) M.caja(sc, 0.28, 1.9, 0.05, x, 0.95, 7, mad);
+  for (const z of [-6, 7]) for (const s of [-1, 1]) {}
+  for (let z = -6; z <= 7; z += 0.32) { M.caja(sc, 0.05, 1.9, 0.28, -9, 0.95, z, mad); M.caja(sc, 0.05, 1.9, 0.28, 9, 0.95, z, mad); }
+  const pal = new THREE.Group(); const tr = new THREE.Mesh(new THREE.CylinderGeometry(0.18, 0.28, 7, 8), M.mat(0x6a5a44)); tr.position.y = 3.5; pal.add(tr);
+  for (let i = 0; i < 8; i++) { const h = new THREE.Mesh(new THREE.BoxGeometry(3.2, 0.04, 0.5), M.mat(0x2e4a24)); h.position.set(1.4, 0, 0); const gg = new THREE.Group(); gg.add(h); gg.rotation.set(0, i * Math.PI / 4, -0.45); gg.position.y = 7; pal.add(gg); }
+  pal.position.set(6, 0, -3); pal.traverse(o => { if (o.isMesh) o.castShadow = true; }); sc.add(pal);
+  const tierra = M.matTex(M.TEX.arena(), [2, 2], 0x5a4632);
+  M.caja(sc, 1.6, 0.04, 1.6, 0, 0.005, 0, M.mat(0x140e08), false);
+  for (let i = 0; i < 4; i++) { const m = new THREE.Mesh(new THREE.ConeGeometry(0.7 + i * 0.1, 0.6, 8), tierra); m.position.set(1.4 + (i % 2) * 0.6, 0.25, -0.6 + i * 0.4); m.castShadow = true; sc.add(m); }
+  const bar = new THREE.Group(); const cuerpo = new THREE.Mesh(new THREE.CylinderGeometry(0.42, 0.42, 1.0, 24), M.mat(0x1f4fa8, { roughness: 0.5 })); cuerpo.position.y = 0.5; cuerpo.castShadow = true; bar.add(cuerpo);
+  for (const y of [0.25, 0.75]) { const a = new THREE.Mesh(new THREE.TorusGeometry(0.43, 0.025, 6, 24), M.mat(0x173c80)); a.rotation.x = Math.PI / 2; a.position.y = y; bar.add(a); }
+  const tapa = new THREE.Mesh(new THREE.CylinderGeometry(0.43, 0.43, 0.04, 24), M.mat(0x173c80)); tapa.position.y = 1.01; bar.add(tapa);
+  bar.position.set(0, -1.05, 0); sc.add(bar);
+  return { barril: bar, tapa, subir(k) { bar.position.y = K_lerp(-1.05, 0.02, k); } };
+}
+const K_lerp = (a, b, k) => a + (b - a) * Math.max(0, Math.min(1, k));
+/** Pala en las manos (se pone en la mano derecha, apuntando abajo). pa.seguir() después de setTime. */
+export function pala(sc, p) {
+  const g = new THREE.Group(); const m = new THREE.Mesh(new THREE.CylinderGeometry(0.02, 0.02, 1.2, 6), M.mat(0x7a5a3a)); m.position.y = -0.5; g.add(m);
+  const h = new THREE.Mesh(new THREE.BoxGeometry(0.22, 0.28, 0.02), M.mat(0x6a6a6a, { metalness: 0.7 })); h.position.y = -1.2; g.add(h); sc.add(g);
+  const v = new THREE.Vector3();
+  return { seguir() { p.updateMatrixWorld(true); (p.getObjectByName('Bip01_R_Hand') || p).getWorldPosition(v); g.position.copy(v); g.rotation.set(0.35, p.rotation.y, 0.2); } };
+}
+/** Letrero de número de puerta (placa dorada). */
+export function numeroPuerta(sc, texto, x, y, z, giroY = Math.PI / 2) {
+  const cv = document.createElement('canvas'); cv.width = 256; cv.height = 96; const c = cv.getContext('2d');
+  c.fillStyle = '#b8964a'; c.fillRect(0, 0, 256, 96); c.fillStyle = '#1a1208'; c.font = 'bold 70px serif'; c.textAlign = 'center'; c.fillText(texto, 128, 74);
+  const tx = new THREE.CanvasTexture(cv); tx.colorSpace = THREE.SRGBColorSpace;
+  const m = new THREE.Mesh(new THREE.PlaneGeometry(0.3, 0.11), new THREE.MeshStandardMaterial({ map: tx, metalness: 0.6, roughness: 0.35 })); m.position.set(x, y, z); m.rotation.y = giroY; sc.add(m); return m;
+}
