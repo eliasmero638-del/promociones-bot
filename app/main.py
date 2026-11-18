@@ -436,7 +436,8 @@ def auto_publicador():
                     continue
                 if m.get('foto') and not cfg.get('fotos_auto'):     # fotos: igual, solo muestras por ahora
                     continue
-                if m.get('interes', 0) < cfg['auto_minimo'] or ahora - m.get('enviado', ahora) < cfg['auto_espera_min'] * 60:
+                minimo = cfg.get('meme_minimo', 70) if m.get('meme') else 0 if m.get('foto') else cfg['auto_minimo']   # 18-nov: memes y fotos ya vienen filtrados
+                if m.get('interes', 0) < minimo or ahora - m.get('enviado', ahora) < cfg['auto_espera_min'] * 60:
                     continue
                 if ahora - m.get('enviado', ahora) > 12 * 3600:     # muy viejo: ya no
                     continue

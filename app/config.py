@@ -59,9 +59,9 @@ DEFAULTS = {
     'historias_paginas': ['ridmer'],
     'memes': True,                      # 10-nov: versión MEME de los mejores momentos (franja negra + frase)
     'meme_minimo': 70,                   # potencial mínimo de meme (0-100)
-    'memes_auto': False,
+    'memes_auto': True,
     'fotos': True,                       # 11-nov: fotos con chisme (Facebook también paga las fotos)
-    'fotos_auto': False,                 # False = solo muestras; True = entran a la cola automática                 # False = solo muestras al Telegram; True = entran a la cola automática
+    'fotos_auto': True,                 # False = solo muestras; True = entran a la cola automática                 # False = solo muestras al Telegram; True = entran a la cola automática
     'claude_limite': '12:45',            # 10-nov: si a esta hora Claude no entregó, el servidor arma el respaldo
     'desde_hora': '14:00',               # 10-nov (pedido del dueño, permanente): ningún video sale antes de las 14:00
     'desde_hora_dia': {},                # excepciones por fecha, ej. {'2026-12-24': '10:00'}
@@ -131,14 +131,15 @@ _lock = threading.Lock()
 _cfg = None
 _propio = {}            # solo lo que se guardó a propósito (no los valores por defecto)
 
-VERSION_CFG = 6
+VERSION_CFG = 7
 # claves que versiones viejas guardaban sin querer: se borran para que mande el valor por defecto
 MIGRAR = {2: ['clip_min', 'clip_max', 'ventana_antes', 'ventana_despues', 'antes_seg', 'despues_seg',
               'umbral_ia', 'max_por_hora', 'separacion_min', 'segmento_seg', 'guardar_horas', 'whisper_modelo',
               'auto_espera_min', 'auto_minimo', 'max_publicaciones_dia', 'participantes', 'canal', 'reality',
               'marca', 'modo', 'web_url', 'web_puerto', 'umbral'],
           5: ['participantes', 'exparticipantes']}       # lista actual según lacasa593.com (1-nov-2026)
-FORZAR = {2: {'ia_minimo': 80}, 3: {'ia_minimo': 85}, 4: {'ridmer_urgencia': 90}, 5: {'certeza_minima': 75}, 6: {'certeza_minima': 70}}
+FORZAR = {2: {'ia_minimo': 80}, 3: {'ia_minimo': 85}, 4: {'ridmer_urgencia': 90}, 5: {'certeza_minima': 75}, 6: {'certeza_minima': 70},
+          7: {'memes_auto': True, 'fotos_auto': True}}     # 18-nov: el dueño pidió publicar memes y fotos con chisme solos
 
 
 def _escribir():
