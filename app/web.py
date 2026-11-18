@@ -224,6 +224,11 @@ class H(BaseHTTPRequestHandler):
                     j += ['--- teléfono ---'] + open(os.path.join(C.DATA, 'telefono.log'), errors='replace').read().splitlines()[-26:]
                 except Exception:
                     pass
+                try:
+                    j += ['--- voz ---'] + [l for l in open(os.path.join(C.DATA, 'voz_propia', 'log.txt'), errors='replace').read().splitlines()
+                                            if l.strip() and '%|' not in l][-20:]
+                except Exception:
+                    pass
                 limpio = [_re.sub(r'[A-Za-z0-9_\-]{30,}', '***', _re.sub(r'\?\S+', '?…', l))[:220] for l in j]
                 d = {'hora': time.strftime('%Y-%m-%d %H:%M'), 'grabador': {k: v for k, v in getattr(_rec, 'estado', {}).items()
                                                                      if isinstance(v, (str, int, float, bool, type(None)))},
