@@ -537,7 +537,7 @@
    "musica": "misterio",
    "segmentos": [
     {
-     "texto": "Le cayó un meteorito mientras dormía.",
+     "texto": "Dormía… y le cayó un meteorito.",
      "escena": {
       "tipo": "fecha",
       "texto": "30 NOV 1954",
@@ -545,7 +545,7 @@
      }
     },
     {
-     "texto": "Noviembre de mil novecientos cincuenta y cuatro. Un pueblo de Alabama.",
+     "texto": "Es noviembre de mil novecientos cincuenta y cuatro, en un pueblo de Alabama.",
      "escena": {
       "tipo": "foto",
       "buscar": [
