@@ -71,6 +71,11 @@ def escuchar(manejador):
                         m = u['message']                          # 11-nov: portada nueva que manda el dueño
                         fid = m['photo'][-1]['file_id'] if 'photo' in m else m['document']['file_id']
                         manejador('foto', m['chat']['id'], fid, m)
+                    elif 'message' in u and ('voice' in u['message'] or 'audio' in u['message'] or (u['message'].get('document') or {})
+                                              .get('mime_type', '').startswith('audio/')):
+                        m = u['message']                          # 18-nov: audio del dueño (para clonar su voz)
+                        fid = (m.get('voice') or m.get('audio') or m.get('document'))['file_id']
+                        manejador('audio', m['chat']['id'], fid, m)
                     elif 'callback_query' in u:
                         q = u['callback_query']
                         _api('answerCallbackQuery', callback_query_id=q['id'])

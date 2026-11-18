@@ -510,6 +510,19 @@ def comandos(tipo, chat, dato, raw):
     if chat in cfg['chat_ids'] and tipo == 'boton' and dato.startswith('yport:'):      # 11-nov: cambiar portada
         _esperando_portada[chat] = dato.split(':', 1)[1]
         return tg.texto('🖼️ Mándame ahora la nueva portada como foto (1280x720 es lo ideal) y la pongo en YouTube.', chat)
+    if tipo == 'audio' and chat in cfg['chat_ids']:                 # 18-nov: audio para clonar la voz del dueño
+        import subprocess
+        dest = os.path.join(C.DATA, 'voz_propia'); os.makedirs(dest, exist_ok=True)
+        archivo = os.path.join(dest, f'original_{int(time.time())}.audio')
+        tg.bajar_archivo(dato, archivo)
+        app = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        cmd = [os.path.join(app, 'tools', 'voz_clon.sh'), archivo]
+        try:
+            subprocess.run(['systemd-run', f'--unit=vozclon-{int(time.time())}', '--collect', '/bin/bash'] + cmd, check=True, timeout=30)
+        except Exception:
+            subprocess.Popen(['/bin/bash'] + cmd, start_new_session=True)
+        tg.texto('🎙️ Audio recibido. Empiezo a clonar tu voz; te aviso por aquí cómo va.', chat)
+        return
     if tipo == 'foto':
         if chat not in cfg['chat_ids']:
             return
