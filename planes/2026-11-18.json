@@ -1,0 +1,672 @@
+{
+ "fecha": "2026-11-18",
+ "modo": "claude",
+ "nota": "Encargo fb1 (terremoto de Veracruz 1973) no usado: sin fotos y repetía tema con fb2 (Topos); fb3 = Ann Hodges (historia propia). fb1 = Emiliano Sala (encargo fb3). Sin largo hoy (hay_largo false).",
+ "videos": [
+  {
+   "eid": "fb1",
+   "tipo": "fb",
+   "hora_fb": "14:00",
+   "titulo_youtube": "Mandó un AUDIO desde el avión… y desapareció",
+   "texto_facebook": "Desde la avioneta mandó un audio: «parece que se está cayendo a pedazos»… minutos después desapareció del radar ✈️ #EmilianoSala #Misterio #HistoriasReales",
+   "texto_tiktok": "Mandó un audio desde el avión… y desapareció ✈️ Emiliano Sala acababa de fichar por el Cardiff: «Estoy en un avión que parece que se está cayendo a pedazos». Lo que encontraron a 67 metros bajo el mar lo explicó todo. #emilianosala #misterio #historiasreales #futbol #datoscuriosos #ridmer",
+   "encargo": "fb3",
+   "articulo": "Accidente del Piper PA-46 en 2019",
+   "fuente": "https://es.wikipedia.org/wiki/Accidente_del_Piper_PA-46_en_2019",
+   "titulo_video": " ",
+   "titulos_opciones": [
+    "Mandó un AUDIO desde el avión… y desapareció",
+    "«Este avión se cae a pedazos»: el último audio de Emiliano Sala",
+    "Acababa de fichar por el Cardiff… y su avioneta se esfumó del radar",
+    "El gobierno dejó de buscarlo… su familia NO",
+    "A 67 metros bajo el mar encontraron la verdad",
+    "Un gas invisible se metió en la cabina… y nadie se dio cuenta",
+    "El piloto NUNCA apareció ✈️",
+    "¿Qué pasó en la avioneta de Emiliano Sala?"
+   ],
+   "descripcion_youtube": "21 de enero de 2019. Emiliano Sala, recién fichado por el Cardiff City, sube a una avioneta en Nantes.\nDesde el aire manda un audio: «parece que se está cayendo a pedazos»… y la avioneta desaparece del radar sobre el canal de la Mancha.\n#emilianosala #misterio #historiasreales #ridmer",
+   "etiquetas": [
+    "Emiliano Sala",
+    "Piper Malibu",
+    "canal de la Mancha",
+    "Cardiff",
+    "Nantes",
+    "avioneta",
+    "historias reales",
+    "ridmer"
+   ],
+   "miniatura": {
+    "img": 7,
+    "texto": "SU ÚLTIMO AUDIO"
+   },
+   "gancho": 1,
+   "musica": "tension",
+   "segmentos": [
+    {
+     "texto": "Mandó un audio desde el avión… y desapareció.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "21 ENE 2019",
+      "sub": "Canal de la Mancha"
+     }
+    },
+    {
+     "texto": "Emiliano Sala, delantero argentino, acababa de fichar por el Cardiff de Inglaterra.",
+     "escena": {
+      "tipo": "foto",
+      "img": 7
+     }
+    },
+    {
+     "texto": "En enero de dos mil diecinueve sube a una avioneta en Nantes, Francia.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "En el aire manda un audio: «Estoy en un avión que parece que se está cayendo a pedazos».",
+     "escena": {
+      "tipo": "cita",
+      "texto": "Estoy en un avión que parece que se está cayendo a pedazos",
+      "autor": "Emiliano Sala"
+     }
+    },
+    {
+     "texto": "«Si en una hora y media no tienen noticias, no sé si van a mandar a alguien a buscarme.»",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=m9eMgPraIrY",
+      "desde": 8,
+      "dur": 6,
+      "buscar_video": [
+       "small plane night",
+       "English Channel sea"
+      ]
+     }
+    },
+    {
+     "texto": "Sobre el canal de la Mancha, el piloto pide bajar para esquivar las nubes.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "2.500 PIES",
+      "sub": "bajando entre nubes"
+     }
+    },
+    {
+     "texto": "A setecientos metros de altura, la avioneta desaparece del radar.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=oFoSIcRWuSI",
+      "desde": 5,
+      "dur": 6,
+      "buscar_video": [
+       "English Channel",
+       "radar screen"
+      ]
+     }
+    },
+    {
+     "texto": "Tres días después, el gobierno suspende la búsqueda.",
+     "escena": {
+      "tipo": "foto",
+      "img": 14
+     }
+    },
+    {
+     "texto": "Pero la familia no se rinde y contrata un barco privado con sonar.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "BÚSQUEDA PRIVADA",
+      "sub": "pagada por la familia"
+     }
+    },
+    {
+     "texto": "Dos semanas después, a sesenta y siete metros bajo el mar, aparece la avioneta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     },
+     "rotulo": "67 METROS"
+    },
+    {
+     "texto": "La causa: monóxido de carbono se filtraba en la cabina.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "MONÓXIDO",
+      "sub": "un gas invisible"
+     }
+    },
+    {
+     "texto": "El piloto nunca apareció. Comparte esta historia y sigue a Ridmer para más.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=mnIRwCHJyuU",
+      "desde": 4,
+      "dur": 6,
+      "buscar_video": [
+       "English Channel sea"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb1s",
+   "tipo": "short",
+   "hora_youtube": "14:00",
+   "titulo_youtube": "Mandó un audio desde el avión… y desapareció #shorts",
+   "encargo": "fb3",
+   "articulo": "Accidente del Piper PA-46 en 2019",
+   "fuente": "https://es.wikipedia.org/wiki/Accidente_del_Piper_PA-46_en_2019",
+   "titulo_video": " ",
+   "titulos_opciones": [
+    "Mandó un AUDIO desde el avión… y desapareció",
+    "«Este avión se cae a pedazos»: el último audio de Emiliano Sala",
+    "Acababa de fichar por el Cardiff… y su avioneta se esfumó del radar",
+    "El gobierno dejó de buscarlo… su familia NO",
+    "A 67 metros bajo el mar encontraron la verdad",
+    "Un gas invisible se metió en la cabina… y nadie se dio cuenta",
+    "El piloto NUNCA apareció ✈️",
+    "¿Qué pasó en la avioneta de Emiliano Sala?"
+   ],
+   "descripcion_youtube": "21 de enero de 2019. Emiliano Sala, recién fichado por el Cardiff City, sube a una avioneta en Nantes.\nDesde el aire manda un audio: «parece que se está cayendo a pedazos»… y la avioneta desaparece del radar sobre el canal de la Mancha.\n#emilianosala #misterio #historiasreales #ridmer",
+   "etiquetas": [
+    "Emiliano Sala",
+    "Piper Malibu",
+    "canal de la Mancha",
+    "Cardiff",
+    "Nantes",
+    "avioneta",
+    "historias reales",
+    "ridmer"
+   ],
+   "miniatura": {
+    "img": 7,
+    "texto": "SU ÚLTIMO AUDIO"
+   },
+   "gancho": 1,
+   "musica": "tension",
+   "segmentos": [
+    {
+     "texto": "Mandó un audio desde el avión… y desapareció.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "21 ENE 2019",
+      "sub": "Canal de la Mancha"
+     }
+    },
+    {
+     "texto": "Emiliano Sala acababa de fichar por el Cardiff y cruzaba el canal de la Mancha en una avioneta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 7
+     }
+    },
+    {
+     "texto": "Manda un audio: «Estoy en un avión que parece que se está cayendo a pedazos».",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=m9eMgPraIrY",
+      "desde": 8,
+      "dur": 6,
+      "buscar_video": [
+       "small plane night"
+      ]
+     }
+    },
+    {
+     "texto": "Minutos después, la avioneta desaparece del radar.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "SIN SEÑAL",
+      "sub": "radar"
+     }
+    },
+    {
+     "texto": "Su familia paga una búsqueda privada… y a sesenta y siete metros bajo el mar aparece la avioneta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "La causa: monóxido de carbono en la cabina.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=oFoSIcRWuSI",
+      "desde": 5,
+      "dur": 6,
+      "buscar_video": [
+       "English Channel"
+      ]
+     }
+    },
+    {
+     "texto": "El piloto nunca apareció. Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb2",
+   "tipo": "fb",
+   "hora_fb": "18:30",
+   "titulo_youtube": "Se meten donde NADIE se atreve… y no cobran nada",
+   "texto_facebook": "En 1985 unos vecinos se metieron arrastrándose bajo los edificios caídos para sacar gente viva… así nacieron los Topos 🇲🇽 #Topos #México #HistoriasReales",
+   "texto_tiktok": "Se meten donde nadie se atreve 🇲🇽 Nacieron en el terremoto de 1985: vecinos que se arrastraban entre escombros. Hoy los Topos viajan a Turquía, Ecuador, España, Venezuela y Colombia… y no cobran nada. #topos #mexico #historiasreales #heroes #terremoto #ridmer",
+   "encargo": "fb2",
+   "articulo": "Brigada Internacional de Rescate Topos Azteca",
+   "fuente": "https://es.wikipedia.org/wiki/Brigada_Internacional_de_Rescate_Topos_Azteca",
+   "titulo_video": " ",
+   "titulos_opciones": [
+    "Se meten donde NADIE se atreve… y no cobran nada",
+    "Los TOPOS: vecinos que se arrastraban entre escombros para salvar vidas",
+    "Nacieron en el terremoto del 85… hoy los llaman de todo el mundo",
+    "¿Cómo encuentran a alguien vivo bajo un edificio caído?",
+    "Overoles naranjas: los héroes mexicanos que llegan primero 🇲🇽",
+    "Turquía, Haití, Ecuador, España… y este año Venezuela y Colombia",
+    "No son bomberos ni soldados: son voluntarios"
+   ],
+   "descripcion_youtube": "19 de septiembre de 1985. Los edificios de la Ciudad de México caen y los vecinos se meten arrastrándose entre los escombros para sacar gente viva.\nAsí nacieron los Topos: hoy viajan por todo el mundo… y lo hacen gratis.\n#topos #mexico #historiasreales #ridmer",
+   "etiquetas": [
+    "Topos Azteca",
+    "Topos",
+    "rescatistas",
+    "terremoto 1985",
+    "México",
+    "Héctor Méndez",
+    "historias reales",
+    "ridmer"
+   ],
+   "miniatura": {
+    "img": 1,
+    "texto": "LOS TOPOS"
+   },
+   "gancho": 1,
+   "musica": "epico",
+   "segmentos": [
+    {
+     "texto": "Se meten donde nadie se atreve.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "19 SEP 1985",
+      "sub": "Ciudad de México"
+     }
+    },
+    {
+     "texto": "Diecinueve de septiembre de mil novecientos ochenta y cinco. Un terremoto tumba edificios enteros en la Ciudad de México.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=CLgt5-P9qh0",
+      "desde": 30,
+      "dur": 6,
+      "buscar_video": [
+       "Mexico City earthquake 1985"
+      ]
+     }
+    },
+    {
+     "texto": "Bajo los escombros hay gente viva. Y los vecinos no esperan.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Se meten por huecos tan estrechos que solo se puede pasar arrastrándose.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "POR LOS HUECOS",
+      "sub": "arrastrándose"
+     }
+    },
+    {
+     "texto": "Por eso los llamaron «topos».",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "De ahí nació la Brigada Topos Azteca, de overoles naranjas, encabezada por Héctor Méndez.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     },
+     "rotulo": "TOPOS AZTECA"
+    },
+    {
+     "texto": "¿Cómo trabajan? Primero revisan si lo que queda en pie aguanta, y dividen la zona en sectores.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "PASO A PASO",
+      "sub": "cómo buscan"
+     }
+    },
+    {
+     "texto": "Luego quitan el escombro poco a poco, para que nada se les venga encima.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=Y_NuLZQ7QJI",
+      "desde": 20,
+      "dur": 6,
+      "buscar_video": [
+       "rubble search rescue"
+      ]
+     }
+    },
+    {
+     "texto": "Usan cámaras térmicas, sensores que escuchan y hasta radar para encontrar señales de vida.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "SEÑALES DE VIDA",
+      "sub": "sensores y cámaras"
+     }
+    },
+    {
+     "texto": "Han ido a Haití, Japón, Turquía, Ecuador y España.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Este año, tras el terremoto de Colombia, fueron la primera brigada internacional en llegar a Cali.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=ISHvtk11Rh4",
+      "desde": 15,
+      "dur": 6,
+      "buscar_video": [
+       "rescue rubble"
+      ]
+     }
+    },
+    {
+     "texto": "Y son voluntarios: no cobran nada. Comparte esta historia y sigue a Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb2s",
+   "tipo": "short",
+   "hora_youtube": "19:00",
+   "titulo_youtube": "Se meten donde nadie se atreve #shorts",
+   "encargo": "fb2",
+   "articulo": "Brigada Internacional de Rescate Topos Azteca",
+   "fuente": "https://es.wikipedia.org/wiki/Brigada_Internacional_de_Rescate_Topos_Azteca",
+   "titulo_video": " ",
+   "titulos_opciones": [
+    "Se meten donde NADIE se atreve… y no cobran nada",
+    "Los TOPOS: vecinos que se arrastraban entre escombros para salvar vidas",
+    "Nacieron en el terremoto del 85… hoy los llaman de todo el mundo",
+    "¿Cómo encuentran a alguien vivo bajo un edificio caído?",
+    "Overoles naranjas: los héroes mexicanos que llegan primero 🇲🇽",
+    "Turquía, Haití, Ecuador, España… y este año Venezuela y Colombia",
+    "No son bomberos ni soldados: son voluntarios"
+   ],
+   "descripcion_youtube": "19 de septiembre de 1985. Los edificios de la Ciudad de México caen y los vecinos se meten arrastrándose entre los escombros para sacar gente viva.\nAsí nacieron los Topos: hoy viajan por todo el mundo… y lo hacen gratis.\n#topos #mexico #historiasreales #ridmer",
+   "etiquetas": [
+    "Topos Azteca",
+    "Topos",
+    "rescatistas",
+    "terremoto 1985",
+    "México",
+    "Héctor Méndez",
+    "historias reales",
+    "ridmer"
+   ],
+   "miniatura": {
+    "img": 1,
+    "texto": "LOS TOPOS"
+   },
+   "gancho": 1,
+   "musica": "epico",
+   "segmentos": [
+    {
+     "texto": "Se meten donde nadie se atreve.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "19 SEP 1985",
+      "sub": "Ciudad de México"
+     }
+    },
+    {
+     "texto": "En el terremoto de mil novecientos ochenta y cinco, vecinos comunes se metían entre los escombros para sacar gente viva.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=CLgt5-P9qh0",
+      "desde": 30,
+      "dur": 6,
+      "buscar_video": [
+       "Mexico City earthquake 1985"
+      ]
+     }
+    },
+    {
+     "texto": "Pasaban arrastrándose por huecos diminutos. Por eso los llamaron topos.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "TOPOS",
+      "sub": "arrastrándose"
+     }
+    },
+    {
+     "texto": "Así nació la Brigada Topos Azteca, de overoles naranjas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Quitan escombro poco a poco y usan cámaras térmicas y sensores para escuchar señales de vida.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=Y_NuLZQ7QJI",
+      "desde": 20,
+      "dur": 6,
+      "buscar_video": [
+       "rubble search"
+      ]
+     }
+    },
+    {
+     "texto": "Han ido a Turquía, Ecuador, España, y este año a Venezuela y Colombia.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=ISHvtk11Rh4",
+      "desde": 15,
+      "dur": 6,
+      "buscar_video": [
+       "rescue rubble"
+      ]
+     }
+    },
+    {
+     "texto": "Y no cobran nada. Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb3",
+   "tipo": "fb",
+   "hora_fb": "21:00",
+   "titulo_youtube": "Le cayó un METEORITO mientras dormía la siesta",
+   "texto_facebook": "Dormía la siesta en su sofá cuando una roca del espacio atravesó el techo, rebotó en la radio… y la golpeó ☄️ #Meteorito #DatosCuriosos #HistoriasReales",
+   "texto_tiktok": "Le cayó un meteorito mientras dormía ☄️ Alabama, 1954: una roca de casi 4 kilos atravesó el techo, rebotó en la radio y golpeó a Ann Hodges. Es la única persona confirmada golpeada por uno… y luego su casera quiso quedarse con la roca. #meteorito #datoscuriosos #historiasreales #espacio #ciencia #ridmer",
+   "articulo": "Meteorito de Sylacauga (Ann Hodges, 1954)",
+   "fuente": "https://en.wikipedia.org/wiki/Ann_Elizabeth_Fowler_Hodges",
+   "nota": "Historia propia (encargo fb1 Veracruz 1973 sin fotos y muy parecido a fb2; se cambió por un tema de la lista FUNCIONAN).",
+   "titulo_video": " ",
+   "titulos_opciones": [
+    "Le cayó un METEORITO mientras dormía la siesta",
+    "La única persona confirmada golpeada por un meteorito ☄️",
+    "Atravesó el techo, rebotó en la radio… y la golpeó",
+    "Sobrevivió a un meteorito… y después la demandó su casera",
+    "Pagó 500 dólares por quedarse con la roca que le cayó encima",
+    "1954: una bola de fuego cruzó Alabama y terminó en una sala",
+    "¿Cuántas probabilidades había? A ella le pasó"
+   ],
+   "descripcion_youtube": "30 de noviembre de 1954, Sylacauga, Alabama. Ann Hodges duerme la siesta en su sofá cuando una roca del espacio atraviesa el techo.\nRebota en la radio… y la golpea. Lo que pasó después fue casi tan increíble.\n#meteorito #datoscuriosos #historiasreales #ridmer",
+   "etiquetas": [
+    "Ann Hodges",
+    "meteorito",
+    "Sylacauga",
+    "Alabama",
+    "1954",
+    "datos curiosos",
+    "historias reales",
+    "ridmer"
+   ],
+   "miniatura": {
+    "texto": "LE CAYÓ DEL CIELO"
+   },
+   "gancho": 1,
+   "musica": "misterio",
+   "segmentos": [
+    {
+     "texto": "Le cayó un meteorito mientras dormía.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "30 NOV 1954",
+      "sub": "Sylacauga, Alabama"
+     }
+    },
+    {
+     "texto": "Noviembre de mil novecientos cincuenta y cuatro. Un pueblo de Alabama.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Sylacauga Alabama",
+       "Sylacauga"
+      ]
+     }
+    },
+    {
+     "texto": "Ann Hodges, de treinta y cuatro años, duerme la siesta en su sofá.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "LA SIESTA",
+      "sub": "Ann Hodges, 34 años"
+     }
+    },
+    {
+     "texto": "Afuera, la gente del pueblo ve cruzar una bola de fuego por el cielo.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=xM3H_mLW8hI",
+      "desde": 10,
+      "dur": 6,
+      "buscar_video": [
+       "meteor fireball",
+       "bolide"
+      ]
+     }
+    },
+    {
+     "texto": "Una roca de casi cuatro kilos atraviesa el techo, rebota en la radio y la golpea.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "3,8 KILOS",
+      "sub": "atravesó el techo"
+     }
+    },
+    {
+     "texto": "Despierta con un moretón enorme y un agujero de casi un metro en el techo.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Ann Hodges meteorite",
+       "Ann Hodges hole roof"
+      ]
+     }
+    },
+    {
+     "texto": "Llega la policía. Y luego la Fuerza Aérea se lleva la roca.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "FUERZA AÉREA",
+      "sub": "se llevan la roca"
+     }
+    },
+    {
+     "texto": "Era un meteorito. Ann es la única persona confirmada a la que golpeó uno.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Sylacauga meteorite",
+       "Hodges meteorite"
+      ]
+     },
+     "rotulo": "ÚNICA EN LA HISTORIA"
+    },
+    {
+     "texto": "Se vuelve famosa: hasta sale en la televisión.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=JVyi1w4ULug",
+      "desde": 40,
+      "dur": 6,
+      "buscar_video": [
+       "1950s television"
+      ]
+     }
+    },
+    {
+     "texto": "Pero la dueña de la casa reclama la roca: dice que cayó en su propiedad.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "¿DE QUIÉN ES?",
+      "sub": "la casera reclama"
+     }
+    },
+    {
+     "texto": "Ann tiene que pagarle quinientos dólares para quedársela.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "500 DÓLARES",
+      "sub": "para quedarse la roca"
+     }
+    },
+    {
+     "texto": "Hoy la roca está en un museo de Alabama. Comparte esta historia y sigue a Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Hodges meteorite Alabama Museum of Natural History",
+       "Sylacauga meteorite museum"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb1f",
+   "tipo": "foto",
+   "omitir": true,
+   "hora_foto": "15:30",
+   "titulo_youtube": "Su último audio desde la avioneta: «parece que se está cayendo a pedazos»",
+   "texto_foto": "«Estoy en un avión que parece que se está cayendo a pedazos.» Fue uno de sus últimos mensajes.\n\n21 de enero de 2019. Emiliano Sala, delantero argentino de 28 años, acababa de fichar por el Cardiff City de Inglaterra. Esa noche despegó de Nantes, Francia, en una pequeña avioneta Piper Malibu con un solo piloto.\n\nYa en el aire mandó un audio a sus amigos: «Si en una hora y media no tienen noticias, no sé si van a mandar a alguien a buscarme».\n\nSobre el canal de la Mancha, el piloto pidió bajar para esquivar las nubes. A unos 700 metros de altura, la avioneta desapareció del radar.\n\nA los tres días se suspendió la búsqueda oficial. Pero su familia no se rindió: juntó dinero y contrató un barco privado. El 3 de febrero encontraron la avioneta a 67 metros de profundidad.\n\nLa investigación descubrió que un gas invisible, monóxido de carbono, se filtraba en la cabina. El cuerpo del piloto nunca apareció.\n\n¿Tú te habrías subido a esa avioneta?\n#EmilianoSala #Misterio #HistoriasReales"
+  },
+  {
+   "eid": "fb2f",
+   "tipo": "foto",
+   "omitir": true,
+   "hora_foto": "20:00",
+   "titulo_youtube": "Dormía la siesta… y un meteorito atravesó el techo",
+   "texto_foto": "Dormía la siesta en su sofá… y una roca del espacio atravesó el techo.\n\nSylacauga, Alabama, 30 de noviembre de 1954, poco después del mediodía. Ann Hodges, de 34 años, descansaba en la sala de su casa, tapada en el sofá.\n\nAfuera, la gente del pueblo vio cruzar una bola de fuego por el cielo. Segundos después, una roca negra de casi 4 kilos rompió el techo, dejó un agujero de casi un metro, rebotó en una radio de madera y la golpeó en la cadera y en la mano.\n\nDespertó con un moretón enorme. Llegaron la policía, los bomberos y luego la Fuerza Aérea, que se llevó la roca para estudiarla. Era un meteorito: Ann es la única persona confirmada a la que golpeó uno.\n\nPero ahí no terminó. La dueña de la casa reclamó la roca porque había caído en su propiedad, y Ann tuvo que pagarle 500 dólares para quedársela. Hoy está en el Museo de Historia Natural de Alabama.\n\n¿Tú qué habrías hecho con esa roca?\n#Meteorito #DatosCuriosos #HistoriasReales"
+  }
+ ]
+}
