@@ -20,12 +20,15 @@ if [ ! -x $VENV/bin/python ] || ! $VENV/bin/python -c "import chatterbox" 2>/dev
       --extra-index-url https://download.pytorch.org/whl/cpu chatterbox-tts || { avisa error "no se pudo instalar Chatterbox"; exit 1; }
 fi
 echo "=== $(date) instalado"
-avisa texto "⚙️ Programa instalado. Ahora estoy haciendo la prueba con tu voz (unos 10–20 min)…"
-# 3) prueba con un guion típico de Ridmer
-T0=$(date +%s)
-$VENV/bin/python $APP/tools/voz_gen.py $V/referencia.wav $APP/tools/voz_prueba.txt $V/prueba.wav || { avisa error "falló al generar la voz (mira el log)"; exit 1; }
-T1=$(date +%s)
-ffmpeg -v error -y -i $V/prueba.wav -af "loudnorm=I=-16:TP=-1.5" -c:a libmp3lame -b:a 160k $V/prueba_tu_voz.mp3
-DUR=$(ffprobe -v error -show_entries format=duration -of csv=p=0 $V/prueba.wav | cut -d. -f1)
-avisa audio $V/prueba_tu_voz.mp3 "🎧 PRUEBA CON TU VOZ (clonada). Duración ${DUR}s · tardó $(( (T1-T0)/60 )) min en hacerla. ¿Se parece a ti?"
-echo "=== $(date) fin ${DUR}s en $((T1-T0))s"
+avisa texto "⚙️ Programa instalado. Ahora hago 5 pruebas con tu voz en distintos tonos (misterio, triste, sorpresa, noticia y alegre). Te las mando una por una (unos 5–10 min cada una)…"
+# 3) pruebas con varios tonos (el dueño las escucha antes de usar su voz en los videos)
+#    tono: archivo|emoción (exaggeration)|cfg (más bajo = más pausado)
+for T in "1_misterio|0.5|0.4|🕵️ MISTERIO / SUSPENSO" "2_triste|0.35|0.35|😢 TRISTE" "3_sorpresa|0.85|0.5|😱 SORPRESA" "4_noticia|0.3|0.5|📰 NOTICIA SERIA" "5_alegre|0.7|0.5|😄 ALEGRE / CURIOSIDAD"; do
+  IFS='|' read N EX CF ETQ <<< "$T"
+  T0=$(date +%s)
+  $VENV/bin/python $APP/tools/voz_gen.py $V/referencia.wav $APP/tools/voz_pruebas/$N.txt $V/$N.wav $EX $CF || { avisa error "falló la prueba $N (mira el log)"; continue; }
+  ffmpeg -v error -y -i $V/$N.wav -af "loudnorm=I=-16:TP=-1.5" -c:a libmp3lame -b:a 160k $V/$N.mp3
+  avisa audio $V/$N.mp3 "🎧 TU VOZ · $ETQ (tardó $(( ($(date +%s)-T0)/60 )) min)"
+done
+avisa texto "✅ Esas son las pruebas con tu voz clonada. Dile a Claude cuáles te gustan y cuáles no. Todavía NO se usa en los videos."
+echo "=== $(date) fin"
