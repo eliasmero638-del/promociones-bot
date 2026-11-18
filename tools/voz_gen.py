@@ -3,6 +3,9 @@ Uso: voz_gen.py REFERENCIA.wav TEXTO.txt SALIDA.wav [EMOCION 0-1] [CFG 0-1]"""
 import re, sys, torch, torchaudio as ta
 _load = torch.load
 torch.load = lambda *a, **k: _load(*a, **{**k, 'map_location': 'cpu'})     # los pesos vienen guardados para GPU
+import perth
+if getattr(perth, 'PerthImplicitWatermarker', None) is None:        # 18-nov: en el servidor la marca de agua no carga; se usa la vacía
+    perth.PerthImplicitWatermarker = perth.DummyWatermarker
 from chatterbox.mtl_tts import ChatterboxMultilingualTTS
 
 torch.set_num_threads(max(1, torch.get_num_threads()))

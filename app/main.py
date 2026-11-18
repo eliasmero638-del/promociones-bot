@@ -831,6 +831,16 @@ def main():
             log('producción no disponible', e)
     if not C.get().get('solo_enviar'):
         tg.escuchar(comandos)
+        try:                                                            # 18-nov: reintento de la clonación de voz tras un arreglo
+            vp = os.path.join(C.DATA, 'voz_propia'); marca = os.path.join(vp, 'reintento_2')
+            orig = sorted(f for f in os.listdir(vp) if f.startswith('original_')) if os.path.isdir(vp) else []
+            if orig and not os.path.exists(marca) and not os.path.exists(os.path.join(vp, '5_alegre.mp3')):
+                open(marca, 'w').write(time.strftime('%F %T'))
+                app_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+                subprocess.run(['systemd-run', f'--unit=vozclon-{int(time.time())}', '--collect', '/bin/bash',
+                                os.path.join(app_dir, 'tools', 'voz_clon.sh'), os.path.join(vp, orig[-1])], timeout=30)
+        except Exception as e:
+            log('reintento voz falló', e)
     if C.get()['chat_ids']:
         tg.texto(f"🟢 Clipero {VERSION} encendido. Reality: {C.get()['reality']}")
     while True:
