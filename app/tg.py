@@ -72,7 +72,8 @@ def escuchar(manejador):
                         fid = m['photo'][-1]['file_id'] if 'photo' in m else m['document']['file_id']
                         manejador('foto', m['chat']['id'], fid, m)
                     elif 'message' in u and ('voice' in u['message'] or 'audio' in u['message'] or (u['message'].get('document') or {})
-                                              .get('mime_type', '').startswith('audio/')):
+                                              .get('mime_type', '').startswith('audio/') or (u['message'].get('document') or {})
+                                              .get('file_name', '').lower().endswith(('.m4a', '.mp3', '.wav', '.ogg', '.aac', '.opus'))):
                         m = u['message']                          # 18-nov: audio del dueño (para clonar su voz)
                         fid = (m.get('voice') or m.get('audio') or m.get('document'))['file_id']
                         manejador('audio', m['chat']['id'], fid, m)
