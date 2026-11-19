@@ -1194,3 +1194,258 @@ export function huecoEscombros(sc, { largo = 10, semilla = 5 } = {}) {
     if (az() < 0.5) { const v = new THREE.Mesh(new THREE.CylinderGeometry(0.012, 0.012, 0.9, 4), var_); v.position.set((az() < 0.5 ? -1 : 1) * (0.6 + az() * 0.12), h - 0.35, z); v.rotation.set(az() * 0.4, 0, az() * 0.4); sc.add(v); } }
   for (let i = 0; i < 40; i++) { const r = new THREE.Mesh(new THREE.DodecahedronGeometry(0.06 + az() * 0.12, 0), con); r.position.set((az() - 0.5) * 1.2, 0.05, 2 - az() * largo); sc.add(r); }
 }
+
+// ===================== 19-nov: avión jet de 4 motores (tipo Avro RJ85/BAe 146), cerros de noche con lluvia,
+// lago con ciudad mexica (Tenochtitlan), monolito redondo tallado, outback australiano con árbol DIG, taller de pintor con caballete y horno,
+// cuadro con marco (imagen o pintura hecha a mano) =====================
+/** Avión jet de pasajeros de ala alta con 4 motores bajo el ala y cola en T (tipo Avro RJ85). Nariz hacia +X, largo ~28 m.
+ *  jet.motores(k): 1 = motores encendidos (brillo), 0 = apagados. jet.mover(t) hace parpadear las luces. */
+export function avionJet(sc, { franja = 0x1f8a5a, franja2 = 0xc8202a } = {}) {
+  const g = new THREE.Group(), bl = M.mat(0xf0f0ec, { roughness: 0.35, metalness: 0.25 }), vi = M.mat(0x0d1520, { roughness: 0.08, metalness: 0.8 });
+  const fus = new THREE.Mesh(new THREE.CylinderGeometry(1.75, 1.75, 22, 28), bl); fus.rotation.z = Math.PI / 2; g.add(fus);
+  const nariz = new THREE.Mesh(new THREE.SphereGeometry(1.75, 28, 16, 0, Math.PI * 2, 0, Math.PI / 2), bl); nariz.rotation.z = -Math.PI / 2; nariz.position.x = 11; nariz.scale.set(1, 1.6, 1); g.add(nariz);
+  const cola = new THREE.Mesh(new THREE.CylinderGeometry(1.75, 0.45, 6, 28), bl); cola.rotation.z = -Math.PI / 2; cola.position.x = -14; cola.position.y = 0.45; g.add(cola);
+  for (const [c, y] of [[franja, -0.55], [franja2, -0.95]]) { const f = new THREE.Mesh(new THREE.CylinderGeometry(1.77, 1.77, 21.5, 28, 1, true, Math.PI * 0.62, Math.PI * 0.12), M.mat(c, { roughness: 0.4 }));
+    f.rotation.z = Math.PI / 2; f.position.set(0, y + 0.55, 0); g.add(f); const f2 = f.clone(); f2.rotation.x = Math.PI; f2.rotation.z = Math.PI / 2; g.add(f2); }
+  const ventanas = [];
+  for (let i = 0; i < 16; i++) for (const s of [1, -1]) { const w = new THREE.Mesh(new THREE.BoxGeometry(0.32, 0.36, 0.05), emis(0xffe2a8, 0.8)); w.position.set(7.5 - i * 1.1, 0.45, s * 1.72); g.add(w); ventanas.push(w); }
+  const pb = new THREE.Mesh(new THREE.BoxGeometry(1.3, 0.6, 2.6), vi); pb.position.set(11.6, 0.75, 0); pb.rotation.z = -0.55; g.add(pb);
+  const ala = new THREE.Mesh(new THREE.BoxGeometry(3.6, 0.3, 26), bl); ala.position.set(1.0, 1.7, 0); ala.rotation.y = 0; g.add(ala);
+  const motores = [];
+  for (const z of [-8.5, -4.6, 4.6, 8.5]) { const m = new THREE.Mesh(new THREE.CylinderGeometry(0.62, 0.55, 2.6, 18), M.mat(0xdedcd6, { roughness: 0.4, metalness: 0.4 })); m.rotation.z = Math.PI / 2; m.position.set(2.6, 0.75, z); g.add(m);
+    const pil = new THREE.Mesh(new THREE.BoxGeometry(1.2, 0.8, 0.2), bl); pil.position.set(2.2, 1.3, z); g.add(pil);
+    const boca = new THREE.Mesh(new THREE.CircleGeometry(0.5, 18), M.mat(0x111111)); boca.rotation.y = Math.PI / 2; boca.position.set(3.92, 0.75, z); g.add(boca);
+    const esc = new THREE.Mesh(new THREE.CircleGeometry(0.45, 18), emis(0xff9a40, 2)); esc.rotation.y = -Math.PI / 2; esc.position.set(1.28, 0.75, z); g.add(esc); motores.push(esc);
+    const b = brilloSprite('#ff8a30', 3.2, 0.9); b.position.set(0.9, 0.75, z); g.add(b); esc.userData.b = b; }
+  const deriva = new THREE.Mesh(new THREE.BoxGeometry(3.6, 5.2, 0.3), bl); deriva.position.set(-14.6, 3.3, 0); deriva.rotation.z = 0.45; g.add(deriva);
+  const dc = new THREE.Mesh(new THREE.BoxGeometry(2.6, 1.6, 0.32), M.mat(franja, { roughness: 0.4 })); dc.position.set(-14.4, 3.2, 0); dc.rotation.z = 0.45; g.add(dc);
+  const hz = new THREE.Mesh(new THREE.BoxGeometry(2.6, 0.22, 10), bl); hz.position.set(-16.2, 5.8, 0); g.add(hz);
+  const lr = emis(0xff2020, 4), lv = emis(0x20ff50, 4), lb = emis(0xffffff, 6);
+  const nl = new THREE.Mesh(new THREE.SphereGeometry(0.18, 8, 8), lr); nl.position.set(1, 1.7, -13.1); g.add(nl);
+  const nv = new THREE.Mesh(new THREE.SphereGeometry(0.18, 8, 8), lv); nv.position.set(1, 1.7, 13.1); g.add(nv);
+  const st = new THREE.Mesh(new THREE.SphereGeometry(0.22, 8, 8), lb); st.position.set(-17, 6, 0); g.add(st);
+  const luzB = new THREE.PointLight(0xffffff, 0, 30); luzB.position.copy(st.position); g.add(luzB);
+  g.traverse(o => { if (o.isMesh) o.castShadow = true; });
+  sc.add(g);
+  return { g, motores(k) { motores.forEach(m => { m.material.emissiveIntensity = 2 * k; m.userData.b.material.opacity = 0.9 * k; }); },
+    cabina(k) { ventanas.forEach(w => { w.material.emissiveIntensity = 0.8 * k; }); },
+    mover(t) { const on = (t % 1.3) < 0.09; st.visible = on; luzB.intensity = on ? 120 : 0; } };
+}
+/** Cerros oscuros con selva de noche (Andes colombianos): cerro principal en (0,0,-40). Lluvia opcional: ce.llover(t). */
+export function cerrosNoche(sc, { semilla = 9, lluvia = true } = {}) {
+  M.cielo(sc, '#02030a', '#11182a'); sc.fog = new THREE.FogExp2(0x0a0f1a, 0.012);
+  sc.add(new THREE.HemisphereLight(0x4a5a80, 0x0a0a0c, 0.5));
+  const l = new THREE.DirectionalLight(0x8094c8, 0.7); l.position.set(-20, 40, 20); sc.add(l);
+  const az = _azar(semilla), verde = M.mat(0x0e1a12, { roughness: 1, flatShading: true }), verde2 = M.mat(0x14231a, { roughness: 1, flatShading: true });
+  for (let i = 0; i < 26; i++) { const r = 18 + az() * 30, h = 14 + az() * 26, c = new THREE.Mesh(new THREE.ConeGeometry(r, h, 7), i % 2 ? verde : verde2);
+    c.position.set(-160 + i * 13 + az() * 10, h / 2 - 4, -40 - az() * 120); c.rotation.y = az() * 3; sc.add(c); }
+  const piso = new THREE.Mesh(new THREE.PlaneGeometry(600, 600), verde); piso.rotation.x = -Math.PI / 2; piso.position.y = -4; sc.add(piso);
+  for (let i = 0; i < 160; i++) { const c = [0xffc070, 0xffe0a0][i % 2]; M.caja(sc, 0.6, 0.4, 0.1, -200 + az() * 400, -3.5 + az() * 1, -240 - az() * 40, emis(c, 1.4), false); }
+  let gotas = null;
+  if (lluvia) { const n = 2500, pos = new Float32Array(n * 3); for (let i = 0; i < n; i++) { pos[i * 3] = (az() - 0.5) * 80; pos[i * 3 + 1] = az() * 40; pos[i * 3 + 2] = (az() - 0.5) * 80; }
+    const gg = new THREE.BufferGeometry(); gg.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+    gotas = new THREE.Points(gg, new THREE.PointsMaterial({ color: 0x9fb2d8, size: 0.12, transparent: true, opacity: 0.55, depthWrite: false })); sc.add(gotas); }
+  return { gotas, llover(t, centro = new THREE.Vector3()) { if (!gotas) return; gotas.position.set(centro.x, centro.y - ((t * 28) % 40) + 10, centro.z); } };
+}
+/** Lluvia que se puede pegar a cualquier escena (alrededor de un centro). ll.mover(t, centro). */
+export function lluvia(sc, { n = 2000, ancho = 30, alto = 20, op = 0.5 } = {}) {
+  const az = _azar(5), pos = new Float32Array(n * 6);
+  for (let i = 0; i < n; i++) { const x = (az() - 0.5) * ancho, y = az() * alto, z = (az() - 0.5) * ancho; pos.set([x, y, z, x + 0.02, y - 0.45, z], i * 6); }
+  const gg = new THREE.BufferGeometry(); gg.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  const l = new THREE.LineSegments(gg, new THREE.LineBasicMaterial({ color: 0xaabbdd, transparent: true, opacity: op, depthWrite: false })); sc.add(l);
+  return { mover(t, c = { x: 0, y: 0, z: 0 }) { l.position.set(c.x, c.y - ((t * 14) % (alto / 2)), c.z); } };
+}
+/** Pedazos blancos de fuselaje regados (restos de un avión) alrededor de (x, z). Sin nada gráfico. */
+export function restosFuselaje(sc, x = 0, z = 0, { n = 14, r = 6, semilla = 4 } = {}) {
+  const az = _azar(semilla), bl = M.mat(0xe8e8e2, { roughness: 0.5, metalness: 0.3 }), gr = M.mat(0x1f8a5a, { roughness: 0.5 });
+  for (let i = 0; i < n; i++) { const a = az() * 6.28, d = az() * r, w = 0.6 + az() * 2.6;
+    const s = new THREE.Mesh(new THREE.CylinderGeometry(0.7, 0.7, w * 0.6, 12, 1, true, 0, 0.8 + az() * 1.5), i % 5 ? bl : gr); s.material.side = THREE.DoubleSide;
+    s.position.set(x + Math.cos(a) * d, 0.3 + az() * 0.6, z + Math.sin(a) * d); s.rotation.set(az() * 3, az() * 3, az() * 3); s.castShadow = true; sc.add(s); }
+}
+/** Disco de piedra tallado (tipo monolito de la Coyolxauhqui, sin copiar el relieve: figuras geométricas). Acostado en el piso. */
+export function monolitoRedondo(sc, x = 0, y = 0, z = 0, r = 1.6) {
+  const cv = document.createElement('canvas'); cv.width = cv.height = 512; const g = cv.getContext('2d');
+  g.fillStyle = '#7e6c5c'; g.fillRect(0, 0, 512, 512);
+  for (let i = 0; i < 9000; i++) { g.fillStyle = `rgba(${60 + Math.random() * 60},${50 + Math.random() * 40},40,0.15)`; g.fillRect(Math.random() * 512, Math.random() * 512, 3, 3); }
+  g.strokeStyle = 'rgba(28,20,16,0.85)'; g.lineWidth = 9; g.lineCap = 'round';
+  g.beginPath(); g.arc(256, 256, 240, 0, 7); g.stroke();
+  for (let i = 0; i < 9; i++) { const a = i * 0.7, rr = 60 + (i % 3) * 55; g.beginPath(); g.arc(256 + Math.cos(a) * rr, 256 + Math.sin(a) * rr, 28 + (i % 2) * 18, 0, 7); g.stroke();
+    g.beginPath(); g.moveTo(256 + Math.cos(a) * (rr - 50), 256 + Math.sin(a) * (rr - 50)); g.quadraticCurveTo(256 + Math.cos(a + 0.4) * (rr + 30), 256 + Math.sin(a + 0.4) * (rr + 30), 256 + Math.cos(a + 0.8) * rr, 256 + Math.sin(a + 0.8) * rr); g.stroke(); }
+  for (let i = 0; i < 24; i++) { const a = i / 24 * 6.28; g.beginPath(); g.arc(256 + Math.cos(a) * 215, 256 + Math.sin(a) * 215, 9, 0, 7); g.stroke(); }
+  const tx = new THREE.CanvasTexture(cv); tx.colorSpace = THREE.SRGBColorSpace;
+  const lado = M.matTex(M.TEX.roca(), [3, 1], 0x9c8a78);
+  const d = new THREE.Mesh(new THREE.CylinderGeometry(r, r, 0.3, 48), [lado, new THREE.MeshStandardMaterial({ map: tx, color: 0x9a8878, roughness: 0.95, bumpMap: tx, bumpScale: 3 }), lado]);
+  d.position.set(x, y + 0.15, z); d.castShadow = true; d.receiveShadow = true; sc.add(d); return d;
+}
+/** Zanja de obra en una calle de noche con lámpara de obra (para hallazgos al cavar). Zanja centrada en (0,0), 6x4 m, 1,2 m de hondo. */
+export function zanjaObra(sc) {
+  const con = M.matTex(M.TEX.concreto(), [8, 8], 0x55524c), tierra = M.matTex(M.TEX.arena(), [3, 3], 0x5c4632);
+  for (const [w, d, x, z] of [[40, 18, 0, -11], [40, 18, 0, 11], [17, 4, -11.5, 0], [17, 4, 11.5, 0]]) M.caja(sc, w, 0.3, d, x, -0.15, z, con);
+  M.caja(sc, 6, 0.2, 4, 0, -1.3, 0, tierra);
+  for (const [w, d, x, z] of [[6, 0.2, 0, -2], [6, 0.2, 0, 2], [0.2, 4, -3, 0], [0.2, 4, 3, 0]]) M.caja(sc, w, 1.2, d, x, -0.7, z, tierra);
+  const az = _azar(12); for (let i = 0; i < 18; i++) { const m = new THREE.Mesh(new THREE.DodecahedronGeometry(0.3 + az() * 0.4, 0), M.mat(0x4e3c2a, { flatShading: true })); m.position.set((az() - 0.5) * 7, 0.1, 2.6 + az() * 1.5); m.scale.y = 0.5; sc.add(m); }
+  for (const [x, z] of [[-3.2, -2.2], [3.2, -2.2], [-3.2, 2.2], [3.2, 2.2]]) { M.caja(sc, 0.08, 1, 0.08, x, 0.5, z, M.mat(0xff7a1a));
+    M.caja(sc, 0.4, 0.06, 0.06, x, 0.9, z, emis(0xff7a1a, 0.6), false); }
+  const poste = M.caja(sc, 0.1, 3.5, 0.1, -3.6, 1.75, -2.8, M.mat(0x333333)); M.caja(sc, 0.6, 0.4, 0.3, -3.3, 3.4, -2.6, emis(0xfff4d8, 3), false);
+  const f = new THREE.SpotLight(0xfff0d0, 110, 22, 0.75, 0.5, 1.2); f.position.set(-3.2, 3.4, -2.5); const tg = new THREE.Object3D(); tg.position.set(0.5, -1.2, 0.3); sc.add(tg); f.target = tg; f.castShadow = true; sc.add(f);
+  cono(sc, -3.2, 3.4, -2.5, 5, 3, 0xfff0d0, 0.05, [0.5, 0, -0.5]);
+}
+/** Lago con ciudad mexica sobre una isla: pirámide doble (Templo Mayor) en (0,0), casas blancas, canales, chinampas con milpas,
+ *  calzada hacia +X, volcanes al fondo y canoas. hora: 'amanecer' | 'dia'. la.mover(t) mueve canoas y agua. */
+export function lagoTenochtitlan(sc, { hora = 'amanecer', semilla = 3 } = {}) {
+  if (hora === 'amanecer') { M.cielo(sc, '#3a5a8c', '#f2b27a'); sc.fog = new THREE.Fog(0xe0b590, 80, 420); }
+  else { M.cielo(sc, '#5b8ccf', '#d6e4f0'); sc.fog = new THREE.Fog(0xcfdce8, 90, 450); }
+  sc.add(new THREE.HemisphereLight(0xdfe8ff, 0x4a5a4a, 0.9));
+  const sol = new THREE.DirectionalLight(hora === 'amanecer' ? 0xffc89a : 0xfff4e0, 2.6); sol.position.set(60, 50, 40); sol.castShadow = true; sol.shadow.mapSize.set(2048, 2048);
+  Object.assign(sol.shadow.camera, { left: -60, right: 60, top: 60, bottom: -60, far: 300 }); sc.add(sol);
+  const agua = new THREE.Mesh(new THREE.PlaneGeometry(1200, 1200), new THREE.MeshStandardMaterial({ color: 0x3f6f78, roughness: 0.15, metalness: 0.55 })); agua.rotation.x = -Math.PI / 2; sc.add(agua);
+  const az = _azar(semilla), cal = M.mat(0xe9e2d2, { roughness: 0.8 }), piedra = M.matTex(M.TEX.concreto(), [4, 4], 0xd8cdb8), tierra = M.mat(0x5d4a32, { roughness: 1 });
+  const isla = new THREE.Mesh(new THREE.CylinderGeometry(55, 58, 1, 40), M.mat(0xb9a98c, { roughness: 1 })); isla.position.y = 0.2; isla.receiveShadow = true; sc.add(isla);
+  // recinto y pirámide doble
+  M.caja(sc, 46, 0.5, 46, 0, 0.9, 0, piedra);
+  for (let k = 0; k < 5; k++) { const w = 22 - k * 3.6; M.caja(sc, w, 2.4, w * 0.9, 0, 1.15 + 1.2 + k * 2.4, -4, piedra); }
+  M.caja(sc, 4.5, 12.5, 2.0, 0, 7.4, 4.5, M.mat(0xcbbca2));
+  for (const [x, c] of [[-3.2, 0xb8322a], [3.2, 0x2d5fa8]]) { M.caja(sc, 4.6, 3.4, 4.2, x, 15.8, -4.5, M.mat(0xf2ead8)); M.caja(sc, 4.8, 1.2, 4.4, x, 18.1, -4.5, M.mat(c)); }
+  for (const [x, z, s] of [[-15, 12, 4], [15, 12, 4], [-16, -16, 5], [16, -14, 3]]) for (let k = 0; k < s; k++) M.caja(sc, 6 - k * 1.2, 1.4, 6 - k * 1.2, x, 1.3 + k * 1.4, z, piedra);
+  // casas
+  for (let i = 0; i < 260; i++) { const a = az() * 6.28, d = 25 + az() * 28, x = Math.cos(a) * d, z = Math.sin(a) * d;
+    if (Math.abs(z) < 3 && x > 0) continue; const w = 2 + az() * 3, h = 1.6 + az() * 1.6; const c = M.caja(sc, w, h, w * (0.8 + az() * 0.4), x, 0.7 + h / 2, z, cal); c.rotation.y = az() * 0.3;
+    if (az() < 0.3) { const t = new THREE.Mesh(new THREE.BoxGeometry(w * 0.9, 0.2, w * 0.7), M.mat(0x2f6b3a)); t.position.set(x, 0.8 + h, z); sc.add(t); } }
+  // canales (franjas de agua sobre la isla)
+  const aguaC = new THREE.MeshStandardMaterial({ color: 0x3f6f78, roughness: 0.15, metalness: 0.55 });
+  for (const a of [0.4, 1.9, 3.3, 4.6]) { const c = new THREE.Mesh(new THREE.PlaneGeometry(30, 2.2), aguaC); c.rotation.x = -Math.PI / 2; c.rotation.z = a; c.position.set(Math.cos(a) * 40, 0.72, -Math.sin(a) * 40); sc.add(c); }
+  // calzada hacia +X
+  M.caja(sc, 180, 0.8, 4.5, 145, 0.3, 0, piedra);
+  // chinampas (fuera de la isla, hacia +Z) con milpas
+  const milpa = M.mat(0x4f7a2e, { roughness: 1 }), milpa2 = M.mat(0x6b8f34, { roughness: 1 });
+  const chin = [];
+  for (let i = 0; i < 7; i++) for (let j = 0; j < 4; j++) { const x = -40 + i * 13, z = 66 + j * 9; const b = M.caja(sc, 10, 0.6, 6, x, 0.25, z, tierra); chin.push(b);
+    for (let k = 0; k < 18; k++) { const p = new THREE.Mesh(new THREE.ConeGeometry(0.25, 1.6 + az(), 5), k % 2 ? milpa : milpa2); p.position.set(x - 4.2 + (k % 6) * 1.7, 1.3, z - 2 + Math.floor(k / 6) * 2); sc.add(p); }
+    for (const s of [-1, 1]) { const ar = new THREE.Mesh(new THREE.CylinderGeometry(0.15, 0.25, 6, 6), M.mat(0x5a4630)); ar.position.set(x + s * 4.6, 3, z - 2.6); sc.add(ar);
+      const co = new THREE.Mesh(new THREE.ConeGeometry(0.9, 4.5, 7), M.mat(0x2e5a2a)); co.position.set(x + s * 4.6, 6.5, z - 2.6); sc.add(co); } }
+  // volcanes
+  for (const [x, z, r, h, nieve] of [[-220, -330, 90, 110, true], [-60, -360, 80, 95, true], [180, -340, 70, 45, false], [320, -260, 60, 40, false]]) {
+    const v = new THREE.Mesh(new THREE.ConeGeometry(r, h, 24), M.mat(0x5d6a7a, { roughness: 1 })); v.position.set(x, h / 2 - 2, z); sc.add(v);
+    if (nieve) { const n = new THREE.Mesh(new THREE.ConeGeometry(r * 0.28, h * 0.28, 24), M.mat(0xf4f4f4)); n.position.set(x, h - 2 - h * 0.14 + 0.5, z); sc.add(n); } }
+  // canoas
+  const canoas = []; const madera = M.mat(0x6a4a2a, { roughness: 0.8 });
+  for (let i = 0; i < 14; i++) { const c = new THREE.Group(); const b = new THREE.Mesh(new THREE.BoxGeometry(5, 0.45, 1.0), madera); b.position.y = 0.2; c.add(b);
+    const rem = new THREE.Mesh(new THREE.BoxGeometry(0.4, 1.1, 0.4), M.mat(0xe8dcc0)); rem.position.set(-1.6, 0.9, 0); c.add(rem);
+    const cab = new THREE.Mesh(new THREE.SphereGeometry(0.2, 8, 8), M.mat(0x4a3020)); cab.position.set(-1.6, 1.6, 0); c.add(cab);
+    for (let k = 0; k < 3; k++) { const bulto = new THREE.Mesh(new THREE.SphereGeometry(0.3, 8, 6), M.mat([0xd8b040, 0x8a5a2a, 0x4f7a2e][k])); bulto.position.set(0.5 + k * 0.7, 0.55, 0); c.add(bulto); }
+    const a = az() * 6.28, d = 62 + az() * 30; c.position.set(Math.cos(a) * d, 0, Math.sin(a) * d); c.rotation.y = -a; c.userData.v = 1 + az(); c.userData.a = a; c.userData.d = d; sc.add(c); canoas.push(c); }
+  return { canoas, chin, mover(t) { canoas.forEach(c => { const a = c.userData.a + t * 0.004 * c.userData.v; c.position.set(Math.cos(a) * c.userData.d, Math.sin(t * 2 + a) * 0.05, Math.sin(a) * c.userData.d); c.rotation.y = -a; }); } };
+}
+/** Canoa sola con remero de pie (persona realista) — pon la persona tú; devuelve el grupo de la canoa (largo 5 m, eje X). */
+export function canoa(sc, x = 0, z = 0) {
+  const g = new THREE.Group(); const b = new THREE.Mesh(new THREE.BoxGeometry(5, 0.45, 1.0), M.mat(0x6a4a2a, { roughness: 0.8 })); b.position.y = 0.2; b.castShadow = true; g.add(b);
+  for (let k = 0; k < 4; k++) { const bulto = new THREE.Mesh(new THREE.SphereGeometry(0.28, 8, 6), M.mat([0xd8b040, 0x8a5a2a, 0x4f7a2e, 0xc04a2a][k])); bulto.position.set(0.6 + k * 0.5, 0.55, (k % 2 - 0.5) * 0.3); g.add(bulto); }
+  g.position.set(x, 0, z); sc.add(g); return g;
+}
+/** Outback australiano al atardecer (o de día): tierra roja, arroyo seco con agua quieta, eucaliptos (coolibah). Árbol grande en (0,0,-2).
+ *  hora: 'tarde' | 'manana'. Devuelve {arbol, tallar(k)}: tallar(0..1) hace aparecer las letras DIG en el tronco. */
+export function outback(sc, { hora = 'tarde', semilla = 6, letras = 'DIG' } = {}) {
+  if (hora === 'tarde') { M.cielo(sc, '#2c3d6a', '#f08a4a'); sc.fog = new THREE.Fog(0xd48a5a, 25, 140); }
+  else { M.cielo(sc, '#7fa8d8', '#f4e2c4'); sc.fog = new THREE.Fog(0xead6b8, 30, 160); }
+  sc.add(new THREE.HemisphereLight(0xffe8d0, 0x5a3a24, hora === 'tarde' ? 0.7 : 1.0));
+  const sol = new THREE.DirectionalLight(hora === 'tarde' ? 0xffa060 : 0xfff2dc, hora === 'tarde' ? 2.4 : 2.8);
+  sol.position.set(hora === 'tarde' ? -30 : 20, hora === 'tarde' ? 10 : 30, -20); sol.castShadow = true; sol.shadow.mapSize.set(2048, 2048);
+  Object.assign(sol.shadow.camera, { left: -25, right: 25, top: 25, bottom: -25 }); sc.add(sol);
+  M.caja(sc, 400, 0.2, 400, 0, -0.1, 0, M.matTex(M.TEX.arena(), [60, 60], 0xb0623a));
+  const agua = new THREE.Mesh(new THREE.PlaneGeometry(200, 7), new THREE.MeshStandardMaterial({ color: 0x6a5a42, roughness: 0.2, metalness: 0.5 })); agua.rotation.x = -Math.PI / 2; agua.position.set(0, 0.02, -9); sc.add(agua);
+  const az = _azar(semilla), tronco = M.mat(0xcfc6b8, { roughness: 0.9 }), hoja = M.mat(0x56653e, { roughness: 1 }), hoja2 = M.mat(0x6d7a48, { roughness: 1 });
+  const eucalipto = (x, z, h, grueso = 0.35) => { const g = new THREE.Group();
+    const t = new THREE.Mesh(new THREE.CylinderGeometry(grueso * 0.6, grueso, h * 0.55, 9), tronco); t.position.y = h * 0.27; t.castShadow = true; g.add(t);
+    for (let k = 0; k < 4; k++) { const ra = new THREE.Mesh(new THREE.CylinderGeometry(grueso * 0.2, grueso * 0.35, h * 0.45, 6), tronco); const a = k * 1.6 + az();
+      ra.position.set(Math.cos(a) * h * 0.12, h * 0.6, Math.sin(a) * h * 0.12); ra.rotation.set(Math.sin(a) * 0.6, 0, -Math.cos(a) * 0.6); g.add(ra);
+      for (let j = 0; j < 3; j++) { const c = new THREE.Mesh(new THREE.IcosahedronGeometry(h * 0.16 + az() * h * 0.06, 1), j % 2 ? hoja : hoja2); c.position.set(Math.cos(a) * h * 0.25 + (az() - 0.5) * 2, h * 0.82 + (az() - 0.5) * 1.5, Math.sin(a) * h * 0.25 + (az() - 0.5) * 2); c.scale.y = 0.6; c.castShadow = true; g.add(c); } }
+    g.position.set(x, 0, z); sc.add(g); return g; };
+  const arbol = eucalipto(0, -2, 11, 0.75);
+  for (let i = 0; i < 40; i++) { const x = (az() - 0.5) * 150, z = -6 - az() * 60; if (Math.abs(x) < 6 && z > -12) continue; eucalipto(x, z, 6 + az() * 7); }
+  for (let i = 0; i < 12; i++) { const x = (az() - 0.5) * 80, z = 8 + az() * 40; eucalipto(x, z, 5 + az() * 5); }
+  for (let i = 0; i < 80; i++) { const m = new THREE.Mesh(new THREE.IcosahedronGeometry(0.25 + az() * 0.4, 0), M.mat(0x7a6a3a, { flatShading: true })); m.position.set((az() - 0.5) * 80, 0.12, (az() - 0.5) * 60); m.scale.y = 0.6; sc.add(m); }
+  // letras talladas en el tronco (lado +Z)
+  const cv = document.createElement('canvas'); cv.width = 256; cv.height = 256; const tx = new THREE.CanvasTexture(cv); tx.colorSpace = THREE.SRGBColorSpace;
+  const pl = new THREE.Mesh(new THREE.PlaneGeometry(0.62, 0.62), new THREE.MeshStandardMaterial({ map: tx, transparent: true, roughness: 1, polygonOffset: true, polygonOffsetFactor: -2 })); pl.position.set(0, 1.55, -2 + 0.69); sc.add(pl);
+  const tallar = k => { const g = cv.getContext('2d'); g.clearRect(0, 0, 256, 256); g.font = 'bold 120px serif'; g.textAlign = 'center';
+    const n = Math.ceil(letras.length * Math.min(1, Math.max(0, k))); const s = letras.slice(0, n);
+    g.fillStyle = 'rgba(120,70,40,0.95)'; g.fillText(s, 128, 170); g.fillStyle = 'rgba(60,30,15,0.6)'; g.fillText(s, 124, 166); tx.needsUpdate = true; };
+  tallar(0);
+  // fogata apagada / campamento: cerco de palos y restos
+  for (let i = 0; i < 10; i++) { const p = new THREE.Mesh(new THREE.CylinderGeometry(0.06, 0.06, 1.4, 5), M.mat(0x5a4330)); p.position.set(4 + i * 0.6, 0.7, 2); sc.add(p); }
+  M.caja(sc, 6, 0.08, 0.08, 6.7, 1.1, 2, M.mat(0x5a4330));
+  for (let i = 0; i < 6; i++) { const p = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.05, 0.8, 5), M.mat(0x2a2018)); p.position.set(-3 + Math.cos(i) * 0.3, 0.05, 3 + Math.sin(i) * 0.3); p.rotation.z = Math.PI / 2; p.rotation.y = i; sc.add(p); }
+  return { arbol, tallar, eucalipto };
+}
+/** Montoncito de tierra removida (donde se enterró algo). */
+export function montonTierra(sc, x, z, r = 0.8) {
+  const m = new THREE.Mesh(new THREE.SphereGeometry(r, 16, 8, 0, Math.PI * 2, 0, Math.PI / 2), M.mat(0x7a4a2a, { roughness: 1 })); m.scale.y = 0.35; m.position.set(x, 0, z); m.receiveShadow = true; sc.add(m); return m;
+}
+/** Pintura hecha a mano estilo maestro holandés (fondo oscuro, figuras con luz) o una imagen (url relativa a la página). */
+export function texturaCuadro(url = null, { estado = 'nuevo' } = {}) {
+  const cv = document.createElement('canvas'); cv.width = 512; cv.height = 400; const g = cv.getContext('2d');
+  const tx = new THREE.CanvasTexture(cv); tx.colorSpace = THREE.SRGBColorSpace;
+  const pintar = est => {
+    g.fillStyle = '#2a1e14'; g.fillRect(0, 0, 512, 400);
+    if (est === 'blanco') { g.fillStyle = '#d8ccb0'; g.fillRect(0, 0, 512, 400); }
+    else if (est === 'raspado') { g.fillStyle = '#8a7a60'; g.fillRect(0, 0, 512, 400); for (let i = 0; i < 300; i++) { g.fillStyle = `rgba(40,28,18,${Math.random() * 0.4})`; g.fillRect(Math.random() * 512, Math.random() * 400, 30 + Math.random() * 60, 4 + Math.random() * 8); } }
+    else { const gr = g.createRadialGradient(250, 180, 10, 250, 180, 300); gr.addColorStop(0, '#9a7448'); gr.addColorStop(1, '#1a120c'); g.fillStyle = gr; g.fillRect(0, 0, 512, 400);
+      g.fillStyle = '#e8e0cc'; g.fillRect(90, 250, 330, 90);
+      const fig = (x, y, c) => { g.fillStyle = c; g.beginPath(); g.ellipse(x, y + 70, 48, 80, 0, 0, 7); g.fill(); g.fillStyle = '#d9b48c'; g.beginPath(); g.arc(x, y, 24, 0, 7); g.fill(); };
+      fig(130, 150, '#5a6a3a'); fig(256, 130, '#2f4f8a'); fig(380, 150, '#a8803a'); g.fillStyle = '#c89a5a'; g.beginPath(); g.arc(256, 270, 16, 0, 7); g.fill(); }
+    if (est === 'viejo' || est === 'nuevo') { g.strokeStyle = est === 'viejo' ? 'rgba(10,6,2,0.55)' : 'rgba(0,0,0,0)'; g.lineWidth = 1;
+      for (let i = 0; i < 260; i++) { let x = Math.random() * 512, y = Math.random() * 400; g.beginPath(); g.moveTo(x, y); for (let k = 0; k < 4; k++) { x += (Math.random() - 0.5) * 30; y += (Math.random() - 0.5) * 30; g.lineTo(x, y); } g.stroke(); } }
+    tx.needsUpdate = true; };
+  let img = null; if (url) { img = new Image(); img.onload = () => { g.drawImage(img, 0, 0, 512, 400); tx.needsUpdate = true; }; img.src = url; } else pintar(estado);
+  return { tx, pintar, imagen: () => img && img.complete && (g.drawImage(img, 0, 0, 512, 400), tx.needsUpdate = true) };
+}
+/** Cuadro con marco dorado colgado o sobre caballete. tex = THREE.Texture. Devuelve el grupo (cara hacia +Z). */
+export function cuadroMarco(sc, tex, ancho = 1.2, alto = 0.95, { marco = true } = {}) {
+  const g = new THREE.Group(); const lien = new THREE.Mesh(new THREE.PlaneGeometry(ancho, alto), new THREE.MeshStandardMaterial({ map: tex, roughness: 0.75 })); lien.position.z = 0.02; g.add(lien);
+  if (marco) { const oro = M.mat(0xb08a3a, { metalness: 0.7, roughness: 0.35 }); const e = 0.09;
+    for (const [w, h, x, y] of [[ancho + 2 * e, e, 0, alto / 2 + e / 2], [ancho + 2 * e, e, 0, -alto / 2 - e / 2], [e, alto, -ancho / 2 - e / 2, 0], [e, alto, ancho / 2 + e / 2, 0]]) { const b = new THREE.Mesh(new THREE.BoxGeometry(w, h, 0.07), oro); b.position.set(x, y, 0.02); b.castShadow = true; g.add(b); } }
+  else { const b = new THREE.Mesh(new THREE.BoxGeometry(ancho, alto, 0.03), M.mat(0x8a7350)); b.position.z = -0.0; g.add(b); }
+  sc.add(g); return g;
+}
+/** Taller de pintor de los años 30–40: piso de madera, ventana con luz, mesa con frascos de pigmento, caballete en (0, 0, -0.6) con el cuadro
+ *  mirando a +Z (pintor parado en z≈0.1 mirando a -Z), horno en (2.4, 0, -1.4) con puerta que brilla (ta.horno(k)), rodillo en la mesa. */
+export function tallerPintor(sc, tex) {
+  sc.background = new THREE.Color(0x0c0907); sc.add(new THREE.HemisphereLight(0xffe8c8, 0x2a2018, 0.55));
+  const pared = M.matTex(M.TEX.concreto(), [3, 1.5], 0x8a7c66), piso = M.matTex(M.TEX.ladrillo(), [8, 6], 0x6b4a2e);
+  M.caja(sc, 9, 0.1, 8, 0, -0.05, 0, piso); M.caja(sc, 9, 3.4, 0.1, 0, 1.7, -2.5, pared); M.caja(sc, 0.1, 3.4, 8, -3.5, 1.7, 0, pared); M.caja(sc, 0.1, 3.4, 8, 3.6, 1.7, 0, pared);
+  M.caja(sc, 0.05, 1.7, 1.4, -3.44, 1.9, -0.6, emis(0xdfe8ff, 0.9), false);
+  for (const y of [1.3, 1.9, 2.5]) M.caja(sc, 0.06, 0.06, 1.5, -3.4, y, -0.6, M.mat(0x3a2a1a), false);
+  const v = new THREE.SpotLight(0xfff2dc, 70, 12, 0.7, 0.6, 1.2); v.position.set(-3.3, 2.4, -0.6); const tv = new THREE.Object3D(); tv.position.set(0, 0.8, -0.4); sc.add(tv); v.target = tv; v.castShadow = true; sc.add(v);
+  const madera = M.mat(0x4a3424, { roughness: 0.7 });
+  // caballete
+  const cab = new THREE.Group(); cab.position.set(0, 0, -0.6); sc.add(cab);
+  for (const x of [-0.45, 0.45]) { const p = new THREE.Mesh(new THREE.BoxGeometry(0.06, 2.1, 0.06), madera); p.position.set(x, 1.0, 0); p.rotation.z = x > 0 ? -0.08 : 0.08; cab.add(p); }
+  const pt = new THREE.Mesh(new THREE.BoxGeometry(0.06, 2.0, 0.06), madera); pt.position.set(0, 0.95, -0.45); pt.rotation.x = -0.25; cab.add(pt);
+  const rep = new THREE.Mesh(new THREE.BoxGeometry(1.2, 0.05, 0.12), madera); rep.position.set(0, 0.85, 0.05); cab.add(rep);
+  const cuadro = cuadroMarco(sc, tex, 1.1, 0.86, { marco: false }); cuadro.position.set(0, 1.32, -0.55); cuadro.rotation.x = -0.08;
+  // mesa con frascos y rodillo
+  M.caja(sc, 1.8, 0.05, 0.8, -1.9, 0.8, -1.6, madera); for (const [x, z] of [[-2.7, -1.9], [-1.1, -1.9], [-2.7, -1.3], [-1.1, -1.3]]) M.caja(sc, 0.05, 0.8, 0.05, x, 0.4, z, madera);
+  const cols = [0x1f3c8a, 0xd8b030, 0x8a2a1a, 0xe8e0cc, 0x2a1a10, 0x4a6a3a];
+  for (let i = 0; i < 9; i++) { const f = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.05, 0.14 + (i % 3) * 0.05, 10), new THREE.MeshStandardMaterial({ color: cols[i % 6], roughness: 0.2, transparent: true, opacity: 0.9 })); f.position.set(-2.6 + i * 0.16, 0.9, -1.75 + (i % 2) * 0.15); sc.add(f); }
+  const rod = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.12, 0.9, 16), M.mat(0x7a6a52)); rod.rotation.z = Math.PI / 2; rod.position.set(-1.7, 0.95, -1.35); sc.add(rod);
+  const paleta = new THREE.Mesh(new THREE.CylinderGeometry(0.2, 0.2, 0.02, 16), madera); paleta.position.set(-1.3, 0.84, -1.45); sc.add(paleta);
+  // horno
+  M.caja(sc, 1.2, 1.3, 0.9, 2.4, 0.65, -1.6, M.mat(0x2a2a2c, { metalness: 0.6, roughness: 0.4 }));
+  const puerta = M.caja(sc, 0.9, 0.7, 0.04, 2.4, 0.75, -1.13, new THREE.MeshStandardMaterial({ color: 0x1a0a04, emissive: 0xff6a1a, emissiveIntensity: 0.0 }), false);
+  const brasa = new THREE.PointLight(0xff7a2a, 0, 4, 1.4); brasa.position.set(2.4, 0.8, -0.9); sc.add(brasa);
+  M.caja(sc, 0.15, 0.6, 0.15, 2.7, 1.6, -1.8, M.mat(0x2a2a2c)); 
+  const foco = new THREE.PointLight(0xffd9a0, 4, 6, 1.5); foco.position.set(0.6, 2.8, 0.6); sc.add(foco);
+  M.caja(sc, 0.25, 0.08, 0.25, 0.6, 3.0, 0.6, emis(0xfff0c8, 2), false);
+  return { cuadro, rodillo: rod, horno(k) { puerta.material.emissiveIntensity = 1.2 * k; brasa.intensity = 6 * k; } };
+}
+/** Sala de museo: pared oscura con un cuadro iluminado por un foco (cuadro en (0, 1.6, -2.4) mirando a +Z), piso de madera y banca. */
+export function salaMuseo(sc, tex, { ancho = 1.6, alto = 1.25 } = {}) {
+  sc.background = new THREE.Color(0x0a0a0c); sc.add(new THREE.HemisphereLight(0xfff0e0, 0x201812, 0.35));
+  M.caja(sc, 14, 0.1, 10, 0, -0.05, 0, M.matTex(M.TEX.ladrillo(), [10, 8], 0x6a4a30)); M.caja(sc, 14, 4.2, 0.1, 0, 2.1, -2.5, M.mat(0x5a1e22, { roughness: 0.95 }));
+  M.caja(sc, 0.1, 4.2, 10, -5, 2.1, 0, M.mat(0x5a1e22, { roughness: 0.95 }));
+  const c = cuadroMarco(sc, tex, ancho, alto); c.position.set(0, 1.65, -2.42);
+  const f = new THREE.SpotLight(0xfff0d8, 90, 8, 0.45, 0.5, 1.3); f.position.set(0, 3.6, -0.8); const tg = new THREE.Object3D(); tg.position.set(0, 1.6, -2.4); sc.add(tg); f.target = tg; f.castShadow = true; sc.add(f);
+  for (const x of [-3.2, 3.2]) { const c2 = cuadroMarco(sc, texturaCuadro(null, { estado: 'viejo' }).tx, 0.9, 1.1); c2.position.set(x, 1.7, -2.42); }
+  M.caja(sc, 2.0, 0.08, 0.5, 0, 0.45, 1.4, M.mat(0x2a1a10)); for (const x of [-0.8, 0.8]) M.caja(sc, 0.08, 0.45, 0.4, x, 0.22, 1.4, M.mat(0x2a1a10));
+  return { cuadro: c };
+}
