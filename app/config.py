@@ -70,7 +70,9 @@ DEFAULTS = {
     'ridmer_shorts_propios': 0,          # 9-nov: solo 2 Shorts al día (fb1s y fb2s, de las historias de fb1 y fb2)
     'ridmer_largo_cada': 2,              # 9-nov: video largo día por medio
     'largo_cada_dias': 1,                # video largo de YouTube todos los días                   # Shorts con historia propia además de los 3 de Facebook
-    'separacion_pub_min': 60,            # mínimo entre publicaciones en Facebook
+    'separacion_pub_min': 60,
+    'max_memes_dia': 6, 'max_fotos_dia': 6,      # 19-nov: carriles aparte de los clips
+    'separacion_memes_min': 90, 'separacion_fotos_min': 90,            # mínimo entre publicaciones en Facebook
     'pub_noche': [0, 7],                 # de 0:00 a 7:00 no se publica (se guarda para la mañana)
     'repetido_min': 30,                  # misma persona dentro de 30 min de grabación = misma conversación
     'sin_nombre_minimo': 90,             # sin nombre seguro solo pasa si el momento es muy fuerte (título neutral)

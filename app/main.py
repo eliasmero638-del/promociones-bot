@@ -421,32 +421,50 @@ def auto_publicador():
             n0, n1 = cfg.get('pub_noche', [0, 7])
             if n0 <= h < n1:
                 continue
-            ultimo = 0
-            candidatos = []
+            # 19-nov: clips, memes y fotos van por carriles separados (cada uno con su cupo del día y su separación),
+            # para que los memes no le quiten el turno ni el cupo a los clips.
+            tipo_de = lambda m: 'meme' if m.get('meme') else 'foto' if m.get('foto') else 'clip'
+            ultimo = {'clip': 0, 'meme': 0, 'foto': 0}
+            hoy_n = {'clip': 0, 'meme': 0, 'foto': 0}
+            hoy = time.strftime('%Y%m%d')
+            candidatos = {'clip': [], 'meme': [], 'foto': []}
             for cid in os.listdir(C.CLIPS):
                 m = leer_meta(cid)
                 if not m:
                     continue
+                t = tipo_de(m)
                 if m.get('estado') == 'publicado':
-                    ultimo = max(ultimo, m.get('publicado', 0))
+                    ultimo[t] = max(ultimo[t], m.get('publicado', 0))
+                    if time.strftime('%Y%m%d', time.localtime(m.get('publicado', 0))) == hoy:
+                        hoy_n[t] += 1
                     continue
                 if m.get('estado') != 'pendiente' or m.get('auto_fallo') or m.get('explicito'):
                     continue
-                if m.get('meme') and not cfg.get('memes_auto'):     # memes: solo muestras hasta que el dueño apruebe
+                if t == 'meme' and not cfg.get('memes_auto'):
                     continue
-                if m.get('foto') and not cfg.get('fotos_auto'):     # fotos: igual, solo muestras por ahora
+                if t == 'foto' and not cfg.get('fotos_auto'):
                     continue
-                minimo = cfg.get('meme_minimo', 70) if m.get('meme') else 0 if m.get('foto') else cfg['auto_minimo']   # 18-nov: memes y fotos ya vienen filtrados
+                minimo = cfg.get('meme_minimo', 70) if t == 'meme' else 0 if t == 'foto' else cfg['auto_minimo']
                 if m.get('interes', 0) < minimo or ahora - m.get('enviado', ahora) < cfg['auto_espera_min'] * 60:
                     continue
                 if ahora - m.get('enviado', ahora) > 12 * 3600:     # muy viejo: ya no
                     continue
-                candidatos.append((m.get('interes', 0), m.get('enviado', 0), cid))
-            if not candidatos or ahora - ultimo < cfg.get('separacion_pub_min', 60) * 60:
+                candidatos[t].append((m.get('interes', 0), m.get('enviado', 0), cid))
+            cupo = {'clip': cfg['max_publicaciones_dia'], 'meme': cfg.get('max_memes_dia', 6), 'foto': cfg.get('max_fotos_dia', 6)}
+            sep = {'clip': cfg.get('separacion_pub_min', 60), 'meme': cfg.get('separacion_memes_min', 90), 'foto': cfg.get('separacion_fotos_min', 90)}
+            ult_cualquiera = max(ultimo.values())
+            elegido = None
+            for t in ('clip', 'meme', 'foto'):                  # prioridad: clips primero
+                if not candidatos[t] or hoy_n[t] >= cupo[t] or ahora - ultimo[t] < sep[t] * 60:
+                    continue
+                if ahora - ult_cualquiera < 15 * 60:            # nunca dos publicaciones seguidas en menos de 15 min
+                    break
+                candidatos[t].sort(key=lambda x: (-x[0], -x[1]))
+                elegido = candidatos[t][0][2]
+                break
+            if not elegido:
                 continue
-            if publicados_hoy() >= cfg['max_publicaciones_dia']:
-                continue
-            candidatos.sort(key=lambda x: (-x[0], -x[1]))
+            candidatos = [(0, 0, elegido)]
             publicar_clip(candidatos[0][2], 'auto')
         except Exception as e:
             log('error auto_publicador', e)
