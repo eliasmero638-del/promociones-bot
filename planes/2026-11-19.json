@@ -1,0 +1,1359 @@
+{
+ "fecha": "2026-11-19",
+ "modo": "claude",
+ "videos": [
+  {
+   "eid": "fb1",
+   "tipo": "fb",
+   "hora_fb": "14:00",
+   "titulo_youtube": "Se apagaron los CUATRO motores en el aire ✈️",
+   "texto_facebook": "Volaban a jugar la final de su vida… y a minutos de la pista se apagaron los cuatro motores ✈️ #Chapecoense #HistoriasReales #Misterio",
+   "texto_tiktok": "Se apagaron los cuatro motores en el aire ✈️ El avión del Chapecoense volaba con el combustible justo… y a pocos kilómetros de Medellín se quedó sin nada. Seis personas sobrevivieron. #chapecoense #lamia #historiasreales #aviones #datoscuriosos #ridmer",
+   "articulo": "Vuelo 2933 de LaMia",
+   "fuente": "https://es.wikipedia.org/wiki/Vuelo_2933_de_LaMia",
+   "titulo_video": " ",
+   "titulos_opciones": [
+    "Se apagaron los CUATRO motores en el aire ✈️",
+    "Se quedó sin combustible a minutos de aterrizar",
+    "El avión del Chapecoense: la tragedia que se pudo evitar",
+    "Volaban a jugar la final de su vida… y el combustible se acabó",
+    "Sobrevivió porque hizo lo que nadie hace en un avión",
+    "6 SOBREVIVIENTES: así los encontraron entre la lluvia y el barro",
+    "Les dijeron «esperen en el aire»… y ya no tenían combustible"
+   ],
+   "descripcion_youtube": "28 de noviembre de 2016. El avión de LaMia lleva al Chapecoense de Brasil a la final de la Copa Sudamericana en Medellín.\nA pocos kilómetros de la pista, sus cuatro motores se apagan.\n#chapecoense #lamia #historiasreales #ridmer",
+   "etiquetas": [
+    "Chapecoense",
+    "LaMia 2933",
+    "accidente aéreo",
+    "Cerro Gordo",
+    "Erwin Tumiri",
+    "Medellín",
+    "historias reales",
+    "ridmer"
+   ],
+   "miniatura": {
+    "img": 2,
+    "texto": "SIN COMBUSTIBLE"
+   },
+   "gancho": 1,
+   "musica": "tension",
+   "segmentos": [
+    {
+     "texto": "Se apagaron los cuatro motores en el aire.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "28 NOV 2016",
+      "sub": "Antioquia, Colombia"
+     }
+    },
+    {
+     "texto": "El Chapecoense de Brasil viajaba a Medellín a jugar la final de su vida.",
+     "escena": {
+      "tipo": "foto",
+      "img": 13
+     }
+    },
+    {
+     "texto": "Iban en un avión de la aerolínea LaMia, con setenta y siete personas a bordo.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     }
+    },
+    {
+     "texto": "Pero el avión llevaba el combustible justo… y los pilotos decidieron no parar a cargar.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "COMBUSTIBLE JUSTO",
+      "sub": "sin escalas"
+     }
+    },
+    {
+     "texto": "Cerca de Medellín les pidieron esperar en el aire: otro avión tenía prioridad.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=b2zHtttgZ3M",
+      "desde": 20,
+      "dur": 6,
+      "buscar_video": [
+       "airplane night flight",
+       "plane lights night sky"
+      ]
+     }
+    },
+    {
+     "texto": "Dieron vueltas. Y el combustible se acabó.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "SIN COMBUSTIBLE",
+      "sub": "los motores se apagan"
+     }
+    },
+    {
+     "texto": "A las diez de la noche, el avión cayó sobre el Cerro Gordo, a pocos kilómetros de la pista.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "CERRO GORDO",
+      "sub": "La Unión, Antioquia"
+     }
+    },
+    {
+     "texto": "Los rescatistas subieron de noche, bajo la lluvia, entre el barro.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "DE NOCHE",
+      "sub": "bajo la lluvia"
+     }
+    },
+    {
+     "texto": "Y entre los restos… encontraron gente viva.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=ni_I6L9V2Ro",
+      "desde": 10,
+      "dur": 6,
+      "buscar_video": [
+       "rescue night rain",
+       "mountain rescue"
+      ]
+     }
+    },
+    {
+     "texto": "Seis personas sobrevivieron. Uno era Erwin Tumiri, técnico del avión.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=8uOMs3XvzhQ",
+      "desde": 12,
+      "dur": 6,
+      "buscar_video": [
+       "rescue helicopter mountain"
+      ]
+     }
+    },
+    {
+     "texto": "Contó que al sentir la caída se puso en posición fetal y se cubrió con maletas, como le habían enseñado.",
+     "escena": {
+      "tipo": "foto",
+      "img": 10
+     }
+    },
+    {
+     "texto": "Setenta y una personas murieron. Comparte esta historia y sigue a Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb1s",
+   "tipo": "short",
+   "encargo": "fb1",
+   "hora_youtube": "14:00",
+   "titulo_youtube": "Se apagaron los cuatro motores en el aire #shorts",
+   "articulo": "Vuelo 2933 de LaMia",
+   "fuente": "https://es.wikipedia.org/wiki/Vuelo_2933_de_LaMia",
+   "titulo_video": " ",
+   "titulos_opciones": [
+    "Se apagaron los CUATRO motores en el aire ✈️",
+    "Se quedó sin combustible a minutos de aterrizar",
+    "El avión del Chapecoense: la tragedia que se pudo evitar",
+    "Volaban a jugar la final de su vida… y el combustible se acabó",
+    "Sobrevivió porque hizo lo que nadie hace en un avión",
+    "6 SOBREVIVIENTES: así los encontraron entre la lluvia y el barro",
+    "Les dijeron «esperen en el aire»… y ya no tenían combustible"
+   ],
+   "descripcion_youtube": "28 de noviembre de 2016. El avión de LaMia lleva al Chapecoense de Brasil a la final de la Copa Sudamericana en Medellín.\nA pocos kilómetros de la pista, sus cuatro motores se apagan.\n#chapecoense #lamia #historiasreales #ridmer",
+   "etiquetas": [
+    "Chapecoense",
+    "LaMia 2933",
+    "accidente aéreo",
+    "Cerro Gordo",
+    "Erwin Tumiri",
+    "Medellín",
+    "historias reales",
+    "ridmer"
+   ],
+   "miniatura": {
+    "img": 2,
+    "texto": "SIN COMBUSTIBLE"
+   },
+   "gancho": 1,
+   "musica": "tension",
+   "segmentos": [
+    {
+     "texto": "Se apagaron los cuatro motores en el aire.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "28 NOV 2016",
+      "sub": "Antioquia, Colombia"
+     }
+    },
+    {
+     "texto": "El Chapecoense de Brasil volaba a Colombia a jugar la final de su vida.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     }
+    },
+    {
+     "texto": "El avión llevaba el combustible justo, y los pilotos no pararon a cargar.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "COMBUSTIBLE JUSTO",
+      "sub": "sin escalas"
+     }
+    },
+    {
+     "texto": "Cerca de Medellín tuvieron que esperar en el aire… y el combustible se acabó.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=b2zHtttgZ3M",
+      "desde": 20,
+      "dur": 6,
+      "buscar_video": [
+       "airplane night flight"
+      ]
+     }
+    },
+    {
+     "texto": "Cayó sobre una montaña, a pocos kilómetros de la pista.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "De noche y bajo la lluvia, los rescatistas encontraron a seis personas vivas.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=ni_I6L9V2Ro",
+      "desde": 10,
+      "dur": 6,
+      "buscar_video": [
+       "rescue night rain"
+      ]
+     }
+    },
+    {
+     "texto": "Setenta y una murieron. Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb2",
+   "tipo": "fb",
+   "hora_fb": "18:30",
+   "titulo_youtube": "Cavaban para poner cables… y apareció una DIOSA de 8 toneladas",
+   "texto_facebook": "Cavaban para poner cables de luz en el centro de la CDMX… y apareció una piedra gigante. Debajo había una ciudad entera 🇲🇽 #Tenochtitlan #México #HistoriasReales",
+   "texto_tiktok": "Cavaban para poner cables… y apareció una diosa 🇲🇽 En 1978 unos obreros encontraron la Coyolxauhqui y debajo estaba el Templo Mayor de Tenochtitlan, la ciudad que los mexicas construyeron en medio de un lago. #tenochtitlan #mexico #historiasreales #aztecas #datoscuriosos #ridmer",
+   "articulo": "México-Tenochtitlan",
+   "fuente": "https://es.wikipedia.org/wiki/M%C3%A9xico-Tenochtitlan",
+   "titulo_video": " ",
+   "titulos_opciones": [
+    "Cavaban para poner cables… y apareció una DIOSA de 8 toneladas",
+    "Debajo de la Ciudad de México hay OTRA ciudad",
+    "La ciudad que los aztecas construyeron EN MEDIO de un lago",
+    "Los españoles dijeron que «parecía cosa de encantamiento»",
+    "1978: unos obreros encontraron lo que nadie buscaba",
+    "¿Por qué en el centro de la CDMX siguen apareciendo pirámides? 🇲🇽",
+    "Tenochtitlan: la ciudad flotante que fue destruida y enterrada"
+   ],
+   "descripcion_youtube": "21 de febrero de 1978. Obreros de la compañía de luz cavan en el centro de la Ciudad de México… y se topan con una piedra gigante tallada.\nDebajo estaba el Templo Mayor de Tenochtitlan, la ciudad que los mexicas construyeron en medio de un lago.\n#tenochtitlan #mexico #historiasreales #ridmer",
+   "etiquetas": [
+    "Tenochtitlan",
+    "Templo Mayor",
+    "Coyolxauhqui",
+    "mexicas",
+    "aztecas",
+    "Ciudad de México",
+    "historias reales",
+    "ridmer"
+   ],
+   "miniatura": {
+    "img": 1,
+    "texto": "CIUDAD BAJO LA CIUDAD"
+   },
+   "gancho": 1,
+   "musica": "epico",
+   "segmentos": [
+    {
+     "texto": "Cavaban para poner cables… y apareció una diosa.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "21 FEB 1978",
+      "sub": "Centro de la Ciudad de México"
+     }
+    },
+    {
+     "texto": "Obreros de la compañía de luz cavan en pleno centro de la Ciudad de México.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "CABLES DE LUZ",
+      "sub": "calle Guatemala y Argentina"
+     }
+    },
+    {
+     "texto": "Y se topan con una piedra enorme, redonda y tallada, de más de tres metros.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Coyolxauhqui stone",
+       "Coyolxauhqui monolith Templo Mayor"
+      ]
+     }
+    },
+    {
+     "texto": "Era la diosa Coyolxauhqui. Y debajo estaba el Templo Mayor de Tenochtitlan.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=FiALZcg3ljE",
+      "desde": 30,
+      "dur": 6,
+      "buscar_video": [
+       "Templo Mayor Mexico City",
+       "Aztec ruins Mexico City"
+      ]
+     }
+    },
+    {
+     "texto": "Tenochtitlan fue la capital de los mexicas. Y estaba construida en medio de un lago.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Dice la leyenda que la fundaron donde vieron un águila sobre un nopal.",
+     "escena": {
+      "tipo": "foto",
+      "img": 8
+     }
+    },
+    {
+     "texto": "¿Cómo vivían sobre el agua? Sembraban en chinampas, islas de lodo y raíces, y se movían en canoas.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "CHINAMPAS",
+      "sub": "islas de lodo y raíces"
+     }
+    },
+    {
+     "texto": "Grandes calzadas la unían con tierra firme. Era una de las ciudades más grandes del mundo.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=n9SS0sDxv50",
+      "desde": 15,
+      "dur": 6,
+      "buscar_video": [
+       "Lake Texcoco",
+       "Xochimilco canals"
+      ]
+     }
+    },
+    {
+     "texto": "Cuando llegaron los españoles, escribieron que parecía cosa de encantamiento.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "1519",
+      "sub": "llegan los españoles"
+     }
+    },
+    {
+     "texto": "Dos años después, la ciudad cayó y fue destruida.",
+     "escena": {
+      "tipo": "foto",
+      "img": 16
+     }
+    },
+    {
+     "texto": "Con sus piedras construyeron encima la Ciudad de México… y el lago se secó.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "Por eso, cuando cavan en el centro, aparece Tenochtitlan. Comparte esta historia y sigue a Ridmer para más.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=Z1rqLNz8Zo0",
+      "desde": 10,
+      "dur": 6,
+      "buscar_video": [
+       "Templo Mayor museum",
+       "Aztec stone sculpture"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb2s",
+   "tipo": "short",
+   "encargo": "fb2",
+   "hora_youtube": "19:00",
+   "titulo_youtube": "Cavaban para poner cables… y apareció una diosa #shorts",
+   "articulo": "México-Tenochtitlan",
+   "fuente": "https://es.wikipedia.org/wiki/M%C3%A9xico-Tenochtitlan",
+   "titulo_video": " ",
+   "titulos_opciones": [
+    "Cavaban para poner cables… y apareció una DIOSA de 8 toneladas",
+    "Debajo de la Ciudad de México hay OTRA ciudad",
+    "La ciudad que los aztecas construyeron EN MEDIO de un lago",
+    "Los españoles dijeron que «parecía cosa de encantamiento»",
+    "1978: unos obreros encontraron lo que nadie buscaba",
+    "¿Por qué en el centro de la CDMX siguen apareciendo pirámides? 🇲🇽",
+    "Tenochtitlan: la ciudad flotante que fue destruida y enterrada"
+   ],
+   "descripcion_youtube": "21 de febrero de 1978. Obreros de la compañía de luz cavan en el centro de la Ciudad de México… y se topan con una piedra gigante tallada.\nDebajo estaba el Templo Mayor de Tenochtitlan, la ciudad que los mexicas construyeron en medio de un lago.\n#tenochtitlan #mexico #historiasreales #ridmer",
+   "etiquetas": [
+    "Tenochtitlan",
+    "Templo Mayor",
+    "Coyolxauhqui",
+    "mexicas",
+    "aztecas",
+    "Ciudad de México",
+    "historias reales",
+    "ridmer"
+   ],
+   "miniatura": {
+    "img": 1,
+    "texto": "CIUDAD BAJO LA CIUDAD"
+   },
+   "gancho": 1,
+   "musica": "epico",
+   "segmentos": [
+    {
+     "texto": "Cavaban para poner cables… y apareció una diosa.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "21 FEB 1978",
+      "sub": "Centro de la Ciudad de México"
+     }
+    },
+    {
+     "texto": "En mil novecientos setenta y ocho, obreros de la compañía de luz encontraron una piedra gigante tallada.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Coyolxauhqui stone",
+       "Coyolxauhqui monolith Templo Mayor"
+      ]
+     }
+    },
+    {
+     "texto": "Debajo estaba el Templo Mayor de Tenochtitlan, la capital de los mexicas.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=FiALZcg3ljE",
+      "desde": 30,
+      "dur": 6,
+      "buscar_video": [
+       "Templo Mayor Mexico City"
+      ]
+     }
+    },
+    {
+     "texto": "Una ciudad construida en medio de un lago, con canales, canoas y calzadas.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=n9SS0sDxv50",
+      "desde": 15,
+      "dur": 6,
+      "buscar_video": [
+       "Lake Texcoco"
+      ]
+     }
+    },
+    {
+     "texto": "En mil quinientos veintiuno, los españoles la destruyeron y construyeron encima la Ciudad de México.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "1521",
+      "sub": "la ciudad cae"
+     }
+    },
+    {
+     "texto": "Por eso, cuando cavan en el centro, aparece Tenochtitlan. Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb3",
+   "tipo": "fb",
+   "hora_fb": "21:00",
+   "titulo_youtube": "Llegaron NUEVE HORAS tarde… y el campamento estaba vacío",
+   "texto_facebook": "Cruzaron Australia a pie y volvieron medio muertos al campamento… se habían ido esa misma mañana. En un árbol había una sola palabra 🌳 #BurkeYWills #Supervivencia #HistoriasReales",
+   "texto_tiktok": "Llegaron 9 horas tarde 🌳 Burke, Wills y King volvieron al campamento después de cruzar Australia… y estaba vacío. En un árbol había una sola palabra: DIG. #burkeandwills #supervivencia #historiasreales #australia #misterio #ridmer",
+   "articulo": "Expedición de Burke y Wills",
+   "fuente": "https://es.wikipedia.org/wiki/Expedici%C3%B3n_de_Burke_y_Wills",
+   "titulo_video": " ",
+   "titulos_opciones": [
+    "Llegaron NUEVE HORAS tarde… y el campamento estaba vacío",
+    "Cruzaron Australia a pie… y la comida estaba enterrada bajo sus pies",
+    "Un árbol con una sola palabra: «DIG»",
+    "Los esperaron 4 meses… y se fueron la misma mañana que llegaban",
+    "Volvió al campamento… pero no cavó, y nunca supo que habían estado ahí",
+    "Solo uno sobrevivió, gracias a quienes nadie esperaba",
+    "La expedición que terminó por 9 horas de diferencia 🇦🇺"
+   ],
+   "descripcion_youtube": "21 de abril de 1861, Cooper Creek, Australia. Tres exploradores agotados llegan al campamento donde los esperaban… y lo encuentran vacío.\nSe habían ido esa misma mañana. En un árbol había una sola palabra: DIG.\n#burkeandwills #supervivencia #historiasreales #ridmer",
+   "etiquetas": [
+    "Burke y Wills",
+    "Dig Tree",
+    "Australia",
+    "exploradores",
+    "supervivencia",
+    "historias reales",
+    "ridmer"
+   ],
+   "miniatura": {
+    "img": 17,
+    "texto": "9 HORAS TARDE"
+   },
+   "gancho": 1,
+   "musica": "misterio",
+   "segmentos": [
+    {
+     "texto": "Llegaron nueve horas tarde.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "21 ABR 1861",
+      "sub": "Cooper Creek, Australia"
+     }
+    },
+    {
+     "texto": "En mil ochocientos sesenta, diecinueve hombres salen de Melbourne para cruzar Australia.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Más de tres mil kilómetros por tierras que ningún colono conocía.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=rztMotulWMg",
+      "desde": 40,
+      "dur": 6,
+      "buscar_video": [
+       "Australian outback desert",
+       "outback red desert"
+      ]
+     }
+    },
+    {
+     "texto": "En el río Cooper dejan un campamento. Burke, Wills, King y Gray siguen al norte.",
+     "escena": {
+      "tipo": "foto",
+      "img": 22
+     }
+    },
+    {
+     "texto": "Al grupo del campamento le piden esperarlos tres meses.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "ESPERAR 3 MESES",
+      "sub": "en el río Cooper"
+     }
+    },
+    {
+     "texto": "Llegan casi al mar. Pero el regreso es un infierno de lluvia y hambre. Gray muere.",
+     "escena": {
+      "tipo": "foto",
+      "img": 8
+     }
+    },
+    {
+     "texto": "En el campamento esperan más de cuatro meses. Entierran comida, tallan un árbol… y el veintiuno de abril se van.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "21 DE ABRIL",
+      "sub": "por la mañana"
+     }
+    },
+    {
+     "texto": "Esa misma noche llegan Burke, Wills y King. No hay nadie.",
+     "escena": {
+      "tipo": "foto",
+      "img": 17
+     }
+    },
+    {
+     "texto": "En el árbol hay una palabra tallada: «DIG», cava.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=Tqyhy0f3C68",
+      "desde": 30,
+      "dur": 6,
+      "buscar_video": [
+       "eucalyptus tree outback",
+       "Cooper Creek"
+      ]
+     }
+    },
+    {
+     "texto": "Cavan: hay comida y una nota. Se habían ido hacía solo nueve horas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 15
+     }
+    },
+    {
+     "texto": "Poco después, uno del grupo volvió al árbol. Pero no cavó, y nunca supo que habían estado ahí.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "NO CAVÓ",
+      "sub": "nunca lo supo"
+     }
+    },
+    {
+     "texto": "Burke y Wills murieron junto al río. King sobrevivió gracias a los aborígenes. Comparte esta historia y sigue a Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "img": 7
+     }
+    }
+   ]
+  },
+  {
+   "eid": "largo1",
+   "tipo": "largo",
+   "hora_youtube": "18:00",
+   "titulo_youtube": "Engañó a los NAZIS con un cuadro falso… y para salvarse tuvo que pintar otro",
+   "titulo_video": " ",
+   "gancho": 2,
+   "articulo": "Han van Meegeren",
+   "fuente": "https://es.wikipedia.org/wiki/Han_van_Meegeren",
+   "titulos_opciones": [
+    "Engañó a los NAZIS con un cuadro falso… y para salvarse tuvo que pintar otro",
+    "El falsificador que le vendió un Vermeer FALSO a Hermann Göring",
+    "Los expertos dijeron «es la obra maestra de Vermeer»… la había pintado él",
+    "Lo acusaron de traidor y su única defensa fue: «Yo lo pinté»",
+    "Horneaba sus cuadros para que parecieran de hace 300 años",
+    "Los críticos se burlaron de él… y se vengó engañando a todo el mundo del arte",
+    "Tuvo que pintar un «Vermeer» frente a la policía para salvarse 🎨",
+    "Han van Meegeren: el pintor que se burló de los expertos y de los nazis"
+   ],
+   "descripcion_youtube": "29 de mayo de 1945. Ámsterdam. Llaman a la puerta de Han van Meegeren: lo acusan de haberle vendido un Vermeer al nazi Hermann Göring.\nPara salvarse, confiesa algo increíble: ese Vermeer lo pintó él. Y para demostrarlo, tendrá que pintar otro frente a testigos.\nLa historia del falsificador que engañó a los expertos, a los museos y a los nazis.\n#vanmeegeren #vermeer #historiasreales #misterio #ridmer",
+   "etiquetas": [
+    "Han van Meegeren",
+    "Vermeer",
+    "falsificador",
+    "Göring",
+    "Los discípulos de Emaús",
+    "arte",
+    "historias reales",
+    "misterio",
+    "ridmer"
+   ],
+   "miniatura": {
+    "img": 10,
+    "texto": "ENGAÑÓ A LOS NAZIS"
+   },
+   "musica": "misterio",
+   "segmentos": [
+    {
+     "texto": "Veintinueve de mayo de mil novecientos cuarenta y cinco. Ámsterdam. Alguien llama a la puerta del pintor Han van Meegeren.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "29 MAYO 1945",
+      "sub": "Ámsterdam, Países Bajos"
+     }
+    },
+    {
+     "texto": "Vienen a arrestarlo. Lo acusan de algo gravísimo: haberle vendido a los nazis un tesoro del arte holandés.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "ARRESTADO",
+      "sub": "acusado de traición"
+     }
+    },
+    {
+     "texto": "Un cuadro de Vermeer, uno de los pintores más grandes de la historia… que terminó en manos de Hermann Göring.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Hermann Göring",
+       "Hermann Goering 1940"
+      ]
+     }
+    },
+    {
+     "texto": "Si lo declaraban culpable, podía pasar muchísimos años en prisión. Y entonces Van Meegeren dijo algo que nadie esperaba.",
+     "escena": {
+      "tipo": "foto",
+      "img": 10
+     }
+    },
+    {
+     "texto": "Ese cuadro no es de Vermeer. Lo pinté yo.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "«LO PINTÉ YO»",
+      "sub": "Han van Meegeren"
+     }
+    },
+    {
+     "texto": "Esta es la historia del falsificador que engañó a los mejores expertos del mundo… y a los nazis.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=L2uy8oJ2RH0",
+      "desde": 5,
+      "dur": 7,
+      "buscar_video": [
+       "old master painting museum",
+       "Rijksmuseum gallery"
+      ]
+     }
+    },
+    {
+     "texto": "Han van Meegeren nació en mil ochocientos ochenta y nueve, en Deventer, una ciudad de los Países Bajos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 17
+     }
+    },
+    {
+     "texto": "De niño se enamoró de los colores de los grandes pintores holandeses del siglo diecisiete.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Sobre todo de Johannes Vermeer, el pintor de La joven de la perla. De Vermeer se conocen muy pocos cuadros: unos treinta y cinco.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Pero su padre odiaba que pintara. Lo obligaba a escribir cientos de veces una frase: «No sé nada, no soy nada, no soy capaz de hacer nada».",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "«NO SOY NADA»",
+      "sub": "lo que su padre le hacía escribir"
+     }
+    },
+    {
+     "texto": "Un profesor, Bartus Korteling, vio su talento y le enseñó cómo mezclaba Vermeer sus colores.",
+     "escena": {
+      "tipo": "foto",
+      "img": 16
+     }
+    },
+    {
+     "texto": "Su padre lo mandó a estudiar arquitectura a Delft, justo la ciudad de Vermeer. Pero él solo quería pintar.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Delft canal old town",
+       "Delft Netherlands"
+      ]
+     }
+    },
+    {
+     "texto": "En mil novecientos trece ganó una medalla de oro por un dibujo del interior de una iglesia.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "MEDALLA DE ORO",
+      "sub": "Delft, 1913"
+     }
+    },
+    {
+     "texto": "Se volvió un retratista famoso. Pintaba a gente rica en la costa de Francia y ganaba buen dinero.",
+     "escena": {
+      "tipo": "foto",
+      "img": 8
+     }
+    },
+    {
+     "texto": "Pero había un problema: él pintaba como los maestros antiguos, y los críticos de su época lo despreciaban.",
+     "escena": {
+      "tipo": "foto",
+      "img": 7
+     }
+    },
+    {
+     "texto": "Una exposición suya de cuadros religiosos se vendió bien… pero la crítica la destrozó sin piedad.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "DESTROZADO",
+      "sub": "por la crítica"
+     }
+    },
+    {
+     "texto": "Y Van Meegeren tomó una decisión: si los expertos no lo respetaban, los iba a engañar.",
+     "escena": {
+      "tipo": "foto",
+      "img": 10
+     }
+    },
+    {
+     "texto": "Iba a pintar un Vermeer tan perfecto que los mismos críticos lo iban a llamar obra maestra.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Y eligió el tema con astucia: los expertos creían que Vermeer, de joven, había pintado cuadros religiosos que se perdieron. Él les iba a dar justo lo que soñaban encontrar.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Pero un cuadro de trescientos años no se puede inventar así nomás. Tiene que parecer viejo de verdad.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=Y5JdbuBe6SY",
+      "desde": 60,
+      "dur": 6,
+      "buscar_video": [
+       "oil painting brush canvas",
+       "old painting craquelure"
+      ]
+     }
+    },
+    {
+     "texto": "Pasó cerca de cuatro años en el sur de Francia probando cómo hacerlo.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "4 AÑOS",
+      "sub": "de pruebas en secreto"
+     }
+    },
+    {
+     "texto": "Primero, compraba cuadros auténticos del siglo diecisiete, sin valor. Le interesaba la tela vieja, no la pintura.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "PASO 1",
+      "sub": "una tela de verdad vieja"
+     }
+    },
+    {
+     "texto": "Con piedra pómez y agua, raspaba la pintura antigua, pero dejaba la red de grietas del fondo.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "PASO 2",
+      "sub": "raspar el cuadro viejo"
+     }
+    },
+    {
+     "texto": "Después pintaba encima con pigmentos como los de Vermeer, y los mezclaba con baquelita, una resina plástica.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "PASO 3",
+      "sub": "pigmentos y baquelita"
+     }
+    },
+    {
+     "texto": "Luego metía el cuadro al horno. El calor endurecía la pintura como si tuviera siglos.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "PASO 4",
+      "sub": "al horno"
+     }
+    },
+    {
+     "texto": "¿Por qué el horno? Porque los expertos probaban los cuadros frotándolos con alcohol: la pintura nueva se disuelve. La suya, endurecida, no se movía.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "LA PRUEBA DEL ALCOHOL",
+      "sub": "y la pasaba"
+     }
+    },
+    {
+     "texto": "Al final enrollaba la tela para que se agrietara, y llenaba las grietas con tinta para que parecieran polvo de siglos.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "PASO 5",
+      "sub": "grietas de 300 años"
+     }
+    },
+    {
+     "texto": "En mil novecientos treinta y siete terminó su obra: Los discípulos de Emaús. Jesús partiendo el pan con dos discípulos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "Para que nadie sospechara, inventó una historia: el cuadro venía de una antigua familia que vivía en Italia y necesitaba venderlo en secreto.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "UNA HISTORIA FALSA",
+      "sub": "para un cuadro falso"
+     }
+    },
+    {
+     "texto": "Y entonces hizo llegar el cuadro a Abraham Bredius, el mayor experto en Vermeer de su tiempo.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Abraham Bredius",
+       "Abraham Bredius portrait"
+      ]
+     }
+    },
+    {
+     "texto": "Bredius lo estudió… y lo declaró una obra maestra. Escribió que era quizás la mejor obra de Vermeer.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "«OBRA MAESTRA»",
+      "sub": "Abraham Bredius, 1937"
+     }
+    },
+    {
+     "texto": "En mil novecientos treinta y ocho, el museo Boijmans de Róterdam lo compró por más de quinientos mil florines.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Museum Boijmans Van Beuningen",
+       "Boijmans Rotterdam museum"
+      ]
+     }
+    },
+    {
+     "texto": "Fue la estrella de una gran exposición. Los críticos que lo habían despreciado… se quedaban admirando su cuadro.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=mNVNz9OUbjA",
+      "desde": 20,
+      "dur": 6,
+      "buscar_video": [
+       "museum visitors painting",
+       "art gallery visitors"
+      ]
+     }
+    },
+    {
+     "texto": "Y nadie sabía que el autor estaba ahí, entre el público, mirando.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "Con el dinero, Van Meegeren se volvió millonario. Y siguió pintando: más Vermeer falsos, y cuadros de otros maestros.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "MILLONARIO",
+      "sub": "y no se detuvo"
+     }
+    },
+    {
+     "texto": "Entonces llegó la Segunda Guerra Mundial, y los alemanes ocuparon los Países Bajos.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=JaBIBgHOCy4",
+      "desde": 15,
+      "dur": 6,
+      "buscar_video": [
+       "1940s Amsterdam",
+       "Netherlands 1940s"
+      ]
+     }
+    },
+    {
+     "texto": "Los holandeses ricos tenían miedo de que los nazis se llevaran su arte, y compraban todo lo que podían.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Amsterdam 1940s",
+       "Amsterdam canal 1940"
+      ]
+     }
+    },
+    {
+     "texto": "Uno de los falsos Vermeer, Cristo y la adúltera, terminó en manos de Hermann Göring, uno de los jefes nazis.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Christ and the Adulteress Van Meegeren",
+       "Van Meegeren Christ adulteress"
+      ]
+     }
+    },
+    {
+     "texto": "Göring estaba tan feliz que lo cambió por más de cien cuadros auténticos que los nazis tenían.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "+100 CUADROS",
+      "sub": "a cambio de un falso"
+     }
+    },
+    {
+     "texto": "Al terminar la guerra, los aliados encontraron el cuadro en la colección de Göring, y siguieron la pista hasta el vendedor.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=L2uy8oJ2RH0",
+      "desde": 40,
+      "dur": 6,
+      "buscar_video": [
+       "1945 Europe archive",
+       "Amsterdam 1945 liberation"
+      ]
+     }
+    },
+    {
+     "texto": "Así llegaron a la puerta de Van Meegeren. Para ellos era un traidor que había vendido un tesoro nacional al enemigo.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "¿TRAIDOR?",
+      "sub": "vender un tesoro al enemigo"
+     }
+    },
+    {
+     "texto": "Para los holandeses, que alguien vendiera un tesoro de su país a los nazis era una traición imperdonable. Y el castigo podía ser durísimo.",
+     "escena": {
+      "tipo": "foto",
+      "img": 10
+     }
+    },
+    {
+     "texto": "Pasó semanas preso. Y el doce de junio confesó: Ese no es un Vermeer. Lo pinté yo. Y también Los discípulos de Emaús.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "12 JUNIO 1945",
+      "sub": "la confesión"
+     }
+    },
+    {
+     "texto": "Nadie le creyó. Los expertos decían que era imposible: esos cuadros eran auténticos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 10
+     }
+    },
+    {
+     "texto": "Así que tuvo que probarlo de la única forma posible: pintando un Vermeer nuevo, delante de testigos.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "LA PRUEBA",
+      "sub": "pintar frente a testigos"
+     }
+    },
+    {
+     "texto": "Le dieron una casa vigilada por la policía, materiales, y lo pusieron a trabajar.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Durante semanas pintó Jesús entre los doctores, con la misma técnica y con todos mirando.",
+     "escena": {
+      "tipo": "foto",
+      "img": 11
+     }
+    },
+    {
+     "texto": "Al final quedó claro: Van Meegeren no era un traidor. Era el falsificador más hábil de su tiempo.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "NO ERA UN TRAIDOR",
+      "sub": "era un falsificador"
+     }
+    },
+    {
+     "texto": "Y algo cambió: el hombre al que acusaban de vender arte a los nazis se volvió un héroe. El que había engañado a Göring.",
+     "escena": {
+      "tipo": "foto",
+      "img": 9
+     }
+    },
+    {
+     "texto": "El veintinueve de octubre de mil novecientos cuarenta y siete empezó su juicio en Ámsterdam.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=L2uy8oJ2RH0",
+      "desde": 80,
+      "dur": 6,
+      "buscar_video": [
+       "1940s courtroom",
+       "courtroom archive"
+      ]
+     }
+    },
+    {
+     "texto": "Ya no lo acusaban de traición, sino de falsificación y fraude.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "JUICIO",
+      "sub": "falsificación y fraude"
+     }
+    },
+    {
+     "texto": "Un grupo de expertos presentó sus análisis: en la pintura encontraron baquelita, un material que no existía en tiempos de Vermeer.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "BAQUELITA",
+      "sub": "inventada en el siglo XX"
+     }
+    },
+    {
+     "texto": "Y a Van Meegeren se le atribuye una frase sobre su cuadro: ayer valía millones y venían de todo el mundo a verlo; hoy no vale nada… pero el cuadro no ha cambiado. ¿Qué cambió entonces?",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "El doce de noviembre lo condenaron a solo un año de prisión.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "1 AÑO",
+      "sub": "de prisión"
+     }
+    },
+    {
+     "texto": "Pero nunca entró a la cárcel. Antes sufrió un ataque al corazón, y murió el treinta de diciembre de mil novecientos cuarenta y siete.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "30 DIC 1947",
+      "sub": "Ámsterdam"
+     }
+    },
+    {
+     "texto": "Se calcula que engañó a compradores y museos por varios millones de dólares.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "MILLONES",
+      "sub": "de dólares en engaños"
+     }
+    },
+    {
+     "texto": "Y algunos expertos defendieron por años que Los discípulos de Emaús era un Vermeer verdadero.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "Años después, nuevos análisis de laboratorio volvieron a confirmar que eran falsos.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=Y5JdbuBe6SY",
+      "desde": 200,
+      "dur": 6,
+      "buscar_video": [
+       "laboratory microscope painting",
+       "art conservation lab"
+      ]
+     }
+    },
+    {
+     "texto": "Hoy sus falsificaciones se exhiben… como falsificaciones. Y la gente las va a ver por la historia de su autor.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Museum Boijmans Van Beuningen",
+       "Boijmans Rotterdam museum"
+      ]
+     }
+    },
+    {
+     "texto": "Van Meegeren quería que el mundo reconociera su talento. Lo consiguió… pero con la firma de otro.",
+     "escena": {
+      "tipo": "foto",
+      "img": 10
+     }
+    },
+    {
+     "texto": "¿Tú qué piensas: fue un genio, o solo un estafador que tuvo suerte? Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    }
+   ]
+  },
+  {
+   "eid": "largo1t",
+   "tipo": "tiktok",
+   "encargo": "largo1",
+   "hora_youtube": "18:00",
+   "titulo_youtube": "Engañó a los NAZIS con un cuadro falso… y para salvarse tuvo que pintar otro",
+   "titulo_video": " ",
+   "gancho": 2,
+   "articulo": "Han van Meegeren",
+   "fuente": "https://es.wikipedia.org/wiki/Han_van_Meegeren",
+   "titulos_opciones": [
+    "Engañó a los NAZIS con un cuadro falso… y para salvarse tuvo que pintar otro",
+    "El falsificador que le vendió un Vermeer FALSO a Hermann Göring",
+    "Los expertos dijeron «es la obra maestra de Vermeer»… la había pintado él",
+    "Lo acusaron de traidor y su única defensa fue: «Yo lo pinté»",
+    "Horneaba sus cuadros para que parecieran de hace 300 años",
+    "Los críticos se burlaron de él… y se vengó engañando a todo el mundo del arte",
+    "Tuvo que pintar un «Vermeer» frente a la policía para salvarse 🎨",
+    "Han van Meegeren: el pintor que se burló de los expertos y de los nazis"
+   ],
+   "descripcion_youtube": "29 de mayo de 1945. Ámsterdam. Llaman a la puerta de Han van Meegeren: lo acusan de haberle vendido un Vermeer al nazi Hermann Göring.\nPara salvarse, confiesa algo increíble: ese Vermeer lo pintó él. Y para demostrarlo, tendrá que pintar otro frente a testigos.\nLa historia del falsificador que engañó a los expertos, a los museos y a los nazis.\n#vanmeegeren #vermeer #historiasreales #misterio #ridmer\nVideo completo en YouTube: Ridmer",
+   "etiquetas": [
+    "Han van Meegeren",
+    "Vermeer",
+    "falsificador",
+    "Göring",
+    "Los discípulos de Emaús",
+    "arte",
+    "historias reales",
+    "misterio",
+    "ridmer"
+   ],
+   "miniatura": {
+    "img": 10,
+    "texto": "ENGAÑÓ A LOS NAZIS"
+   },
+   "musica": "misterio",
+   "segmentos": [
+    {
+     "texto": "Veintinueve de mayo de mil novecientos cuarenta y cinco. Ámsterdam. Alguien llama a la puerta del pintor Han van Meegeren.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "29 MAYO 1945",
+      "sub": "Ámsterdam, Países Bajos"
+     }
+    },
+    {
+     "texto": "Vienen a arrestarlo. Lo acusan de haberle vendido a los nazis un tesoro del arte holandés: un Vermeer.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "ARRESTADO",
+      "sub": "acusado de traición"
+     }
+    },
+    {
+     "texto": "Y él dice algo que nadie esperaba: Ese cuadro no es de Vermeer. Lo pinté yo.",
+     "escena": {
+      "tipo": "foto",
+      "img": 10
+     }
+    },
+    {
+     "texto": "Van Meegeren era un pintor que los críticos despreciaban. Y decidió vengarse: los iba a engañar.",
+     "escena": {
+      "tipo": "foto",
+      "img": 7
+     }
+    },
+    {
+     "texto": "Compraba telas auténticas de trescientos años y raspaba la pintura vieja.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "PASO 1",
+      "sub": "una tela de verdad vieja"
+     }
+    },
+    {
+     "texto": "Pintaba como Vermeer, mezclaba la pintura con baquelita, y horneaba el cuadro para endurecerlo.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "AL HORNO",
+      "sub": "como si tuviera siglos"
+     }
+    },
+    {
+     "texto": "Luego lo agrietaba y llenaba las grietas con tinta, como polvo de siglos.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=Y5JdbuBe6SY",
+      "desde": 60,
+      "dur": 6,
+      "buscar_video": [
+       "old painting craquelure"
+      ]
+     }
+    },
+    {
+     "texto": "Así pasaba la prueba de los expertos: frotaban el cuadro con alcohol… y la pintura no se movía.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "LA PRUEBA DEL ALCOHOL",
+      "sub": "y la pasaba"
+     }
+    },
+    {
+     "texto": "En mil novecientos treinta y siete, el mayor experto en Vermeer vio Los discípulos de Emaús… y lo llamó obra maestra.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "Un museo lo compró por más de quinientos mil florines.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=mNVNz9OUbjA",
+      "desde": 20,
+      "dur": 6,
+      "buscar_video": [
+       "museum visitors painting"
+      ]
+     }
+    },
+    {
+     "texto": "Y en plena guerra, otro de sus falsos Vermeer terminó en manos de Hermann Göring, uno de los jefes nazis. Göring lo cambió por más de cien cuadros auténticos.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Hermann Göring",
+       "Hermann Goering 1940"
+      ]
+     }
+    },
+    {
+     "texto": "Por eso lo arrestaron. Y cuando confesó, nadie le creyó.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "NADIE LE CREYÓ",
+      "sub": ""
+     }
+    },
+    {
+     "texto": "Así que tuvo que pintar un Vermeer nuevo… delante de la policía.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "¿Qué pasó después? Lo que viene te va a dejar sin palabras. Mira el video completo en YouTube, en el canal Ridmer.",
+     "escena": {
+      "tipo": "foto",
+      "img": 10
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb1f",
+   "tipo": "foto",
+   "omitir": true,
+   "hora_foto": "15:30",
+   "titulo_youtube": "Se apagaron los cuatro motores a minutos de la pista",
+   "texto_foto": "A pocos kilómetros de la pista, se apagaron los cuatro motores.\n\n28 de noviembre de 2016. El Chapecoense, un humilde equipo de Brasil, volaba a Medellín para jugar la final de la Copa Sudamericana, el partido más importante de su historia. Iban 77 personas en un avión de la aerolínea LaMia.\n\nEl avión llevaba el combustible justo para el viaje, y los pilotos decidieron no parar a cargar. Cerca de Medellín les pidieron esperar en el aire porque otro avión tenía prioridad. Dieron vueltas… y el combustible se acabó.\n\nA las diez de la noche, el avión cayó sobre el Cerro Gordo, en Antioquia. Los rescatistas subieron de noche, bajo la lluvia y entre el barro, y encontraron a seis personas con vida.\n\nUno de ellos, el técnico Erwin Tumiri, contó que al sentir la caída se puso en posición fetal y se cubrió con maletas, como le habían enseñado. Murieron 71 personas.\n\n¿Tú sabías que esta tragedia se pudo evitar?\n#Chapecoense #HistoriasReales #Aviones"
+  },
+  {
+   "eid": "fb2f",
+   "tipo": "foto",
+   "omitir": true,
+   "hora_foto": "20:00",
+   "titulo_youtube": "Llegaron nueve horas tarde… y en el árbol había una sola palabra",
+   "texto_foto": "Llegaron nueve horas tarde. Y en un árbol había una sola palabra: DIG.\n\nAustralia, 1860. Diecinueve hombres salieron de Melbourne para cruzar el continente de sur a norte, más de 3.000 kilómetros por un interior que ningún colono conocía. Los dirigían Robert O'Hara Burke y William John Wills.\n\nEn el río Cooper dejaron un campamento con víveres. Cuatro hombres siguieron hacia el norte y pidieron que los esperaran tres meses. Llegaron casi al mar, pero el regreso fue un infierno de lluvia y hambre, y uno de ellos murió.\n\nEn el campamento esperaron más de cuatro meses. La mañana del 21 de abril de 1861 enterraron comida, tallaron un árbol y se fueron. Esa misma noche llegaron Burke, Wills y King: el campamento estaba vacío.\n\nCavaron y encontraron comida y una nota. Poco después, uno de los del campamento volvió al árbol… pero no cavó y nunca supo que habían estado ahí. Burke y Wills murieron junto al río. King sobrevivió gracias a los aborígenes yandruwandha.\n\n¿Tú habrías esperado un día más?\n#Supervivencia #HistoriasReales #Australia"
+  }
+ ]
+}
