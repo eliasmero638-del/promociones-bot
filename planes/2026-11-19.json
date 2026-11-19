@@ -292,7 +292,7 @@
      }
     },
     {
-     "texto": "Obreros de la compañía de luz cavan en pleno centro de la Ciudad de México.",
+     "texto": "Obreros de la compañía de luz cavan en el centro de la Ciudad de México.",
      "escena": {
       "tipo": "fecha",
       "texto": "CABLES DE LUZ",
@@ -300,7 +300,7 @@
      }
     },
     {
-     "texto": "Y se topan con una piedra enorme, redonda y tallada, de más de tres metros.",
+     "texto": "Y se topan con una piedra enorme, tallada, de más de tres metros.",
      "escena": {
       "tipo": "foto",
       "buscar": [
@@ -310,7 +310,7 @@
      }
     },
     {
-     "texto": "Era la diosa Coyolxauhqui. Y debajo estaba el Templo Mayor de Tenochtitlan.",
+     "texto": "Era la diosa Coyolxauhqui. Debajo estaba el Templo Mayor de Tenochtitlan.",
      "escena": {
       "tipo": "video",
       "url": "https://www.youtube.com/watch?v=FiALZcg3ljE",
@@ -323,7 +323,7 @@
      }
     },
     {
-     "texto": "Tenochtitlan fue la capital de los mexicas. Y estaba construida en medio de un lago.",
+     "texto": "La capital de los mexicas, construida en medio de un lago.",
      "escena": {
       "tipo": "foto",
       "img": 1
@@ -337,7 +337,7 @@
      }
     },
     {
-     "texto": "¿Cómo vivían sobre el agua? Sembraban en chinampas, islas de lodo y raíces, y se movían en canoas.",
+     "texto": "Sembraban en chinampas, islas de lodo y raíces, y se movían en canoas.",
      "escena": {
       "tipo": "fecha",
       "texto": "CHINAMPAS",
@@ -345,7 +345,7 @@
      }
     },
     {
-     "texto": "Grandes calzadas la unían con tierra firme. Era una de las ciudades más grandes del mundo.",
+     "texto": "Grandes calzadas la unían con tierra firme.",
      "escena": {
       "tipo": "video",
       "url": "https://www.youtube.com/watch?v=n9SS0sDxv50",
@@ -358,7 +358,7 @@
      }
     },
     {
-     "texto": "Cuando llegaron los españoles, escribieron que parecía cosa de encantamiento.",
+     "texto": "Los españoles escribieron que parecía cosa de encantamiento.",
      "escena": {
       "tipo": "fecha",
       "texto": "1519",
@@ -366,21 +366,21 @@
      }
     },
     {
-     "texto": "Dos años después, la ciudad cayó y fue destruida.",
+     "texto": "En mil quinientos veintiuno, la ciudad cayó y fue destruida.",
      "escena": {
       "tipo": "foto",
       "img": 16
      }
     },
     {
-     "texto": "Con sus piedras construyeron encima la Ciudad de México… y el lago se secó.",
+     "texto": "Encima construyeron la Ciudad de México… y el lago se secó.",
      "escena": {
       "tipo": "foto",
       "img": 5
      }
     },
     {
-     "texto": "Por eso, cuando cavan en el centro, aparece Tenochtitlan. Comparte esta historia y sigue a Ridmer para más.",
+     "texto": "Por eso, cuando cavan en el centro, aparece Tenochtitlan. Comparte y sigue a Ridmer.",
      "escena": {
       "tipo": "video",
       "url": "https://www.youtube.com/watch?v=Z1rqLNz8Zo0",
@@ -534,14 +534,14 @@
      }
     },
     {
-     "texto": "En mil ochocientos sesenta, diecinueve hombres salen de Melbourne para cruzar Australia.",
+     "texto": "En mil ochocientos sesenta, diecinueve hombres salen a cruzar Australia de sur a norte.",
      "escena": {
       "tipo": "foto",
       "img": 3
      }
     },
     {
-     "texto": "Más de tres mil kilómetros por tierras que ningún colono conocía.",
+     "texto": "Miles de kilómetros por tierras que ningún colono conocía.",
      "escena": {
       "tipo": "video",
       "url": "https://www.youtube.com/watch?v=rztMotulWMg",
@@ -554,14 +554,14 @@
      }
     },
     {
-     "texto": "En el río Cooper dejan un campamento. Burke, Wills, King y Gray siguen al norte.",
+     "texto": "En el río Cooper dejan un campamento, y cuatro siguen hacia el norte.",
      "escena": {
       "tipo": "foto",
       "img": 22
      }
     },
     {
-     "texto": "Al grupo del campamento le piden esperarlos tres meses.",
+     "texto": "Piden que los esperen tres meses.",
      "escena": {
       "tipo": "fecha",
       "texto": "ESPERAR 3 MESES",
@@ -569,14 +569,14 @@
      }
     },
     {
-     "texto": "Llegan casi al mar. Pero el regreso es un infierno de lluvia y hambre. Gray muere.",
+     "texto": "El regreso es un infierno de lluvia y hambre. Uno de ellos muere.",
      "escena": {
       "tipo": "foto",
       "img": 8
      }
     },
     {
-     "texto": "En el campamento esperan más de cuatro meses. Entierran comida, tallan un árbol… y el veintiuno de abril se van.",
+     "texto": "En el campamento esperan más de cuatro meses. Entierran comida, tallan un árbol… y se van.",
      "escena": {
       "tipo": "fecha",
       "texto": "21 DE ABRIL",
@@ -591,7 +591,7 @@
      }
     },
     {
-     "texto": "En el árbol hay una palabra tallada: «DIG», cava.",
+     "texto": "En el árbol hay una palabra: «DIG», cava.",
      "escena": {
       "tipo": "video",
       "url": "https://www.youtube.com/watch?v=Tqyhy0f3C68",
@@ -604,14 +604,14 @@
      }
     },
     {
-     "texto": "Cavan: hay comida y una nota. Se habían ido hacía solo nueve horas.",
+     "texto": "Cavan: comida y una nota. Se habían ido hacía solo nueve horas.",
      "escena": {
       "tipo": "foto",
       "img": 15
      }
     },
     {
-     "texto": "Poco después, uno del grupo volvió al árbol. Pero no cavó, y nunca supo que habían estado ahí.",
+     "texto": "Uno del grupo volvió después al árbol… pero no cavó.",
      "escena": {
       "tipo": "fecha",
       "texto": "NO CAVÓ",
@@ -619,7 +619,7 @@
      }
     },
     {
-     "texto": "Burke y Wills murieron junto al río. King sobrevivió gracias a los aborígenes. Comparte esta historia y sigue a Ridmer para más.",
+     "texto": "Burke y Wills murieron. King sobrevivió gracias a los aborígenes. Comparte y sigue a Ridmer.",
      "escena": {
       "tipo": "foto",
       "img": 7
