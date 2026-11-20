@@ -1449,3 +1449,45 @@ export function salaMuseo(sc, tex, { ancho = 1.6, alto = 1.25 } = {}) {
   M.caja(sc, 2.0, 0.08, 0.5, 0, 0.45, 1.4, M.mat(0x2a1a10)); for (const x of [-0.8, 0.8]) M.caja(sc, 0.08, 0.45, 0.4, x, 0.22, 1.4, M.mat(0x2a1a10));
   return { cuadro: c };
 }
+
+// ======================= 20-nov: lancha de pescador, isla tropical, cabaña de troncos, tortuga marina =======================
+/** Lancha de pescador de fibra (7 m, blanca) con hielera grande. Frente hacia +X. Pon a la gente con lancha.add(p) (piso en y=0.16).
+ *  Para que flote: flotarEnMar(mar, lancha, x, z, t). */
+export function lanchaPescador(sc, { hielera = true } = {}) {
+  const g = bote(sc, 0xdcd8cc);
+  if (hielera) { const h = new THREE.Mesh(new THREE.BoxGeometry(1.1, 0.75, 0.9), M.mat(0xf2f2ee, { roughness: 0.5 })); h.position.set(-1.3, 0.5, 0); h.castShadow = true; g.add(h); }
+  return g;
+}
+/** Hace flotar un grupo sobre marNoche() siguiendo las olas (inclina según la pendiente). */
+export function flotarEnMar(mar, g, x, z, t, fuerza = 1, hundir = 0.36) {
+  const h = mar.alto(x, z, t), hx = mar.alto(x + 2, z, t) - mar.alto(x - 2, z, t), hz = mar.alto(x, z + 0.8, t) - mar.alto(x, z - 0.8, t);
+  g.position.set(x, h * 0.85 - hundir, z); g.rotation.z = Math.atan2(hx, 4) * fuerza; g.rotation.x = -Math.atan2(hz, 1.6) * fuerza * 0.6;
+}
+/** Isla tropical de arena blanca con palmeras (atolón), centro en (0,0,-48), radio ~40. Úsala con marNoche({tormenta:false}) en colores de día. */
+export function islaTropical(sc, { semilla = 3, palmeras = 26 } = {}) {
+  const arena = M.mat(0xe9dcb4, { roughness: 1 });
+  const isla = new THREE.Mesh(new THREE.CylinderGeometry(40, 46, 2, 48), arena); isla.position.set(0, -0.6, -48); isla.receiveShadow = true; sc.add(isla);
+  const az = _azar(semilla), tronco = M.mat(0x7a5e40, { roughness: 1 }), hoja = M.mat(0x2f7a2a, { roughness: 0.9, side: THREE.DoubleSide });
+  for (let i = 0; i < palmeras; i++) { const g = new THREE.Group(), h = 6 + az() * 5;
+    const t = new THREE.Mesh(new THREE.CylinderGeometry(0.15, 0.25, h, 7), tronco); t.position.y = h / 2; t.rotation.z = (az() - 0.5) * 0.3; t.castShadow = true; g.add(t);
+    for (let k = 0; k < 7; k++) { const f = new THREE.Mesh(new THREE.PlaneGeometry(3.4, 0.7), hoja); f.position.set(Math.cos(k) * 1.4, h - 0.2, Math.sin(k) * 1.4); f.rotation.set(-0.5, -k, 0.4); f.castShadow = true; g.add(f); }
+    g.position.set((az() - 0.5) * 60, 0.4, -14 - az() * 40); sc.add(g); }
+  return isla;
+}
+/** Cabaña de troncos (Siberia, pueblo de 1900) con banca adelante. Pared de troncos en z=-2.2 (mira a +Z), banca en (-0.6, 1.35). */
+export function cabanaTroncos(sc) {
+  const tr = M.mat(0x6a4a32, { roughness: 1 });
+  for (let i = 0; i < 9; i++) { const l = new THREE.Mesh(new THREE.CylinderGeometry(0.16, 0.16, 6, 10), tr); l.rotation.z = Math.PI / 2; l.position.set(0, 0.16 + i * 0.3, -2.2); l.castShadow = true; l.receiveShadow = true; sc.add(l); }
+  M.caja(sc, 1.0, 1.2, 0.05, 1.4, 1.5, -1.95, M.mat(0x1c1c22), false);
+  const techo = new THREE.Mesh(new THREE.ConeGeometry(4.6, 1.8, 4), M.mat(0x3a2a20)); techo.rotation.y = Math.PI / 4; techo.scale.z = 0.7; techo.position.set(0, 3.6, -3.6); sc.add(techo);
+  M.caja(sc, 6, 2.8, 3, 0, 1.4, -3.6, tr);
+  M.caja(sc, 1.8, 0.08, 0.45, -0.6, 0.5, 1.35, M.mat(0x7a5a3e)); for (const x of [-1.3, 0.1]) M.caja(sc, 0.08, 0.5, 0.4, x, 0.25, 1.35, M.mat(0x7a5a3e));
+}
+/** Tortuga marina sencilla (caparazón, cabeza y aletas). Cabeza hacia +X. */
+export function tortugaMarina(sc) {
+  const g = new THREE.Group(), cv = M.mat(0x4a5a2c, { roughness: 0.7 }), pi = M.mat(0x7a7a52, { roughness: 0.8 });
+  const cap = new THREE.Mesh(new THREE.SphereGeometry(0.45, 20, 12), cv); cap.scale.set(1.2, 0.35, 0.9); g.add(cap);
+  const cab = new THREE.Mesh(new THREE.SphereGeometry(0.13, 12, 10), pi); cab.position.set(0.6, 0, 0); g.add(cab);
+  for (const [x, z, r] of [[0.25, 0.42, 0.5], [0.25, -0.42, -0.5], [-0.35, 0.3, 0.3], [-0.35, -0.3, -0.3]]) { const a = new THREE.Mesh(new THREE.BoxGeometry(0.35, 0.04, 0.16), pi); a.position.set(x, -0.02, z); a.rotation.y = r; g.add(a); }
+  sc.add(g); return g;
+}
