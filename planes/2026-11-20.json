@@ -1,0 +1,698 @@
+{
+ "fecha": "2026-11-20",
+ "modo": "claude",
+ "videos": [
+  {
+   "eid": "fb1",
+   "tipo": "fb",
+   "hora_fb": "14:00",
+   "articulo": "José Salvador Alvarenga",
+   "fuente": "https://es.wikipedia.org/wiki/Jos%C3%A9_Salvador_Alvarenga",
+   "nota": "Encargo fb1 (desaparición de Cecilia Giubileo, posible crimen/desaparecida: no funciona) reemplazado por historia de supervivencia.",
+   "titulo_video": " ",
+   "titulo_youtube": "438 días perdido en el MAR… y sobrevivió",
+   "titulos_opciones": [
+    "438 días perdido en el MAR… y sobrevivió",
+    "Salió a pescar 30 horas… y volvió 14 meses después",
+    "Bebió sangre de tortuga para no morir en el océano 🌊",
+    "¿Cómo sobrevive un hombre 438 días a la deriva?",
+    "Recorrió más de 10.000 km en una lancha SIN motor",
+    "Salió de México… y apareció al otro lado del Pacífico",
+    "Nadie creía que estuviera vivo… hasta que llegó nadando a una isla"
+   ],
+   "descripcion_youtube": "Chiapas, México, 2012. Un pescador sale por 30 horas… y una tormenta lo arrastra al océano.\n438 días después llegó nadando a una isla al otro lado del Pacífico.\n#historiasreales #supervivencia #ridmer",
+   "etiquetas": [
+    "Salvador Alvarenga",
+    "náufrago",
+    "438 días",
+    "supervivencia",
+    "historias reales",
+    "ridmer"
+   ],
+   "texto_facebook": "Salió a pescar por 30 horas… y pasó 438 días perdido en el océano 🌊 #HistoriasReales #Supervivencia #Ridmer",
+   "texto_tiktok": "438 días perdido en el mar 🌊 Salió de Chiapas a pescar 30 horas, una tormenta lo arrastró y llegó nadando a una isla a más de 10.000 km. ¿Cómo sobrevivió? #historiasreales #supervivencia #datoscuriosos #naufrago #oceano #ridmer",
+   "miniatura": {
+    "texto": "438 DÍAS EN EL MAR"
+   },
+   "gancho": 1,
+   "musica": "tension",
+   "segmentos": [
+    {
+     "texto": "Cuatrocientos treinta y ocho días perdido en el mar.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "17 NOV 2012",
+      "sub": "Chiapas, México"
+     }
+    },
+    {
+     "texto": "Noviembre de dos mil doce. Chiapas, México.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 15.69,
+      "lon": -93.25,
+      "lugar": "Costa Azul, Chiapas",
+      "km": 30
+     }
+    },
+    {
+     "texto": "El pescador salvadoreño Salvador Alvarenga sale en una lancha de siete metros, para un viaje de treinta horas.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=ViMzR6237X4",
+      "desde": 8,
+      "dur": 6,
+      "buscar_video": [
+       "fishing boat Mexico",
+       "small fishing boat ocean"
+      ]
+     }
+    },
+    {
+     "texto": "Va con Ezequiel Córdoba, un muchacho de veinticuatro años.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "EZEQUIEL CÓRDOBA",
+      "sub": "24 años · su compañero"
+     }
+    },
+    {
+     "texto": "Una tormenta de cinco días los arrastra mar adentro. El motor se daña. La radio se queda sin batería.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "storm at sea",
+       "Pacific Ocean storm waves"
+      ]
+     }
+    },
+    {
+     "texto": "Sin remos, sin luces, sin ancla. Solo la corriente.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=yugDsSWPN2Q",
+      "desde": 20,
+      "dur": 6,
+      "buscar_video": [
+       "Pacific Ocean waves",
+       "open ocean waves"
+      ]
+     }
+    },
+    {
+     "texto": "¿Cómo sobrevivió? Atrapaba tortugas y aves con las manos, comía pescado crudo y juntaba agua de lluvia.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "sea turtle ocean",
+       "Chelonia mydas"
+      ]
+     }
+    },
+    {
+     "texto": "Cuando no llovía, bebía sangre de tortuga o su propia orina.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Pacific Ocean",
+       "open ocean horizon"
+      ]
+     }
+    },
+    {
+     "texto": "Ezequiel no resistió, y murió en el mar.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "SOLO",
+      "sub": "en medio del Pacífico"
+     }
+    },
+    {
+     "texto": "Alvarenga siguió solo, contando los meses por la luna. Vio pasar barcos enormes, y ninguno lo ayudó.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "José Salvador Alvarenga",
+       "Jose Salvador Alvarenga castaway"
+      ]
+     }
+    },
+    {
+     "texto": "En enero de dos mil catorce llegó nadando a una isla de las Islas Marshall. A más de diez mil kilómetros.",
+     "escena": {
+      "tipo": "ruta",
+      "a": [
+       15.69,
+       -93.25
+      ],
+      "b": [
+       4.6,
+       168.7
+      ],
+      "na": "CHIAPAS",
+      "nb": "ISLAS MARSHALL"
+     }
+    },
+    {
+     "texto": "Sobrevivió. Comparte esta historia y sigue a Ridmer para más.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=ViMzR6237X4",
+      "desde": 40,
+      "dur": 6,
+      "buscar_video": [
+       "Marshall Islands",
+       "Ebon Atoll"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb1s",
+   "tipo": "short",
+   "encargo": "fb1",
+   "hora_youtube": "14:00",
+   "articulo": "José Salvador Alvarenga",
+   "fuente": "https://es.wikipedia.org/wiki/Jos%C3%A9_Salvador_Alvarenga",
+   "titulo_video": " ",
+   "titulo_youtube": "438 días perdido en el mar… y sobrevivió #shorts",
+   "titulos_opciones": [
+    "438 días perdido en el MAR… y sobrevivió",
+    "Salió a pescar 30 horas… y volvió 14 meses después",
+    "Bebió sangre de tortuga para no morir en el océano 🌊",
+    "¿Cómo sobrevive un hombre 438 días a la deriva?",
+    "Recorrió más de 10.000 km en una lancha SIN motor",
+    "Salió de México… y apareció al otro lado del Pacífico",
+    "Nadie creía que estuviera vivo… hasta que llegó nadando a una isla"
+   ],
+   "descripcion_youtube": "Chiapas, México, 2012. Un pescador sale por 30 horas… y una tormenta lo arrastra al océano.\n438 días después llegó nadando a una isla al otro lado del Pacífico.\n#historiasreales #supervivencia #ridmer",
+   "etiquetas": [
+    "Salvador Alvarenga",
+    "náufrago",
+    "438 días",
+    "supervivencia",
+    "historias reales",
+    "ridmer"
+   ],
+   "miniatura": {
+    "texto": "438 DÍAS EN EL MAR"
+   },
+   "gancho": 1,
+   "musica": "tension",
+   "segmentos": [
+    {
+     "texto": "Cuatrocientos treinta y ocho días perdido en el mar.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "17 NOV 2012",
+      "sub": "Chiapas, México"
+     }
+    },
+    {
+     "texto": "Dos mil doce. El pescador Salvador Alvarenga sale de Chiapas, México, para pescar treinta horas.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=ViMzR6237X4",
+      "desde": 8,
+      "dur": 6,
+      "buscar_video": [
+       "fishing boat Mexico"
+      ]
+     }
+    },
+    {
+     "texto": "Una tormenta lo arrastra mar adentro. El motor y la radio dejan de funcionar.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "storm at sea",
+       "Pacific Ocean storm waves"
+      ]
+     }
+    },
+    {
+     "texto": "Atrapa tortugas y aves con las manos, y bebe agua de lluvia.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "sea turtle ocean",
+       "Chelonia mydas"
+      ]
+     }
+    },
+    {
+     "texto": "Pasan los meses. Ve barcos enormes, y ninguno lo ayuda.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Pacific Ocean",
+       "open ocean horizon"
+      ]
+     }
+    },
+    {
+     "texto": "Catorce meses después llega nadando a las Islas Marshall, a más de diez mil kilómetros. Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=yugDsSWPN2Q",
+      "desde": 20,
+      "dur": 6,
+      "buscar_video": [
+       "Marshall Islands"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb2",
+   "tipo": "fb",
+   "hora_fb": "18:30",
+   "articulo": "Incidente ovni de Manises (1979)",
+   "fuente": "https://es.wikipedia.org/wiki/Incidente_ovni_de_Manises",
+   "nota": "Encargo fb2 (desaparición de Alan Addis, se cree asesinato: no funciona) reemplazado por ovni/aviones (tema que funciona).",
+   "titulo_video": " ",
+   "titulo_youtube": "Un OVNI persiguió a un avión con 109 pasajeros ✈️",
+   "titulos_opciones": [
+    "Un OVNI persiguió a un avión con 109 pasajeros ✈️",
+    "Dos luces rojas obligaron a aterrizar a un avión de pasajeros",
+    "El piloto subía… y las luces subían con él",
+    "Un caza pasó la velocidad del sonido para alcanzar un OVNI",
+    "¿Qué persiguió al vuelo JK-297 sobre España?",
+    "El caso OVNI que España tuvo en secreto 17 años",
+    "Hora y media persiguiendo algo que nadie pudo explicar"
+   ],
+   "descripcion_youtube": "España, 11 de noviembre de 1979. Dos luces rojas se pegan a un avión con 109 pasajeros.\nEl piloto aterriza de emergencia… y un caza sale a perseguirlas.\n#ovni #misterio #historiasreales #ridmer",
+   "etiquetas": [
+    "caso Manises",
+    "ovni",
+    "Mirage F1",
+    "misterio",
+    "historias reales",
+    "ridmer"
+   ],
+   "texto_facebook": "Dos luces rojas persiguieron a un avión con 109 pasajeros… y un caza salió a buscarlas ✈️ #Ovnis #Misterio #Ridmer",
+   "texto_tiktok": "Un OVNI persiguió a un avión con 109 pasajeros ✈️ El piloto subía y las luces subían con él. Aterrizó de emergencia y un caza Mirage salió a perseguirlas hora y media. #ovni #misterio #historiasreales #casomanises #españa #ridmer",
+   "miniatura": {
+    "texto": "LO PERSIGUIÓ UN OVNI"
+   },
+   "gancho": 1,
+   "musica": "misterio",
+   "segmentos": [
+    {
+     "texto": "Un ovni persiguió a un avión de pasajeros.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "11 NOV 1979",
+      "sub": "Sobre Ibiza, España"
+     }
+    },
+    {
+     "texto": "Once de noviembre de mil novecientos setenta y nueve.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "11 NOV 1979",
+      "sub": "Vuelo JK-297"
+     }
+    },
+    {
+     "texto": "Un Super Caravelle con ciento nueve pasajeros vuela de Mallorca a las Islas Canarias.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Sud Aviation Caravelle",
+       "Caravelle aircraft"
+      ]
+     }
+    },
+    {
+     "texto": "Cerca de las once de la noche, sobre Ibiza, el piloto ve dos luces rojas muy intensas.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=vh_V3PcEdt8",
+      "desde": 30,
+      "dur": 6,
+      "buscar_video": [
+       "airplane night flight",
+       "night sky lights"
+      ]
+     }
+    },
+    {
+     "texto": "Vienen directo hacia el avión.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "RUMBO DE CHOQUE",
+      "sub": "dos luces rojas"
+     }
+    },
+    {
+     "texto": "El capitán sube, baja, y las luces hacen lo mismo. Siempre a medio kilómetro.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "500 METROS",
+      "sub": "siempre a la misma distancia"
+     }
+    },
+    {
+     "texto": "No puede esquivarlas. Decide aterrizar de emergencia en Valencia, en el aeropuerto de Manises.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 39.49,
+      "lon": -0.47,
+      "lugar": "Aeropuerto de Manises",
+      "km": 15
+     }
+    },
+    {
+     "texto": "Justo antes de aterrizar, las luces se van. Pero el radar marca objetos que nadie conoce.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Valencia Airport",
+       "Aeropuerto de Valencia"
+      ]
+     }
+    },
+    {
+     "texto": "Despega un caza Mirage F1. El capitán Fernando Cámara tiene que pasar la velocidad del sonido para verlo.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Mirage F1 Spanish Air Force",
+       "Dassault Mirage F1"
+      ]
+     }
+    },
+    {
+     "texto": "Lo persigue hora y media. Cada vez que se acerca, el objeto acelera y desaparece.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=_hp_Q-1PdKs",
+      "desde": 20,
+      "dur": 6,
+      "buscar_video": [
+       "Dassault Mirage F1",
+       "fighter jet takeoff"
+      ]
+     }
+    },
+    {
+     "texto": "Sin combustible, tiene que volver a la base.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Mirage F1",
+       "Base Aérea de Los Llanos"
+      ]
+     }
+    },
+    {
+     "texto": "Dijeron que fueron ilusiones ópticas. Nadie sabe qué era. Comparte esta historia y sigue a Ridmer.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=_hp_Q-1PdKs",
+      "desde": 80,
+      "dur": 6,
+      "buscar_video": [
+       "Dassault Mirage F1",
+       "night sky"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb2s",
+   "tipo": "short",
+   "encargo": "fb2",
+   "hora_youtube": "19:00",
+   "articulo": "Incidente ovni de Manises (1979)",
+   "fuente": "https://es.wikipedia.org/wiki/Incidente_ovni_de_Manises",
+   "titulo_video": " ",
+   "titulo_youtube": "Un OVNI persiguió a un avión con 109 pasajeros #shorts",
+   "titulos_opciones": [
+    "Un OVNI persiguió a un avión con 109 pasajeros ✈️",
+    "Dos luces rojas obligaron a aterrizar a un avión de pasajeros",
+    "El piloto subía… y las luces subían con él",
+    "Un caza pasó la velocidad del sonido para alcanzar un OVNI",
+    "¿Qué persiguió al vuelo JK-297 sobre España?",
+    "El caso OVNI que España tuvo en secreto 17 años",
+    "Hora y media persiguiendo algo que nadie pudo explicar"
+   ],
+   "descripcion_youtube": "España, 11 de noviembre de 1979. Dos luces rojas se pegan a un avión con 109 pasajeros.\nEl piloto aterriza de emergencia… y un caza sale a perseguirlas.\n#ovni #misterio #historiasreales #ridmer",
+   "etiquetas": [
+    "caso Manises",
+    "ovni",
+    "Mirage F1",
+    "misterio",
+    "historias reales",
+    "ridmer"
+   ],
+   "miniatura": {
+    "texto": "LO PERSIGUIÓ UN OVNI"
+   },
+   "gancho": 1,
+   "musica": "misterio",
+   "segmentos": [
+    {
+     "texto": "Un ovni persiguió a un avión de pasajeros.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "11 NOV 1979",
+      "sub": "Sobre Ibiza, España"
+     }
+    },
+    {
+     "texto": "Mil novecientos setenta y nueve. Un avión con ciento nueve pasajeros vuela sobre Ibiza.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Sud Aviation Caravelle",
+       "Caravelle aircraft"
+      ]
+     }
+    },
+    {
+     "texto": "Dos luces rojas se le pegan. El piloto sube y baja, y las luces hacen lo mismo.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=vh_V3PcEdt8",
+      "desde": 30,
+      "dur": 6,
+      "buscar_video": [
+       "airplane night flight"
+      ]
+     }
+    },
+    {
+     "texto": "Aterriza de emergencia en Valencia.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 39.49,
+      "lon": -0.47,
+      "lugar": "Aeropuerto de Manises",
+      "km": 15
+     }
+    },
+    {
+     "texto": "Sale un caza Mirage, que lo persigue hora y media. El objeto acelera y desaparece.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=_hp_Q-1PdKs",
+      "desde": 20,
+      "dur": 6,
+      "buscar_video": [
+       "Dassault Mirage F1"
+      ]
+     }
+    },
+    {
+     "texto": "Dijeron que fue una ilusión óptica. Nadie sabe qué era. Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Mirage F1",
+       "Dassault Mirage F1"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb3",
+   "tipo": "fb",
+   "hora_fb": "21:00",
+   "articulo": "Evento de Tunguska (1908)",
+   "fuente": "https://es.wikipedia.org/wiki/Evento_de_Tunguska",
+   "nota": "Sin encargo fb3: tema propio (fenómenos / ciencia).",
+   "titulo_video": " ",
+   "titulo_youtube": "Algo EXPLOTÓ sobre Siberia… y no dejó cráter",
+   "titulos_opciones": [
+    "Algo EXPLOTÓ sobre Siberia… y no dejó cráter",
+    "Derribó un bosque entero en segundos ☄️",
+    "Sintió que su camisa se incendiaba a 65 km de distancia",
+    "Buscaron el cráter 19 años… y nunca apareció",
+    "La explosión más grande de la historia que nadie vio venir",
+    "¿Qué arrasó 2.000 km² de bosque en Siberia en 1908?",
+    "Esa noche en Europa se podían tomar fotos sin flash a medianoche"
+   ],
+   "descripcion_youtube": "Siberia, 30 de junio de 1908. Una bola de fuego cruza el cielo… y estalla.\nDerribó más de 2.000 km² de bosque, y nunca encontraron un cráter.\n#misterio #datoscuriosos #historiasreales #ridmer",
+   "etiquetas": [
+    "Tunguska",
+    "1908",
+    "asteroide",
+    "Siberia",
+    "misterio",
+    "ridmer"
+   ],
+   "texto_facebook": "Algo explotó sobre Siberia, derribó un bosque entero… y no dejó cráter ☄️ #Misterio #DatosCuriosos #Ridmer",
+   "texto_tiktok": "Algo EXPLOTÓ sobre Siberia en 1908 ☄️ Derribó más de 2.000 km² de bosque, a 65 km un hombre sintió que su camisa ardía… y nunca encontraron el cráter. #misterio #datoscuriosos #historiasreales #tunguska #asteroide #ridmer",
+   "miniatura": {
+    "texto": "NO DEJÓ CRÁTER"
+   },
+   "gancho": 1,
+   "musica": "epico",
+   "segmentos": [
+    {
+     "texto": "Algo estalló en el cielo de Siberia.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "30 JUN 1908",
+      "sub": "Tunguska, Rusia"
+     }
+    },
+    {
+     "texto": "Treinta de junio de mil novecientos ocho. Siete de la mañana.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "30 JUN 1908",
+      "sub": "7:14 de la mañana"
+     }
+    },
+    {
+     "texto": "Cerca del río Tunguska, en Rusia, una bola de fuego cruza el cielo.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 60.9,
+      "lon": 101.9,
+      "lugar": "Tunguska, Siberia",
+      "km": 30
+     }
+    },
+    {
+     "texto": "Y a varios kilómetros de altura, explota.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "3 A 50 MEGATONES",
+      "sub": "según los cálculos"
+     }
+    },
+    {
+     "texto": "La onda de choque derriba los árboles de más de dos mil kilómetros cuadrados de bosque.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=mQSwVMBIeKg",
+      "desde": 30,
+      "dur": 6,
+      "buscar_video": [
+       "Tunguska",
+       "Siberian taiga forest"
+      ]
+     }
+    },
+    {
+     "texto": "A sesenta y cinco kilómetros, un hombre sintió un calor tan fuerte, que creyó que su camisa ardía.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "65 KM",
+      "sub": "Vanavara"
+     }
+    },
+    {
+     "texto": "Un golpe lo lanzó varios metros.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Vanavara",
+       "Siberian village wooden house"
+      ]
+     }
+    },
+    {
+     "texto": "Esa noche, en Europa, el cielo brillaba tanto que se tomaron fotos a medianoche sin flash.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "noctilucent clouds",
+       "night sky glow Europe"
+      ]
+     }
+    },
+    {
+     "texto": "Diecinueve años después, el científico Leonid Kulik llegó al lugar.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Leonid Kulik",
+       "Leonid Kulik Tunguska"
+      ]
+     }
+    },
+    {
+     "texto": "Buscaba un cráter, y no había ninguno. Solo árboles caídos, todos apuntando hacia afuera.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Tunguska event trees 1927",
+       "Tunguska fallen trees"
+      ]
+     }
+    },
+    {
+     "texto": "Hoy se cree que una roca espacial de unos cincuenta metros estalló en el aire antes de tocar el suelo.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=mQSwVMBIeKg",
+      "desde": 90,
+      "dur": 6,
+      "buscar_video": [
+       "Tunguska",
+       "Siberian taiga forest"
+      ]
+     }
+    },
+    {
+     "texto": "Es el impacto más grande de la historia registrada. Comparte esta historia y sigue a Ridmer.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=BF5bgPr8-xw",
+      "desde": 20,
+      "dur": 6,
+      "buscar_video": [
+       "asteroid",
+       "meteor"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb1f",
+   "tipo": "foto",
+   "omitir": true,
+   "hora_foto": "15:30",
+   "titulo_youtube": "Salió a pescar por 30 horas… y volvió 438 días después",
+   "texto_foto": "Salió a pescar por treinta horas… y pasó 438 días perdido en el océano.\n\nChiapas, México, noviembre de 2012. El pescador salvadoreño José Salvador Alvarenga sale en una lancha de siete metros con un compañero de 24 años, Ezequiel Córdoba.\n\nUna tormenta de cinco días los arrastra mar adentro. El motor se daña, la radio se queda sin batería. Sin remos, sin luces, sin ancla.\n\nPara sobrevivir atrapaba tortugas, peces y aves con las manos y juntaba agua de lluvia. Cuando no llovía, bebía sangre de tortuga o su propia orina. Ezequiel no resistió y murió en el mar.\n\nAlvarenga siguió solo, contando el tiempo por la luna. Vio pasar barcos enormes… y ninguno se detuvo.\n\nEl 30 de enero de 2014 llegó nadando a una isla del atolón de Ebon, en las Islas Marshall: a más de 10.000 kilómetros de donde salió.\n\n¿Tú habrías aguantado 438 días solo en el mar?\n#HistoriasReales #Supervivencia #DatosCuriosos"
+  },
+  {
+   "eid": "fb2f",
+   "tipo": "foto",
+   "omitir": true,
+   "hora_foto": "20:00",
+   "titulo_youtube": "Algo explotó sobre Siberia, tumbó un bosque entero… y no dejó cráter",
+   "texto_foto": "Algo explotó sobre Siberia… y tumbó un bosque entero en segundos.\n\n30 de junio de 1908, siete de la mañana. Cerca del río Tunguska, en Rusia, una bola de fuego cruza el cielo y estalla a varios kilómetros de altura.\n\nLa onda de choque derriba los árboles de más de 2.000 kilómetros cuadrados de bosque. A 65 kilómetros, en Vanavara, un hombre llamado Semenov sintió un calor tan fuerte que creyó que su camisa se estaba incendiando. Un golpe lo lanzó varios metros.\n\nEsa noche, en Europa, el cielo brillaba tanto que se tomaron fotos a medianoche sin flash.\n\nDiecinueve años después, el científico Leonid Kulik llegó al lugar buscando un cráter. No había ninguno. Solo árboles caídos, todos apuntando hacia afuera, y en el centro troncos quemados que seguían en pie.\n\nHoy se cree que una roca espacial de unos 50 metros estalló en el aire antes de tocar el suelo.\n\n¿Qué crees que habría pasado si caía sobre una ciudad?\n#Misterio #DatosCuriosos #HistoriasReales"
+  }
+ ]
+}
