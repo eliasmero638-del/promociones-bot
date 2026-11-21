@@ -1491,3 +1491,223 @@ export function tortugaMarina(sc) {
   for (const [x, z, r] of [[0.25, 0.42, 0.5], [0.25, -0.42, -0.5], [-0.35, 0.3, 0.3], [-0.35, -0.3, -0.3]]) { const a = new THREE.Mesh(new THREE.BoxGeometry(0.35, 0.04, 0.16), pi); a.position.set(x, -0.02, z); a.rotation.y = r; g.add(a); }
   sc.add(g); return g;
 }
+
+// ======================= 21-nov: crucero de guerra 1945, náufragos con chaleco, mar de día, banco de arena con torre de piedras y humo,
+// galeón, espacio (estrellas, Tierra, Luna), nave Apolo (módulo de mando + servicio + lunar), cabina de cápsula, avión de 4 hélices (Lancastrian),
+// glaciar de los Andes, motor de avión viejo =======================
+/** Colores de día para marNoche() (llamar justo después): cielo celeste, agua azul, sol fuerte. */
+export function marDia(sc, mar, { sol = 2.2 } = {}) {
+  M.cielo(sc, '#5d8fc4', '#cfe0ec'); sc.fog = new THREE.FogExp2(0xbcd2e2, 0.006);
+  mar.agua.material.color.setHex(0x1d5a7a); mar.agua.material.roughness = 0.35;
+  const s = new THREE.DirectionalLight(0xfff4e0, sol); s.position.set(30, 60, 20); sc.add(s);
+  sc.add(new THREE.HemisphereLight(0xdfefff, 0x2a4a5a, 1.0)); return s;
+}
+/** Crucero pesado de la Segunda Guerra (gris, 2 chimeneas, torres de cañones). Proa hacia +X, largo ~60 m.
+ *  cr.fuego(k) enciende el incendio del costado; cr.mover(t) mueve llamas y humo. Inclínalo/húndelo con cr.g. */
+export function crucero(sc) {
+  const g = new THREE.Group(), gr = M.mat(0x6c7277, { roughness: 0.7, metalness: 0.2 }), gr2 = M.mat(0x585e63, { roughness: 0.7 }), os = M.mat(0x2b2f33, { roughness: 0.8 });
+  const add = (w, h, d, x, y, z, mm) => { const b = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mm); b.position.set(x, y, z); b.castShadow = true; g.add(b); return b; };
+  add(50, 5, 6.4, -3, 0, 0, gr); add(50, 1.2, 6.4, -3, -2.6, 0, os);
+  const proa = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 3.2, 12, 4, 1), gr); proa.rotation.z = -Math.PI / 2; proa.rotation.x = Math.PI / 4; proa.scale.set(1, 1, 0.42 / 0.42); proa.position.set(28, 0, 0); g.add(proa);
+  const popa = new THREE.Mesh(new THREE.CylinderGeometry(3.2, 3.2, 5, 16, 1, false, 0, Math.PI), gr); popa.rotation.x = Math.PI / 2; popa.rotation.z = Math.PI / 2; popa.position.set(-28, 0, 0); popa.scale.set(1, 1, 0.99); g.add(popa);
+  add(62, 0.3, 6.5, 0, 2.6, 0, gr2);
+  add(10, 4, 4.4, 8, 4.7, 0, gr); add(6, 3, 3.6, 8.6, 8.2, 0, gr); add(3, 2, 3, 9, 10.7, 0, gr2); add(6.2, 0.6, 1, 9.2, 8.6, 1.9, os);
+  add(8, 3.4, 4, -6, 4.4, 0, gr); add(4, 2.2, 3, -6.5, 7.2, 0, gr);
+  for (const x of [1, -3]) { const ch = new THREE.Mesh(new THREE.CylinderGeometry(1.1, 1.3, 7, 16), gr); ch.position.set(x, 7, 0); ch.rotation.z = 0.08; g.add(ch); const tp = new THREE.Mesh(new THREE.CylinderGeometry(1.12, 1.12, 0.5, 16), os); tp.position.set(x + 0.28, 10.4, 0); g.add(tp); }
+  const mastil = new THREE.Mesh(new THREE.CylinderGeometry(0.15, 0.2, 12, 8), os); mastil.position.set(7, 15, 0); g.add(mastil); add(0.2, 0.2, 5, 7, 18, 0, os);
+  for (const [x, s] of [[19, 1], [14, 1], [-15, -1]]) { const t = new THREE.Mesh(new THREE.CylinderGeometry(2, 2.2, 1.6, 18), gr); t.position.set(x, 3.6, 0); g.add(t);
+    for (const z of [-0.6, 0, 0.6]) { const c = new THREE.Mesh(new THREE.CylinderGeometry(0.16, 0.2, 7, 8), os); c.rotation.z = Math.PI / 2; c.position.set(x + s * 4.5, 3.8, z); g.add(c); } }
+  for (let i = 0; i < 14; i++) for (const s of [1, -1]) add(0.5, 0.4, 0.05, -20 + i * 3, 1.2, s * 3.22, emis(0xffd59a, 0.25));
+  const llamas = [], humo = [];
+  for (let i = 0; i < 14; i++) { const b = brilloSprite(i % 3 ? '#ff7a20' : '#ffd060', 4 + (i % 4), 0.9); b.userData.o = [14 + (i % 5) * 1.6, 1 + (i % 4) * 1.1, 3.6]; g.add(b); llamas.push(b); }
+  const c = document.createElement('canvas'); c.width = c.height = 128; const gx = c.getContext('2d'); const grd = gx.createRadialGradient(64, 64, 0, 64, 64, 64);
+  grd.addColorStop(0, 'rgba(40,36,34,0.9)'); grd.addColorStop(1, 'rgba(40,36,34,0)'); gx.fillStyle = grd; gx.fillRect(0, 0, 128, 128); const tx = new THREE.CanvasTexture(c);
+  for (let i = 0; i < 26; i++) { const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: tx, transparent: true, opacity: 0, depthWrite: false })); sp.userData.f = i / 26; g.add(sp); humo.push(sp); }
+  const luz = new THREE.PointLight(0xff8a30, 0, 90, 1.4); luz.position.set(16, 4, 6); g.add(luz);
+  g.traverse(o => { if (o.isMesh) o.receiveShadow = true; }); sc.add(g);
+  let kf = 0;
+  return { g, fuego(k) { kf = k; }, mover(t) {
+    llamas.forEach((b, i) => { const [x, y, z] = b.userData.o; b.position.set(x + Math.sin(t * 5 + i) * 0.3, y + kf * (1 + Math.abs(Math.sin(t * 7 + i * 2))), z); b.material.opacity = 0.9 * kf; b.visible = kf > 0.01; });
+    humo.forEach((sp, i) => { const f = (sp.userData.f + t * 0.12) % 1; sp.position.set(16 - f * 14, 4 + f * 22, 3 + f * 3); sp.scale.setScalar(4 + f * 16); sp.material.opacity = 0.75 * kf * (1 - f); });
+    luz.intensity = kf * (900 + 300 * Math.sin(t * 17)); } };
+}
+/** Persona flotando en el mar con chaleco salvavidas de corcho (kapok). Devuelve la persona; muévela con flotar(mar, p, x, z, t). */
+export async function naufrago(sc, quien, anim = 'm_idle_nervous_01.max.fbx', giro = 0, color = 0xa8945e) {
+  const p = await persona(sc, quien, anim, 0, 0, giro);
+  const ch = new THREE.Mesh(new THREE.TorusGeometry(0.2, 0.11, 10, 20), M.mat(color, { roughness: 0.9 })); ch.rotation.x = Math.PI / 2; ch.scale.set(1.15, 0.85, 1.6); ch.position.y = 1.22; p.add(ch);
+  const ch2 = new THREE.Mesh(new THREE.BoxGeometry(0.42, 0.3, 0.26), M.mat(color, { roughness: 0.9 })); ch2.position.y = 1.32; p.add(ch2);
+  return p;
+}
+/** Hace flotar a un náufrago: la superficie del mar le queda a la altura del pecho (hundir ~1.15). */
+export function flotar(mar, p, x, z, t, hundir = 1.12) { p.position.set(x, mar.alto(x, z, t) - hundir, z); p.rotation.z = Math.sin(t * 1.3 + x) * 0.06; }
+/** Columna de humo (señales, incendios). h.mover(t); h.g se puede mover. color oscuro o claro. */
+export function columnaHumo(sc, { n = 30, alto = 14, ancho = 3, color = '200,200,195', op = 0.6 } = {}) {
+  const g = new THREE.Group(); sc.add(g);
+  const [r, gg, bb] = color.split(',').map(Number), col = new THREE.Color(r / 255, gg / 255, bb / 255);
+  const geo = new THREE.IcosahedronGeometry(1, 2);
+  const ps = []; for (let i = 0; i < n; i++) { const sp = new THREE.Mesh(geo, new THREE.MeshLambertMaterial({ color: col, transparent: true, opacity: 0, depthWrite: false })); sp.userData.f = i / n; g.add(sp); ps.push(sp); }
+  return { g, mover(t, k = 1) { ps.forEach((sp, i) => { const f = (sp.userData.f + t * 0.1) % 1; sp.position.set(Math.sin(i * 2.1) * 0.3 + f * ancho * 0.6, f * alto, Math.cos(i * 1.7) * 0.3);
+    sp.scale.setScalar(0.4 + f * ancho * 0.8); sp.material.opacity = op * 0.55 * k * Math.min(1, f * 6) * (1 - f); }); } };
+}
+/** Banco de arena casi a ras del mar (sin árboles), centro en (0,0,0), ~30 x 12 m. Con restos de madera, caparazones y piedras. */
+export function bancoArena(sc, { semilla = 4 } = {}) {
+  const az = _azar(semilla), arena = M.matTex(M.TEX.arena(), [6, 3], 0xf0e2bc);
+  const b = new THREE.Mesh(new THREE.SphereGeometry(1, 40, 16), arena); b.scale.set(16, 0.9, 6); b.position.y = -0.45; b.receiveShadow = true; sc.add(b);
+  const madera = M.mat(0x6b5038, { roughness: 1 });
+  for (let i = 0; i < 9; i++) { const t = new THREE.Mesh(new THREE.BoxGeometry(1.5 + az() * 2.5, 0.12, 0.25), madera); t.position.set(-10 + az() * 20, 0.42, -3 + az() * 6); t.rotation.y = az() * 3; t.castShadow = true; sc.add(t); }
+  const roca = M.matTex(M.TEX.roca(), [1, 1], 0xb8b0a0);
+  for (let i = 0; i < 14; i++) { const r = new THREE.Mesh(new THREE.DodecahedronGeometry(0.2 + az() * 0.3), roca); r.position.set(-12 + az() * 24, 0.4, -4 + az() * 8); r.castShadow = true; sc.add(r); }
+  return b;
+}
+/** Caparazón de tortuga boca arriba (sirve de depósito de agua). */
+export function caparazon(sc, x, z, y = 0.42, r = 0.45) {
+  const m = new THREE.Mesh(new THREE.SphereGeometry(r, 20, 10, 0, Math.PI * 2, Math.PI / 2, Math.PI / 2), M.mat(0x5a4a2a, { roughness: 0.6, side: THREE.DoubleSide }));
+  m.scale.set(1.2, 0.5, 1); m.position.set(x, y + r * 0.5, z); m.castShadow = true; sc.add(m);
+  const agua = new THREE.Mesh(new THREE.CircleGeometry(r * 0.95, 20), M.mat(0x6a9ab0, { roughness: 0.1, metalness: 0.3 })); agua.rotation.x = -Math.PI / 2; agua.scale.set(1.2, 1, 1); agua.position.set(x, y + r * 0.35, z); sc.add(agua);
+  return { m, agua, nivel(k) { agua.position.y = y + r * (0.05 + 0.4 * k); agua.visible = k > 0.02; } };
+}
+/** Torre de piedras y corales (refugio de náufragos), alto ~2.6 m, en (x, z). */
+export function torrePiedras(sc, x = 0, z = 0, { alto = 2.6, semilla = 9 } = {}) {
+  const az = _azar(semilla), m1 = M.matTex(M.TEX.roca(), [1, 1], 0xcfc6b0), m2 = M.matTex(M.TEX.roca(), [1, 1], 0xe0d6c4);
+  for (let y = 0; y < alto; y += 0.32) { const r = 1.3 - y * 0.25, n = Math.max(5, Math.round(r * 9));
+    for (let i = 0; i < n; i++) { const a = i / n * Math.PI * 2 + y; if (y > 0.6 && Math.abs(Math.sin(a * 0.5 - 0.9)) < 0.15) continue;
+      const p = new THREE.Mesh(new THREE.DodecahedronGeometry(0.2 + az() * 0.12), az() > 0.5 ? m1 : m2); p.position.set(x + Math.cos(a) * r, 0.45 + y, z + Math.sin(a) * r); p.rotation.set(az() * 3, az() * 3, 0); p.castShadow = true; p.receiveShadow = true; sc.add(p); } }
+}
+/** Galeón español del siglo XVI (casco de madera, 3 mástiles con velas). Proa hacia +X, largo ~30 m. */
+export function galeon(sc) {
+  const g = new THREE.Group(), ma = M.mat(0x5a3a22, { roughness: 0.9 }), ma2 = M.mat(0x3a2414, { roughness: 0.9 }), vela = M.mat(0xe8dfc8, { roughness: 1, side: THREE.DoubleSide });
+  const add = (w, h, d, x, y, z, mm) => { const b = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mm); b.position.set(x, y, z); b.castShadow = true; g.add(b); return b; };
+  add(22, 4, 7, 0, 1, 0, ma); add(22, 1, 7.2, 0, -0.8, 0, ma2); add(7, 4, 7, -9, 4.5, 0, ma); add(4, 2.5, 6, 9, 3.6, 0, ma);
+  const proa = new THREE.Mesh(new THREE.ConeGeometry(3.6, 7, 4), ma); proa.rotation.z = -Math.PI / 2; proa.rotation.x = Math.PI / 4; proa.position.set(14, 1.4, 0); g.add(proa);
+  for (const [x, h, w] of [[6, 18, 9], [-1, 21, 11], [-8, 15, 7]]) { const m = new THREE.Mesh(new THREE.CylinderGeometry(0.2, 0.28, h, 8), ma2); m.position.set(x, 2 + h / 2, 0); g.add(m);
+    for (const [y, k] of [[0.45, 1], [0.78, 0.7]]) { const v = new THREE.Mesh(new THREE.PlaneGeometry(w * k * 0.75, h * 0.28, 6, 4), vela); const pa = v.geometry.attributes.position; for (let i = 0; i < pa.count; i++) pa.setZ(i, Math.cos(pa.getX(i) / (w * k * 0.4)) * 0.8);
+      v.rotation.y = Math.PI / 2; v.position.set(x + 0.4, 2 + h * y, 0); g.add(v); } }
+  sc.add(g); return g;
+}
+/** Fondo de espacio: estrellas + Tierra + Luna. Devuelve {tierra, luna}. Tierra con océanos, nubes y lado de noche (luz del sol desde +X). */
+export function espacio(sc, { tierra = [0, 0, -400], rT = 60, luna = null, rL = 16 } = {}) {
+  sc.background = new THREE.Color(0x000000);
+  const n = 3000, p = new Float32Array(n * 3), az = _azar(3);
+  for (let i = 0; i < n; i++) { const u = az() * 2 - 1, a = az() * 6.283, r = 900; p.set([Math.sqrt(1 - u * u) * Math.cos(a) * r, u * r, Math.sqrt(1 - u * u) * Math.sin(a) * r], i * 3); }
+  const gg = new THREE.BufferGeometry(); gg.setAttribute('position', new THREE.BufferAttribute(p, 3));
+  sc.add(new THREE.Points(gg, new THREE.PointsMaterial({ color: 0xffffff, size: 1.6, sizeAttenuation: false, fog: false })));
+  const sol = new THREE.DirectionalLight(0xfff6e8, 3.2); sol.position.set(300, 80, 120); sc.add(sol); sc.add(new THREE.AmbientLight(0x404a58, 0.6));
+  const c = document.createElement('canvas'); c.width = 1024; c.height = 512; const g = c.getContext('2d');
+  g.fillStyle = '#1b4a8a'; g.fillRect(0, 0, 1024, 512); const a2 = _azar(8);
+  for (let i = 0; i < 26; i++) { g.fillStyle = ['#5a7a3a', '#8a7a4a', '#4a6a34'][i % 3]; g.beginPath(); const cx = a2() * 1024, cy = 90 + a2() * 330; for (let k = 0; k < 12; k++) { const an = k / 12 * 6.283, rr = 30 + a2() * 70; g.lineTo(cx + Math.cos(an) * rr * 1.4, cy + Math.sin(an) * rr); } g.fill(); }
+  g.fillStyle = 'rgba(255,255,255,0.85)'; for (let i = 0; i < 160; i++) { g.beginPath(); g.ellipse(a2() * 1024, a2() * 512, 10 + a2() * 60, 4 + a2() * 10, a2() * 0.6, 0, 6.283); g.fill(); }
+  g.fillStyle = '#ffffff'; g.fillRect(0, 0, 1024, 30); g.fillRect(0, 482, 1024, 30);
+  const tx = new THREE.CanvasTexture(c); tx.colorSpace = THREE.SRGBColorSpace;
+  const T = new THREE.Mesh(new THREE.SphereGeometry(rT, 64, 40), new THREE.MeshStandardMaterial({ map: tx, roughness: 0.7 })); T.position.set(...tierra); sc.add(T);
+  const at = new THREE.Mesh(new THREE.SphereGeometry(rT * 1.025, 64, 40), new THREE.MeshBasicMaterial({ color: 0x6fb0ff, transparent: true, opacity: 0.18, side: THREE.BackSide, blending: THREE.AdditiveBlending, depthWrite: false })); at.position.copy(T.position); sc.add(at);
+  let L = null;
+  if (luna) { const cl = document.createElement('canvas'); cl.width = 512; cl.height = 256; const gl = cl.getContext('2d'); gl.fillStyle = '#9a968e'; gl.fillRect(0, 0, 512, 256);
+    for (let i = 0; i < 220; i++) { gl.fillStyle = `rgba(${a2() > 0.5 ? '60,58,55' : '190,186,178'},${0.2 + a2() * 0.3})`; gl.beginPath(); gl.arc(a2() * 512, a2() * 256, 2 + a2() * 18, 0, 6.283); gl.fill(); }
+    const tl = new THREE.CanvasTexture(cl); tl.colorSpace = THREE.SRGBColorSpace; L = new THREE.Mesh(new THREE.SphereGeometry(rL, 48, 32), new THREE.MeshStandardMaterial({ map: tl, roughness: 1 })); L.position.set(...luna); sc.add(L); }
+  return { tierra: T, luna: L, sol };
+}
+/** Nave Apolo: módulo de mando (cono), módulo de servicio (cilindro con motor) y módulo lunar acoplado en la punta. Eje hacia +X (punta del cono +X).
+ *  nave.explotar(k): 0..1 arranca un panel del módulo de servicio con chispas y una nube de gas que se escapa; nave.mover(t). */
+export function naveApolo(sc, { lunar = true } = {}) {
+  const g = new THREE.Group(), pl = M.mat(0xe4e4e0, { roughness: 0.35, metalness: 0.35 }), bl = M.mat(0xf2f2ee, { roughness: 0.55, metalness: 0.1 }), os = M.mat(0x2a2a2a, { roughness: 0.6 });
+  const cm = new THREE.Mesh(new THREE.ConeGeometry(1.95, 3.4, 40), pl); cm.rotation.z = -Math.PI / 2; cm.position.x = 1.7; g.add(cm);
+  for (const z of [0.9, -0.9]) { const v = new THREE.Mesh(new THREE.BoxGeometry(0.3, 0.25, 0.05), M.mat(0x0a1018, { metalness: 0.9, roughness: 0.1 })); v.position.set(1.2, 0.55, z * 1.0); v.lookAt(new THREE.Vector3(5, 3, z * 4)); g.add(v); }
+  const sm = new THREE.Mesh(new THREE.CylinderGeometry(1.95, 1.95, 7.4, 40), bl); sm.rotation.z = Math.PI / 2; sm.position.x = -3.7; g.add(sm);
+  for (let i = 0; i < 6; i++) { const f = new THREE.Mesh(new THREE.BoxGeometry(7.4, 0.04, 0.06), M.mat(0xb8b8b4)); const a = i / 6 * Math.PI * 2; f.position.set(-3.7, Math.cos(a) * 1.96, Math.sin(a) * 1.96); f.rotation.x = a; g.add(f); }
+  const tob = new THREE.Mesh(new THREE.ConeGeometry(1.25, 3.4, 30, 1, true), M.mat(0x3a3a3a, { side: THREE.DoubleSide, metalness: 0.6, roughness: 0.4 })); tob.rotation.z = -Math.PI / 2; tob.position.x = -8.9; g.add(tob);
+  const ant = new THREE.Group(); ant.position.set(-7, -2.2, 0); g.add(ant); for (let i = 0; i < 4; i++) { const d = new THREE.Mesh(new THREE.CylinderGeometry(0.4, 0.4, 0.06, 16), bl); d.rotation.z = Math.PI / 2; d.position.set(0, -0.6, (i - 1.5) * 0.8); ant.add(d); }
+  const panel = new THREE.Mesh(new THREE.CylinderGeometry(1.98, 1.98, 3, 20, 1, true, -0.5, 1.0), bl); panel.material = bl.clone(); panel.material.side = THREE.DoubleSide; panel.rotation.z = Math.PI / 2; panel.position.x = -3.7; g.add(panel);
+  const hueco = new THREE.Mesh(new THREE.CylinderGeometry(1.9, 1.9, 2.9, 20, 1, true, -0.5, 1.0), M.mat(0x1a1410, { side: THREE.DoubleSide, roughness: 1 })); hueco.rotation.z = Math.PI / 2; hueco.position.x = -3.7; g.add(hueco);
+  if (lunar) { const lm = new THREE.Group(); lm.position.set(3.7, 0, 0); g.add(lm);
+    const oro = M.mat(0xd8b048, { roughness: 0.4, metalness: 0.4 }), gris = M.mat(0xb8b8b2, { roughness: 0.6, metalness: 0.2 });
+    const asc = new THREE.Mesh(new THREE.DodecahedronGeometry(1.6, 0), gris); asc.scale.set(0.8, 1, 1.1); asc.position.x = 0.8; lm.add(asc);
+    const des = new THREE.Mesh(new THREE.CylinderGeometry(2.1, 2.1, 1.8, 8), oro); des.rotation.z = Math.PI / 2; des.position.x = 2.9; lm.add(des);
+    for (let i = 0; i < 4; i++) { const a = i / 4 * Math.PI * 2 + Math.PI / 4; const pata = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.07, 3.2, 6), oro); pata.position.set(3.6, Math.cos(a) * 2.4, Math.sin(a) * 2.4); pata.rotation.set(a, 0, Math.PI / 2 - 0.5 * Math.sign(Math.cos(a) || 1) * 0); lm.add(pata);
+      const pie = new THREE.Mesh(new THREE.CylinderGeometry(0.35, 0.35, 0.08, 12), oro); pie.position.set(5.1, Math.cos(a) * 2.9, Math.sin(a) * 2.9); pie.rotation.z = Math.PI / 2; lm.add(pie); } }
+  const c = document.createElement('canvas'); c.width = c.height = 128; const gx = c.getContext('2d'); const grd = gx.createRadialGradient(64, 64, 0, 64, 64, 64);
+  grd.addColorStop(0, 'rgba(235,240,255,0.95)'); grd.addColorStop(1, 'rgba(235,240,255,0)'); gx.fillStyle = grd; gx.fillRect(0, 0, 128, 128); const tx = new THREE.CanvasTexture(c);
+  const gas = []; for (let i = 0; i < 70; i++) { const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: tx, transparent: true, opacity: 0, depthWrite: false, fog: false })); sp.userData.o = [Math.random(), (Math.random() - 0.5) * 1.6, (Math.random() - 0.5) * 1.6, Math.random() * 2 - 1]; sc.add(sp); gas.push(sp); }
+  const chispa = brilloSprite('#ffd8a0', 6, 1); chispa.visible = false; g.add(chispa); chispa.position.set(-3.7, 2.2, 0.2);
+  const luz = new THREE.PointLight(0xffc890, 0, 40, 1.4); luz.position.set(-3.7, 3, 0); g.add(luz);
+  g.traverse(o => { if (o.isMesh) o.castShadow = true; }); sc.add(g);
+  let ke = 0, t0 = 0;
+  return { g, explotar(k) { ke = k; },
+    mover(t) { const v = new THREE.Vector3(-3.7, 2.1, 0); g.localToWorld(v); const up = new THREE.Vector3(0, 1, 0).applyQuaternion(g.quaternion);
+      panel.visible = ke < 0.15; if (ke >= 0.15) { panel.position.set(-3.7 + 0, 2 + (ke - 0.15) * 10, 0); panel.visible = true; panel.rotation.x = (ke - 0.15) * 4; panel.material.transparent = true; panel.material.opacity = Math.max(0, 1 - (ke - 0.15) * 1.4); }
+      chispa.visible = ke > 0.1 && ke < 0.4; chispa.scale.setScalar(4 + 10 * Math.max(0, 0.4 - ke)); luz.intensity = (ke > 0.1 && ke < 0.45) ? 900 * (0.45 - ke) : 0;
+      gas.forEach((sp, i) => { const [f0, a, b, d] = sp.userData.o; const f = ke > 0.12 ? ((f0 + t * 0.25) % 1) : 0;
+        sp.position.copy(v).addScaledVector(up, f * 14).add(new THREE.Vector3(a * f * 6 + d * f * 3, 0, b * f * 6)); sp.scale.setScalar(0.6 + f * 6); sp.material.opacity = ke > 0.12 ? 0.55 * (1 - f) * Math.min(1, (ke - 0.12) * 5) : 0; }); } };
+}
+/** Interior de cápsula espacial apretada (paneles grises con luces, 3 asientos). Asientos en z = -0.7, 0, 0.7 mirando a +X (al tablero en x≈1.3).
+ *  ca.alarma(k) prende luces rojas; ca.temblor(t, k) sacude la cámara (devuelve un offset). ca.mover(t) parpadea los indicadores. */
+export function capsula(sc) {
+  sc.background = new THREE.Color(0x020203); sc.add(new THREE.HemisphereLight(0xb8c4d8, 0x101014, 0.45));
+  const gris = M.mat(0x8a8c88, { roughness: 0.6 }), osc = M.mat(0x2e3034, { roughness: 0.5 });
+  M.caja(sc, 4, 0.06, 3, 0, -0.03, 0, osc); M.caja(sc, 0.06, 2.6, 3, -1.4, 1.3, 0, gris); M.caja(sc, 4, 2.6, 0.06, 0, 1.3, -1.45, gris); M.caja(sc, 4, 2.6, 0.06, 0, 1.3, 1.45, gris);
+  const tab = new THREE.Mesh(new THREE.BoxGeometry(0.3, 1.1, 2.8), osc); tab.position.set(1.35, 1.55, 0); tab.rotation.z = 0.35; sc.add(tab);
+  const ind = [], az = _azar(12);
+  for (let i = 0; i < 70; i++) { const m = new THREE.Mesh(new THREE.BoxGeometry(0.02, 0.05, 0.07), emis([0xffffff, 0x60ff80, 0xffb040, 0xff3030][i % 4], 0.8)); const y = 1.12 + az() * 0.85, z = -1.3 + az() * 2.6;
+    m.position.set(1.2 - (y - 1.1) * 0.37 + 0.02, y, z); m.rotation.z = 0.35; sc.add(m); ind.push(m); }
+  for (let i = 0; i < 18; i++) { const r = new THREE.Mesh(new THREE.CylinderGeometry(0.06, 0.06, 0.02, 14), M.mat(0x111111)); r.rotation.z = Math.PI / 2 + 0.35; const y = 1.2 + (i % 3) * 0.25, z = -1.1 + Math.floor(i / 3) * 0.44; r.position.set(1.2 - (y - 1.1) * 0.37 + 0.03, y, z); sc.add(r); }
+  const vent = new THREE.Mesh(new THREE.BoxGeometry(0.05, 0.3, 0.35), emis(0x112244, 0.6)); vent.position.set(0.9, 2.3, -0.9); vent.rotation.z = 0.8; sc.add(vent);
+  for (const z of [-0.7, 0, 0.7]) { M.caja(sc, 0.9, 0.1, 0.55, -0.35, 0.42, z, M.mat(0x4a4f56)); M.caja(sc, 0.1, 0.9, 0.55, -0.85, 0.85, z, M.mat(0x4a4f56)); }
+  const luz = new THREE.PointLight(0xfff2dc, 3, 5, 1.5); luz.position.set(0.3, 2.3, 0); sc.add(luz);
+  const roja = new THREE.PointLight(0xff2010, 0, 6, 1.3); roja.position.set(0.8, 2.0, 0); sc.add(roja);
+  let ka = 0;
+  return { alarma(k) { ka = k; }, mover(t) { ind.forEach((m, i) => { m.material.emissiveIntensity = 0.5 + 0.5 * Math.sin(t * (2 + i % 5) + i) + (i % 4 === 3 ? ka * 2 * (Math.sin(t * 12) > 0 ? 1 : 0) : 0); });
+      roja.intensity = ka * (Math.sin(t * 9) > 0 ? 9 : 1.5); luz.intensity = 3 * (1 - ka * 0.6) * (ka > 0 && Math.sin(t * 23) > 0.85 ? 0.3 : 1); },
+    temblor(t, k) { return new THREE.Vector3(Math.sin(t * 47) * 0.04 * k, Math.sin(t * 61) * 0.035 * k, Math.sin(t * 53) * 0.04 * k); } };
+}
+/** Avión de pasajeros de 4 hélices de los años 40 (tipo Avro Lancastrian: ala media, doble deriva, plateado). Nariz +X, largo ~23 m.
+ *  av.mover(t) gira las hélices y parpadea la luz. */
+export function avionHelices(sc) {
+  const g = new THREE.Group(), pl = M.mat(0xc8ccd0, { roughness: 0.3, metalness: 0.8 }), os = M.mat(0x1a1a1a);
+  const fus = new THREE.Mesh(new THREE.CylinderGeometry(1.1, 0.45, 20, 24), pl); fus.rotation.z = Math.PI / 2; fus.position.x = -1; g.add(fus);
+  const nariz = new THREE.Mesh(new THREE.SphereGeometry(1.1, 24, 14, 0, Math.PI * 2, 0, Math.PI / 2), pl); nariz.rotation.z = -Math.PI / 2; nariz.position.x = 9; nariz.scale.set(1, 1.8, 1); g.add(nariz);
+  const vid = new THREE.Mesh(new THREE.BoxGeometry(1.1, 0.4, 1.2), M.mat(0x0b1220, { metalness: 0.8, roughness: 0.1 })); vid.position.set(8.2, 0.85, 0); vid.rotation.z = -0.3; g.add(vid);
+  for (let i = 0; i < 8; i++) for (const s of [1, -1]) { const w = new THREE.Mesh(new THREE.BoxGeometry(0.3, 0.3, 0.04), emis(0xffe2a8, 0.6)); w.position.set(4 - i * 1.3, 0.25, s * 1.06); g.add(w); }
+  const ala = new THREE.Mesh(new THREE.BoxGeometry(3.4, 0.28, 31), pl); ala.position.set(1.8, -0.1, 0); g.add(ala);
+  const hel = [];
+  for (const z of [-9.5, -4.6, 4.6, 9.5]) { const n = new THREE.Mesh(new THREE.CylinderGeometry(0.55, 0.45, 3.6, 16), pl); n.rotation.z = Math.PI / 2; n.position.set(3.4, -0.1, z); g.add(n);
+    const h = new THREE.Group(); h.position.set(5.3, -0.1, z); g.add(h); for (let i = 0; i < 3; i++) { const p = new THREE.Mesh(new THREE.BoxGeometry(0.06, 1.6, 0.22), os); p.position.y = 0.8; const q = new THREE.Group(); q.rotation.x = i * 2.094; q.add(p); h.add(q); }
+    const d = new THREE.Mesh(new THREE.CircleGeometry(1.6, 28), new THREE.MeshBasicMaterial({ color: 0xaaaaaa, transparent: true, opacity: 0.1, side: THREE.DoubleSide, depthWrite: false })); d.rotation.y = Math.PI / 2; h.add(d); hel.push(h); }
+  const est = new THREE.Mesh(new THREE.BoxGeometry(2.2, 0.15, 9), pl); est.position.set(-10, 0.3, 0); g.add(est);
+  for (const z of [4.5, -4.5]) { const d = new THREE.Mesh(new THREE.BoxGeometry(2.0, 2.6, 0.15), pl); d.position.set(-10.2, 1.2, z); g.add(d); }
+  const st = new THREE.Mesh(new THREE.SphereGeometry(0.12, 8, 8), emis(0xff2020, 5)); st.position.set(1.8, -0.1, -15.6); g.add(st);
+  const st2 = new THREE.Mesh(new THREE.SphereGeometry(0.12, 8, 8), emis(0x20ff40, 5)); st2.position.set(1.8, -0.1, 15.6); g.add(st2);
+  g.traverse(o => { if (o.isMesh) o.castShadow = true; }); sc.add(g);
+  return { g, mover(t) { hel.forEach((h, i) => { h.rotation.x = t * 50 + i; }); } };
+}
+/** Montañas nevadas de los Andes (picos blancos con roca) y nubes; valle/glaciar en y=0 alrededor de (0,0). an.nubes(t) mueve las nubes.
+ *  dia: 'tarde' (luz cálida) | 'tormenta' (gris oscuro, nieve que cae). */
+export function andesNieve(sc, { dia = 'tarde', semilla = 5 } = {}) {
+  const tor = dia === 'tormenta';
+  M.cielo(sc, tor ? '#3a4250' : '#6f8fb8', tor ? '#9aa4b0' : '#f2d4b0'); sc.fog = new THREE.FogExp2(tor ? 0x7d8692 : 0xd8d8e0, tor ? 0.0035 : 0.0025);
+  sc.add(new THREE.HemisphereLight(0xe8f0ff, 0x4a4a50, tor ? 0.6 : 0.55));
+  const s = new THREE.DirectionalLight(tor ? 0xd0d8e8 : 0xffe2c0, tor ? 1.2 : 1.5); s.position.set(-60, 80, 40); s.castShadow = true; s.shadow.mapSize.set(2048, 2048);
+  Object.assign(s.shadow.camera, { left: -40, right: 40, top: 40, bottom: -40, near: 1, far: 300 }); sc.add(s);
+  const az = _azar(semilla), nieve = M.mat(0xd6dce4, { roughness: 0.9, flatShading: true }), roca = M.mat(0x4a4642, { roughness: 1, flatShading: true });
+  const piso = new THREE.Mesh(new THREE.PlaneGeometry(800, 800, 80, 80), nieve); piso.rotation.x = -Math.PI / 2;
+  const pa = piso.geometry.attributes.position; for (let i = 0; i < pa.count; i++) { const x = pa.getX(i), y = pa.getY(i); const d = Math.hypot(x, y); pa.setZ(i, d < 25 ? Math.sin(x * 0.3) * 0.25 + Math.cos(y * 0.25) * 0.2 : (d - 25) * 0.25 * (0.6 + 0.4 * Math.sin(x * 0.05 + y * 0.07))); }
+  piso.geometry.computeVertexNormals(); piso.receiveShadow = true; sc.add(piso);
+  for (let i = 0; i < 40; i++) { const a = az() * 6.283, r = 70 + az() * 220, h = 40 + az() * 110, rad = 25 + az() * 45;
+    const c = new THREE.Mesh(new THREE.ConeGeometry(rad, h, 6 + Math.floor(az() * 3)), az() > 0.35 ? nieve : roca); c.position.set(Math.cos(a) * r, h / 2 - 6, Math.sin(a) * r); c.rotation.y = az() * 3; sc.add(c);
+    const cap = new THREE.Mesh(new THREE.ConeGeometry(rad * 0.45, h * 0.45, 6), nieve); cap.position.set(c.position.x, h * 0.77 - 6, c.position.z); cap.rotation.y = c.rotation.y; sc.add(cap); }
+  const cv = document.createElement('canvas'); cv.width = cv.height = 128; const gx = cv.getContext('2d'); const grd = gx.createRadialGradient(64, 64, 0, 64, 64, 64);
+  grd.addColorStop(0, tor ? 'rgba(200,205,212,0.9)' : 'rgba(255,255,255,0.9)'); grd.addColorStop(1, 'rgba(255,255,255,0)'); gx.fillStyle = grd; gx.fillRect(0, 0, 128, 128); const tx = new THREE.CanvasTexture(cv);
+  const nubes = []; for (let i = 0; i < 90; i++) { const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: tx, transparent: true, opacity: 0.55, depthWrite: false })); sp.userData.o = [(az() - 0.5) * 500, 20 + az() * 60, (az() - 0.5) * 500]; sp.scale.setScalar(40 + az() * 60); sc.add(sp); nubes.push(sp); }
+  let copos = null;
+  if (tor) { const n = 3000, p = new Float32Array(n * 3); for (let i = 0; i < n; i++) p.set([(az() - 0.5) * 60, az() * 40, (az() - 0.5) * 60], i * 3);
+    const gg = new THREE.BufferGeometry(); gg.setAttribute('position', new THREE.BufferAttribute(p, 3)); copos = new THREE.Points(gg, new THREE.PointsMaterial({ color: 0xffffff, size: 0.18, transparent: true, opacity: 0.8, depthWrite: false })); sc.add(copos); }
+  return { piso, nubes(t, c = { x: 0, y: 0, z: 0 }) { nubes.forEach((sp, i) => { const [x, y, z] = sp.userData.o; sp.position.set(x + t * (6 + i % 5), y, z); });
+      if (copos) copos.position.set(c.x + Math.sin(t) * 2, c.y - ((t * 4) % 20), c.z); } };
+}
+/** Motor de avión viejo semienterrado en la nieve (bloque en V con cilindros, hélice doblada). */
+export function motorViejo(sc, x = 0, z = 0, giro = 0) {
+  const g = new THREE.Group(), met = M.mat(0x4a4038, { roughness: 0.8, metalness: 0.6 }), oxi = M.mat(0x6a4a30, { roughness: 1, metalness: 0.3 });
+  const b = new THREE.Mesh(new THREE.BoxGeometry(1.8, 0.6, 0.7), met); b.position.y = 0.3; g.add(b);
+  for (const s of [1, -1]) { const v = new THREE.Mesh(new THREE.BoxGeometry(1.7, 0.4, 0.3), oxi); v.position.set(0, 0.6, s * 0.25); v.rotation.x = s * 0.5; g.add(v); for (let i = 0; i < 6; i++) { const e = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.05, 0.25, 6), met); e.position.set(-0.7 + i * 0.28, 0.82, s * 0.38); g.add(e); } }
+  const cubo = new THREE.Mesh(new THREE.CylinderGeometry(0.22, 0.3, 0.5, 14), met); cubo.rotation.z = Math.PI / 2; cubo.position.set(1.1, 0.3, 0); g.add(cubo);
+  for (let i = 0; i < 3; i++) { const p = new THREE.Mesh(new THREE.BoxGeometry(0.06, 1.3, 0.22), oxi); const q = new THREE.Group(); q.position.set(1.35, 0.3, 0); q.rotation.x = i * 2.094; p.position.y = 0.6; p.rotation.z = i === 1 ? 0.7 : 0.15; q.add(p); g.add(q); }
+  g.traverse(o => { if (o.isMesh) o.castShadow = true; }); g.position.set(x, -0.15, z); g.rotation.set(0.25, giro, 0.12); sc.add(g); return g;
+}
