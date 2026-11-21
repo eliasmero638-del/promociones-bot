@@ -1,0 +1,1476 @@
+{
+ "fecha": "2026-11-21",
+ "modo": "claude",
+ "videos": [
+  {
+   "eid": "fb1",
+   "tipo": "fb",
+   "hora_fb": "14:00",
+   "titulo_youtube": "900 hombres en el MAR… y nadie sabía que se habían hundido",
+   "articulo": "USS Indianapolis (CA-35)",
+   "fuente": "https://es.wikipedia.org/wiki/USS_Indianapolis_(CA-35)",
+   "titulo_video": " ",
+   "titulos_opciones": [
+    "900 hombres en el MAR… y nadie sabía que se habían hundido",
+    "Llevaron la bomba atómica… y de regreso los hundió un submarino",
+    "4 días entre TIBURONES esperando un rescate que nadie mandó 🦈",
+    "¿Cómo sobreviven 900 hombres flotando en medio del océano?",
+    "Se hundió en 12 minutos… y la Marina ni se enteró",
+    "Un piloto miró hacia abajo por casualidad… y salvó a 316",
+    "El barco que nadie buscó: USS Indianápolis, 1945"
+   ],
+   "descripcion_youtube": "30 de julio de 1945. Un crucero estadounidense que acaba de entregar piezas de la bomba atómica es hundido en 12 minutos.\n900 hombres quedan flotando en el mar… y nadie sabe que están ahí.\n#historiasreales #supervivencia #ridmer",
+   "etiquetas": [
+    "USS Indianapolis",
+    "náufragos",
+    "tiburones",
+    "Segunda Guerra Mundial",
+    "supervivencia",
+    "historias reales",
+    "ridmer"
+   ],
+   "miniatura": {
+    "texto": "900 EN EL MAR"
+   },
+   "gancho": 1,
+   "musica": "tension",
+   "texto_facebook": "900 hombres flotando en el mar… y la Marina ni sabía que se habían hundido 🌊 #HistoriasReales #Supervivencia #Ridmer",
+   "texto_tiktok": "900 hombres en el MAR… y nadie los buscaba 🌊 En 1945 el USS Indianápolis se hundió en 12 minutos y sus marinos pasaron 4 días entre sed, sol y tiburones. ¿Cómo los encontraron? #historiasreales #supervivencia #datoscuriosos #oceano #ridmer",
+   "segmentos": [
+    {
+     "texto": "Novecientos hombres en el mar… y nadie los buscaba.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "30 JULIO 1945",
+      "sub": "Mar de Filipinas"
+     }
+    },
+    {
+     "texto": "Mil novecientos cuarenta y cinco. El crucero Indianápolis acaba de entregar piezas de la bomba atómica.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Ahora navega solo, sin escolta, hacia Filipinas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Pasada la medianoche, un submarino japonés le dispara dos torpedos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 7
+     }
+    },
+    {
+     "texto": "En doce minutos se hunde. Unos trescientos marinos se van con él.",
+     "escena": {
+      "tipo": "foto",
+      "img": 8
+     },
+     "rotulo": "12 MINUTOS"
+    },
+    {
+     "texto": "Novecientos quedan flotando, casi todos solo con chalecos salvavidas.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "USS Indianapolis survivors",
+       "Indianapolis survivors 1945"
+      ]
+     }
+    },
+    {
+     "texto": "La Marina ni siquiera sabe que se hundió. Nadie los busca.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "Sol, sed, agua salada… y tiburones. Día tras día, los grupos se hacen más pequeños.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "oceanic whitetip shark",
+       "Carcharhinus longimanus"
+      ]
+     }
+    },
+    {
+     "texto": "Al cuarto día, un avión de patrulla pasa por casualidad… y el piloto ve hombres en el agua.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Lockheed PV-1 Ventura",
+       "PV-1 Ventura"
+      ]
+     }
+    },
+    {
+     "texto": "Otro piloto aterriza su hidroavión en pleno mar y saca a decenas de hombres.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "PBY Catalina",
+       "PBY-5A Catalina"
+      ]
+     }
+    },
+    {
+     "texto": "De novecientos, solo trescientos dieciséis volvieron a casa.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=S2rFknq-M4Y",
+      "desde": 3,
+      "dur": 6,
+      "buscar_video": [
+       "navy hospital 1945"
+      ]
+     }
+    },
+    {
+     "texto": "En dos mil diecisiete encontraron el barco a cinco mil quinientos metros de profundidad. Comparte esta historia y sigue a Ridmer.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=0mMeNEOt-0E",
+      "desde": 40,
+      "dur": 6,
+      "buscar_video": [
+       "shipwreck deep sea"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb1s",
+   "tipo": "short",
+   "encargo": "fb1",
+   "hora_youtube": "14:00",
+   "titulo_youtube": "900 hombres en el mar… y nadie los buscaba #shorts",
+   "articulo": "USS Indianapolis (CA-35)",
+   "fuente": "https://es.wikipedia.org/wiki/USS_Indianapolis_(CA-35)",
+   "titulo_video": " ",
+   "titulos_opciones": [
+    "900 hombres en el MAR… y nadie sabía que se habían hundido",
+    "Llevaron la bomba atómica… y de regreso los hundió un submarino",
+    "4 días entre TIBURONES esperando un rescate que nadie mandó 🦈",
+    "¿Cómo sobreviven 900 hombres flotando en medio del océano?",
+    "Se hundió en 12 minutos… y la Marina ni se enteró",
+    "Un piloto miró hacia abajo por casualidad… y salvó a 316",
+    "El barco que nadie buscó: USS Indianápolis, 1945"
+   ],
+   "descripcion_youtube": "30 de julio de 1945. Un crucero estadounidense que acaba de entregar piezas de la bomba atómica es hundido en 12 minutos.\n900 hombres quedan flotando en el mar… y nadie sabe que están ahí.\n#historiasreales #supervivencia #ridmer",
+   "etiquetas": [
+    "USS Indianapolis",
+    "náufragos",
+    "tiburones",
+    "Segunda Guerra Mundial",
+    "supervivencia",
+    "historias reales",
+    "ridmer"
+   ],
+   "miniatura": {
+    "texto": "900 EN EL MAR"
+   },
+   "gancho": 1,
+   "musica": "tension",
+   "segmentos": [
+    {
+     "texto": "Novecientos hombres en el mar… y nadie los buscaba.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "30 JULIO 1945",
+      "sub": "Mar de Filipinas"
+     }
+    },
+    {
+     "texto": "Mil novecientos cuarenta y cinco. Un submarino japonés hunde al crucero Indianápolis en solo doce minutos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Novecientos marinos quedan flotando con chalecos salvavidas. Y la Marina ni sabe que se hundieron.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "USS Indianapolis survivors",
+       "Indianapolis survivors 1945"
+      ]
+     }
+    },
+    {
+     "texto": "Sed, sol y tiburones durante cuatro días.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "oceanic whitetip shark",
+       "Carcharhinus longimanus"
+      ]
+     }
+    },
+    {
+     "texto": "Hasta que un avión de patrulla pasa por casualidad… y el piloto los ve.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Lockheed PV-1 Ventura",
+       "PV-1 Ventura"
+      ]
+     }
+    },
+    {
+     "texto": "Solo trescientos dieciséis volvieron a casa. Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=S2rFknq-M4Y",
+      "desde": 3,
+      "dur": 6,
+      "buscar_video": [
+       "navy hospital 1945"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb2",
+   "tipo": "fb",
+   "hora_fb": "18:30",
+   "titulo_youtube": "8 AÑOS atrapado en un banco de arena… sin agua dulce",
+   "articulo": "Pedro Serrano",
+   "fuente": "https://es.wikipedia.org/wiki/Pedro_Serrano",
+   "titulo_video": " ",
+   "titulos_opciones": [
+    "8 AÑOS atrapado en un banco de arena… sin agua dulce",
+    "El verdadero Robinson Crusoe era español 🏝️",
+    "Bebía sangre de tortuga para no morir… durante 8 años",
+    "¿Cómo sobrevive un hombre 8 años en un pedazo de arena?",
+    "Ni siquiera estaba en los mapas… y vivió ahí 8 años",
+    "Tres años solo… y entonces el mar le trajo a otro náufrago",
+    "Pedro Serrano: el náufrago que inspiró a Robinson Crusoe"
+   ],
+   "descripcion_youtube": "Mar Caribe, 1526. Un barco español se hunde en una tormenta y solo sobrevive su capitán.\nLlega a un banco de arena sin árboles ni agua dulce… y pasa ahí 8 años.\n#historiasreales #supervivencia #ridmer",
+   "etiquetas": [
+    "Pedro Serrano",
+    "náufrago",
+    "Banco Serrana",
+    "Robinson Crusoe",
+    "supervivencia",
+    "historias reales",
+    "ridmer"
+   ],
+   "miniatura": {
+    "texto": "8 AÑOS EN LA ARENA"
+   },
+   "gancho": 1,
+   "musica": "misterio",
+   "texto_facebook": "Ocho años atrapado en un banco de arena del Caribe… sin agua dulce 🏝️ #HistoriasReales #Supervivencia #Ridmer",
+   "texto_tiktok": "8 AÑOS atrapado en un banco de arena 🏝️ En 1526 Pedro Serrano naufragó en el Caribe y sobrevivió bebiendo agua de lluvia y sangre de tortuga. Dicen que inspiró a Robinson Crusoe. #historiasreales #supervivencia #datoscuriosos #naufrago #ridmer",
+   "segmentos": [
+    {
+     "texto": "Ocho años atrapado en un banco de arena.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "1526",
+      "sub": "Mar Caribe"
+     }
+    },
+    {
+     "texto": "Mil quinientos veintiséis. Una tormenta hunde un barco español en el Caribe.",
+     "escena": {
+      "tipo": "foto",
+      "img": 7
+     }
+    },
+    {
+     "texto": "Mueren todos, menos el capitán: Pedro Serrano.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Serrana Bank",
+       "Serrana Bank Colombia"
+      ]
+     }
+    },
+    {
+     "texto": "Nada hasta un banco de arena sin árboles ni agua dulce. Ni siquiera aparece en los mapas.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 14.29,
+      "lon": -80.37,
+      "lugar": "Banco Serrana",
+      "km": 30
+     }
+    },
+    {
+     "texto": "¿Cómo sobrevivió? Comía aves y peces, y atrapaba tortugas.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "green sea turtle beach",
+       "sea turtle on sand"
+      ]
+     }
+    },
+    {
+     "texto": "Con caparazones de tortuga y restos del barco guardaba agua de lluvia. Si no llovía, bebía sangre de tortuga.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "Tres años después, el mar trae a otro náufrago en un pequeño bote.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=fLupEZIcmHg",
+      "desde": 10,
+      "dur": 6,
+      "buscar_video": [
+       "Caribbean sand cay aerial"
+      ]
+     }
+    },
+    {
+     "texto": "Juntos levantan una torre de piedras y corales contra el viento.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     }
+    },
+    {
+     "texto": "Y con maderas de otros naufragios hacen señales de humo.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "bonfire beach smoke",
+       "signal fire beach"
+      ]
+     }
+    },
+    {
+     "texto": "En mil quinientos treinta y cuatro, un barco ve el humo y los rescata.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=DZ2byhzc7ks",
+      "desde": 20,
+      "dur": 6,
+      "buscar_video": [
+       "Caribbean sea boat"
+      ]
+     }
+    },
+    {
+     "texto": "Su compañero muere en el barco, sin volver a pisar tierra.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Spanish galleon painting",
+       "galleon 16th century painting"
+      ]
+     }
+    },
+    {
+     "texto": "Serrano vuelve a España famoso. Muchos creen que inspiró a Robinson Crusoe. Comparte esta historia y sigue a Ridmer.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Robinson Crusoe 1719",
+       "Robinson Crusoe first edition"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb2s",
+   "tipo": "short",
+   "encargo": "fb2",
+   "hora_youtube": "19:00",
+   "titulo_youtube": "8 años atrapado en un banco de arena #shorts",
+   "articulo": "Pedro Serrano",
+   "fuente": "https://es.wikipedia.org/wiki/Pedro_Serrano",
+   "titulo_video": " ",
+   "titulos_opciones": [
+    "8 AÑOS atrapado en un banco de arena… sin agua dulce",
+    "El verdadero Robinson Crusoe era español 🏝️",
+    "Bebía sangre de tortuga para no morir… durante 8 años",
+    "¿Cómo sobrevive un hombre 8 años en un pedazo de arena?",
+    "Ni siquiera estaba en los mapas… y vivió ahí 8 años",
+    "Tres años solo… y entonces el mar le trajo a otro náufrago",
+    "Pedro Serrano: el náufrago que inspiró a Robinson Crusoe"
+   ],
+   "descripcion_youtube": "Mar Caribe, 1526. Un barco español se hunde en una tormenta y solo sobrevive su capitán.\nLlega a un banco de arena sin árboles ni agua dulce… y pasa ahí 8 años.\n#historiasreales #supervivencia #ridmer",
+   "etiquetas": [
+    "Pedro Serrano",
+    "náufrago",
+    "Banco Serrana",
+    "Robinson Crusoe",
+    "supervivencia",
+    "historias reales",
+    "ridmer"
+   ],
+   "miniatura": {
+    "texto": "8 AÑOS EN LA ARENA"
+   },
+   "gancho": 1,
+   "musica": "misterio",
+   "segmentos": [
+    {
+     "texto": "Ocho años atrapado en un banco de arena.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "1526",
+      "sub": "Mar Caribe"
+     }
+    },
+    {
+     "texto": "Mil quinientos veintiséis. Pedro Serrano es el único que sobrevive a un naufragio en el Caribe.",
+     "escena": {
+      "tipo": "foto",
+      "img": 7
+     }
+    },
+    {
+     "texto": "Llega a un banco de arena sin árboles ni agua dulce.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=fLupEZIcmHg",
+      "desde": 10,
+      "dur": 6,
+      "buscar_video": [
+       "Caribbean sand cay aerial"
+      ]
+     }
+    },
+    {
+     "texto": "Come aves y peces, y guarda agua de lluvia en caparazones de tortuga.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "Con piedras y corales levanta una torre, y hace señales de humo.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     }
+    },
+    {
+     "texto": "Ocho años después, un barco ve el humo y lo rescata. Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Spanish galleon painting",
+       "galleon 16th century painting"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb3",
+   "tipo": "fb",
+   "hora_fb": "21:00",
+   "articulo": "Star Dust (avión, 1947)",
+   "fuente": "https://en.wikipedia.org/wiki/1947_BSAA_Avro_Lancastrian_Star_Dust_accident",
+   "nota": "Encargo fb3 (detenidos desaparecidos: violencia, no funciona) y reserva res1 (Yak-42) reemplazados por misterio de aviones (lista FUNCIONAN). Fotos con buscar.",
+   "titulo_video": " ",
+   "titulo_youtube": "Su último mensaje fue una palabra que NADIE entiende: STENDEC",
+   "titulos_opciones": [
+    "Su último mensaje fue una palabra que NADIE entiende: STENDEC",
+    "El avión desapareció en los Andes… y el hielo lo devolvió 51 años después",
+    "Mandó una palabra extraña en código Morse… y se esfumó ✈️",
+    "¿Qué significa STENDEC? Nadie lo sabe desde 1947",
+    "11 personas, un avión y un mensaje que todavía es un misterio",
+    "Lo buscaron por 50 años… y lo encontró un glaciar",
+    "Faltaban 4 minutos para aterrizar… y nunca llegó"
+   ],
+   "descripcion_youtube": "2 de agosto de 1947. El avión Star Dust vuela de Buenos Aires a Santiago de Chile.\nA 4 minutos de aterrizar manda una palabra en código Morse: STENDEC. Y desaparece.\n#misterio #historiasreales #ridmer",
+   "etiquetas": [
+    "Star Dust",
+    "STENDEC",
+    "misterio",
+    "Andes",
+    "Tupungato",
+    "aviones",
+    "historias reales",
+    "ridmer"
+   ],
+   "texto_facebook": "Faltaban 4 minutos para aterrizar… y su último mensaje fue una palabra que nadie entiende: STENDEC ✈️ #Misterio #HistoriasReales #Ridmer",
+   "texto_tiktok": "STENDEC: la palabra que nadie entiende ✈️ En 1947 un avión que cruzaba los Andes mandó ese mensaje en código Morse y desapareció. 51 años después el hielo lo devolvió. #misterio #historiasreales #datoscuriosos #aviones #andes #ridmer",
+   "miniatura": {
+    "texto": "STENDEC"
+   },
+   "gancho": 1,
+   "musica": "misterio",
+   "segmentos": [
+    {
+     "texto": "Su último mensaje fue una sola palabra: STENDEC.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "2 AGOSTO 1947",
+      "sub": "Cordillera de los Andes"
+     }
+    },
+    {
+     "texto": "Mil novecientos cuarenta y siete. El avión Star Dust despega de Buenos Aires rumbo a Santiago de Chile.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Avro Lancastrian",
+       "Avro Lancastrian BSAA"
+      ]
+     }
+    },
+    {
+     "texto": "Lleva once personas, y tiene que cruzar la cordillera de los Andes.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=PQEdkbnYcT4",
+      "desde": 10,
+      "dur": 6,
+      "buscar_video": [
+       "Andes mountains aerial"
+      ]
+     }
+    },
+    {
+     "texto": "A las cinco y cuarenta y uno, el radiooperador avisa en código Morse: llegan a Santiago en cuatro minutos.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Morse key telegraph",
+       "telegraph key"
+      ]
+     }
+    },
+    {
+     "texto": "Y al final, una palabra extraña: STENDEC.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "STENDEC",
+      "sub": "5:41 p. m."
+     }
+    },
+    {
+     "texto": "En el aeropuerto no la entienden. Piden repetirla… y la repite dos veces.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Los Cerrillos airport",
+       "Aeropuerto Los Cerrillos"
+      ]
+     }
+    },
+    {
+     "texto": "Después, silencio. El avión desaparece.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Tupungato",
+       "Tupungato volcano"
+      ]
+     }
+    },
+    {
+     "texto": "Durante cincuenta y un años, nadie supo dónde estaba.",
+     "escena": {
+      "tipo": "contador",
+      "n": 51,
+      "texto": "AÑOS",
+      "sub": "sin rastro del avión"
+     }
+    },
+    {
+     "texto": "En mil novecientos noventa y ocho, dos andinistas hallan un motor del avión en un glaciar del Tupungato.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=QTKfrTrx0pg",
+      "desde": 30,
+      "dur": 6,
+      "buscar_video": [
+       "Andes glacier climbers"
+      ]
+     }
+    },
+    {
+     "texto": "El hielo lo estaba devolviendo de a poco.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Rolls-Royce Merlin engine",
+       "Merlin engine"
+      ]
+     }
+    },
+    {
+     "texto": "Hoy se cree que un viento fortísimo los frenó, y bajaron entre las nubes antes de cruzar la montaña.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": -33.37,
+      "lon": -69.76,
+      "lugar": "Volcán Tupungato",
+      "km": 30
+     }
+    },
+    {
+     "texto": "Pero STENDEC sigue sin explicación. Comparte esta historia y sigue a Ridmer.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=S_dIqGs9V9A",
+      "desde": 20,
+      "dur": 6,
+      "buscar_video": [
+       "Andes mountains snow aerial"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "largo1",
+   "tipo": "largo",
+   "hora_youtube": "18:00",
+   "titulo_youtube": "Explotó a 300.000 km de la Tierra… y tuvieron que volver con CINTA y CARTÓN",
+   "articulo": "Apolo 13",
+   "fuente": "https://es.wikipedia.org/wiki/Apolo_13",
+   "nota": "Encargo de largo (Carlos Andrés Pérez: política, golpes y el Caracazo; no funciona) reemplazado por supervivencia/espacio (lista FUNCIONAN).",
+   "titulo_video": " ",
+   "titulos_opciones": [
+    "Explotó a 300.000 km de la Tierra… y tuvieron que volver con CINTA y CARTÓN",
+    "Apolo 13: 4 días para volver vivos desde la Luna",
+    "«Houston, hemos tenido un problema»: lo que pasó DESPUÉS de esa frase",
+    "Se quedaron sin oxígeno camino a la Luna… y así volvieron",
+    "Un filtro cuadrado, un hueco redondo… y tres vidas en juego",
+    "Apolo 13: la historia REAL paso a paso (no la película)",
+    "La misión a la Luna que se convirtió en un rescate imposible 🚀",
+    "¿Cómo sobrevives a una explosión en el espacio? Apolo 13"
+   ],
+   "descripcion_youtube": "13 de abril de 1970. A más de 300.000 kilómetros de la Tierra, explota un tanque de oxígeno del Apolo 13.\nTres astronautas sin oxígeno, sin electricidad y sin forma de volver… y un equipo en Houston que tuvo que inventar cómo salvarlos.\n#historiasreales #apolo13 #ridmer",
+   "etiquetas": [
+    "Apolo 13",
+    "Apollo 13",
+    "NASA",
+    "Jim Lovell",
+    "espacio",
+    "Luna",
+    "supervivencia",
+    "historias reales",
+    "ridmer"
+   ],
+   "miniatura": {
+    "texto": "EXPLOTÓ EN EL ESPACIO"
+   },
+   "gancho": 2,
+   "musica": "epico",
+   "segmentos": [
+    {
+     "texto": "Trece de abril de mil novecientos setenta. A más de trescientos mil kilómetros de la Tierra, algo explota dentro de una nave.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "13 ABRIL 1970",
+      "sub": "A 300.000 km de la Tierra"
+     }
+    },
+    {
+     "texto": "Y tres astronautas se quedan sin oxígeno, sin electricidad y sin forma de volver a casa.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Apollo 13 prime crew",
+       "Apollo 13 crew portrait"
+      ]
+     }
+    },
+    {
+     "texto": "Esta es la historia del Apolo trece. La misión a la Luna que se convirtió en una carrera desesperada por sobrevivir.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=eN31_PyaN14",
+      "desde": 20,
+      "dur": 7,
+      "buscar_video": [
+       "Saturn V launch"
+      ]
+     }
+    },
+    {
+     "texto": "Para entenderla, hay que volver unos días atrás.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "ABRIL DE 1970",
+      "sub": "Centro Espacial Kennedy, Florida"
+     }
+    },
+    {
+     "texto": "En mil novecientos setenta, ir a la Luna ya parecía algo normal. Dos misiones ya habían aterrizado allá.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Apollo 11 Aldrin on the Moon",
+       "Buzz Aldrin Apollo 11"
+      ]
+     }
+    },
+    {
+     "texto": "Esta vez el plan era bajar en una zona de colinas de la Luna llamada Fra Mauro.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Fra Mauro crater",
+       "Fra Mauro formation"
+      ]
+     }
+    },
+    {
+     "texto": "El comandante era Jim Lovell, un veterano que ya había volado tres veces al espacio, y que había dado vueltas a la Luna en el Apolo ocho.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Jim Lovell",
+       "James Lovell NASA portrait"
+      ]
+     }
+    },
+    {
+     "texto": "Con él iban Fred Haise, piloto del módulo lunar, y Jack Swigert, piloto del módulo de mando.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Fred Haise",
+       "Fred Haise NASA portrait"
+      ]
+     }
+    },
+    {
+     "texto": "Pero Swigert no estaba en el plan original.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Jack Swigert",
+       "John Swigert NASA portrait"
+      ]
+     }
+    },
+    {
+     "texto": "Tres días antes del despegue, el piloto titular, Ken Mattingly, había estado expuesto al sarampión alemán, y los médicos lo bajaron de la misión.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Ken Mattingly",
+       "Thomas Kenneth Mattingly"
+      ]
+     }
+    },
+    {
+     "texto": "Mattingly nunca se enfermó. Y desde tierra, más adelante, ayudaría a salvar a sus compañeros.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Ken Mattingly Apollo",
+       "Mattingly NASA 1970"
+      ]
+     }
+    },
+    {
+     "texto": "Once de abril. A la una y trece de la tarde, hora de Houston, despega el cohete Saturno cinco.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=eN31_PyaN14",
+      "desde": 40,
+      "dur": 7,
+      "buscar_video": [
+       "Saturn V launch"
+      ]
+     }
+    },
+    {
+     "texto": "Y ya en el despegue algo falla: un motor de la segunda etapa se apaga antes de tiempo. Los demás trabajan más, y la nave llega a su órbita.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Apollo 13 launch",
+       "Apollo 13 Saturn V liftoff"
+      ]
+     }
+    },
+    {
+     "texto": "Nadie le dio mucha importancia. Dos días después, todo parecía tranquilo.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Apollo command module interior",
+       "Apollo command module cockpit"
+      ]
+     }
+    },
+    {
+     "texto": "La nave tenía dos partes: el módulo de mando, llamado Odisea, donde viajaban, y detrás el módulo de servicio, con el motor, el oxígeno y la electricidad.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Apollo command and service module",
+       "Apollo CSM Odyssey"
+      ]
+     }
+    },
+    {
+     "texto": "La noche del trece de abril, los astronautas transmiten un programa de televisión desde la nave. Pero los grandes canales no lo pasan en vivo. Ir a la Luna ya no era noticia.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Apollo 13 television broadcast",
+       "Fred Haise Apollo 13"
+      ]
+     }
+    },
+    {
+     "texto": "Minutos después, desde Houston le piden a Swigert algo de rutina: encender unos ventiladores para revolver el oxígeno de los tanques.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=7O6kQyT7tFk",
+      "desde": 10,
+      "dur": 6,
+      "buscar_video": [
+       "mission control 1970"
+      ]
+     }
+    },
+    {
+     "texto": "Swigert aprieta el interruptor. Se escucha un golpe seco, y la nave entera se sacude.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "55:54:53",
+      "sub": "tiempo de misión"
+     }
+    },
+    {
+     "texto": "Swigert toma la radio: Houston, hemos tenido un problema.",
+     "escena": {
+      "tipo": "cita",
+      "texto": "Houston, hemos tenido un problema.",
+      "autor": "Jack Swigert, 13 de abril de 1970"
+     }
+    },
+    {
+     "texto": "Suenan las alarmas. Los medidores de un tanque de oxígeno marcan cero. Los del otro bajan sin parar.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Apollo command module display panel",
+       "Apollo command module control panel"
+      ]
+     }
+    },
+    {
+     "texto": "Lovell se asoma a la ventana y ve algo que lo congela: una nube de gas que sale de la nave hacia el espacio.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Apollo service module",
+       "Apollo command and service module in space"
+      ]
+     }
+    },
+    {
+     "texto": "Era su oxígeno. Y con él se iba también la electricidad del módulo de mando, porque las pilas de la nave fabricaban electricidad con ese oxígeno.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Apollo fuel cell",
+       "Apollo service module fuel cell"
+      ]
+     }
+    },
+    {
+     "texto": "Lovell lo entendió en ese momento: ya no iban a pisar la Luna. Ahora la pregunta era si iban a volver vivos.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Jim Lovell Apollo 13",
+       "James Lovell 1970"
+      ]
+     }
+    },
+    {
+     "texto": "En Houston, el director de vuelo Gene Kranz reúne a su equipo.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Gene Kranz",
+       "Gene Kranz mission control"
+      ]
+     }
+    },
+    {
+     "texto": "Y aparece la idea que los salvaría: usar el módulo lunar como bote salvavidas.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Apollo Lunar Module",
+       "Apollo Lunar Module in space"
+      ]
+     }
+    },
+    {
+     "texto": "El módulo lunar se llamaba Acuario. Estaba pegado a la nave, y tenía su propio oxígeno, sus propias baterías y su propio motor.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Apollo 13 Lunar Module Aquarius",
+       "Aquarius lunar module"
+      ]
+     }
+    },
+    {
+     "texto": "Pero estaba hecho para dos hombres durante dos días. Ahora tenía que mantener vivos a tres… durante casi cuatro.",
+     "escena": {
+      "tipo": "contador",
+      "n": 4,
+      "texto": "DÍAS",
+      "sub": "en una nave hecha para 2 hombres y 2 días"
+     }
+    },
+    {
+     "texto": "Antes de que se acabara la energía, apagaron el módulo de mando para guardar sus baterías para el regreso, y los tres se pasaron al módulo lunar.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Apollo Lunar Module interior",
+       "Apollo lunar module cabin"
+      ]
+     }
+    },
+    {
+     "texto": "Para volver no podían simplemente dar la vuelta. Tenían que rodear la Luna, y usar su gravedad como una honda que los lanzara de regreso a la Tierra.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Moon far side Apollo",
+       "lunar far side"
+      ]
+     }
+    },
+    {
+     "texto": "Encendieron el motor del módulo lunar para corregir el rumbo. Y el quince de abril pasaron por detrás de la Luna.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Apollo 13 Moon",
+       "Moon from Apollo 13"
+      ]
+     }
+    },
+    {
+     "texto": "Mientras estaban detrás de ella, nadie en la Tierra podía hablarles. Llegaron más lejos de casa que ningún ser humano hasta entonces.",
+     "escena": {
+      "tipo": "contador",
+      "n": 400000,
+      "texto": "KILÓMETROS",
+      "sub": "de la Tierra"
+     }
+    },
+    {
+     "texto": "Pero apenas salieron de detrás de la Luna, apareció un peligro nuevo. Y era invisible.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=ZP4_fYYiSIM",
+      "desde": 20,
+      "dur": 6,
+      "buscar_video": [
+       "mission control 1970"
+      ]
+     }
+    },
+    {
+     "texto": "Cada vez que respiraban, soltaban dióxido de carbono. Y en el módulo lunar se estaba acumulando.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Apollo lithium hydroxide canister",
+       "lithium hydroxide canister"
+      ]
+     }
+    },
+    {
+     "texto": "Los filtros de ese módulo no alcanzaban para tres hombres. Había filtros de sobra en el otro módulo… pero eran cuadrados. Y el hueco donde había que ponerlos era redondo.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Apollo 13 CO2 filter",
+       "Apollo 13 lithium hydroxide"
+      ]
+     }
+    },
+    {
+     "texto": "En Houston, un grupo de ingenieros se encerró con una sola regla: solo podían usar las cosas que los astronautas tenían a bordo.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Apollo 13 mission control",
+       "Mission Control Apollo 13 1970"
+      ]
+     }
+    },
+    {
+     "texto": "Bolsas de plástico, el cartón de las tapas del manual de vuelo, una manguera de los trajes y cinta adhesiva gris.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Apollo 13 mailbox",
+       "Apollo 13 lithium hydroxide canister adapter"
+      ]
+     }
+    },
+    {
+     "texto": "Armaron una caja improvisada, y por radio les dictaron a los astronautas, paso a paso, cómo construirla.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Apollo 13 capcom",
+       "Apollo 13 mission control consoles"
+      ]
+     }
+    },
+    {
+     "texto": "Los astronautas la llamaron el buzón. La conectaron… y el dióxido de carbono empezó a bajar.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "EL BUZÓN",
+      "sub": "bolsas, cartón y cinta"
+     }
+    },
+    {
+     "texto": "El siguiente enemigo fue el frío. Para ahorrar energía apagaron casi todo, y dentro de la nave la temperatura bajó a unos tres grados.",
+     "escena": {
+      "tipo": "contador",
+      "n": 3,
+      "texto": "GRADOS",
+      "sub": "dentro de la nave"
+     }
+    },
+    {
+     "texto": "Las paredes se cubrieron de gotas de agua. Casi no podían dormir.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Apollo 13 crew Lunar Module",
+       "Apollo 13 Aquarius interior"
+      ]
+     }
+    },
+    {
+     "texto": "El agua también estaba racionada. Tomaban muy poca, y Fred Haise terminó con fiebre por una infección.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Fred Haise Apollo 13",
+       "Fred Haise 1970"
+      ]
+     }
+    },
+    {
+     "texto": "Y faltaba una maniobra: corregir el rumbo una última vez. Si entraban mal a la atmósfera, podían rebotar al espacio o quemarse.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Earth from Apollo 13",
+       "Earth seen from Apollo"
+      ]
+     }
+    },
+    {
+     "texto": "Pero la computadora de navegación estaba apagada. Así que lo hicieron a mano.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "A MANO",
+      "sub": "sin computadora"
+     }
+    },
+    {
+     "texto": "Lovell usó como guía la línea entre el día y la noche de la Tierra, vista por la ventana. Encendieron el motor catorce segundos, sin dejar que esa línea se moviera.",
+     "escena": {
+      "tipo": "contador",
+      "n": 14,
+      "texto": "SEGUNDOS",
+      "sub": "de motor, a mano"
+     }
+    },
+    {
+     "texto": "Y funcionó.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Earth from space 1970",
+       "Earth crescent Apollo"
+      ]
+     }
+    },
+    {
+     "texto": "El diecisiete de abril soltaron el módulo de servicio, la parte que había explotado. Al verla alejarse se quedaron sin palabras: le faltaba un panel entero.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Apollo 13 service module damage",
+       "Apollo 13 damaged service module"
+      ]
+     }
+    },
+    {
+     "texto": "Después soltaron el módulo lunar, Acuario, el bote salvavidas que los había mantenido vivos.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Apollo 13 Lunar Module jettison",
+       "Aquarius jettisoned"
+      ]
+     }
+    },
+    {
+     "texto": "Ahora venía lo más peligroso: entrar a la atmósfera. Durante varios minutos, el calor corta toda comunicación.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Apollo reentry",
+       "Apollo command module reentry"
+      ]
+     }
+    },
+    {
+     "texto": "Para eso tuvieron que volver a encender la cápsula Odisea, apagada y helada durante días. Nadie sabía si iba a responder.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Apollo 13 command module Odyssey",
+       "Apollo command module"
+      ]
+     }
+    },
+    {
+     "texto": "En Houston, todos esperaban en silencio. El tiempo normal pasó… y la radio seguía callada.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=ZP4_fYYiSIM",
+      "desde": 60,
+      "dur": 6,
+      "buscar_video": [
+       "mission control 1970"
+      ]
+     }
+    },
+    {
+     "texto": "Hasta que se escuchó la voz de Swigert. Y en las pantallas aparecieron tres paracaídas.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=OomBxxdmnvI",
+      "desde": 30,
+      "dur": 7,
+      "buscar_video": [
+       "Apollo splashdown"
+      ]
+     }
+    },
+    {
+     "texto": "La cápsula cayó en el océano Pacífico, cerca de Samoa. Los rescató el barco Iwo Jima.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=bWqclo2vg4c",
+      "desde": 40,
+      "dur": 7,
+      "buscar_video": [
+       "Apollo splashdown recovery"
+      ]
+     }
+    },
+    {
+     "texto": "En el centro de control, la gente aplaudía y lloraba.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=rPEV3eItEvg",
+      "desde": 5,
+      "dur": 6,
+      "buscar_video": [
+       "mission control celebration"
+      ]
+     }
+    },
+    {
+     "texto": "Después se supo qué había pasado. El tanque de oxígeno número dos tenía un problema desde años antes.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Apollo oxygen tank",
+       "Apollo service module oxygen tank"
+      ]
+     }
+    },
+    {
+     "texto": "Un interruptor de protección de su calentador no se cambió cuando la NASA subió el voltaje de la nave. En una prueba en tierra, el calentador quedó encendido por horas y quemó el aislante de los cables.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Apollo 13 Review Board",
+       "Apollo 13 oxygen tank 2"
+      ]
+     }
+    },
+    {
+     "texto": "Por eso, cuando Swigert encendió los ventiladores, una chispa provocó la explosión.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "UNA CHISPA",
+      "sub": "en el tanque de oxígeno número 2"
+     }
+    },
+    {
+     "texto": "La NASA lo llamó un fracaso exitoso. No llegaron a la Luna, pero demostraron que se podía volver de lo imposible.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Apollo 13 crew USS Iwo Jima",
+       "Apollo 13 crew recovery"
+      ]
+     }
+    },
+    {
+     "texto": "Jim Lovell nunca volvió al espacio. Murió en agosto de dos mil veinticinco, a los noventa y siete años.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Jim Lovell",
+       "James Lovell"
+      ]
+     }
+    },
+    {
+     "texto": "Y su viaje se convirtió en una de las historias más famosas de la carrera espacial. Suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=OomBxxdmnvI",
+      "desde": 90,
+      "dur": 6,
+      "buscar_video": [
+       "Apollo splashdown"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "largo1t",
+   "tipo": "tiktok",
+   "encargo": "largo1",
+   "hora_youtube": "18:00",
+   "titulo_youtube": "Explotó a 300.000 km de la Tierra… y tuvieron que volver con CINTA y CARTÓN",
+   "articulo": "Apolo 13",
+   "fuente": "https://es.wikipedia.org/wiki/Apolo_13",
+   "nota": "Encargo de largo (Carlos Andrés Pérez: política, golpes y el Caracazo; no funciona) reemplazado por supervivencia/espacio (lista FUNCIONAN).",
+   "titulo_video": " ",
+   "titulos_opciones": [
+    "Explotó a 300.000 km de la Tierra… y tuvieron que volver con CINTA y CARTÓN",
+    "Apolo 13: 4 días para volver vivos desde la Luna",
+    "«Houston, hemos tenido un problema»: lo que pasó DESPUÉS de esa frase",
+    "Se quedaron sin oxígeno camino a la Luna… y así volvieron",
+    "Un filtro cuadrado, un hueco redondo… y tres vidas en juego",
+    "Apolo 13: la historia REAL paso a paso (no la película)",
+    "La misión a la Luna que se convirtió en un rescate imposible 🚀",
+    "¿Cómo sobrevives a una explosión en el espacio? Apolo 13"
+   ],
+   "descripcion_youtube": "13 de abril de 1970. A más de 300.000 kilómetros de la Tierra, explota un tanque de oxígeno del Apolo 13.\nTres astronautas sin oxígeno, sin electricidad y sin forma de volver… y un equipo en Houston que tuvo que inventar cómo salvarlos.\nVideo completo en YouTube: Ridmer.\n#historiasreales #apolo13 #ridmer",
+   "etiquetas": [
+    "Apolo 13",
+    "Apollo 13",
+    "NASA",
+    "Jim Lovell",
+    "espacio",
+    "Luna",
+    "supervivencia",
+    "historias reales",
+    "ridmer"
+   ],
+   "miniatura": {
+    "texto": "EXPLOTÓ EN EL ESPACIO"
+   },
+   "gancho": 2,
+   "musica": "epico",
+   "segmentos": [
+    {
+     "texto": "Trece de abril de mil novecientos setenta. A más de trescientos mil kilómetros de la Tierra, algo explota dentro de una nave.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "13 ABRIL 1970",
+      "sub": "A 300.000 km de la Tierra"
+     }
+    },
+    {
+     "texto": "Y tres astronautas se quedan sin oxígeno, sin electricidad y sin forma de volver a casa.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Apollo 13 prime crew",
+       "Apollo 13 crew portrait"
+      ]
+     }
+    },
+    {
+     "texto": "Esta es la historia del Apolo trece.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=eN31_PyaN14",
+      "desde": 20,
+      "dur": 7,
+      "buscar_video": [
+       "Saturn V launch"
+      ]
+     }
+    },
+    {
+     "texto": "Once de abril de mil novecientos setenta. Jim Lovell, Fred Haise y Jack Swigert despegan rumbo a la Luna.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=eN31_PyaN14",
+      "desde": 40,
+      "dur": 7,
+      "buscar_video": [
+       "Saturn V launch"
+      ]
+     }
+    },
+    {
+     "texto": "Dos días después, desde Houston le piden a Swigert algo de rutina: encender unos ventiladores para revolver el oxígeno de los tanques.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=7O6kQyT7tFk",
+      "desde": 10,
+      "dur": 6,
+      "buscar_video": [
+       "mission control 1970"
+      ]
+     }
+    },
+    {
+     "texto": "Swigert aprieta el interruptor. Se escucha un golpe seco, y la nave entera se sacude.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "55:54:53",
+      "sub": "tiempo de misión"
+     }
+    },
+    {
+     "texto": "Houston, hemos tenido un problema.",
+     "escena": {
+      "tipo": "cita",
+      "texto": "Houston, hemos tenido un problema.",
+      "autor": "Jack Swigert, 13 de abril de 1970"
+     }
+    },
+    {
+     "texto": "Lovell se asoma a la ventana y ve una nube de gas que se escapa al espacio. Era su oxígeno.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Apollo service module",
+       "Apollo command and service module in space"
+      ]
+     }
+    },
+    {
+     "texto": "Ya no iban a pisar la Luna. Ahora tenían que sobrevivir.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Jim Lovell Apollo 13",
+       "James Lovell 1970"
+      ]
+     }
+    },
+    {
+     "texto": "Se pasan al módulo lunar, una nave hecha para dos hombres durante dos días. Ellos eran tres… y estaban a casi cuatro días de casa.",
+     "escena": {
+      "tipo": "contador",
+      "n": 4,
+      "texto": "DÍAS",
+      "sub": "en una nave hecha para 2 hombres y 2 días"
+     }
+    },
+    {
+     "texto": "Rodean la Luna, y llegan más lejos de la Tierra que ningún ser humano hasta entonces.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Apollo 13 Moon",
+       "Moon from Apollo 13"
+      ]
+     }
+    },
+    {
+     "texto": "Pero el aire se llena de dióxido de carbono. Los filtros que sobran son cuadrados… y el hueco es redondo.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Apollo 13 CO2 filter",
+       "Apollo 13 lithium hydroxide"
+      ]
+     }
+    },
+    {
+     "texto": "En Houston, un grupo de ingenieros tiene que inventar, con bolsas, cartón y cinta, algo que los mantenga respirando.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Apollo 13 mission control",
+       "Mission Control Apollo 13 1970"
+      ]
+     }
+    },
+    {
+     "texto": "La temperatura dentro de la nave baja a tres grados. El agua está racionada. Y todavía falta lo más peligroso.",
+     "escena": {
+      "tipo": "contador",
+      "n": 3,
+      "texto": "GRADOS",
+      "sub": "dentro de la nave"
+     }
+    },
+    {
+     "texto": "¿Qué pasó después? Lo que viene te va a dejar sin palabras. Mira el video completo en YouTube, en el canal Ridmer.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=ZP4_fYYiSIM",
+      "desde": 20,
+      "dur": 6,
+      "buscar_video": [
+       "mission control 1970"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb1f",
+   "tipo": "foto",
+   "omitir": true,
+   "hora_foto": "15:30",
+   "titulo_youtube": "900 hombres flotando en el mar… y la Marina ni sabía que se habían hundido",
+   "texto_foto": "900 hombres flotando en el mar… y nadie sabía que estaban ahí.\n\n30 de julio de 1945, pasada la medianoche. El crucero USS Indianápolis acaba de entregar en la isla de Tinián piezas de la bomba atómica, sin que su tripulación sepa qué llevaba. Navega solo, sin escolta, hacia Filipinas.\n\nUn submarino japonés le dispara dos torpedos. En 12 minutos el barco se hunde, y unos 300 marinos se van con él.\n\nCerca de 900 quedan en el agua, casi todos solo con chalecos salvavidas. Y lo peor: la Marina ni siquiera sabe que se hundieron. Nadie los busca.\n\nCuatro días de sol, sed, agua salada y tiburones. Hasta que un avión de patrulla pasa por casualidad y el piloto ve hombres en el agua. Otro piloto aterriza su hidroavión en pleno mar, contra las órdenes, para sacar a todos los que puede.\n\nDe los 900, solo 316 volvieron a casa. El barco fue encontrado en 2017, a 5.500 metros de profundidad.\n\n¿Tú habrías aguantado cuatro días en el mar?\n#HistoriasReales #Supervivencia #DatosCuriosos"
+  },
+  {
+   "eid": "fb2f",
+   "tipo": "foto",
+   "omitir": true,
+   "hora_foto": "20:00",
+   "titulo_youtube": "Faltaban 4 minutos para aterrizar… y mandó una palabra que nadie entiende",
+   "texto_foto": "Su último mensaje fue una palabra que nadie ha podido explicar: STENDEC.\n\n2 de agosto de 1947. El avión Star Dust despega de Buenos Aires hacia Santiago de Chile con 11 personas a bordo. Tiene que cruzar la cordillera de los Andes.\n\nA las 5:41 de la tarde, el radiooperador manda en código Morse que llegarán a Santiago en cuatro minutos. Y al final agrega una palabra extraña: STENDEC. En el aeropuerto no la entienden y piden que la repita. La repite dos veces… y después, silencio.\n\nEl avión desaparece. Lo buscan durante días y no encuentran nada.\n\n51 años después, en 1998, dos andinistas argentinos encuentran en un glaciar del volcán Tupungato un motor del avión. El hielo lo estaba devolviendo de a poco. Hoy se cree que un viento muy fuerte los frenó sin que lo supieran y bajaron entre las nubes antes de cruzar la montaña.\n\nPero STENDEC sigue siendo un misterio.\n\n¿Qué crees que quiso decir?\n#Misterio #HistoriasReales #DatosCuriosos"
+  }
+ ]
+}
