@@ -515,7 +515,7 @@
    "musica": "misterio",
    "segmentos": [
     {
-     "texto": "Su último mensaje fue una sola palabra: STENDEC.",
+     "texto": "Su último mensaje fue una palabra que nadie entiende: STENDEC.",
      "escena": {
       "tipo": "fecha",
       "texto": "2 AGOSTO 1947",
@@ -555,7 +555,7 @@
      }
     },
     {
-     "texto": "Y al final, una palabra extraña: STENDEC.",
+     "texto": "Y al final, una palabra muy extraña: STENDEC.",
      "escena": {
       "tipo": "fecha",
       "texto": "STENDEC",
