@@ -1,0 +1,880 @@
+{
+ "eid": "fb2",
+ "hook_fin": 3.1,
+ "duracion_voz": 66.367,
+ "segmentos": [
+  {
+   "texto": "Ocho años atrapado en un banco de arena.",
+   "t0": 0.0,
+   "img": "esc_00.jpg",
+   "escena": {
+    "tipo": "fecha",
+    "texto": "1526",
+    "sub": "Mar Caribe"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Mil quinientos veintiséis. Una tormenta hunde un barco español en el Caribe.",
+   "t0": 3.1,
+   "img": "esc_01.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 7
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Mueren todos, menos el capitán: Pedro Serrano.",
+   "t0": 8.13,
+   "img": "esc_02.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "Serrana Bank",
+     "Serrana Bank Colombia"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Nada hasta un banco de arena sin árboles ni agua dulce. Ni siquiera aparece en los mapas.",
+   "t0": 11.27,
+   "img": "esc_03.jpg",
+   "escena": {
+    "tipo": "mapa",
+    "lat": 14.29,
+    "lon": -80.37,
+    "lugar": "Banco Serrana",
+    "km": 30
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "¿Cómo sobrevivió? Comía aves y peces, y atrapaba tortugas.",
+   "t0": 19.81,
+   "img": "esc_04.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "green sea turtle beach",
+     "sea turtle on sand"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Con caparazones de tortuga y restos del barco guardaba agua de lluvia. Si no llovía, bebía sangre de tortuga.",
+   "t0": 25.81,
+   "img": "esc_05.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 5
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Tres años después, el mar trae a otro náufrago en un pequeño bote.",
+   "t0": 34.81,
+   "img": "v_06.mp4",
+   "escena": {
+    "tipo": "video",
+    "url": "https://www.youtube.com/watch?v=fLupEZIcmHg",
+    "desde": 10,
+    "dur": 6,
+    "buscar_video": [
+     "Caribbean sand cay aerial"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Juntos levantan una torre de piedras y corales contra el viento.",
+   "t0": 40.15,
+   "img": "esc_07.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 6
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Y con maderas de otros naufragios hacen señales de humo.",
+   "t0": 44.25,
+   "img": "esc_08.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "bonfire beach smoke",
+     "signal fire beach"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "En mil quinientos treinta y cuatro, un barco ve el humo y los rescata.",
+   "t0": 48.59,
+   "img": "v_09.mp4",
+   "escena": {
+    "tipo": "video",
+    "url": "https://www.youtube.com/watch?v=DZ2byhzc7ks",
+    "desde": 20,
+    "dur": 6,
+    "buscar_video": [
+     "Caribbean sea boat"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Su compañero muere en el barco, sin volver a pisar tierra.",
+   "t0": 53.51,
+   "img": "esc_10.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "Spanish galleon painting",
+     "galleon 16th century painting"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Serrano vuelve a España famoso. Muchos creen que inspiró a Robinson Crusoe. Comparte esta historia y sigue a Ridmer.",
+   "t0": 57.35,
+   "img": "esc_11.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "Robinson Crusoe 1719",
+     "Robinson Crusoe first edition"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  }
+ ],
+ "palabras": [
+  [
+   0.11,
+   0.75,
+   "Ocho"
+  ],
+  [
+   0.75,
+   1.19,
+   "años"
+  ],
+  [
+   1.19,
+   2.17,
+   "atrapado"
+  ],
+  [
+   2.17,
+   2.33,
+   "en"
+  ],
+  [
+   2.33,
+   2.47,
+   "un"
+  ],
+  [
+   2.47,
+   2.95,
+   "banco"
+  ],
+  [
+   2.95,
+   3.1,
+   "de"
+  ],
+  [
+   3.18,
+   4.06,
+   "1526."
+  ],
+  [
+   4.88,
+   5.1,
+   "Una"
+  ],
+  [
+   5.1,
+   5.8,
+   "tormenta"
+  ],
+  [
+   5.8,
+   6.1,
+   "hunde"
+  ],
+  [
+   6.1,
+   6.26,
+   "un"
+  ],
+  [
+   6.26,
+   6.58,
+   "barco"
+  ],
+  [
+   6.58,
+   6.98,
+   "español"
+  ],
+  [
+   6.98,
+   7.22,
+   "en"
+  ],
+  [
+   7.22,
+   7.34,
+   "el"
+  ],
+  [
+   7.34,
+   7.68,
+   "Caribe."
+  ],
+  [
+   8.38,
+   8.86,
+   "Mueren"
+  ],
+  [
+   8.86,
+   9.26,
+   "todos"
+  ],
+  [
+   9.26,
+   10.04,
+   "menos"
+  ],
+  [
+   10.04,
+   10.34,
+   "el"
+  ],
+  [
+   10.34,
+   10.84,
+   "capitán,"
+  ],
+  [
+   11.52,
+   11.86,
+   "Pedro"
+  ],
+  [
+   11.86,
+   12.38,
+   "Serrano."
+  ],
+  [
+   12.38,
+   13.74,
+   "Nada"
+  ],
+  [
+   13.74,
+   14.04,
+   "hasta"
+  ],
+  [
+   14.04,
+   14.18,
+   "un"
+  ],
+  [
+   14.18,
+   14.5,
+   "banco"
+  ],
+  [
+   14.5,
+   14.66,
+   "de"
+  ],
+  [
+   14.66,
+   14.88,
+   "arena"
+  ],
+  [
+   14.88,
+   15.18,
+   "sin"
+  ],
+  [
+   15.18,
+   15.72,
+   "árboles"
+  ],
+  [
+   15.72,
+   16.12,
+   "ni"
+  ],
+  [
+   16.12,
+   16.36,
+   "agua"
+  ],
+  [
+   16.36,
+   16.76,
+   "dulce."
+  ],
+  [
+   17.28,
+   17.58,
+   "Ni"
+  ],
+  [
+   17.58,
+   18.0,
+   "siquiera"
+  ],
+  [
+   18.0,
+   18.48,
+   "aparecen"
+  ],
+  [
+   18.48,
+   18.7,
+   "los"
+  ],
+  [
+   18.7,
+   19.1,
+   "mapas."
+  ],
+  [
+   20.06,
+   20.36,
+   "¿Cómo"
+  ],
+  [
+   20.36,
+   20.96,
+   "sobrevivió?"
+  ],
+  [
+   21.92,
+   22.48,
+   "Comía"
+  ],
+  [
+   22.48,
+   22.94,
+   "aves"
+  ],
+  [
+   22.94,
+   23.2,
+   "y"
+  ],
+  [
+   23.2,
+   23.62,
+   "peces"
+  ],
+  [
+   23.62,
+   24.22,
+   "y"
+  ],
+  [
+   24.22,
+   24.66,
+   "atrapaba"
+  ],
+  [
+   24.66,
+   25.26,
+   "tortugas."
+  ],
+  [
+   26.06,
+   26.3,
+   "Con"
+  ],
+  [
+   26.3,
+   26.82,
+   "caparazones"
+  ],
+  [
+   26.82,
+   27.02,
+   "de"
+  ],
+  [
+   27.02,
+   27.48,
+   "tortuga"
+  ],
+  [
+   27.48,
+   27.74,
+   "y"
+  ],
+  [
+   27.74,
+   28.12,
+   "restos"
+  ],
+  [
+   28.12,
+   28.28,
+   "del"
+  ],
+  [
+   28.28,
+   28.66,
+   "barco,"
+  ],
+  [
+   28.82,
+   29.32,
+   "guardaba"
+  ],
+  [
+   29.32,
+   29.7,
+   "agua"
+  ],
+  [
+   29.7,
+   29.88,
+   "de"
+  ],
+  [
+   29.88,
+   30.24,
+   "lluvia."
+  ],
+  [
+   31.08,
+   31.32,
+   "Si"
+  ],
+  [
+   31.32,
+   31.44,
+   "no"
+  ],
+  [
+   31.44,
+   31.74,
+   "llovía,"
+  ],
+  [
+   32.28,
+   32.56,
+   "bebía"
+  ],
+  [
+   32.56,
+   32.98,
+   "sangre"
+  ],
+  [
+   32.98,
+   33.16,
+   "de"
+  ],
+  [
+   33.16,
+   33.66,
+   "tortuga."
+  ],
+  [
+   35.06,
+   35.66,
+   "3"
+  ],
+  [
+   35.66,
+   36.0,
+   "años"
+  ],
+  [
+   36.0,
+   36.38,
+   "después,"
+  ],
+  [
+   37.02,
+   37.1,
+   "el"
+  ],
+  [
+   37.1,
+   37.24,
+   "mar"
+  ],
+  [
+   37.24,
+   37.62,
+   "trae"
+  ],
+  [
+   37.62,
+   37.78,
+   "a"
+  ],
+  [
+   37.78,
+   38.06,
+   "otro"
+  ],
+  [
+   38.06,
+   38.72,
+   "náufrago"
+  ],
+  [
+   38.72,
+   38.94,
+   "en"
+  ],
+  [
+   38.94,
+   39.08,
+   "un"
+  ],
+  [
+   39.08,
+   39.32,
+   "pequeño"
+  ],
+  [
+   39.32,
+   39.7,
+   "bote."
+  ],
+  [
+   40.4,
+   41.02,
+   "Juntos"
+  ],
+  [
+   41.02,
+   41.6,
+   "levantan"
+  ],
+  [
+   41.6,
+   41.76,
+   "una"
+  ],
+  [
+   41.76,
+   42.08,
+   "torre"
+  ],
+  [
+   42.08,
+   42.18,
+   "de"
+  ],
+  [
+   42.18,
+   42.62,
+   "piedras"
+  ],
+  [
+   42.62,
+   42.88,
+   "y"
+  ],
+  [
+   42.88,
+   43.26,
+   "corales"
+  ],
+  [
+   43.26,
+   43.6,
+   "contra"
+  ],
+  [
+   43.6,
+   43.76,
+   "el"
+  ],
+  [
+   43.76,
+   44.02,
+   "viento."
+  ],
+  [
+   44.5,
+   44.76,
+   "Y"
+  ],
+  [
+   44.76,
+   44.92,
+   "con"
+  ],
+  [
+   44.92,
+   45.26,
+   "maderas"
+  ],
+  [
+   45.26,
+   45.44,
+   "de"
+  ],
+  [
+   45.44,
+   45.6,
+   "otros"
+  ],
+  [
+   45.6,
+   46.22,
+   "náufragios"
+  ],
+  [
+   46.22,
+   46.78,
+   "hacen"
+  ],
+  [
+   46.78,
+   47.3,
+   "señales"
+  ],
+  [
+   47.3,
+   47.52,
+   "de"
+  ],
+  [
+   47.52,
+   47.96,
+   "humo."
+  ],
+  [
+   48.84,
+   49.04,
+   "En"
+  ],
+  [
+   49.04,
+   50.24,
+   "1534,"
+  ],
+  [
+   50.78,
+   51.0,
+   "un"
+  ],
+  [
+   51.0,
+   51.34,
+   "barco"
+  ],
+  [
+   51.34,
+   51.48,
+   "ve"
+  ],
+  [
+   51.48,
+   51.62,
+   "el"
+  ],
+  [
+   51.62,
+   51.94,
+   "humo"
+  ],
+  [
+   51.94,
+   52.18,
+   "y"
+  ],
+  [
+   52.18,
+   52.34,
+   "los"
+  ],
+  [
+   52.34,
+   52.86,
+   "rescata."
+  ],
+  [
+   53.76,
+   53.92,
+   "Su"
+  ],
+  [
+   53.92,
+   54.42,
+   "compañero"
+  ],
+  [
+   54.42,
+   54.76,
+   "muere"
+  ],
+  [
+   54.76,
+   54.92,
+   "en"
+  ],
+  [
+   54.92,
+   55.02,
+   "el"
+  ],
+  [
+   55.02,
+   55.44,
+   "barco,"
+  ],
+  [
+   55.58,
+   55.8,
+   "sin"
+  ],
+  [
+   55.8,
+   56.1,
+   "volver"
+  ],
+  [
+   56.1,
+   56.26,
+   "a"
+  ],
+  [
+   56.26,
+   56.5,
+   "pisar"
+  ],
+  [
+   56.5,
+   56.7,
+   "tierra."
+  ],
+  [
+   57.6,
+   57.96,
+   "Serrano"
+  ],
+  [
+   57.96,
+   58.32,
+   "vuelve"
+  ],
+  [
+   58.32,
+   58.38,
+   "a"
+  ],
+  [
+   58.38,
+   58.7,
+   "España"
+  ],
+  [
+   58.7,
+   59.2,
+   "famoso."
+  ],
+  [
+   60.14,
+   60.44,
+   "Muchos"
+  ],
+  [
+   60.44,
+   60.72,
+   "creen"
+  ],
+  [
+   60.72,
+   60.84,
+   "que"
+  ],
+  [
+   60.84,
+   61.28,
+   "inspiró"
+  ],
+  [
+   61.28,
+   61.4,
+   "a"
+  ],
+  [
+   61.4,
+   61.74,
+   "Robinson"
+  ],
+  [
+   61.74,
+   62.24,
+   "Crusoe."
+  ],
+  [
+   63.46,
+   63.96,
+   "Comparte"
+  ],
+  [
+   63.96,
+   64.18,
+   "esta"
+  ],
+  [
+   64.18,
+   64.52,
+   "historia"
+  ],
+  [
+   64.52,
+   64.92,
+   "y"
+  ],
+  [
+   64.92,
+   65.14,
+   "sigue"
+  ],
+  [
+   65.14,
+   65.28,
+   "a"
+  ],
+  [
+   65.28,
+   65.56,
+   "ritmán."
+  ]
+ ]
+}

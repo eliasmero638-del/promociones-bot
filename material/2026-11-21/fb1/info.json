@@ -1,0 +1,869 @@
+{
+ "eid": "fb1",
+ "hook_fin": 3.83,
+ "duracion_voz": 64.941,
+ "segmentos": [
+  {
+   "texto": "Novecientos hombres en el mar… y nadie los buscaba.",
+   "t0": 0.0,
+   "img": "esc_00.jpg",
+   "escena": {
+    "tipo": "fecha",
+    "texto": "30 JULIO 1945",
+    "sub": "Mar de Filipinas"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Mil novecientos cuarenta y cinco. El crucero Indianápolis acaba de entregar piezas de la bomba atómica.",
+   "t0": 3.83,
+   "img": "esc_01.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 1
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Ahora navega solo, sin escolta, hacia Filipinas.",
+   "t0": 14.44,
+   "img": "esc_02.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 4
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Pasada la medianoche, un submarino japonés le dispara dos torpedos.",
+   "t0": 16.06,
+   "img": "esc_03.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 7
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "En doce minutos se hunde. Unos trescientos marinos se van con él.",
+   "t0": 19.22,
+   "img": "esc_04.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 8
+   },
+   "short": false,
+   "rotulo": "12 MINUTOS"
+  },
+  {
+   "texto": "Novecientos quedan flotando, casi todos solo con chalecos salvavidas.",
+   "t0": 24.3,
+   "img": "esc_05.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "USS Indianapolis survivors",
+     "Indianapolis survivors 1945"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "La Marina ni siquiera sabe que se hundió. Nadie los busca.",
+   "t0": 29.06,
+   "img": "esc_06.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 5
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Sol, sed, agua salada… y tiburones. Día tras día, los grupos se hacen más pequeños.",
+   "t0": 31.8,
+   "img": "esc_07.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "oceanic whitetip shark",
+     "Carcharhinus longimanus"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Al cuarto día, un avión de patrulla pasa por casualidad… y el piloto ve hombres en el agua.",
+   "t0": 41.94,
+   "img": "esc_08.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "Lockheed PV-1 Ventura",
+     "PV-1 Ventura"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Otro piloto aterriza su hidroavión en pleno mar y saca a decenas de hombres.",
+   "t0": 47.72,
+   "img": "esc_09.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "PBY Catalina",
+     "PBY-5A Catalina"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "De novecientos, solo trescientos dieciséis volvieron a casa.",
+   "t0": 52.62,
+   "img": "v_10.mp4",
+   "escena": {
+    "tipo": "video",
+    "url": "https://www.youtube.com/watch?v=S2rFknq-M4Y",
+    "desde": 3,
+    "dur": 6,
+    "buscar_video": [
+     "navy hospital 1945"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "En dos mil diecisiete encontraron el barco a cinco mil quinientos metros de profundidad. Comparte esta historia y sigue a Ridmer.",
+   "t0": 56.74,
+   "img": "v_11.mp4",
+   "escena": {
+    "tipo": "video",
+    "url": "https://www.youtube.com/watch?v=0mMeNEOt-0E",
+    "desde": 40,
+    "dur": 6,
+    "buscar_video": [
+     "shipwreck deep sea"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  }
+ ],
+ "palabras": [
+  [
+   0.08,
+   0.54,
+   "900"
+  ],
+  [
+   0.54,
+   1.66,
+   "hombres"
+  ],
+  [
+   1.66,
+   1.94,
+   "en"
+  ],
+  [
+   1.94,
+   2.08,
+   "el"
+  ],
+  [
+   2.08,
+   2.34,
+   "mar"
+  ],
+  [
+   2.34,
+   3.2,
+   "y"
+  ],
+  [
+   3.2,
+   3.62,
+   "nadie"
+  ],
+  [
+   3.62,
+   3.83,
+   "los"
+  ],
+  [
+   3.91,
+   4.61,
+   "1945."
+  ],
+  [
+   6.23,
+   6.57,
+   "El"
+  ],
+  [
+   6.57,
+   7.01,
+   "crucero"
+  ],
+  [
+   7.01,
+   7.79,
+   "Indianápolis"
+  ],
+  [
+   7.79,
+   8.09,
+   "acaba"
+  ],
+  [
+   8.09,
+   8.29,
+   "de"
+  ],
+  [
+   8.29,
+   8.65,
+   "entregar"
+  ],
+  [
+   8.65,
+   9.05,
+   "piezas"
+  ],
+  [
+   9.05,
+   9.19,
+   "de"
+  ],
+  [
+   9.19,
+   9.29,
+   "la"
+  ],
+  [
+   9.29,
+   9.55,
+   "bomba"
+  ],
+  [
+   9.55,
+   9.99,
+   "atómica."
+  ],
+  [
+   10.69,
+   11.03,
+   "Ahora"
+  ],
+  [
+   11.03,
+   11.59,
+   "navega"
+  ],
+  [
+   11.59,
+   11.95,
+   "solo,"
+  ],
+  [
+   12.23,
+   12.43,
+   "sin"
+  ],
+  [
+   12.43,
+   12.97,
+   "escolta,"
+  ],
+  [
+   13.19,
+   13.33,
+   "hacia"
+  ],
+  [
+   13.33,
+   13.89,
+   "Filipinas."
+  ],
+  [
+   14.69,
+   15.11,
+   "Pasada"
+  ],
+  [
+   15.11,
+   15.25,
+   "la"
+  ],
+  [
+   15.25,
+   15.39,
+   "media"
+  ],
+  [
+   15.39,
+   15.73,
+   "noche,"
+  ],
+  [
+   16.31,
+   16.43,
+   "un"
+  ],
+  [
+   16.43,
+   16.89,
+   "submarino"
+  ],
+  [
+   16.89,
+   17.37,
+   "japonés"
+  ],
+  [
+   17.37,
+   17.55,
+   "le"
+  ],
+  [
+   17.55,
+   17.97,
+   "dispara"
+  ],
+  [
+   17.97,
+   18.23,
+   "dos"
+  ],
+  [
+   18.23,
+   18.83,
+   "torpedos."
+  ],
+  [
+   19.47,
+   19.61,
+   "En"
+  ],
+  [
+   19.61,
+   19.83,
+   "12"
+  ],
+  [
+   19.83,
+   20.23,
+   "minutos"
+  ],
+  [
+   20.23,
+   20.99,
+   "se"
+  ],
+  [
+   20.99,
+   21.21,
+   "hunde."
+  ],
+  [
+   21.93,
+   22.19,
+   "Unos"
+  ],
+  [
+   22.19,
+   22.43,
+   "300"
+  ],
+  [
+   22.43,
+   23.11,
+   "marinos"
+  ],
+  [
+   23.11,
+   23.29,
+   "se"
+  ],
+  [
+   23.29,
+   23.43,
+   "van"
+  ],
+  [
+   23.43,
+   23.65,
+   "con"
+  ],
+  [
+   23.65,
+   23.79,
+   "él."
+  ],
+  [
+   24.55,
+   24.87,
+   "900"
+  ],
+  [
+   24.87,
+   25.45,
+   "quedan"
+  ],
+  [
+   25.45,
+   25.89,
+   "flotando,"
+  ],
+  [
+   26.47,
+   26.69,
+   "casi"
+  ],
+  [
+   26.69,
+   26.97,
+   "todo"
+  ],
+  [
+   26.97,
+   27.29,
+   "solo"
+  ],
+  [
+   27.29,
+   27.53,
+   "con"
+  ],
+  [
+   27.53,
+   27.95,
+   "chalecos"
+  ],
+  [
+   27.95,
+   28.49,
+   "salvavidas."
+  ],
+  [
+   29.31,
+   29.47,
+   "La"
+  ],
+  [
+   29.47,
+   29.77,
+   "marina"
+  ],
+  [
+   29.77,
+   29.95,
+   "ni"
+  ],
+  [
+   29.95,
+   30.31,
+   "siquiera"
+  ],
+  [
+   30.31,
+   30.67,
+   "sabe"
+  ],
+  [
+   30.67,
+   30.83,
+   "que"
+  ],
+  [
+   30.83,
+   30.97,
+   "se"
+  ],
+  [
+   30.97,
+   31.19,
+   "hundió."
+  ],
+  [
+   32.05,
+   32.43,
+   "Nadie"
+  ],
+  [
+   32.43,
+   32.63,
+   "los"
+  ],
+  [
+   32.63,
+   32.95,
+   "busca."
+  ],
+  [
+   33.71,
+   34.03,
+   "Sol,"
+  ],
+  [
+   34.65,
+   34.95,
+   "sed,"
+  ],
+  [
+   35.71,
+   35.91,
+   "agua"
+  ],
+  [
+   35.91,
+   36.39,
+   "salada"
+  ],
+  [
+   36.39,
+   37.31,
+   "y"
+  ],
+  [
+   37.31,
+   37.77,
+   "tiburones."
+  ],
+  [
+   38.47,
+   39.03,
+   "Día"
+  ],
+  [
+   39.03,
+   39.21,
+   "tras"
+  ],
+  [
+   39.21,
+   39.49,
+   "día,"
+  ],
+  [
+   39.95,
+   40.03,
+   "los"
+  ],
+  [
+   40.03,
+   40.35,
+   "grupos"
+  ],
+  [
+   40.35,
+   40.57,
+   "se"
+  ],
+  [
+   40.57,
+   40.75,
+   "hacen"
+  ],
+  [
+   40.75,
+   40.95,
+   "más"
+  ],
+  [
+   40.95,
+   41.43,
+   "pequeños."
+  ],
+  [
+   42.19,
+   42.35,
+   "Al"
+  ],
+  [
+   42.35,
+   42.55,
+   "cuarto"
+  ],
+  [
+   42.55,
+   42.85,
+   "día,"
+  ],
+  [
+   43.03,
+   43.11,
+   "un"
+  ],
+  [
+   43.11,
+   43.33,
+   "avión"
+  ],
+  [
+   43.33,
+   43.45,
+   "de"
+  ],
+  [
+   43.45,
+   43.85,
+   "patrulla"
+  ],
+  [
+   43.85,
+   44.21,
+   "pasa"
+  ],
+  [
+   44.21,
+   44.43,
+   "por"
+  ],
+  [
+   44.43,
+   44.99,
+   "casualidad"
+  ],
+  [
+   44.99,
+   45.79,
+   "y"
+  ],
+  [
+   45.79,
+   45.91,
+   "el"
+  ],
+  [
+   45.91,
+   46.21,
+   "piloto"
+  ],
+  [
+   46.21,
+   46.41,
+   "ve"
+  ],
+  [
+   46.41,
+   46.71,
+   "hombres"
+  ],
+  [
+   46.71,
+   46.95,
+   "en"
+  ],
+  [
+   46.95,
+   47.07,
+   "el"
+  ],
+  [
+   47.07,
+   47.27,
+   "agua."
+  ],
+  [
+   47.97,
+   48.27,
+   "Otro"
+  ],
+  [
+   48.27,
+   48.61,
+   "piloto"
+  ],
+  [
+   48.61,
+   49.11,
+   "aterriza"
+  ],
+  [
+   49.11,
+   49.25,
+   "su"
+  ],
+  [
+   49.25,
+   49.71,
+   "hidroavión"
+  ],
+  [
+   49.71,
+   49.91,
+   "en"
+  ],
+  [
+   49.91,
+   50.19,
+   "pleno"
+  ],
+  [
+   50.19,
+   50.37,
+   "mar"
+  ],
+  [
+   50.37,
+   51.01,
+   "y"
+  ],
+  [
+   51.01,
+   51.29,
+   "saca"
+  ],
+  [
+   51.29,
+   51.67,
+   "decenas"
+  ],
+  [
+   51.67,
+   51.83,
+   "de"
+  ],
+  [
+   51.83,
+   52.03,
+   "hombres."
+  ],
+  [
+   52.87,
+   53.03,
+   "De"
+  ],
+  [
+   53.03,
+   53.35,
+   "900,"
+  ],
+  [
+   54.21,
+   54.37,
+   "solo"
+  ],
+  [
+   54.37,
+   55.33,
+   "316"
+  ],
+  [
+   55.33,
+   55.91,
+   "volvieron"
+  ],
+  [
+   55.91,
+   56.01,
+   "a"
+  ],
+  [
+   56.01,
+   56.25,
+   "casa."
+  ],
+  [
+   56.99,
+   57.11,
+   "En"
+  ],
+  [
+   57.11,
+   57.77,
+   "2017,"
+  ],
+  [
+   58.25,
+   58.91,
+   "encontraron"
+  ],
+  [
+   58.91,
+   59.05,
+   "el"
+  ],
+  [
+   59.05,
+   59.35,
+   "barco"
+  ],
+  [
+   59.35,
+   59.41,
+   "a"
+  ],
+  [
+   59.41,
+   59.67,
+   "5"
+  ],
+  [
+   59.67,
+   60.31,
+   ".500"
+  ],
+  [
+   60.31,
+   60.75,
+   "metros"
+  ],
+  [
+   60.75,
+   60.95,
+   "de"
+  ],
+  [
+   60.95,
+   61.49,
+   "profundidad."
+  ],
+  [
+   62.11,
+   62.43,
+   "Comparte"
+  ],
+  [
+   62.43,
+   62.61,
+   "esta"
+  ],
+  [
+   62.61,
+   62.91,
+   "historia"
+  ],
+  [
+   62.91,
+   63.45,
+   "y"
+  ],
+  [
+   63.45,
+   63.65,
+   "sigue"
+  ],
+  [
+   63.65,
+   63.79,
+   "a"
+  ],
+  [
+   63.79,
+   64.05,
+   "Ritmer."
+  ]
+ ]
+}

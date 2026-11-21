@@ -1,0 +1,420 @@
+{
+ "eid": "fb1s",
+ "hook_fin": 4.19,
+ "duracion_voz": 37.276,
+ "segmentos": [
+  {
+   "texto": "Novecientos hombres en el mar… y nadie los buscaba.",
+   "t0": 0.0,
+   "img": "esc_00.jpg",
+   "escena": {
+    "tipo": "fecha",
+    "texto": "30 JULIO 1945",
+    "sub": "Mar de Filipinas"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Mil novecientos cuarenta y cinco. Un submarino japonés hunde al crucero Indianápolis en solo doce minutos.",
+   "t0": 4.19,
+   "img": "esc_01.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 1
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Novecientos marinos quedan flotando con chalecos salvavidas. Y la Marina ni sabe que se hundieron.",
+   "t0": 13.04,
+   "img": "esc_02.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "USS Indianapolis survivors",
+     "Indianapolis survivors 1945"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Sed, sol y tiburones durante cuatro días.",
+   "t0": 20.58,
+   "img": "esc_03.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "oceanic whitetip shark",
+     "Carcharhinus longimanus"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Hasta que un avión de patrulla pasa por casualidad… y el piloto los ve.",
+   "t0": 25.2,
+   "img": "esc_04.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "Lockheed PV-1 Ventura",
+     "PV-1 Ventura"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Solo trescientos dieciséis volvieron a casa. Sígueme en Ridmer para más.",
+   "t0": 34.54,
+   "img": "v_05.mp4",
+   "escena": {
+    "tipo": "video",
+    "url": "https://www.youtube.com/watch?v=S2rFknq-M4Y",
+    "desde": 3,
+    "dur": 6,
+    "buscar_video": [
+     "navy hospital 1945"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  }
+ ],
+ "palabras": [
+  [
+   0.08,
+   0.38,
+   "900"
+  ],
+  [
+   0.38,
+   1.52,
+   "hombres"
+  ],
+  [
+   1.52,
+   1.86,
+   "en"
+  ],
+  [
+   1.86,
+   2.0,
+   "el"
+  ],
+  [
+   2.0,
+   2.26,
+   "mar"
+  ],
+  [
+   2.26,
+   3.32,
+   "y"
+  ],
+  [
+   3.32,
+   3.76,
+   "nadie"
+  ],
+  [
+   3.76,
+   4.19,
+   "los"
+  ],
+  [
+   4.27,
+   5.11,
+   "1945."
+  ],
+  [
+   7.05,
+   7.35,
+   "Un"
+  ],
+  [
+   7.35,
+   7.99,
+   "submarino"
+  ],
+  [
+   7.99,
+   8.67,
+   "japonés,"
+  ],
+  [
+   8.97,
+   9.37,
+   "hundé"
+  ],
+  [
+   9.37,
+   9.47,
+   "al"
+  ],
+  [
+   9.47,
+   9.89,
+   "crucero"
+  ],
+  [
+   9.89,
+   10.63,
+   "Indianápolis"
+  ],
+  [
+   10.63,
+   10.85,
+   "en"
+  ],
+  [
+   10.85,
+   11.17,
+   "solo"
+  ],
+  [
+   11.17,
+   11.69,
+   "12"
+  ],
+  [
+   11.69,
+   12.25,
+   "minutos."
+  ],
+  [
+   13.29,
+   14.09,
+   "900"
+  ],
+  [
+   14.09,
+   14.87,
+   "marinos"
+  ],
+  [
+   14.87,
+   15.19,
+   "quedan"
+  ],
+  [
+   15.19,
+   15.71,
+   "flotando"
+  ],
+  [
+   15.71,
+   15.93,
+   "con"
+  ],
+  [
+   15.93,
+   16.39,
+   "chalecos"
+  ],
+  [
+   16.39,
+   16.93,
+   "salvavidas,"
+  ],
+  [
+   17.49,
+   17.81,
+   "y"
+  ],
+  [
+   17.81,
+   17.93,
+   "la"
+  ],
+  [
+   17.93,
+   18.33,
+   "marina"
+  ],
+  [
+   18.33,
+   18.81,
+   "ni"
+  ],
+  [
+   18.81,
+   19.13,
+   "sabe"
+  ],
+  [
+   19.13,
+   19.29,
+   "que"
+  ],
+  [
+   19.29,
+   19.45,
+   "se"
+  ],
+  [
+   19.45,
+   19.85,
+   "hundieron."
+  ],
+  [
+   20.83,
+   21.27,
+   "Sed,"
+  ],
+  [
+   21.91,
+   22.33,
+   "sol"
+  ],
+  [
+   22.33,
+   22.91,
+   "y"
+  ],
+  [
+   22.91,
+   23.35,
+   "tiborones"
+  ],
+  [
+   23.35,
+   23.69,
+   "durante"
+  ],
+  [
+   23.69,
+   24.15,
+   "cuatro"
+  ],
+  [
+   24.15,
+   24.63,
+   "días,"
+  ],
+  [
+   25.45,
+   25.91,
+   "hasta"
+  ],
+  [
+   25.91,
+   26.09,
+   "que"
+  ],
+  [
+   26.09,
+   26.25,
+   "un"
+  ],
+  [
+   26.25,
+   26.47,
+   "avión"
+  ],
+  [
+   26.47,
+   26.59,
+   "de"
+  ],
+  [
+   26.59,
+   27.03,
+   "patrulla"
+  ],
+  [
+   27.03,
+   27.39,
+   "pasa"
+  ],
+  [
+   27.39,
+   27.61,
+   "por"
+  ],
+  [
+   27.61,
+   28.17,
+   "casualidad,"
+  ],
+  [
+   28.75,
+   28.95,
+   "y"
+  ],
+  [
+   28.95,
+   29.05,
+   "el"
+  ],
+  [
+   29.05,
+   29.43,
+   "piloto"
+  ],
+  [
+   29.43,
+   29.65,
+   "los"
+  ],
+  [
+   29.65,
+   29.87,
+   "ve."
+  ],
+  [
+   30.57,
+   30.91,
+   "Solo"
+  ],
+  [
+   30.91,
+   32.43,
+   "316"
+  ],
+  [
+   32.43,
+   33.49,
+   "volvieron"
+  ],
+  [
+   33.49,
+   33.65,
+   "a"
+  ],
+  [
+   33.65,
+   33.91,
+   "casa."
+  ],
+  [
+   34.79,
+   35.25,
+   "Sígueme"
+  ],
+  [
+   35.25,
+   35.45,
+   "en"
+  ],
+  [
+   35.45,
+   35.75,
+   "Riedmer"
+  ],
+  [
+   35.75,
+   36.11,
+   "para"
+  ],
+  [
+   36.11,
+   36.29,
+   "más."
+  ]
+ ]
+}

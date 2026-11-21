@@ -1,0 +1,983 @@
+{
+ "eid": "fb3",
+ "hook_fin": 13.151,
+ "duracion_voz": 86.421,
+ "segmentos": [
+  {
+   "texto": "Su último mensaje fue una sola palabra: STENDEC.",
+   "t0": 0.0,
+   "img": "esc_00.jpg",
+   "escena": {
+    "tipo": "fecha",
+    "texto": "2 AGOSTO 1947",
+    "sub": "Cordillera de los Andes"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Mil novecientos cuarenta y siete. El avión Star Dust despega de Buenos Aires rumbo a Santiago de Chile.",
+   "t0": 13.151,
+   "img": "esc_01.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "Avro Lancastrian",
+     "Avro Lancastrian BSAA"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Lleva once personas, y tiene que cruzar la cordillera de los Andes.",
+   "t0": 23.23,
+   "img": null,
+   "escena": {
+    "tipo": "video",
+    "url": "https://www.youtube.com/watch?v=PQEdkbnYcT4",
+    "desde": 10,
+    "dur": 6,
+    "buscar_video": [
+     "Andes mountains aerial"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "A las cinco y cuarenta y uno, el radiooperador avisa en código Morse: llegan a Santiago en cuatro minutos.",
+   "t0": 27.37,
+   "img": "esc_03.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "Morse key telegraph",
+     "telegraph key"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Y al final, una palabra extraña: STENDEC.",
+   "t0": 40.43,
+   "img": "esc_04.jpg",
+   "escena": {
+    "tipo": "fecha",
+    "texto": "STENDEC",
+    "sub": "5:41 p. m."
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "En el aeropuerto no la entienden. Piden repetirla… y la repite dos veces.",
+   "t0": 43.79,
+   "img": "esc_05.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "Los Cerrillos airport",
+     "Aeropuerto Los Cerrillos"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Después, silencio. El avión desaparece.",
+   "t0": 52.17,
+   "img": "esc_06.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "Tupungato",
+     "Tupungato volcano"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Durante cincuenta y un años, nadie supo dónde estaba.",
+   "t0": 55.37,
+   "img": null,
+   "escena": {
+    "tipo": "contador",
+    "n": 51,
+    "texto": "AÑOS",
+    "sub": "sin rastro del avión"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "En mil novecientos noventa y ocho, dos andinistas hallan un motor del avión en un glaciar del Tupungato.",
+   "t0": 58.07,
+   "img": "v_08.mp4",
+   "escena": {
+    "tipo": "video",
+    "url": "https://www.youtube.com/watch?v=QTKfrTrx0pg",
+    "desde": 30,
+    "dur": 6,
+    "buscar_video": [
+     "Andes glacier climbers"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "El hielo lo estaba devolviendo de a poco.",
+   "t0": 69.01,
+   "img": "esc_09.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "Rolls-Royce Merlin engine",
+     "Merlin engine"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Hoy se cree que un viento fortísimo los frenó, y bajaron entre las nubes antes de cruzar la montaña.",
+   "t0": 72.79,
+   "img": "esc_10.jpg",
+   "escena": {
+    "tipo": "mapa",
+    "lat": -33.37,
+    "lon": -69.76,
+    "lugar": "Volcán Tupungato",
+    "km": 30
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Pero STENDEC sigue sin explicación. Comparte esta historia y sigue a Ridmer.",
+   "t0": 82.83,
+   "img": "v_11.mp4",
+   "escena": {
+    "tipo": "video",
+    "url": "https://www.youtube.com/watch?v=S_dIqGs9V9A",
+    "desde": 20,
+    "dur": 6,
+    "buscar_video": [
+     "Andes mountains snow aerial"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  }
+ ],
+ "palabras": [
+  [
+   0.0,
+   0.78,
+   "Narra"
+  ],
+  [
+   0.78,
+   1.12,
+   "Comundo"
+  ],
+  [
+   1.12,
+   1.68,
+   "Comental"
+  ],
+  [
+   1.68,
+   1.86,
+   "de"
+  ],
+  [
+   1.86,
+   2.46,
+   "Mysterio"
+  ],
+  [
+   2.46,
+   3.1,
+   "En"
+  ],
+  [
+   3.1,
+   3.44,
+   "tono"
+  ],
+  [
+   3.44,
+   3.54,
+   "de"
+  ],
+  [
+   3.54,
+   4.16,
+   "suspenso,"
+  ],
+  [
+   4.4,
+   4.9,
+   "voz"
+  ],
+  [
+   4.9,
+   5.22,
+   "baja"
+  ],
+  [
+   5.22,
+   5.72,
+   "y"
+  ],
+  [
+   5.72,
+   6.2,
+   "pausada"
+  ],
+  [
+   7.16,
+   7.56,
+   "Su"
+  ],
+  [
+   7.56,
+   7.94,
+   "último"
+  ],
+  [
+   7.94,
+   8.64,
+   "mensaje"
+  ],
+  [
+   8.64,
+   9.1,
+   "fue"
+  ],
+  [
+   9.1,
+   9.42,
+   "una"
+  ],
+  [
+   9.42,
+   9.78,
+   "sola"
+  ],
+  [
+   9.78,
+   10.32,
+   "palabra."
+  ],
+  [
+   12.06,
+   12.86,
+   "STENDEC"
+  ],
+  [
+   12.86,
+   13.66,
+   "Narra"
+  ],
+  [
+   13.66,
+   14.0,
+   "Comundo"
+  ],
+  [
+   14.0,
+   14.42,
+   "Comental"
+  ],
+  [
+   14.42,
+   14.6,
+   "de"
+  ],
+  [
+   14.6,
+   15.1,
+   "Mysterio"
+  ],
+  [
+   15.1,
+   15.34,
+   "En"
+  ],
+  [
+   15.34,
+   15.56,
+   "tono"
+  ],
+  [
+   15.56,
+   15.64,
+   "de"
+  ],
+  [
+   15.64,
+   16.26,
+   "suspenso,"
+  ],
+  [
+   16.56,
+   16.66,
+   "voz"
+  ],
+  [
+   16.66,
+   16.88,
+   "baja"
+  ],
+  [
+   16.88,
+   17.0,
+   "y"
+  ],
+  [
+   17.0,
+   17.38,
+   "pausada."
+  ],
+  [
+   20.4,
+   21.2,
+   "1947"
+  ],
+  [
+   21.2,
+   22.0,
+   "El"
+  ],
+  [
+   22.0,
+   22.26,
+   "avión"
+  ],
+  [
+   22.26,
+   23.2,
+   "Stardust,"
+  ],
+  [
+   23.48,
+   24.16,
+   "despega"
+  ],
+  [
+   24.16,
+   24.3,
+   "de"
+  ],
+  [
+   24.3,
+   24.48,
+   "Buenos"
+  ],
+  [
+   24.48,
+   24.84,
+   "Aires,"
+  ],
+  [
+   24.84,
+   25.56,
+   "rumbo"
+  ],
+  [
+   25.56,
+   25.66,
+   "a"
+  ],
+  [
+   25.66,
+   26.02,
+   "Santiago"
+  ],
+  [
+   26.02,
+   26.26,
+   "de"
+  ],
+  [
+   26.26,
+   26.54,
+   "Chile."
+  ],
+  [
+   27.62,
+   27.9,
+   "Lleva"
+  ],
+  [
+   27.9,
+   28.36,
+   "11"
+  ],
+  [
+   28.36,
+   28.92,
+   "personas"
+  ],
+  [
+   28.92,
+   29.86,
+   "y"
+  ],
+  [
+   29.86,
+   30.06,
+   "tiene"
+  ],
+  [
+   30.06,
+   30.18,
+   "que"
+  ],
+  [
+   30.18,
+   30.5,
+   "cruzar"
+  ],
+  [
+   30.5,
+   30.7,
+   "la"
+  ],
+  [
+   30.7,
+   31.22,
+   "cordillera"
+  ],
+  [
+   31.22,
+   31.32,
+   "de"
+  ],
+  [
+   31.32,
+   31.46,
+   "los"
+  ],
+  [
+   31.46,
+   31.78,
+   "Andes."
+  ],
+  [
+   32.8,
+   33.16,
+   "A"
+  ],
+  [
+   33.16,
+   33.26,
+   "las"
+  ],
+  [
+   33.26,
+   33.52,
+   "5"
+  ],
+  [
+   33.52,
+   33.64,
+   "y"
+  ],
+  [
+   33.64,
+   33.98,
+   "41,"
+  ],
+  [
+   34.78,
+   35.0,
+   "el"
+  ],
+  [
+   35.0,
+   35.6,
+   "radiooperador"
+  ],
+  [
+   35.6,
+   35.98,
+   "avise"
+  ],
+  [
+   35.98,
+   36.14,
+   "en"
+  ],
+  [
+   36.14,
+   36.42,
+   "código"
+  ],
+  [
+   36.42,
+   37.04,
+   "morse,"
+  ],
+  [
+   37.76,
+   38.12,
+   "llegan"
+  ],
+  [
+   38.12,
+   38.22,
+   "a"
+  ],
+  [
+   38.22,
+   38.58,
+   "Santiago"
+  ],
+  [
+   38.58,
+   38.84,
+   "en"
+  ],
+  [
+   38.84,
+   39.24,
+   "4"
+  ],
+  [
+   39.24,
+   39.62,
+   "minutos."
+  ],
+  [
+   40.68,
+   40.84,
+   "Y"
+  ],
+  [
+   40.84,
+   40.94,
+   "al"
+  ],
+  [
+   40.94,
+   41.16,
+   "final,"
+  ],
+  [
+   42.06,
+   42.3,
+   "una"
+  ],
+  [
+   42.3,
+   42.56,
+   "palabra"
+  ],
+  [
+   42.56,
+   43.14,
+   "extraña."
+  ],
+  [
+   44.04,
+   44.6,
+   "STENDEC"
+  ],
+  [
+   44.6,
+   45.98,
+   "En"
+  ],
+  [
+   45.98,
+   46.08,
+   "el"
+  ],
+  [
+   46.08,
+   46.52,
+   "aeropuerto"
+  ],
+  [
+   46.52,
+   46.86,
+   "no"
+  ],
+  [
+   46.86,
+   46.96,
+   "lo"
+  ],
+  [
+   46.96,
+   47.44,
+   "entienden,"
+  ],
+  [
+   48.08,
+   48.36,
+   "piden"
+  ],
+  [
+   48.36,
+   48.92,
+   "repetirla"
+  ],
+  [
+   48.92,
+   49.88,
+   "y"
+  ],
+  [
+   49.88,
+   50.02,
+   "la"
+  ],
+  [
+   50.02,
+   50.44,
+   "repite"
+  ],
+  [
+   50.44,
+   50.88,
+   "dos"
+  ],
+  [
+   50.88,
+   51.3,
+   "veces."
+  ],
+  [
+   52.42,
+   53.14,
+   "Después,"
+  ],
+  [
+   53.98,
+   54.7,
+   "silencio."
+  ],
+  [
+   55.62,
+   56.26,
+   "El"
+  ],
+  [
+   56.26,
+   56.52,
+   "avión"
+  ],
+  [
+   56.52,
+   57.16,
+   "desaparece."
+  ],
+  [
+   58.32,
+   58.96,
+   "Durante"
+  ],
+  [
+   58.96,
+   59.32,
+   "51"
+  ],
+  [
+   59.32,
+   60.0,
+   "años,"
+  ],
+  [
+   60.44,
+   60.64,
+   "nadie"
+  ],
+  [
+   60.64,
+   61.06,
+   "supo"
+  ],
+  [
+   61.06,
+   61.22,
+   "donde"
+  ],
+  [
+   61.22,
+   61.62,
+   "estaba."
+  ],
+  [
+   62.76,
+   62.94,
+   "En"
+  ],
+  [
+   62.94,
+   63.78,
+   "1998,"
+  ],
+  [
+   64.66,
+   64.88,
+   "dos"
+  ],
+  [
+   64.88,
+   65.4,
+   "andinistas"
+  ],
+  [
+   65.4,
+   65.8,
+   "hayan"
+  ],
+  [
+   65.8,
+   65.92,
+   "un"
+  ],
+  [
+   65.92,
+   66.2,
+   "motor"
+  ],
+  [
+   66.2,
+   66.4,
+   "del"
+  ],
+  [
+   66.4,
+   66.68,
+   "avión"
+  ],
+  [
+   66.68,
+   66.96,
+   "en"
+  ],
+  [
+   66.96,
+   67.08,
+   "un"
+  ],
+  [
+   67.08,
+   67.54,
+   "glaciares"
+  ],
+  [
+   67.54,
+   67.68,
+   "del"
+  ],
+  [
+   67.68,
+   68.24,
+   "tubungato."
+  ],
+  [
+   69.26,
+   69.48,
+   "El"
+  ],
+  [
+   69.48,
+   69.92,
+   "hielo"
+  ],
+  [
+   69.92,
+   70.3,
+   "lo"
+  ],
+  [
+   70.3,
+   70.56,
+   "estaba"
+  ],
+  [
+   70.56,
+   71.16,
+   "devolviendo"
+  ],
+  [
+   71.16,
+   71.34,
+   "de"
+  ],
+  [
+   71.34,
+   71.4,
+   "a"
+  ],
+  [
+   71.4,
+   71.58,
+   "poco."
+  ],
+  [
+   73.04,
+   73.32,
+   "Hoy"
+  ],
+  [
+   73.32,
+   73.42,
+   "se"
+  ],
+  [
+   73.42,
+   73.6,
+   "cree"
+  ],
+  [
+   73.6,
+   73.7,
+   "que"
+  ],
+  [
+   73.7,
+   73.84,
+   "un"
+  ],
+  [
+   73.84,
+   74.12,
+   "viento"
+  ],
+  [
+   74.12,
+   74.74,
+   "fortísimo"
+  ],
+  [
+   74.74,
+   74.98,
+   "los"
+  ],
+  [
+   74.98,
+   75.34,
+   "freno,"
+  ],
+  [
+   75.72,
+   75.96,
+   "y"
+  ],
+  [
+   75.96,
+   76.36,
+   "bajaron"
+  ],
+  [
+   76.36,
+   76.62,
+   "entre"
+  ],
+  [
+   76.62,
+   76.78,
+   "las"
+  ],
+  [
+   76.78,
+   77.12,
+   "nubes"
+  ],
+  [
+   77.12,
+   77.5,
+   "antes"
+  ],
+  [
+   77.5,
+   77.66,
+   "de"
+  ],
+  [
+   77.66,
+   77.9,
+   "cruzar"
+  ],
+  [
+   77.9,
+   78.06,
+   "la"
+  ],
+  [
+   78.06,
+   79.34,
+   "montaña."
+  ],
+  [
+   79.34,
+   79.64,
+   "Pero"
+  ],
+  [
+   79.64,
+   80.2,
+   "STENDEC"
+  ],
+  [
+   80.2,
+   81.14,
+   "sigue"
+  ],
+  [
+   81.14,
+   81.36,
+   "sin"
+  ],
+  [
+   81.36,
+   81.92,
+   "explicación."
+  ],
+  [
+   83.08,
+   83.64,
+   "Comparte"
+  ],
+  [
+   83.64,
+   83.82,
+   "esta"
+  ],
+  [
+   83.82,
+   84.16,
+   "historia"
+  ],
+  [
+   84.16,
+   84.88,
+   "y"
+  ],
+  [
+   84.88,
+   85.12,
+   "sigue"
+  ],
+  [
+   85.12,
+   85.3,
+   "a"
+  ],
+  [
+   85.3,
+   85.58,
+   "Ritmar."
+  ]
+ ]
+}

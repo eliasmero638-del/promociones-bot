@@ -1,0 +1,1499 @@
+{
+ "eid": "largo1t",
+ "hook_fin": 15.505,
+ "duracion_voz": 115.015,
+ "segmentos": [
+  {
+   "texto": "Trece de abril de mil novecientos setenta. A más de trescientos mil kilómetros de la Tierra, algo explota dentro de una nave.",
+   "t0": 0.0,
+   "img": "esc_00.jpg",
+   "escena": {
+    "tipo": "fecha",
+    "texto": "13 ABRIL 1970",
+    "sub": "A 300.000 km de la Tierra"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Y tres astronautas se quedan sin oxígeno, sin electricidad y sin forma de volver a casa.",
+   "t0": 9.19,
+   "img": "esc_01.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "Apollo 13 prime crew",
+     "Apollo 13 crew portrait"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Esta es la historia del Apolo trece.",
+   "t0": 15.505,
+   "img": "v_02.mp4",
+   "escena": {
+    "tipo": "video",
+    "url": "https://www.youtube.com/watch?v=eN31_PyaN14",
+    "desde": 20,
+    "dur": 7,
+    "buscar_video": [
+     "Saturn V launch"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Once de abril de mil novecientos setenta. Jim Lovell, Fred Haise y Jack Swigert despegan rumbo a la Luna.",
+   "t0": 21.73,
+   "img": "v_03.mp4",
+   "escena": {
+    "tipo": "video",
+    "url": "https://www.youtube.com/watch?v=eN31_PyaN14",
+    "desde": 40,
+    "dur": 7,
+    "buscar_video": [
+     "Saturn V launch"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Dos días después, desde Houston le piden a Swigert algo de rutina: encender unos ventiladores para revolver el oxígeno de los tanques.",
+   "t0": 26.33,
+   "img": null,
+   "escena": {
+    "tipo": "video",
+    "url": "https://www.youtube.com/watch?v=7O6kQyT7tFk",
+    "desde": 10,
+    "dur": 6,
+    "buscar_video": [
+     "mission control 1970"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Swigert aprieta el interruptor. Se escucha un golpe seco, y la nave entera se sacude.",
+   "t0": 39.57,
+   "img": "esc_05.jpg",
+   "escena": {
+    "tipo": "fecha",
+    "texto": "55:54:53",
+    "sub": "tiempo de misión"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Houston, hemos tenido un problema.",
+   "t0": 47.59,
+   "img": "esc_06.jpg",
+   "escena": {
+    "tipo": "cita",
+    "texto": "Houston, hemos tenido un problema.",
+    "autor": "Jack Swigert, 13 de abril de 1970"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Lovell se asoma a la ventana y ve una nube de gas que se escapa al espacio. Era su oxígeno.",
+   "t0": 48.39,
+   "img": "esc_07.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "Apollo service module",
+     "Apollo command and service module in space"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Ya no iban a pisar la Luna. Ahora tenían que sobrevivir.",
+   "t0": 53.01,
+   "img": "esc_08.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "Jim Lovell Apollo 13",
+     "James Lovell 1970"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Se pasan al módulo lunar, una nave hecha para dos hombres durante dos días. Ellos eran tres… y estaban a casi cuatro días de casa.",
+   "t0": 60.67,
+   "img": null,
+   "escena": {
+    "tipo": "contador",
+    "n": 4,
+    "texto": "DÍAS",
+    "sub": "en una nave hecha para 2 hombres y 2 días"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Rodean la Luna, y llegan más lejos de la Tierra que ningún ser humano hasta entonces.",
+   "t0": 72.15,
+   "img": "esc_10.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "Apollo 13 Moon",
+     "Moon from Apollo 13"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Pero el aire se llena de dióxido de carbono. Los filtros que sobran son cuadrados… y el hueco es redondo.",
+   "t0": 78.25,
+   "img": "esc_11.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "Apollo 13 CO2 filter",
+     "Apollo 13 lithium hydroxide"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "En Houston, un grupo de ingenieros tiene que inventar, con bolsas, cartón y cinta, algo que los mantenga respirando.",
+   "t0": 86.65,
+   "img": "esc_12.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "Apollo 13 mission control",
+     "Mission Control Apollo 13 1970"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "La temperatura dentro de la nave baja a tres grados. El agua está racionada. Y todavía falta lo más peligroso.",
+   "t0": 95.77,
+   "img": null,
+   "escena": {
+    "tipo": "contador",
+    "n": 3,
+    "texto": "GRADOS",
+    "sub": "dentro de la nave"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "¿Qué pasó después? Lo que viene te va a dejar sin palabras. Mira el video completo en YouTube, en el canal Ridmer.",
+   "t0": 107.87,
+   "img": "v_14.mp4",
+   "escena": {
+    "tipo": "video",
+    "url": "https://www.youtube.com/watch?v=ZP4_fYYiSIM",
+    "desde": 20,
+    "dur": 6,
+    "buscar_video": [
+     "mission control 1970"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  }
+ ],
+ "palabras": [
+  [
+   0.0,
+   0.22,
+   "13"
+  ],
+  [
+   0.22,
+   0.44,
+   "de"
+  ],
+  [
+   0.44,
+   0.8,
+   "abril"
+  ],
+  [
+   0.8,
+   0.92,
+   "de"
+  ],
+  [
+   0.92,
+   1.92,
+   "1970."
+  ],
+  [
+   3.32,
+   3.58,
+   "A"
+  ],
+  [
+   3.58,
+   3.78,
+   "más"
+  ],
+  [
+   3.78,
+   3.98,
+   "de"
+  ],
+  [
+   3.98,
+   4.26,
+   "300"
+  ],
+  [
+   4.26,
+   4.76,
+   "mil"
+  ],
+  [
+   4.76,
+   5.38,
+   "kilómetros"
+  ],
+  [
+   5.38,
+   5.62,
+   "de"
+  ],
+  [
+   5.62,
+   5.74,
+   "la"
+  ],
+  [
+   5.74,
+   6.06,
+   "tierra,"
+  ],
+  [
+   6.5,
+   6.76,
+   "algo"
+  ],
+  [
+   6.76,
+   7.26,
+   "explota"
+  ],
+  [
+   7.26,
+   7.56,
+   "dentro"
+  ],
+  [
+   7.56,
+   7.86,
+   "de"
+  ],
+  [
+   7.86,
+   8.08,
+   "una"
+  ],
+  [
+   8.08,
+   8.4,
+   "nave."
+  ],
+  [
+   9.44,
+   9.66,
+   "Y"
+  ],
+  [
+   9.66,
+   9.9,
+   "tres"
+  ],
+  [
+   9.9,
+   10.72,
+   "astronautas"
+  ],
+  [
+   10.72,
+   10.86,
+   "se"
+  ],
+  [
+   10.86,
+   11.2,
+   "quedan"
+  ],
+  [
+   11.2,
+   11.42,
+   "sin"
+  ],
+  [
+   11.42,
+   12.2,
+   "oxígeno,"
+  ],
+  [
+   12.34,
+   12.6,
+   "sin"
+  ],
+  [
+   12.6,
+   13.34,
+   "electricidad"
+  ],
+  [
+   13.34,
+   13.52,
+   "y"
+  ],
+  [
+   13.52,
+   13.68,
+   "sin"
+  ],
+  [
+   13.68,
+   14.04,
+   "forma"
+  ],
+  [
+   14.04,
+   14.24,
+   "de"
+  ],
+  [
+   14.24,
+   14.54,
+   "volver"
+  ],
+  [
+   14.54,
+   14.74,
+   "a"
+  ],
+  [
+   14.74,
+   15.06,
+   "casa."
+  ],
+  [
+   15.46,
+   15.76,
+   "Esta"
+  ],
+  [
+   15.76,
+   15.96,
+   "es"
+  ],
+  [
+   15.96,
+   16.1,
+   "la"
+  ],
+  [
+   16.1,
+   16.48,
+   "historia"
+  ],
+  [
+   16.48,
+   16.68,
+   "de"
+  ],
+  [
+   16.68,
+   16.82,
+   "la"
+  ],
+  [
+   16.82,
+   17.18,
+   "Polo"
+  ],
+  [
+   17.18,
+   17.42,
+   "13."
+  ],
+  [
+   18.58,
+   18.84,
+   "11"
+  ],
+  [
+   18.84,
+   19.08,
+   "de"
+  ],
+  [
+   19.08,
+   19.4,
+   "abril"
+  ],
+  [
+   19.4,
+   19.54,
+   "de"
+  ],
+  [
+   19.54,
+   20.62,
+   "1970."
+  ],
+  [
+   21.98,
+   22.32,
+   "Jim"
+  ],
+  [
+   22.32,
+   22.6,
+   "Nobel,"
+  ],
+  [
+   23.1,
+   23.56,
+   "Fradges"
+  ],
+  [
+   23.56,
+   23.76,
+   "y"
+  ],
+  [
+   23.76,
+   23.98,
+   "Jack"
+  ],
+  [
+   23.98,
+   24.38,
+   "Swagger"
+  ],
+  [
+   24.38,
+   24.6,
+   "te"
+  ],
+  [
+   24.6,
+   25.0,
+   "espegan"
+  ],
+  [
+   25.0,
+   25.4,
+   "rumbo"
+  ],
+  [
+   25.4,
+   25.48,
+   "a"
+  ],
+  [
+   25.48,
+   25.58,
+   "la"
+  ],
+  [
+   25.58,
+   25.86,
+   "Luna."
+  ],
+  [
+   26.58,
+   27.22,
+   "Dos"
+  ],
+  [
+   27.22,
+   27.5,
+   "días"
+  ],
+  [
+   27.5,
+   27.98,
+   "después,"
+  ],
+  [
+   28.52,
+   28.7,
+   "desde"
+  ],
+  [
+   28.7,
+   29.04,
+   "Houston"
+  ],
+  [
+   29.04,
+   29.38,
+   "le"
+  ],
+  [
+   29.38,
+   29.68,
+   "piden"
+  ],
+  [
+   29.68,
+   29.84,
+   "a"
+  ],
+  [
+   29.84,
+   30.26,
+   "Swigert"
+  ],
+  [
+   30.26,
+   30.58,
+   "algo"
+  ],
+  [
+   30.58,
+   30.74,
+   "de"
+  ],
+  [
+   30.74,
+   31.24,
+   "rutina,"
+  ],
+  [
+   31.6,
+   32.1,
+   "encender"
+  ],
+  [
+   32.1,
+   32.38,
+   "unos"
+  ],
+  [
+   32.38,
+   33.06,
+   "ventiladores"
+  ],
+  [
+   33.06,
+   33.48,
+   "para"
+  ],
+  [
+   33.48,
+   34.06,
+   "revolver"
+  ],
+  [
+   34.06,
+   34.24,
+   "el"
+  ],
+  [
+   34.24,
+   34.86,
+   "oxígeno"
+  ],
+  [
+   34.86,
+   34.96,
+   "de"
+  ],
+  [
+   34.96,
+   35.12,
+   "los"
+  ],
+  [
+   35.12,
+   35.58,
+   "tanques."
+  ],
+  [
+   36.74,
+   37.38,
+   "Swigert"
+  ],
+  [
+   37.38,
+   37.84,
+   "aprieta"
+  ],
+  [
+   37.84,
+   37.98,
+   "el"
+  ],
+  [
+   37.98,
+   38.62,
+   "interruptor."
+  ],
+  [
+   39.82,
+   40.08,
+   "Se"
+  ],
+  [
+   40.08,
+   40.58,
+   "escucha"
+  ],
+  [
+   40.58,
+   40.74,
+   "un"
+  ],
+  [
+   40.74,
+   41.02,
+   "golpe"
+  ],
+  [
+   41.02,
+   41.54,
+   "seco,"
+  ],
+  [
+   41.82,
+   41.96,
+   "y"
+  ],
+  [
+   41.96,
+   42.1,
+   "la"
+  ],
+  [
+   42.1,
+   42.38,
+   "nave"
+  ],
+  [
+   42.38,
+   42.8,
+   "entera"
+  ],
+  [
+   42.8,
+   43.0,
+   "se"
+  ],
+  [
+   43.0,
+   43.44,
+   "sacude."
+  ],
+  [
+   44.36,
+   44.98,
+   "Houston,"
+  ],
+  [
+   45.4,
+   45.6,
+   "hemos"
+  ],
+  [
+   45.6,
+   46.04,
+   "tenido"
+  ],
+  [
+   46.04,
+   46.26,
+   "un"
+  ],
+  [
+   46.26,
+   46.7,
+   "problema."
+  ],
+  [
+   47.84,
+   48.12,
+   "Nobel"
+  ],
+  [
+   48.12,
+   48.4,
+   "se"
+  ],
+  [
+   48.4,
+   48.74,
+   "asoma"
+  ],
+  [
+   48.74,
+   48.9,
+   "a"
+  ],
+  [
+   48.9,
+   48.96,
+   "la"
+  ],
+  [
+   48.96,
+   49.46,
+   "ventana"
+  ],
+  [
+   49.46,
+   49.7,
+   "y"
+  ],
+  [
+   49.7,
+   49.82,
+   "ve"
+  ],
+  [
+   49.82,
+   50.04,
+   "una"
+  ],
+  [
+   50.04,
+   50.36,
+   "nube"
+  ],
+  [
+   50.36,
+   50.54,
+   "de"
+  ],
+  [
+   50.54,
+   50.82,
+   "gas"
+  ],
+  [
+   50.82,
+   51.0,
+   "que"
+  ],
+  [
+   51.0,
+   51.14,
+   "se"
+  ],
+  [
+   51.14,
+   51.6,
+   "escapa"
+  ],
+  [
+   51.6,
+   51.78,
+   "al"
+  ],
+  [
+   51.78,
+   52.2,
+   "espacio."
+  ],
+  [
+   53.26,
+   53.54,
+   "Era"
+  ],
+  [
+   53.54,
+   53.78,
+   "su"
+  ],
+  [
+   53.78,
+   54.5,
+   "oxígeno."
+  ],
+  [
+   55.42,
+   55.62,
+   "Ya"
+  ],
+  [
+   55.62,
+   55.8,
+   "no"
+  ],
+  [
+   55.8,
+   56.08,
+   "iban"
+  ],
+  [
+   56.08,
+   56.26,
+   "a"
+  ],
+  [
+   56.26,
+   56.6,
+   "pisar"
+  ],
+  [
+   56.6,
+   56.76,
+   "la"
+  ],
+  [
+   56.76,
+   57.0,
+   "Luna."
+  ],
+  [
+   58.14,
+   58.44,
+   "Ahora"
+  ],
+  [
+   58.44,
+   58.84,
+   "tenían"
+  ],
+  [
+   58.84,
+   59.1,
+   "que"
+  ],
+  [
+   59.1,
+   59.88,
+   "sobrevivir."
+  ],
+  [
+   60.92,
+   61.16,
+   "Se"
+  ],
+  [
+   61.16,
+   61.58,
+   "pasan"
+  ],
+  [
+   61.58,
+   61.72,
+   "al"
+  ],
+  [
+   61.72,
+   62.1,
+   "módulo"
+  ],
+  [
+   62.1,
+   62.46,
+   "lunar,"
+  ],
+  [
+   62.88,
+   63.06,
+   "una"
+  ],
+  [
+   63.06,
+   63.36,
+   "nave"
+  ],
+  [
+   63.36,
+   63.64,
+   "hecha"
+  ],
+  [
+   63.64,
+   63.92,
+   "para"
+  ],
+  [
+   63.92,
+   64.16,
+   "dos"
+  ],
+  [
+   64.16,
+   64.52,
+   "hombres"
+  ],
+  [
+   64.52,
+   64.86,
+   "durante"
+  ],
+  [
+   64.86,
+   65.22,
+   "dos"
+  ],
+  [
+   65.22,
+   65.48,
+   "días."
+  ],
+  [
+   66.74,
+   67.12,
+   "Ellos"
+  ],
+  [
+   67.12,
+   67.38,
+   "eran"
+  ],
+  [
+   67.38,
+   67.68,
+   "tres."
+  ],
+  [
+   69.02,
+   69.2,
+   "Y"
+  ],
+  [
+   69.2,
+   69.58,
+   "estaban"
+  ],
+  [
+   69.58,
+   69.78,
+   "a"
+  ],
+  [
+   69.78,
+   70.06,
+   "casi"
+  ],
+  [
+   70.06,
+   70.34,
+   "cuatro"
+  ],
+  [
+   70.34,
+   70.76,
+   "días"
+  ],
+  [
+   70.76,
+   70.98,
+   "de"
+  ],
+  [
+   70.98,
+   71.28,
+   "casa."
+  ],
+  [
+   72.4,
+   72.84,
+   "Rodean"
+  ],
+  [
+   72.84,
+   72.98,
+   "la"
+  ],
+  [
+   72.98,
+   73.28,
+   "Luna"
+  ],
+  [
+   73.28,
+   73.82,
+   "y"
+  ],
+  [
+   73.82,
+   74.2,
+   "llegan"
+  ],
+  [
+   74.2,
+   74.46,
+   "más"
+  ],
+  [
+   74.46,
+   74.84,
+   "lejos"
+  ],
+  [
+   74.84,
+   75.02,
+   "de"
+  ],
+  [
+   75.02,
+   75.14,
+   "la"
+  ],
+  [
+   75.14,
+   75.48,
+   "Tierra"
+  ],
+  [
+   75.48,
+   75.68,
+   "que"
+  ],
+  [
+   75.68,
+   76.06,
+   "ningún"
+  ],
+  [
+   76.06,
+   76.32,
+   "ser"
+  ],
+  [
+   76.32,
+   76.66,
+   "humano"
+  ],
+  [
+   76.66,
+   76.94,
+   "hasta"
+  ],
+  [
+   76.94,
+   77.44,
+   "entonces."
+  ],
+  [
+   78.5,
+   78.9,
+   "Pero"
+  ],
+  [
+   78.9,
+   79.06,
+   "el"
+  ],
+  [
+   79.06,
+   79.22,
+   "aire"
+  ],
+  [
+   79.22,
+   79.48,
+   "se"
+  ],
+  [
+   79.48,
+   79.78,
+   "llena"
+  ],
+  [
+   79.78,
+   79.94,
+   "de"
+  ],
+  [
+   79.94,
+   80.44,
+   "dióxido"
+  ],
+  [
+   80.44,
+   80.64,
+   "de"
+  ],
+  [
+   80.64,
+   81.02,
+   "carbono."
+  ],
+  [
+   82.14,
+   82.42,
+   "Los"
+  ],
+  [
+   82.42,
+   82.74,
+   "fritos"
+  ],
+  [
+   82.74,
+   83.04,
+   "que"
+  ],
+  [
+   83.04,
+   83.38,
+   "sobran"
+  ],
+  [
+   83.38,
+   83.62,
+   "son"
+  ],
+  [
+   83.62,
+   84.16,
+   "cuadrados"
+  ],
+  [
+   84.16,
+   84.7,
+   "y"
+  ],
+  [
+   84.7,
+   84.84,
+   "el"
+  ],
+  [
+   84.84,
+   85.16,
+   "hueco"
+  ],
+  [
+   85.16,
+   85.4,
+   "es"
+  ],
+  [
+   85.4,
+   85.8,
+   "redondo."
+  ],
+  [
+   86.9,
+   87.14,
+   "En"
+  ],
+  [
+   87.14,
+   87.5,
+   "Houston,"
+  ],
+  [
+   88.02,
+   88.14,
+   "un"
+  ],
+  [
+   88.14,
+   88.4,
+   "grupo"
+  ],
+  [
+   88.4,
+   88.62,
+   "de"
+  ],
+  [
+   88.62,
+   89.22,
+   "ingenieros"
+  ],
+  [
+   89.22,
+   89.54,
+   "tiene"
+  ],
+  [
+   89.54,
+   89.74,
+   "que"
+  ],
+  [
+   89.74,
+   90.38,
+   "inventar,"
+  ],
+  [
+   90.66,
+   90.8,
+   "con"
+  ],
+  [
+   90.8,
+   91.24,
+   "bolsas,"
+  ],
+  [
+   91.66,
+   92.06,
+   "cartón"
+  ],
+  [
+   92.06,
+   92.24,
+   "y"
+  ],
+  [
+   92.24,
+   92.6,
+   "cinta,"
+  ],
+  [
+   93.02,
+   93.24,
+   "algo"
+  ],
+  [
+   93.24,
+   93.46,
+   "que"
+  ],
+  [
+   93.46,
+   93.62,
+   "los"
+  ],
+  [
+   93.62,
+   94.16,
+   "mantenga"
+  ],
+  [
+   94.16,
+   94.88,
+   "respirando."
+  ],
+  [
+   96.02,
+   96.3,
+   "La"
+  ],
+  [
+   96.3,
+   96.86,
+   "temperatura"
+  ],
+  [
+   96.86,
+   97.26,
+   "dentro"
+  ],
+  [
+   97.26,
+   97.52,
+   "de"
+  ],
+  [
+   97.52,
+   97.66,
+   "la"
+  ],
+  [
+   97.66,
+   97.92,
+   "nave"
+  ],
+  [
+   97.92,
+   98.3,
+   "baja"
+  ],
+  [
+   98.3,
+   98.52,
+   "a"
+  ],
+  [
+   98.52,
+   98.72,
+   "tres"
+  ],
+  [
+   98.72,
+   99.32,
+   "grados."
+  ],
+  [
+   99.98,
+   100.58,
+   "El"
+  ],
+  [
+   100.58,
+   100.8,
+   "agua"
+  ],
+  [
+   100.8,
+   101.08,
+   "está"
+  ],
+  [
+   101.08,
+   101.74,
+   "racionada."
+  ],
+  [
+   102.74,
+   102.96,
+   "Y"
+  ],
+  [
+   102.96,
+   103.36,
+   "todavía"
+  ],
+  [
+   103.36,
+   103.8,
+   "falta"
+  ],
+  [
+   103.8,
+   104.04,
+   "lo"
+  ],
+  [
+   104.04,
+   104.3,
+   "más"
+  ],
+  [
+   104.3,
+   105.26,
+   "peligroso."
+  ],
+  [
+   106.0,
+   106.14,
+   "¿Qué"
+  ],
+  [
+   106.14,
+   106.42,
+   "pasó"
+  ],
+  [
+   106.42,
+   106.76,
+   "después?"
+  ],
+  [
+   108.12,
+   108.34,
+   "Lo"
+  ],
+  [
+   108.34,
+   108.48,
+   "que"
+  ],
+  [
+   108.48,
+   108.72,
+   "viene"
+  ],
+  [
+   108.72,
+   108.94,
+   "te"
+  ],
+  [
+   108.94,
+   109.12,
+   "va"
+  ],
+  [
+   109.12,
+   109.2,
+   "a"
+  ],
+  [
+   109.2,
+   109.42,
+   "dejar"
+  ],
+  [
+   109.42,
+   109.72,
+   "sin"
+  ],
+  [
+   109.72,
+   110.16,
+   "palabras."
+  ],
+  [
+   111.3,
+   111.76,
+   "Mira"
+  ],
+  [
+   111.76,
+   111.9,
+   "el"
+  ],
+  [
+   111.9,
+   112.14,
+   "vídeo"
+  ],
+  [
+   112.14,
+   112.62,
+   "completo"
+  ],
+  [
+   112.62,
+   112.88,
+   "en"
+  ],
+  [
+   112.88,
+   113.26,
+   "YouTube"
+  ],
+  [
+   113.26,
+   113.74,
+   "en"
+  ],
+  [
+   113.74,
+   113.88,
+   "el"
+  ],
+  [
+   113.88,
+   114.18,
+   "canal"
+  ],
+  [
+   114.18,
+   114.6,
+   "Rima."
+  ]
+ ]
+}

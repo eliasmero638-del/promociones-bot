@@ -1,0 +1,449 @@
+{
+ "eid": "fb2s",
+ "hook_fin": 3.61,
+ "duracion_voz": 35.952,
+ "segmentos": [
+  {
+   "texto": "Ocho años atrapado en un banco de arena.",
+   "t0": 0.0,
+   "img": "esc_00.jpg",
+   "escena": {
+    "tipo": "fecha",
+    "texto": "1526",
+    "sub": "Mar Caribe"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Mil quinientos veintiséis. Pedro Serrano es el único que sobrevive a un naufragio en el Caribe.",
+   "t0": 3.61,
+   "img": "esc_01.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 7
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Llega a un banco de arena sin árboles ni agua dulce.",
+   "t0": 11.02,
+   "img": "v_02.mp4",
+   "escena": {
+    "tipo": "video",
+    "url": "https://www.youtube.com/watch?v=fLupEZIcmHg",
+    "desde": 10,
+    "dur": 6,
+    "buscar_video": [
+     "Caribbean sand cay aerial"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Come aves y peces, y guarda agua de lluvia en caparazones de tortuga.",
+   "t0": 15.14,
+   "img": "esc_03.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 5
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Con piedras y corales levanta una torre, y hace señales de humo.",
+   "t0": 21.64,
+   "img": "esc_04.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 6
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Ocho años después, un barco ve el humo y lo rescata. Sígueme en Ridmer para más.",
+   "t0": 27.18,
+   "img": "esc_05.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "Spanish galleon painting",
+     "galleon 16th century painting"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  }
+ ],
+ "palabras": [
+  [
+   0.08,
+   0.88,
+   "8"
+  ],
+  [
+   0.88,
+   1.46,
+   "años"
+  ],
+  [
+   1.46,
+   2.72,
+   "atrapado"
+  ],
+  [
+   2.72,
+   2.88,
+   "en"
+  ],
+  [
+   2.88,
+   3.02,
+   "un"
+  ],
+  [
+   3.02,
+   3.48,
+   "banco"
+  ],
+  [
+   3.48,
+   3.61,
+   "de"
+  ],
+  [
+   3.69,
+   4.49,
+   "1526."
+  ],
+  [
+   5.63,
+   6.01,
+   "Pedro"
+  ],
+  [
+   6.01,
+   6.63,
+   "Serrano"
+  ],
+  [
+   6.63,
+   7.21,
+   "es"
+  ],
+  [
+   7.21,
+   7.39,
+   "el"
+  ],
+  [
+   7.39,
+   7.91,
+   "único"
+  ],
+  [
+   7.91,
+   8.13,
+   "que"
+  ],
+  [
+   8.13,
+   8.69,
+   "sobrevive"
+  ],
+  [
+   8.69,
+   8.85,
+   "a"
+  ],
+  [
+   8.85,
+   8.99,
+   "un"
+  ],
+  [
+   8.99,
+   9.65,
+   "naufragio"
+  ],
+  [
+   9.65,
+   9.79,
+   "en"
+  ],
+  [
+   9.79,
+   9.93,
+   "el"
+  ],
+  [
+   9.93,
+   10.33,
+   "Caribe."
+  ],
+  [
+   11.27,
+   11.69,
+   "Llega"
+  ],
+  [
+   11.69,
+   11.81,
+   "a"
+  ],
+  [
+   11.81,
+   11.91,
+   "un"
+  ],
+  [
+   11.91,
+   12.17,
+   "banco"
+  ],
+  [
+   12.17,
+   12.35,
+   "de"
+  ],
+  [
+   12.35,
+   12.61,
+   "arena"
+  ],
+  [
+   12.61,
+   12.89,
+   "sin"
+  ],
+  [
+   12.89,
+   13.31,
+   "árboles"
+  ],
+  [
+   13.31,
+   13.79,
+   "ni"
+  ],
+  [
+   13.79,
+   13.99,
+   "agua"
+  ],
+  [
+   13.99,
+   14.41,
+   "dulce."
+  ],
+  [
+   15.39,
+   15.57,
+   "Come"
+  ],
+  [
+   15.57,
+   16.17,
+   "aves"
+  ],
+  [
+   16.17,
+   16.61,
+   "y"
+  ],
+  [
+   16.61,
+   17.09,
+   "peces"
+  ],
+  [
+   17.09,
+   17.87,
+   "y"
+  ],
+  [
+   17.87,
+   18.17,
+   "guarda"
+  ],
+  [
+   18.17,
+   18.37,
+   "agua"
+  ],
+  [
+   18.37,
+   18.55,
+   "de"
+  ],
+  [
+   18.55,
+   19.01,
+   "lluvia"
+  ],
+  [
+   19.01,
+   19.15,
+   "en"
+  ],
+  [
+   19.15,
+   19.79,
+   "caparazones"
+  ],
+  [
+   19.79,
+   20.05,
+   "de"
+  ],
+  [
+   20.05,
+   20.53,
+   "tortuga."
+  ],
+  [
+   21.89,
+   22.13,
+   "Con"
+  ],
+  [
+   22.13,
+   22.59,
+   "piedras"
+  ],
+  [
+   22.59,
+   22.77,
+   "y"
+  ],
+  [
+   22.77,
+   23.15,
+   "corales"
+  ],
+  [
+   23.15,
+   23.95,
+   "levanta"
+  ],
+  [
+   23.95,
+   24.11,
+   "una"
+  ],
+  [
+   24.11,
+   24.59,
+   "torre"
+  ],
+  [
+   24.59,
+   25.15,
+   "y"
+  ],
+  [
+   25.15,
+   25.35,
+   "hace"
+  ],
+  [
+   25.35,
+   25.95,
+   "señales"
+  ],
+  [
+   25.95,
+   26.11,
+   "de"
+  ],
+  [
+   26.11,
+   26.59,
+   "humo."
+  ],
+  [
+   27.43,
+   27.79,
+   "8"
+  ],
+  [
+   27.79,
+   28.31,
+   "años"
+  ],
+  [
+   28.31,
+   28.79,
+   "después"
+  ],
+  [
+   28.79,
+   29.95,
+   "un"
+  ],
+  [
+   29.95,
+   30.25,
+   "barco"
+  ],
+  [
+   30.25,
+   30.37,
+   "ve"
+  ],
+  [
+   30.37,
+   30.51,
+   "el"
+  ],
+  [
+   30.51,
+   30.97,
+   "humo"
+  ],
+  [
+   30.97,
+   31.61,
+   "y"
+  ],
+  [
+   31.61,
+   31.71,
+   "lo"
+  ],
+  [
+   31.71,
+   32.27,
+   "rescata."
+  ],
+  [
+   33.31,
+   34.03,
+   "Sigue"
+  ],
+  [
+   34.03,
+   34.19,
+   "en"
+  ],
+  [
+   34.19,
+   34.49,
+   "Ritmer"
+  ],
+  [
+   34.49,
+   34.99,
+   "para"
+  ],
+  [
+   34.99,
+   35.17,
+   "más."
+  ]
+ ]
+}
