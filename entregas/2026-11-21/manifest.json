@@ -1,0 +1,19 @@
+{
+ "fecha": "2026-11-21",
+ "videos": [
+  {
+   "eid": "fb1",
+   "archivos": {
+    "fb": [
+     "fb1_fb.mp4.00",
+     "fb1_fb.mp4.01"
+    ]
+   },
+   "miniatura": "fb1_miniatura.jpg",
+   "guion": "",
+   "cambios": {
+    "titulo_video": " "
+   }
+  }
+ ]
+}
