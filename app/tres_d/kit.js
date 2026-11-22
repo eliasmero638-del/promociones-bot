@@ -1711,3 +1711,120 @@ export function motorViejo(sc, x = 0, z = 0, giro = 0) {
   for (let i = 0; i < 3; i++) { const p = new THREE.Mesh(new THREE.BoxGeometry(0.06, 1.3, 0.22), oxi); const q = new THREE.Group(); q.position.set(1.35, 0.3, 0); q.rotation.x = i * 2.094; p.position.y = 0.6; p.rotation.z = i === 1 ? 0.7 : 0.15; q.add(p); g.add(q); }
   g.traverse(o => { if (o.isMesh) o.castShadow = true; }); g.position.set(x, -0.15, z); g.rotation.set(0.25, giro, 0.12); sc.add(g); return g;
 }
+
+// ======================= 22-nov: cueva inundada, avión ATR turbohélice, cabina de pilotos, carretera de campo de noche, huevo de luz =======================
+/** Textura de agua oscura con ondas (para ríos subterráneos, cuevas, charcos). */
+function _texOndas(base = '#0e2a2c', luz = 'rgba(160,220,210,0.10)') {
+  const c = document.createElement('canvas'); c.width = c.height = 256; const g = c.getContext('2d'); g.fillStyle = base; g.fillRect(0, 0, 256, 256);
+  const az = _azar(13); for (let i = 0; i < 120; i++) { g.strokeStyle = luz; g.lineWidth = 1 + az() * 2; g.beginPath(); const x = az() * 256, y = az() * 256, r = 6 + az() * 26;
+    g.ellipse(x, y, r, r * 0.35, 0, 0, Math.PI * 2); g.stroke(); }
+  const t = new THREE.CanvasTexture(c); t.wrapS = t.wrapT = THREE.RepeatWrapping; t.colorSpace = THREE.SRGBColorSpace; return t;
+}
+/** Cueva de roca caliza inundada (tipo Tham Luang): galería a lo largo de Z (z=-40..12), ancho ~5, techo bajo con estalactitas,
+ *  agua turbia que sube (cu.agua(nivel, t)) y una roca seca/lodo en la zona z∈[-30,-24] (repisa en x≈-1, y≈0.6). Oscuridad total:
+ *  la luz la ponen las linternas (K.linterna) o cu.luz (luz cálida de apoyo, intensidad). */
+export function cuevaInundada(sc, { semilla = 17, apoyo = 1 } = {}) {
+  sc.background = new THREE.Color(0x010202); sc.fog = new THREE.FogExp2(0x060807, 0.075);
+  sc.add(new THREE.HemisphereLight(0x8a9a90, 0x0c0a08, 0.12 * apoyo));
+  const roca = M.matTex(M.TEX.roca(), [3, 2], 0x8a7c66), lodo = M.matTex(M.TEX.arena(), [6, 18], 0x5c4a36), az = _azar(semilla);
+  M.caja(sc, 8, 0.3, 60, 0, -1.2, -14, lodo);
+  for (let z = -42; z < 14; z += 1.4) for (const lado of [-1, 1]) {
+    const r = new THREE.Mesh(new THREE.DodecahedronGeometry(1.5 + az() * 0.7, 1), roca); r.position.set(lado * (3.0 + az() * 0.6), 0.6 + az() * 2.2, z); r.scale.set(1, 1.7, 1.2); r.receiveShadow = true; r.castShadow = true; sc.add(r);
+    const t = new THREE.Mesh(new THREE.DodecahedronGeometry(1.7 + az() * 0.6, 1), roca); t.position.set(lado * (1.0 + az() * 1.2), 4.1 + az() * 0.5, z); t.receiveShadow = true; sc.add(t); }
+  for (let i = 0; i < 70; i++) { const h = 0.2 + az() * 0.7, e = new THREE.Mesh(new THREE.ConeGeometry(0.05 + az() * 0.08, h, 6), roca); e.rotation.x = Math.PI; e.position.set((az() - 0.5) * 4, 3.3 - h / 2 + az() * 0.3, -40 + az() * 52); sc.add(e); }
+  for (let i = 0; i < 9; i++) { const r = new THREE.Mesh(new THREE.DodecahedronGeometry(0.8 + az() * 0.5, 1), lodo); r.scale.set(1.7, 0.32, 1.4); r.position.set(-1.0 + (az() - 0.5) * 2.0, -0.05, -27 + (az() - 0.5) * 4); r.receiveShadow = true; r.castShadow = true; sc.add(r); }
+  const tx = _texOndas(); tx.repeat.set(3, 20);
+  const agua = new THREE.Mesh(new THREE.PlaneGeometry(8, 60), new THREE.MeshStandardMaterial({ map: tx, color: 0x7f9a8e, emissive: 0x0d2624, emissiveMap: tx, emissiveIntensity: 1.6, roughness: 0.12, metalness: 0.45, transparent: true, opacity: 0.95 }));
+  agua.rotation.x = -Math.PI / 2; agua.position.set(0, -0.6, -14); agua.receiveShadow = true; sc.add(agua);
+  const luz = new THREE.PointLight(0xffc890, 0, 12, 1.4); luz.position.set(0.5, 2.4, -24.5); sc.add(luz);
+  const gotas = []; for (let i = 0; i < 40; i++) { const g = new THREE.Mesh(new THREE.SphereGeometry(0.018, 6, 4), M.mat(0xbfd8d0, { roughness: 0.1, metalness: 0.4 })); g.userData = { x: (az() - 0.5) * 3.6, z: -38 + az() * 48, f: az() * 3 }; sc.add(g); gotas.push(g); }
+  return { agua: agua, luz, poner(nivel, t) { agua.position.y = nivel; tx.offset.set(Math.sin(t * 0.3) * 0.05, -t * 0.08);
+      gotas.forEach(g => { const u = g.userData, k = ((t + u.f) % 1.2) / 1.2; g.position.set(u.x, 3.2 - k * (3.2 - nivel), u.z); }); } };
+}
+/** Avión turbohélice regional de ala alta y dos motores (tipo ATR 42), blanco con cola azul. Nariz +X, largo ~22 m.
+ *  a.userData.mover(t) gira las hélices. */
+export function atr42(sc, { cola = 0x1f3f9a } = {}) {
+  const g = new THREE.Group(), bl = M.mat(0xf2f2f0, { roughness: 0.35, metalness: 0.25 }), az_ = M.mat(cola, { roughness: 0.4, metalness: 0.2 }), gr = M.mat(0x2a2d33, { roughness: 0.4 });
+  const vid = M.mat(0x0b0f16, { roughness: 0.05, metalness: 0.8 });
+  const fus = new THREE.Mesh(new THREE.CylinderGeometry(1.35, 1.35, 15, 28), bl); fus.rotation.z = Math.PI / 2; g.add(fus);
+  const nariz = new THREE.Mesh(new THREE.SphereGeometry(1.35, 28, 18, 0, Math.PI * 2, 0, Math.PI / 2), bl); nariz.scale.set(1, 2.0, 1); nariz.rotation.z = -Math.PI / 2; nariz.position.x = 7.5; g.add(nariz);
+  const colaF = new THREE.Mesh(new THREE.ConeGeometry(1.35, 6, 28), bl); colaF.rotation.z = Math.PI / 2; colaF.position.set(-10.4, 0.45, 0); colaF.scale.set(1, 1, 0.9); g.add(colaF);
+  for (const z of [1, -1]) { const p = new THREE.Mesh(new THREE.BoxGeometry(0.9, 0.42, 0.05), vid); p.position.set(9.0, 0.55, z * 0.82); p.rotation.y = z * -0.35; g.add(p); }
+  for (let i = 0; i < 14; i++) for (const z of [1.34, -1.34]) { const w = new THREE.Mesh(new THREE.BoxGeometry(0.28, 0.32, 0.03), vid); w.position.set(5.2 - i * 0.82, 0.35, z); g.add(w); }
+  const ala = new THREE.Mesh(new THREE.BoxGeometry(2.4, 0.28, 24.5), bl); ala.position.set(1.2, 1.55, 0); g.add(ala);
+  const deriva = new THREE.Mesh(new THREE.BoxGeometry(3.2, 4.2, 0.22), az_); deriva.position.set(-11.2, 2.9, 0); deriva.rotation.z = 0.35; g.add(deriva);
+  const estab = new THREE.Mesh(new THREE.BoxGeometry(1.6, 0.14, 7.2), bl); estab.position.set(-12.2, 4.9, 0); g.add(estab);
+  const franja = new THREE.Mesh(new THREE.BoxGeometry(14.5, 0.18, 2.74), az_); franja.position.set(-0.2, -0.25, 0); g.add(franja);
+  const helices = [];
+  for (const z of [4.1, -4.1]) { const n = new THREE.Mesh(new THREE.CylinderGeometry(0.55, 0.45, 4.6, 18), bl); n.rotation.z = Math.PI / 2; n.position.set(1.6, 1.05, z); g.add(n);
+    const cono_ = new THREE.Mesh(new THREE.ConeGeometry(0.32, 0.8, 16), gr); cono_.rotation.z = -Math.PI / 2; cono_.position.set(4.3, 1.05, z); g.add(cono_);
+    const h = new THREE.Group(); h.position.set(4.05, 1.05, z); g.add(h); helices.push(h);
+    for (let k = 0; k < 4; k++) { const pa = new THREE.Mesh(new THREE.BoxGeometry(0.06, 1.9, 0.22), gr); pa.position.y = 0.95; const piv = new THREE.Group(); piv.rotation.x = k * Math.PI / 2; piv.add(pa); h.add(piv); }
+    const disco = new THREE.Mesh(new THREE.CircleGeometry(1.95, 32), new THREE.MeshBasicMaterial({ color: 0x9aa0a8, transparent: true, opacity: 0.14, depthWrite: false, side: THREE.DoubleSide })); disco.rotation.y = Math.PI / 2; h.add(disco); }
+  for (const [x, z] of [[1.0, 1.2], [1.0, -1.2], [7, 0]]) { const r = new THREE.Mesh(new THREE.CylinderGeometry(0.32, 0.32, 0.25, 14), M.mat(0x111111)); r.rotation.x = Math.PI / 2; r.position.set(x, -1.55, z); g.add(r); }
+  const luzRoja = new THREE.Mesh(new THREE.SphereGeometry(0.12, 8, 6), emis(0xff2a1a, 3)); luzRoja.position.set(1.2, 1.6, 12.3); g.add(luzRoja);
+  const luzVerde = new THREE.Mesh(new THREE.SphereGeometry(0.12, 8, 6), emis(0x2aff6a, 3)); luzVerde.position.set(1.2, 1.6, -12.3); g.add(luzVerde);
+  g.traverse(o => { if (o.isMesh) { o.castShadow = true; o.receiveShadow = true; } });
+  g.userData.mover = t => helices.forEach(h => { h.rotation.x = t * 37; });
+  sc.add(g); return g;
+}
+/** Cabina de pilotos de avión regional (dos asientos mirando a +X, piloto en z=-0.45 y copiloto en z=+0.45, asiento en x=0).
+ *  Tablero en x≈0.95 con 4 pantallas; parabrisas con niebla/cielo. ca.pantallas(t, modo): 'negro' (sin datos, rayas), 'ok' (horizonte), 'alerta'. */
+export function cabinaPilotos(sc, { afuera = '#9aa3ad' } = {}) {
+  sc.background = new THREE.Color(0x05060a); sc.add(new THREE.HemisphereLight(0x9aa8c0, 0x141416, 0.35));
+  const gris = M.mat(0x2b2e33, { roughness: 0.7 }), asiento = M.mat(0x1d2230, { roughness: 0.8 });
+  M.caja(sc, 3.2, 0.06, 2.0, 0, -0.03, 0, M.mat(0x1a1b1e)); M.caja(sc, 3.2, 0.06, 2.0, 0, 1.95, 0, gris);
+  for (const s of [1, -1]) M.caja(sc, 3.2, 2.0, 0.06, 0, 0.97, s * 1.0, gris);
+  M.caja(sc, 0.5, 0.75, 1.9, 1.05, 0.75, 0, M.mat(0x17191c)); M.caja(sc, 0.6, 0.12, 0.35, 0.55, 0.75, 0, M.mat(0x22252a));
+  const cv = document.createElement('canvas'); cv.width = 512; cv.height = 128; const tx = new THREE.CanvasTexture(cv); tx.colorSpace = THREE.SRGBColorSpace;
+  const pan = new THREE.Mesh(new THREE.PlaneGeometry(1.6, 0.4), new THREE.MeshBasicMaterial({ map: tx })); pan.position.set(0.79, 0.93, 0); pan.rotation.y = -Math.PI / 2; pan.rotation.x = 0; sc.add(pan);
+  const brillo = new THREE.PointLight(0x9fc8ff, 1.2, 2.2, 1.5); brillo.position.set(0.6, 1.0, 0); sc.add(brillo);
+  for (const z of [-0.45, 0.45]) { M.caja(sc, 0.5, 0.12, 0.5, 0.0, 0.48, z, asiento); M.caja(sc, 0.12, 0.85, 0.5, -0.28, 0.92, z, asiento);
+    M.caja(sc, 0.05, 0.35, 0.05, 0.45, 0.62, z, M.mat(0x111111)); M.caja(sc, 0.06, 0.06, 0.28, 0.47, 0.8, z, M.mat(0x111111)); }
+  const c2 = document.createElement('canvas'); c2.width = 4; c2.height = 128; const g2 = c2.getContext('2d'); const gr = g2.createLinearGradient(0, 0, 0, 128); gr.addColorStop(0, '#d7dde4'); gr.addColorStop(1, afuera); g2.fillStyle = gr; g2.fillRect(0, 0, 4, 128);
+  const tc = new THREE.CanvasTexture(c2); tc.colorSpace = THREE.SRGBColorSpace;
+  const vidrio = new THREE.Mesh(new THREE.PlaneGeometry(1.9, 0.8), new THREE.MeshBasicMaterial({ map: tc })); vidrio.position.set(1.35, 1.5, 0); vidrio.rotation.y = -Math.PI / 2; vidrio.rotation.z = 0; sc.add(vidrio);
+  M.caja(sc, 0.06, 0.06, 1.9, 1.33, 1.5, 0, M.mat(0x111214)); M.caja(sc, 0.06, 0.82, 0.06, 1.33, 1.5, 0, M.mat(0x111214));
+  const dia = new THREE.DirectionalLight(0xdfe6f0, 1.4); dia.position.set(3, 2.5, 0.3); sc.add(dia);
+  return { vidrio: tc, pantallas(t, modo = 'negro') {
+    const g = cv.getContext('2d'); g.fillStyle = '#000'; g.fillRect(0, 0, 512, 128);
+    for (let i = 0; i < 4; i++) { const x = 8 + i * 126; g.fillStyle = '#05070a'; g.fillRect(x, 8, 118, 112); g.strokeStyle = '#3a3f46'; g.lineWidth = 3; g.strokeRect(x, 8, 118, 112);
+      if (modo === 'ok' && i < 2) { g.fillStyle = '#2f7fd8'; g.fillRect(x + 3, 11, 112, 52); g.fillStyle = '#8a5a2a'; g.fillRect(x + 3, 63, 112, 54); g.strokeStyle = '#fff'; g.beginPath(); g.moveTo(x + 40, 63); g.lineTo(x + 78, 63); g.stroke(); }
+      else if (i < 2) { g.strokeStyle = modo === 'alerta' ? '#ff4030' : '#c83226'; g.lineWidth = 5; g.beginPath(); g.moveTo(x + 14, 22); g.lineTo(x + 104, 106); g.moveTo(x + 104, 22); g.lineTo(x + 14, 106); g.stroke();
+        if (Math.floor(t * 3) % 2) { g.fillStyle = '#ffb020'; g.font = 'bold 22px monospace'; g.fillText('ATT', x + 38, 70); } }
+      else { g.fillStyle = '#1fd060'; g.font = '16px monospace'; for (let k = 0; k < 5; k++) g.fillText('--- ' + (k % 2 ? '- -' : '---'), x + 14, 32 + k * 19); } }
+    tx.needsUpdate = true; } };
+}
+/** Carretera recta de dos carriles a lo largo de X (z≈0) en campo plano de noche (oeste de Texas, años 50): surcos de algodón,
+ *  postes de teléfono con cables, cielo con nubes de tormenta. ca.relampago(k 0..1) ilumina el horizonte. */
+export function carreteraCampo(sc, { semilla = 8, luna = 1 } = {}) {
+  M.cielo(sc, '#04060c', '#1a2030'); sc.fog = new THREE.FogExp2(0x0b0f18, 0.018);
+  const hemi = new THREE.HemisphereLight(0x5a6c94, 0x141210, 0.5 * luna); sc.add(hemi);
+  const l = new THREE.DirectionalLight(0x8ea4d8, 0.9 * luna); l.position.set(-20, 30, 15); l.castShadow = true; l.shadow.mapSize.set(2048, 2048);
+  Object.assign(l.shadow.camera, { left: -30, right: 30, top: 30, bottom: -30 }); sc.add(l);
+  const az = _azar(semilla);
+  M.caja(sc, 300, 0.2, 300, 0, -0.1, 0, M.matTex(M.TEX.arena(), [60, 60], 0x5a4c3c));
+  M.caja(sc, 300, 0.04, 7, 0, 0.02, 0, M.matTex(M.TEX.concreto(), [60, 2], 0x34343a));
+  for (let x = -150; x < 150; x += 5) M.caja(sc, 2.6, 0.02, 0.14, x, 0.05, 0, M.mat(0xcfc07a, { roughness: 0.6 }), false);
+  const surco = M.mat(0x3d3226, { roughness: 1 }), algodon = M.mat(0xb8b4aa, { roughness: 1 });
+  for (const lado of [-1, 1]) for (let i = 0; i < 26; i++) { const z = lado * (5.5 + i * 1.3);
+    M.caja(sc, 300, 0.25, 0.5, 0, 0.1, z, surco, false);
+    for (let k = 0; k < 40; k++) { const b = new THREE.Mesh(new THREE.SphereGeometry(0.12 + az() * 0.1, 6, 4), algodon); b.position.set(-100 + az() * 200, 0.3, z + (az() - 0.5) * 0.3); sc.add(b); } }
+  const madera = M.mat(0x3a2c20, { roughness: 1 });
+  for (let x = -120; x <= 120; x += 22) { M.caja(sc, 0.25, 8, 0.25, x, 4, -5, madera); M.caja(sc, 2.4, 0.15, 0.15, x, 7.6, -5, madera); }
+  for (const dz of [-1.0, 0, 1.0]) { const cab = new THREE.Mesh(new THREE.CylinderGeometry(0.015, 0.015, 240, 4), M.mat(0x111111)); cab.rotation.z = Math.PI / 2; cab.position.set(0, 7.45, -5 + dz * 0.01); cab.position.x = 0; cab.position.z = -5; cab.translateY(0); cab.position.y = 7.5 + dz * 0.0; cab.position.z = -5 + dz; sc.add(cab); }
+  const casa = (x, z) => { M.caja(sc, 6, 3, 5, x, 1.5, z, M.mat(0x5e5548)); M.caja(sc, 1, 1, 0.1, x + 1, 1.6, z + 2.52, emis(0xffb460, 0.8), false); };
+  casa(-60, -40); casa(45, 50); casa(90, -70);
+  const fl = new THREE.PointLight(0xbfd0ff, 0, 400, 0.5); fl.position.set(40, 30, -120); sc.add(fl);
+  return { relampago(k) { fl.intensity = 30000 * k; hemi.intensity = 0.5 * luna + 1.4 * k; } };
+}
+/** Objeto de luz en forma de huevo (relatos de Levelland 1957): óvalo brillante anaranjado-blanco con halo y luz que ilumina el piso.
+ *  h.brillo(k) 0..1 (k=0 apagado). h.g = grupo (largo `largo` a lo largo de X). */
+export function huevoLuz(sc, largo = 30, color = 0xffb060) {
+  const g = new THREE.Group(); sc.add(g);
+  const cuerpo = new THREE.Mesh(new THREE.SphereGeometry(1, 40, 24), new THREE.MeshBasicMaterial({ color: new THREE.Color(color).lerp(new THREE.Color(0xffffff), 0.55), transparent: true, fog: false }));
+  cuerpo.scale.set(largo / 2, largo / 7, largo / 5.5); g.add(cuerpo);
+  const nucleo = brilloSprite('#ffe0a0', largo * 1.25, 0.9), halo = brilloSprite('#ff8a3a', largo * 2.4, 0.55); g.add(halo); g.add(nucleo);
+  const luz = new THREE.PointLight(color, 4000, largo * 4, 1.4); luz.position.y = -largo / 8; g.add(luz);
+  return { g, brillo(k) { cuerpo.material.opacity = Math.min(1, k * 1.2); cuerpo.visible = k > 0.02; nucleo.material.opacity = 0.9 * k; halo.material.opacity = 0.55 * k * (0.9 + Math.random() * 0.1); luz.intensity = 4000 * k; } };
+}
