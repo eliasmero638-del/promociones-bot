@@ -1,0 +1,664 @@
+{
+ "fecha": "2026-11-22",
+ "modo": "claude",
+ "videos": [
+  {
+   "eid": "fb1",
+   "tipo": "fb",
+   "hora_fb": "14:00",
+   "titulo_youtube": "12 NIÑOS atrapados dentro de una montaña… y el agua seguía subiendo",
+   "articulo": "Rescate de la cueva Tham Luang (2018)",
+   "fuente": "https://es.wikipedia.org/wiki/Rescate_de_la_cueva_Tham_Luang",
+   "titulo_video": " ",
+   "titulos_opciones": [
+    "12 NIÑOS atrapados dentro de una montaña… y el agua seguía subiendo",
+    "Los durmieron con anestesia para sacarlos BUCEANDO de una cueva",
+    "9 días a oscuras sin comida… y así los encontraron 😱",
+    "¿Cómo sacas a 12 niños que no saben nadar de una cueva inundada?",
+    "Entraron a jugar a una cueva… y la lluvia les cerró la salida",
+    "2 buzos salieron del agua y contaron: TRECE. Todos vivos",
+    "El rescate que paralizó al mundo: la cueva de Tailandia, 2018"
+   ],
+   "descripcion_youtube": "Junio de 2018. Doce niños de un equipo de fútbol y su entrenador quedan atrapados en una cueva inundada de Tailandia.\nNueve días sin comida, a oscuras… y un rescate que nadie creía posible.\n#historiasreales #supervivencia #ridmer",
+   "etiquetas": [
+    "cueva Tham Luang",
+    "Tailandia",
+    "rescate",
+    "niños atrapados",
+    "supervivencia",
+    "historias reales",
+    "ridmer"
+   ],
+   "miniatura": {
+    "texto": "ATRAPADOS"
+   },
+   "gancho": 1,
+   "musica": "tension",
+   "texto_facebook": "12 niños atrapados dentro de una montaña… y el agua seguía subiendo 😱 #HistoriasReales #Supervivencia #Ridmer",
+   "texto_tiktok": "12 NIÑOS atrapados dentro de una montaña 😱 En 2018 un equipo de fútbol quedó encerrado 9 días en una cueva inundada de Tailandia. ¿Cómo sacas a niños que no saben nadar? #historiasreales #supervivencia #rescate #datoscuriosos #ridmer",
+   "segmentos": [
+    {
+     "texto": "Doce niños atrapados dentro de una montaña.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "23 JUNIO 2018",
+      "sub": "Cueva Tham Luang, Tailandia"
+     }
+    },
+    {
+     "texto": "Tailandia, dos mil dieciocho. Un equipo de fútbol juvenil entra con su entrenador a una cueva.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Tham Luang Nang Non cave entrance",
+       "Tham Luang cave"
+      ]
+     }
+    },
+    {
+     "texto": "Afuera empieza a llover. El agua sube y les cierra la salida.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "LA LLUVIA",
+      "sub": "inunda la cueva"
+     }
+    },
+    {
+     "texto": "Avanzan cuatro kilómetros hacia adentro, hasta una roca seca, en total oscuridad.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Tham Luang cave interior",
+       "Tham Luang Nang Non"
+      ]
+     }
+    },
+    {
+     "texto": "Sin comida. Solo toman el agua que gotea de las paredes.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "cave water dripping stalactite",
+       "limestone cave Thailand"
+      ]
+     }
+    },
+    {
+     "texto": "Afuera, miles de rescatistas bombean agua día y noche.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Tham Luang cave rescue",
+       "Tham Luang rescue operation"
+      ]
+     },
+     "rotulo": "10.000 PERSONAS"
+    },
+    {
+     "texto": "Al décimo día, dos buzos británicos salen del agua con sus linternas… y los ven.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "DÍA 10",
+      "sub": "2 de julio"
+     }
+    },
+    {
+     "texto": "Así fue el momento exacto: los trece, vivos.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=2BpaaSzq3-I",
+      "desde": 8,
+      "dur": 6,
+      "buscar_video": [
+       "cave diver"
+      ]
+     },
+     "rotulo": "VIDEO REAL"
+    },
+    {
+     "texto": "Pero salir era casi imposible: kilómetros de túneles inundados, y casi ninguno sabía nadar.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Tham Luang flooded cave",
+       "cave diving Thailand"
+      ]
+     }
+    },
+    {
+     "texto": "El plan: dormirlos con anestesia, ponerles una máscara y sacarlos buceando, atados a un buzo.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "EL PLAN",
+      "sub": "uno por uno"
+     }
+    },
+    {
+     "texto": "Un exbuzo de la Marina tailandesa murió llevando tanques de oxígeno.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Saman Kunan",
+       "Saman Gunan"
+      ]
+     }
+    },
+    {
+     "texto": "El diez de julio salió el último. Los trece sobrevivieron. Comparte esta historia y sigue a Ridmer.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=OCLg6DoFnJk",
+      "desde": 5,
+      "dur": 6,
+      "buscar_video": [
+       "ambulance Thailand"
+      ]
+     },
+     "rotulo": "13 DE 13"
+    }
+   ]
+  },
+  {
+   "eid": "fb1s",
+   "tipo": "short",
+   "encargo": "fb1",
+   "hora_youtube": "14:00",
+   "titulo_youtube": "12 niños atrapados dentro de una montaña #shorts",
+   "articulo": "Rescate de la cueva Tham Luang (2018)",
+   "fuente": "https://es.wikipedia.org/wiki/Rescate_de_la_cueva_Tham_Luang",
+   "titulo_video": " ",
+   "titulos_opciones": [
+    "12 NIÑOS atrapados dentro de una montaña… y el agua seguía subiendo",
+    "Los durmieron con anestesia para sacarlos BUCEANDO de una cueva",
+    "9 días a oscuras sin comida… y así los encontraron 😱",
+    "¿Cómo sacas a 12 niños que no saben nadar de una cueva inundada?",
+    "Entraron a jugar a una cueva… y la lluvia les cerró la salida",
+    "2 buzos salieron del agua y contaron: TRECE. Todos vivos",
+    "El rescate que paralizó al mundo: la cueva de Tailandia, 2018"
+   ],
+   "descripcion_youtube": "Junio de 2018. Doce niños de un equipo de fútbol y su entrenador quedan atrapados en una cueva inundada de Tailandia.\nNueve días sin comida, a oscuras… y un rescate que nadie creía posible.\n#historiasreales #supervivencia #ridmer",
+   "etiquetas": [
+    "cueva Tham Luang",
+    "Tailandia",
+    "rescate",
+    "niños atrapados",
+    "supervivencia",
+    "historias reales",
+    "ridmer"
+   ],
+   "miniatura": {
+    "texto": "ATRAPADOS"
+   },
+   "gancho": 1,
+   "musica": "tension",
+   "segmentos": [
+    {
+     "texto": "Doce niños atrapados dentro de una montaña.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "23 JUNIO 2018",
+      "sub": "Cueva Tham Luang, Tailandia"
+     }
+    },
+    {
+     "texto": "Tailandia, dos mil dieciocho. Entran a una cueva con su entrenador… y la lluvia inunda la salida.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "LA LLUVIA",
+      "sub": "inunda la cueva"
+     }
+    },
+    {
+     "texto": "Nueve días a oscuras, tomando agua de las paredes.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Tham Luang cave interior",
+       "Tham Luang Nang Non"
+      ]
+     }
+    },
+    {
+     "texto": "Hasta que dos buzos británicos salen del agua… y los encuentran.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "DÍA 10",
+      "sub": "2 de julio"
+     }
+    },
+    {
+     "texto": "Así fue ese momento.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=2BpaaSzq3-I",
+      "desde": 8,
+      "dur": 5,
+      "buscar_video": [
+       "cave diver"
+      ]
+     },
+     "rotulo": "VIDEO REAL"
+    },
+    {
+     "texto": "Para sacarlos, los durmieron con anestesia y los sacaron buceando, uno por uno.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "EL PLAN",
+      "sub": "uno por uno"
+     }
+    },
+    {
+     "texto": "Los trece sobrevivieron. Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=OCLg6DoFnJk",
+      "desde": 5,
+      "dur": 5,
+      "buscar_video": [
+       "ambulance Thailand"
+      ]
+     },
+     "rotulo": "13 DE 13"
+    }
+   ]
+  },
+  {
+   "eid": "fb2",
+   "tipo": "fb",
+   "hora_fb": "18:30",
+   "titulo_youtube": "Despegaron A CIEGAS entre montañas… por no esperar 3 minutos",
+   "articulo": "Vuelo 518 de Santa Bárbara Airlines",
+   "fuente": "https://es.wikipedia.org/wiki/Vuelo_518_de_Santa_B%C3%A1rbara_Airlines",
+   "titulo_video": " ",
+   "titulos_opciones": [
+    "Despegaron A CIEGAS entre montañas… por no esperar 3 minutos",
+    "3 minutos de prisa… y 46 personas nunca llegaron a Caracas",
+    "Los instrumentos estaban APAGADOS cuando despegaron",
+    "¿Por qué este avión chocó contra los Andes a 10 km del aeropuerto?",
+    "Tomaron un atajo entre las montañas… y entraron en una nube",
+    "Mérida, 2008: el vuelo que salió a oscuras ✈️",
+    "La caja de voz reveló lo que pasó en la cabina del vuelo 518"
+   ],
+   "descripcion_youtube": "21 de febrero de 2008, Mérida, Venezuela. Un ATR 42 despega hacia Caracas entre los Andes.\nLos pilotos tenían prisa… y los instrumentos todavía no estaban listos.\n#historiasreales #aviones #ridmer",
+   "etiquetas": [
+    "vuelo 518",
+    "Santa Bárbara Airlines",
+    "Mérida",
+    "Venezuela",
+    "accidente aéreo",
+    "historias reales",
+    "ridmer"
+   ],
+   "miniatura": {
+    "img": 1,
+    "texto": "A CIEGAS"
+   },
+   "gancho": 1,
+   "musica": "tension",
+   "texto_facebook": "Despegaron a ciegas entre montañas… por no esperar 3 minutos ✈️ #HistoriasReales #Aviones #Ridmer",
+   "texto_tiktok": "Despegaron A CIEGAS entre montañas ✈️ Mérida, Venezuela, 2008: los pilotos del vuelo 518 no esperaron 3 minutos a que sus instrumentos se encendieran. Lo que pasó después… #historiasreales #aviones #venezuela #datoscuriosos #ridmer",
+   "segmentos": [
+    {
+     "texto": "Despegaron a ciegas entre montañas.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "21 FEBRERO 2008",
+      "sub": "Mérida, Venezuela"
+     }
+    },
+    {
+     "texto": "Mérida, Venezuela, dos mil ocho. Una ciudad encajonada entre los Andes.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     }
+    },
+    {
+     "texto": "El vuelo quinientos dieciocho de Santa Bárbara va a Caracas con cuarenta y seis personas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Pero otro avión está por aterrizar, y los pilotos tienen prisa.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=NwAwTWw7ljA",
+      "desde": 20,
+      "dur": 6,
+      "buscar_video": [
+       "airplane landing mountains"
+      ]
+     },
+     "rotulo": "VIDEO REAL"
+    },
+    {
+     "texto": "El fabricante pide esperar tres minutos para que los instrumentos se acoplen. No esperan.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "3 MINUTOS",
+      "sub": "no esperaron"
+     }
+    },
+    {
+     "texto": "Despegan a las cinco y veintinueve de la tarde, con los giroscopios todavía sin funcionar.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Y en vez de la ruta autorizada, toman un atajo: un corredor estrecho entre las montañas.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "EL ATAJO",
+      "sub": "Páramo de los Conejos"
+     }
+    },
+    {
+     "texto": "Giran a la derecha, pegados a la cordillera norte… y entran en una nube.",
+     "escena": {
+      "tipo": "foto",
+      "img": 10
+     }
+    },
+    {
+     "texto": "Sin instrumentos y sin ver nada, chocan contra la montaña.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "SIN INSTRUMENTOS",
+      "sub": ""
+     }
+    },
+    {
+     "texto": "Los restos aparecen en el Páramo de los Conejos, a diez kilómetros del aeropuerto. Nadie sobrevivió.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=-wtLRmLDCSg",
+      "desde": 10,
+      "dur": 6,
+      "buscar_video": [
+       "Andes fog mountains"
+      ]
+     },
+     "rotulo": "46 VÍCTIMAS"
+    },
+    {
+     "texto": "La caja de voz lo confirmó: habían salido sin instrumentos.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "cockpit voice recorder",
+       "flight data recorder"
+      ]
+     }
+    },
+    {
+     "texto": "Todo por tres minutos de prisa. Comparte esta historia y sigue a Ridmer.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb2s",
+   "tipo": "short",
+   "encargo": "fb2",
+   "hora_youtube": "19:00",
+   "titulo_youtube": "Despegaron a ciegas entre montañas #shorts",
+   "articulo": "Vuelo 518 de Santa Bárbara Airlines",
+   "fuente": "https://es.wikipedia.org/wiki/Vuelo_518_de_Santa_B%C3%A1rbara_Airlines",
+   "titulo_video": " ",
+   "titulos_opciones": [
+    "Despegaron A CIEGAS entre montañas… por no esperar 3 minutos",
+    "3 minutos de prisa… y 46 personas nunca llegaron a Caracas",
+    "Los instrumentos estaban APAGADOS cuando despegaron",
+    "¿Por qué este avión chocó contra los Andes a 10 km del aeropuerto?",
+    "Tomaron un atajo entre las montañas… y entraron en una nube",
+    "Mérida, 2008: el vuelo que salió a oscuras ✈️",
+    "La caja de voz reveló lo que pasó en la cabina del vuelo 518"
+   ],
+   "descripcion_youtube": "21 de febrero de 2008, Mérida, Venezuela. Un ATR 42 despega hacia Caracas entre los Andes.\nLos pilotos tenían prisa… y los instrumentos todavía no estaban listos.\n#historiasreales #aviones #ridmer",
+   "etiquetas": [
+    "vuelo 518",
+    "Santa Bárbara Airlines",
+    "Mérida",
+    "Venezuela",
+    "accidente aéreo",
+    "historias reales",
+    "ridmer"
+   ],
+   "miniatura": {
+    "img": 1,
+    "texto": "A CIEGAS"
+   },
+   "gancho": 1,
+   "musica": "tension",
+   "segmentos": [
+    {
+     "texto": "Despegaron a ciegas entre montañas.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "21 FEBRERO 2008",
+      "sub": "Mérida, Venezuela"
+     }
+    },
+    {
+     "texto": "Mérida, Venezuela, dos mil ocho. Los pilotos del vuelo quinientos dieciocho tienen prisa.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "No esperan los tres minutos que necesitan los instrumentos para funcionar.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "3 MINUTOS",
+      "sub": "no esperaron"
+     }
+    },
+    {
+     "texto": "Toman un atajo entre las montañas… y entran en una nube.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "EL ATAJO",
+      "sub": "Páramo de los Conejos"
+     }
+    },
+    {
+     "texto": "Sin instrumentos y sin ver nada, chocan contra el páramo.",
+     "escena": {
+      "tipo": "foto",
+      "img": 10
+     }
+    },
+    {
+     "texto": "Murieron las cuarenta y seis personas a bordo. Todo por tres minutos. Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=-wtLRmLDCSg",
+      "desde": 10,
+      "dur": 6,
+      "buscar_video": [
+       "Andes fog mountains"
+      ]
+     },
+     "rotulo": "46 VÍCTIMAS"
+    }
+   ]
+  },
+  {
+   "eid": "fb3",
+   "tipo": "fb",
+   "hora_fb": "21:00",
+   "titulo_youtube": "Algo en la carretera APAGABA los carros… 15 llamadas en una noche",
+   "articulo": "Caso ovni de Levelland",
+   "fuente": "https://es.wikipedia.org/wiki/Caso_ovni_de_Levelland",
+   "titulo_video": " ",
+   "titulos_opciones": [
+    "Algo en la carretera APAGABA los carros… 15 llamadas en una noche",
+    "Un HUEVO de luz de 60 metros bloqueó la carretera 🛸",
+    "15 testigos, la misma noche, la misma historia: Levelland 1957",
+    "Su camioneta se apagó sola… y algo pasó volando encima",
+    "La Fuerza Aérea dijo que fue un rayo. Los testigos no le creyeron",
+    "¿Qué apagaba los motores en Levelland, Texas?",
+    "El policía pensó que era una broma… hasta la segunda llamada"
+   ],
+   "descripcion_youtube": "Noche del 2 de noviembre de 1957, Levelland, Texas. Conductores de distintos caminos llaman a la policía: algo brillante en la carretera apaga sus motores y sus luces.\n15 reportes en una sola noche.\n#misterio #ovnis #ridmer",
+   "etiquetas": [
+    "Levelland",
+    "ovni",
+    "Texas 1957",
+    "Proyecto Libro Azul",
+    "misterio",
+    "historias reales",
+    "ridmer"
+   ],
+   "miniatura": {
+    "texto": "15 LLAMADAS"
+   },
+   "gancho": 1,
+   "musica": "misterio",
+   "texto_facebook": "Algo en la carretera apagaba los carros… y la policía recibió 15 llamadas en una sola noche 🛸 #Misterio #Ovnis #Ridmer",
+   "texto_tiktok": "Algo en la carretera APAGABA los carros 🛸 Levelland, Texas, 1957: 15 llamadas a la policía en una noche, todas iguales. La Fuerza Aérea dijo que fue un rayo… ¿tú qué crees? #misterio #ovnis #historiasreales #datoscuriosos #ridmer",
+   "segmentos": [
+    {
+     "texto": "Algo en la carretera apagaba los carros.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "2 NOVIEMBRE 1957",
+      "sub": "Levelland, Texas"
+     }
+    },
+    {
+     "texto": "Texas, noviembre de mil novecientos cincuenta y siete. Un pueblo agrícola: Levelland.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=d76pfqP1T90",
+      "desde": 30,
+      "dur": 6,
+      "buscar_video": [
+       "Texas farmland road"
+      ]
+     },
+     "rotulo": "LEVELLAND HOY"
+    },
+    {
+     "texto": "De noche, dos trabajadores ven un destello azul junto a la carretera.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "DESTELLO AZUL",
+      "sub": "6 km al oeste"
+     }
+    },
+    {
+     "texto": "Su camioneta se apaga. Pedro Saucedo salta y se tira al suelo.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "1950s pickup truck",
+       "1955 Chevrolet pickup"
+      ]
+     }
+    },
+    {
+     "texto": "Algo con forma de cohete pasa encima, con un ruido de trueno y calor.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "COMO UN COHETE",
+      "sub": ""
+     }
+    },
+    {
+     "texto": "Cuando se aleja, el motor vuelve a arrancar como si nada.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "1950s car headlights night",
+       "vintage car night"
+      ]
+     }
+    },
+    {
+     "texto": "En la policía creen que es broma. Una hora después, otra llamada.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "LA POLICÍA",
+      "sub": "Levelland"
+     }
+    },
+    {
+     "texto": "Otro conductor ve un objeto en forma de huevo, brillante, de unos sesenta metros, encima de la carretera.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "FORMA DE HUEVO",
+      "sub": "unos 60 metros"
+     }
+    },
+    {
+     "texto": "Su carro se apaga. El objeto despega… y el carro arranca otra vez.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Levelland Texas",
+       "Hockley County Texas"
+      ]
+     }
+    },
+    {
+     "texto": "Después llaman un estudiante, un granjero, más conductores. Todos cuentan lo mismo.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Levelland Texas 1957",
+       "Levelland UFO newspaper"
+      ]
+     }
+    },
+    {
+     "texto": "Quince reportes en una noche. La Fuerza Aérea dijo: fue un rayo de tormenta.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Project Blue Book",
+       "Project Blue Book report"
+      ]
+     },
+     "rotulo": "15 REPORTES"
+    },
+    {
+     "texto": "¿Un rayo que apaga motores… y los vuelve a encender? Comparte esta historia y sigue a Ridmer.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=oi3ZAIbKtlQ",
+      "desde": 5,
+      "dur": 6,
+      "buscar_video": [
+       "lightning storm night"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb1f",
+   "tipo": "foto",
+   "omitir": true,
+   "hora_foto": "15:30",
+   "titulo_youtube": "12 niños atrapados 9 días dentro de una montaña… y así los sacaron",
+   "texto_foto": "12 niños atrapados dentro de una montaña… y el agua seguía subiendo.\n\n23 de junio de 2018, norte de Tailandia. Después de un entrenamiento, doce chicos de un equipo de fútbol juvenil entran con su entrenador a la cueva Tham Luang. Afuera empieza a llover fuerte. El agua inunda los túneles y les cierra la salida.\n\nAvanzan unos cuatro kilómetros hacia adentro hasta una roca seca. Sin comida, en total oscuridad, toman el agua que gotea de las paredes.\n\nAfuera, miles de personas de todo el mundo se unen al rescate. Al décimo día, dos buzos británicos salen del agua con sus linternas… y cuentan trece cabezas. Todos vivos.\n\nPero sacarlos era casi imposible: kilómetros de túneles inundados y casi ninguno sabía nadar. El plan fue dormirlos con anestesia, ponerles una máscara y sacarlos buceando, uno por uno, atados a un buzo. Un exbuzo de la Marina tailandesa murió llevando oxígeno.\n\nEl 10 de julio salió el último. Los trece sobrevivieron.\n\n¿Tú habrías aguantado nueve días a oscuras?\n#HistoriasReales #Supervivencia #DatosCuriosos"
+  },
+  {
+   "eid": "fb2f",
+   "tipo": "foto",
+   "omitir": true,
+   "hora_foto": "20:00",
+   "titulo_youtube": "Algo brillante en la carretera apagaba los carros… y llamaron 15 personas a la policía",
+   "texto_foto": "Algo en la carretera apagaba los carros… y nadie sabe qué fue.\n\nNoche del 2 de noviembre de 1957, Levelland, Texas, un pueblo agrícola de unos 10.000 habitantes. Dos trabajadores del campo llaman a la policía: vieron un destello azul, su camioneta se apagó sola y algo con forma de cohete pasó encima de ellos con un ruido de trueno y mucho calor. Cuando se alejó, el motor volvió a arrancar. El policía pensó que era una broma.\n\nUna hora después llamó otro conductor: un objeto en forma de huevo, brillante, de unos 60 metros, estaba sobre la carretera. Su carro se apagó… y volvió a funcionar cuando el objeto despegó.\n\nLuego un estudiante, un granjero, más conductores. Hasta el sheriff vio una luz roja cruzando el cielo. Quince reportes en una sola noche.\n\nLa Fuerza Aérea mandó a un sargento, habló con tres testigos y concluyó que fue un rayo de una tormenta eléctrica.\n\n¿Tú crees que fue un rayo?\n#Misterio #Ovnis #DatosCuriosos"
+  }
+ ]
+}
