@@ -272,8 +272,14 @@
     {
      "texto": "Alcatraz: una cárcel en una isla rodeada de agua helada. Nadie podía escapar.",
      "escena": {
-      "tipo": "foto",
-      "img": 3
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=v4IVg9_HvIg",
+      "desde": 15,
+      "dur": 6,
+      "buscar_video": [
+       "Alcatraz Island",
+       "San Francisco Bay"
+      ]
      }
     },
     {
@@ -338,12 +344,12 @@
      "texto": "En la mañana, los guardias descubrieron el engaño.",
      "escena": {
       "tipo": "video",
-      "url": "https://www.youtube.com/watch?v=GjWqqxkAiWc",
-      "desde": 30,
+      "url": "https://www.youtube.com/watch?v=eh0T_2e83KU",
+      "desde": 25,
       "dur": 6,
       "buscar_video": [
        "Alcatraz Island",
-       "Alcatraz cellhouse"
+       "Alcatraz Federal Penitentiary"
       ]
      }
     },
@@ -429,11 +435,12 @@
      "texto": "El FBI dice que se ahogaron, pero nunca hallaron sus cuerpos.",
      "escena": {
       "tipo": "video",
-      "url": "https://www.youtube.com/watch?v=GjWqqxkAiWc",
-      "desde": 30,
+      "url": "https://www.youtube.com/watch?v=eh0T_2e83KU",
+      "desde": 25,
       "dur": 6,
       "buscar_video": [
-       "Alcatraz Island"
+       "Alcatraz Island",
+       "Alcatraz Federal Penitentiary"
       ]
      }
     },
