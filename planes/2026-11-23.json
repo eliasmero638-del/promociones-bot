@@ -1,0 +1,1401 @@
+{
+ "fecha": "2026-11-23",
+ "modo": "claude",
+ "videos": [
+  {
+   "eid": "fb1",
+   "tipo": "fb",
+   "hora_fb": "14:00",
+   "articulo": "Mary Celeste",
+   "fuente": "https://es.wikipedia.org/wiki/Mary_Celeste",
+   "titulo_video": " ",
+   "titulo_youtube": "Encontraron un barco navegando SOLO… y no había nadie a bordo",
+   "titulos_opciones": [
+    "Encontraron un barco navegando SOLO… y no había nadie a bordo",
+    "10 personas desaparecieron de un barco… y la comida seguía en la mesa",
+    "¿Qué pasó en el Mary Celeste? El barco fantasma que nadie pudo explicar",
+    "El barco apareció en medio del océano… VACÍO",
+    "Nadie a bordo, comida para meses y el bote salvavidas desaparecido",
+    "El misterio de 1872 que NADIE ha podido resolver 🚢",
+    "Subieron a bordo… y el barco estaba completamente vacío"
+   ],
+   "descripcion_youtube": "En 1872 un barco apareció navegando solo en medio del Atlántico. Sin capitán, sin tripulación… pero con comida para meses.\n¿Qué le pasó a la gente del Mary Celeste?\n#misterio #historiasreales #ridmer",
+   "etiquetas": [
+    "Mary Celeste",
+    "barco fantasma",
+    "misterio",
+    "historias reales",
+    "1872",
+    "Ridmer"
+   ],
+   "texto_facebook": "Encontraron un barco navegando solo en medio del océano… y no había NADIE a bordo 🚢 #HistoriasReales #Misterio #DatosCuriosos",
+   "texto_tiktok": "Un barco navegando SOLO… y no había nadie a bordo 🚢 En 1872 encontraron el Mary Celeste en medio del Atlántico: comida para meses, la carga intacta… y 10 personas desaparecidas. ¿Qué crees que pasó? #misterio #historiasreales #barcofantasma #datoscuriosos #ridmer",
+   "miniatura": {
+    "img": 5,
+    "texto": "NADIE A BORDO"
+   },
+   "gancho": 1,
+   "musica": "misterio",
+   "segmentos": [
+    {
+     "texto": "Un barco navegando solo… sin nadie a bordo.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "4 DIC 1872",
+      "sub": "Océano Atlántico"
+     }
+    },
+    {
+     "texto": "Cuatro de diciembre de mil ochocientos setenta y dos. Cerca de las Azores, otro barco ve un velero que avanza sin rumbo.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "Es el Mary Celeste. Salió de Nueva York un mes antes.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "Se acercan en un bote, suben a bordo… y no hay nadie.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "A BORDO",
+      "sub": "Mary Celeste"
+     }
+    },
+    {
+     "texto": "Las velas están a medio desplegar. Y falta el bote salvavidas.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=BeiAEgCYE98",
+      "desde": 20,
+      "dur": 6,
+      "buscar_video": [
+       "brigantine sailing",
+       "tall ship sailing ocean"
+      ]
+     }
+    },
+    {
+     "texto": "Pero hay comida para meses, y las cosas de todos siguen en su lugar.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "EL CAMAROTE",
+      "sub": "Mary Celeste"
+     }
+    },
+    {
+     "texto": "La carga de alcohol está casi intacta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     }
+    },
+    {
+     "texto": "La última anotación del cuaderno era de diez días antes.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "25 NOV 1872",
+      "sub": "Última anotación del cuaderno"
+     }
+    },
+    {
+     "texto": "Iban diez personas: el capitán Briggs, su esposa, su hijita y siete marineros.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Benjamin Spooner Briggs",
+       "Benjamin Briggs captain"
+      ]
+     }
+    },
+    {
+     "texto": "Se habló de motín, de piratas, de vapores de alcohol… hasta de un calamar gigante.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Pero nunca se supo nada de ninguno de ellos.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=WZuV-ZT1wbI",
+      "desde": 30,
+      "dur": 6,
+      "buscar_video": [
+       "sailing ship open ocean"
+      ]
+     }
+    },
+    {
+     "texto": "¿Tú qué crees que pasó? Comparte esta historia y sigue a Ridmer.",
+     "escena": {
+      "tipo": "foto",
+      "img": 10
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb1s",
+   "tipo": "short",
+   "encargo": "fb1",
+   "hora_youtube": "14:00",
+   "articulo": "Mary Celeste",
+   "fuente": "https://es.wikipedia.org/wiki/Mary_Celeste",
+   "titulo_video": " ",
+   "titulo_youtube": "Un barco navegando solo… y no había NADIE a bordo #shorts",
+   "titulos_opciones": [
+    "Un barco navegando solo… y no había NADIE a bordo #shorts",
+    "El barco fantasma de 1872 #shorts",
+    "10 personas desaparecieron de este barco #shorts",
+    "Comida para meses… y ni una persona a bordo #shorts",
+    "¿Qué pasó en el Mary Celeste? #shorts",
+    "Subieron al barco… y estaba VACÍO #shorts"
+   ],
+   "descripcion_youtube": "El Mary Celeste apareció navegando solo en 1872. Nadie sabe qué pasó.\n#misterio #shorts #ridmer",
+   "etiquetas": [
+    "Mary Celeste",
+    "barco fantasma",
+    "misterio",
+    "shorts"
+   ],
+   "miniatura": {
+    "img": 5,
+    "texto": "NADIE A BORDO"
+   },
+   "gancho": 1,
+   "musica": "misterio",
+   "segmentos": [
+    {
+     "texto": "Un barco navegando solo… sin nadie a bordo.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "4 DIC 1872",
+      "sub": "Océano Atlántico"
+     }
+    },
+    {
+     "texto": "Mil ochocientos setenta y dos. Unos marineros encuentran al Mary Celeste a la deriva, cerca de las Azores.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "Suben a bordo… y no hay nadie.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "A BORDO",
+      "sub": "Mary Celeste"
+     }
+    },
+    {
+     "texto": "Falta el bote salvavidas, pero hay comida para meses y todo sigue en su lugar.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=BeiAEgCYE98",
+      "desde": 20,
+      "dur": 6,
+      "buscar_video": [
+       "brigantine sailing"
+      ]
+     }
+    },
+    {
+     "texto": "Diez personas, entre ellas el capitán, su esposa y su hijita, desaparecieron.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Benjamin Spooner Briggs",
+       "Benjamin Briggs captain"
+      ]
+     }
+    },
+    {
+     "texto": "Nunca se supo nada de ellos. Hasta hoy es un misterio. Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "img": 10
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb2",
+   "tipo": "fb",
+   "hora_fb": "18:30",
+   "articulo": "Frank Morris",
+   "fuente": "https://es.wikipedia.org/wiki/Frank_Morris",
+   "titulo_video": " ",
+   "titulo_youtube": "Escaparon de ALCATRAZ con cucharas… y nunca los encontraron",
+   "titulos_opciones": [
+    "Escaparon de ALCATRAZ con cucharas… y nunca los encontraron",
+    "Dejaron CABEZAS FALSAS en sus camas y se fugaron de Alcatraz",
+    "La única fuga de Alcatraz que nadie pudo resolver",
+    "Una balsa de impermeables y tres hombres que desaparecieron",
+    "¿Sobrevivieron? El FBI todavía no lo sabe",
+    "Los guardias entraron a la celda… y encontraron una cabeza de yeso 😳",
+    "Así escaparon de la cárcel más segura del mundo"
+   ],
+   "descripcion_youtube": "En 1962 tres presos escaparon de Alcatraz con un plan increíble. Nunca fueron encontrados.\n#misterio #alcatraz #historiasreales #ridmer",
+   "etiquetas": [
+    "Alcatraz",
+    "Frank Morris",
+    "fuga",
+    "hermanos Anglin",
+    "misterio",
+    "historias reales"
+   ],
+   "texto_facebook": "Dejaron cabezas falsas en sus camas y escaparon de Alcatraz… y nunca los encontraron 🏝️ #HistoriasReales #Misterio #DatosCuriosos",
+   "texto_tiktok": "Escaparon de ALCATRAZ… y nunca los encontraron 🏝️ En 1962 tres presos cavaron con cucharas, dejaron cabezas de yeso en sus camas y huyeron en una balsa de impermeables. El caso sigue abierto. #alcatraz #misterio #historiasreales #datoscuriosos #ridmer",
+   "miniatura": {
+    "img": 2,
+    "texto": "ESCAPARON"
+   },
+   "gancho": 1,
+   "musica": "tension",
+   "segmentos": [
+    {
+     "texto": "Escaparon de Alcatraz… y nunca los encontraron.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "11 JUN 1962",
+      "sub": "Bahía de San Francisco"
+     }
+    },
+    {
+     "texto": "Alcatraz: una cárcel en una isla rodeada de agua helada. Nadie podía escapar.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Ahí estaba Frank Morris, un preso con una inteligencia fuera de lo común.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Frank Morris Alcatraz mugshot",
+       "Frank Lee Morris"
+      ]
+     }
+    },
+    {
+     "texto": "Junto a los hermanos John y Clarence Anglin, armó un plan durante meses.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "Con cortaúñas y cucharas raspaban el cemento alrededor de la rejilla de ventilación de sus celdas.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "LA CELDA",
+      "sub": "Bloque B · Alcatraz"
+     }
+    },
+    {
+     "texto": "Así abrieron un hueco hacia un pasillo de servicio.",
+     "escena": {
+      "tipo": "foto",
+      "img": 10
+     }
+    },
+    {
+     "texto": "Para engañar a los guardias, hicieron cabezas falsas de yeso con pelo real de la barbería.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     },
+     "rotulo": "CABEZA FALSA"
+    },
+    {
+     "texto": "Con impermeables pegados armaron una balsa y chalecos salvavidas.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Alcatraz escape raft raincoats",
+       "Alcatraz raft 1962"
+      ]
+     }
+    },
+    {
+     "texto": "La noche del once de junio dejaron las cabezas en sus camas, subieron al techo y bajaron al agua.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "NOCHE DEL 11 DE JUNIO",
+      "sub": "Alcatraz"
+     }
+    },
+    {
+     "texto": "En la mañana, los guardias descubrieron el engaño.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=GjWqqxkAiWc",
+      "desde": 30,
+      "dur": 6,
+      "buscar_video": [
+       "Alcatraz Island",
+       "Alcatraz cellhouse"
+      ]
+     }
+    },
+    {
+     "texto": "El FBI dijo que se ahogaron. Pero nunca hallaron sus cuerpos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 13
+     }
+    },
+    {
+     "texto": "Y el caso sigue abierto. Comparte esta historia y sigue a Ridmer.",
+     "escena": {
+      "tipo": "foto",
+      "img": 12
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb2s",
+   "tipo": "short",
+   "encargo": "fb2",
+   "hora_youtube": "19:00",
+   "articulo": "Frank Morris",
+   "fuente": "https://es.wikipedia.org/wiki/Frank_Morris",
+   "titulo_video": " ",
+   "titulo_youtube": "Escaparon de Alcatraz… y nunca los encontraron #shorts",
+   "titulos_opciones": [
+    "Escaparon de Alcatraz… y nunca los encontraron #shorts",
+    "Cabezas falsas en la cama: la fuga de Alcatraz #shorts",
+    "Cavaron con cucharas y escaparon #shorts",
+    "¿Sobrevivieron a Alcatraz? #shorts",
+    "La fuga que el FBI no pudo cerrar #shorts",
+    "Así escaparon de ALCATRAZ #shorts"
+   ],
+   "descripcion_youtube": "1962: tres presos escapan de Alcatraz y desaparecen para siempre.\n#alcatraz #shorts #ridmer",
+   "etiquetas": [
+    "Alcatraz",
+    "fuga",
+    "Frank Morris",
+    "shorts"
+   ],
+   "miniatura": {
+    "img": 2,
+    "texto": "ESCAPARON"
+   },
+   "gancho": 1,
+   "musica": "tension",
+   "segmentos": [
+    {
+     "texto": "Escaparon de Alcatraz… y nunca los encontraron.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "11 JUN 1962",
+      "sub": "Bahía de San Francisco"
+     }
+    },
+    {
+     "texto": "Mil novecientos sesenta y dos. Frank Morris y los hermanos Anglin raspaban con cucharas el cemento de sus celdas.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "LA CELDA",
+      "sub": "Alcatraz"
+     }
+    },
+    {
+     "texto": "Hicieron cabezas falsas con pelo real para engañar a los guardias.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Una noche dejaron las cabezas en sus camas y huyeron en una balsa de impermeables.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "NOCHE DEL 11 DE JUNIO",
+      "sub": "Alcatraz"
+     }
+    },
+    {
+     "texto": "El FBI dice que se ahogaron, pero nunca hallaron sus cuerpos.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=GjWqqxkAiWc",
+      "desde": 30,
+      "dur": 6,
+      "buscar_video": [
+       "Alcatraz Island"
+      ]
+     }
+    },
+    {
+     "texto": "Y el caso sigue abierto. Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "img": 13
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb3",
+   "tipo": "fb",
+   "hora_fb": "21:00",
+   "articulo": "Tsutomu Yamaguchi",
+   "fuente": "https://es.wikipedia.org/wiki/Tsutomu_Yamaguchi",
+   "titulo_video": " ",
+   "nota": "Sin encargo fb3 hoy: tema propio de supervivencia (lista FUNCIONAN). Fotos con buscar.",
+   "titulo_youtube": "Sobrevivió a la bomba de Hiroshima… y TRES DÍAS después estaba en Nagasaki",
+   "titulos_opciones": [
+    "Sobrevivió a la bomba de Hiroshima… y TRES DÍAS después estaba en Nagasaki",
+    "El hombre que sobrevivió a DOS bombas atómicas",
+    "Le contaba a su jefe lo de Hiroshima… cuando vio la misma luz otra vez",
+    "Dos bombas atómicas, tres días y un solo hombre que sobrevivió a ambas",
+    "¿El hombre con más suerte o menos suerte de la historia?",
+    "Huyó de Hiroshima a su casa… y la segunda bomba cayó en su ciudad ☢️"
+   ],
+   "descripcion_youtube": "Tsutomu Yamaguchi estaba en Hiroshima el 6 de agosto de 1945… y en Nagasaki el 9.\n#historiasreales #supervivencia #ridmer",
+   "etiquetas": [
+    "Tsutomu Yamaguchi",
+    "Hiroshima",
+    "Nagasaki",
+    "sobreviviente",
+    "historias reales"
+   ],
+   "texto_facebook": "Sobrevivió a la bomba de Hiroshima… y tres días después estaba en Nagasaki ☢️ #HistoriasReales #Supervivencia #DatosCuriosos",
+   "texto_tiktok": "Sobrevivió a DOS bombas atómicas ☢️ Tsutomu Yamaguchi estaba en Hiroshima el 6 de agosto de 1945, volvió herido a su casa en Nagasaki… y el 9 de agosto vio la misma luz otra vez. #historiasreales #supervivencia #datoscuriosos #japon #ridmer",
+   "miniatura": {
+    "texto": "DOS BOMBAS"
+   },
+   "gancho": 1,
+   "musica": "tension",
+   "segmentos": [
+    {
+     "texto": "Sobrevivió a dos bombas atómicas.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "6 AGO 1945",
+      "sub": "Hiroshima · Japón"
+     }
+    },
+    {
+     "texto": "Tsutomu Yamaguchi tenía veintinueve años. Diseñaba barcos y vivía en Nagasaki.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Tsutomu Yamaguchi",
+       "Yamaguchi Tsutomu hibakusha"
+      ]
+     }
+    },
+    {
+     "texto": "En mil novecientos cuarenta y cinco, su empresa lo mandó tres meses a trabajar a Hiroshima.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 34.3853,
+      "lon": 132.4553,
+      "lugar": "Hiroshima",
+      "km": 8
+     }
+    },
+    {
+     "texto": "El seis de agosto, su último día, iba al astillero cuando vio un avión… y luego un destello enorme.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=iDkK1Rin8EI",
+      "desde": 5,
+      "dur": 6,
+      "buscar_video": [
+       "Hiroshima 1945"
+      ]
+     }
+    },
+    {
+     "texto": "Estaba a tres kilómetros de la explosión.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Hiroshima atomic bomb mushroom cloud",
+       "Hiroshima mushroom cloud"
+      ]
+     },
+     "rotulo": "A 3 KM"
+    },
+    {
+     "texto": "Se quemó el lado izquierdo del cuerpo, se le rompieron los tímpanos y durmió en un refugio.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Hiroshima Prefectural Industrial Promotion Hall 1945",
+       "Genbaku Dome 1945"
+      ]
+     }
+    },
+    {
+     "texto": "Al día siguiente, herido, tomó un tren de vuelta a su casa: a Nagasaki.",
+     "escena": {
+      "tipo": "ruta",
+      "a": [
+       34.3853,
+       132.4553
+      ],
+      "b": [
+       32.7503,
+       129.8779
+      ],
+      "na": "HIROSHIMA",
+      "nb": "NAGASAKI"
+     }
+    },
+    {
+     "texto": "El nueve de agosto, con vendas, volvió a la oficina. Le contaba a su jefe lo de Hiroshima…",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "9 AGO 1945",
+      "sub": "Nagasaki · 11:02 a. m."
+     }
+    },
+    {
+     "texto": "Cuando la misma luz blanca llenó la ventana. Otra vez, a tres kilómetros.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Nagasaki atomic bomb mushroom cloud",
+       "Nagasaki bomb 1945"
+      ]
+     }
+    },
+    {
+     "texto": "Y otra vez sobrevivió. Vivió hasta los noventa y tres años.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=9_VsNZl6LGU",
+      "desde": 10,
+      "dur": 6,
+      "buscar_video": [
+       "Nagasaki Peace Park"
+      ]
+     }
+    },
+    {
+     "texto": "Japón lo reconoció oficialmente como sobreviviente de las dos bombas. Comparte esta historia y sigue a Ridmer.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Tsutomu Yamaguchi",
+       "Nagasaki Peace Statue"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb1f",
+   "tipo": "foto",
+   "omitir": true,
+   "hora_foto": "15:30",
+   "titulo_youtube": "Encontraron un barco navegando solo… y no había nadie a bordo",
+   "texto_foto": "Encontraron un barco navegando solo en medio del océano… y no había NADIE a bordo.\n\n4 de diciembre de 1872. Cerca de las islas Azores, los marineros del Dei Gratia ven un velero que avanza raro, sin rumbo. Es el Mary Celeste, que había salido de Nueva York hacia Génova casi un mes antes.\n\nSuben a bordo y no hay nadie. Las velas están a medio desplegar y falta el bote salvavidas. Pero el barco está en buen estado, hay comida para meses, la carga de alcohol está casi intacta y las cosas del capitán y de los marineros siguen en su lugar. La última anotación del cuaderno era de diez días antes.\n\nIban diez personas: el capitán Benjamin Briggs, su esposa, su hija pequeña y siete marineros. Nunca se volvió a saber de ninguno.\n\nSe habló de motín, de piratas, de los vapores del alcohol, de una tromba marina… Nada se pudo probar.\n\n¿Tú qué crees que pasó con ellos?\n#HistoriasReales #Misterio #DatosCuriosos"
+  },
+  {
+   "eid": "fb2f",
+   "tipo": "foto",
+   "omitir": true,
+   "hora_foto": "20:00",
+   "titulo_youtube": "Sobrevivió a la bomba de Hiroshima… y tres días después estaba en Nagasaki",
+   "texto_foto": "Sobrevivió a la bomba de Hiroshima… y tres días después estaba en Nagasaki.\n\nTsutomu Yamaguchi tenía 29 años y diseñaba barcos. En 1945 su empresa lo mandó tres meses a Hiroshima. El 6 de agosto era su último día: iba hacia el astillero cuando vio un avión y luego un destello enorme. Estaba a 3 kilómetros de la explosión.\n\nSe quemó el lado izquierdo del cuerpo, se le rompieron los tímpanos y pasó la noche en un refugio. Al día siguiente, herido, tomó un tren de vuelta a su casa… en Nagasaki.\n\nEl 9 de agosto, lleno de vendas, volvió a su oficina. Le estaba contando a su jefe lo que había vivido en Hiroshima cuando la misma luz blanca llenó la ventana. Otra vez a 3 kilómetros. Y otra vez sobrevivió.\n\nVivió hasta los 93 años y en 2009 Japón lo reconoció oficialmente como sobreviviente de las dos bombas.\n\n¿Tú crees que fue suerte o mala suerte?\n#HistoriasReales #Supervivencia #DatosCuriosos"
+  },
+  {
+   "eid": "largo1",
+   "tipo": "largo",
+   "hora_youtube": "18:00",
+   "articulo": "Hiroo Onoda",
+   "fuente": "https://es.wikipedia.org/wiki/Hiroo_Onoda",
+   "titulo_video": " ",
+   "nota": "Hoy hay largo (hay_largo) sin encargo de largo: tema propio de la lista FUNCIONAN (Onoda fue el reel más visto, 1.368).",
+   "titulo_youtube": "Siguió en la GUERRA 29 años… porque nadie le avisó que había terminado",
+   "titulos_opciones": [
+    "Siguió en la GUERRA 29 años… porque nadie le avisó que había terminado",
+    "El soldado que peleó una guerra que ya NO existía durante 29 años",
+    "Le cayeron papeles del cielo diciendo que la guerra terminó… y no los creyó",
+    "29 AÑOS escondido en la selva esperando una orden",
+    "Solo se rendiría si su comandante venía en persona… y vino 30 años después",
+    "La increíble historia de Hiroo Onoda, el último soldado",
+    "¿Por qué este soldado no se rindió hasta 1974?"
+   ],
+   "descripcion_youtube": "En 1974 un soldado japonés salió de la selva de Filipinas para rendirse… 29 años después de que terminara la guerra.\nEsta es la historia de Hiroo Onoda: la orden que nunca dejó de cumplir, los papeles que cayeron del cielo y el aventurero que por fin lo encontró.\n#historiasreales #misterio #segundaguerramundial #ridmer",
+   "etiquetas": [
+    "Hiroo Onoda",
+    "soldado japonés",
+    "Lubang",
+    "Segunda Guerra Mundial",
+    "historias reales",
+    "Ridmer",
+    "Norio Suzuki"
+   ],
+   "texto_facebook": "Siguió en la guerra 29 años… porque no creyó que había terminado #HistoriasReales #Misterio #DatosCuriosos",
+   "miniatura": {
+    "texto": "29 AÑOS EN LA SELVA"
+   },
+   "gancho": 2,
+   "musica": "epico",
+   "segmentos": [
+    {
+     "texto": "Once de marzo de mil novecientos setenta y cuatro. Un soldado japonés sale de la selva de Filipinas, con su uniforme remendado y su rifle limpio.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "MARZO DE 1974",
+      "sub": "Isla Lubang · Filipinas"
+     }
+    },
+    {
+     "texto": "Viene a rendirse. El problema es que la guerra por la que peleaba había terminado hacía veintinueve años.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=Da7IdbCZqOU",
+      "desde": 5,
+      "dur": 7,
+      "buscar_video": [
+       "Philippine jungle",
+       "tropical rainforest"
+      ]
+     }
+    },
+    {
+     "texto": "Esta es la historia de Hiroo Onoda, el soldado que nunca se enteró de que la guerra había terminado. O que no quiso creerlo.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Hiroo Onoda",
+       "Onoda Hiroo 1944"
+      ]
+     }
+    },
+    {
+     "texto": "Para entenderla, hay que volver a mil novecientos cuarenta y cuatro.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "1944",
+      "sub": "Japón"
+     }
+    },
+    {
+     "texto": "Hiroo Onoda nació en mil novecientos veintidós, en un pueblo de Japón. De joven trabajó para una empresa comercial en China.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Wakayama Prefecture countryside",
+       "Kainan Wakayama"
+      ]
+     }
+    },
+    {
+     "texto": "Cuando estalló la guerra, lo llamaron al ejército. Y lo eligieron para algo especial: una escuela secreta donde entrenaban espías y soldados de guerrilla.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Nakano School Japan army",
+       "Imperial Japanese Army soldiers 1944"
+      ]
+     }
+    },
+    {
+     "texto": "Ahí le enseñaron a esconderse, a sobrevivir con lo que hubiera, a no confiar en nada y a no dejarse atrapar.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Imperial Japanese Army training",
+       "Japanese soldiers jungle 1944"
+      ]
+     }
+    },
+    {
+     "texto": "A fines de mil novecientos cuarenta y cuatro, con veintidós años, lo mandaron a una isla pequeña de Filipinas llamada Lubang.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 13.82,
+      "lon": 120.14,
+      "lugar": "Isla Lubang",
+      "km": 30
+     }
+    },
+    {
+     "texto": "Antes de partir, su comandante, el mayor Yoshimi Taniguchi, le dio una orden que marcaría toda su vida.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "LA ORDEN",
+      "sub": "Diciembre de 1944"
+     }
+    },
+    {
+     "texto": "Le prohibió rendirse y le prohibió quitarse la vida. Le dijo que podían pasar tres años, o cinco, pero que pasara lo que pasara, volverían por él.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "«VOLVEREMOS POR TI»",
+      "sub": "Mayor Yoshimi Taniguchi"
+     }
+    },
+    {
+     "texto": "Su misión: hacer todo lo posible para que el enemigo no pudiera usar la isla.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Lubang Island",
+       "Lubang Island Philippines"
+      ]
+     }
+    },
+    {
+     "texto": "Si la isla caía, debía quedarse escondido y esperar a que el ejército japonés regresara.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Lubang Island coast",
+       "Lubang Island Philippines"
+      ]
+     }
+    },
+    {
+     "texto": "En febrero de mil novecientos cuarenta y cinco, las tropas estadounidenses llegaron a Lubang. En pocos días, casi todos los soldados japoneses de la isla se rindieron o cayeron.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "US troops Philippines 1945",
+       "Philippines campaign 1945"
+      ]
+     }
+    },
+    {
+     "texto": "Onoda y otros tres soldados se metieron en lo más profundo de la selva: el soldado Yuichi Akatsu, el cabo Shoichi Shimada y el soldado Kinshichi Kozuka.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "4 HOMBRES",
+      "sub": "Selva de Lubang"
+     }
+    },
+    {
+     "texto": "Desde ese momento, la selva fue su casa. Y su cuartel.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=0NfoMEtXmA4",
+      "desde": 40,
+      "dur": 6,
+      "buscar_video": [
+       "Philippine jungle",
+       "tropical rainforest"
+      ]
+     }
+    },
+    {
+     "texto": "Unos meses después, en agosto de mil novecientos cuarenta y cinco, Japón se rindió. La Segunda Guerra Mundial había terminado.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Japanese surrender USS Missouri",
+       "Surrender of Japan 1945"
+      ]
+     }
+    },
+    {
+     "texto": "Pero en la selva de Lubang nadie se enteró. O, mejor dicho, nadie lo creyó.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "AGOSTO DE 1945",
+      "sub": "La guerra termina"
+     }
+    },
+    {
+     "texto": "A fines de ese año, empezaron a caer papeles del cielo.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "PAPELES DEL CIELO",
+      "sub": "Fines de 1945"
+     }
+    },
+    {
+     "texto": "Eran volantes que decían que la guerra había terminado, y que pedían a los soldados escondidos que salieran.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "WWII leaflet Japanese surrender",
+       "propaganda leaflet 1945"
+      ]
+     }
+    },
+    {
+     "texto": "Onoda y sus hombres los leyeron con cuidado. Y decidieron que eran falsos.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "jungle leaflet",
+       "old paper leaflet"
+      ]
+     }
+    },
+    {
+     "texto": "Encontraron detalles que no les cuadraban, y pensaron que era un truco del enemigo para sacarlos de su escondite. Justo lo que les habían enseñado a esperar.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Lubang jungle",
+       "Philippine rainforest"
+      ]
+     }
+    },
+    {
+     "texto": "Así que siguieron escondidos. Vivían moviéndose de un lugar a otro, durmiendo en refugios de hojas y ramas.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=A7zdWBHPj48",
+      "desde": 60,
+      "dur": 6,
+      "buscar_video": [
+       "Philippine jungle",
+       "tropical rainforest"
+      ]
+     }
+    },
+    {
+     "texto": "Comían plátanos, cocos y arroz que tomaban de los campos. A veces mataban una vaca y secaban la carne para que les durara.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "coconut palm Philippines",
+       "banana plants jungle"
+      ]
+     }
+    },
+    {
+     "texto": "Cuidaban sus rifles como si fueran lo más valioso del mundo, y remendaban la ropa con lo que encontraban.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Arisaka rifle",
+       "Type 99 Arisaka"
+      ]
+     }
+    },
+    {
+     "texto": "En la temporada de lluvias pasaban días enteros mojados, aguantando los mosquitos y la humedad de la selva.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "tropical rain jungle",
+       "monsoon rain forest"
+      ]
+     }
+    },
+    {
+     "texto": "Pero esos años no fueron inocentes. Hubo choques con los habitantes de la isla y con la policía, y hubo muertos. Es la parte más oscura de esta historia.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Lubang Island Philippines village",
+       "Lubang Occidental Mindoro"
+      ]
+     }
+    },
+    {
+     "texto": "En mil novecientos cuarenta y nueve, Akatsu ya no aguantó más. Una noche se fue solo y, meses después, se entregó.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "1950",
+      "sub": "Akatsu se rinde"
+     }
+    },
+    {
+     "texto": "Fue así como el mundo supo que todavía quedaban soldados japoneses escondidos en Lubang.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Philippine newspaper 1950",
+       "old newspaper"
+      ]
+     }
+    },
+    {
+     "texto": "Para Onoda fue una traición. Y un peligro: ahora el enemigo sabía dónde buscarlos. Se adentraron todavía más en la selva.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "dense jungle Philippines",
+       "Philippine jungle"
+      ]
+     }
+    },
+    {
+     "texto": "Desde Japón siguieron intentando. Lanzaron fotos de sus familias y cartas escritas por ellos.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "old family photograph Japan",
+       "Japanese family 1950s"
+      ]
+     }
+    },
+    {
+     "texto": "Incluso llegaron grupos de búsqueda con altavoces. Entre ellos, uno de sus hermanos, que le gritaba que saliera.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "«¡HIROO, SAL!»",
+      "sub": "Búsquedas de 1959"
+     }
+    },
+    {
+     "texto": "Onoda lo escuchó. Y aun así pensó que era una trampa: que el enemigo había obligado a su hermano a decir eso.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "loudspeaker search party",
+       "megaphone jungle"
+      ]
+     }
+    },
+    {
+     "texto": "En mil novecientos cincuenta y cuatro cayó Shimada. Quedaron solo dos: Onoda y Kozuka.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "1954",
+      "sub": "Quedan dos"
+     }
+    },
+    {
+     "texto": "Los dos siguieron durante casi veinte años más. Juntos. Convencidos de que su guerra seguía.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=SS0K-WHZOXE",
+      "desde": 10,
+      "dur": 6,
+      "buscar_video": [
+       "Philippine jungle",
+       "tropical rainforest"
+      ]
+     }
+    },
+    {
+     "texto": "Conocían cada sendero de la isla. Cambiaban de escondite todo el tiempo para que nadie los encontrara.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "jungle trail Philippines",
+       "rainforest path"
+      ]
+     }
+    },
+    {
+     "texto": "Encontraban radios y periódicos, y aun así lo entendían a su manera: pensaban que todo eso era mentira, que Japón seguía peleando.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "transistor radio 1960s",
+       "old radio"
+      ]
+     }
+    },
+    {
+     "texto": "En mil novecientos cincuenta y nueve, en Japón ya lo habían declarado muerto. Pero él seguía ahí.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "1959",
+      "sub": "Declarado muerto en Japón"
+     }
+    },
+    {
+     "texto": "En mil novecientos setenta y dos, Kozuka también cayó en la isla. Onoda se quedó completamente solo.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "1972",
+      "sub": "Solo en la selva"
+     }
+    },
+    {
+     "texto": "Tenía cincuenta años. Llevaba veintisiete en la selva. Y seguía esperando a que su comandante volviera por él.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "27 AÑOS",
+      "sub": "Esperando una orden"
+     }
+    },
+    {
+     "texto": "Y entonces apareció alguien que nadie esperaba.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "1974",
+      "sub": "Isla Lubang"
+     }
+    },
+    {
+     "texto": "Se llamaba Norio Suzuki. Era un joven japonés, aventurero, que había dejado la universidad para recorrer el mundo.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Norio Suzuki explorer",
+       "Norio Suzuki Onoda"
+      ]
+     }
+    },
+    {
+     "texto": "Decía que iba a buscar tres cosas, en este orden: al teniente Onoda, a un oso panda y al abominable hombre de las nieves.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "ONODA · PANDA · YETI",
+      "sub": "La lista de Norio Suzuki"
+     }
+    },
+    {
+     "texto": "Llegó a Lubang en febrero de mil novecientos setenta y cuatro, armó su campamento en la selva… y esperó.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "FEBRERO 1974",
+      "sub": "Selva de Lubang"
+     }
+    },
+    {
+     "texto": "Y en pocos días, Onoda lo encontró a él.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "20 DE FEBRERO DE 1974",
+      "sub": "Lubang"
+     }
+    },
+    {
+     "texto": "Hablaron. Suzuki le dijo que la guerra había terminado hacía décadas. Pero Onoda le respondió que no se iba a rendir.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Hiroo Onoda Norio Suzuki",
+       "Onoda Suzuki 1974"
+      ]
+     }
+    },
+    {
+     "texto": "Antes de despedirse, se tomaron fotos juntos. Esas fotos serían la prueba de que Onoda seguía vivo.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Hiroo Onoda Norio Suzuki photo",
+       "Onoda Suzuki 1974"
+      ]
+     }
+    },
+    {
+     "texto": "Solo saldría si su comandante venía en persona y le daba la orden.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "UNA SOLA CONDICIÓN",
+      "sub": "Que su comandante viniera"
+     }
+    },
+    {
+     "texto": "Suzuki volvió a Japón con esas fotos. Y el gobierno buscó al mayor Taniguchi.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Hiroo Onoda 1974 photo",
+       "Onoda 1974"
+      ]
+     }
+    },
+    {
+     "texto": "Taniguchi ya era un señor mayor que vendía libros. Aceptó viajar a la isla.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Yoshimi Taniguchi",
+       "bookstore Japan 1970s"
+      ]
+     }
+    },
+    {
+     "texto": "El nueve de marzo de mil novecientos setenta y cuatro, en el punto acordado de la selva, Taniguchi leyó en voz alta las órdenes: todas las operaciones habían terminado.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "9 DE MARZO DE 1974",
+      "sub": "La última orden"
+     }
+    },
+    {
+     "texto": "Onoda llevaba el uniforme remendado, su rifle en perfecto estado y cientos de balas. Treinta años después, seguía listo.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "29 AÑOS",
+      "sub": "Fiel a una orden"
+     }
+    },
+    {
+     "texto": "Onoda se quedó quieto. Después contó que en ese momento sintió que todo se le venía abajo, que esos treinta años habían sido en vano.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=Da7IdbCZqOU",
+      "desde": 25,
+      "dur": 7,
+      "buscar_video": [
+       "Philippine jungle",
+       "tropical rainforest"
+      ]
+     }
+    },
+    {
+     "texto": "Dos días después entregó su espada al presidente de Filipinas, Ferdinand Marcos, que lo perdonó.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=LvXOOOkThD4",
+      "desde": 10,
+      "dur": 6,
+      "buscar_video": [
+       "Manila 1974"
+      ]
+     }
+    },
+    {
+     "texto": "Volvió a Japón como un héroe para unos, y como un recuerdo incómodo para otros.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=SS0K-WHZOXE",
+      "desde": 30,
+      "dur": 7,
+      "buscar_video": [
+       "Tokyo 1974"
+      ]
+     }
+    },
+    {
+     "texto": "Pero el Japón que encontró ya no era el suyo. Rascacielos, televisores, prisas. No se acostumbró.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Tokyo 1970s street",
+       "Tokyo 1974"
+      ]
+     }
+    },
+    {
+     "texto": "Al año siguiente se fue a Brasil, a criar ganado en una granja. Ahí se casó.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Mato Grosso do Sul cattle ranch",
+       "Brazil cattle farm"
+      ]
+     }
+    },
+    {
+     "texto": "Años después, volvió a Japón y fundó una escuela en la naturaleza para enseñar a los jóvenes a sobrevivir.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Japanese youth nature camp",
+       "camping Japan forest"
+      ]
+     }
+    },
+    {
+     "texto": "Hiroo Onoda murió en Tokio en dos mil catorce, a los noventa y un años.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=BRl_DrPr_co",
+      "desde": 5,
+      "dur": 6,
+      "buscar_video": [
+       "Tokyo"
+      ]
+     }
+    },
+    {
+     "texto": "Treinta años fiel a una orden. Sin ejército. Sin guerra. Solo una selva, un rifle y una promesa: «volveremos por ti».",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Hiroo Onoda",
+       "Onoda Hiroo"
+      ]
+     }
+    },
+    {
+     "texto": "¿Tú habrías creído en esos papeles que caían del cielo? Déjalo en los comentarios. Y suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Lubang Island beach",
+       "Lubang Island"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "largo1t",
+   "tipo": "tiktok",
+   "encargo": "largo1",
+   "hora_youtube": "18:00",
+   "articulo": "Hiroo Onoda",
+   "fuente": "https://es.wikipedia.org/wiki/Hiroo_Onoda",
+   "titulo_video": " ",
+   "titulo_youtube": "Siguió en la GUERRA 29 años… porque nadie le avisó que había terminado",
+   "titulos_opciones": [
+    "Siguió en la GUERRA 29 años… porque nadie le avisó que había terminado",
+    "El soldado que peleó una guerra que ya NO existía durante 29 años",
+    "Le cayeron papeles del cielo diciendo que la guerra terminó… y no los creyó",
+    "29 AÑOS escondido en la selva esperando una orden",
+    "Solo se rendiría si su comandante venía en persona… y vino 30 años después",
+    "La increíble historia de Hiroo Onoda, el último soldado",
+    "¿Por qué este soldado no se rindió hasta 1974?"
+   ],
+   "descripcion_youtube": "Siguió en la guerra 29 años porque no creyó que había terminado. Video completo en YouTube: Ridmer.\n#historiasreales #misterio #ridmer",
+   "etiquetas": [
+    "Hiroo Onoda",
+    "soldado japonés",
+    "Lubang",
+    "Segunda Guerra Mundial",
+    "historias reales",
+    "Ridmer",
+    "Norio Suzuki"
+   ],
+   "miniatura": {
+    "texto": "29 AÑOS EN LA SELVA"
+   },
+   "gancho": 2,
+   "musica": "epico",
+   "segmentos": [
+    {
+     "texto": "Once de marzo de mil novecientos setenta y cuatro. Un soldado japonés sale de la selva de Filipinas, con su uniforme remendado y su rifle limpio.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "MARZO DE 1974",
+      "sub": "Isla Lubang · Filipinas"
+     }
+    },
+    {
+     "texto": "Viene a rendirse. El problema es que la guerra había terminado hacía veintinueve años.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=Da7IdbCZqOU",
+      "desde": 5,
+      "dur": 7,
+      "buscar_video": [
+       "Philippine jungle",
+       "tropical rainforest"
+      ]
+     }
+    },
+    {
+     "texto": "Se llamaba Hiroo Onoda. En mil novecientos cuarenta y cuatro lo mandaron a la isla de Lubang.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Hiroo Onoda",
+       "Onoda Hiroo 1944"
+      ]
+     }
+    },
+    {
+     "texto": "Su comandante le dio una orden: no rendirse jamás. Pasara lo que pasara, volverían por él.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "«VOLVEREMOS POR TI»",
+      "sub": "Mayor Yoshimi Taniguchi"
+     }
+    },
+    {
+     "texto": "En mil novecientos cuarenta y cinco, Japón se rindió. Pero Onoda y tres soldados más ya estaban escondidos en lo más profundo de la selva.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Lubang Island",
+       "Lubang Island Philippines"
+      ]
+     }
+    },
+    {
+     "texto": "Entonces empezaron a caer papeles del cielo. Decían que la guerra había terminado.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "PAPELES DEL CIELO",
+      "sub": "Fines de 1945"
+     }
+    },
+    {
+     "texto": "Onoda los leyó… y decidió que eran falsos. Un truco del enemigo.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "WWII leaflet Japanese surrender",
+       "propaganda leaflet 1945"
+      ]
+     }
+    },
+    {
+     "texto": "Pasaron los años. Desde Japón lanzaron cartas y fotos de su familia. Uno de sus hermanos llegó a gritarle con un altavoz que saliera.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "«¡HIROO, SAL!»",
+      "sub": "Búsquedas de 1959"
+     }
+    },
+    {
+     "texto": "Y aun así, pensó que era una trampa.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Philippine jungle",
+       "dense jungle"
+      ]
+     }
+    },
+    {
+     "texto": "Comía lo que encontraba, dormía bajo ramas y cuidaba su rifle como un tesoro.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Arisaka rifle",
+       "Type 99 Arisaka"
+      ]
+     }
+    },
+    {
+     "texto": "Uno a uno, sus compañeros se fueron. En mil novecientos setenta y dos se quedó completamente solo, con cincuenta años, esperando una orden.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "1972",
+      "sub": "Solo en la selva"
+     }
+    },
+    {
+     "texto": "Hasta que en mil novecientos setenta y cuatro, un joven aventurero japonés armó su campamento en la selva… y esperó.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "FEBRERO 1974",
+      "sub": "Selva de Lubang"
+     }
+    },
+    {
+     "texto": "Y Onoda lo encontró a él.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "20 DE FEBRERO DE 1974",
+      "sub": "Lubang"
+     }
+    },
+    {
+     "texto": "¿Qué pasó después? Lo que viene te va a dejar sin palabras. Mira el video completo en YouTube, en el canal Ridmer.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Hiroo Onoda",
+       "Onoda Hiroo"
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}
