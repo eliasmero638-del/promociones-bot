@@ -1403,6 +1403,167 @@
      }
     }
    ]
+  },
+  {
+   "eid": "fb2b",
+   "tipo": "fb",
+   "articulo": "Frank Morris",
+   "fuente": "https://es.wikipedia.org/wiki/Frank_Morris",
+   "titulo_video": " ",
+   "titulo_youtube": "Escaparon de ALCATRAZ con cucharas… y nunca los encontraron",
+   "titulos_opciones": [
+    "Escaparon de ALCATRAZ con cucharas… y nunca los encontraron",
+    "Dejaron CABEZAS FALSAS en sus camas y se fugaron de Alcatraz",
+    "La única fuga de Alcatraz que nadie pudo resolver",
+    "Una balsa de impermeables y tres hombres que desaparecieron",
+    "¿Sobrevivieron? El FBI todavía no lo sabe",
+    "Los guardias entraron a la celda… y encontraron una cabeza de yeso 😳",
+    "Así escaparon de la cárcel más segura del mundo"
+   ],
+   "descripcion_youtube": "En 1962 tres presos escaparon de Alcatraz con un plan increíble. Nunca fueron encontrados.\n#misterio #alcatraz #historiasreales #ridmer",
+   "etiquetas": [
+    "Alcatraz",
+    "Frank Morris",
+    "fuga",
+    "hermanos Anglin",
+    "misterio",
+    "historias reales"
+   ],
+   "texto_facebook": "Dejaron cabezas falsas en sus camas y escaparon de Alcatraz… y nunca los encontraron 🏝️ #HistoriasReales #Misterio #DatosCuriosos",
+   "texto_tiktok": "Escaparon de ALCATRAZ… y nunca los encontraron 🏝️ En 1962 tres presos cavaron con cucharas, dejaron cabezas de yeso en sus camas y huyeron en una balsa de impermeables. El caso sigue abierto. #alcatraz #misterio #historiasreales #datoscuriosos #ridmer",
+   "miniatura": {
+    "img": 2,
+    "texto": "ESCAPARON"
+   },
+   "gancho": 1,
+   "musica": "tension",
+   "segmentos": [
+    {
+     "texto": "Escaparon de Alcatraz… y nunca los encontraron.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "11 JUN 1962",
+      "sub": "Bahía de San Francisco"
+     }
+    },
+    {
+     "texto": "Alcatraz: una cárcel en una isla rodeada de agua helada. Nadie podía escapar.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=eh0T_2e83KU",
+      "desde": 20,
+      "dur": 7,
+      "buscar_video": [
+       "Alcatraz Island",
+       "Alcatraz Federal Penitentiary",
+       "San Francisco Bay"
+      ]
+     }
+    },
+    {
+     "texto": "Ahí estaba Frank Morris, un preso con una inteligencia fuera de lo común.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Frank Morris Alcatraz mugshot",
+       "Frank Lee Morris"
+      ]
+     }
+    },
+    {
+     "texto": "Junto a los hermanos John y Clarence Anglin, armó un plan durante meses.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "Con cortaúñas y cucharas raspaban el cemento alrededor de la rejilla de ventilación de sus celdas.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "LA CELDA",
+      "sub": "Bloque B · Alcatraz"
+     }
+    },
+    {
+     "texto": "Así abrieron un hueco hacia un pasillo de servicio.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=v4IVg9_HvIg",
+      "desde": 15,
+      "dur": 7,
+      "buscar_video": [
+       "Alcatraz Island",
+       "Alcatraz Federal Penitentiary",
+       "San Francisco Bay"
+      ]
+     }
+    },
+    {
+     "texto": "Para engañar a los guardias, hicieron cabezas falsas de yeso con pelo real de la barbería.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     },
+     "rotulo": "CABEZA FALSA"
+    },
+    {
+     "texto": "Con impermeables pegados armaron una balsa y chalecos salvavidas.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Alcatraz escape raft raincoats",
+       "Alcatraz raft 1962"
+      ]
+     }
+    },
+    {
+     "texto": "La noche del once de junio dejaron las cabezas en sus camas, subieron al techo y bajaron al agua.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "NOCHE DEL 11 DE JUNIO",
+      "sub": "Alcatraz"
+     }
+    },
+    {
+     "texto": "En la mañana, los guardias descubrieron el engaño.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=9aAdxlMzzTs",
+      "desde": 10,
+      "dur": 7,
+      "buscar_video": [
+       "Alcatraz Island",
+       "Alcatraz Federal Penitentiary",
+       "San Francisco Bay"
+      ]
+     }
+    },
+    {
+     "texto": "El FBI dijo que se ahogaron. Pero nunca hallaron sus cuerpos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 13
+     }
+    },
+    {
+     "texto": "Y el caso sigue abierto. Comparte esta historia y sigue a Ridmer.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=GjWqqxkAiWc",
+      "desde": 60,
+      "dur": 7,
+      "buscar_video": [
+       "Alcatraz Island",
+       "Alcatraz Federal Penitentiary",
+       "San Francisco Bay"
+      ]
+     }
+    }
+   ],
+   "encargo": "fb2",
+   "nota": "Solo para bajar videos reales de Alcatraz (el fb2 original no pudo bajar su video). No publicar: lo edita Claude dentro de fb2.",
+   "hora_fb": "23:59"
   }
  ]
 }
