@@ -1563,7 +1563,7 @@
    ],
    "encargo": "fb2",
    "nota": "Solo para bajar videos reales de Alcatraz (el fb2 original no pudo bajar su video). No publicar: lo edita Claude dentro de fb2.",
-   "hora_fb": "23:59"
+   "omitir": true
   }
  ]
 }
