@@ -2036,3 +2036,59 @@ export function gorraMilitar(sc, p, color = 0x6a6440) {
   return { g, seguir(dy = 0.135) { p.updateMatrixWorld(true); const h = p.getObjectByName('Bip01_Head'); h.getWorldPosition(v);
     g.position.copy(v); g.position.y += dy; g.rotation.set(0, p.rotation.y, 0); } };
 }
+
+// ======================= 24-nov: faro en isla rocosa (Flannan 1900), cuarto de guardián con reloj y percheros =======================
+/** Isla rocosa con acantilados (sale del mar en y=0, meseta arriba en y=alto) y FARO blanco con casa de guardianes.
+ *  Centro de la meseta en (0, alto, 0). f.lampara(k 0..1, t) enciende/apaga la luz (con haz que gira). f.puerta = posición de la puerta. */
+export function faroIsla(sc, { alto = 22, semilla = 7, r = 26 } = {}) {
+  const az = _azar(semilla), roca = M.mat(0x2e2c2a, { roughness: 1, flatShading: true }), pasto = M.mat(0x2f3a24, { roughness: 1, flatShading: true });
+  const base = new THREE.Mesh(new THREE.CylinderGeometry(r, r * 1.25, alto + 6, 11, 3), roca); base.position.y = alto / 2 - 3;
+  const pa = base.geometry.attributes.position; for (let i = 0; i < pa.count; i++) { const x = pa.getX(i), z = pa.getZ(i), d = Math.hypot(x, z); if (d > 1) { const f = 1 + (az() - 0.5) * 0.18; pa.setX(i, x * f); pa.setZ(i, z * f); } }
+  base.geometry.computeVertexNormals(); base.castShadow = base.receiveShadow = true; sc.add(base);
+  const top = new THREE.Mesh(new THREE.CylinderGeometry(r * 0.97, r, 0.8, 11), pasto); top.position.y = alto + 0.2; top.receiveShadow = true; sc.add(top);
+  for (let i = 0; i < 26; i++) { const a = az() * 6.283, b = new THREE.Mesh(new THREE.DodecahedronGeometry(2 + az() * 5), roca); b.position.set(Math.cos(a) * (r + az() * 3), az() * alto * 0.7, Math.sin(a) * (r + az() * 3)); b.rotation.set(az(), az(), az()); b.castShadow = true; sc.add(b); }
+  const g = new THREE.Group(); g.position.set(0, alto + 0.6, 0); sc.add(g);
+  const blanco = M.mat(0xe8e4da, { roughness: 0.7 }), gris = M.mat(0x3a3d40, { roughness: 0.5, metalness: 0.4 });
+  const torre = new THREE.Mesh(new THREE.CylinderGeometry(1.5, 1.9, 16, 24), blanco); torre.position.y = 8; torre.castShadow = true; g.add(torre);
+  const balcon = new THREE.Mesh(new THREE.CylinderGeometry(2.3, 2.3, 0.3, 24), gris); balcon.position.y = 16.1; g.add(balcon);
+  const baranda = new THREE.Mesh(new THREE.CylinderGeometry(2.3, 2.3, 0.8, 24, 1, true), new THREE.MeshStandardMaterial({ color: 0x2a2c2e, wireframe: true })); baranda.position.y = 16.6; g.add(baranda);
+  const vidrioM = new THREE.MeshStandardMaterial({ color: 0x1a2228, roughness: 0.1, metalness: 0.6, emissive: 0xffe0a0, emissiveIntensity: 0 });
+  const linterna = new THREE.Mesh(new THREE.CylinderGeometry(1.3, 1.3, 2.2, 16), vidrioM); linterna.position.y = 17.4; g.add(linterna);
+  const cupula = new THREE.Mesh(new THREE.SphereGeometry(1.4, 16, 8, 0, Math.PI * 2, 0, Math.PI / 2), gris); cupula.position.y = 18.5; g.add(cupula);
+  const casa = new THREE.Mesh(new THREE.BoxGeometry(9, 3.6, 6), blanco); casa.position.set(-6, 1.8, 0); casa.castShadow = casa.receiveShadow = true; g.add(casa);
+  const techo = new THREE.Mesh(new THREE.BoxGeometry(9.4, 0.4, 6.4), gris); techo.position.set(-6, 3.75, 0); g.add(techo);
+  for (let i = 0; i < 3; i++) { const v = new THREE.Mesh(new THREE.BoxGeometry(0.8, 1.0, 0.05), M.mat(0x101418)); v.position.set(-9 + i * 2.6, 2.1, 3.03); g.add(v); }
+  const puerta = new THREE.Mesh(new THREE.BoxGeometry(1.0, 2.1, 0.05), M.mat(0x2a3a4a)); puerta.position.set(-1.8, 1.05, 3.03); g.add(puerta);
+  const muro = M.mat(0x8a8680, { roughness: 1 }); for (const [w, x, z, ry] of [[20, -4, 7, 0], [20, -4, -7, 0], [14, -14, 0, Math.PI / 2], [14, 6, 0, Math.PI / 2]]) { const m = new THREE.Mesh(new THREE.BoxGeometry(w, 1.1, 0.4), muro); m.position.set(x, 0.55, z); m.rotation.y = ry; m.castShadow = true; g.add(m); }
+  const mastil = new THREE.Mesh(new THREE.CylinderGeometry(0.06, 0.08, 7, 6), gris); mastil.position.set(3.5, 3.5, 5); g.add(mastil);
+  const luz = new THREE.PointLight(0xffe0a0, 0, 60, 1.4); luz.position.y = 17.4; g.add(luz);
+  const haz = cono(g, 0, 17.4, 0, 60, 7, 0xfff0c0, 0.12, [0, 0, Math.PI / 2]); haz.visible = false;
+  return { g, alto, puerta: new THREE.Vector3(-1.8, alto + 0.6, 3.2),
+    lampara(k, t = 0) { vidrioM.emissiveIntensity = 3 * k; luz.intensity = 400 * k; haz.visible = k > 0.05; haz.material.opacity = 0.12 * k; haz.parent.rotation.y = 0; haz.rotation.set(0, t * 1.2, Math.PI / 2); } };
+}
+/** Cuarto de los guardianes de un faro de 1900 (cocina): paredes encaladas, mesa con sillas, chimenea apagada, reloj de pared
+ *  (manecillas quietas), 3 ganchos junto a la puerta con UN solo impermeable amarillo. Puerta en x=-3, reloj en (0, 2.1, -2.95). */
+export function cuartoFaro(sc, { abrigos = 1 } = {}) {
+  sc.background = new THREE.Color(0x0b0c0e);
+  const cal = M.mat(0xcfc8b8, { roughness: 1 }), mad = M.mat(0x6a4a30, { roughness: 0.9 }), piedra = M.mat(0x5a5650, { roughness: 1 });
+  M.caja(sc, 6.2, 0.1, 6, 0, -0.05, 0, M.mat(0x5a4a3a)); M.caja(sc, 6.2, 0.1, 6, 0, 3.05, 0, cal);
+  M.caja(sc, 6.2, 3.1, 0.1, 0, 1.5, -3, cal); M.caja(sc, 0.1, 3.1, 6, -3.1, 1.5, 0, cal); M.caja(sc, 0.1, 3.1, 6, 3.1, 1.5, 0, cal);
+  M.caja(sc, 1.6, 0.08, 0.9, 0.3, 0.78, -0.6, mad); for (const [x, z] of [[-0.4, -0.95], [1.0, -0.95], [-0.4, -0.25], [1.0, -0.25]]) M.caja(sc, 0.07, 0.78, 0.07, x, 0.39, z, mad);
+  for (const [x, z] of [[-0.8, -0.6], [1.4, -0.6]]) { M.caja(sc, 0.42, 0.06, 0.42, x, 0.46, z, mad); M.caja(sc, 0.06, 0.5, 0.42, x + (x < 0 ? -0.2 : 0.2), 0.72, z, mad); }
+  M.caja(sc, 1.6, 1.4, 0.5, 2.0, 0.7, -2.75, piedra); M.caja(sc, 0.9, 0.8, 0.1, 2.0, 0.45, -2.5, M.mat(0x0a0a0a)); M.caja(sc, 1.8, 0.12, 0.6, 2.0, 1.45, -2.72, mad);
+  const reloj = new THREE.Group(); reloj.position.set(-0.6, 2.15, -2.93); sc.add(reloj);
+  const cara = new THREE.Mesh(new THREE.CircleGeometry(0.28, 32), M.mat(0xf2ead8)); reloj.add(cara);
+  const aro = new THREE.Mesh(new THREE.TorusGeometry(0.29, 0.035, 8, 32), mad); reloj.add(aro);
+  for (let i = 0; i < 12; i++) { const m = new THREE.Mesh(new THREE.BoxGeometry(0.02, 0.05, 0.01), M.mat(0x111111)); const a = i / 12 * Math.PI * 2; m.position.set(Math.sin(a) * 0.23, Math.cos(a) * 0.23, 0.01); m.rotation.z = -a; reloj.add(m); }
+  const mano = (l, a) => { const m = new THREE.Mesh(new THREE.BoxGeometry(0.018, l, 0.01), M.mat(0x111111)); m.geometry.translate(0, l / 2, 0); m.position.z = 0.02; m.rotation.z = -a; reloj.add(m); };
+  mano(0.14, 2.4); mano(0.21, 5.6); reloj.children.slice(-2).forEach(m => m.position.z = 0.025);
+  M.caja(sc, 0.1, 2.2, 1.0, -3.04, 1.1, 1.6, M.mat(0x2a3a4a));
+  M.caja(sc, 0.05, 0.08, 1.4, -3.03, 1.75, 0.0, mad);
+  for (let i = 0; i < 3; i++) { const z = -0.5 + i * 0.5; M.caja(sc, 0.14, 0.03, 0.03, -2.97, 1.72, z, M.mat(0x222222));
+    if (i < abrigos) { const ab = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.24, 1.0, 10), M.mat(0xd8b020, { roughness: 0.35 })); ab.position.set(-2.86, 1.2, z); ab.castShadow = true; sc.add(ab);
+      const hom = new THREE.Mesh(new THREE.SphereGeometry(0.14, 10, 8), M.mat(0xd8b020, { roughness: 0.35 })); hom.scale.set(1, 0.5, 1.2); hom.position.set(-2.86, 1.68, z); sc.add(hom); } }
+  const vent = new THREE.Mesh(new THREE.PlaneGeometry(0.8, 0.9), new THREE.MeshBasicMaterial({ color: 0x8aa0b4 })); vent.position.set(3.04, 1.8, 0.4); vent.rotation.y = -Math.PI / 2; sc.add(vent);
+  sc.add(new THREE.HemisphereLight(0xc8d4e0, 0x2a2420, 0.7));
+  const dia = new THREE.SpotLight(0xc8d8ea, 40, 12, 0.9, 0.6, 1.2); dia.position.set(3.0, 2.0, 0.4); dia.target.position.set(-2, 0.5, -0.5); dia.castShadow = true; sc.add(dia); sc.add(dia.target);
+  return { reloj, puerta: new THREE.Vector3(-3, 0, 1.6) };
+}
