@@ -1,0 +1,73 @@
+{
+ "fecha": "2026-11-24",
+ "hay_largo": false,
+ "encargos": [
+  {
+   "eid": "fb1",
+   "tipo": "fb",
+   "titulo": "Vuelo 018 de LANHSA",
+   "titulo_sugerido": "Vuelo 018 de LANHSA",
+   "fuente": "https://es.wikipedia.org/wiki/Vuelo_018_de_LANHSA",
+   "texto": "El vuelo 018 de Lanhsa fue un vuelo regular de pasajeros operado por un BAe Aerospace Jetstream 32 que el 17 de marzo de 2025 se estrelló en el océano poco después de despegar del Aeropuerto Internacional Juan Manuel Gálvez, Roatán, Honduras. Se informó que 12 de los 17 ocupantes fallecieron en el accidente. Hay cinco sobrevivientes y el avión quedó destruido. Entre los fallecidos figura el expolítico y cantante Aurelio Martínez; sin embargo, su pareja sobrevivió al accidente.​​​​​​ Los restos del avión fueron encontrados aproximadamente a un kilómetro de la costa según las autoridades.​​\n\n\n== Detalles del vuelo ==\n\n\n=== Aeronave ===\nLa aeronave era un BAe Jetstream 32, con número de serie 863 y matriculado HR-AYW.​ El avión, con 36 años de antigüedad,​​ era operado por la aerolínea regional hondureña LANHSA.​\n\n\n=== Pasajeros y tripulación ===\nHabía 17 pasajeros a bordo, entre ellos se encontraba el expolítico y cantante Aurelio Martínez acompañado de su pareja.​​ La tripulación estaba conformada por capitán, primer oficial, y azafata.​ El capitán era Luis Araya y el copiloto era Francisco Lagos.​  Entre las víctimas se encontraban al menos dos extranjeros: un estadounidense y una francesa.​\n\n\n== Accidente ==\n\nEl vuelo despegó al ocaso​ desde el Aeropuerto Internacional Juan Manuel Gálvez, en Roatán, con una ruta programada hacia el Aeropuerto Internacional Guillermo Anderson, La Ceiba, había 15 pasajeros y dos tripulantes a bordo.​​ Después del despegue, la aeronave perdió fuerza en los motores​ y giró repentinamente hacia la derecha, impactando en el mar cerca de Roatán a las 18:24 hora local, partiéndose en dos.​​​​ La Policía Nacional de Honduras ha informado de la muerte de 12 pasajeros, 5 personas con vida, y un desaparecido.​ Inicialmente habían sobrevivido 11 personas, pero seis fallecieron en el hospital. Entre las víctimas se encuentra el exdiputado y cantante hondureño Aurelio Martínez, aunque su pareja sobrevivió.​​\n\n\n== Investigación ==\nLa Agencia Hondureña de Aeronáutica Civil (AHAC) informó que ha activado la Comisión de Búsqueda y Salvamento (SAR) para la localización de los ocupantes de la aeronave. Asimismo, ha instruido a la Comisión Investigadora de Accidentes e Incidentes de la autoridad aeronáutica para que se traslade al lugar del accidente y lleve a cabo una investigación preliminar sobre las posibles causas del suceso.​ El Gobierno de Honduras declaró en un comunicado que lamenta profundamente el trágico accidente ocurrido en Roatán y se une al duelo nacional. La presidenta Xiomara Castro activó un comité de emergencia tras el accidente.​ Los cuerpos de las víctimas fueron trasladados a una morgue en San Pedro Sula.​\n\n",
+   "candidatos": [
+    {
+     "n": 1,
+     "desc": "foto del artículo",
+     "q": "articulo"
+    },
+    {
+     "n": 2,
+     "desc": "foto del artículo",
+     "q": "articulo"
+    },
+    {
+     "n": 3,
+     "desc": "British Aerospace Jetstream 31, Lanhsa (Linea Aerea Nacional de Honduras S.A.) JP1123",
+     "q": "HR-AYW Jetstream 32"
+    },
+    {
+     "n": 4,
+     "desc": "Aeropuerto Internacional Juan Manuel Gálvez.jpg",
+     "q": "Juan Manuel Gálvez Airport"
+    },
+    {
+     "n": 5,
+     "desc": "Roatán Airport control tower, 12-2014.JPG",
+     "q": "Juan Manuel Gálvez Airport"
+    },
+    {
+     "n": 6,
+     "desc": "Airport, Runway JP7734497.jpg",
+     "q": "Juan Manuel Gálvez Airport"
+    },
+    {
+     "n": 7,
+     "desc": "Aurelio at KEXP.JPG",
+     "q": "Aurelio Martínez 2025"
+    },
+    {
+     "n": 8,
+     "desc": "(Aurelio Martínez) El cardenal Cañizares y el presidente del puerto de Valencia agrad",
+     "q": "Aurelio Martínez 2025"
+    },
+    {
+     "n": 9,
+     "desc": "Forlì Piazza Aurelio Saffi Monumento di Aurelio Saffi 1.jpg",
+     "q": "Aurelio Martínez 2025"
+    },
+    {
+     "n": 10,
+     "desc": "Nicaragua Oct 20 - Nov 8, 2020.jpg",
+     "q": "Honduran coast crash site"
+    },
+    {
+     "n": 11,
+     "desc": "2017-01-22 1229 Interiör i Jetstream 32 tillhörande AIS Airlines.jpg",
+     "q": "Jetstream 32 interior"
+    }
+   ],
+   "hoja": "fb1/hoja.jpg"
+  }
+ ],
+ "creado": 1795503681.521133
+}
