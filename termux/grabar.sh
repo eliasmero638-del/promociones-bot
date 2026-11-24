@@ -1,9 +1,10 @@
 #!/data/data/com.termux/files/usr/bin/bash
 # Graba el en vivo del reality desde el teléfono y lo sube al servidor. Se actualiza solo desde GitHub.
 S=173.249.44.95; P=443; D=$HOME/clipero; C=$D/cookies.txt
-# Revisa estos canales en orden y graba el primero que esté EN VIVO. La Mansión VIP 2 va primero:
-# si se está grabando La Casa 593 y empieza La Mansión, cambia sola.
-CANALES="https://www.youtube.com/@hotspanishvlogs/streams https://www.youtube.com/@LaCasa593EnVivo/streams"
+# Revisa estos canales en orden y graba el primero que esté EN VIVO.
+# 24-nov: La Casa de Alofoke 3 va primero (canal Alofoke Radio Show; solo vale si el título dice ALOFOKE,
+# porque ese canal también transmite el programa de radio). Después La Mansión VIP 2 y La Casa 593.
+CANALES="https://www.youtube.com/channel/UCvDvBAOuJIHKWK59duvM0JQ/streams https://www.youtube.com/@hotspanishvlogs/streams https://www.youtube.com/@LaCasa593EnVivo/streams"
 PRIMERO=${CANALES%% *}
 URL=https://raw.githubusercontent.com/eliasmero638-del/promociones-bot/clipero/termux/grabar.sh
 SSH="ssh -p $P -o BatchMode=yes -o ServerAliveInterval=30 -o ConnectTimeout=20"
@@ -63,7 +64,10 @@ videos() {
 videos &
 VP=$!
 
-en_vivo() { $YT --flat-playlist --playlist-end 6 --print "%(id)s|%(live_status)s|%(title)s" "$1" 2>>$D/yt.log | grep '|is_live|' | head -1; }
+en_vivo() {
+  F='.'; case "$1" in *UCvDvBAOuJIHKWK59duvM0JQ*) F='ALOFOKE';; esac
+  $YT --flat-playlist --playlist-end 8 --print "%(id)s|%(live_status)s|%(title)s" "$1" 2>>$D/yt.log | grep '|is_live|' | grep -i "$F" | head -1
+}
 
 actualizar() {
   N=$(curl -sL "$URL")
@@ -82,7 +86,7 @@ while true; do
   done
   VID=${L%%|*}; TIT=${L##*|}
   if [ -z "$VID" ]; then log "no hay en vivo ahora, reviso en 2 min"; sleep 120; continue; fi
-  echo "$VID" > $D/vid.txt; echo "$TIT" > $D/tit.txt; echo "${CANAL##*@}" > $D/canal.txt
+  echo "$VID" > $D/vid.txt; echo "$TIT" > $D/tit.txt; case "$CANAL" in *UCvDvBAOuJIHKWK59duvM0JQ*) echo alofoke > $D/canal.txt;; *) echo "${CANAL##*@}" > $D/canal.txt;; esac
   log "grabando $VID $TIT"
   $YT --skip-download --write-subs --sub-langs live_chat -o "$D/chat/$VID" "https://www.youtube.com/watch?v=$VID" >/dev/null 2>>$D/yt.log &
   CH=$!

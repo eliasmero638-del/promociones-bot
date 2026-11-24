@@ -142,7 +142,7 @@ def srv_activo():
 def _srv_tick(d):
     tel = C._norm(f"{d.get('titulo') or ''} {d.get('canal') or ''}")
     tel_vivo = d.get('grabando') and time.time() - d.get('hora', 0) < 300
-    if (tel_vivo and any(k in tel for k in ('mansion', 'hotspanish', 'vip 2'))) or C.get().get('servidor_graba') is False:
+    if (tel_vivo and any(k in tel for k in ('mansion', 'hotspanish', 'vip 2', 'alofoke'))) or C.get().get('servidor_graba') is False:
         _srv_parar()
         return False
     vivo_p = bool(_srv['procs']) and _srv['procs'][0].poll() is None

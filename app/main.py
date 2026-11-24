@@ -807,7 +807,7 @@ def vigia_mansion():
     while True:
         time.sleep(600)
         try:
-            if C.perfil() == 'mansion' or time.time() - ultimo < 6 * 3600 or time.time() - INICIO < 1500:
+            if C.perfil() in ('mansion', 'alofoke') or time.time() - ultimo < 6 * 3600 or time.time() - INICIO < 1500:
                 continue
             out = subprocess.run(recorder.ytdlp_base() + ['--flat-playlist', '--playlist-end', '6', '--print',
                                  '%(live_status)s\t%(title)s', 'https://www.youtube.com/@hotspanishvlogs/streams'],

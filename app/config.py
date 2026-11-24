@@ -120,6 +120,32 @@ DEFAULTS = {
             'La Cukis': ['cukis', 'la cukis'],
         },
     },
+    # 24-nov: La Casa de Alofoke 3 (Alofoke Radio Show, República Dominicana; estreno 23-nov-2026, 41 días).
+    # Confirmados por El Nacional / De Último Minuto / Mundo Alofoke (+ Pouzi, Cubanos por el Mundo).
+    'perfil_alofoke': {
+        'claves': ['alofoke'],
+        'reality': 'LA CASA DE ALOFOKE 3',
+        'lugar': 'LA CASA',
+        'pais': 'República Dominicana',
+        'exparticipantes': {},
+        'invitados': {'Santiago Matías': ['santiago matías', 'santiago matias', 'alofoke']},
+        'participantes': {
+            'Monchy Cadena': ['monchy', 'cadena', 'lengua de misil'],
+            'Ronny Alca': ['ronny', 'rony', 'alca'],
+            'Las Mellas': ['mellas', 'mella', 'las mellas'],
+            'Germán Gualey': ['germán', 'german', 'gualey'],
+            'Las Ocurrencias de Víctor': ['víctor', 'victor', 'ocurrencias'],
+            'Alondra Carvajal': ['alondra', 'londy', 'carvajal'],
+            'Edward Cruz': ['edward', 'edward music'],
+            'Manuel Conet': ['manuel', 'conet'],
+            'Plací': ['plací', 'placi', 'el placi'],
+            'El Tal Bororo': ['bororo'],
+            'Nesi': ['nesi', 'nesi pr', 'génesis', 'genesis'],
+            'Héctor Poncela': ['héctor', 'hector', 'poncela', 'poncelas'],
+            'Ely La Bella': ['ely', 'ely la bella'],
+            'Pouzi': ['pouzi', 'pouzii', 'pouzii uwu'],
+        },
+    },
     'participantes': {
         'Josselin "La Sabrosura" Jiménez': ['sabrosura', 'josselin', 'josselyn', 'joselin', 'joselyn'],
         'Bryan "La Firgense"': ['bryan', 'brayan', 'firgense', 'frigersen', 'frigerse'],
@@ -178,9 +204,10 @@ def get():
             c = dict(DEFAULTS)
             c.update(propio)
             _cfg = c
-    if perfil() == 'mansion':
+    pf = perfil()
+    if pf in ('mansion', 'alofoke'):
         v = dict(_cfg)
-        v.update(_mansion())
+        v.update(_perfil_dict(pf))
         return v
     return _cfg
 
@@ -195,16 +222,20 @@ def _norm(t):
     return ''.join(ch for ch in unicodedata.normalize('NFD', str(t).lower()) if unicodedata.category(ch) != 'Mn')
 
 
-def _mansion():
-    m = dict(DEFAULTS['perfil_mansion'])
-    m.update((_cfg or {}).get('perfil_mansion') or {})
+def _perfil_dict(nombre):
+    m = dict(DEFAULTS.get('perfil_' + nombre) or {})
+    m.update((_cfg or {}).get('perfil_' + nombre) or {})
     return {k: m[k] for k in PERFIL_CLAVES if k in m}
 
 
+def _mansion():
+    return _perfil_dict('mansion')
+
+
 def perfil():
-    """'mansion' si el teléfono está grabando La Mansión VIP 2; si no, 'casa593'."""
+    """'alofoke' / 'mansion' según lo que esté grabando el teléfono; si no, 'casa593'."""
     forzado = (_cfg or {}).get('perfil_forzado')
-    if forzado in ('mansion', 'casa593'):
+    if forzado in ('mansion', 'casa593', 'alofoke'):
         return forzado
     if time.time() - _perfil_cache[0] < 20:
         return _perfil_cache[1]
@@ -218,9 +249,12 @@ def perfil():
     try:
         d = json.load(open(os.path.join(DATA, 'remoto.json'), encoding='utf-8'))
         txt = _norm(' '.join(str(d.get(k) or '') for k in ('titulo', 'canal')))
-        claves = ((_cfg or {}).get('perfil_mansion') or {}).get('claves') or DEFAULTS['perfil_mansion']['claves']
-        if any(_norm(k) in txt for k in claves):
-            p = 'mansion'
+        if 'alofoke' in txt:
+            p = 'alofoke'
+        else:
+            claves = ((_cfg or {}).get('perfil_mansion') or {}).get('claves') or DEFAULTS['perfil_mansion']['claves']
+            if any(_norm(k) in txt for k in claves):
+                p = 'mansion'
     except Exception:
         pass
     _perfil_cache[:] = [time.time(), p]
@@ -230,12 +264,13 @@ def perfil():
 def save(**kw):
     get()
     with _lock:
-        if perfil() == 'mansion' and any(k in PERFIL_CLAVES for k in kw):
-            pm = dict(_cfg.get('perfil_mansion') or {})
+        pf = perfil()
+        if pf in ('mansion', 'alofoke') and any(k in PERFIL_CLAVES for k in kw):
+            pm = dict(_cfg.get('perfil_' + pf) or {})
             for k in list(kw):
                 if k in PERFIL_CLAVES:
                     pm[k] = kw.pop(k)
-            kw['perfil_mansion'] = pm
+            kw['perfil_' + pf] = pm
         _cfg.update(kw)
         _propio.update(kw)
         _escribir()
