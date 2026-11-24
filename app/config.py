@@ -159,7 +159,7 @@ _lock = threading.Lock()
 _cfg = None
 _propio = {}            # solo lo que se guardó a propósito (no los valores por defecto)
 
-VERSION_CFG = 7
+VERSION_CFG = 8
 # claves que versiones viejas guardaban sin querer: se borran para que mande el valor por defecto
 MIGRAR = {2: ['clip_min', 'clip_max', 'ventana_antes', 'ventana_despues', 'antes_seg', 'despues_seg',
               'umbral_ia', 'max_por_hora', 'separacion_min', 'segmento_seg', 'guardar_horas', 'whisper_modelo',
@@ -167,7 +167,8 @@ MIGRAR = {2: ['clip_min', 'clip_max', 'ventana_antes', 'ventana_despues', 'antes
               'marca', 'modo', 'web_url', 'web_puerto', 'umbral'],
           5: ['participantes', 'exparticipantes']}       # lista actual según lacasa593.com (1-nov-2026)
 FORZAR = {2: {'ia_minimo': 80}, 3: {'ia_minimo': 85}, 4: {'ridmer_urgencia': 90}, 5: {'certeza_minima': 75}, 6: {'certeza_minima': 70},
-          7: {'memes_auto': True, 'fotos_auto': True}}     # 18-nov: el dueño pidió publicar memes y fotos con chisme solos
+          7: {'memes_auto': True, 'fotos_auto': True},
+          8: {'servidor_graba': False}}      # 24-nov: solo Alofoke 3 (el servidor ya no graba La Mansión de respaldo)     # 18-nov: el dueño pidió publicar memes y fotos con chisme solos
 
 
 def _escribir():

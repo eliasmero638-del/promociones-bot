@@ -1,10 +1,9 @@
 #!/data/data/com.termux/files/usr/bin/bash
 # Graba el en vivo del reality desde el teléfono y lo sube al servidor. Se actualiza solo desde GitHub.
 S=173.249.44.95; P=443; D=$HOME/clipero; C=$D/cookies.txt
-# Revisa estos canales en orden y graba el primero que esté EN VIVO.
-# 24-nov: La Casa de Alofoke 3 va primero (canal Alofoke Radio Show; solo vale si el título dice ALOFOKE,
-# porque ese canal también transmite el programa de radio). Después La Mansión VIP 2 y La Casa 593.
-CANALES="https://www.youtube.com/channel/UCvDvBAOuJIHKWK59duvM0JQ/streams https://www.youtube.com/@hotspanishvlogs/streams https://www.youtube.com/@LaCasa593EnVivo/streams"
+# 24-nov: el dueño pidió grabar SOLO La Casa de Alofoke 3 (canal Alofoke Radio Show). Solo vale un en vivo cuyo
+# título diga ALOFOKE, porque ese canal también transmite el programa de radio. La Mansión y La Casa 593 ya no.
+CANALES="https://www.youtube.com/channel/UCvDvBAOuJIHKWK59duvM0JQ/streams"
 PRIMERO=${CANALES%% *}
 URL=https://raw.githubusercontent.com/eliasmero638-del/promociones-bot/clipero/termux/grabar.sh
 SSH="ssh -p $P -o BatchMode=yes -o ServerAliveInterval=30 -o ConnectTimeout=20"
