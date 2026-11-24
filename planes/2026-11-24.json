@@ -322,12 +322,12 @@
      "texto": "Pero el barco que debía traer comida nunca llega. El hielo no lo deja pasar.",
      "escena": {
       "tipo": "video",
-      "url": "https://www.youtube.com/watch?v=wiEtchoA4B0",
-      "desde": 30,
+      "url": "https://www.youtube.com/watch?v=vmBg0n-qack",
+      "desde": 5,
       "dur": 6,
       "buscar_video": [
-       "Arctic sea ice",
-       "pack ice ship"
+       "sea ice Arctic",
+       "polar bear"
       ]
      }
     },
@@ -371,8 +371,8 @@
      "texto": "Aprende a poner trampas para zorros, caza aves y arma una plataforma para vigilar a los osos polares.",
      "escena": {
       "tipo": "video",
-      "url": "https://www.youtube.com/watch?v=wiEtchoA4B0",
-      "desde": 90,
+      "url": "https://www.youtube.com/watch?v=choO7Crdqug",
+      "desde": 20,
       "dur": 6,
       "buscar_video": [
        "polar bear",
@@ -469,8 +469,8 @@
      "texto": "Pone trampas, caza aves y vigila a los osos polares durante meses.",
      "escena": {
       "tipo": "video",
-      "url": "https://www.youtube.com/watch?v=wiEtchoA4B0",
-      "desde": 90,
+      "url": "https://www.youtube.com/watch?v=vmBg0n-qack",
+      "desde": 5,
       "dur": 6,
       "buscar_video": [
        "polar bear"
@@ -538,8 +538,9 @@
      "escena": {
       "tipo": "foto",
       "buscar": [
-       "Flannan Isles lighthouse",
-       "Eilean Mor lighthouse"
+       "Flannan Isles",
+       "Flannan Isles Lighthouse",
+       "Eilean Mòr"
       ]
      }
     },
@@ -548,8 +549,9 @@
      "escena": {
       "tipo": "foto",
       "buscar": [
-       "Eilean Mor Flannan",
-       "Flannan Isles"
+       "Eilean Mòr",
+       "Flannan Isles lighthouse",
+       "Flannan Isles from the sea"
       ]
      }
     },
@@ -565,12 +567,12 @@
      "texto": "Por las tormentas, el barco de relevo no llega hasta el veintiséis.",
      "escena": {
       "tipo": "video",
-      "url": "https://www.youtube.com/watch?v=PoNCG3PZKII",
-      "desde": 40,
+      "url": "https://www.youtube.com/watch?v=1bWButTvyHw",
+      "desde": 20,
       "dur": 6,
       "buscar_video": [
        "stormy sea waves",
-       "rough sea Scotland"
+       "lighthouse storm"
       ]
      }
     },
@@ -603,8 +605,9 @@
      "escena": {
       "tipo": "foto",
       "buscar": [
-       "Flannan Isles west landing",
-       "Flannan Isles landing"
+       "Flannan Isles",
+       "Eilean Mor landing",
+       "lighthouse landing stairs Scotland"
       ]
      }
     },
@@ -612,12 +615,11 @@
      "texto": "La teoría oficial: una ola enorme los arrastró mientras aseguraban el equipo.",
      "escena": {
       "tipo": "video",
-      "url": "https://www.youtube.com/watch?v=PoNCG3PZKII",
-      "desde": 120,
+      "url": "https://www.youtube.com/watch?v=1bWButTvyHw",
+      "desde": 60,
       "dur": 6,
       "buscar_video": [
-       "huge waves cliffs",
-       "storm waves rocks"
+       "huge waves cliffs"
       ]
      }
     },
@@ -626,7 +628,8 @@
      "escena": {
       "tipo": "foto",
       "buscar": [
-       "Flannan Isles lighthouse"
+       "Flannan Isles Lighthouse",
+       "lighthouse Outer Hebrides"
       ]
      }
     },
@@ -635,7 +638,8 @@
      "escena": {
       "tipo": "foto",
       "buscar": [
-       "Eilean Mor lighthouse"
+       "Eilean Mòr lighthouse",
+       "Flannan Isles"
       ]
      }
     }
