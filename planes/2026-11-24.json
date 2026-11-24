@@ -652,6 +652,405 @@
    "hora_foto": "20:00",
    "titulo_youtube": "Tres hombres desaparecieron de un faro… y el reloj estaba parado",
    "texto_foto": "Tres hombres desaparecieron de un faro… y nadie sabe cómo.\n\nDiciembre de 1900. En Eilean Mor, una isla rocosa de las islas Flannan, al oeste de Escocia, viven solo los tres guardianes del faro: James Ducat, Thomas Marshall y Donald MacArthur.\n\nEl 15 de diciembre, un barco que pasa de noche ve algo raro: el faro está apagado. Por las tormentas, el barco de relevo no llega hasta el 26.\n\nEl guardián Joseph Moore desembarca y nadie sale a recibirlo. La puerta está cerrada. Adentro, el reloj está parado y la chimenea fría. Faltan dos abrigos impermeables… pero el tercero sigue colgado.\n\nEn el muelle del oeste encuentran barandas dobladas y una caja de cuerdas arrancada de su sitio, muy por encima del mar. La teoría oficial: una ola enorme se los llevó.\n\nPero nunca se encontraron los cuerpos. ¿Y por qué uno salió sin abrigo?\n\n¿Tú qué crees que pasó?\n#Misterio #HistoriasReales #DatosCuriosos"
+  },
+  {
+   "eid": "fb2b",
+   "tipo": "fb",
+   "articulo": "Ada Blackjack",
+   "fuente": "https://en.wikipedia.org/wiki/Ada_Blackjack",
+   "titulo_video": " ",
+   "titulo_youtube": "Se quedó SOLA en una isla del Ártico… y sobrevivió",
+   "titulos_opciones": [
+    "Se quedó SOLA en una isla del Ártico… y sobrevivió",
+    "Llegaron 5 a esta isla congelada… solo volvió ELLA",
+    "Tres hombres salieron a pedir ayuda sobre el hielo… y nunca volvieron",
+    "La Robinson Crusoe del Ártico: la historia de Ada Blackjack",
+    "Sola, con un gato y rodeada de osos polares 🐻‍❄️",
+    "Nadie creía que una costurera sobreviviría… pero fue la ÚNICA",
+    "¿Cómo sobrevivió una mujer sola en la isla Wrangel?"
+   ],
+   "descripcion_youtube": "1921: cinco personas llegan a la isla Wrangel, en el Ártico. Dos años después, solo quedaba una: Ada Blackjack.\n¿Cómo sobrevivió sola?\n#historiasreales #supervivencia #ridmer",
+   "etiquetas": [
+    "Ada Blackjack",
+    "isla Wrangel",
+    "Ártico",
+    "supervivencia",
+    "historias reales",
+    "ridmer"
+   ],
+   "texto_facebook": "Llegaron cinco a una isla congelada del Ártico… y solo volvió ELLA 🐻‍❄️ #HistoriasReales #Supervivencia #DatosCuriosos",
+   "texto_tiktok": "Se quedó SOLA en una isla del Ártico… y sobrevivió 🐻‍❄️ En 1921 llegaron cinco a la isla Wrangel. Tres salieron a pedir ayuda sobre el hielo y nunca volvieron. #historiasreales #supervivencia #artico #datoscuriosos #ridmer",
+   "miniatura": {
+    "img": 2,
+    "texto": "SOLA EN EL ÁRTICO"
+   },
+   "gancho": 1,
+   "musica": "epico",
+   "segmentos": [
+    {
+     "texto": "Sola en una isla del Ártico.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "1923",
+      "sub": "Isla Wrangel, Ártico"
+     }
+    },
+    {
+     "texto": "Septiembre de mil novecientos veintiuno. Cuatro exploradores y una mujer inuit llegan a la isla Wrangel, frente a Siberia.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Wrangel Island",
+       "Wrangel Island expedition 1921"
+      ]
+     }
+    },
+    {
+     "texto": "Ella es Ada Blackjack. Tiene veintitrés años y va como costurera.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Ada Blackjack"
+      ]
+     }
+    },
+    {
+     "texto": "Aceptó por el dinero: su hijo pequeño estaba enfermo.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Ada Blackjack 1923",
+       "Ada Blackjack portrait"
+      ]
+     }
+    },
+    {
+     "texto": "Pero el barco que debía traer comida nunca llega. El hielo no lo deja pasar.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=vmBg0n-qack",
+      "desde": 5,
+      "dur": 6,
+      "buscar_video": [
+       "sea ice Arctic",
+       "polar bear"
+      ]
+     }
+    },
+    {
+     "texto": "En enero de mil novecientos veintitrés, tres hombres salen caminando sobre el mar congelado a buscar ayuda.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "ENERO 1923",
+      "sub": "sobre el hielo"
+     }
+    },
+    {
+     "texto": "Nunca más se supo de ellos.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Allan Crawford Wrangel Island",
+       "Wrangel Island expedition members"
+      ]
+     }
+    },
+    {
+     "texto": "Ada se queda cuidando al cuarto, enfermo de escorbuto. En junio, él muere.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Lorne Knight Wrangel",
+       "Wrangel Island 1923 camp"
+      ]
+     }
+    },
+    {
+     "texto": "Ahora está completamente sola, con el gato de la expedición.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "SOLA",
+      "sub": "con el gato Vic"
+     }
+    },
+    {
+     "texto": "Aprende a poner trampas para zorros, caza aves y arma una plataforma para vigilar a los osos polares.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=choO7Crdqug",
+      "desde": 20,
+      "dur": 6,
+      "buscar_video": [
+       "polar bear",
+       "arctic fox"
+      ]
+     }
+    },
+    {
+     "texto": "En agosto de mil novecientos veintitrés llega un barco. Ada sigue viva.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Ada Blackjack rescued 1923",
+       "Ada Blackjack Nome"
+      ]
+     }
+    },
+    {
+     "texto": "La llamaron la Robinson Crusoe del Ártico. ¿Tú habrías aguantado? Comparte esta historia y sigue a Ridmer.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Ada Blackjack"
+      ]
+     }
+    }
+   ],
+   "solo_material": true
+  },
+  {
+   "eid": "fb2sb",
+   "tipo": "short",
+   "encargo": "fb2",
+   "articulo": "Ada Blackjack",
+   "fuente": "https://en.wikipedia.org/wiki/Ada_Blackjack",
+   "titulo_video": " ",
+   "titulo_youtube": "Se quedó SOLA en una isla del Ártico… y sobrevivió #shorts",
+   "titulos_opciones": [
+    "Se quedó SOLA en una isla del Ártico… y sobrevivió #shorts",
+    "Llegaron 5… solo volvió ELLA #shorts",
+    "La Robinson Crusoe del Ártico #shorts",
+    "Sola con un gato y osos polares 🐻‍❄️ #shorts",
+    "Salieron a pedir ayuda sobre el hielo… y desaparecieron #shorts",
+    "¿Cómo sobrevivió Ada Blackjack? #shorts"
+   ],
+   "descripcion_youtube": "Ada Blackjack sobrevivió sola en la isla Wrangel, en el Ártico, en 1923.\n#supervivencia #shorts #ridmer",
+   "etiquetas": [
+    "Ada Blackjack",
+    "isla Wrangel",
+    "supervivencia",
+    "shorts"
+   ],
+   "miniatura": {
+    "img": 2,
+    "texto": "SOLA"
+   },
+   "gancho": 1,
+   "musica": "epico",
+   "segmentos": [
+    {
+     "texto": "Sola en una isla del Ártico.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "1923",
+      "sub": "Isla Wrangel"
+     }
+    },
+    {
+     "texto": "Mil novecientos veintiuno. Ada Blackjack, de veintitrés años, viaja a la isla Wrangel con cuatro exploradores.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Ada Blackjack"
+      ]
+     }
+    },
+    {
+     "texto": "El barco con comida nunca llega. Tres hombres salen a pedir ayuda sobre el hielo… y desaparecen.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "ENERO 1923",
+      "sub": "sobre el hielo"
+     }
+    },
+    {
+     "texto": "El cuarto muere de escorbuto. Ada queda sola.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "SOLA",
+      "sub": "con el gato Vic"
+     }
+    },
+    {
+     "texto": "Pone trampas, caza aves y vigila a los osos polares durante meses.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=vmBg0n-qack",
+      "desde": 5,
+      "dur": 6,
+      "buscar_video": [
+       "polar bear"
+      ]
+     }
+    },
+    {
+     "texto": "En agosto de mil novecientos veintitrés la rescata un barco. Fue la única sobreviviente. Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Ada Blackjack 1923",
+       "Ada Blackjack portrait"
+      ]
+     }
+    }
+   ],
+   "solo_material": true
+  },
+  {
+   "eid": "fb3b",
+   "tipo": "fb",
+   "articulo": "Faro de las islas Flannan",
+   "fuente": "https://en.wikipedia.org/wiki/Flannan_Isles_Lighthouse",
+   "titulo_video": " ",
+   "titulo_youtube": "Tres hombres DESAPARECIERON de un faro… y el reloj estaba parado",
+   "titulos_opciones": [
+    "Tres hombres DESAPARECIERON de un faro… y el reloj estaba parado",
+    "El faro se apagó… y sus 3 guardianes nunca aparecieron",
+    "Faltaban dos abrigos… pero el tercero seguía colgado",
+    "El misterio del faro de las islas Flannan (1900)",
+    "Nadie salió a recibirlos: la isla estaba VACÍA 🌊",
+    "¿Por qué uno de ellos salió sin abrigo a la tormenta?",
+    "125 años sin respuesta: el faro de Eilean Mor"
+   ],
+   "descripcion_youtube": "Diciembre de 1900, islas Flannan, Escocia. Un barco ve que el faro está apagado.\nCuando llega el relevo, los tres guardianes ya no están.\n#misterio #historiasreales #ridmer",
+   "etiquetas": [
+    "islas Flannan",
+    "Eilean Mor",
+    "faro",
+    "misterio",
+    "Escocia",
+    "historias reales",
+    "ridmer"
+   ],
+   "texto_facebook": "El faro se apagó… y sus tres guardianes desaparecieron para siempre 🌊 #Misterio #HistoriasReales #DatosCuriosos",
+   "texto_tiktok": "Tres hombres DESAPARECIERON de un faro 🌊 Escocia, 1900: el reloj parado, la chimenea fría y faltaban solo dos abrigos de tres. ¿Qué crees que pasó? #misterio #historiasreales #faro #escocia #datoscuriosos #ridmer",
+   "miniatura": {
+    "img": 1,
+    "texto": "DESAPARECIERON"
+   },
+   "gancho": 1,
+   "musica": "misterio",
+   "segmentos": [
+    {
+     "texto": "Tres hombres desaparecieron de un faro.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "DICIEMBRE 1900",
+      "sub": "Islas Flannan, Escocia"
+     }
+    },
+    {
+     "texto": "Diciembre de mil novecientos. Islas Flannan, en el mar al oeste de Escocia.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Flannan Isles",
+       "Flannan Isles Lighthouse",
+       "Eilean Mòr"
+      ]
+     }
+    },
+    {
+     "texto": "En la isla Eilean Mor viven solo los tres guardianes del faro.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Eilean Mòr",
+       "Flannan Isles lighthouse",
+       "Flannan Isles from the sea"
+      ]
+     }
+    },
+    {
+     "texto": "El quince de diciembre, un barco que pasa de noche ve algo raro: el faro está apagado.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "15 DIC 1900",
+      "sub": "el faro está apagado"
+     }
+    },
+    {
+     "texto": "Por las tormentas, el barco de relevo no llega hasta el veintiséis.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=1bWButTvyHw",
+      "desde": 20,
+      "dur": 6,
+      "buscar_video": [
+       "stormy sea waves",
+       "lighthouse storm"
+      ]
+     }
+    },
+    {
+     "texto": "El guardián Joseph Moore desembarca. Nadie lo espera. No hay bandera ni saludo.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "26 DIC 1900",
+      "sub": "llega el relevo"
+     }
+    },
+    {
+     "texto": "La puerta está cerrada. Adentro, el reloj está parado y la chimenea, fría.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "EL RELOJ PARADO",
+      "sub": "nadie en el faro"
+     }
+    },
+    {
+     "texto": "Faltan dos abrigos impermeables… pero el tercero sigue colgado.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "2 DE 3",
+      "sub": "abrigos que faltaban"
+     }
+    },
+    {
+     "texto": "En el muelle del oeste hay barandas dobladas y falta una caja de cuerdas que estaba muy por encima del mar.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Flannan Isles",
+       "Eilean Mor landing",
+       "lighthouse landing stairs Scotland"
+      ]
+     }
+    },
+    {
+     "texto": "La teoría oficial: una ola enorme los arrastró mientras aseguraban el equipo.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=1bWButTvyHw",
+      "desde": 60,
+      "dur": 6,
+      "buscar_video": [
+       "huge waves cliffs"
+      ]
+     }
+    },
+    {
+     "texto": "Pero, ¿por qué uno salió sin su abrigo? Sus cuerpos nunca aparecieron.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Flannan Isles Lighthouse",
+       "lighthouse Outer Hebrides"
+      ]
+     }
+    },
+    {
+     "texto": "¿Tú qué crees que pasó? Comparte esta historia y sigue a Ridmer.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Eilean Mòr lighthouse",
+       "Flannan Isles"
+      ]
+     }
+    }
+   ],
+   "solo_material": true
   }
  ]
 }
