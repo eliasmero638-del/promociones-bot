@@ -1,0 +1,653 @@
+{
+ "fecha": "2026-11-24",
+ "modo": "claude",
+ "videos": [
+  {
+   "eid": "fb1",
+   "tipo": "fb",
+   "hora_fb": "14:00",
+   "articulo": "Vuelo 018 de LANHSA",
+   "fuente": "https://es.wikipedia.org/wiki/Vuelo_018_de_LANHSA",
+   "titulo_video": " ",
+   "titulo_youtube": "Despegó al atardecer… y segundos después cayó al mar",
+   "titulos_opciones": [
+    "Despegó al atardecer… y segundos después cayó al mar",
+    "Un avión LLENO cayó al mar… a 1 km de la playa",
+    "Despegó al atardecer… y en segundos estaba en el fondo del mar ✈️",
+    "17 a bordo, 5 sobrevivientes: lo que pasó en Roatán",
+    "Los motores perdieron fuerza justo después de despegar",
+    "Unos PESCADORES llegaron antes que los rescatistas",
+    "El avión giró de golpe a la derecha… y se partió en dos",
+    "¿Qué le pasó al vuelo 018 de Lanhsa?"
+   ],
+   "descripcion_youtube": "17 de marzo de 2025, Roatán, Honduras. Un avión de Lanhsa despega rumbo a La Ceiba con 17 personas.\nSegundos después, los motores pierden fuerza…\n#historiasreales #aviones #ridmer",
+   "etiquetas": [
+    "Lanhsa",
+    "Roatán",
+    "Honduras",
+    "vuelo 018",
+    "accidente aéreo",
+    "historias reales",
+    "ridmer"
+   ],
+   "texto_facebook": "Despegó al atardecer… y segundos después cayó al mar ✈️ 17 a bordo, solo 5 sobrevivieron. #HistoriasReales #Aviones #Honduras",
+   "texto_tiktok": "Despegó… y segundos después cayó al MAR ✈️ Roatán, Honduras: los motores perdieron fuerza, el avión giró a la derecha y se partió en dos. Unos pescadores llegaron primero. #historiasreales #aviones #honduras #roatan #datoscuriosos #ridmer",
+   "miniatura": {
+    "img": 1,
+    "texto": "CAYÓ AL MAR"
+   },
+   "gancho": 1,
+   "musica": "tension",
+   "segmentos": [
+    {
+     "texto": "Despegó… y segundos después cayó al mar.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "17 MAR 2025",
+      "sub": "Roatán, Honduras"
+     }
+    },
+    {
+     "texto": "Diecisiete de marzo de dos mil veinticinco. Isla de Roatán, en Honduras.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Al atardecer, un Jetstream de Lanhsa despega rumbo a La Ceiba con diecisiete personas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Entre ellos va Aurelio Martínez, cantante garífuna y exdiputado.",
+     "escena": {
+      "tipo": "foto",
+      "img": 7
+     }
+    },
+    {
+     "texto": "Apenas en el aire, los motores pierden fuerza.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "SIN FUERZA",
+      "sub": "segundos después de despegar"
+     }
+    },
+    {
+     "texto": "El avión gira de golpe a la derecha… y se estrella contra el mar.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=Vh0M0qw_Td8",
+      "desde": 8,
+      "dur": 6,
+      "buscar_video": [
+       "airplane wreck sea",
+       "Roatan Honduras"
+      ]
+     }
+    },
+    {
+     "texto": "Se parte en dos, a un kilómetro de la costa.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=3Ay492BCjP0",
+      "desde": 10,
+      "dur": 6,
+      "buscar_video": [
+       "rescue boat sea"
+      ]
+     }
+    },
+    {
+     "texto": "Los primeros en llegar no son rescatistas. Son pescadores de la isla.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "PESCADORES",
+      "sub": "los primeros en llegar"
+     }
+    },
+    {
+     "texto": "Sacan del agua a once personas con vida.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=--L-BHB8jUY",
+      "desde": 12,
+      "dur": 6,
+      "buscar_video": [
+       "rescue boat sea night"
+      ]
+     }
+    },
+    {
+     "texto": "Pero seis mueren en el hospital. Doce fallecidos, entre ellos Aurelio. Solo cinco sobreviven.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     },
+     "rotulo": "5 SOBREVIVIENTES"
+    },
+    {
+     "texto": "Los restos del avión se llevaron a Estados Unidos para saber qué falló.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=kJqxa1kxbA8",
+      "desde": 15,
+      "dur": 6,
+      "buscar_video": [
+       "airplane wreckage"
+      ]
+     }
+    },
+    {
+     "texto": "¿Tú volverías a subirte a un avión? Comparte esta historia y sigue a Ridmer.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb1s",
+   "tipo": "short",
+   "encargo": "fb1",
+   "hora_youtube": "14:00",
+   "articulo": "Vuelo 018 de LANHSA",
+   "fuente": "https://es.wikipedia.org/wiki/Vuelo_018_de_LANHSA",
+   "titulo_video": " ",
+   "titulo_youtube": "Despegó… y segundos después cayó al MAR #shorts",
+   "titulos_opciones": [
+    "Despegó… y segundos después cayó al MAR #shorts",
+    "17 a bordo, solo 5 sobrevivieron #shorts",
+    "Unos pescadores llegaron primero #shorts",
+    "El avión se partió en dos frente a Roatán #shorts",
+    "Los motores fallaron al despegar ✈️ #shorts",
+    "¿Qué pasó con el vuelo 018? #shorts"
+   ],
+   "descripcion_youtube": "Roatán, Honduras, 2025: un avión de Lanhsa cae al mar segundos después de despegar.\n#historiasreales #shorts #ridmer",
+   "etiquetas": [
+    "Lanhsa",
+    "Roatán",
+    "accidente aéreo",
+    "shorts"
+   ],
+   "miniatura": {
+    "img": 1,
+    "texto": "CAYÓ AL MAR"
+   },
+   "gancho": 1,
+   "musica": "tension",
+   "segmentos": [
+    {
+     "texto": "Despegó… y segundos después cayó al mar.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "17 MAR 2025",
+      "sub": "Roatán, Honduras"
+     }
+    },
+    {
+     "texto": "Roatán, Honduras, dos mil veinticinco. Un avión de Lanhsa sale hacia La Ceiba con diecisiete personas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Apenas en el aire, pierde fuerza en los motores y gira a la derecha.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "SIN FUERZA",
+      "sub": "al despegar"
+     }
+    },
+    {
+     "texto": "Se estrella en el mar y se parte en dos.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=Vh0M0qw_Td8",
+      "desde": 8,
+      "dur": 6,
+      "buscar_video": [
+       "airplane wreck sea"
+      ]
+     }
+    },
+    {
+     "texto": "Pescadores de la isla sacan a once personas con vida.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "PESCADORES",
+      "sub": "los primeros en llegar"
+     }
+    },
+    {
+     "texto": "Pero seis mueren en el hospital. Solo cinco sobrevivieron, y el cantante Aurelio Martínez no estaba entre ellos. Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=--L-BHB8jUY",
+      "desde": 12,
+      "dur": 6,
+      "buscar_video": [
+       "rescue boat sea"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb1f",
+   "tipo": "foto",
+   "omitir": true,
+   "hora_foto": "15:30",
+   "titulo_youtube": "Despegó al atardecer… y segundos después cayó al mar",
+   "texto_foto": "Despegó al atardecer… y segundos después cayó al mar.\n\n17 de marzo de 2025. En la isla de Roatán, Honduras, un Jetstream 32 de la aerolínea Lanhsa despega rumbo a La Ceiba con 17 personas a bordo. Entre ellas viaja Aurelio Martínez, cantante garífuna y exdiputado, junto a su pareja.\n\nApenas en el aire, los motores pierden fuerza. El avión gira de golpe a la derecha y se estrella en el mar a las 6:24 de la tarde, a un kilómetro de la costa. Se parte en dos.\n\nLos primeros en llegar son pescadores de la isla. Sacan con vida a once personas, pero seis mueren después en el hospital. Doce fallecidos en total, entre ellos Aurelio Martínez. Su pareja sobrevivió.\n\nSolo cinco personas lograron contarlo.\n\n¿Tú volverías a subirte a un avión después de algo así?\n#HistoriasReales #Aviones #Honduras"
+  },
+  {
+   "eid": "fb2",
+   "tipo": "fb",
+   "hora_fb": "18:30",
+   "articulo": "Ada Blackjack",
+   "fuente": "https://en.wikipedia.org/wiki/Ada_Blackjack",
+   "titulo_video": " ",
+   "titulo_youtube": "Se quedó SOLA en una isla del Ártico… y sobrevivió",
+   "titulos_opciones": [
+    "Se quedó SOLA en una isla del Ártico… y sobrevivió",
+    "Llegaron 5 a esta isla congelada… solo volvió ELLA",
+    "Tres hombres salieron a pedir ayuda sobre el hielo… y nunca volvieron",
+    "La Robinson Crusoe del Ártico: la historia de Ada Blackjack",
+    "Sola, con un gato y rodeada de osos polares 🐻‍❄️",
+    "Nadie creía que una costurera sobreviviría… pero fue la ÚNICA",
+    "¿Cómo sobrevivió una mujer sola en la isla Wrangel?"
+   ],
+   "descripcion_youtube": "1921: cinco personas llegan a la isla Wrangel, en el Ártico. Dos años después, solo quedaba una: Ada Blackjack.\n¿Cómo sobrevivió sola?\n#historiasreales #supervivencia #ridmer",
+   "etiquetas": [
+    "Ada Blackjack",
+    "isla Wrangel",
+    "Ártico",
+    "supervivencia",
+    "historias reales",
+    "ridmer"
+   ],
+   "texto_facebook": "Llegaron cinco a una isla congelada del Ártico… y solo volvió ELLA 🐻‍❄️ #HistoriasReales #Supervivencia #DatosCuriosos",
+   "texto_tiktok": "Se quedó SOLA en una isla del Ártico… y sobrevivió 🐻‍❄️ En 1921 llegaron cinco a la isla Wrangel. Tres salieron a pedir ayuda sobre el hielo y nunca volvieron. #historiasreales #supervivencia #artico #datoscuriosos #ridmer",
+   "miniatura": {
+    "img": 2,
+    "texto": "SOLA EN EL ÁRTICO"
+   },
+   "gancho": 1,
+   "musica": "epico",
+   "segmentos": [
+    {
+     "texto": "Sola en una isla del Ártico.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "1923",
+      "sub": "Isla Wrangel, Ártico"
+     }
+    },
+    {
+     "texto": "Septiembre de mil novecientos veintiuno. Cuatro exploradores y una mujer inuit llegan a la isla Wrangel, frente a Siberia.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Wrangel Island",
+       "Wrangel Island expedition 1921"
+      ]
+     }
+    },
+    {
+     "texto": "Ella es Ada Blackjack. Tiene veintitrés años y va como costurera.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Ada Blackjack"
+      ]
+     }
+    },
+    {
+     "texto": "Aceptó por el dinero: su hijo pequeño estaba enfermo.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Ada Blackjack 1923",
+       "Ada Blackjack portrait"
+      ]
+     }
+    },
+    {
+     "texto": "Pero el barco que debía traer comida nunca llega. El hielo no lo deja pasar.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=wiEtchoA4B0",
+      "desde": 30,
+      "dur": 6,
+      "buscar_video": [
+       "Arctic sea ice",
+       "pack ice ship"
+      ]
+     }
+    },
+    {
+     "texto": "En enero de mil novecientos veintitrés, tres hombres salen caminando sobre el mar congelado a buscar ayuda.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "ENERO 1923",
+      "sub": "sobre el hielo"
+     }
+    },
+    {
+     "texto": "Nunca más se supo de ellos.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Allan Crawford Wrangel Island",
+       "Wrangel Island expedition members"
+      ]
+     }
+    },
+    {
+     "texto": "Ada se queda cuidando al cuarto, enfermo de escorbuto. En junio, él muere.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Lorne Knight Wrangel",
+       "Wrangel Island 1923 camp"
+      ]
+     }
+    },
+    {
+     "texto": "Ahora está completamente sola, con el gato de la expedición.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "SOLA",
+      "sub": "con el gato Vic"
+     }
+    },
+    {
+     "texto": "Aprende a poner trampas para zorros, caza aves y arma una plataforma para vigilar a los osos polares.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=wiEtchoA4B0",
+      "desde": 90,
+      "dur": 6,
+      "buscar_video": [
+       "polar bear",
+       "arctic fox"
+      ]
+     }
+    },
+    {
+     "texto": "En agosto de mil novecientos veintitrés llega un barco. Ada sigue viva.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Ada Blackjack rescued 1923",
+       "Ada Blackjack Nome"
+      ]
+     }
+    },
+    {
+     "texto": "La llamaron la Robinson Crusoe del Ártico. ¿Tú habrías aguantado? Comparte esta historia y sigue a Ridmer.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Ada Blackjack"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb2s",
+   "tipo": "short",
+   "encargo": "fb2",
+   "hora_youtube": "19:00",
+   "articulo": "Ada Blackjack",
+   "fuente": "https://en.wikipedia.org/wiki/Ada_Blackjack",
+   "titulo_video": " ",
+   "titulo_youtube": "Se quedó SOLA en una isla del Ártico… y sobrevivió #shorts",
+   "titulos_opciones": [
+    "Se quedó SOLA en una isla del Ártico… y sobrevivió #shorts",
+    "Llegaron 5… solo volvió ELLA #shorts",
+    "La Robinson Crusoe del Ártico #shorts",
+    "Sola con un gato y osos polares 🐻‍❄️ #shorts",
+    "Salieron a pedir ayuda sobre el hielo… y desaparecieron #shorts",
+    "¿Cómo sobrevivió Ada Blackjack? #shorts"
+   ],
+   "descripcion_youtube": "Ada Blackjack sobrevivió sola en la isla Wrangel, en el Ártico, en 1923.\n#supervivencia #shorts #ridmer",
+   "etiquetas": [
+    "Ada Blackjack",
+    "isla Wrangel",
+    "supervivencia",
+    "shorts"
+   ],
+   "miniatura": {
+    "img": 2,
+    "texto": "SOLA"
+   },
+   "gancho": 1,
+   "musica": "epico",
+   "segmentos": [
+    {
+     "texto": "Sola en una isla del Ártico.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "1923",
+      "sub": "Isla Wrangel"
+     }
+    },
+    {
+     "texto": "Mil novecientos veintiuno. Ada Blackjack, de veintitrés años, viaja a la isla Wrangel con cuatro exploradores.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Ada Blackjack"
+      ]
+     }
+    },
+    {
+     "texto": "El barco con comida nunca llega. Tres hombres salen a pedir ayuda sobre el hielo… y desaparecen.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "ENERO 1923",
+      "sub": "sobre el hielo"
+     }
+    },
+    {
+     "texto": "El cuarto muere de escorbuto. Ada queda sola.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "SOLA",
+      "sub": "con el gato Vic"
+     }
+    },
+    {
+     "texto": "Pone trampas, caza aves y vigila a los osos polares durante meses.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=wiEtchoA4B0",
+      "desde": 90,
+      "dur": 6,
+      "buscar_video": [
+       "polar bear"
+      ]
+     }
+    },
+    {
+     "texto": "En agosto de mil novecientos veintitrés la rescata un barco. Fue la única sobreviviente. Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Ada Blackjack 1923",
+       "Ada Blackjack portrait"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb3",
+   "tipo": "fb",
+   "hora_fb": "21:00",
+   "articulo": "Faro de las islas Flannan",
+   "fuente": "https://en.wikipedia.org/wiki/Flannan_Isles_Lighthouse",
+   "titulo_video": " ",
+   "titulo_youtube": "Tres hombres DESAPARECIERON de un faro… y el reloj estaba parado",
+   "titulos_opciones": [
+    "Tres hombres DESAPARECIERON de un faro… y el reloj estaba parado",
+    "El faro se apagó… y sus 3 guardianes nunca aparecieron",
+    "Faltaban dos abrigos… pero el tercero seguía colgado",
+    "El misterio del faro de las islas Flannan (1900)",
+    "Nadie salió a recibirlos: la isla estaba VACÍA 🌊",
+    "¿Por qué uno de ellos salió sin abrigo a la tormenta?",
+    "125 años sin respuesta: el faro de Eilean Mor"
+   ],
+   "descripcion_youtube": "Diciembre de 1900, islas Flannan, Escocia. Un barco ve que el faro está apagado.\nCuando llega el relevo, los tres guardianes ya no están.\n#misterio #historiasreales #ridmer",
+   "etiquetas": [
+    "islas Flannan",
+    "Eilean Mor",
+    "faro",
+    "misterio",
+    "Escocia",
+    "historias reales",
+    "ridmer"
+   ],
+   "texto_facebook": "El faro se apagó… y sus tres guardianes desaparecieron para siempre 🌊 #Misterio #HistoriasReales #DatosCuriosos",
+   "texto_tiktok": "Tres hombres DESAPARECIERON de un faro 🌊 Escocia, 1900: el reloj parado, la chimenea fría y faltaban solo dos abrigos de tres. ¿Qué crees que pasó? #misterio #historiasreales #faro #escocia #datoscuriosos #ridmer",
+   "miniatura": {
+    "img": 1,
+    "texto": "DESAPARECIERON"
+   },
+   "gancho": 1,
+   "musica": "misterio",
+   "segmentos": [
+    {
+     "texto": "Tres hombres desaparecieron de un faro.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "DICIEMBRE 1900",
+      "sub": "Islas Flannan, Escocia"
+     }
+    },
+    {
+     "texto": "Diciembre de mil novecientos. Islas Flannan, en el mar al oeste de Escocia.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Flannan Isles lighthouse",
+       "Eilean Mor lighthouse"
+      ]
+     }
+    },
+    {
+     "texto": "En la isla Eilean Mor viven solo los tres guardianes del faro.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Eilean Mor Flannan",
+       "Flannan Isles"
+      ]
+     }
+    },
+    {
+     "texto": "El quince de diciembre, un barco que pasa de noche ve algo raro: el faro está apagado.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "15 DIC 1900",
+      "sub": "el faro está apagado"
+     }
+    },
+    {
+     "texto": "Por las tormentas, el barco de relevo no llega hasta el veintiséis.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=PoNCG3PZKII",
+      "desde": 40,
+      "dur": 6,
+      "buscar_video": [
+       "stormy sea waves",
+       "rough sea Scotland"
+      ]
+     }
+    },
+    {
+     "texto": "El guardián Joseph Moore desembarca. Nadie lo espera. No hay bandera ni saludo.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "26 DIC 1900",
+      "sub": "llega el relevo"
+     }
+    },
+    {
+     "texto": "La puerta está cerrada. Adentro, el reloj está parado y la chimenea, fría.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "EL RELOJ PARADO",
+      "sub": "nadie en el faro"
+     }
+    },
+    {
+     "texto": "Faltan dos abrigos impermeables… pero el tercero sigue colgado.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "2 DE 3",
+      "sub": "abrigos que faltaban"
+     }
+    },
+    {
+     "texto": "En el muelle del oeste hay barandas dobladas y falta una caja de cuerdas que estaba muy por encima del mar.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Flannan Isles west landing",
+       "Flannan Isles landing"
+      ]
+     }
+    },
+    {
+     "texto": "La teoría oficial: una ola enorme los arrastró mientras aseguraban el equipo.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=PoNCG3PZKII",
+      "desde": 120,
+      "dur": 6,
+      "buscar_video": [
+       "huge waves cliffs",
+       "storm waves rocks"
+      ]
+     }
+    },
+    {
+     "texto": "Pero, ¿por qué uno salió sin su abrigo? Sus cuerpos nunca aparecieron.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Flannan Isles lighthouse"
+      ]
+     }
+    },
+    {
+     "texto": "¿Tú qué crees que pasó? Comparte esta historia y sigue a Ridmer.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Eilean Mor lighthouse"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb2f",
+   "tipo": "foto",
+   "omitir": true,
+   "hora_foto": "20:00",
+   "titulo_youtube": "Tres hombres desaparecieron de un faro… y el reloj estaba parado",
+   "texto_foto": "Tres hombres desaparecieron de un faro… y nadie sabe cómo.\n\nDiciembre de 1900. En Eilean Mor, una isla rocosa de las islas Flannan, al oeste de Escocia, viven solo los tres guardianes del faro: James Ducat, Thomas Marshall y Donald MacArthur.\n\nEl 15 de diciembre, un barco que pasa de noche ve algo raro: el faro está apagado. Por las tormentas, el barco de relevo no llega hasta el 26.\n\nEl guardián Joseph Moore desembarca y nadie sale a recibirlo. La puerta está cerrada. Adentro, el reloj está parado y la chimenea fría. Faltan dos abrigos impermeables… pero el tercero sigue colgado.\n\nEn el muelle del oeste encuentran barandas dobladas y una caja de cuerdas arrancada de su sitio, muy por encima del mar. La teoría oficial: una ola enorme se los llevó.\n\nPero nunca se encontraron los cuerpos. ¿Y por qué uno salió sin abrigo?\n\n¿Tú qué crees que pasó?\n#Misterio #HistoriasReales #DatosCuriosos"
+  }
+ ]
+}
