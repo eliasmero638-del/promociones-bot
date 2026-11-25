@@ -5,7 +5,7 @@ trozos del en vivo uno tras otro. No repite lo que ya salió como clip (salvo qu
 
 - registrar(): por cada pedazo analizado guarda su mejor momento y un enlace duro al .ts (así sobrevive a la limpieza
   de 3 h del grabador).
-- bucle(): 07:20 arma el video (whisper + IA eligen los trozos), 08:30 lo manda por Telegram (/noresumen lo cancela),
+- bucle(): 06:00 arma el video (material de ayer 9:00 a hoy 4:00, sobre todo la noche) (whisper + IA eligen los trozos), 08:30 lo manda por Telegram (/noresumen lo cancela),
   09:00 lo publica.
 """
 import glob, json, os, re, shutil, subprocess, threading, time
@@ -36,7 +36,9 @@ def registrar(path, t0, dur, puntos):
         if not puntos:
             return
         s, sc, det = max(puntos, key=lambda x: x[1])
-        if sc < C.get().get('resumen_min', 45):      # solo se guardan los pedazos con algo de movimiento (disco)
+        h = time.localtime(t0).tm_hour
+        noche = h >= 22 or h < 5                     # 25-nov: de noche (cuarto VIP, acostados) se guarda TODO, aunque hablen bajito
+        if sc < C.get().get('resumen_min', 45) and not noche:
             return
         dst = os.path.join(PED, os.path.basename(path))
         if not os.path.exists(dst):
@@ -104,13 +106,17 @@ def armar(desde, hasta, salida):
     # 1) preseleccionar: los mejores, separados ≥ 8 min, priorizando lo que NO salió como clip
     for c in cands:
         c['ya_clip'] = any(abs(c['centro'] - u) < 150 for u in usados)
+        h = time.localtime(c['centro']).tm_hour
+        c['noche'] = h >= 22 or h < 5
     cands.sort(key=lambda c: (c['ya_clip'], -c['puntaje']))
+    # 25-nov: lo más importante del día es la noche (cuarto VIP, cuando ya están acostados): 2/3 de los candidatos
     pre = []
-    for c in cands:
-        if all(abs(c['centro'] - p['centro']) > 480 for p in pre):
-            pre.append(c)
-        if len(pre) >= 28:
-            break
+    for grupo, cupo, sep in ((lambda c: c['noche'], 22, 240), (lambda c: True, 34, 480)):
+        for c in cands:
+            if len(pre) >= cupo:
+                break
+            if grupo(c) and c not in pre and all(abs(c['centro'] - p['centro']) > sep for p in pre):
+                pre.append(c)
     # 2) escuchar cada uno (whisper) para que la IA elija lo que de verdad llama la atención
     tmp = os.path.join(D, 'tmp'); shutil.rmtree(tmp, ignore_errors=True); os.makedirs(tmp)
     for i, c in enumerate(pre):
@@ -122,14 +128,15 @@ def armar(desde, hasta, salida):
             c['archivo'] = f
             c['texto'] = ' '.join(w for _, _, w in editor.transcribir(f))[:700]
     pre = [c for c in pre if c.get('archivo')]
-    lista = '\n'.join(f"[{c['id']}] ({time.strftime('%H:%M', time.localtime(c['centro']))}"
+    lista = '\n'.join(f"[{c['id']}] ({time.strftime('%H:%M', time.localtime(c['centro']))}{', de noche' if c['noche'] else ''}"
                       f"{', ya salió como clip' if c['ya_clip'] else ''}) {c['texto'] or '(no se entiende lo que dicen)'}"
                       for c in pre)
     prompt = (f"Eres editor de una página de Facebook de chismes del reality «{cfg.get('reality')}» "
               f"(participantes: {', '.join(cfg.get('participantes', {}))}). Estas son transcripciones de momentos del en vivo "
-              "de las últimas 24 horas. Elige los 9 a 11 que más llamen la atención para un RESUMEN DEL DÍA: chismes, "
-              "lo que hablan a escondidas o en voz baja de otros, secretos, confesiones, estrategias, discusiones, "
-              "romances, momentos que la gente comentaría. Evita los momentos aburridos o sin sentido, y los que ya "
+              "del día. Elige los 9 a 11 más PICANTES para un RESUMEN DEL DÍA. Lo MÁS importante (el dueño lo pidió así): "
+              "lo que pasa en el CUARTO VIP y de noche cuando ya están ACOSTADOS en la cama — coqueteos, quién duerme con "
+              "quién, besos, lo que se dicen bajito en la cama. Después: chismes, lo que hablan a escondidas de otros, "
+              "secretos, confesiones, estrategias, discusiones, romances. Evita los momentos aburridos o sin sentido, y los que ya "
               "salieron como clip salvo que sean de lo más fuerte del día. Ordénalos del más fuerte al menos fuerte.\n\n"
               f"{lista}\n\nResponde SOLO JSON: {{\"elegidos\": [ids], \"gancho\": \"frase corta (máx 12 palabras) "
               "sobre lo más fuerte del día, sin inventar nada que no esté en las transcripciones\"}")
@@ -208,11 +215,12 @@ def bucle():
                 hoy = time.strftime('%Y-%m-%d'); h = time.localtime(); hm = h.tm_hour * 60 + h.tm_min
                 est = hecho.setdefault(hoy, {})
                 out = os.path.join(D, f'resumen_{hoy}.mp4')
-                if hm >= 7 * 60 + 20 and hm < 9 * 60 and (est.get('armado') in (None, 'intentando')):
+                if hm >= 6 * 60 and hm < 9 * 60 and (est.get('armado') in (None, 'intentando')):
                     est['armado'] = 'intentando'
                     json.dump(hecho, open(ef, 'w'), ensure_ascii=False, default=str)
                     log('armando el resumen del día')
-                    ruta, inf = armar(time.time() - 24 * 3600, time.time() - 30 * 60, out)
+                    hoy4 = time.mktime(time.strptime(hoy + ' 04:00', '%Y-%m-%d %H:%M'))
+                    ruta, inf = armar(hoy4 - 19 * 3600, hoy4, out)       # de ayer 9:00 am a hoy 4:00 am
                     est['armado'] = inf if ruta else {'error': inf}
                     log('resumen', ruta, inf)
                     if not ruta:
