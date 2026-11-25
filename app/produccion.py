@@ -951,7 +951,7 @@ def _subir_youtube(jid, m):
                        m.get('etiquetas', []), m.get('publicar_en'),
                        os.path.join(carpeta, 'miniatura.jpg') if m['entrega'] == 'largo' else None)
     except Exception as e:
-        log('subida a YouTube falló', jid, e)
+        log('subida a YouTube falló', jid, ' '.join(str(e).split())[:400])
         tg.texto(f'⚠️ No pude subir a YouTube automáticamente ({str(e)[:200]}). Te lo mando para que lo subas tú:')
         return _avisar_youtube(m)
     m['youtube_id'] = vid
@@ -977,7 +977,28 @@ def _bajar_plan(fecha):
         return None
 
 
+def _reintentar_yt_hoy():
+    """25-nov: los Shorts de hoy fallaron al subir (400). Un reintento por video, ya público, para ver el motivo exacto."""
+    hoy = time.strftime('%Y%m%d')
+    for jid in sorted(os.listdir(F.DIR)):
+        if not jid.startswith(hoy) or not jid.endswith('_short'):
+            continue
+        m = F._leer(os.path.join(F.DIR, jid, 'meta.json'), None)
+        if not m or m.get('estado') != 'avisado_youtube' or m.get('reintento_yt'):
+            continue
+        m['reintento_yt'] = time.time()
+        if m.get('publicar_en', 0) < time.time():
+            m['publicar_en'] = None                      # su hora ya pasó: público al instante
+        F._guardar(os.path.join(F.DIR, jid, 'meta.json'), m)
+        log('reintento subir a YouTube', jid)
+        _subir_youtube(jid, m)
+
+
 def bucle():
+    try:
+        threading.Thread(target=lambda: (time.sleep(90), _reintentar_yt_hoy()), daemon=True).start()
+    except Exception as e:
+        log('reintento yt', e)
     while True:
         try:
             est = F._leer(ESTADO, {})

@@ -92,7 +92,12 @@ def subir(video, titulo, descripcion, etiquetas, publicar_en=None, miniatura=Non
                                          'X-Upload-Content-Type': 'video/mp4', 'X-Upload-Content-Length': str(tam)}),
                       data=json.dumps(cuerpo), timeout=60)
     if r.status_code >= 300:
-        raise RuntimeError(f'YouTube no aceptó el video ({r.status_code}): {r.text[:300]}')
+        try:
+            err = r.json().get('error', {})
+            det = '; '.join(f"{e.get('reason')}: {e.get('message')}" for e in err.get('errors', [])) or err.get('message')
+        except Exception:
+            det = r.text
+        raise RuntimeError(f'YouTube no aceptó el video ({r.status_code}): {" ".join(str(det).split())[:300]}')
     url = r.headers['Location']
     with open(video, 'rb') as f:
         r = requests.put(url, data=f, headers=dict(h, **{'Content-Type': 'video/mp4'}), timeout=3600)
