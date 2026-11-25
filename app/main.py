@@ -1,6 +1,6 @@
 """Clipero: graba el reality, detecta los momentos fuertes, los edita y te los manda por Telegram."""
 import json, os, queue, re, secrets, shutil, subprocess, threading, time
-import config as C, recorder, analyzer, editor, tg, ia, fb, wa, web, ntfy
+import config as C, recorder, analyzer, editor, tg, ia, fb, wa, web, ntfy, resumen
 try:
     import fabrica
 except Exception as _e:          # si la fábrica falla, el Clipero sigue funcionando
@@ -51,6 +51,7 @@ def analizar_bucle():
                 vol = analyzer.loudness_por_segundo(p)
                 chat = recorder.chat_mensajes(t0 - 5, t0 + len(vol) + 40)
                 puntos = det.analizar(vol, chat, t0)
+                resumen.registrar(p, t0, len(vol), puntos)          # 25-nov: para el RESUMEN DEL DÍA
                 stats['pedazos'] += 1
                 stats['ult_pedazo'] = time.strftime('%H:%M', time.localtime(t0))
                 if puntos:
@@ -240,6 +241,7 @@ def anotar_reciente(info, centro):
     except Exception:
         rec = []
     rec = [e for e in rec if time.time() - e['t'] < 6 * 3600]
+    resumen.marcar_clip(centro)
     rec.append({'t': time.time(), 'centro': centro, 'quien': (info.get('nombres') or [''])[0], 'tipo': info.get('tipo'),
                 'titulo': info.get('titulo', ''), 'pal': sorted(_palabras(info.get('texto')))[:400]})
     json.dump(rec, open(RECIENTES, 'w'), ensure_ascii=False)
@@ -632,6 +634,9 @@ def comandos(tipo, chat, dato, raw):
         else:
             cola.put({'centro': time.time() - C.get()['despues_seg'] - 10, 'puntaje': 0, 'detalle': {}, 'manual': True})
             tg.texto('🎬 Ok, armando clip del último minuto. Te llega en unos minutos.', chat)
+    elif cmd == '/noresumen':
+        resumen.cancelar()
+        tg.texto('🚫 Listo, hoy NO se publica el RESUMEN DEL DÍA.', chat)
     elif cmd == '/pausa':
         C.save(pausado=True); tg.texto('⏸️ Clips automáticos en pausa (sigo grabando). /seguir para reanudar.', chat)
     elif cmd == '/seguir':
@@ -833,6 +838,7 @@ def main():
         json.dump({'vivo': True, 'version': VERSION, 'inicio': time.time()}, f)
     recorder.iniciar()
     threading.Thread(target=analizar_bucle, daemon=True).start()
+    threading.Thread(target=resumen.bucle, daemon=True).start()
     threading.Thread(target=trabajador, daemon=True).start()
     threading.Thread(target=auto_publicador, daemon=True).start()
     threading.Thread(target=vigilante, daemon=True).start()
