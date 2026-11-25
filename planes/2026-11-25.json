@@ -1,0 +1,1303 @@
+{
+ "fecha": "2026-11-25",
+ "modo": "claude",
+ "videos": [
+  {
+   "eid": "fb1",
+   "tipo": "fb",
+   "hora_fb": "14:00",
+   "articulo": "Caleuche",
+   "fuente": "https://es.wikipedia.org/wiki/Caleuche",
+   "titulo_video": " ",
+   "titulos_opciones": [
+    "El barco fantasma de Chile que aparece en la NIEBLA… lleno de luces y música",
+    "Dicen que este barco recoge a los que mueren en el mar 👻",
+    "Si escuchas música en el mar de noche… podría ser el CALEUCHE",
+    "El barco que se convierte en roca para que no lo veas",
+    "¿Qué es el Caleuche? El barco fantasma más temido de Chiloé",
+    "Los pescadores de Chiloé NO silban en el mar… por este barco",
+    "Un barco lleno de fiesta que nadie quiere encontrar de noche"
+   ],
+   "descripcion_youtube": "En los canales de Chiloé, al sur de Chile, los pescadores hablan de un barco lleno de luces que aparece en la niebla.\n¿Qué es el Caleuche?\n#misterio #leyendas #ridmer",
+   "etiquetas": [
+    "Caleuche",
+    "Chiloé",
+    "barco fantasma",
+    "leyendas de Chile",
+    "misterio",
+    "Ridmer"
+   ],
+   "texto_facebook": "Un barco lleno de luces que aparece en la niebla… y dicen que recoge a los que mueren en el mar 👻 #Misterio #HistoriasReales #DatosCuriosos",
+   "texto_tiktok": "El barco fantasma de Chile que aparece en la NIEBLA 👻 En Chiloé dicen que el Caleuche recoge a los que mueren en el mar… y que puede convertirse en roca para que no lo veas. ¿Lo navegarías de noche? #misterio #caleuche #chiloe #leyendas #barcofantasma #ridmer",
+   "miniatura": {
+    "img": 1,
+    "texto": "EL BARCO FANTASMA"
+   },
+   "gancho": 1,
+   "musica": "misterio",
+   "segmentos": [
+    {
+     "texto": "Un barco lleno de luces… aparece en la niebla.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "CHILOÉ",
+      "sub": "Sur de Chile"
+     }
+    },
+    {
+     "texto": "En los canales de Chiloé, al sur de Chile, los pescadores le temen.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=SKDVjXdG2ac",
+      "desde": 25,
+      "dur": 6,
+      "buscar_video": [
+       "Chiloe island",
+       "Chile fjord coast"
+      ]
+     }
+    },
+    {
+     "texto": "Lo llaman el Caleuche, que en mapudungún significa gente transformada.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Aparece en noches de neblina, con música de fiesta y ruido de cadenas.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "NOCHE DE NEBLINA",
+      "sub": "Mar de Chiloé"
+     }
+    },
+    {
+     "texto": "Si no quiere ser visto, se convierte en roca o en un palo flotando.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=PK_EEc-9Qpk",
+      "desde": 40,
+      "dur": 6,
+      "buscar_video": [
+       "foggy sea coast",
+       "fog over sea"
+      ]
+     }
+    },
+    {
+     "texto": "Su tripulación se transforma en lobos marinos o en delfines.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "South American sea lion",
+       "Otaria flavescens"
+      ]
+     }
+    },
+    {
+     "texto": "Dicen que recoge a los que mueren en el mar… y les da una fiesta eterna a bordo.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     }
+    },
+    {
+     "texto": "Otros dicen que atrae a los pescadores con su música… para hacerlos esclavos para siempre.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "«GENTE TRANSFORMADA»",
+      "sub": "La leyenda del Caleuche"
+     }
+    },
+    {
+     "texto": "Por eso los chilotes navegan con respeto: no cantan, no silban.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "Y si alguien se hacía rico de la noche a la mañana, susurraban: tiene un pacto con el Caleuche.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    },
+    {
+     "texto": "¿Tú navegarías por ahí de noche? Comparte esta historia y sigue a Ridmer.",
+     "escena": {
+      "tipo": "foto",
+      "img": 7
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb1s",
+   "tipo": "short",
+   "encargo": "fb1",
+   "hora_youtube": "14:00",
+   "articulo": "Caleuche",
+   "fuente": "https://es.wikipedia.org/wiki/Caleuche",
+   "titulo_video": " ",
+   "titulos_opciones": [
+    "El barco fantasma que aparece en la NIEBLA de Chile #shorts",
+    "Si escuchas música en el mar de noche… huye #shorts",
+    "El Caleuche: el barco que recoge a los muertos del mar #shorts",
+    "Este barco se convierte en ROCA para que no lo veas #shorts",
+    "Por qué los pescadores de Chiloé no silban en el mar #shorts",
+    "El barco fantasma más temido de Sudamérica #shorts"
+   ],
+   "descripcion_youtube": "El Caleuche, el barco fantasma de Chiloé que aparece en la niebla.\n#misterio #shorts #ridmer",
+   "etiquetas": [
+    "Caleuche",
+    "Chiloé",
+    "barco fantasma",
+    "shorts"
+   ],
+   "miniatura": {
+    "img": 1,
+    "texto": "BARCO FANTASMA"
+   },
+   "gancho": 1,
+   "musica": "misterio",
+   "segmentos": [
+    {
+     "texto": "Un barco lleno de luces… aparece en la niebla.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "CHILOÉ",
+      "sub": "Sur de Chile"
+     }
+    },
+    {
+     "texto": "Es el Caleuche, el barco fantasma de Chiloé, al sur de Chile.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=SKDVjXdG2ac",
+      "desde": 25,
+      "dur": 5,
+      "buscar_video": [
+       "Chiloe island"
+      ]
+     }
+    },
+    {
+     "texto": "Dicen que llega con música de fiesta y ruido de cadenas.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "NOCHE DE NEBLINA",
+      "sub": "Mar de Chiloé"
+     }
+    },
+    {
+     "texto": "Si no quiere ser visto, se vuelve roca, y sus marinos se convierten en lobos marinos.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "La leyenda cuenta que recoge a los que mueren en el mar y les da una fiesta eterna a bordo.",
+     "escena": {
+      "tipo": "foto",
+      "img": 6
+     }
+    },
+    {
+     "texto": "Por eso, hasta hoy, muchos pescadores chilotes no cantan ni silban al navegar. Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb2",
+   "tipo": "fb",
+   "hora_fb": "18:30",
+   "articulo": "Steven Callahan",
+   "fuente": "https://en.wikipedia.org/wiki/Steven_Callahan",
+   "titulo_video": " ",
+   "titulos_opciones": [
+    "Sobrevivió 76 DÍAS en una balsa de 2 metros en medio del océano",
+    "9 barcos pasaron a su lado… y NINGUNO lo vio",
+    "Su velero se hundió de noche… y empezó una pesadilla de 76 días",
+    "Lo salvaron unos pájaros: la increíble historia de Steven Callahan",
+    "Perdió un tercio de su peso flotando solo en el Atlántico 🌊",
+    "El náufrago que después ayudó a filmar Life of Pi",
+    "¿Cómo sobrevivió 76 días sin tierra a la vista?"
+   ],
+   "descripcion_youtube": "En 1982 su velero se hundió en medio del Atlántico. Pasó 76 días en una balsa inflable.\n#supervivencia #historiasreales #ridmer",
+   "etiquetas": [
+    "Steven Callahan",
+    "76 días a la deriva",
+    "náufrago",
+    "supervivencia",
+    "historias reales",
+    "Ridmer"
+   ],
+   "texto_facebook": "Su velero se hundió en medio del Atlántico… y sobrevivió 76 DÍAS en una balsa de 2 metros 😱 #HistoriasReales #Supervivencia #DatosCuriosos",
+   "texto_tiktok": "Sobrevivió 76 DÍAS en una balsa en medio del océano 😱 Nueve barcos pasaron a su lado y ninguno lo vio… al final lo salvaron unos pájaros. ¿Tú habrías aguantado? #supervivencia #historiasreales #naufrago #oceano #datoscuriosos #ridmer",
+   "miniatura": {
+    "texto": "76 DÍAS A LA DERIVA"
+   },
+   "gancho": 1,
+   "musica": "tension",
+   "segmentos": [
+    {
+     "texto": "Setenta y seis días… en una balsa.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "5 DE FEBRERO DE 1982",
+      "sub": "Océano Atlántico"
+     }
+    },
+    {
+     "texto": "Steven Callahan cruzaba solo el Atlántico en un velero que él mismo construyó.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Steven Callahan sailor",
+       "Steven Callahan Adrift"
+      ]
+     }
+    },
+    {
+     "texto": "A la séptima noche, en plena tormenta, algo golpeó el casco y lo abrió. Él cree que fue una ballena.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "EL GOLPE",
+      "sub": "Velero Napoleon Solo"
+     }
+    },
+    {
+     "texto": "Saltó a una balsa inflable de apenas dos metros, con un arpón, bengalas y tres destiladores solares.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=KvLOOsJSgmY",
+      "desde": 30,
+      "dur": 6,
+      "buscar_video": [
+       "life raft ocean",
+       "inflatable life raft"
+      ]
+     }
+    },
+    {
+     "texto": "Con ellos sacaba apenas medio litro de agua dulce al día.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "solar still",
+       "solar still survival"
+      ]
+     }
+    },
+    {
+     "texto": "Para comer, cazaba con el arpón dorados y peces que seguían a la balsa.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Coryphaena hippurus",
+       "mahi-mahi fish"
+      ]
+     }
+    },
+    {
+     "texto": "Nueve barcos pasaron cerca. Lanzó sus bengalas… y ninguno lo vio.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "9 BARCOS",
+      "sub": "Ninguno lo vio"
+     }
+    },
+    {
+     "texto": "La corriente lo arrastró más de tres mil kilómetros hacia el oeste.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=05BWIy3vgGc",
+      "desde": 60,
+      "dur": 6,
+      "buscar_video": [
+       "Atlantic ocean waves",
+       "open ocean waves"
+      ]
+     }
+    },
+    {
+     "texto": "Perdió un tercio de su peso.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "-1/3",
+      "sub": "De su peso"
+     }
+    },
+    {
+     "texto": "El día setenta y seis, unos pescadores de la isla María Galante vieron pájaros dando vueltas sobre el mar… y ahí estaba él.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Marie-Galante",
+       "Marie-Galante coast"
+      ]
+     }
+    },
+    {
+     "texto": "Años después, asesoró la película Life of Pi. ¿Tú habrías aguantado? Comparte y sigue a Ridmer.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Marie-Galante beach",
+       "Guadeloupe fishing boat"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb2s",
+   "tipo": "short",
+   "encargo": "fb2",
+   "hora_youtube": "19:00",
+   "articulo": "Steven Callahan",
+   "fuente": "https://en.wikipedia.org/wiki/Steven_Callahan",
+   "titulo_video": " ",
+   "titulos_opciones": [
+    "76 DÍAS en una balsa en medio del océano #shorts",
+    "9 barcos pasaron… y ninguno lo vio #shorts",
+    "Lo salvaron unos pájaros después de 76 días #shorts",
+    "Su velero se hundió de noche en el Atlántico #shorts",
+    "El náufrago que inspiró Life of Pi #shorts",
+    "¿Cómo sobrevivió 76 días a la deriva? #shorts"
+   ],
+   "descripcion_youtube": "Steven Callahan sobrevivió 76 días en una balsa inflable en el Atlántico.\n#supervivencia #shorts #ridmer",
+   "etiquetas": [
+    "Steven Callahan",
+    "náufrago",
+    "supervivencia",
+    "shorts"
+   ],
+   "miniatura": {
+    "texto": "76 DÍAS"
+   },
+   "gancho": 1,
+   "musica": "tension",
+   "segmentos": [
+    {
+     "texto": "Setenta y seis días… en una balsa.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "FEBRERO DE 1982",
+      "sub": "Océano Atlántico"
+     }
+    },
+    {
+     "texto": "Mil novecientos ochenta y dos. Una noche de tormenta, algo abre un hueco en el velero de Steven Callahan.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "EL GOLPE",
+      "sub": "Velero Napoleon Solo"
+     }
+    },
+    {
+     "texto": "Salta a una balsa de dos metros, con un arpón y destiladores de agua.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=KvLOOsJSgmY",
+      "desde": 30,
+      "dur": 5,
+      "buscar_video": [
+       "life raft ocean"
+      ]
+     }
+    },
+    {
+     "texto": "Nueve barcos pasan cerca… y ninguno lo ve.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "9 BARCOS",
+      "sub": "Ninguno lo vio"
+     }
+    },
+    {
+     "texto": "Pierde un tercio de su peso.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Coryphaena hippurus",
+       "mahi-mahi fish"
+      ]
+     }
+    },
+    {
+     "texto": "El día setenta y seis, unos pescadores del Caribe ven pájaros volando sobre su balsa… y lo rescatan. Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Marie-Galante",
+       "Marie-Galante coast"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb3",
+   "tipo": "fb",
+   "hora_fb": "21:00",
+   "articulo": "Señal Wow!",
+   "fuente": "https://es.wikipedia.org/wiki/Se%C3%B1al_Wow!",
+   "titulo_video": " ",
+   "titulos_opciones": [
+    "Una señal del ESPACIO duró 72 segundos… y nunca volvió",
+    "Escribió «WOW» al ver esta señal… y nadie la ha podido explicar",
+    "¿Nos llamaron del espacio en 1977? 👽",
+    "La señal 30 veces más fuerte que el ruido del universo",
+    "6EQUJ5: el código que sigue sin respuesta casi 50 años después",
+    "La buscaron por años… y la señal NUNCA se repitió",
+    "Demolieron el telescopio que escuchó la señal más misteriosa"
+   ],
+   "descripcion_youtube": "En 1977 un radiotelescopio de Ohio captó una señal de 72 segundos que nunca se volvió a escuchar.\n#misterio #espacio #ridmer",
+   "etiquetas": [
+    "Señal Wow",
+    "Wow signal",
+    "Big Ear",
+    "extraterrestres",
+    "misterio",
+    "espacio",
+    "Ridmer"
+   ],
+   "texto_facebook": "Una señal del espacio duró 72 segundos… escribió «WOW» al verla y NUNCA volvió a aparecer 👽 #Misterio #DatosCuriosos #Espacio",
+   "texto_tiktok": "Una señal del ESPACIO duró 72 segundos… y nunca volvió 👽 En 1977 un astrónomo la vio impresa y escribió «Wow!» al lado. Casi 50 años después nadie la ha podido explicar. ¿Fue una llamada? #misterio #espacio #señalwow #extraterrestres #datoscuriosos #ridmer",
+   "miniatura": {
+    "texto": "WOW!"
+   },
+   "gancho": 1,
+   "musica": "misterio",
+   "segmentos": [
+    {
+     "texto": "Una señal del espacio… que duró setenta y dos segundos.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "15 DE AGOSTO DE 1977",
+      "sub": "Ohio · EE. UU."
+     }
+    },
+    {
+     "texto": "El radiotelescopio Big Ear, en Ohio, escuchaba el cielo buscando vida extraterrestre.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=jBsIbPLsTew",
+      "desde": 10,
+      "dur": 6,
+      "buscar_video": [
+       "radio telescope",
+       "radio telescope night sky"
+      ]
+     }
+    },
+    {
+     "texto": "Días después, el astrónomo Jerry Ehman revisaba las hojas impresas en la mesa de su cocina.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "JERRY EHMAN",
+      "sub": "Astrónomo voluntario"
+     }
+    },
+    {
+     "texto": "Y de pronto vio esto: seis, E, Q, U, J, cinco.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Wow! signal",
+       "Wow signal printout"
+      ]
+     }
+    },
+    {
+     "texto": "Era una señal treinta veces más fuerte que el ruido del espacio.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "30 VECES",
+      "sub": "Más fuerte que el ruido"
+     }
+    },
+    {
+     "texto": "Ehman la encerró en un círculo y escribió al lado: Wow.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Wow signal 6EQUJ5",
+       "Wow! signal"
+      ]
+     }
+    },
+    {
+     "texto": "Venía de Sagitario, en la frecuencia del hidrógeno, la que usaría otra civilización para llamar.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Sagittarius constellation",
+       "Milky Way Sagittarius"
+      ]
+     }
+    },
+    {
+     "texto": "La buscaron durante años. Nunca volvió.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=ORGvd3WvLGY",
+      "desde": 20,
+      "dur": 6,
+      "buscar_video": [
+       "radio telescope array",
+       "Very Large Array"
+      ]
+     }
+    },
+    {
+     "texto": "En dos mil veinticuatro, un científico de Puerto Rico propuso que fue una nube de hidrógeno que brilló de golpe.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "2024",
+      "sub": "Nueva explicación"
+     }
+    },
+    {
+     "texto": "Pero nadie lo ha podido comprobar. Y el telescopio fue demolido en mil novecientos noventa y ocho para ampliar un campo de golf.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Big Ear radio telescope",
+       "Big Ear Ohio State"
+      ]
+     }
+    },
+    {
+     "texto": "¿Fue una llamada del espacio? Comparte esta historia y sigue a Ridmer.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "night sky Milky Way",
+       "Milky Way"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb1f",
+   "tipo": "foto",
+   "omitir": true,
+   "hora_foto": "15:30",
+   "titulo_youtube": "El barco fantasma de Chile que aparece en la niebla",
+   "texto_foto": "Un barco lleno de luces que aparece en la niebla… y que nadie quiere encontrar de noche.\n\nEn los canales de Chiloé, al sur de Chile, los pescadores hablan del Caleuche desde hace siglos. Su nombre viene del mapudungún y significa «gente transformada».\n\nDicen que aparece en las noches de neblina, con música de fiesta, luces y ruido de cadenas. Que cuando no quiere ser visto se convierte en una roca o en un palo flotando, y que sus marinos se transforman en lobos marinos o delfines.\n\nSegún una versión, recoge a los que mueren en el mar y les da una vida eterna de fiesta a bordo. Según otra, atrae a los pescadores con su música para hacerlos esclavos para siempre.\n\nPor eso muchos marinos chilotes navegan con respeto: no cantan, no silban, no arman desorden. Y cuando alguien se hacía rico de la noche a la mañana, los vecinos decían que tenía un pacto con el Caleuche.\n\n¿Tú navegarías por esos canales de noche?\n#Misterio #Leyendas #DatosCuriosos"
+  },
+  {
+   "eid": "fb2f",
+   "tipo": "foto",
+   "omitir": true,
+   "hora_foto": "20:00",
+   "titulo_youtube": "Una señal del espacio duró 72 segundos… y nunca volvió",
+   "texto_foto": "Una señal del espacio duró 72 segundos… y nunca volvió a aparecer.\n\n15 de agosto de 1977. El radiotelescopio Big Ear, de la Universidad Estatal de Ohio, escuchaba el cielo buscando señales de vida inteligente. Días después, el astrónomo Jerry Ehman revisaba las hojas impresas en la mesa de su cocina cuando vio una fila de letras y números: 6EQUJ5.\n\nEra una señal unas 30 veces más fuerte que el ruido de fondo del espacio. Ehman la encerró en un círculo y escribió al lado: «Wow!».\n\nVenía de la dirección de la constelación de Sagitario y estaba en la frecuencia del hidrógeno, la que muchos científicos creían que usaría otra civilización para llamar. La buscaron durante años con otros telescopios. Nunca se repitió.\n\nEn 2024, un equipo dirigido por un científico de Puerto Rico propuso que pudo ser una nube de hidrógeno que brilló de golpe. Todavía nadie lo ha comprobado.\n\n¿Tú crees que fue una llamada del espacio?\n#Misterio #Espacio #DatosCuriosos"
+  },
+  {
+   "eid": "largo1",
+   "tipo": "largo",
+   "hora_youtube": "18:00",
+   "articulo": "Vuelo 370 de Malaysia Airlines",
+   "fuente": "https://es.wikipedia.org/wiki/Vuelo_370_de_Malaysia_Airlines",
+   "titulo_video": " ",
+   "titulo_youtube": "239 personas DESAPARECIERON en un avión… y nadie sabe dónde está",
+   "titulos_opciones": [
+    "239 personas DESAPARECIERON en un avión… y nadie sabe dónde está",
+    "El avión que dio media vuelta en la noche y se esfumó: MH370",
+    "«Buenas noches, Malaysian 370»… y nunca más se supo del avión",
+    "12 AÑOS buscando un Boeing 777 en el fondo del océano",
+    "Un satélite lo escuchó durante 7 horas… cuando todos lo creían perdido",
+    "Apareció un pedazo del avión a 4.000 km… pero el resto sigue perdido",
+    "¿Qué pasó con el vuelo MH370? El misterio más grande de la aviación ✈️",
+    "La búsqueda más cara de la historia… y no encontraron NADA"
+   ],
+   "descripcion_youtube": "8 de marzo de 2014. Un Boeing 777 con 239 personas despega de Kuala Lumpur rumbo a Pekín. Cuarenta minutos después, desaparece de los radares.\nLo que pasó después es el misterio más grande de la aviación moderna: un giro en la noche, un satélite que lo escuchó durante horas y un pedazo del avión que apareció en una playa a miles de kilómetros.\n#misterio #MH370 #historiasreales #ridmer",
+   "etiquetas": [
+    "MH370",
+    "vuelo 370",
+    "Malaysia Airlines",
+    "avión desaparecido",
+    "misterio",
+    "aviación",
+    "historias reales",
+    "Ridmer",
+    "Ocean Infinity"
+   ],
+   "miniatura": {
+    "texto": "DESAPARECIÓ"
+   },
+   "gancho": 2,
+   "musica": "misterio",
+   "segmentos": [
+    {
+     "texto": "Ocho de marzo de dos mil catorce. Un avión con doscientas treinta y nueve personas vuela de noche sobre el mar… y de pronto, desaparece de las pantallas.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "8 DE MARZO DE 2014",
+      "sub": "Mar de la China Meridional"
+     }
+    },
+    {
+     "texto": "Doce años después, nadie sabe dónde está. Esta es la historia del vuelo MH370, paso a paso.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "9M-MRO",
+       "Malaysia Airlines 9M-MRO Boeing 777"
+      ]
+     }
+    },
+    {
+     "texto": "Es medianoche en el aeropuerto internacional de Kuala Lumpur, en Malasia.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Kuala Lumpur International Airport",
+       "KLIA terminal night"
+      ]
+     }
+    },
+    {
+     "texto": "A las doce y cuarenta y dos de la madrugada despega un Boeing 777 de Malaysia Airlines, rumbo a Pekín.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Malaysia Airlines Boeing 777-200ER",
+       "Malaysia Airlines 777 takeoff"
+      ]
+     }
+    },
+    {
+     "texto": "Lleva doscientos veintisiete pasajeros, la mayoría de China, y doce tripulantes.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "239 PERSONAS",
+      "sub": "227 pasajeros · 12 tripulantes"
+     }
+    },
+    {
+     "texto": "En la cabina va el capitán Zaharie Ahmad Shah, de cincuenta y tres años, con más de dieciocho mil horas de vuelo. A su lado, el copiloto Fariq Abdul Hamid, de veintisiete.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "LA CABINA",
+      "sub": "Capitán y copiloto"
+     }
+    },
+    {
+     "texto": "El vuelo es tranquilo. Suben a once mil metros de altura y cruzan hacia el mar de la China Meridional.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Boeing 777 cruising night",
+       "Boeing 777 in flight"
+      ]
+     }
+    },
+    {
+     "texto": "A la una y diecinueve, el control de Kuala Lumpur les pide pasar a la frecuencia de Vietnam. Desde la cabina responden: «Buenas noches, Malaysian tres siete cero».",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "01:19",
+      "sub": "«Good night, Malaysian 370»"
+     }
+    },
+    {
+     "texto": "Son las últimas palabras que alguien escuchó desde ese avión.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "ÚLTIMAS PALABRAS",
+      "sub": "01:19"
+     }
+    },
+    {
+     "texto": "Dos minutos después, cerca de un punto de navegación llamado IGARI, el transpondedor se apaga. El aparato que le dice al radar quién es y a qué altura va.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "01:21 · IGARI",
+      "sub": "Se apaga el transpondedor"
+     }
+    },
+    {
+     "texto": "En las pantallas de los controladores, el avión simplemente se esfuma. Vietnam nunca recibe la llamada que esperaba.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "SIN SEÑAL",
+      "sub": "Control de Ho Chi Minh"
+     }
+    },
+    {
+     "texto": "Pero hubo algo que nadie vio en ese momento. Un radar militar de Malasia seguía captando un punto en el cielo.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "RADAR MILITAR",
+      "sub": "Malasia"
+     }
+    },
+    {
+     "texto": "Ese punto da media vuelta hacia el oeste, cruza de regreso la península de Malasia en plena noche y pasa cerca de la isla de Penang.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "MEDIA VUELTA",
+      "sub": "Rumbo al oeste"
+     }
+    },
+    {
+     "texto": "Luego sigue hacia el noroeste, por el estrecho de Malaca, hacia el mar de Andamán.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Strait of Malacca",
+       "Strait of Malacca satellite"
+      ]
+     }
+    },
+    {
+     "texto": "A las dos y veintidós de la madrugada, el radar militar lo pierde. Está a unos trescientos kilómetros de Penang, sobre el mar.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "02:22",
+      "sub": "Último contacto de radar"
+     }
+    },
+    {
+     "texto": "Nadie reaccionó esa noche. El avión parecía un vuelo más.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Penang island aerial",
+       "Penang"
+      ]
+     }
+    },
+    {
+     "texto": "A las seis y media, el MH370 tenía que aterrizar en Pekín. Las familias esperaban en el aeropuerto. El avión nunca llegó.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=dvR8Ec6MzsI",
+      "desde": 15,
+      "dur": 7,
+      "buscar_video": [
+       "airport arrivals board",
+       "Beijing Capital Airport"
+      ]
+     }
+    },
+    {
+     "texto": "Empieza una búsqueda enorme en el mar de la China Meridional. Barcos y aviones de varios países buscan restos, manchas de combustible, cualquier cosa.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "MH370 search aircraft",
+       "P-3 Orion search ocean"
+      ]
+     }
+    },
+    {
+     "texto": "No encuentran nada. Y días después, Malasia admite lo del radar militar: el avión había dado la vuelta.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "DIO LA VUELTA",
+      "sub": "La búsqueda cambia de lugar"
+     }
+    },
+    {
+     "texto": "Pero entonces aparece la pista más extraña de todas. Un satélite.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "LA PISTA",
+      "sub": "Un satélite"
+     }
+    },
+    {
+     "texto": "El avión tenía un equipo que, aunque nadie lo usara, respondía cada hora a un satélite de la empresa británica Inmarsat, sobre el océano Índico.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Inmarsat satellite",
+       "Inmarsat-3"
+      ]
+     }
+    },
+    {
+     "texto": "Era como un saludo automático: el satélite preguntaba ¿estás ahí?, y el avión contestaba sí.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "«¿ESTÁS AHÍ?»",
+      "sub": "Un saludo cada hora"
+     }
+    },
+    {
+     "texto": "Y el avión siguió contestando. Una, dos, tres… siete veces. Durante casi siete horas después de desaparecer del radar.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "7 HORAS",
+      "sub": "Siguió volando"
+     }
+    },
+    {
+     "texto": "El último saludo llegó a las ocho y diecinueve de la mañana. A las nueve y quince, el satélite preguntó otra vez. Ya nadie respondió.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "08:19",
+      "sub": "Último saludo al satélite"
+     }
+    },
+    {
+     "texto": "Los ingenieros midieron cuánto tardaba cada respuesta y cómo cambiaba la frecuencia por el movimiento del avión. Así dibujaron una línea en el mapa.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Indian Ocean satellite view",
+       "southern Indian Ocean"
+      ]
+     }
+    },
+    {
+     "texto": "El resultado los dejó helados: el avión no había ido al norte. Había volado hacia el sur, hacia una de las zonas más solitarias del planeta.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "HACIA EL SUR",
+      "sub": "Océano Índico"
+     }
+    },
+    {
+     "texto": "El veinticuatro de marzo, el primer ministro de Malasia lo anunció: el vuelo MH370 terminó en el sur del océano Índico.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=_GQxONobjoo",
+      "desde": 10,
+      "dur": 6,
+      "buscar_video": [
+       "press conference",
+       "Kuala Lumpur skyline"
+      ]
+     }
+    },
+    {
+     "texto": "En abril, un barco australiano escucha unos pitidos bajo el agua. Creen que son las cajas negras. Mandan un robot al fondo… y no hay nada. Esos pitidos no eran del avión.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "PITIDOS BAJO EL AGUA",
+      "sub": "Abril de 2014"
+     }
+    },
+    {
+     "texto": "Ese lugar está a miles de kilómetros de cualquier costa, frente a Australia, con olas gigantes y un fondo marino de hasta seis mil metros.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Southern Ocean waves",
+       "Southern Ocean rough sea"
+      ]
+     }
+    },
+    {
+     "texto": "Comienza la búsqueda más cara en la historia de la aviación. Australia, Malasia y China revisan con sonar ciento veinte mil kilómetros cuadrados del fondo del mar.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "120.000 KM²",
+      "sub": "Fondo del océano Índico"
+     }
+    },
+    {
+     "texto": "Encuentran barcos hundidos del siglo diecinueve, montañas submarinas que nadie había visto… pero ni un tornillo del avión.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "deep sea sonar survey",
+       "Fugro Equator"
+      ]
+     }
+    },
+    {
+     "texto": "En enero de dos mil diecisiete, la búsqueda se suspende. Y entonces el mar empieza a devolver pedazos.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "ENERO DE 2017",
+      "sub": "Se suspende la búsqueda"
+     }
+    },
+    {
+     "texto": "En realidad, ya había pasado antes. El veintinueve de julio de dos mil quince, en la isla de La Reunión, cerca de África, unos hombres limpiaban la playa.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Saint-André La Réunion beach",
+       "Réunion island beach"
+      ]
+     }
+    },
+    {
+     "texto": "Entre las piedras encuentran una pieza blanca de dos metros, cubierta de pequeños moluscos. Es un flaperón: una parte del ala de un Boeing 777.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=Qc-bHonHvIk",
+      "desde": 10,
+      "dur": 7,
+      "buscar_video": [
+       "Reunion island beach",
+       "rocky beach waves"
+      ]
+     }
+    },
+    {
+     "texto": "Los números de serie lo confirman. Es del MH370. Había viajado a la deriva más de cuatro mil kilómetros.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "4.000 KM",
+      "sub": "A la deriva"
+     }
+    },
+    {
+     "texto": "Para muchas familias fue la primera prueba real de que el avión había caído al mar.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "LA PRIMERA PRUEBA",
+      "sub": "Julio de 2015"
+     }
+    },
+    {
+     "texto": "Después aparecen más restos en Mozambique, Madagascar, Tanzania y Sudáfrica. Varios los encuentran personas comunes que recorren las playas.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=7kGv51tNVMU",
+      "desde": 5,
+      "dur": 6,
+      "buscar_video": [
+       "Mozambique beach",
+       "Madagascar coast"
+      ]
+     }
+    },
+    {
+     "texto": "Las piezas prueban que el avión cayó al océano Índico. Pero no dicen dónde está el resto. Ni qué pasó a bordo.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "MH370 debris",
+       "Indian Ocean"
+      ]
+     }
+    },
+    {
+     "texto": "En dos mil dieciocho, la empresa Ocean Infinity busca con robots submarinos otros ciento doce mil kilómetros cuadrados. Si no lo encuentra, no cobra. No lo encuentra.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "OCEAN INFINITY",
+      "sub": "2018 · Sin hallazgos"
+     }
+    },
+    {
+     "texto": "Ese mismo año, Malasia publica su informe final, de casi quinientas páginas. Dice que no puede saber por qué desapareció el avión.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "INFORME FINAL",
+      "sub": "Julio de 2018"
+     }
+    },
+    {
+     "texto": "Lo que sí dice es que el giro hacia el oeste probablemente se hizo a mano, no con el piloto automático.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "GIRO MANUAL",
+      "sub": "Lo que dice el informe"
+     }
+    },
+    {
+     "texto": "Por eso hay tres grandes teorías. La primera: un incendio o una falla dejó a todos sin oxígeno, y el avión siguió volando solo hasta quedarse sin combustible.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "TEORÍA 1",
+      "sub": "Falla y falta de oxígeno"
+     }
+    },
+    {
+     "texto": "La segunda: alguien tomó el control del avión. Pero ningún grupo lo reclamó y nunca apareció ninguna prueba.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "TEORÍA 2",
+      "sub": "Alguien tomó el control"
+     }
+    },
+    {
+     "texto": "La tercera apunta a la cabina. Investigadores encontraron en el simulador de vuelo casero del capitán una ruta hacia el sur del océano Índico.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "TEORÍA 3",
+      "sub": "El simulador"
+     }
+    },
+    {
+     "texto": "Pero su familia y sus amigos lo defendieron, y el informe oficial no culpó a nadie. Hasta hoy no hay pruebas de qué pasó en esa cabina.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "SIN PRUEBAS",
+      "sub": "Nadie fue culpado"
+     }
+    },
+    {
+     "texto": "Mientras tanto, las familias no se rinden. Cada ocho de marzo se reúnen y piden que se siga buscando.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=6YinOrreoAc",
+      "desde": 20,
+      "dur": 6,
+      "buscar_video": [
+       "candle vigil",
+       "candles night"
+      ]
+     }
+    },
+    {
+     "texto": "En dos mil veinticinco, Malasia aprueba una nueva búsqueda de Ocean Infinity, en una zona nueva. Otra vez con la condición: si no lo encuentran, no cobran.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=ij08knG3jVQ",
+      "desde": 15,
+      "dur": 7,
+      "buscar_video": [
+       "research ship ocean",
+       "survey vessel"
+      ]
+     }
+    },
+    {
+     "texto": "Los robots recorren el fondo durante semanas, a miles de metros de profundidad, en completa oscuridad.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "A 4.000 METROS",
+      "sub": "Robots en el fondo del mar"
+     }
+    },
+    {
+     "texto": "En marzo de dos mil veintiséis, al cumplirse doce años, se conoce el resultado: más de siete mil quinientos kilómetros cuadrados revisados… y nada.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "MARZO DE 2026",
+      "sub": "7.571 km² · nada"
+     }
+    },
+    {
+     "texto": "Doscientas treinta y nueve personas. Un avión de sesenta y tres metros. Siete saludos a un satélite. Y un pedazo de ala en una playa.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "239",
+      "sub": "Personas a bordo"
+     }
+    },
+    {
+     "texto": "Es todo lo que el mundo sabe del vuelo MH370.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=Atk3gaG-e98",
+      "desde": 20,
+      "dur": 6,
+      "buscar_video": [
+       "airplane night sky",
+       "jet flying over ocean"
+      ]
+     }
+    },
+    {
+     "texto": "En algún lugar del fondo del océano Índico está la respuesta. Y quizás, algún día, un robot la encuentre en la oscuridad.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Indian Ocean sunset",
+       "ocean horizon sunset"
+      ]
+     }
+    },
+    {
+     "texto": "¿Tú qué crees que pasó esa noche? Déjalo en los comentarios. Y suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "9M-MRO",
+       "Malaysia Airlines Boeing 777"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "largo1t",
+   "tipo": "tiktok",
+   "encargo": "largo1",
+   "hora_youtube": "18:00",
+   "articulo": "Vuelo 370 de Malaysia Airlines",
+   "fuente": "https://es.wikipedia.org/wiki/Vuelo_370_de_Malaysia_Airlines",
+   "titulo_video": " ",
+   "titulo_youtube": "239 personas DESAPARECIERON en un avión… y nadie sabe dónde está",
+   "titulos_opciones": [
+    "239 personas DESAPARECIERON en un avión… y nadie sabe dónde está",
+    "El avión que dio media vuelta en la noche y se esfumó: MH370",
+    "«Buenas noches, Malaysian 370»… y nunca más se supo del avión",
+    "12 AÑOS buscando un Boeing 777 en el fondo del océano",
+    "Un satélite lo escuchó durante 7 horas… cuando todos lo creían perdido",
+    "Apareció un pedazo del avión a 4.000 km… pero el resto sigue perdido",
+    "¿Qué pasó con el vuelo MH370? El misterio más grande de la aviación ✈️",
+    "La búsqueda más cara de la historia… y no encontraron NADA"
+   ],
+   "descripcion_youtube": "239 personas desaparecieron en un avión en 2014. Video completo en YouTube: Ridmer.\n#misterio #MH370 #historiasreales #ridmer",
+   "etiquetas": [
+    "MH370",
+    "vuelo 370",
+    "Malaysia Airlines",
+    "avión desaparecido",
+    "misterio",
+    "aviación",
+    "historias reales",
+    "Ridmer",
+    "Ocean Infinity"
+   ],
+   "miniatura": {
+    "texto": "DESAPARECIÓ"
+   },
+   "gancho": 2,
+   "musica": "misterio",
+   "segmentos": [
+    {
+     "texto": "Ocho de marzo de dos mil catorce. Un avión con doscientas treinta y nueve personas vuela de noche sobre el mar… y de pronto, desaparece de las pantallas.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "8 DE MARZO DE 2014",
+      "sub": "Mar de la China Meridional"
+     }
+    },
+    {
+     "texto": "Doce años después, nadie sabe dónde está.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "9M-MRO",
+       "Malaysia Airlines 9M-MRO Boeing 777"
+      ]
+     }
+    },
+    {
+     "texto": "Es el vuelo MH370 de Malaysia Airlines. Despega de Kuala Lumpur a las doce y cuarenta y dos de la madrugada, rumbo a Pekín.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Malaysia Airlines Boeing 777-200ER",
+       "Malaysia Airlines 777 takeoff"
+      ]
+     }
+    },
+    {
+     "texto": "A la una y diecinueve, desde la cabina dicen: «Buenas noches, Malaysian tres siete cero». Son las últimas palabras.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "01:19",
+      "sub": "«Good night, Malaysian 370»"
+     }
+    },
+    {
+     "texto": "Dos minutos después, el transpondedor se apaga y el avión se esfuma de los radares.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "01:21 · IGARI",
+      "sub": "Se apaga el transpondedor"
+     }
+    },
+    {
+     "texto": "Pero un radar militar seguía viendo un punto en el cielo. El avión había dado media vuelta y cruzaba de regreso Malasia, en plena noche.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "MEDIA VUELTA",
+      "sub": "Rumbo al oeste"
+     }
+    },
+    {
+     "texto": "A las dos y veintidós, también ese radar lo pierde.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "02:22",
+      "sub": "Último contacto de radar"
+     }
+    },
+    {
+     "texto": "En Pekín, las familias esperan. El avión nunca llega.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=dvR8Ec6MzsI",
+      "desde": 15,
+      "dur": 6,
+      "buscar_video": [
+       "airport arrivals board"
+      ]
+     }
+    },
+    {
+     "texto": "Entonces aparece la pista más extraña: un satélite. El avión le respondía cada hora con un saludo automático.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "«¿ESTÁS AHÍ?»",
+      "sub": "Un saludo cada hora"
+     }
+    },
+    {
+     "texto": "Y siguió respondiendo… durante casi siete horas después de desaparecer.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "7 HORAS",
+      "sub": "Siguió volando"
+     }
+    },
+    {
+     "texto": "Con esos saludos, los ingenieros descubrieron algo que dejó helado al mundo: el avión había volado hacia el sur, hacia el lugar más solitario del océano Índico.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "HACIA EL SUR",
+      "sub": "Océano Índico"
+     }
+    },
+    {
+     "texto": "Un año y medio después, en una playa a miles de kilómetros, unos hombres encuentran un pedazo del ala.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Saint-André La Réunion beach",
+       "Réunion island beach"
+      ]
+     }
+    },
+    {
+     "texto": "Pero el resto del avión… sigue sin aparecer.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=Qc-bHonHvIk",
+      "desde": 10,
+      "dur": 6,
+      "buscar_video": [
+       "Reunion island beach"
+      ]
+     }
+    },
+    {
+     "texto": "¿Qué pasó en esa cabina? ¿Y dónde está el MH370? Lo que viene te va a dejar sin palabras. Mira el video completo en YouTube, en el canal Ridmer.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "9M-MRO",
+       "Malaysia Airlines Boeing 777"
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "notas": "fb2 encargo \"Auto fantasma\" reemplazado por Steven Callahan (leyenda genérica sin hechos verificables); fb3 y largo1 sin encargo: Señal Wow! y MH370."
+}
