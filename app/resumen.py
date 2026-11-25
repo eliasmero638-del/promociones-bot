@@ -9,6 +9,7 @@ trozos del en vivo uno tras otro. No repite lo que ya salió como clip (salvo qu
   09:00 lo publica.
 """
 import glob, json, os, re, shutil, subprocess, threading, time
+import base64, requests
 import config as C, editor, fb, ia, tg
 
 D = os.path.join(C.DATA, 'resumen')
@@ -135,7 +136,8 @@ def armar(desde, hasta, salida):
               f"(participantes: {', '.join(cfg.get('participantes', {}))}). Estas son transcripciones de momentos del en vivo "
               "del día. Elige los 9 a 11 más PICANTES para un RESUMEN DEL DÍA. Lo MÁS importante (el dueño lo pidió así): "
               "lo que pasa en el CUARTO VIP y de noche cuando ya están ACOSTADOS en la cama — coqueteos, quién duerme con "
-              "quién, besos, lo que se dicen bajito en la cama. Después: chismes, lo que hablan a escondidas de otros, "
+              "quién, besos, lo que se dicen bajito en la cama. Si pasó algo entre ellos, se muestra, pero NO elijas "
+              "momentos donde se esté teniendo relaciones sexuales o haya desnudos (eso lo castiga Facebook). Después: chismes, lo que hablan a escondidas de otros, "
               "secretos, confesiones, estrategias, discusiones, romances. Evita los momentos aburridos o sin sentido, y los que ya "
               "salieron como clip salvo que sean de lo más fuerte del día. Ordénalos del más fuerte al menos fuerte.\n\n"
               f"{lista}\n\nResponde SOLO JSON: {{\"elegidos\": [ids], \"gancho\": \"frase corta (máx 12 palabras) "
@@ -149,6 +151,18 @@ def armar(desde, hasta, salida):
         log('IA no respondió', e)
     ids = [int(x) for x in (r or {}).get('elegidos', []) if str(x).isdigit()]
     elegidos = [c for i in ids for c in pre if c['id'] == i][:11] or [c for c in pre if not c['ya_clip']][:10]
+    # 25-nov: lo interesante sí, pero nada explícito (desnudos o sexo visible): la IA mira fotos de cada trozo
+    reemplazos = [c for c in pre if c not in elegidos]
+    revisados = []
+    for c in elegidos:
+        while c is not None and _explicito(c['archivo']):
+            log('trozo explícito, lo cambio', time.strftime('%H:%M', time.localtime(c['centro'])))
+            c = reemplazos.pop(0) if reemplazos else None
+            while c is not None and any(abs(c['centro'] - r['centro']) < 120 for r in revisados):
+                c = reemplazos.pop(0) if reemplazos else None
+        if c is not None:
+            revisados.append(c)
+    elegidos = revisados
     # en el video van en orden de la hora (como pasó), hasta ~8 min
     elegidos = sorted(elegidos, key=lambda c: c['centro'])
     while len(elegidos) > 6 and sum(c['b'] - c['a'] for c in elegidos) > 9 * 60:
@@ -177,6 +191,30 @@ def armar(desde, hasta, salida):
                                capture_output=True, text=True).stdout or 0)
     return salida, {'dia': dia, 'reality': reality, 'gancho': (r or {}).get('gancho', ''), 'trozos': len(elegidos),
                     'dur': dur, 'portada': portada}
+
+
+def _explicito(clip):
+    """True si se ven desnudos o actos sexuales. Si la IA no responde, por seguridad revisa el dueño a las 8:30."""
+    key = C.get().get('gemini_key')
+    if not key:
+        return False
+    fotos = ia._fotos(clip, 6)
+    parts = [{'text': 'Estas son 6 fotos de un trozo del en vivo de un reality. Responde SOLO JSON {"explicito": true/false}: '
+                      'true únicamente si se ven desnudos (genitales o pechos descubiertos) o un acto sexual visible. '
+                      'Besos, abrazos, gente en ropa de dormir o en la cama bajo las sábanas = false.'}]
+    parts += [{'inline_data': {'mime_type': 'image/jpeg', 'data': base64.b64encode(f).decode()}} for f in fotos]
+    body = {'contents': [{'parts': parts}], 'generationConfig': {'responseMimeType': 'application/json', 'temperature': 0}}
+    for m in ia._disponibles(key)[:4]:
+        try:
+            r = requests.post(f'https://generativelanguage.googleapis.com/v1beta/models/{m}:generateContent',
+                              params={'key': key}, json=body, timeout=120)
+            if r.status_code != 200:
+                continue
+            txt = r.json()['candidates'][0]['content']['parts'][0]['text']
+            return bool(json.loads(re.sub(r'^```(json)?|```$', '', txt.strip()).strip()).get('explicito'))
+        except Exception:
+            continue
+    return False
 
 
 def _portada(path, titulo, reality):
