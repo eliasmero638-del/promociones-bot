@@ -372,7 +372,7 @@ def _programar(fecha, v, jid, salidas, mini, guion, auto=False):
                 shutil.rmtree(sub_)
             os.replace(sub, sub_); sub = sub_
         meta = {'id': os.path.basename(sub), 'auto': auto, 'formato': 'largo' if tipo == 'largo' else 'short', 'motivo': 'claude',
-                'entrega': tipo, 'titulo': titulo, 'titulo_youtube': v.get('titulo_youtube', titulo),
+                'entrega': tipo, 'titulo': titulo, 'titulo_youtube': _titulo_yt(v, titulo),
                 'descripcion_youtube': desc, 'etiquetas': v.get('etiquetas', []),
                 'texto_facebook': (v.get('texto_foto') or v.get('texto_facebook', '')) if tipo == 'foto' else v.get('texto_facebook', ''),
                 'guion': guion,
@@ -942,10 +942,21 @@ def _yt_conectado():
         return False
 
 
+def _titulo_yt(v, titulo=''):
+    """25-nov: el título de YouTube nunca vacío (el editor pone titulo_video=' ' para no repetirlo en pantalla)."""
+    for t in [v.get('titulo_youtube')] + list(v.get('titulos_opciones') or v.get('titulos') or []) + [titulo, v.get('articulo')]:
+        t = ' '.join(str(t or '').replace('<', '').replace('>', '').split())
+        if t:
+            return t[:100]
+    return 'Ridmer #shorts'
+
+
 def _subir_youtube(jid, m):
     """11-nov: sube el Short/largo a YouTube con la API y lo deja programado a su hora."""
     import youtube as YT
     carpeta = os.path.join(F.DIR, jid)
+    if not (m.get('titulo_youtube') or '').strip():
+        m['titulo_youtube'] = _titulo_yt(m)
     try:
         vid = YT.subir(os.path.join(carpeta, m['archivos']['video']), m['titulo_youtube'], m['descripcion_youtube'],
                        m.get('etiquetas', []), m.get('publicar_en'),
@@ -984,9 +995,9 @@ def _reintentar_yt_hoy():
         if not jid.startswith(hoy) or not jid.endswith('_short'):
             continue
         m = F._leer(os.path.join(F.DIR, jid, 'meta.json'), None)
-        if not m or m.get('estado') != 'avisado_youtube' or m.get('reintento_yt'):
+        if not m or m.get('estado') != 'avisado_youtube' or m.get('reintento_yt2'):
             continue
-        m['reintento_yt'] = time.time()
+        m['reintento_yt2'] = time.time()
         if m.get('publicar_en', 0) < time.time():
             m['publicar_en'] = None                      # su hora ya pasó: público al instante
         F._guardar(os.path.join(F.DIR, jid, 'meta.json'), m)
