@@ -968,11 +968,11 @@ def _subir_youtube(jid, m):
     m['youtube_id'] = vid
     m['estado'] = 'subido_youtube'
     F._guardar(os.path.join(carpeta, 'meta.json'), m)
-    cuando = time.strftime('%I:%M %p', time.localtime(m.get('publicar_en', time.time()))).lstrip('0')
+    cuando = time.strftime('%I:%M %p', time.localtime(m.get('publicar_en') or time.time())).lstrip('0')
     aud = C.get().get('yt_auditado')
     txt = (f"✅ <b>SUBIDO A YOUTUBE</b> · {'🎬 Largo' if m['entrega'] == 'largo' else '▶️ Short'}\n"
            f"<b>{m['titulo_youtube']}</b>\n"
-           + (f"⏰ Programado para las <b>{cuando}</b>.\n" if m.get('publicar_en', 0) - time.time() > 900 else '🌐 Ya está público.\n')
+           + (f"⏰ Programado para las <b>{cuando}</b>.\n" if (m.get('publicar_en') or 0) - time.time() > 900 else '🌐 Ya está público.\n')
            + ('' if aud else '⚠️ Mientras Google aprueba la revisión de la app, YouTube lo deja en <b>privado</b>: '
                                'ábrelo en YouTube Studio y ponlo en Público.\n')
            + f"✏️ Cambiar título o miniatura: https://studio.youtube.com/video/{vid}/edit")
@@ -989,17 +989,24 @@ def _bajar_plan(fecha):
 
 
 def _reintentar_yt_hoy():
+    try:
+        _reintentar_yt_hoy1()
+    except Exception as e:
+        log('reintento yt falló', e)
+
+
+def _reintentar_yt_hoy1():
     """25-nov: los Shorts de hoy fallaron al subir (400). Un reintento por video, ya público, para ver el motivo exacto."""
     hoy = time.strftime('%Y%m%d')
     for jid in sorted(os.listdir(F.DIR)):
         if not jid.startswith(hoy) or not jid.endswith('_short'):
             continue
         m = F._leer(os.path.join(F.DIR, jid, 'meta.json'), None)
-        if not m or m.get('estado') != 'avisado_youtube' or m.get('reintento_yt2'):
+        if not m or m.get('estado') != 'avisado_youtube' or m.get('reintento_yt3'):
             continue
-        m['reintento_yt2'] = time.time()
-        if m.get('publicar_en', 0) < time.time():
-            m['publicar_en'] = None                      # su hora ya pasó: público al instante
+        m['reintento_yt3'] = time.time()
+        if (m.get('publicar_en') or 0) < time.time():
+            m['publicar_en'] = 0                         # su hora ya pasó: público al instante
         F._guardar(os.path.join(F.DIR, jid, 'meta.json'), m)
         log('reintento subir a YouTube', jid)
         _subir_youtube(jid, m)
