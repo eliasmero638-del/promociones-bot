@@ -53,6 +53,48 @@ def conectar(user_token, nombre_pagina=''):
     return True, 'Conectado a: ' + ', '.join(p['name'] for p in pags)
 
 
+def conectar_nueva(user_token):
+    """25-nov: cuentas NUEVAS (Ridmer Historias). Se guardan aparte en 'fb_nuevas' para no tocar Ridmer TV ni
+    Pasión por los Realities. Busca también el Instagram profesional conectado a cada página."""
+    r = requests.get(f'{API}/{_v()}/me/accounts', params={
+        'access_token': user_token, 'limit': 100,
+        'fields': 'id,name,access_token,instagram_business_account{id,username}'}, timeout=40).json()
+    if 'error' in r:
+        return False, 'Facebook dijo: ' + r['error'].get('message', str(r['error']))
+    pags = r.get('data', [])
+    if not pags:
+        return False, 'Ese token no tiene ninguna página. Al generar el token, marca los permisos y elige la página nueva.'
+    viejas = set((C.get().get('fb_paginas') or {}).keys())
+    nuevas = {}
+    for p in pags:
+        if p['id'] in viejas:
+            continue
+        ig = p.get('instagram_business_account') or {}
+        nuevas[p['id']] = {'nombre': p['name'], 'token': p['access_token'], 'ig_id': ig.get('id', ''),
+                           'ig_usuario': ig.get('username', '')}
+    if not nuevas:
+        return False, 'Solo encontré páginas que ya estaban conectadas. ¿Elegiste la página nueva al dar permisos?'
+    C.save(fb_nuevas=nuevas)
+    # ¿el token de la página dura para siempre?
+    dura = ''
+    try:
+        pid, d = next(iter(nuevas.items()))
+        x = requests.get(f'{API}/{_v()}/debug_token', params={'input_token': d['token'], 'access_token': d['token']},
+                         timeout=30).json().get('data', {})
+        dura = ' · token permanente ✅' if not x.get('expires_at') else ' · ⚠️ el token VENCE (hay que ampliarlo)'
+    except Exception:
+        pass
+    return True, '\n'.join(f"📘 {d['nombre']} · 📸 Instagram: " + (('@' + d['ig_usuario']) if d['ig_id'] else '❌ no conectado')
+                           for d in nuevas.values()) + dura
+
+
+def nueva():
+    """(page_id, token, nombre, ig_id) de la página nueva, o Nones."""
+    for pid, d in (C.get().get('fb_nuevas') or {}).items():
+        return pid, d['token'], d['nombre'], d.get('ig_id', '')
+    return None, None, None, None
+
+
 def _dur(path):
     try:
         return float(subprocess.run(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', path],

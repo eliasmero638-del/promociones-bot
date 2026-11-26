@@ -732,6 +732,42 @@ def comandos(tipo, chat, dato, raw):
             except Exception as e:
                 tg.texto(f'❌ No se pudo conectar YouTube: {e}', chat)
         threading.Thread(target=_esp, daemon=True).start()
+    elif cmd == '/cuentanueva':                 # 25-nov: conecta la página nueva de Facebook (+ su Instagram)
+        partes = dato.split()
+        try:
+            tg._api('deleteMessage', chat_id=chat, message_id=(raw or {}).get('message_id'))   # no dejar el token en el chat
+        except Exception:
+            pass
+        if len(partes) < 2:
+            return tg.texto('Usa así: /cuentanueva TOKEN', chat)
+        ok, msg = fb.conectar_nueva(partes[1].strip())
+        tg.texto(('✅ Cuenta nueva conectada (borré tu mensaje):\n' if ok else '❌ ') + msg, chat)
+    elif cmd == '/ytnuevo':                     # 25-nov: conecta el canal NUEVO de YouTube (aparte del viejo)
+        import youtube as YT
+        try:
+            codigo, url, dev, inter, vence = YT.pedir_codigo()
+        except Exception as e:
+            return tg.texto(f'❌ No pude pedir el código a Google: {e}', chat)
+        tg.texto(f'📺 Canal NUEVO:\n1. Abre {url} en el celular, entrando con el <b>correo NUEVO</b>.\n'
+                 f'2. Escribe este código: <b>{codigo}</b>\n3. Elige el canal nuevo y toca Permitir.\n'
+                 f'(Si sale "Google no verificó esta app": toca Configuración avanzada → Ir a Ridmer.)', chat)
+
+        def _espn():
+            try:
+                if YT.esperar_permiso(dev, inter, vence, cuenta='nuevo'):
+                    nombre, subs = YT.canal('nuevo')
+                    viejo = ''
+                    try:
+                        viejo = YT.canal()[0]
+                    except Exception:
+                        pass
+                    aviso = '\n⚠️ Es el MISMO canal viejo. Repite /ytnuevo y entra con el correo nuevo.' if nombre == viejo else ''
+                    tg.texto(f'✅ Canal nuevo conectado: <b>{nombre}</b> ({subs} suscriptores).{aviso}', chat)
+                else:
+                    tg.texto('⌛ Se venció el código. Manda /ytnuevo otra vez.', chat)
+            except Exception as e:
+                tg.texto(f'❌ No se pudo conectar el canal nuevo: {e}', chat)
+        threading.Thread(target=_espn, daemon=True).start()
     elif cmd == '/memes':                       # 11-nov: cómo va la búsqueda de memes desde que arrancó el servidor
         import editor as E
         st = E.MEME_STATS

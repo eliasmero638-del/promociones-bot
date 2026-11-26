@@ -9,6 +9,11 @@ import config as C
 
 ALCANCE = 'https://www.googleapis.com/auth/youtube'
 _tok = {'access': '', 'vence': 0}
+_toks = {}   # 25-nov: cuentas extra (canal nuevo) → {'access','vence'}
+
+
+def _clave(cuenta):
+    return 'yt_refresh' + ('_' + cuenta if cuenta else '')
 
 
 def conectado():
@@ -27,7 +32,7 @@ def pedir_codigo():
         int(r.get('interval', 5)), int(r.get('expires_in', 1800))
 
 
-def esperar_permiso(device_code, intervalo, vence):
+def esperar_permiso(device_code, intervalo, vence, cuenta=None):
     """Paso 2: espera a que el dueño acepte; guarda el permiso (refresh token)."""
     c = C.get()
     fin = time.time() + vence
@@ -37,8 +42,8 @@ def esperar_permiso(device_code, intervalo, vence):
             'client_id': c['yt_client_id'], 'client_secret': c['yt_client_secret'], 'device_code': device_code,
             'grant_type': 'urn:ietf:params:oauth:grant-type:device_code'}, timeout=30).json()
         if r.get('refresh_token'):
-            C.save(yt_refresh=r['refresh_token'])
-            _tok.update(access=r['access_token'], vence=time.time() + int(r.get('expires_in', 3600)) - 60)
+            C.save(**{_clave(cuenta): r['refresh_token']})
+            (_toks.setdefault(cuenta, {}) if cuenta else _tok).update(access=r['access_token'], vence=time.time() + int(r.get('expires_in', 3600)) - 60)
             return True
         err = r.get('error')
         if err == 'slow_down':
@@ -48,31 +53,32 @@ def esperar_permiso(device_code, intervalo, vence):
     return False
 
 
-def _acceso():
-    if _tok['access'] and time.time() < _tok['vence']:
-        return _tok['access']
+def _acceso(cuenta=None):
+    tk = _toks.setdefault(cuenta, {'access': '', 'vence': 0}) if cuenta else _tok
+    if tk['access'] and time.time() < tk['vence']:
+        return tk['access']
     c = C.get()
     r = requests.post('https://oauth2.googleapis.com/token', data={
-        'client_id': c['yt_client_id'], 'client_secret': c['yt_client_secret'], 'refresh_token': c['yt_refresh'],
+        'client_id': c['yt_client_id'], 'client_secret': c['yt_client_secret'], 'refresh_token': c[_clave(cuenta)],
         'grant_type': 'refresh_token'}, timeout=30).json()
     if 'access_token' not in r:
         raise RuntimeError('permiso de YouTube vencido o quitado: ' + str(r.get('error_description') or r))
-    _tok.update(access=r['access_token'], vence=time.time() + int(r.get('expires_in', 3600)) - 60)
-    return _tok['access']
+    tk.update(access=r['access_token'], vence=time.time() + int(r.get('expires_in', 3600)) - 60)
+    return tk['access']
 
 
-def canal():
-    h = {'Authorization': 'Bearer ' + _acceso()}
+def canal(cuenta=None):
+    h = {'Authorization': 'Bearer ' + _acceso(cuenta)}
     r = requests.get('https://www.googleapis.com/youtube/v3/channels', params={'part': 'snippet,statistics', 'mine': 'true'},
                      headers=h, timeout=30).json()
     it = (r.get('items') or [{}])[0]
     return it.get('snippet', {}).get('title', '?'), it.get('statistics', {}).get('subscriberCount', '?')
 
 
-def subir(video, titulo, descripcion, etiquetas, publicar_en=None, miniatura=None, privado=False):
+def subir(video, titulo, descripcion, etiquetas, publicar_en=None, miniatura=None, privado=False, cuenta=None):
     """Sube el video. publicar_en (epoch) = programado; si ya pasó la hora, público al instante.
     Devuelve el id del video."""
-    h = {'Authorization': 'Bearer ' + _acceso()}
+    h = {'Authorization': 'Bearer ' + _acceso(cuenta)}
     status = {'selfDeclaredMadeForKids': False, 'embeddable': True}
     if privado:
         status['privacyStatus'] = 'private'
