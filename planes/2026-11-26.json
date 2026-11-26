@@ -1,0 +1,622 @@
+{
+ "fecha": "2026-11-26",
+ "modo": "claude",
+ "videos": [
+  {
+   "eid": "fb1",
+   "tipo": "fb",
+   "hora_fb": "14:00",
+   "articulo": "Tragedia de los Andes (1972): la caminata de Parrado y Canessa",
+   "fuente": "https://es.wikipedia.org/wiki/Vuelo_571_de_la_Fuerza_A%C3%A9rea_Uruguaya",
+   "titulo_video": " ",
+   "titulos_opciones": [
+    "Caminaron 10 DÍAS por los Andes para salvar a sus amigos",
+    "Subieron una montaña de 4.500 metros… y arriba solo vieron MÁS montañas",
+    "Escucharon por radio que ya no los buscaban… y decidieron salir caminando",
+    "La nota atada a una piedra que salvó a 16 personas en los Andes",
+    "72 días en la nieve: cómo dos jóvenes cruzaron la cordillera sin equipo",
+    "Hicieron un saco de dormir con el aislante del avión ❄️",
+    "¿Cómo escaparon de los Andes? La caminata que nadie creía posible"
+   ],
+   "descripcion_youtube": "En 1972 un avión con 45 uruguayos cayó en los Andes. Dos sobrevivientes salieron caminando a buscar ayuda.\n#supervivencia #historiasreales #ridmer",
+   "etiquetas": [
+    "Tragedia de los Andes",
+    "Nando Parrado",
+    "Roberto Canessa",
+    "Sociedad de la nieve",
+    "supervivencia",
+    "historias reales",
+    "Ridmer"
+   ],
+   "texto_facebook": "Escucharon por radio que ya no los buscaban… y dos de ellos cruzaron los Andes caminando 10 DÍAS para salvar a todos 😱 #HistoriasReales #Supervivencia #DatosCuriosos",
+   "texto_tiktok": "Caminaron 10 DÍAS por los Andes para salvar a sus amigos ❄️ Sin equipo, con un saco de dormir hecho con el aislante del avión… y al final una nota atada a una piedra lo cambió todo. #supervivencia #historiasreales #andes #sociedaddelanieve #datoscuriosos #ridmer",
+   "miniatura": {
+    "img": 18,
+    "texto": "10 DÍAS CAMINANDO"
+   },
+   "gancho": 1,
+   "musica": "epico",
+   "segmentos": [
+    {
+     "texto": "Caminaron diez días para salvar a todos.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "DICIEMBRE DE 1972",
+      "sub": "Cordillera de los Andes"
+     }
+    },
+    {
+     "texto": "Octubre de mil novecientos setenta y dos. Un avión con cuarenta y cinco uruguayos cae en los Andes.",
+     "escena": {
+      "tipo": "foto",
+      "img": 9
+     }
+    },
+    {
+     "texto": "Los sobrevivientes quedan atrapados en la nieve, dentro del fuselaje roto.",
+     "escena": {
+      "tipo": "foto",
+      "img": 8
+     }
+    },
+    {
+     "texto": "Por una radio escuchan lo peor: la búsqueda fue cancelada.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=e9RmTURr79w",
+      "desde": 20,
+      "dur": 6,
+      "buscar_video": [
+       "Andes snow mountains",
+       "Andes mountains aerial"
+      ]
+     }
+    },
+    {
+     "texto": "Dos meses después, Nando Parrado y Roberto Canessa salen a buscar ayuda.",
+     "escena": {
+      "tipo": "foto",
+      "img": 17
+     }
+    },
+    {
+     "texto": "Llevan un saco de dormir cosido con el aislante del avión.",
+     "escena": {
+      "tipo": "foto",
+      "img": 21
+     }
+    },
+    {
+     "texto": "Suben una montaña de más de cuatro mil quinientos metros… y arriba solo ven más montañas.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "+4.500 METROS",
+      "sub": "Sin equipo de montaña"
+     }
+    },
+    {
+     "texto": "Aun así siguen hacia el oeste durante diez días.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=6X77qiqwbz0",
+      "desde": 30,
+      "dur": 6,
+      "buscar_video": [
+       "Andes valley snow",
+       "Andes mountains"
+      ]
+     }
+    },
+    {
+     "texto": "Al fin, al otro lado de un río, ven a un arriero a caballo: Sergio Catalán.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "DÍA 10",
+      "sub": "Al otro lado del río"
+     }
+    },
+    {
+     "texto": "Él les tira papel y lápiz atados a una piedra. Parrado escribe: vengo de un avión que cayó en las montañas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 16
+     }
+    },
+    {
+     "texto": "Dos días después, los helicópteros llegan al avión. Dieciséis sobrevivieron.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=6X77qiqwbz0",
+      "desde": 70,
+      "dur": 6,
+      "buscar_video": [
+       "rescue helicopter mountains"
+      ]
+     }
+    },
+    {
+     "texto": "¿Tú habrías caminado? Comparte esta historia y sigue a Ridmer.",
+     "escena": {
+      "tipo": "foto",
+      "img": 18
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb1s",
+   "tipo": "short",
+   "encargo": "fb1",
+   "hora_youtube": "14:00",
+   "articulo": "Tragedia de los Andes (1972): la caminata de Parrado y Canessa",
+   "fuente": "https://es.wikipedia.org/wiki/Vuelo_571_de_la_Fuerza_A%C3%A9rea_Uruguaya",
+   "titulo_video": " ",
+   "titulos_opciones": [
+    "Caminaron 10 DÍAS por los Andes para salvar a todos #shorts",
+    "Arriba de la montaña… solo vieron MÁS montañas #shorts",
+    "La nota en una piedra que salvó a 16 personas #shorts",
+    "Ya no los buscaban… y salieron caminando #shorts",
+    "Cómo escaparon de los Andes en 1972 #shorts",
+    "Un saco de dormir hecho con el avión ❄️ #shorts"
+   ],
+   "descripcion_youtube": "Dos sobrevivientes de la tragedia de los Andes caminaron 10 días para buscar ayuda.\n#supervivencia #shorts #ridmer",
+   "etiquetas": [
+    "Tragedia de los Andes",
+    "Nando Parrado",
+    "Roberto Canessa",
+    "shorts"
+   ],
+   "miniatura": {
+    "img": 18,
+    "texto": "10 DÍAS"
+   },
+   "gancho": 1,
+   "musica": "epico",
+   "segmentos": [
+    {
+     "texto": "Caminaron diez días para salvar a todos.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "DICIEMBRE DE 1972",
+      "sub": "Cordillera de los Andes"
+     }
+    },
+    {
+     "texto": "En mil novecientos setenta y dos, un avión uruguayo cae en los Andes. Por radio, los sobrevivientes escuchan que ya no los buscan.",
+     "escena": {
+      "tipo": "foto",
+      "img": 8
+     }
+    },
+    {
+     "texto": "Nando Parrado y Roberto Canessa salen caminando, con un saco de dormir hecho con el aislante del avión.",
+     "escena": {
+      "tipo": "foto",
+      "img": 17
+     }
+    },
+    {
+     "texto": "Suben una montaña enorme… y arriba solo ven más montañas.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "+4.500 METROS",
+      "sub": "Sin equipo"
+     }
+    },
+    {
+     "texto": "Diez días después, ven a un arriero al otro lado de un río.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "DÍA 10",
+      "sub": "Al otro lado del río"
+     }
+    },
+    {
+     "texto": "Una nota atada a una piedra lo cambia todo: los helicópteros rescatan a dieciséis sobrevivientes. Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=6X77qiqwbz0",
+      "desde": 70,
+      "dur": 6,
+      "buscar_video": [
+       "rescue helicopter mountains"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb2",
+   "tipo": "fb",
+   "encargo": "res1",
+   "hora_fb": "18:30",
+   "articulo": "Vuelo 5390 de British Airways",
+   "fuente": "https://es.wikipedia.org/wiki/Vuelo_5390_de_British_Airways",
+   "titulo_video": " ",
+   "titulos_opciones": [
+    "Un piloto SUCCIONADO por la ventana a 5.000 metros… y sobrevivió",
+    "Lo sostuvieron de las piernas 22 MINUTOS fuera del avión",
+    "El parabrisas salió volando en pleno vuelo… con el capitán detrás 😱",
+    "Medio cuerpo fuera del avión a 600 km/h: la historia del vuelo 5390",
+    "¿Por qué salió volando el parabrisas? Unos tornillos medio milímetro más delgados",
+    "El copiloto aterrizó solo mientras su capitán colgaba afuera",
+    "5 meses después de esto… el capitán volvió a volar"
+   ],
+   "descripcion_youtube": "En 1990 el parabrisas de un avión de British Airways se desprendió y el capitán quedó medio cuerpo afuera.\n#aviones #historiasreales #ridmer",
+   "etiquetas": [
+    "Vuelo 5390",
+    "British Airways",
+    "Tim Lancaster",
+    "piloto succionado",
+    "aviones",
+    "historias reales",
+    "Ridmer"
+   ],
+   "texto_facebook": "El parabrisas salió volando a 5.000 metros… y el capitán quedó MEDIO CUERPO FUERA del avión durante 22 minutos 😱 #HistoriasReales #Aviones #DatosCuriosos",
+   "texto_tiktok": "Un piloto SUCCIONADO por la ventana a 5.000 metros 😱 Sus compañeros lo sostuvieron de las piernas 22 minutos mientras el copiloto aterrizaba… y sobrevivió. #aviones #historiasreales #piloto #britishairways #datoscuriosos #ridmer",
+   "miniatura": {
+    "img": 1,
+    "texto": "SUCCIONADO"
+   },
+   "gancho": 1,
+   "musica": "tension",
+   "segmentos": [
+    {
+     "texto": "Un piloto… succionado por la ventana.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "10 DE JUNIO DE 1990",
+      "sub": "Cielo de Inglaterra"
+     }
+    },
+    {
+     "texto": "El vuelo cinco tres nueve cero de British Airways despega de Birmingham rumbo a Málaga.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Trece minutos después, a más de cinco mil metros de altura… el parabrisas del capitán sale volando.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "5.300 METROS",
+      "sub": "Parabrisas del capitán"
+     }
+    },
+    {
+     "texto": "La cabina se descomprime en un segundo y se llena de niebla.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=vSG75V4TFZs",
+      "desde": 150,
+      "dur": 6,
+      "buscar_video": [
+       "airplane cockpit flight",
+       "airliner cockpit"
+      ]
+     }
+    },
+    {
+     "texto": "El capitán Tim Lancaster es arrastrado hacia afuera y queda medio cuerpo fuera del avión, doblado sobre el techo.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "A 600 KM/H",
+      "sub": "Medio cuerpo afuera"
+     }
+    },
+    {
+     "texto": "Sus piernas trabadas en los mandos desconectan el piloto automático.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=vSG75V4TFZs",
+      "desde": 200,
+      "dur": 5,
+      "buscar_video": [
+       "airplane cockpit controls"
+      ]
+     }
+    },
+    {
+     "texto": "El auxiliar Nigel Ogden se lanza y lo agarra de las piernas. Otros dos compañeros lo ayudan.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "NIGEL OGDEN",
+      "sub": "Auxiliar de vuelo"
+     }
+    },
+    {
+     "texto": "Mientras, el copiloto Alastair Atchison toma el control y lanza un Mayday.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=AHCLsUb__7M",
+      "desde": 60,
+      "dur": 6,
+      "buscar_video": [
+       "airplane cockpit pilot",
+       "airliner landing"
+      ]
+     }
+    },
+    {
+     "texto": "Veintidós minutos así, a diecisiete grados bajo cero.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "22 MINUTOS",
+      "sub": "A -17 °C"
+     }
+    },
+    {
+     "texto": "Atchison aterriza en Southampton. Nadie muere, y el capitán sobrevive.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "¿La causa? Tornillos equivocados: casi todos, medio milímetro más delgados.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Cinco meses después, Lancaster volvió a volar. Comparte esta historia y sigue a Ridmer.",
+     "escena": {
+      "tipo": "foto",
+      "img": 4
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb2s",
+   "tipo": "short",
+   "encargo": "res1",
+   "hora_youtube": "19:00",
+   "articulo": "Vuelo 5390 de British Airways",
+   "fuente": "https://es.wikipedia.org/wiki/Vuelo_5390_de_British_Airways",
+   "titulo_video": " ",
+   "titulos_opciones": [
+    "Piloto SUCCIONADO por la ventana a 5.000 metros #shorts",
+    "Lo sostuvieron 22 minutos fuera del avión #shorts",
+    "El parabrisas salió volando en pleno vuelo 😱 #shorts",
+    "Medio cuerpo fuera del avión… y sobrevivió #shorts",
+    "Todo por unos tornillos equivocados #shorts",
+    "El copiloto aterrizó mientras su capitán colgaba afuera #shorts"
+   ],
+   "descripcion_youtube": "Vuelo 5390 de British Airways: el capitán quedó medio cuerpo fuera del avión.\n#aviones #shorts #ridmer",
+   "etiquetas": [
+    "Vuelo 5390",
+    "British Airways",
+    "Tim Lancaster",
+    "shorts"
+   ],
+   "miniatura": {
+    "img": 1,
+    "texto": "SUCCIONADO"
+   },
+   "gancho": 1,
+   "musica": "tension",
+   "segmentos": [
+    {
+     "texto": "Un piloto… succionado por la ventana.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "10 DE JUNIO DE 1990",
+      "sub": "Cielo de Inglaterra"
+     }
+    },
+    {
+     "texto": "A más de cinco mil metros, el parabrisas del capitán de un avión de British Airways sale volando.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "5.300 METROS",
+      "sub": "Parabrisas del capitán"
+     }
+    },
+    {
+     "texto": "El capitán Tim Lancaster queda medio cuerpo fuera del avión.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "A 600 KM/H",
+      "sub": "Medio cuerpo afuera"
+     }
+    },
+    {
+     "texto": "Mientras el copiloto pilotea solo, un auxiliar lo agarra de las piernas y no lo suelta.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=vSG75V4TFZs",
+      "desde": 200,
+      "dur": 5,
+      "buscar_video": [
+       "airplane cockpit controls"
+      ]
+     }
+    },
+    {
+     "texto": "Veintidós minutos después, a diecisiete bajo cero, el copiloto aterriza en Southampton.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Todos sobreviven, también el capitán. La causa: tornillos equivocados. Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb3",
+   "tipo": "fb",
+   "hora_fb": "21:00",
+   "articulo": "Incidente ovni de Aurora (1897)",
+   "fuente": "https://es.wikipedia.org/wiki/Incidente_ovni_de_Aurora",
+   "titulo_video": " ",
+   "titulos_opciones": [
+    "En 1897 un OVNI chocó contra un molino… y enterraron al piloto",
+    "Hay una tumba en Texas que dicen que es de un extraterrestre 👽",
+    "50 años antes de Roswell… pasó esto en un pueblo de Texas",
+    "El periódico dijo que el piloto «NO ERA DE ESTE MUNDO»",
+    "Tiraron los restos de la nave a un pozo… y luego lo sellaron con concreto",
+    "¿Ovni o broma? El misterio de Aurora sigue sin resolverse",
+    "Seis años antes del primer avión… algo cayó del cielo en Texas"
+   ],
+   "descripcion_youtube": "En abril de 1897 un periódico de Dallas contó que una nave voladora chocó contra un molino en Aurora, Texas.\n#misterio #ovnis #ridmer",
+   "etiquetas": [
+    "Aurora Texas",
+    "ovni 1897",
+    "extraterrestre",
+    "misterio",
+    "ovnis",
+    "Ridmer"
+   ],
+   "texto_facebook": "En 1897 una nave voladora chocó contra un molino en Texas… y enterraron al piloto que «no era de este mundo» 👽 #Misterio #Ovnis #DatosCuriosos",
+   "texto_tiktok": "En 1897 un OVNI chocó contra un molino en Texas 👽 El periódico dijo que el piloto «no era de este mundo» y lo enterraron en el cementerio del pueblo. ¿Ovni o broma? #misterio #ovnis #aurora #texas #datoscuriosos #ridmer",
+   "miniatura": {
+    "img": 1,
+    "texto": "LA TUMBA DEL OVNI"
+   },
+   "gancho": 1,
+   "musica": "misterio",
+   "segmentos": [
+    {
+     "texto": "Un ovni chocó contra un molino… en mil ochocientos noventa y siete.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "ABRIL DE 1897",
+      "sub": "Aurora · Texas"
+     }
+    },
+    {
+     "texto": "Aurora era un pueblito tranquilo del norte de Texas.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=QJuMSxt4cUQ",
+      "desde": 30,
+      "dur": 6,
+      "buscar_video": [
+       "Texas countryside farm",
+       "Texas rural road"
+      ]
+     }
+    },
+    {
+     "texto": "Según el Dallas Morning News, a las seis de la mañana una nave voladora cruzó el cielo.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Dallas Morning News 1897",
+       "1897 airship newspaper"
+      ]
+     }
+    },
+    {
+     "texto": "Chocó contra el molino de viento del juez Proctor… y estalló en pedazos.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "6:00 A. M.",
+      "sub": "Granja del juez Proctor"
+     }
+    },
+    {
+     "texto": "Faltaban seis años para el primer vuelo de los hermanos Wright.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Wright Flyer 1903",
+       "Wright brothers first flight"
+      ]
+     }
+    },
+    {
+     "texto": "Entre los restos encontraron al piloto. El periódico dijo que no era de este mundo.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "«NO ERA DE ESTE MUNDO»",
+      "sub": "Dallas Morning News"
+     }
+    },
+    {
+     "texto": "Un supuesto oficial del ejército opinó que podía venir de Marte.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Mars planet",
+       "Mars"
+      ]
+     }
+    },
+    {
+     "texto": "Lo enterraron en el cementerio del pueblo, según el rito cristiano.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Los restos de la nave, dicen, terminaron en un pozo bajo el molino.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "old windmill Texas",
+       "windmill well"
+      ]
+     }
+    },
+    {
+     "texto": "Décadas después, el dueño del terreno los sacó del pozo… y lo selló con concreto.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=QJuMSxt4cUQ",
+      "desde": 120,
+      "dur": 6,
+      "buscar_video": [
+       "old water well",
+       "Texas windmill"
+      ]
+     }
+    },
+    {
+     "texto": "La piedra que marcaba la tumba desapareció. Muchos creen que todo fue una broma del periódico.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "¿Ovni o invento? Comenta y sigue a Ridmer.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Aurora Texas cemetery",
+       "night sky stars"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb1f",
+   "tipo": "foto",
+   "omitir": true,
+   "hora_foto": "15:30",
+   "titulo_youtube": "Caminaron 10 días por los Andes para salvar a sus amigos",
+   "texto_foto": "Escucharon por radio que ya nadie los buscaba… y decidieron salir caminando.\n\nEl 13 de octubre de 1972, un avión de la Fuerza Aérea Uruguaya con 45 personas, entre ellas un equipo de rugby, se estrelló en la cordillera de los Andes. Los sobrevivientes quedaron atrapados en la nieve, con el fuselaje roto como único refugio.\n\nA los pocos días, por una radio, escucharon que la búsqueda había sido cancelada.\n\nDos meses después, Nando Parrado y Roberto Canessa salieron a buscar ayuda. Llevaban un saco de dormir cosido con el aislante del avión. Subieron una montaña de más de 4.500 metros sin equipo de montaña, y desde la cima solo vieron… más montañas.\n\nSiguieron hacia el oeste durante diez días. Al fin, al otro lado de un río, vieron a un arriero chileno, Sergio Catalán. Él les lanzó papel y lápiz atados a una piedra, y Parrado escribió: «Vengo de un avión que cayó en las montañas».\n\nDos días después, los helicópteros llegaron al avión. Dieciséis personas sobrevivieron tras 72 días.\n\n¿Tú habrías tenido el valor de salir caminando?\n#HistoriasReales #Supervivencia #DatosCuriosos"
+  },
+  {
+   "eid": "fb2f",
+   "tipo": "foto",
+   "omitir": true,
+   "hora_foto": "20:00",
+   "titulo_youtube": "En 1897 un ovni chocó contra un molino en Texas… y enterraron al piloto",
+   "texto_foto": "Una nave voladora chocó contra un molino… seis años antes del primer avión.\n\nEl 19 de abril de 1897, el Dallas Morning News publicó una noticia increíble: dos días antes, hacia las seis de la mañana, una «aeronave» había cruzado el cielo de Aurora, un pueblito del norte de Texas, había chocado contra el molino de viento del juez J. S. Proctor y había estallado en pedazos.\n\nSegún el artículo, entre los restos encontraron al piloto, que «no era de este mundo». Un supuesto oficial del ejército opinó que podía venir de Marte. Lo enterraron ese mismo día en el cementerio de Aurora, según el rito cristiano.\n\nSe dice que los restos de la nave terminaron en un pozo bajo el molino. Décadas después, el nuevo dueño del terreno los sacó para usar el agua… y en 1945 selló el pozo con una losa de concreto.\n\nLa piedra que marcaba la tumba desapareció. Ningún otro periódico publicó la historia en su momento, y muchos creen que fue una broma del reportero.\n\n¿Tú qué crees: ovni o invento?\n#Misterio #Ovnis #DatosCuriosos"
+  }
+ ],
+ "notas": "fb2: el encargo Roswell ya se contó el 13-nov → se usa la reserva res1 (vuelo 5390 de British Airways). fb1: Tragedia de los Andes contada desde la caminata de Parrado y Canessa (no repite el video de Javier Methol del 12-nov). Sin largo hoy."
+}
