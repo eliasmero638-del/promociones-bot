@@ -497,12 +497,11 @@
      "texto": "Aurora era un pueblito tranquilo del norte de Texas.",
      "escena": {
       "tipo": "video",
-      "url": "https://www.youtube.com/watch?v=QJuMSxt4cUQ",
-      "desde": 30,
       "dur": 6,
       "buscar_video": [
-       "Texas countryside farm",
-       "Texas rural road"
+       "Texas countryside",
+       "Texas farm",
+       "prairie windmill"
       ]
      }
     },
@@ -527,10 +526,12 @@
     {
      "texto": "Faltaban seis años para el primer vuelo de los hermanos Wright.",
      "escena": {
-      "tipo": "foto",
-      "buscar": [
-       "Wright Flyer 1903",
-       "Wright brothers first flight"
+      "tipo": "video",
+      "dur": 6,
+      "buscar_video": [
+       "Wright brothers flight",
+       "Wright Flyer",
+       "Orville Wright flight"
       ]
      }
     },
@@ -573,12 +574,11 @@
      "texto": "Décadas después, el dueño del terreno los sacó del pozo… y lo selló con concreto.",
      "escena": {
       "tipo": "video",
-      "url": "https://www.youtube.com/watch?v=QJuMSxt4cUQ",
-      "desde": 120,
       "dur": 6,
       "buscar_video": [
-       "old water well",
-       "Texas windmill"
+       "windmill water pump",
+       "farm windmill",
+       "wind pump"
       ]
      }
     },
