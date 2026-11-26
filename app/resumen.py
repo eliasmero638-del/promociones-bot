@@ -279,14 +279,20 @@ def bucle():
                                             supports_streaming='true')
                             if not (r and r.get('ok')):
                                 tg._api('sendMessage', chat_id=c, text=cap, parse_mode='HTML')
-                    if hm >= 9 * 60 and 'publicado' not in est and not est.get('cancelado') \
+                    if hm >= 9 * 60 and not est.get('pub_ok') and est.get('pub_intentos', 0) < 4 \
+                            and time.time() - est.get('pub_ultimo', 0) > 900 and not est.get('cancelado') \
                             and not os.path.exists(os.path.join(D, f'cancelado_{hoy}')):
-                        est['publicado'] = True
+                        # 26-nov: reintenta hasta 4 veces (cada 15 min) si Facebook falla
+                        est['pub_intentos'] = est.get('pub_intentos', 0) + 1; est['pub_ultimo'] = time.time()
+                        json.dump(hecho, open(ef, 'w'), ensure_ascii=False, default=str)
                         titulo = f"RESUMEN DEL DÍA {inf['dia']} | {inf['reality']}" if inf.get('dia') else f"RESUMEN DEL DÍA | {inf['reality']}"
                         ok, rid = fb.publicar(out, _texto_post(inf), titulo)
                         log('publicado' if ok else 'no se pudo publicar', rid)
-                        tg.texto(('✅ Publiqué el RESUMEN DEL DÍA en Pasión por los Realities.' if ok
-                                  else f'⚠️ No pude publicar el RESUMEN DEL DÍA: {str(rid)[:200]}'))
+                        if ok:
+                            est['pub_ok'] = True
+                            tg.texto('✅ Publiqué el RESUMEN DEL DÍA en Pasión por los Realities.')
+                        elif est['pub_intentos'] >= 4:
+                            tg.texto(f'⚠️ No pude publicar el RESUMEN DEL DÍA: {str(rid)[:200]}')
             for k in list(hecho):
                 if k < time.strftime('%Y-%m-%d', time.localtime(time.time() - 2 * 86400)):
                     hecho.pop(k)

@@ -123,13 +123,41 @@ def _reel(path, texto, pid, tok):
 
 
 def _video(path, texto, titulo, pid, tok):
-    with open(path, 'rb') as f:
-        r = requests.post(f'https://graph-video.facebook.com/{_v()}/{pid}/videos',
-                          data={'description': texto, 'title': titulo[:100], 'access_token': tok},
-                          files={'source': ('clip.mp4', f, 'video/mp4')}, timeout=900).json()
-    if 'id' not in r:
+    """26-nov: subida por partes (reanudable). La subida de un solo golpe fallaba con videos grandes (resumen de 9 min)."""
+    U = f'https://graph-video.facebook.com/{_v()}/{pid}/videos'
+
+    def _j(r):
+        try:
+            return r.json()
+        except Exception:
+            raise RuntimeError(f'Facebook respondió {r.status_code}: {r.text[:150]}')
+    tam = os.path.getsize(path)
+    r = _j(requests.post(U, data={'upload_phase': 'start', 'file_size': tam, 'access_token': tok}, timeout=120))
+    if 'upload_session_id' not in r:
         raise RuntimeError(r.get('error', {}).get('message', str(r)))
-    return r['id']
+    ses, ini, fin = r['upload_session_id'], int(r['start_offset']), int(r['end_offset'])
+    with open(path, 'rb') as f:
+        while ini < fin:
+            f.seek(ini)
+            trozo = f.read(fin - ini)
+            for intento in range(4):
+                try:
+                    r = _j(requests.post(U, data={'upload_phase': 'transfer', 'upload_session_id': ses, 'start_offset': ini,
+                                                  'access_token': tok},
+                                         files={'video_file_chunk': ('trozo', trozo, 'application/octet-stream')}, timeout=600))
+                    if 'start_offset' in r:
+                        break
+                    raise RuntimeError(r.get('error', {}).get('message', str(r)))
+                except Exception:
+                    if intento == 3:
+                        raise
+                    time.sleep(10 * (intento + 1))
+            ini, fin = int(r['start_offset']), int(r['end_offset'])
+    r = _j(requests.post(U, data={'upload_phase': 'finish', 'upload_session_id': ses, 'access_token': tok,
+                                  'description': texto, 'title': titulo[:100]}, timeout=120))
+    if not r.get('success'):
+        raise RuntimeError(r.get('error', {}).get('message', str(r)))
+    return r.get('video_id') or ses
 
 
 def publicar(path, texto, titulo='', clave=None):
