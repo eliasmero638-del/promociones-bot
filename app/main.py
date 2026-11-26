@@ -1,6 +1,6 @@
 """Clipero: graba el reality, detecta los momentos fuertes, los edita y te los manda por Telegram."""
 import json, os, queue, re, secrets, shutil, subprocess, threading, time
-import config as C, recorder, analyzer, editor, tg, ia, fb, wa, web, ntfy, resumen
+import config as C, recorder, analyzer, editor, tg, ia, fb, wa, web, ntfy, resumen, respaldo
 try:
     import fabrica
 except Exception as _e:          # si la fábrica falla, el Clipero sigue funcionando
@@ -839,6 +839,7 @@ def main():
     recorder.iniciar()
     threading.Thread(target=analizar_bucle, daemon=True).start()
     threading.Thread(target=resumen.bucle, daemon=True).start()
+    threading.Thread(target=respaldo.bucle, daemon=True).start()
     threading.Thread(target=trabajador, daemon=True).start()
     threading.Thread(target=auto_publicador, daemon=True).start()
     threading.Thread(target=vigilante, daemon=True).start()

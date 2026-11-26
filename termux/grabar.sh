@@ -45,8 +45,13 @@ videos() {
       read U A B < $f
       log "bajando video pedido $ID ($A-$B s)"
       rm -f $D/vlisto/$ID.*
-      timeout 900 $YT -q --no-playlist --download-sections "*$A-$B" -f "bv*[height<=720]+ba/b[height<=720]/b" \
-        --merge-output-format mp4 -o "$D/vlisto/$ID.%(ext)s" "$U" 2>>$D/yt.log
+      if [ "$A" = "todo" ]; then   # 25-nov: video completo (respaldo para las cuentas nuevas), hasta 1080p
+        timeout 2400 $YT -q --no-playlist -f "bv*[height<=1080]+ba/b[height<=1080]/b" \
+          --merge-output-format mp4 -o "$D/vlisto/$ID.%(ext)s" "$U" 2>>$D/yt.log
+      else
+        timeout 900 $YT -q --no-playlist --download-sections "*$A-$B" -f "bv*[height<=720]+ba/b[height<=720]/b" \
+          --merge-output-format mp4 -o "$D/vlisto/$ID.%(ext)s" "$U" 2>>$D/yt.log
+      fi
       F=$(ls $D/vlisto/$ID.* 2>/dev/null | head -1)
       if [ -n "$F" ]; then
         rsync -a -e "$SSH" "$F" root@$S:/var/lib/clipero/videos_listos/$ID.mp4 && log "video $ID subido"

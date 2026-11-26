@@ -225,6 +225,11 @@ class H(BaseHTTPRequestHandler):
                 except Exception:
                     pass
                 try:
+                    import respaldo as _rs
+                    j += ['--- respaldo --- ' + _rs.resumen_txt()]
+                except Exception:
+                    pass
+                try:
                     j += ['--- voz ---'] + [l for l in open(os.path.join(C.DATA, 'voz_propia', 'log.txt'), errors='replace').read().splitlines()
                                             if l.strip() and '%|' not in l][-20:]
                 except Exception:
