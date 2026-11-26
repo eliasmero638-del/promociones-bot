@@ -765,6 +765,157 @@
      }
     }
    ],
+   "encargo": "fb3",
+   "omitir": true
+  },
+  {
+   "eid": "fb3c",
+   "tipo": "fb",
+   "articulo": "Incidente ovni de Aurora (1897)",
+   "fuente": "https://es.wikipedia.org/wiki/Incidente_ovni_de_Aurora",
+   "titulo_video": " ",
+   "titulos_opciones": [
+    "En 1897 un OVNI chocó contra un molino… y enterraron al piloto",
+    "Hay una tumba en Texas que dicen que es de un extraterrestre 👽",
+    "50 años antes de Roswell… pasó esto en un pueblo de Texas",
+    "El periódico dijo que el piloto «NO ERA DE ESTE MUNDO»",
+    "Tiraron los restos de la nave a un pozo… y luego lo sellaron con concreto",
+    "¿Ovni o broma? El misterio de Aurora sigue sin resolverse",
+    "Seis años antes del primer avión… algo cayó del cielo en Texas"
+   ],
+   "descripcion_youtube": "En abril de 1897 un periódico de Dallas contó que una nave voladora chocó contra un molino en Aurora, Texas.\n#misterio #ovnis #ridmer",
+   "etiquetas": [
+    "Aurora Texas",
+    "ovni 1897",
+    "extraterrestre",
+    "misterio",
+    "ovnis",
+    "Ridmer"
+   ],
+   "texto_facebook": "En 1897 una nave voladora chocó contra un molino en Texas… y enterraron al piloto que «no era de este mundo» 👽 #Misterio #Ovnis #DatosCuriosos",
+   "texto_tiktok": "En 1897 un OVNI chocó contra un molino en Texas 👽 El periódico dijo que el piloto «no era de este mundo» y lo enterraron en el cementerio del pueblo. ¿Ovni o broma? #misterio #ovnis #aurora #texas #datoscuriosos #ridmer",
+   "miniatura": {
+    "img": 1,
+    "texto": "LA TUMBA DEL OVNI"
+   },
+   "gancho": 1,
+   "musica": "misterio",
+   "segmentos": [
+    {
+     "texto": "Un ovni chocó contra un molino… en mil ochocientos noventa y siete.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "ABRIL DE 1897",
+      "sub": "Aurora · Texas"
+     }
+    },
+    {
+     "texto": "Aurora era un pueblito tranquilo del norte de Texas.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=mcDBBLZh3Po",
+      "desde": 4,
+      "dur": 6,
+      "buscar_video": [
+       "windmill"
+      ]
+     }
+    },
+    {
+     "texto": "Según el Dallas Morning News, a las seis de la mañana una nave voladora cruzó el cielo.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Dallas Morning News 1897",
+       "1897 airship newspaper"
+      ]
+     }
+    },
+    {
+     "texto": "Chocó contra el molino de viento del juez Proctor… y estalló en pedazos.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "6:00 A. M.",
+      "sub": "Granja del juez Proctor"
+     }
+    },
+    {
+     "texto": "Faltaban seis años para el primer vuelo de los hermanos Wright.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=A8s_df5uEO0",
+      "desde": 3,
+      "dur": 6,
+      "buscar_video": [
+       "Wright Flyer"
+      ]
+     }
+    },
+    {
+     "texto": "Entre los restos encontraron al piloto. El periódico dijo que no era de este mundo.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "«NO ERA DE ESTE MUNDO»",
+      "sub": "Dallas Morning News"
+     }
+    },
+    {
+     "texto": "Un supuesto oficial del ejército opinó que podía venir de Marte.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Mars planet",
+       "Mars"
+      ]
+     }
+    },
+    {
+     "texto": "Lo enterraron en el cementerio del pueblo, según el rito cristiano.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Los restos de la nave, dicen, terminaron en un pozo bajo el molino.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "old windmill Texas",
+       "windmill well"
+      ]
+     }
+    },
+    {
+     "texto": "Décadas después, el dueño del terreno los sacó del pozo… y lo selló con concreto.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=cYgL5XKNgW8",
+      "desde": 10,
+      "dur": 6,
+      "buscar_video": [
+       "windmill"
+      ]
+     }
+    },
+    {
+     "texto": "La piedra que marcaba la tumba desapareció. Muchos creen que todo fue una broma del periódico.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "¿Ovni o invento? Comenta y sigue a Ridmer.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Aurora Texas cemetery",
+       "night sky stars"
+      ]
+     }
+    }
+   ],
    "encargo": "fb3"
   }
  ],
