@@ -1297,6 +1297,184 @@
      }
     }
    ]
+  },
+  {
+   "eid": "urg1",
+   "tipo": "fb",
+   "urgente": true,
+   "hora_fb": "ya",
+   "hora_short": "ya",
+   "articulo": "Muerte de Andy Taylor, guitarrista de Duran Duran (25-nov-2026)",
+   "fuente": "https://www.nbclosangeles.com/entertainment/entertainment-news/andy-taylor-guitarist-new-wave-icons-duran-duran-dies-65/3975184/",
+   "nota": "Confirmado por AP/NBC, CNN, BBC, Variety, Billboard, Deadline, NTN24, Primera Hora, Minuto60. Tono serio, solo lo confirmado.",
+   "titulo_video": " ",
+   "titulo_youtube": "Murió Andy Taylor, el guitarrista original de Duran Duran, a los 65 años",
+   "titulos_opciones": [
+    "Murió Andy Taylor, guitarrista original de Duran Duran, a los 65 años",
+    "ÚLTIMA HORA: muere el guitarrista de Duran Duran",
+    "Adiós a Andy Taylor, la guitarra de Hungry Like the Wolf",
+    "Duran Duran despide a Andy Taylor: tenía 65 años",
+    "No pudo ir al Salón de la Fama… y hoy Duran Duran lo despide",
+    "La banda que conquistó MTV pierde a su guitarrista original 🕊️"
+   ],
+   "descripcion_youtube": "Este miércoles 25 de noviembre de 2026, la familia y los compañeros de Duran Duran anunciaron la muerte de Andy Taylor, guitarrista original de la banda, a los 65 años.\n#DuranDuran #AndyTaylor #noticias #ridmer",
+   "etiquetas": [
+    "Andy Taylor",
+    "Duran Duran",
+    "muere",
+    "noticias",
+    "rock",
+    "ridmer"
+   ],
+   "texto_facebook": "Muere Andy Taylor, guitarrista original de Duran Duran, a los 65 años 🕊️ Su familia y la banda lo anunciaron este miércoles. #DuranDuran #AndyTaylor #Noticias",
+   "texto_tiktok": "Muere Andy Taylor, guitarrista original de Duran Duran, a los 65 años 🕊️ #duranduran #andytaylor #noticias #rock #ridmer",
+   "miniatura": {
+    "img": 1,
+    "texto": "ADIÓS, ANDY TAYLOR"
+   },
+   "gancho": 1,
+   "musica": "epico",
+   "segmentos": [
+    {
+     "texto": "Murió Andy Taylor, el guitarrista original de Duran Duran.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=oJL-lCzEXgI",
+      "desde": 30,
+      "dur": 6,
+      "buscar_video": [
+       "Duran Duran concert",
+       "Duran Duran live"
+      ]
+     },
+     "short": true
+    },
+    {
+     "texto": "La noticia se conoció este miércoles veinticinco de noviembre.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "25 DE NOVIEMBRE",
+      "sub": "Hace unas horas"
+     },
+     "short": true
+    },
+    {
+     "texto": "Su familia y sus compañeros de banda lo anunciaron en un comunicado, en redes sociales y en la página oficial del grupo.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     },
+     "short": true
+    },
+    {
+     "texto": "Tenía sesenta y cinco años.",
+     "escena": {
+      "tipo": "contador",
+      "n": 65,
+      "texto": "AÑOS",
+      "sub": "Andy Taylor"
+     },
+     "short": true
+    },
+    {
+     "texto": "Andy fue parte de Duran Duran, la banda británica que conquistó el mundo en los años ochenta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     },
+     "short": true
+    },
+    {
+     "texto": "En esa época sonaron éxitos como Hungry Like the Wolf, Rio y The Reflex.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=oJL-lCzEXgI",
+      "desde": 95,
+      "dur": 6,
+      "buscar_video": [
+       "Duran Duran concert",
+       "Duran Duran live"
+      ]
+     }
+    },
+    {
+     "texto": "Su fama creció junto con el nacimiento de MTV.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "En noviembre de dos mil veintidós, la banda entró al Salón de la Fama del Rock and Roll.",
+     "escena": {
+      "tipo": "linea_tiempo",
+      "hitos": [
+       [
+        "AÑOS 80",
+        "Éxitos en todo el mundo"
+       ],
+       [
+        "2022",
+        "Salón de la Fama del Rock"
+       ],
+       [
+        "2026",
+        "Muere a los 65 años"
+       ]
+      ]
+     }
+    },
+    {
+     "texto": "Pero Andy no pudo ir a la ceremonia.",
+     "escena": {
+      "tipo": "foto",
+      "img": 12
+     }
+    },
+    {
+     "texto": "En una carta reveló que llevaba varios años luchando contra un cáncer de próstata en etapa cuatro.",
+     "escena": {
+      "tipo": "ficha",
+      "nombre": "Andy Taylor",
+      "sub": "Guitarrista · Duran Duran",
+      "buscar": [
+       "Andy Taylor guitarist",
+       "Andy Taylor Duran Duran"
+      ]
+     },
+     "short": true,
+     "rotulo": "ETAPA 4"
+    },
+    {
+     "texto": "Y agradeció a cada uno de sus hermanos en esa gran banda.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=oJL-lCzEXgI",
+      "desde": 150,
+      "dur": 6,
+      "buscar_video": [
+       "Duran Duran concert",
+       "Duran Duran live"
+      ]
+     }
+    },
+    {
+     "texto": "Hoy, Duran Duran dice que Andy trajo a su música un fuego imborrable.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     },
+     "short": true
+    },
+    {
+     "texto": "Descanse en paz, Andy Taylor. Comparte esta noticia y sigue a Ridmer.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     },
+     "short": true
+    }
+   ]
   }
  ],
  "notas": "fb2 encargo \"Auto fantasma\" reemplazado por Steven Callahan (leyenda genérica sin hechos verificables); fb3 y largo1 sin encargo: Señal Wow! y MH370."
