@@ -92,6 +92,9 @@ Te doy {nfotos} fotos del clip en orden y su audio. Tareas:
    - "historia_personal": experiencia difícil, superación, familia, pérdidas, dificultades, con un arco que conecte.
    - "picante": coqueteo, insinuaciones, celos, tensión romántica, conversación sobre relaciones o sexo, confesiones íntimas
      (sin inventar ni exagerar: si solo se insinúa, no lo presentes como hecho).
+     MUY IMPORTANTE (26-nov): dos participantes que entran juntos al CUARTO VIP, se acuestan juntos, se abrazan, se
+     besan, se acarician o se cubren con la sábana = "picante" con interés 85-100 aunque casi no hablen o esté oscuro.
+     Eso es lo que más vistas da. Solo se descarta como rutina si TODOS duermen cada uno por su lado sin interacción.
    - "revelacion": información inesperada, contradicción, secreto revelado, giro en una relación o situación.
    - "humor": sorpresa o momento gracioso genuino, con valor por sí mismo (no confundir ruido con interés).
    - "normal": charla cotidiana, rutina, repeticiones, comentarios sin emoción ni giro → se descarta.

@@ -96,18 +96,18 @@ def youtube():
     for v in elegidos:
         base = os.path.join(out, f"{v['tipo']}_{v['publicado'][:10]}_{v['id']}")
         json.dump(v, open(base + '.json', 'w'), ensure_ascii=False, indent=1)
-        listo = os.path.join(lis, f"yt_{v['id']}.mp4")
+        listo = os.path.join(lis, f"yr_{v['id']}.mp4")
         if os.path.exists(base + '.mp4'):
             continue
         if os.path.exists(listo) and time.time() - os.path.getmtime(listo) > 10:
             shutil.move(listo, base + '.mp4')
             try:
-                os.remove(os.path.join(ped, f"yt_{v['id']}.txt"))
+                os.remove(os.path.join(ped, f"yr_{v['id']}.txt"))
             except Exception:
                 pass
             continue
-        if not os.path.exists(os.path.join(lis, f"yt_{v['id']}.falla")):
-            open(os.path.join(ped, f"yt_{v['id']}.txt"), 'w').write(f"https://www.youtube.com/watch?v={v['id']} todo todo\n")
+        if not os.path.exists(os.path.join(lis, f"yr_{v['id']}.falla")):
+            open(os.path.join(ped, f"yr_{v['id']}.txt"), 'w').write(f"https://www.youtube.com/watch?v={v['id']} todo todo\n")
             pend += 1
     return len(elegidos), pend
 

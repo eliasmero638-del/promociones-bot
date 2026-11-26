@@ -38,7 +38,9 @@ def registrar(path, t0, dur, puntos):
             return
         s, sc, det = max(puntos, key=lambda x: x[1])
         h = time.localtime(t0).tm_hour
-        noche = h >= 22 or h < 5                     # 25-nov: de noche (cuarto VIP, acostados) se guarda TODO, aunque hablen bajito
+        if 4 <= h < 13:                              # 26-nov: el día del resumen va de 13:00 a 04:00 (en la mañana duermen)
+            return
+        noche = h >= 21 or h < 4                     # de noche (cuarto VIP, acostados) se guarda TODO, aunque hablen bajito
         if sc < C.get().get('resumen_min', 45) and not noche:
             return
         dst = os.path.join(PED, os.path.basename(path))
@@ -108,11 +110,11 @@ def armar(desde, hasta, salida):
     for c in cands:
         c['ya_clip'] = any(abs(c['centro'] - u) < 150 for u in usados)
         h = time.localtime(c['centro']).tm_hour
-        c['noche'] = h >= 22 or h < 5
+        c['noche'] = h >= 21 or h < 4
     cands.sort(key=lambda c: (c['ya_clip'], -c['puntaje']))
     # 25-nov: lo más importante del día es la noche (cuarto VIP, cuando ya están acostados): 2/3 de los candidatos
     pre = []
-    for grupo, cupo, sep in ((lambda c: c['noche'], 22, 240), (lambda c: True, 34, 480)):
+    for grupo, cupo, sep in ((lambda c: c['noche'], 30, 180), (lambda c: True, 42, 420)):
         for c in cands:
             if len(pre) >= cupo:
                 break
@@ -258,7 +260,7 @@ def bucle():
                     json.dump(hecho, open(ef, 'w'), ensure_ascii=False, default=str)
                     log('armando el resumen del día')
                     hoy4 = time.mktime(time.strptime(hoy + ' 04:00', '%Y-%m-%d %H:%M'))
-                    ruta, inf = armar(hoy4 - 19 * 3600, hoy4, out)       # de ayer 9:00 am a hoy 4:00 am
+                    ruta, inf = armar(hoy4 - 15 * 3600, hoy4, out)       # 26-nov: de ayer 13:00 a hoy 04:00
                     est['armado'] = inf if ruta else {'error': inf}
                     log('resumen', ruta, inf)
                     if not ruta:
