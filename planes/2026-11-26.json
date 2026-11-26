@@ -616,7 +616,157 @@
    "hora_foto": "20:00",
    "titulo_youtube": "En 1897 un ovni chocó contra un molino en Texas… y enterraron al piloto",
    "texto_foto": "Una nave voladora chocó contra un molino… seis años antes del primer avión.\n\nEl 19 de abril de 1897, el Dallas Morning News publicó una noticia increíble: dos días antes, hacia las seis de la mañana, una «aeronave» había cruzado el cielo de Aurora, un pueblito del norte de Texas, había chocado contra el molino de viento del juez J. S. Proctor y había estallado en pedazos.\n\nSegún el artículo, entre los restos encontraron al piloto, que «no era de este mundo». Un supuesto oficial del ejército opinó que podía venir de Marte. Lo enterraron ese mismo día en el cementerio de Aurora, según el rito cristiano.\n\nSe dice que los restos de la nave terminaron en un pozo bajo el molino. Décadas después, el nuevo dueño del terreno los sacó para usar el agua… y en 1945 selló el pozo con una losa de concreto.\n\nLa piedra que marcaba la tumba desapareció. Ningún otro periódico publicó la historia en su momento, y muchos creen que fue una broma del reportero.\n\n¿Tú qué crees: ovni o invento?\n#Misterio #Ovnis #DatosCuriosos"
+  },
+  {
+   "eid": "fb3b",
+   "tipo": "fb",
+   "articulo": "Incidente ovni de Aurora (1897)",
+   "fuente": "https://es.wikipedia.org/wiki/Incidente_ovni_de_Aurora",
+   "titulo_video": " ",
+   "titulos_opciones": [
+    "En 1897 un OVNI chocó contra un molino… y enterraron al piloto",
+    "Hay una tumba en Texas que dicen que es de un extraterrestre 👽",
+    "50 años antes de Roswell… pasó esto en un pueblo de Texas",
+    "El periódico dijo que el piloto «NO ERA DE ESTE MUNDO»",
+    "Tiraron los restos de la nave a un pozo… y luego lo sellaron con concreto",
+    "¿Ovni o broma? El misterio de Aurora sigue sin resolverse",
+    "Seis años antes del primer avión… algo cayó del cielo en Texas"
+   ],
+   "descripcion_youtube": "En abril de 1897 un periódico de Dallas contó que una nave voladora chocó contra un molino en Aurora, Texas.\n#misterio #ovnis #ridmer",
+   "etiquetas": [
+    "Aurora Texas",
+    "ovni 1897",
+    "extraterrestre",
+    "misterio",
+    "ovnis",
+    "Ridmer"
+   ],
+   "texto_facebook": "En 1897 una nave voladora chocó contra un molino en Texas… y enterraron al piloto que «no era de este mundo» 👽 #Misterio #Ovnis #DatosCuriosos",
+   "texto_tiktok": "En 1897 un OVNI chocó contra un molino en Texas 👽 El periódico dijo que el piloto «no era de este mundo» y lo enterraron en el cementerio del pueblo. ¿Ovni o broma? #misterio #ovnis #aurora #texas #datoscuriosos #ridmer",
+   "miniatura": {
+    "img": 1,
+    "texto": "LA TUMBA DEL OVNI"
+   },
+   "gancho": 1,
+   "musica": "misterio",
+   "segmentos": [
+    {
+     "texto": "Un ovni chocó contra un molino… en mil ochocientos noventa y siete.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "ABRIL DE 1897",
+      "sub": "Aurora · Texas"
+     }
+    },
+    {
+     "texto": "Aurora era un pueblito tranquilo del norte de Texas.",
+     "escena": {
+      "tipo": "video",
+      "dur": 6,
+      "buscar_video": [
+       "Texas countryside",
+       "Texas farm",
+       "prairie windmill"
+      ]
+     }
+    },
+    {
+     "texto": "Según el Dallas Morning News, a las seis de la mañana una nave voladora cruzó el cielo.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Dallas Morning News 1897",
+       "1897 airship newspaper"
+      ]
+     }
+    },
+    {
+     "texto": "Chocó contra el molino de viento del juez Proctor… y estalló en pedazos.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "6:00 A. M.",
+      "sub": "Granja del juez Proctor"
+     }
+    },
+    {
+     "texto": "Faltaban seis años para el primer vuelo de los hermanos Wright.",
+     "escena": {
+      "tipo": "video",
+      "dur": 6,
+      "buscar_video": [
+       "Wright brothers flight",
+       "Wright Flyer",
+       "Orville Wright flight"
+      ]
+     }
+    },
+    {
+     "texto": "Entre los restos encontraron al piloto. El periódico dijo que no era de este mundo.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "«NO ERA DE ESTE MUNDO»",
+      "sub": "Dallas Morning News"
+     }
+    },
+    {
+     "texto": "Un supuesto oficial del ejército opinó que podía venir de Marte.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Mars planet",
+       "Mars"
+      ]
+     }
+    },
+    {
+     "texto": "Lo enterraron en el cementerio del pueblo, según el rito cristiano.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Los restos de la nave, dicen, terminaron en un pozo bajo el molino.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "old windmill Texas",
+       "windmill well"
+      ]
+     }
+    },
+    {
+     "texto": "Décadas después, el dueño del terreno los sacó del pozo… y lo selló con concreto.",
+     "escena": {
+      "tipo": "video",
+      "dur": 6,
+      "buscar_video": [
+       "windmill water pump",
+       "farm windmill",
+       "wind pump"
+      ]
+     }
+    },
+    {
+     "texto": "La piedra que marcaba la tumba desapareció. Muchos creen que todo fue una broma del periódico.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "¿Ovni o invento? Comenta y sigue a Ridmer.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Aurora Texas cemetery",
+       "night sky stars"
+      ]
+     }
+    }
+   ],
+   "encargo": "fb3"
   }
  ],
- "notas": "fb2: el encargo Roswell ya se contó el 13-nov → se usa la reserva res1 (vuelo 5390 de British Airways). fb1: Tragedia de los Andes contada desde la caminata de Parrado y Canessa (no repite el video de Javier Methol del 12-nov). Sin largo hoy."
+ "notas": "fb2: el encargo Roswell ya se contó el 13-nov → se usa la reserva res1 (vuelo 5390 de British Airways). fb1: Tragedia de los Andes contada desde la caminata de Parrado y Canessa (no repite el video de Javier Methol del 12-nov). Sin largo hoy. fb3b = material nuevo de fb3 (videos libres en vez de YouTube con youtuber); se entrega como fb3."
 }
