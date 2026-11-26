@@ -2292,3 +2292,53 @@ export function ballena(sc) {
   for (const s of [1, -1]) { const a = new THREE.Mesh(new THREE.BoxGeometry(2, 0.12, 0.8), m); a.position.set(1.5, -0.8, s * 1.6); a.rotation.y = s * 0.5; g.add(a); }
   g.userData.cola = piv; g.traverse(o => { if (o.isMesh) o.castShadow = true; }); sc.add(g); return g;
 }
+
+// ======================= 26-nov: molino de viento de granja (1890), nave en forma de puro (1897), estallido de fuego y humo =======================
+/** Molino de viento de granja (tipo americano de 1890: torre de madera de 4 patas, rueda de aspas y cola), ~9 m.
+ *  Devuelve {g, rueda, cabeza, mover(t, vel), romper(k)}: romper(0..1) hace caer la cabeza y la rueda. */
+export function molinoViento(sc, x = 0, z = 0, { alto = 9 } = {}) {
+  const g = new THREE.Group(), mad = M.mat(0x6a5238, { roughness: 0.95 }), met = M.mat(0x5a5a58, { metalness: 0.6, roughness: 0.5 });
+  const b = 1.4, a = 0.35;
+  for (const [sx, sz] of [[1, 1], [1, -1], [-1, 1], [-1, -1]]) {
+    const p = new THREE.Mesh(new THREE.BoxGeometry(0.14, alto, 0.14), mad); p.position.set(sx * (b + a) / 2, alto / 2, sz * (b + a) / 2);
+    p.rotation.set(-sz * Math.atan((b - a) / 2 / alto), 0, sx * Math.atan((b - a) / 2 / alto)); g.add(p);
+  }
+  for (let i = 1; i < 5; i++) { const y = i * alto / 5, w = b - (b - a) * (y / alto); for (const r of [0, Math.PI / 2]) for (const sg of [1, -1]) {
+    const tr = new THREE.Mesh(new THREE.BoxGeometry(w + 0.1, 0.08, 0.08), mad); tr.position.set(r ? sg * w / 2 : 0, y, r ? 0 : sg * w / 2); tr.rotation.y = r; g.add(tr); } }
+  const cabeza = new THREE.Group(); cabeza.position.set(0, alto + 0.2, 0); g.add(cabeza);
+  const caja = new THREE.Mesh(new THREE.BoxGeometry(0.9, 0.45, 0.45), met); cabeza.add(caja);
+  const cola = new THREE.Mesh(new THREE.BoxGeometry(1.6, 0.9, 0.04), M.mat(0x8a3020, { roughness: 0.8 })); cola.position.set(-1.6, 0.2, 0); cabeza.add(cola);
+  const brazo = new THREE.Mesh(new THREE.BoxGeometry(1.6, 0.06, 0.06), met); brazo.position.set(-0.8, 0.1, 0); cabeza.add(brazo);
+  const rueda = new THREE.Group(); rueda.position.set(0.6, 0, 0); cabeza.add(rueda);
+  for (let i = 0; i < 18; i++) { const as = new THREE.Mesh(new THREE.BoxGeometry(0.03, 1.4, 0.32), M.mat(0x9a9a92, { metalness: 0.4, roughness: 0.6 }));
+    const q = new THREE.Group(); q.rotation.x = i / 18 * Math.PI * 2; as.position.y = 1.0; as.rotation.y = 0.5; q.add(as); rueda.add(q); }
+  const aro = new THREE.Mesh(new THREE.TorusGeometry(1.65, 0.03, 6, 40), met); aro.rotation.y = Math.PI / 2; rueda.add(aro);
+  const bomba = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.03, alto, 6), met); bomba.position.y = alto / 2; g.add(bomba);
+  const pozo = new THREE.Mesh(new THREE.CylinderGeometry(0.7, 0.75, 0.6, 18), M.matTex(M.TEX.ladrillo(), [2, 1], 0x9a8a78)); pozo.position.y = 0.3; g.add(pozo);
+  g.traverse(o => { if (o.isMesh) o.castShadow = true; });
+  g.position.set(x, 0, z); sc.add(g);
+  return { g, rueda, cabeza, mover(t, vel = 1) { rueda.rotation.x = t * vel; },
+    romper(k) { const c = Math.min(1, k); cabeza.position.set(c * 2.2, alto + 0.2 - (alto - 0.4) * c * c, c * 0.8); cabeza.rotation.set(c * 1.6, 0, -c * 2.4); } };
+}
+/** Nave en forma de puro (cigarro) de los relatos de 1897: casco metálico, góndola debajo y luces. Frente hacia +X, ~10 m. */
+export function naveCigarro(sc, escala = 1) {
+  const g = new THREE.Group(), met = M.mat(0x8f8f88, { metalness: 0.7, roughness: 0.35 });
+  const c = new THREE.Mesh(new THREE.SphereGeometry(1.2, 28, 16), met); c.scale.set(4.2, 1, 1); g.add(c);
+  const gon = new THREE.Mesh(new THREE.BoxGeometry(2.6, 0.6, 0.8), M.mat(0x3a3430, { metalness: 0.4, roughness: 0.6 })); gon.position.y = -1.25; g.add(gon);
+  for (const x of [-0.9, 0, 0.9]) { const v = new THREE.Mesh(new THREE.BoxGeometry(0.4, 0.25, 0.82), emis(0xffd890, 2)); v.position.set(x, -1.25, 0); g.add(v); }
+  for (const s of [1, -1]) { const al = new THREE.Mesh(new THREE.BoxGeometry(1.4, 0.05, 1.6), met); al.position.set(-4.2, 0, s * 0.9); g.add(al);
+    const al2 = new THREE.Mesh(new THREE.BoxGeometry(1.4, 1.6, 0.05), met); al2.position.set(-4.2, s * 0.9, 0); g.add(al2); }
+  const luz = brilloSprite('#ffe6a0', 3, 0.9); luz.position.set(5.1, 0, 0); g.add(luz);
+  const foco = new THREE.PointLight(0xffd890, 60, 25, 1.5); foco.position.set(0, -1.6, 0); g.add(foco);
+  g.traverse(o => { if (o.isMesh) o.castShadow = true; }); g.scale.setScalar(escala); sc.add(g); return g;
+}
+/** Explosión de fuego y humo en un punto: e.poner(k) con k = segundos desde el estallido (negativo = nada). */
+export function estallido(sc, x, y, z, { tam = 6, n = 26 } = {}) {
+  const fu = []; let s = 5; const az = () => { s = (s * 9301 + 49297) % 233280; return s / 233280; };
+  for (let i = 0; i < n; i++) { const sp = brilloSprite(i % 3 ? '#ff8a2a' : '#fff0c0', 1, 1); sp.userData = { d: new THREE.Vector3(az() - 0.5, az() * 0.8, az() - 0.5).normalize(), v: 0.5 + az() }; sc.add(sp); fu.push(sp); }
+  const humo = nubePolvo(sc, x, y - 0.5, z, 30, tam);
+  const luz = new THREE.PointLight(0xff8a3a, 0, 60, 1.4); luz.position.set(x, y, z); sc.add(luz);
+  return { poner(k) { fu.forEach(sp => { const u = sp.userData; sp.visible = k > 0 && k < 1.6;
+      sp.position.set(x + u.d.x * k * tam * u.v, y + u.d.y * k * tam * u.v, z + u.d.z * k * tam * u.v); sp.scale.setScalar(tam * (0.3 + k) * u.v); sp.material.opacity = Math.max(0, 1 - k / 1.6); });
+    luz.intensity = k > 0 ? 900 * Math.max(0, 1 - k / 1.2) : 0; humo.poner(k > 0 ? k * 0.9 : -1); } };
+}
