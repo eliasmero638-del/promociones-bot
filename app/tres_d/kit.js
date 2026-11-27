@@ -2342,3 +2342,106 @@ export function estallido(sc, x, y, z, { tam = 6, n = 26 } = {}) {
       sp.position.set(x + u.d.x * k * tam * u.v, y + u.d.y * k * tam * u.v, z + u.d.z * k * tam * u.v); sp.scale.setScalar(tam * (0.3 + k) * u.v); sp.material.opacity = Math.max(0, 1 - k / 1.6); });
     luz.intensity = k > 0 ? 900 * Math.max(0, 1 - k / 1.2) : 0; humo.poner(k > 0 ? k * 0.9 : -1); } };
 }
+
+// ======================= 27-nov: aldea africana de chozas redondas (Camerún), lago en cráter, nube de gas que baja pegada al suelo =======================
+/** Aldea de chozas redondas de barro con techo de paja cónico, en un valle con cerros verdes. noche=true: cielo oscuro y ventanas cálidas.
+ *  Centro (0,0); las chozas quedan a los lados de un camino de tierra a lo largo de Z. Devuelve {chozas}. */
+export function aldeaAfricana(sc, { noche = true, semilla = 6, n = 12 } = {}) {
+  if (noche) { M.cielo(sc, '#04060e', '#1c2640'); sc.fog = new THREE.FogExp2(0x0e1424, 0.022);
+    sc.add(new THREE.HemisphereLight(0x6a7ab0, 0x141210, 0.7)); const l = new THREE.DirectionalLight(0x9fb2ff, 0.9); l.position.set(-15, 25, 10); l.castShadow = true; l.shadow.mapSize.set(2048, 2048);
+    Object.assign(l.shadow.camera, { left: -30, right: 30, top: 30, bottom: -30 }); sc.add(l); }
+  else { M.cielo(sc, '#9aa8b4', '#e4e2da'); sc.fog = new THREE.Fog(0xd6d6d0, 20, 120); M.luces(sc, { sol: 1.4, cielo_: 1.1, dir: [10, 20, 8], color: 0xfff0dc }); }
+  M.caja(sc, 300, 0.2, 300, 0, -0.1, 0, M.matTex(M.TEX.arena(), [60, 60], noche ? 0x3a4a2a : 0x6a7a44));
+  M.caja(sc, 4, 0.03, 300, 0, 0.01, 0, M.matTex(M.TEX.arena(), [2, 60], noche ? 0x5a4a38 : 0xa08060));
+  const az = _azar(semilla), barro = M.mat(0x8a5a3a, { roughness: 1 }), paja = M.mat(0x9a8050, { roughness: 1, flatShading: true }), chozas = [];
+  for (let i = 0; i < n; i++) { const lado = i % 2 ? 1 : -1, x = lado * (5 + az() * 6), z = 8 - Math.floor(i / 2) * 7 - az() * 2, r = 1.6 + az() * 0.6, g = new THREE.Group();
+    const p = new THREE.Mesh(new THREE.CylinderGeometry(r, r, 2.2, 18), barro); p.position.y = 1.1; p.castShadow = true; p.receiveShadow = true; g.add(p);
+    const t = new THREE.Mesh(new THREE.ConeGeometry(r * 1.35, 2.2, 18), paja); t.position.y = 3.2; t.castShadow = true; g.add(t);
+    const pu = new THREE.Mesh(new THREE.PlaneGeometry(0.8, 1.5), noche && az() < 0.6 ? emis(0xffa040, 1.4) : M.mat(0x1a120c)); pu.position.set(0, 0.75, r + 0.01); g.add(pu);
+    g.position.set(x, 0, z); g.rotation.y = lado > 0 ? -Math.PI / 2 : Math.PI / 2; sc.add(g); chozas.push(g); }
+  for (let i = 0; i < 12; i++) { const a = az() * 6.28, R = 70 + az() * 40, h = 25 + az() * 30; const c = new THREE.Mesh(new THREE.SphereGeometry(h, 14, 10), M.mat(noche ? 0x1c2a1c : 0x4a6a3a, { flatShading: true })); c.scale.y = 0.45; c.position.set(Math.cos(a) * R, -h * 0.1, Math.sin(a) * R); sc.add(c); }
+  return { chozas };
+}
+/** Nube de gas blanquecina que baja pegada al suelo como un río (dirección -Z por defecto). n.mover(t): t = segundos desde que llega.
+ *  Avanza desde (x, z0) hacia z0 - vel*t, con ancho a. */
+export function neblinaRasante(sc, { x = 0, z0 = 30, vel = 6, ancho = 16, n = 90, color = 'rgba(220,226,232,0.85)', op = 0.55 } = {}) {
+  const c = document.createElement('canvas'); c.width = c.height = 128; const g = c.getContext('2d');
+  const gr = g.createRadialGradient(64, 64, 0, 64, 64, 64); gr.addColorStop(0, color); gr.addColorStop(1, 'rgba(255,255,255,0)'); g.fillStyle = gr; g.fillRect(0, 0, 128, 128);
+  const tx = new THREE.CanvasTexture(c), az = _azar(11), ps = [];
+  for (let i = 0; i < n; i++) { const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: tx, transparent: true, depthWrite: false, opacity: 0 }));
+    sp.userData = { dx: (az() - 0.5) * ancho, dz: az() * 18, y: 0.4 + az() * 1.6, s: 3 + az() * 4, w: az() * 6 }; sc.add(sp); ps.push(sp); }
+  return { mover(t) { const frente = z0 - vel * t; ps.forEach(sp => { const u = sp.userData, z = frente + u.dz;
+    sp.position.set(x + u.dx + Math.sin(t * 0.7 + u.w) * 0.6, u.y + Math.sin(t + u.w) * 0.15, z); sp.scale.setScalar(u.s * (1 + 0.1 * Math.sin(t + u.w)));
+    sp.material.opacity = op * Math.min(1, Math.max(0, (z0 + 4 - z) / 6)); }); } };
+}
+/** Lago redondo dentro de un cráter (paredes empinadas), de noche o de día. Centro (0,0), radio r. l.burbujas(t, k): el agua se agita (k 0..1). */
+export function lagoCrater(sc, { r = 30, noche = true, color = 0x1a3a4a } = {}) {
+  if (noche) { M.cielo(sc, '#03050c', '#1a2238'); sc.fog = new THREE.FogExp2(0x0c1222, 0.01); sc.add(new THREE.HemisphereLight(0x7080b0, 0x121010, 0.8));
+    const l = new THREE.DirectionalLight(0xa0b4ff, 1.1); l.position.set(-30, 40, 20); sc.add(l); }
+  else { M.cielo(sc, '#8aa6c4', '#e2e6e2'); sc.fog = new THREE.Fog(0xd0d8dc, 40, 220); M.luces(sc, { sol: 1.8, cielo_: 1.1, dir: [20, 30, 10] }); }
+  const geo = new THREE.CircleGeometry(r, 64, 0, Math.PI * 2); geo.rotateX(-Math.PI / 2);
+  const agua = new THREE.Mesh(new THREE.PlaneGeometry(r * 2.2, r * 2.2, 70, 70).rotateX(-Math.PI / 2), new THREE.MeshStandardMaterial({ color, roughness: 0.2, metalness: 0.4, flatShading: true })); sc.add(agua);
+  const base = agua.geometry.attributes.position.array.slice();
+  const pared = new THREE.Mesh(new THREE.CylinderGeometry(r * 2.2, r * 1.02, r * 0.6, 48, 4, true), M.mat(noche ? 0x24301e : 0x4a6a34, { side: THREE.DoubleSide, flatShading: true, roughness: 1 }));
+  const pp = pared.geometry.attributes.position; const az = _azar(4); for (let i = 0; i < pp.count; i++) { pp.setX(i, pp.getX(i) * (1 + (az() - 0.5) * 0.06)); pp.setZ(i, pp.getZ(i) * (1 + (az() - 0.5) * 0.06)); }
+  pared.geometry.computeVertexNormals(); pared.position.y = r * 0.3 - 0.2; sc.add(pared);
+  return { agua, burbujas(t, k = 0) { const a = agua.geometry.attributes.position.array;
+    for (let i = 0; i < a.length; i += 3) { const x = base[i], z = base[i + 2], d = Math.hypot(x, z); a[i + 1] = 0.08 * Math.sin(x * 0.3 + t) + k * Math.max(0, 1 - d / (r * 0.6)) * (0.9 * Math.sin(d * 0.8 - t * 6) + 0.4 * Math.sin(x * 1.3 + t * 9)); }
+    agua.geometry.attributes.position.needsUpdate = true; agua.geometry.computeVertexNormals(); } };
+}
+
+// ======================= 27-nov: paso Diátlov — ladera nevada con pendiente, carpa larga de lona (con cortes), cedro grande =======================
+/** Ladera nevada de montaña (sube hacia -Z con `incl` grados), con un escalón plano cavado en (0,0) para la carpa y el bosque abajo (+Z).
+ *  noche=true: luna azul; 'dia': cielo gris claro. Devuelve {nieve(t)} (copos con viento) y la función alto(z) de la ladera. */
+export function laderaNevada(sc, { noche = true, incl = 16, bosque = 34, viento = 1, semilla = 8 } = {}) {
+  if (noche) { M.cielo(sc, '#03050c', '#1a2236'); sc.fog = new THREE.FogExp2(0x101828, 0.03);
+    sc.add(new THREE.HemisphereLight(0x8ea4d8, 0x1a1c22, 0.9)); }
+  else { M.cielo(sc, '#8a96a6', '#dfe3e8'); sc.fog = new THREE.FogExp2(0xc8ced6, 0.018); sc.add(new THREE.HemisphereLight(0xeef2ff, 0x6a6a70, 1.0)); }
+  const l = new THREE.DirectionalLight(noche ? 0x9fb4ff : 0xfff4e8, noche ? 1.3 : 1.6); l.position.set(-14, 26, 10); l.castShadow = true; l.shadow.mapSize.set(2048, 2048);
+  Object.assign(l.shadow.camera, { left: -25, right: 25, top: 25, bottom: -25, near: 1, far: 90 }); sc.add(l);
+  const nv = M.mat(noche ? 0xb8c4d8 : 0xe8ecf2, { roughness: 0.95, flatShading: true }), tg = Math.tan(incl * Math.PI / 180);
+  const alto = z => (z < -1.6 ? (-1.6 - z) * tg + 0.0 : z > 1.6 ? -(z - 1.6) * tg : 0);
+  const geo = new THREE.PlaneGeometry(120, 140, 90, 110); geo.rotateX(-Math.PI / 2);
+  const pa = geo.attributes.position, az = _azar(semilla);
+  for (let i = 0; i < pa.count; i++) { const x = pa.getX(i), z = pa.getZ(i); const cerca = Math.abs(x) < 2.8 && Math.abs(z) < 2.2;
+    pa.setY(i, (cerca ? 0 : alto(z)) + (cerca ? 0 : Math.sin(x * 0.4) * 0.12 + Math.cos(z * 0.5 + x * 0.2) * 0.1 + (az() - 0.5) * 0.06)); }
+  geo.computeVertexNormals(); const piso = new THREE.Mesh(geo, nv); piso.receiveShadow = true; sc.add(piso);
+  const tr = M.mat(0x1e1a16, { roughness: 1 }), ho = M.mat(noche ? 0x14221a : 0x24362a, { roughness: 1 });
+  for (let i = 0; i < 160; i++) { const x = (az() - 0.5) * 110, z = bosque + az() * 50, h = 7 + az() * 8, g = new THREE.Group();
+    const t = new THREE.Mesh(new THREE.CylinderGeometry(0.15, 0.3, h, 6), tr); t.position.y = h / 2; g.add(t);
+    for (let k = 0; k < 3; k++) { const c = new THREE.Mesh(new THREE.ConeGeometry(2 - k * 0.5, 3, 8), ho); c.position.y = h * 0.4 + k * 1.6; c.castShadow = true; g.add(c); }
+    g.position.set(x, alto(z) - 0.2, z); sc.add(g); }
+  const n = 2500, p = new Float32Array(n * 3); for (let i = 0; i < n; i++) p.set([(az() - 0.5) * 40, az() * 14, (az() - 0.5) * 40], i * 3);
+  const gg = new THREE.BufferGeometry(); gg.setAttribute('position', new THREE.BufferAttribute(p, 3));
+  const copos = new THREE.Points(gg, new THREE.PointsMaterial({ color: 0xffffff, size: 0.06, transparent: true, opacity: 0.8 * viento, depthWrite: false })); sc.add(copos);
+  return { alto, piso, nieve(t) { copos.position.set(((t * 6 * viento) % 20) - 10, -((t * 2) % 7), 0); } };
+}
+/** Carpa larga de lona (tipo carpa de expedición de los años 50), cumbrera a lo largo de X, largo ~4 m. cortes: n tajos negros en el
+ *  costado que mira a +Z; hundida 0..1: el techo cede y queda cubierta de nieve. Devuelve el grupo. */
+export function carpaLarga(sc, x = 0, z = 0, { largo = 4.2, cortes = 0, hundida = 0, color = 0xb8a888, noche = true } = {}) {
+  const g = new THREE.Group(); g.position.set(x, 0, z); sc.add(g);
+  const alto = 1.25 * (1 - 0.55 * hundida), sh = new THREE.Shape(); sh.moveTo(-1.0, 0); sh.lineTo(1.0, 0); sh.lineTo(0.1 * hundida, alto); sh.closePath();
+  const geo = new THREE.ExtrudeGeometry(sh, { depth: largo, bevelEnabled: false }); geo.translate(0, 0, -largo / 2); geo.rotateY(Math.PI / 2);
+  const lona = new THREE.Mesh(geo, M.mat(color, { roughness: 1, side: THREE.DoubleSide })); lona.castShadow = true; lona.receiveShadow = true; g.add(lona);
+  for (const xx of [-largo / 2 - 0.05, largo / 2 + 0.05]) { const pal = new THREE.Mesh(new THREE.CylinderGeometry(0.025, 0.025, alto + 0.3, 6), M.mat(0x5a4632)); pal.position.set(xx, (alto + 0.3) / 2, 0); g.add(pal); }
+  const negro = M.mat(0x050505);
+  const nz = alto, ny = 1, nl = Math.hypot(nz, ny);
+  for (let i = 0; i < cortes; i++) { const c = new THREE.Mesh(new THREE.PlaneGeometry(0.06 + (i % 2) * 0.05, 0.45 + (i % 3) * 0.12), negro);
+    const xx = -largo / 2 + 0.6 + i * (largo - 1.2) / Math.max(1, cortes - 1), y = alto * 0.45, zz = 1 - 0.45;
+    c.position.set(xx, y + ny / nl * 0.012, zz + nz / nl * 0.012); c.lookAt(xx, y + ny / nl, zz + nz / nl); c.rotateZ((i % 2 ? 0.25 : -0.2)); g.add(c); }
+  if (hundida > 0) { const nm = M.mat(noche ? 0xb8c4d8 : 0xf0f2f6, { roughness: 1, flatShading: true });
+    for (let i = 0; i < 7; i++) { const c = new THREE.Mesh(new THREE.SphereGeometry(0.5, 10, 6), nm); c.scale.set(1.3, 0.35 * hundida + 0.1, 0.9);
+      c.position.set(-largo / 2 + 0.4 + i * (largo - 0.8) / 6, alto * (0.55 + 0.25 * Math.sin(i * 2.3)), -0.35 + 0.3 * Math.cos(i * 1.7)); c.castShadow = true; g.add(c); }
+    const banco = new THREE.Mesh(new THREE.SphereGeometry(1, 14, 8), nm); banco.scale.set(largo * 0.6, 0.35, 0.8); banco.position.set(0, 0.05, -1.2); g.add(banco); }
+  return g;
+}
+/** Cedro siberiano grande (tronco grueso, ramas bajas quebradas). */
+export function cedroGrande(sc, x = 0, z = 0, { h = 16 } = {}) {
+  const g = new THREE.Group(); g.position.set(x, 0, z); sc.add(g);
+  const tr = M.mat(0x3a2c22, { roughness: 1 }), ho = M.mat(0x1a2a1e, { roughness: 1 });
+  const t = new THREE.Mesh(new THREE.CylinderGeometry(0.35, 0.6, h, 10), tr); t.position.y = h / 2; t.castShadow = true; g.add(t);
+  for (let k = 0; k < 6; k++) { const c = new THREE.Mesh(new THREE.ConeGeometry(3.4 - k * 0.45, 3.2, 10), ho); c.position.y = 6 + k * 1.8; c.castShadow = true; g.add(c); }
+  for (let k = 0; k < 7; k++) { const r = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.07, 0.9 + (k % 3) * 0.3, 5), tr); r.position.set(Math.cos(k * 1.7) * 0.5, 1.6 + k * 0.5, Math.sin(k * 1.7) * 0.5);
+    r.rotation.set(Math.sin(k) * 0.8, k, 1.2); g.add(r); }
+  return g;
+}
