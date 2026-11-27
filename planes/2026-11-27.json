@@ -1,0 +1,1408 @@
+{
+ "fecha": "2026-11-27",
+ "modo": "claude",
+ "videos": [
+  {
+   "eid": "fb1",
+   "tipo": "fb",
+   "articulo": "Beck Weathers (Everest, 1996)",
+   "fuente": "https://en.wikipedia.org/wiki/Beck_Weathers",
+   "titulo_video": " ",
+   "titulo_youtube": "Lo dieron por MUERTO en el Everest… y se levantó",
+   "titulos_opciones": [
+    "Lo dieron por MUERTO en el Everest… y se levantó",
+    "Le dijeron a su esposa que había muerto… pero él volvió caminando",
+    "Pasó la noche congelado a 8.000 metros y sobrevivió 😱",
+    "Lo dejaron en la nieve porque creían que no había nada que hacer",
+    "Casi ciego en la cima del mundo: la historia de Beck Weathers",
+    "El hombre que DESPERTÓ en el Everest",
+    "¿Cómo sobrevivió una noche entera en la tormenta del Everest?"
+   ],
+   "descripcion_youtube": "En 1996, Beck Weathers quedó casi ciego en plena tormenta del Everest. Lo dieron por muerto… pero esa tarde abrió los ojos.\n#supervivencia #historiasreales #ridmer",
+   "etiquetas": [
+    "Beck Weathers",
+    "Everest 1996",
+    "supervivencia",
+    "historias reales",
+    "Monte Everest",
+    "Ridmer"
+   ],
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Lo dieron por muerto en el Everest.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "MAYO DE 1996",
+      "sub": "Monte Everest · 8.000 metros"
+     }
+    },
+    {
+     "texto": "Mil novecientos noventa y seis. Beck Weathers, un médico de Texas, sube al Everest.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Beck Weathers",
+       "Beck Weathers Everest"
+      ]
+     }
+    },
+    {
+     "texto": "A ocho mil metros casi no ve: una operación en los ojos le falla con la altura.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Mount Everest summit ridge",
+       "Everest Balcony"
+      ]
+     }
+    },
+    {
+     "texto": "Su guía le pide que espere sentado. Y llega la tormenta.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "LA TORMENTA",
+      "sub": "10 de mayo de 1996"
+     }
+    },
+    {
+     "texto": "Pasa la noche en la nieve, con un frío extremo.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=V5-NGTZwvlM",
+      "desde": 40,
+      "dur": 6,
+      "buscar_video": [
+       "Everest storm",
+       "Mount Everest wind snow"
+      ]
+     }
+    },
+    {
+     "texto": "Al amanecer, otros escaladores lo ven congelado. Creen que no hay nada que hacer… y lo dejan.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "South Col Everest",
+       "Everest Camp IV South Col"
+      ]
+     }
+    },
+    {
+     "texto": "En Dallas, a su esposa le dicen que Beck murió.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=_P3o7Xcv6jc",
+      "desde": 20,
+      "dur": 6,
+      "buscar_video": [
+       "Dallas Texas skyline"
+      ]
+     }
+    },
+    {
+     "texto": "Pero esa tarde, Beck abre los ojos. Se levanta y camina solo, casi ciego, hasta el campamento.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "SE LEVANTÓ",
+      "sub": "Casi ciego"
+     }
+    },
+    {
+     "texto": "Nadie puede creerlo. Era el hombre que habían dado por muerto.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=9u4iTBQNlrw",
+      "desde": 60,
+      "dur": 6,
+      "buscar_video": [
+       "Everest base camp tents"
+      ]
+     }
+    },
+    {
+     "texto": "Días después, un helicóptero lo rescata a seis mil metros de altura.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Everest helicopter rescue",
+       "Khumbu Icefall"
+      ]
+     }
+    },
+    {
+     "texto": "Perdió una mano, los dedos de la otra y la nariz… pero sobrevivió.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Beck Weathers",
+       "Beck Weathers 2015"
+      ]
+     }
+    },
+    {
+     "texto": "¿Tú te habrías levantado? Comparte esta historia y sigue a Ridmer.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Mount Everest",
+       "Mount Everest north face"
+      ]
+     }
+    }
+   ],
+   "hora_fb": "14:00",
+   "musica": "epico",
+   "texto_facebook": "Lo dieron por MUERTO en el Everest… y esa tarde abrió los ojos 😱 #HistoriasReales #Supervivencia #DatosCuriosos",
+   "texto_tiktok": "Lo dieron por MUERTO en el Everest… y se levantó 😱 Pasó la noche congelado a 8.000 metros, casi ciego, y a su esposa le dijeron que había muerto. Lo que hizo después nadie lo esperaba. #supervivencia #everest #historiasreales #datoscuriosos #ridmer",
+   "miniatura": {
+    "texto": "LO DIERON POR MUERTO"
+   }
+  },
+  {
+   "eid": "fb1s",
+   "tipo": "short",
+   "articulo": "Beck Weathers (Everest, 1996)",
+   "fuente": "https://en.wikipedia.org/wiki/Beck_Weathers",
+   "titulo_video": " ",
+   "titulo_youtube": "Lo dieron por MUERTO en el Everest… y se levantó #shorts",
+   "titulos_opciones": [
+    "Lo dieron por MUERTO en el Everest… y se levantó #shorts",
+    "Le dijeron a su esposa que había muerto… pero él volvió caminando #shorts",
+    "Pasó la noche congelado a 8.000 metros y sobrevivió 😱 #shorts",
+    "Lo dejaron en la nieve porque creían que no había nada que hacer #shorts",
+    "Casi ciego en la cima del mundo: la historia de Beck Weathers #shorts",
+    "El hombre que DESPERTÓ en el Everest #shorts"
+   ],
+   "descripcion_youtube": "Beck Weathers sobrevivió a una noche en la tormenta del Everest de 1996.\n#supervivencia #shorts #ridmer",
+   "etiquetas": [
+    "Beck Weathers",
+    "Everest",
+    "shorts"
+   ],
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Lo dieron por muerto en el Everest.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "MAYO DE 1996",
+      "sub": "Monte Everest"
+     }
+    },
+    {
+     "texto": "En mil novecientos noventa y seis, el médico Beck Weathers queda casi ciego a ocho mil metros, en plena tormenta.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Beck Weathers",
+       "Beck Weathers Everest"
+      ]
+     }
+    },
+    {
+     "texto": "Pasa la noche en la nieve. Al amanecer, otros escaladores lo ven congelado y lo dejan.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "LO DEJARON",
+      "sub": "Creían que estaba muerto"
+     }
+    },
+    {
+     "texto": "A su esposa le dicen que murió.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=_P3o7Xcv6jc",
+      "desde": 20,
+      "dur": 5,
+      "buscar_video": [
+       "Dallas Texas skyline"
+      ]
+     }
+    },
+    {
+     "texto": "Pero esa tarde, Beck abre los ojos, se levanta y camina solo hasta el campamento.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "SE LEVANTÓ",
+      "sub": "Casi ciego"
+     }
+    },
+    {
+     "texto": "Un helicóptero lo rescata días después. Perdió una mano y la nariz, pero sobrevivió. Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Beck Weathers",
+       "Beck Weathers 2015"
+      ]
+     }
+    }
+   ],
+   "encargo": "fb1",
+   "hora_youtube": "14:00",
+   "musica": "epico",
+   "miniatura": {
+    "texto": "SE LEVANTÓ"
+   }
+  },
+  {
+   "eid": "fb2",
+   "tipo": "fb",
+   "articulo": "Tesoro de la Isla del Coco (Tesoro de Lima)",
+   "fuente": "https://es.wikipedia.org/wiki/Tesoro_de_Lima",
+   "titulo_video": " ",
+   "titulo_youtube": "Hay un TESORO enterrado en esta isla… y nadie lo ha encontrado",
+   "titulos_opciones": [
+    "Hay un TESORO enterrado en esta isla… y nadie lo ha encontrado",
+    "Vivió 20 AÑOS cavando en una isla buscando oro",
+    "El Tesoro de Lima: el capitán que huyó con todo el oro",
+    "Cientos de expediciones… y el tesoro sigue perdido 💰",
+    "Lo nombraron GOBERNADOR de la isla del tesoro",
+    "¿Sigue enterrado el Tesoro de Lima en la Isla del Coco?",
+    "La isla de Costa Rica donde está PROHIBIDO buscar el tesoro"
+   ],
+   "descripcion_youtube": "En 1820 el oro de Lima desapareció en un barco. Dicen que está enterrado en la Isla del Coco, en Costa Rica.\n#misterio #tesoro #ridmer",
+   "etiquetas": [
+    "Isla del Coco",
+    "Tesoro de Lima",
+    "August Gissler",
+    "Costa Rica",
+    "misterio",
+    "tesoro",
+    "Ridmer"
+   ],
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Hay un tesoro enterrado en esta isla.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "ISLA DEL COCO",
+      "sub": "Costa Rica · Océano Pacífico"
+     }
+    },
+    {
+     "texto": "Es la Isla del Coco, de Costa Rica, en medio del océano Pacífico.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=aX5iBbSfVTw",
+      "desde": 10,
+      "dur": 6,
+      "buscar_video": [
+       "Cocos Island Costa Rica",
+       "tropical island aerial"
+      ]
+     }
+    },
+    {
+     "texto": "En mil ochocientos veinte, con el ejército de San Martín cerca de Lima, los españoles suben sus riquezas a un barco.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Callao 1820 port",
+       "Lima colonial cathedral"
+      ]
+     }
+    },
+    {
+     "texto": "Oro, plata y joyas de las iglesias. Lo llamaron el Tesoro de Lima.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "TESORO DE LIMA",
+      "sub": "1820"
+     }
+    },
+    {
+     "texto": "Pero el capitán del barco, William Thompson, huyó con todo en plena noche.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "HUYÓ CON TODO",
+      "sub": "Capitán William Thompson"
+     }
+    },
+    {
+     "texto": "Y dicen que lo enterró en la Isla del Coco.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=8-Xfr2sYUVA",
+      "desde": 30,
+      "dur": 6,
+      "buscar_video": [
+       "Cocos Island Costa Rica coast"
+      ]
+     }
+    },
+    {
+     "texto": "Desde entonces, cientos de expediciones lo buscaron.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Cocos Island treasure expedition",
+       "Isla del Coco Wafer Bay"
+      ]
+     }
+    },
+    {
+     "texto": "El más obsesionado fue el alemán August Gissler. Vivió casi veinte años en la isla, cavando.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "August Gissler",
+       "August Gissler Cocos Island"
+      ]
+     }
+    },
+    {
+     "texto": "Costa Rica incluso lo nombró gobernador de la isla.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Isla del Coco Chatham Bay",
+       "Cocos Island bay"
+      ]
+     }
+    },
+    {
+     "texto": "¿Y qué encontró en todo ese tiempo? Apenas unas pocas monedas de oro.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "UNAS MONEDAS",
+      "sub": "En casi 20 años"
+     }
+    },
+    {
+     "texto": "Hoy la isla es parque nacional y está prohibido buscar. El tesoro, si existe, sigue ahí abajo.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=cjpMXsxN8gY",
+      "desde": 20,
+      "dur": 6,
+      "buscar_video": [
+       "Cocos Island waterfall",
+       "Cocos Island drone"
+      ]
+     }
+    },
+    {
+     "texto": "¿Tú lo buscarías? Comparte esta historia y sigue a Ridmer.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Isla del Coco",
+       "Cocos Island"
+      ]
+     }
+    }
+   ],
+   "hora_fb": "18:30",
+   "musica": "misterio",
+   "texto_facebook": "Vivió casi 20 AÑOS cavando en esta isla buscando el Tesoro de Lima… ¿qué encontró? 💰 #Misterio #HistoriasReales #DatosCuriosos",
+   "texto_tiktok": "Hay un TESORO enterrado en esta isla de Costa Rica 💰 El oro de Lima desapareció en 1820 y un hombre pasó casi 20 años cavando para encontrarlo. #misterio #tesoro #isladelcoco #costarica #historiasreales #ridmer",
+   "miniatura": {
+    "texto": "TESORO PERDIDO"
+   }
+  },
+  {
+   "eid": "fb2s",
+   "tipo": "short",
+   "articulo": "Tesoro de la Isla del Coco (Tesoro de Lima)",
+   "fuente": "https://es.wikipedia.org/wiki/Tesoro_de_Lima",
+   "titulo_video": " ",
+   "titulo_youtube": "Hay un TESORO enterrado en esta isla… y nadie lo ha encontrado #shorts",
+   "titulos_opciones": [
+    "Hay un TESORO enterrado en esta isla… y nadie lo ha encontrado #shorts",
+    "Vivió 20 AÑOS cavando en una isla buscando oro #shorts",
+    "El Tesoro de Lima: el capitán que huyó con todo el oro #shorts",
+    "Cientos de expediciones… y el tesoro sigue perdido 💰 #shorts",
+    "Lo nombraron GOBERNADOR de la isla del tesoro #shorts",
+    "¿Sigue enterrado el Tesoro de Lima en la Isla del Coco? #shorts"
+   ],
+   "descripcion_youtube": "El Tesoro de Lima y la Isla del Coco.\n#misterio #shorts #ridmer",
+   "etiquetas": [
+    "Isla del Coco",
+    "Tesoro de Lima",
+    "shorts"
+   ],
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Hay un tesoro enterrado en esta isla.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "ISLA DEL COCO",
+      "sub": "Costa Rica"
+     }
+    },
+    {
+     "texto": "En mil ochocientos veinte, los españoles subieron el oro y la plata de Lima a un barco.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "TESORO DE LIMA",
+      "sub": "1820"
+     }
+    },
+    {
+     "texto": "Pero el capitán, William Thompson, huyó con todo. Dicen que lo enterró en la Isla del Coco, en Costa Rica.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=aX5iBbSfVTw",
+      "desde": 10,
+      "dur": 6,
+      "buscar_video": [
+       "Cocos Island Costa Rica"
+      ]
+     }
+    },
+    {
+     "texto": "El alemán August Gissler vivió casi veinte años en la isla, cavando sin parar.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "August Gissler",
+       "August Gissler Cocos Island"
+      ]
+     }
+    },
+    {
+     "texto": "Solo encontró unas pocas monedas de oro.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "UNAS MONEDAS",
+      "sub": "En casi 20 años"
+     }
+    },
+    {
+     "texto": "Hoy está prohibido buscar. El tesoro sigue perdido. Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=cjpMXsxN8gY",
+      "desde": 20,
+      "dur": 6,
+      "buscar_video": [
+       "Cocos Island drone"
+      ]
+     }
+    }
+   ],
+   "encargo": "fb2",
+   "hora_youtube": "19:00",
+   "musica": "misterio",
+   "miniatura": {
+    "texto": "TESORO"
+   }
+  },
+  {
+   "eid": "fb3",
+   "tipo": "fb",
+   "articulo": "Desastre del lago Nyos (1986)",
+   "fuente": "https://es.wikipedia.org/wiki/Desastre_del_lago_Nyos",
+   "titulo_video": " ",
+   "titulo_youtube": "Un LAGO mató a todo un pueblo en una sola noche",
+   "titulos_opciones": [
+    "Un LAGO mató a todo un pueblo en una sola noche",
+    "La nube invisible que salió de un lago y bajó por los valles",
+    "1.746 personas murieron mientras dormían… y la culpa fue de un lago",
+    "El lago azul que amaneció ROJO",
+    "Un gas que no se ve bajó como un río… la tragedia del lago Nyos",
+    "¿Puede un lago explotar? Pasó en Camerún en 1986",
+    "Los sobrevivientes despertaron y todo estaba en silencio 😨"
+   ],
+   "descripcion_youtube": "En 1986, una nube invisible salió del lago Nyos, en Camerún, y bajó por los valles mientras la gente dormía.\n#misterio #ciencia #ridmer",
+   "etiquetas": [
+    "lago Nyos",
+    "Camerún",
+    "erupción límnica",
+    "ciencia",
+    "historias reales",
+    "Ridmer"
+   ],
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Un lago mató a todo un pueblo en una noche.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "21 DE AGOSTO DE 1986",
+      "sub": "Lago Nyos · Camerún"
+     }
+    },
+    {
+     "texto": "Agosto de mil novecientos ochenta y seis. Lago Nyos, Camerún.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=lE8okMwiSkQ",
+      "desde": 15,
+      "dur": 6,
+      "buscar_video": [
+       "Lake Nyos",
+       "Cameroon lake crater"
+      ]
+     }
+    },
+    {
+     "texto": "Esa noche, los vecinos escuchan un estruendo que viene del lago.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Lake Nyos",
+       "Lake Nyos Cameroon"
+      ]
+     }
+    },
+    {
+     "texto": "Del fondo del agua sale una nube enorme de dióxido de carbono. Un gas que no se ve.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "DIÓXIDO DE CARBONO",
+      "sub": "Salió del fondo del lago"
+     }
+    },
+    {
+     "texto": "Ese gas pesa más que el aire. Baja por los valles como un río invisible.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Lake Nyos valley",
+       "Nyos Cameroon village"
+      ]
+     }
+    },
+    {
+     "texto": "Llega a las aldeas mientras la gente duerme.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=_vnCOI8dbhM",
+      "desde": 60,
+      "dur": 6,
+      "buscar_video": [
+       "Cameroon village night"
+      ]
+     }
+    },
+    {
+     "texto": "Mil setecientas cuarenta y seis personas y miles de animales mueren sin darse cuenta.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "1.746 PERSONAS",
+      "sub": "En una sola noche"
+     }
+    },
+    {
+     "texto": "Algunos sobrevivientes despiertan horas después, en un silencio total.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "EL SILENCIO",
+      "sub": "Horas después"
+     }
+    },
+    {
+     "texto": "A la mañana siguiente, el lago azul se había vuelto rojo.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Lake Nyos 1986",
+       "Lake Nyos aerial"
+      ]
+     }
+    },
+    {
+     "texto": "El gas se había acumulado en el fondo durante años, como en una botella de refresco.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Lake Nyos degassing",
+       "Lake Nyos pipe"
+      ]
+     }
+    },
+    {
+     "texto": "Hoy unos tubos sacan el gas poco a poco.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=G6Ub6HIYiX8",
+      "desde": 40,
+      "dur": 6,
+      "buscar_video": [
+       "Lake Nyos degassing"
+      ]
+     }
+    },
+    {
+     "texto": "¿Sabías que un lago podía hacer esto? Comparte esta historia y sigue a Ridmer.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Lake Nyos",
+       "Lake Nyos Cameroon"
+      ]
+     }
+    }
+   ],
+   "hora_fb": "21:00",
+   "musica": "misterio",
+   "texto_facebook": "Un LAGO mató a todo un pueblo en una sola noche… y nadie vio nada 😨 #DatosCuriosos #HistoriasReales #Ciencia",
+   "texto_tiktok": "Un LAGO mató a todo un pueblo en una sola noche 😨 Una nube invisible bajó por los valles mientras la gente dormía… y a la mañana el lago estaba rojo. #datoscuriosos #ciencia #historiasreales #lagonyos #misterio #ridmer",
+   "miniatura": {
+    "texto": "EL LAGO ASESINO"
+   }
+  },
+  {
+   "eid": "fb1f",
+   "tipo": "foto",
+   "omitir": true,
+   "hora_foto": "15:30",
+   "titulo_youtube": "Lo dieron por muerto en el Everest… y se levantó",
+   "texto_foto": "Lo dieron por muerto en el Everest… y esa misma tarde se levantó.\n\nEn mayo de 1996, Beck Weathers, un médico de Dallas, intentaba llegar a la cima más alta del mundo. Pero a más de 8.000 metros casi no podía ver: una operación que le habían hecho en los ojos fallaba con la altura.\n\nSu guía le pidió que lo esperara sentado en la montaña. Entonces llegó una tormenta terrible. Beck pasó la noche en la nieve, con vientos huracanados y un frío extremo.\n\nA la mañana siguiente, otros escaladores lo encontraron congelado. Pensaron que ya no había nada que hacer y lo dejaron. En Texas, a su esposa le dijeron que había muerto.\n\nPero esa tarde, Beck abrió los ojos. Se levantó y caminó solo, casi ciego, hasta el campamento. Días después, un helicóptero del ejército de Nepal lo rescató a unos 6.000 metros. Perdió la mano derecha, los dedos de la otra mano y la nariz… pero volvió a casa con vida.\n\n¿Tú habrías tenido la fuerza para levantarte?\n#HistoriasReales #Supervivencia #DatosCuriosos"
+  },
+  {
+   "eid": "fb2f",
+   "tipo": "foto",
+   "omitir": true,
+   "hora_foto": "20:00",
+   "titulo_youtube": "Un lago mató a todo un pueblo en una sola noche",
+   "texto_foto": "Un lago mató a todo un pueblo en una sola noche… y nadie vio nada.\n\nEl 21 de agosto de 1986, los vecinos del lago Nyos, en Camerún, escucharon un estruendo que venía del agua. Del fondo del lago salió una nube enorme de dióxido de carbono, un gas que no se ve ni se huele.\n\nComo ese gas pesa más que el aire, bajó por los valles pegado al suelo, como un río invisible, y llegó a las aldeas mientras la gente dormía. Murieron 1.746 personas y miles de animales, algunos a kilómetros del lago.\n\nAlgunos sobrevivientes despertaron horas después sin entender por qué todo estaba en silencio. A la mañana siguiente, el lago, que era azul, se veía rojo.\n\nLos científicos descubrieron que el gas se acumulaba en el fondo durante años, como en una botella de refresco cerrada. Hoy unos tubos sacan el gas poco a poco para que nunca vuelva a pasar.\n\n¿Sabías que un lago podía hacer algo así?\n#DatosCuriosos #HistoriasReales #Ciencia"
+  },
+  {
+   "eid": "largo1",
+   "tipo": "largo",
+   "articulo": "Incidente del paso Diátlov (1959)",
+   "fuente": "https://es.wikipedia.org/wiki/Incidente_del_paso_Di%C3%A1tlov",
+   "titulo_video": " ",
+   "titulo_youtube": "9 jóvenes CORTARON su carpa desde adentro… y huyeron a la nieve",
+   "titulos_opciones": [
+    "9 jóvenes CORTARON su carpa desde adentro… y huyeron a la nieve",
+    "El misterio del paso Diátlov: lo que pasó esa noche, paso a paso",
+    "Los encontraron sin botas a 30 bajo cero… ¿de qué huían?",
+    "«Una fuerza natural irresistible»: el caso que la URSS no pudo explicar",
+    "Fracturas como de un choque de auto… pero en medio de la nieve",
+    "62 años después, dos científicos dijeron por fin qué pasó",
+    "La montaña muerta: el misterio más famoso de Rusia 🏔️",
+    "Uno se enfermó y se regresó… fue el único que sobrevivió"
+   ],
+   "descripcion_youtube": "Febrero de 1959. Nueve excursionistas soviéticos cortan su carpa desde adentro y huyen a la nieve a 30 grados bajo cero. Ninguno volvió.\nLa investigación habló de «una fuerza natural irresistible». Sesenta años después, la ciencia propuso una respuesta. Te lo contamos paso a paso.\n#misterio #pasodiatlov #historiasreales #ridmer",
+   "etiquetas": [
+    "paso Diátlov",
+    "Dyatlov Pass",
+    "misterio",
+    "Ígor Diátlov",
+    "Rusia",
+    "montes Urales",
+    "historias reales",
+    "Ridmer"
+   ],
+   "gancho": 2,
+   "segmentos": [
+    {
+     "texto": "Febrero de mil novecientos cincuenta y nueve. En una montaña helada de Rusia, nueve jóvenes cortan su propia carpa desde adentro… y salen corriendo a la nieve, casi sin ropa.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "FEBRERO DE 1959",
+      "sub": "Montes Urales · Rusia"
+     }
+    },
+    {
+     "texto": "Ninguno volvió. Esta es la historia del paso Diátlov, contada paso a paso.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Dyatlov Pass incident",
+       "Dyatlov group 1959"
+      ]
+     }
+    },
+    {
+     "texto": "Todo empieza en la ciudad de Sverdlovsk, en la Unión Soviética, la que hoy se llama Ekaterimburgo.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Yekaterinburg",
+       "Sverdlovsk 1950s"
+      ]
+     }
+    },
+    {
+     "texto": "Allí, un grupo de estudiantes y graduados del Instituto Politécnico de los Urales prepara una aventura muy difícil.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Ural Polytechnic Institute",
+       "Ural Federal University main building"
+      ]
+     }
+    },
+    {
+     "texto": "El líder es Ígor Diátlov, de veintitrés años. Un estudiante de radiotecnia con mucha experiencia en la montaña.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Igor Dyatlov",
+       "Igor Dyatlov 1959"
+      ]
+     }
+    },
+    {
+     "texto": "Con él van ocho hombres y dos mujeres, Zinaída Kolmogórova y Liudmila Dubínina. El mayor es Semión Zolotariov, un instructor de treinta y ocho años.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Zinaida Kolmogorova",
+       "Dyatlov group photo"
+      ]
+     }
+    },
+    {
+     "texto": "El plan: cruzar en esquís el norte de los Urales y llegar a la montaña Otorten. Una ruta de la categoría más difícil de la época.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "RUTA CATEGORÍA III",
+      "sub": "La más difícil"
+     }
+    },
+    {
+     "texto": "El veintitrés de enero suben a un tren. Las fotos que tomaron muestran a un grupo feliz, riendo y cantando.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=aSGrm31aNDU",
+      "desde": 30,
+      "dur": 7,
+      "buscar_video": [
+       "old steam train snow",
+       "Ural mountains winter"
+      ]
+     }
+    },
+    {
+     "texto": "Después viajan en camión hasta Vizhái, el último pueblo habitado. De ahí en adelante, solo hay bosque y nieve.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Dyatlov group skiing",
+       "Ural forest winter"
+      ]
+     }
+    },
+    {
+     "texto": "Y aquí pasa algo que le salvó la vida a uno de ellos. Yuri Yudin se enferma, le duelen las piernas, y el veintiocho de enero decide regresar.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Yuri Yudin",
+       "Yuri Yudin Dyatlov"
+      ]
+     }
+    },
+    {
+     "texto": "Abraza a sus amigos y se despide. Sería la última vez que los vería con vida.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "YURI YUDIN",
+      "sub": "El único que regresó"
+     }
+    },
+    {
+     "texto": "Los otros nueve siguen adelante. Esquían por ríos congelados y duermen en una carpa grande, con una pequeña estufa.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Dyatlov group tent",
+       "Dyatlov group camp"
+      ]
+     }
+    },
+    {
+     "texto": "Escriben un diario. Hasta inventan un periódico de broma, al que llaman El Otorten de la Tarde.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "«EL OTORTEN DE LA TARDE»",
+      "sub": "Su periódico de broma"
+     }
+    },
+    {
+     "texto": "El treinta y uno de enero dejan comida y equipo escondidos en el bosque, para recogerlos al volver.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Dyatlov storage cache",
+       "Ural taiga snow"
+      ]
+     }
+    },
+    {
+     "texto": "Y el primero de febrero empiezan a subir hacia el paso.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "1 DE FEBRERO DE 1959",
+      "sub": "La última tarde"
+     }
+    },
+    {
+     "texto": "Pero el viento y la nieve no los dejan ver. Se desvían hacia el oeste y terminan en la ladera de una montaña que los mansi, el pueblo de la zona, llaman Jolat Siajl.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Kholat Syakhl",
+       "Kholat Syakhl mountain"
+      ]
+     }
+    },
+    {
+     "texto": "En su idioma significa algo escalofriante: la montaña muerta.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "JOLAT SIAJL",
+      "sub": "«La montaña muerta»"
+     }
+    },
+    {
+     "texto": "En vez de bajar un kilómetro y medio hasta el bosque, donde estarían protegidos, deciden acampar en la ladera.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "1,5 KM",
+      "sub": "Hasta el bosque"
+     }
+    },
+    {
+     "texto": "Para poner la carpa, cavan en la nieve de la pendiente y la dejan en un hueco plano. Este detalle es muy importante. Recuérdalo.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "EL CORTE EN LA NIEVE",
+      "sub": "Para poner la carpa"
+     }
+    },
+    {
+     "texto": "Esa noche cenan. La última foto de su cámara muestra a varios de ellos cavando en la nieve, alrededor de las cinco de la tarde.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Dyatlov last photo tent",
+       "Dyatlov group setting up tent"
+      ]
+     }
+    },
+    {
+     "texto": "Diátlov había prometido mandar un telegrama al volver a Vizhái, a más tardar el doce de febrero.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Vizhay village",
+       "Ivdel Russia"
+      ]
+     }
+    },
+    {
+     "texto": "Pasa el doce. Pasa el día catorce. Pasa el quince. Nada.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "12 DE FEBRERO",
+      "sub": "El telegrama nunca llegó"
+     }
+    },
+    {
+     "texto": "Las familias presionan, y el veinte de febrero sale la primera búsqueda: estudiantes voluntarios, cazadores, militares y aviones.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=1hUQOq6-Vho",
+      "desde": 40,
+      "dur": 7,
+      "buscar_video": [
+       "search party snow",
+       "Ural mountains snow"
+      ]
+     }
+    },
+    {
+     "texto": "El veintiséis de febrero, un estudiante llamado Mijaíl Sharavin ve algo en la ladera: la carpa.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Dyatlov tent found 1959",
+       "Dyatlov tent search"
+      ]
+     }
+    },
+    {
+     "texto": "Está medio hundida, cubierta de nieve… y cortada por dentro, con cuchillos.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "CORTADA DESDE ADENTRO",
+      "sub": "26 de febrero de 1959"
+     }
+    },
+    {
+     "texto": "Adentro está todo. Los abrigos, la comida, las botas, el dinero. Nadie se llevó nada.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Dyatlov tent inside",
+       "Dyatlov tent belongings"
+      ]
+     }
+    },
+    {
+     "texto": "Afuera, en la nieve, hay huellas de ocho o nueve personas. Algunas en calcetines, otras con un solo zapato, otras descalzas.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Dyatlov footprints",
+       "Dyatlov footprints snow"
+      ]
+     }
+    },
+    {
+     "texto": "Y las huellas bajan en fila, caminando, no corriendo, hacia el bosque.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "LAS HUELLAS",
+      "sub": "Bajaban hacia el bosque"
+     }
+    },
+    {
+     "texto": "Los rescatistas las siguen cuesta abajo durante unos quinientos metros, hasta que la nieve las borra.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Dyatlov Pass search 1959",
+       "snow slope footprints"
+      ]
+     }
+    },
+    {
+     "texto": "Un kilómetro y medio abajo, junto a un cedro enorme, los rescatistas encuentran los restos de una fogata.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Dyatlov cedar tree",
+       "Siberian pine forest snow"
+      ]
+     }
+    },
+    {
+     "texto": "Allí están los primeros dos: Yuri Krivonischenko y Yuri Doroshenko, solo con ropa interior.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "JUNTO AL CEDRO",
+      "sub": "Los primeros dos"
+     }
+    },
+    {
+     "texto": "Las ramas del cedro estaban rotas hasta cinco metros de altura, como si alguien hubiera subido a mirar hacia la carpa.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Siberian cedar winter",
+       "Pinus sibirica"
+      ]
+     }
+    },
+    {
+     "texto": "Entre el cedro y la carpa aparecen tres más: Ígor Diátlov, Zinaída Kolmogórova y Rustem Slobodin.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Igor Dyatlov",
+       "Rustem Slobodin"
+      ]
+     }
+    },
+    {
+     "texto": "Estaban tendidos en la nieve, mirando hacia la carpa. Murieron de frío intentando volver.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "INTENTABAN VOLVER",
+      "sub": "Hipotermia"
+     }
+    },
+    {
+     "texto": "Pero faltaban cuatro. Y no los encontrarían hasta mayo, cuando la nieve empezó a derretirse.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "FALTABAN CUATRO",
+      "sub": "Dos meses de búsqueda"
+     }
+    },
+    {
+     "texto": "Estaban en un barranco cerca del cedro, bajo cuatro metros de nieve. Y llevaban puesta parte de la ropa de sus compañeros.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Dyatlov ravine",
+       "snow ravine forest"
+      ]
+     }
+    },
+    {
+     "texto": "Lo que vieron los forenses hizo crecer el misterio: tres de ellos tenían golpes muy fuertes, fracturas en el pecho y en el cráneo, como después de un accidente de auto.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "FRACTURAS GRAVES",
+      "sub": "Sin heridas por fuera"
+     }
+    },
+    {
+     "texto": "Además, en algunas prendas detectaron rastros de radiactividad.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "RADIACTIVIDAD",
+      "sub": "En algunas prendas"
+     }
+    },
+    {
+     "texto": "En mayo de mil novecientos cincuenta y nueve, la investigación soviética se cerró con una frase extraña: murieron por una fuerza natural irresistible.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "«UNA FUERZA NATURAL»",
+      "sub": "Mayo de 1959"
+     }
+    },
+    {
+     "texto": "Y desde entonces nacieron todas las teorías. Un yeti. Pruebas secretas de misiles. Luces en el cielo. Un sonido que causa pánico.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=2xHI84eLpT4",
+      "desde": 60,
+      "dur": 7,
+      "buscar_video": [
+       "Ural mountains night",
+       "snowy mountains night"
+      ]
+     }
+    },
+    {
+     "texto": "El caso se volvió una obsesión en Rusia y en el mundo: libros, películas, documentales y miles de teorías en internet.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "UNA OBSESIÓN",
+      "sub": "Más de 60 años de teorías"
+     }
+    },
+    {
+     "texto": "Otros grupos de excursionistas dijeron haber visto esferas de luz en el cielo de los Urales esas mismas semanas.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "LUCES EN EL CIELO",
+      "sub": "Febrero y marzo de 1959"
+     }
+    },
+    {
+     "texto": "Pero en dos mil diecinueve, la fiscalía rusa reabrió el caso. Su conclusión fue mucho más sencilla: una avalancha.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Dyatlov Pass memorial",
+       "Dyatlov Pass"
+      ]
+     }
+    },
+    {
+     "texto": "Muchos no lo creyeron. La pendiente no era tan empinada y los rescatistas no vieron rastros de una avalancha.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "¿UNA AVALANCHA?",
+      "sub": "Las dudas"
+     }
+    },
+    {
+     "texto": "Entonces, en dos mil veintiuno, dos científicos suizos, Johan Gaume y Alexander Puzrin, publicaron un estudio que explica cómo pudo pasar, paso a paso.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Johan Gaume EPFL",
+       "Dyatlov Pass slope"
+      ]
+     }
+    },
+    {
+     "texto": "Su explicación no necesita monstruos ni secretos militares. Solo nieve, viento y una decisión que parecía inocente.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "NIEVE Y VIENTO",
+      "sub": "Sin monstruos ni secretos"
+     }
+    },
+    {
+     "texto": "Primero: el grupo cavó un corte en la pendiente para poner la carpa. Eso dejó la nieve de arriba sin apoyo.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "PASO 1",
+      "sub": "El corte en la pendiente"
+     }
+    },
+    {
+     "texto": "Segundo: esa noche, el viento fue empujando nieve sobre la ladera, hora tras hora, y la capa de arriba se hizo cada vez más pesada.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "PASO 2",
+      "sub": "El viento carga la nieve"
+     }
+    },
+    {
+     "texto": "Tercero: horas después, un bloque de nieve dura se desprendió y cayó sobre la carpa. No una avalancha gigante, sino una placa de pocos metros.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "PASO 3",
+      "sub": "La placa de nieve"
+     }
+    },
+    {
+     "texto": "Para calcular los golpes usaron el programa con el que se animó la nieve de la película Frozen y datos de pruebas de choques de autos.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "NIEVE DE PELÍCULA",
+      "sub": "Simulación de 2021"
+     }
+    },
+    {
+     "texto": "El resultado: un bloque así podía causar exactamente las fracturas que tenían los cuerpos.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "LAS FRACTURAS",
+      "sub": "Explicadas"
+     }
+    },
+    {
+     "texto": "Y como era un bloque pequeño, el viento y la nieve de los días siguientes pudieron borrar sus rastros. Por eso los rescatistas no vieron nada raro.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "SIN RASTROS",
+      "sub": "El viento los cubrió"
+     }
+    },
+    {
+     "texto": "Según esta teoría, dentro de la carpa, a oscuras, sienten el peso de la nieve. Cortan la lona y salen como pueden, sin botas ni abrigos.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "SALIERON COMO PUDIERON",
+      "sub": "A oscuras"
+     }
+    },
+    {
+     "texto": "Bajan hacia el bosque para protegerse del viento, pensando en volver cuando pasara el peligro. Pero a treinta grados bajo cero, ya no pudieron regresar.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "-30 °C",
+      "sub": "Sin abrigos"
+     }
+    },
+    {
+     "texto": "¿Se resolvió el misterio? Muchos expertos dicen que sí. Otros siguen teniendo dudas, por las huellas, por la radiación y por todo lo que nunca se explicó.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Dyatlov Pass",
+       "Kholat Syakhl"
+      ]
+     }
+    },
+    {
+     "texto": "Hoy, ese lugar se llama el paso Diátlov. Y en la ladera hay una placa con los nombres de los nueve.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Dyatlov Pass memorial plaque",
+       "Dyatlov memorial"
+      ]
+     }
+    },
+    {
+     "texto": "Yuri Yudin, el que regresó, vivió hasta dos mil trece. Dijo que si pudiera hacerle una sola pregunta a Dios, sería qué les pasó a sus amigos esa noche.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Yuri Yudin",
+       "Yuri Yudin Dyatlov"
+      ]
+     }
+    },
+    {
+     "texto": "¿Tú qué crees que pasó? Déjalo en los comentarios. Y suscríbete a Ridmer para más historias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Dyatlov group 1959",
+       "Dyatlov Pass incident"
+      ]
+     }
+    }
+   ],
+   "hora_youtube": "18:00",
+   "musica": "misterio",
+   "miniatura": {
+    "texto": "CORTARON LA CARPA"
+   }
+  },
+  {
+   "eid": "largo1t",
+   "tipo": "tiktok",
+   "articulo": "Incidente del paso Diátlov (1959)",
+   "fuente": "https://es.wikipedia.org/wiki/Incidente_del_paso_Di%C3%A1tlov",
+   "titulo_video": " ",
+   "titulo_youtube": "9 jóvenes CORTARON su carpa desde adentro… y huyeron a la nieve",
+   "titulos_opciones": [
+    "9 jóvenes CORTARON su carpa desde adentro… y huyeron a la nieve",
+    "El misterio del paso Diátlov: lo que pasó esa noche, paso a paso",
+    "Los encontraron sin botas a 30 bajo cero… ¿de qué huían?",
+    "«Una fuerza natural irresistible»: el caso que la URSS no pudo explicar",
+    "Fracturas como de un choque de auto… pero en medio de la nieve",
+    "62 años después, dos científicos dijeron por fin qué pasó",
+    "La montaña muerta: el misterio más famoso de Rusia 🏔️",
+    "Uno se enfermó y se regresó… fue el único que sobrevivió"
+   ],
+   "descripcion_youtube": "Nueve jóvenes cortaron su carpa desde adentro en 1959. Video completo en YouTube: Ridmer.\n#misterio #pasodiatlov #historiasreales #ridmer",
+   "etiquetas": [
+    "paso Diátlov",
+    "Dyatlov Pass",
+    "misterio",
+    "Ridmer"
+   ],
+   "gancho": 2,
+   "segmentos": [
+    {
+     "texto": "Febrero de mil novecientos cincuenta y nueve. En una montaña helada de Rusia, nueve jóvenes cortan su propia carpa desde adentro… y salen corriendo a la nieve, casi sin ropa.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "FEBRERO DE 1959",
+      "sub": "Montes Urales · Rusia"
+     }
+    },
+    {
+     "texto": "Ninguno volvió.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Dyatlov Pass incident",
+       "Dyatlov group 1959"
+      ]
+     }
+    },
+    {
+     "texto": "Eran estudiantes de los Urales, expertos en la montaña. Su líder, Ígor Diátlov, tenía veintitrés años.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Igor Dyatlov",
+       "Igor Dyatlov 1959"
+      ]
+     }
+    },
+    {
+     "texto": "Eran diez. Pero uno, Yuri Yudin, se enfermó y se regresó. Fue el único que sobrevivió.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Yuri Yudin",
+       "Yuri Yudin Dyatlov"
+      ]
+     }
+    },
+    {
+     "texto": "El primero de febrero, con viento y nieve, acampan en la ladera de una montaña que los nativos llaman la montaña muerta.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "JOLAT SIAJL",
+      "sub": "«La montaña muerta»"
+     }
+    },
+    {
+     "texto": "Nunca mandaron el telegrama de regreso. El veintiséis de febrero, los rescatistas encuentran la carpa.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Dyatlov tent found 1959",
+       "Dyatlov tent search"
+      ]
+     }
+    },
+    {
+     "texto": "Está cortada desde adentro, con cuchillos. Adentro están las botas, los abrigos, la comida.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "CORTADA DESDE ADENTRO",
+      "sub": "26 de febrero de 1959"
+     }
+    },
+    {
+     "texto": "Afuera, huellas en calcetines y descalzas bajan hacia el bosque.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Dyatlov footprints",
+       "Dyatlov footprints snow"
+      ]
+     }
+    },
+    {
+     "texto": "Junto a un cedro, restos de una fogata y los primeros dos, en ropa interior.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Dyatlov cedar tree",
+       "Siberian pine forest snow"
+      ]
+     }
+    },
+    {
+     "texto": "Las ramas del cedro estaban rotas hasta cinco metros de altura, como si alguien hubiera subido a mirar hacia la carpa.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Siberian cedar winter",
+       "Pinus sibirica"
+      ]
+     }
+    },
+    {
+     "texto": "Tres más murieron intentando volver a la carpa.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "INTENTABAN VOLVER",
+      "sub": "Hipotermia"
+     }
+    },
+    {
+     "texto": "Y los últimos cuatro aparecen en mayo, en un barranco, bajo cuatro metros de nieve, con fracturas como de un choque de auto.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Dyatlov ravine",
+       "snow ravine forest"
+      ]
+     }
+    },
+    {
+     "texto": "Algunas ropas tenían radiactividad. La investigación soviética dijo solo esto: una fuerza natural irresistible.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "«UNA FUERZA NATURAL»",
+      "sub": "Mayo de 1959"
+     }
+    },
+    {
+     "texto": "Sesenta años después, dos científicos dijeron que por fin sabían qué pasó esa noche.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "2021",
+      "sub": "Un estudio científico"
+     }
+    },
+    {
+     "texto": "¿Qué pasó después? Lo que viene te va a dejar sin palabras. Mira el video completo en YouTube, en el canal Ridmer.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Dyatlov Pass",
+       "Kholat Syakhl"
+      ]
+     }
+    }
+   ],
+   "encargo": "largo1",
+   "hora_youtube": "18:00",
+   "musica": "misterio",
+   "miniatura": {
+    "texto": "CORTARON LA CARPA"
+   }
+  }
+ ],
+ "notas": "Encargos reemplazados: fb1 Operación Fénix (bombardeo, violencia) → Beck Weathers; fb2 Leyendas de Costa Rica (leyendas genéricas) → Tesoro de la Isla del Coco; fb3 Estafa romántica (crimen) → lago Nyos; largo1 Estafa nigeriana (crimen) → paso Diátlov. Sin noticias urgentes."
+}
