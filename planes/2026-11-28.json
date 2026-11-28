@@ -52,6 +52,9 @@
       "desde": 20,
       "dur": 6,
       "buscar_video": [
+       "Basilica of Our Lady of Guadalupe",
+       "Basílica de Guadalupe",
+       "Mexico City",
        "Basilica of Guadalupe Mexico City",
        "Tepeyac"
       ]
@@ -115,6 +118,8 @@
       "desde": 30,
       "dur": 6,
       "buscar_video": [
+       "Basilica of Our Lady of Guadalupe",
+       "Basílica de Guadalupe",
        "Basilica of Guadalupe interior"
       ]
      }
@@ -127,6 +132,9 @@
       "desde": 20,
       "dur": 6,
       "buscar_video": [
+       "Basílica de Guadalupe",
+       "Our Lady of Guadalupe procession",
+       "pilgrimage Mexico",
        "pilgrims Guadalupe Mexico",
        "Basilica Guadalupe crowd"
       ]
@@ -214,6 +222,9 @@
       "desde": 20,
       "dur": 6,
       "buscar_video": [
+       "Basílica de Guadalupe",
+       "Our Lady of Guadalupe procession",
+       "pilgrimage Mexico",
        "pilgrims Guadalupe Mexico",
        "Basilica Guadalupe crowd"
       ]
@@ -272,6 +283,9 @@
       "desde": 25,
       "dur": 6,
       "buscar_video": [
+       "Guatavita",
+       "Laguna de Guatavita",
+       "Cundinamarca",
        "Lake Guatavita",
        "Guatavita Colombia aerial"
       ]
@@ -299,6 +313,9 @@
       "desde": 30,
       "dur": 6,
       "buscar_video": [
+       "Guatavita",
+       "Cundinamarca lagoon",
+       "Andes lake",
        "Lake Guatavita",
        "Guatavita lagoon"
       ]
@@ -348,6 +365,9 @@
       "desde": 15,
       "dur": 6,
       "buscar_video": [
+       "Museo del Oro",
+       "Muisca",
+       "gold museum Bogota",
        "Muisca raft gold museum",
        "Museo del Oro Bogota"
       ]
@@ -407,6 +427,9 @@
       "desde": 25,
       "dur": 6,
       "buscar_video": [
+       "Guatavita",
+       "Laguna de Guatavita",
+       "Cundinamarca",
        "Lake Guatavita",
        "Guatavita Colombia aerial"
       ]
@@ -492,6 +515,8 @@
       "desde": 10,
       "dur": 6,
       "buscar_video": [
+       "Mojave Desert",
+       "Mojave Air and Space Port",
        "Mojave desert",
        "SpaceShipTwo"
       ]
@@ -512,6 +537,9 @@
       "desde": 20,
       "dur": 6,
       "buscar_video": [
+       "SpaceShipTwo",
+       "Virgin Galactic",
+       "WhiteKnightTwo",
        "SpaceShipTwo rocket",
        "rocket plane flight"
       ]
@@ -540,6 +568,9 @@
       "desde": 40,
       "dur": 6,
       "buscar_video": [
+       "SpaceShipTwo",
+       "Virgin Galactic",
+       "WhiteKnightTwo",
        "SpaceShipTwo breakup",
        "explosion sky"
       ]
@@ -574,6 +605,9 @@
       "desde": 20,
       "dur": 6,
       "buscar_video": [
+       "SpaceShipTwo",
+       "Virgin Galactic",
+       "NTSB",
        "SpaceShipTwo debris",
        "NTSB investigators desert"
       ]
