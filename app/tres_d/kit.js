@@ -2445,3 +2445,56 @@ export function cedroGrande(sc, x = 0, z = 0, { h = 16 } = {}) {
     r.rotation.set(Math.sin(k) * 0.8, k, 1.2); g.add(r); }
   return g;
 }
+
+// ======================= 28-nov: nave cohete tipo SpaceShipTwo, morrión español, cerro árido mexicano =======================
+/** Nave cohete blanca tipo SpaceShipTwo (frente hacia +X): fuselaje con ventanillas, ala y dos colas que se "emplumen"
+ *  (n.colas[i].rotation.z = 0..1.1). n.motor(encendido, t) pone el fuego y el humo detrás (llamar después de mover la nave). */
+export function naveCohete(sc) {
+  const blanco = M.mat(0xf2f2f0, { roughness: 0.35, metalness: 0.1 }), oscuro = M.mat(0x1a1f2a, { roughness: 0.2, metalness: 0.5 }), azulV = M.mat(0x2a3a8a, { roughness: 0.4 });
+  const nave = new THREE.Group(); sc.add(nave);
+  const fus = new THREE.Mesh(new THREE.CapsuleGeometry(0.75, 6.5, 8, 18), blanco); fus.rotation.z = Math.PI / 2; fus.castShadow = true; nave.add(fus);
+  const nariz = new THREE.Mesh(new THREE.ConeGeometry(0.72, 1.6, 18), blanco); nariz.rotation.z = -Math.PI / 2; nariz.position.x = 4.3; nave.add(nariz);
+  for (let i = 0; i < 6; i++) { const v = new THREE.Mesh(new THREE.CircleGeometry(0.17, 14), oscuro); v.position.set(2.2 - i * 0.85, 0.15, 0.74); nave.add(v); const v2 = v.clone(); v2.position.z = -0.74; v2.rotation.y = Math.PI; nave.add(v2); }
+  const franja = new THREE.Mesh(new THREE.BoxGeometry(5, 0.12, 1.52), azulV); franja.position.set(-0.5, -0.25, 0); nave.add(franja);
+  const ala = new THREE.Mesh(new THREE.BoxGeometry(3.2, 0.12, 8.2), blanco); ala.position.set(-1.9, -0.35, 0); ala.castShadow = true; nave.add(ala);
+  const colas = [];
+  for (const sz of [1, -1]) { const piv = new THREE.Group(); piv.position.set(-2.8, -0.3, sz * 3.6); nave.add(piv);
+    const bo = new THREE.Mesh(new THREE.BoxGeometry(4.0, 0.3, 0.32), blanco); bo.position.set(-1.6, 0, 0); piv.add(bo);
+    const al = new THREE.Mesh(new THREE.BoxGeometry(1.5, 2.2, 0.12), blanco); al.position.set(-3.2, 0.9, 0); piv.add(al);
+    const est = new THREE.Mesh(new THREE.BoxGeometry(1.2, 0.08, 1.0), blanco); est.position.set(-3.3, -0.05, -sz * 0.4); piv.add(est); colas.push(piv); }
+  const tobera = new THREE.Mesh(new THREE.CylinderGeometry(0.4, 0.55, 0.6, 16), oscuro); tobera.rotation.z = Math.PI / 2; tobera.position.x = -4.1; nave.add(tobera);
+  const fuego = []; for (let i = 0; i < 14; i++) { const f = brilloSprite(i < 3 ? '#fff4d0' : i < 7 ? '#ff9a30' : '#ff5a10', 1.6 + i * 0.25, 1.0 - i * 0.05); sc.add(f); fuego.push(f); }
+  const humo = []; for (let i = 0; i < 26; i++) { const h = brilloSprite('#e8e4dc', 2.5 + i * 0.35, 0.22); h.material.blending = THREE.NormalBlending; sc.add(h); humo.push(h); }
+  return { nave, colas, blanco, azulV, motor(on, t) { nave.updateMatrixWorld(true); const d = new THREE.Vector3(-1, 0, 0).applyQuaternion(nave.quaternion), p0 = new THREE.Vector3(-4.4, 0, 0).applyMatrix4(nave.matrixWorld);
+    fuego.forEach((f, i) => { f.visible = on; f.position.copy(p0).addScaledVector(d, i * 0.55); f.scale.setScalar((1.6 + i * 0.25) * (0.9 + 0.15 * Math.sin(t * 40 + i))); });
+    humo.forEach((h, i) => { h.visible = on; h.position.copy(p0).addScaledVector(d, 8 + i * 2.2); h.position.y += Math.sin(i) * 0.4; }); } };
+}
+/** Morrión (casco español del siglo XVI) de metal sobre la cabeza de una persona. m.seguir() después de setTime. */
+export function morrion(sc, p, escala = 0.78) {
+  const metal = M.mat(0x9a9a94, { metalness: 0.85, roughness: 0.35 }), g = new THREE.Group(); g.scale.setScalar(escala);
+  const cu = new THREE.Mesh(new THREE.SphereGeometry(0.12, 18, 10, 0, Math.PI * 2, 0, Math.PI / 2), metal); cu.scale.set(0.95, 1.15, 1.1); g.add(cu);
+  const al = new THREE.Mesh(new THREE.TorusGeometry(0.15, 0.025, 6, 24), metal); al.rotation.x = Math.PI / 2; al.scale.set(0.9, 1.25, 1); g.add(al);
+  const cr = new THREE.Mesh(new THREE.BoxGeometry(0.015, 0.06, 0.2), metal); cr.position.y = 0.13; g.add(cr); sc.add(g);
+  const v = new THREE.Vector3();
+  return { g, seguir(dy = 0.13) { p.updateMatrixWorld(true); p.getObjectByName('Bip01_Head').getWorldPosition(v); g.position.set(v.x, v.y + dy, v.z); g.rotation.y = p.rotation.y; } };
+}
+/** Cerro árido mexicano al amanecer (tierra seca, piedras, nopales y magueyes), con un cerro grande al fondo (-Z) y otro detrás (+Z).
+ *  Deja libre un camino a lo largo de Z en x≈0. Útil para el Tepeyac, el desierto de Sonora, etc. */
+export function cerroArido(sc, { semilla = 7 } = {}) {
+  M.cielo(sc, '#40527e', '#f6b27a'); sc.fog = new THREE.Fog(0xe8b08a, 18, 120);
+  sc.add(new THREE.HemisphereLight(0xffe2c4, 0x5a4030, 0.75));
+  const sol = new THREE.DirectionalLight(0xffb27a, 2.4); sol.position.set(-25, 9, -12); sol.castShadow = true; sol.shadow.mapSize.set(2048, 2048);
+  Object.assign(sol.shadow.camera, { left: -12, right: 12, top: 12, bottom: -12 }); sc.add(sol);
+  M.caja(sc, 300, 0.2, 300, 0, -0.1, 0, M.matTex(M.TEX.arena(), [60, 60], 0x9a7a52));
+  const az = _azar(semilla);
+  const cerro = new THREE.Mesh(new THREE.SphereGeometry(30, 40, 20, 0, Math.PI * 2, 0, Math.PI / 2), M.matTex(M.TEX.arena(), [12, 6], 0x8f6e48)); cerro.scale.set(1, 0.32, 1); cerro.position.set(4, -0.2, -38); cerro.receiveShadow = true; sc.add(cerro);
+  const c2 = cerro.clone(); c2.position.set(-6, -0.2, 46); sc.add(c2);
+  const piedra = M.mat(0x6e6256, { flatShading: true, roughness: 1 }), verde = M.mat(0x4f6a3a, { flatShading: true, roughness: 1 }), maguey = M.mat(0x6f8a6a, { flatShading: true, roughness: 0.9 });
+  for (let i = 0; i < 120; i++) { const x = (az() - 0.5) * 50, z = 6 - az() * 40; if (Math.abs(x) < 1.6 && z > -14) continue;
+    const r = new THREE.Mesh(new THREE.IcosahedronGeometry(0.1 + az() * 0.45, 0), piedra); r.position.set(x, 0.05, z); r.scale.y = 0.6; r.castShadow = true; sc.add(r); }
+  const nopal = (x, z) => { const g = new THREE.Group(); for (let k = 0; k < 5; k++) { const p = new THREE.Mesh(new THREE.SphereGeometry(0.22, 10, 8), verde); p.scale.set(1, 1.3, 0.25); p.position.set((k % 3 - 1) * 0.22, 0.25 + Math.floor(k / 3) * 0.38 + (k % 2) * 0.05, 0); p.rotation.z = (k % 3 - 1) * 0.4; p.castShadow = true; g.add(p); } g.position.set(x, 0, z); g.rotation.y = az() * 6; sc.add(g); return g; };
+  const mag = (x, z) => { const g = new THREE.Group(); for (let k = 0; k < 12; k++) { const h = new THREE.Mesh(new THREE.ConeGeometry(0.07, 0.9, 4), maguey); const a = k / 12 * Math.PI * 2; h.position.set(Math.cos(a) * 0.18, 0.38, Math.sin(a) * 0.18); h.rotation.set(Math.sin(a) * 0.7, 0, -Math.cos(a) * 0.7); h.castShadow = true; g.add(h); } g.position.set(x, 0, z); sc.add(g); return g; };
+  for (let i = 0; i < 26; i++) { const x = (az() - 0.5) * 30, z = 4 - az() * 30; if (Math.abs(x) < 2) continue; (i % 2 ? nopal : mag)(x, z); }
+  for (let i = 0; i < 16; i++) (i % 2 ? nopal : mag)((az() - 0.5) * 26, 9 + az() * 14);
+  return { sol, nopal, maguey: mag };
+}
