@@ -334,6 +334,60 @@
     }
    ],
    "hoja": "fb3/hoja.jpg"
+  },
+  {
+   "eid": "urg1",
+   "tipo": "fb",
+   "titulo": "Explosión en escuela de Afganistán mata a varios niños y hiere a más de 90",
+   "titulo_sugerido": "Explosión en escuela de Afganistán mata a varios niños y hiere a más de 90",
+   "fuente": "https://news.google.com/rss/articles/CBMipwFBVV95cUxORHJIdFd5M29nMFY5SWNMZ0xtWUc2NUQyOU9aWWR0Rk1md3dPeFJhWGlfeGRmN1IwM1poek5MR1ZZVXBVUjVtd2dRMl9zeHZrckZtMmxOejVtY1RuTkNTWm9xTWhMRDhlSUhVNkN5LXZFeHY1NnBoTGZlQVpMV2F3ZEo0cXZlRG1FZUE3RjNtdlROX1RqNXFwMVFBRDF0Wk5CMWJ0ekZTTQ?oc=5",
+   "texto": "- Afganistán: explosión junto a una escuela deja varios alumnos muertos - AsiaNews (AsiaNews, Sat, 28 Nov 2026 12:46:09 GMT):  Afganistán: explosión junto a una escuela deja varios alumnos muertos    AsiaNews \n- Explosión deja al menos siete muertos y 97 heridos cerca de una escuela de Afganistán - teleSUR (teleSUR, Sat, 28 Nov 2026 13:03:48 GMT):  Explosión deja al menos siete muertos y 97 heridos cerca de una escuela de Afganistán    teleSUR \n- Una explosión en una escuela de Afganistán deja siete estudiantes muertos y hasta 99 heridos - CNN en Español (CNN en Español, Sat, 28 Nov 2026 13:02:00 GMT):  Una explosión en una escuela de Afganistán deja siete estudiantes muertos y hasta 99 heridos    CNN en Español \n- Una explosión cerca de una escuela en Afganistán deja más de 100 víctimas mortales. - Vietnam.vn (Vietnam.vn, Sat, 28 Nov 2026 13:56:32 GMT):  Una explosión cerca de una escuela en Afganistán deja más de 100 víctimas mortales.    Vietnam.vn \n- Explosión en escuela deja 7 muertos y 90 heridos en Afganistán - El Horizonte (El Horizonte, Sat, 28 Nov 2026 13:52:11 GMT):  Explosión en escuela deja 7 muertos y 90 heridos en Afganistán    El Horizonte \n- Afghanistan school blast kills 7 students, injures up to 99 - Reuters (Reuters, Sat, 28 Nov 2026 13:11:43 GMT):  Afghanistan school blast kills 7 students, injures up to 99    Reuters \n- Afghanistan explosion kills 10 students and injures more than 100, official says - BBC (BBC, Sat, 28 Nov 2026 12:49:44 GMT):  Afghanistan explosion kills 10 students and injures more than 100, official says    BBC \n- Explosion at a school in eastern Afghanistan kills 7, wounds more than 90 - NPR (NPR, Sat, 28 Nov 2026 11:32:37 GMT):  Explosion at a school in eastern Afghanistan kills 7, wounds more than 90    NPR \n- An explosion at a school in eastern Afghanistan kills 10, wounds 110 - AP News (AP News, Sat, 28 Nov 2026 13:10:00 GMT):  An explosion at a school in eastern Afghanistan kills 10, wounds 110    AP News \n- Afghanistan School Explosion - TelegraphHerald.com (TelegraphHerald.com, Sat, 28 Nov 2026 13:41:08 GMT):  Afghanistan School Explosion    TelegraphHerald.com \n- Explosion at a middle school in Afghanistan kills at least 7, injures more than 90 - CBC (CBC, Sat, 28 Nov 2026 13:16:47 GMT):  Explosion at a middle school in Afghanistan kills at least 7, injures more than 90    CBC \n- Afghanistan School Explosion - TelegraphHerald.com (TelegraphHerald.com, Sat, 28 Nov 2026 13:42:21 GMT):  Afghanistan School Explosion    TelegraphHerald.com \n- Seven Pupils Killed, 99 Injured in Explosion Near Afghan School - Kurdistan24 (Kurdistan24, Sat, 28 Nov 2026 12:32:53 GMT):  Seven Pupils Killed, 99 Injured in Explosion Near Afghan School    Kurdistan24 \n- Afghanistan school explosion kills 7 pupils, over 90 injured - South China Morning Post (South China Morning Post, Sat, 28 Nov 2026 11:07:35 GMT):  Afghanistan school explosion kills 7 pupils, over 90 injured    South China Morning Post \n- APTOPIX Afghanistan School Explosion - chronicleonline.com (chronicleonline.com, Sat, 28 Nov 2026 13:43:29 GMT):  APTOPIX Afghanistan School Explosion    chronicleonline.com \n- An explosion at a school in eastern Afghanistan kills 10, wounds 110 - Traverse City Record-Eagle (Traverse City Record-Eagle, Sat, 28 Nov 2026 13:47:28 GMT):  An explosion at a school in eastern Afghanistan kills 10, wounds 110    Traverse City Record-Eagle ",
+   "candidatos": [
+    {
+     "n": 1,
+     "desc": "Afghan children speak with interpreters (4990070488).jpg",
+     "q": "Afghan children injured explosion"
+    },
+    {
+     "n": 2,
+     "desc": "Afghan children speak to Marines (4989463655).jpg",
+     "q": "Afghan children injured explosion"
+    },
+    {
+     "n": 3,
+     "desc": "Marines speak to Afghan vilagers (4990070180).jpg",
+     "q": "Afghan children injured explosion"
+    },
+    {
+     "n": 4,
+     "desc": "Javelin Firing Positions MOD 45162589.jpg",
+     "q": "Afghanistan school building damage"
+    },
+    {
+     "n": 5,
+     "desc": "Javelin Firing Positions MOD 45162569.jpg",
+     "q": "Afghanistan school building damage"
+    },
+    {
+     "n": 6,
+     "desc": "Javelin Firing Positions MOD 45162578.jpg",
+     "q": "Afghanistan school building damage"
+    },
+    {
+     "n": 7,
+     "desc": "Severn Siegfried Mitchell - US Army Ranger Afghanistan.jpg",
+     "q": "Eastern Afghanistan school blast"
+    },
+    {
+     "n": 8,
+     "desc": "Severn Siegfried Mitchell.jpg",
+     "q": "Eastern Afghanistan school blast"
+    }
+   ],
+   "hoja": "urg1/hoja.jpg",
+   "urgente": true,
+   "creado": 1795874586.980465,
+   "resumen": "Explosión cerca de una escuela en Afganistán deja entre 7 y 10 estudiantes muertos y entre 90 y 110 heridos, reportada por múltiples medios en EE. UU. y Latinoamérica"
   }
  ],
  "creado": 1795849291.7715225
