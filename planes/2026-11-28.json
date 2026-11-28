@@ -637,6 +637,188 @@
    "hora_foto": "20:00",
    "titulo_youtube": "Su nave se rompió a 15 kilómetros de altura… y sobrevivió",
    "texto_foto": "Su nave espacial se rompió a 15 kilómetros de altura… y él sobrevivió.\n\nEl 31 de octubre de 2014, la nave VSS Enterprise de Virgin Galactic hacía un vuelo de prueba sobre el desierto de Mojave, en California. Iba colgada de un avión nodriza. A gran altura la soltaron y encendió su nuevo motor cohete.\n\nPero unos segundos después, el copiloto desbloqueó demasiado pronto el sistema de frenado de la cola. La nave se desintegró en el aire y dejó restos a lo largo de decenas de kilómetros.\n\nEl piloto, Peter Siebold, seguía atado a su asiento, cayendo desde unos 15.000 metros, una altura casi sin oxígeno, y sin traje de presión. Se soltó las correas y su paracaídas se abrió solo. Sobrevivió con heridas graves. Su compañero, Michael Alsbury, murió.\n\nFue la primera vez en la historia que alguien sobrevivió a la destrucción de una nave espacial en pleno vuelo mientras otros a bordo morían.\n\n¿Tú te subirías a una nave así?\n#HistoriasReales #Supervivencia #DatosCuriosos"
+  },
+  {
+   "eid": "urg1",
+   "tipo": "fb",
+   "omitir": true,
+   "nota": "mismo hecho que urg3 (explosión en Kunar)"
+  },
+  {
+   "eid": "urg2",
+   "tipo": "fb",
+   "omitir": true,
+   "nota": "mismo hecho que urg3 (explosión en Kunar)"
+  },
+  {
+   "eid": "urg3",
+   "tipo": "fb",
+   "hora_fb": "ya",
+   "hora_short": "ya",
+   "urgente": true,
+   "articulo": "Explosión junto a una escuela en Kunar (Afganistán)",
+   "fuente": "https://www.aljazeera.com/news/2026/11/28/students-killed-injured-in-school-explosion-in-afghanistans-kunar-region",
+   "titulo_video": "EXPLOSIÓN JUNTO A UNA ESCUELA",
+   "titulo_youtube": "Explosión junto a una escuela en Afganistán deja al menos 10 estudiantes muertos",
+   "descripcion_youtube": "Este sábado 28 de noviembre una explosión en una casa junto a una escuela secundaria de la provincia de Kunar, en el este de Afganistán, dejó al menos 10 estudiantes muertos y unos 110 heridos. Según las autoridades, en la casa se guardaba dinamita para minería.\n#noticias #afganistan #ridmer",
+   "etiquetas": [
+    "Afganistán",
+    "Kunar",
+    "explosión",
+    "escuela",
+    "estudiantes",
+    "noticias",
+    "última hora",
+    "ridmer"
+   ],
+   "texto_facebook": "Última hora: una explosión junto a una escuela en Afganistán deja al menos 10 estudiantes muertos y unos 110 heridos. #Afganistán #noticias #Ridmer",
+   "titulos_opciones": [
+    "Explosión junto a una escuela en Afganistán deja al menos 10 estudiantes muertos",
+    "Guardaban DINAMITA junto a una escuela: al menos 10 alumnos muertos",
+    "Tragedia en Afganistán: 10 estudiantes muertos y 110 heridos",
+    "Una casa con dinamita estalló junto a una escuela en Kunar",
+    "Última hora: explosión cerca de un colegio en Afganistán",
+    "10 estudiantes muertos tras una explosión junto a su escuela"
+   ],
+   "miniatura": {
+    "seg": 0,
+    "texto": "10 ESTUDIANTES MUERTOS"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Una explosión junto a una escuela en Afganistán... dejó al menos diez estudiantes muertos.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Kunar province Afghanistan",
+       "Asadabad Kunar",
+       "Kunar valley"
+      ],
+      "buscar_video": [
+       "Kunar Afghanistan",
+       "Afghanistan mountain valley"
+      ]
+     },
+     "short": true
+    },
+    {
+     "texto": "Pasó este sábado, cerca de las diez de la mañana, en la provincia de Kunar, en el este del país.",
+     "escena": {
+      "tipo": "mapa",
+      "lat": 34.87,
+      "lon": 71.15,
+      "lugar": "Kunar · Afganistán",
+      "km": 30
+     },
+     "short": true
+    },
+    {
+     "texto": "Kunar es una provincia de montañas, en la frontera con Pakistán.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Kunar river valley mountains",
+       "Kunar River",
+       "Hindu Kush Kunar"
+      ]
+     }
+    },
+    {
+     "texto": "El estallido ocurrió en una casa pegada a una escuela secundaria, en la zona de Andar Ser.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Afghanistan village school",
+       "school in Kunar Afghanistan",
+       "Afghan schoolchildren classroom"
+      ]
+     },
+     "short": true
+    },
+    {
+     "texto": "Según las autoridades de la provincia, en esa casa vivían personas dedicadas a la minería... y guardaban dinamita.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "dynamite sticks",
+       "mining explosives"
+      ]
+     },
+     "rotulo": "DINAMITA",
+     "short": true
+    },
+    {
+     "texto": "Por eso, varios medios la describen como una explosión accidental.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Afghanistan mountain village houses",
+       "Kunar village"
+      ]
+     }
+    },
+    {
+     "texto": "Las primeras cifras hablaban de seis o siete muertos y casi cien heridos.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "28 DE NOVIEMBRE",
+      "sub": "Kunar, Afganistán"
+     }
+    },
+    {
+     "texto": "Pero horas después, los funcionarios elevaron el balance: al menos diez estudiantes muertos y unos ciento diez heridos.",
+     "escena": {
+      "tipo": "contador",
+      "n": 10,
+      "texto": "ESTUDIANTES MUERTOS",
+      "sub": "y unos 110 heridos"
+     },
+     "short": true
+    },
+    {
+     "texto": "Los heridos fueron llevados al hospital provincial de Kunar. Su director advirtió que las cifras todavía pueden cambiar.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Asadabad hospital",
+       "Afghanistan hospital ward",
+       "ambulance Afghanistan"
+      ]
+     }
+    },
+    {
+     "texto": "Equipos de investigación de la provincia ya están en el lugar.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Asadabad city",
+       "Asadabad Afghanistan"
+      ]
+     }
+    },
+    {
+     "texto": "Hasta ahora, las autoridades no han hablado de un ataque.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Kunar province landscape",
+       "Pech valley"
+      ]
+     }
+    },
+    {
+     "texto": "Nuestros pensamientos están con las familias de las víctimas. Suscríbete a Ridmer para más noticias como esta.",
+     "escena": {
+      "tipo": "foto",
+      "buscar": [
+       "Kunar River",
+       "Afghanistan mountains sunset"
+      ]
+     },
+     "short": true
+    }
+   ]
   }
  ],
  "notas": "Sin noticias urgentes (no hubo encargo de noticia). Sin largo hoy (hay_largo=false). Encargos usados tal cual: fb1 Virgen de Guadalupe, fb2 El Dorado, fb3 Virgin Galactic 2014."
