@@ -1,0 +1,609 @@
+{
+ "fecha": "2026-11-28",
+ "modo": "claude",
+ "videos": [
+  {
+   "eid": "fb1",
+   "tipo": "fb",
+   "hora_fb": "14:00",
+   "articulo": "Nuestra Señora de Guadalupe (México)",
+   "fuente": "https://es.wikipedia.org/wiki/Nuestra_Se%C3%B1ora_de_Guadalupe_(M%C3%A9xico)",
+   "titulo_video": " ",
+   "titulo_youtube": "Abrió su manta frente al obispo… y apareció la VIRGEN",
+   "titulos_opciones": [
+    "Abrió su manta frente al obispo… y apareció la VIRGEN",
+    "Rosas en pleno invierno: la prueba que pidió el obispo",
+    "La tela de 1531 que MILLONES visitan cada año",
+    "Nadie le creía a Juan Diego… hasta que abrió su manta",
+    "¿Qué pasó en el cerro del Tepeyac en 1531?",
+    "La historia de la Virgen de Guadalupe que pocos conocen",
+    "El obispo pidió una PRUEBA… y esto fue lo que recibió 🌹"
+   ],
+   "descripcion_youtube": "Diciembre de 1531. Según la tradición, el obispo no le creía a Juan Diego y le pidió una prueba. Lo que pasó al abrir su manta cambió la historia de México.\n#historiasreales #misterio #ridmer",
+   "etiquetas": [
+    "Virgen de Guadalupe",
+    "Juan Diego",
+    "Tepeyac",
+    "12 de diciembre",
+    "historias reales",
+    "Ridmer"
+   ],
+   "texto_facebook": "El obispo no le creía y le pidió una PRUEBA… lo que apareció en su manta sigue ahí casi 500 años después 🌹 #HistoriasReales #VirgenDeGuadalupe #Misterio",
+   "texto_tiktok": "Abrió su manta frente al obispo… y apareció la VIRGEN 🌹 Nadie le creía a Juan Diego, hasta que encontró rosas en pleno invierno en el cerro del Tepeyac. Hoy millones visitan esa tela cada año. #virgendeguadalupe #mexico #historiasreales #misterio #ridmer",
+   "musica": "misterio",
+   "miniatura": {
+    "texto": "APARECIÓ EN SU MANTA"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Abrió su manta… y nadie pudo explicarlo.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "12 DE DICIEMBRE DE 1531",
+      "sub": "Ciudad de México"
+     }
+    },
+    {
+     "texto": "Mil quinientos treinta y uno. Cerro del Tepeyac, hoy Ciudad de México.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=ZAjPiZ9UWCA",
+      "desde": 20,
+      "dur": 6,
+      "buscar_video": [
+       "Basilica of Guadalupe Mexico City",
+       "Tepeyac"
+      ]
+     }
+    },
+    {
+     "texto": "Según la tradición, el indígena Juan Diego camina al amanecer… y una señora lo llama.",
+     "escena": {
+      "tipo": "foto",
+      "img": 17
+     }
+    },
+    {
+     "texto": "Le pide ir con el obispo para que le construyan un templo allí.",
+     "escena": {
+      "tipo": "foto",
+      "img": 22
+     }
+    },
+    {
+     "texto": "El obispo no le cree. Le pide una prueba.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "NO LE CREYÓ",
+      "sub": "El obispo pidió una prueba"
+     }
+    },
+    {
+     "texto": "Juan Diego sube a la cima en pleno invierno… y encuentra rosas de Castilla.",
+     "escena": {
+      "tipo": "foto",
+      "img": 15
+     }
+    },
+    {
+     "texto": "Las guarda en su manta y las lleva al obispo.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Abre la manta. Las rosas caen al suelo… y en la tela aparece la imagen de la Virgen.",
+     "escena": {
+      "tipo": "foto",
+      "img": 23
+     }
+    },
+    {
+     "texto": "Según la tradición, es la misma tela que hoy se exhibe en la Basílica de Guadalupe.",
+     "escena": {
+      "tipo": "foto",
+      "img": 21
+     }
+    },
+    {
+     "texto": "Especialistas de muchos países la han estudiado durante siglos.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=IVp-JukoGt4",
+      "desde": 30,
+      "dur": 6,
+      "buscar_video": [
+       "Basilica of Guadalupe interior"
+      ]
+     }
+    },
+    {
+     "texto": "Y cada doce de diciembre, millones de personas llegan a verla.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=moKoIFw2g5w",
+      "desde": 20,
+      "dur": 6,
+      "buscar_video": [
+       "pilgrims Guadalupe Mexico",
+       "Basilica Guadalupe crowd"
+      ]
+     }
+    },
+    {
+     "texto": "¿Tú la has visitado? Comparte esta historia y sigue a Ridmer.",
+     "escena": {
+      "tipo": "foto",
+      "img": 13
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb1s",
+   "tipo": "short",
+   "encargo": "fb1",
+   "hora_youtube": "14:00",
+   "articulo": "Nuestra Señora de Guadalupe (México)",
+   "fuente": "https://es.wikipedia.org/wiki/Nuestra_Se%C3%B1ora_de_Guadalupe_(M%C3%A9xico)",
+   "titulo_video": " ",
+   "titulo_youtube": "Abrió su manta frente al obispo… y apareció la VIRGEN #shorts",
+   "titulos_opciones": [
+    "Abrió su manta frente al obispo… y apareció la VIRGEN #shorts",
+    "Rosas en pleno invierno: la prueba que pidió el obispo #shorts",
+    "La tela de 1531 que MILLONES visitan cada año #shorts",
+    "Nadie le creía a Juan Diego… hasta que abrió su manta #shorts",
+    "¿Qué pasó en el cerro del Tepeyac en 1531? #shorts",
+    "La historia de la Virgen de Guadalupe que pocos conocen #shorts"
+   ],
+   "descripcion_youtube": "Según la tradición, en 1531 Juan Diego abrió su manta frente al obispo… y apareció la imagen de la Virgen de Guadalupe.\n#shorts #historiasreales #ridmer",
+   "etiquetas": [
+    "Virgen de Guadalupe",
+    "Juan Diego",
+    "shorts"
+   ],
+   "musica": "misterio",
+   "miniatura": {
+    "texto": "ABRIÓ SU MANTA"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Abrió su manta… y nadie pudo explicarlo.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "12 DE DICIEMBRE DE 1531",
+      "sub": "Ciudad de México"
+     }
+    },
+    {
+     "texto": "Mil quinientos treinta y uno. Según la tradición, en el cerro del Tepeyac, una señora le habla al indígena Juan Diego.",
+     "escena": {
+      "tipo": "foto",
+      "img": 17
+     }
+    },
+    {
+     "texto": "Le pide un templo, pero el obispo no le cree y exige una prueba.",
+     "escena": {
+      "tipo": "foto",
+      "img": 22
+     }
+    },
+    {
+     "texto": "En pleno invierno, Juan Diego encuentra rosas en la cima del cerro y las guarda en su manta.",
+     "escena": {
+      "tipo": "foto",
+      "img": 15
+     }
+    },
+    {
+     "texto": "Ante el obispo, la abre: caen las rosas… y en la tela aparece la imagen de la Virgen.",
+     "escena": {
+      "tipo": "foto",
+      "img": 23
+     }
+    },
+    {
+     "texto": "Hoy esa tela está en la Basílica de Guadalupe. Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=moKoIFw2g5w",
+      "desde": 20,
+      "dur": 6,
+      "buscar_video": [
+       "pilgrims Guadalupe Mexico",
+       "Basilica Guadalupe crowd"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb2",
+   "tipo": "fb",
+   "hora_fb": "18:30",
+   "articulo": "El Dorado",
+   "fuente": "https://es.wikipedia.org/wiki/El_Dorado",
+   "titulo_video": " ",
+   "titulo_youtube": "Se cubría el cuerpo de ORO… y lanzaba tesoros a esta laguna",
+   "titulos_opciones": [
+    "Se cubría el cuerpo de ORO… y lanzaba tesoros a esta laguna",
+    "La laguna de Colombia que podría estar llena de ORO",
+    "Buscaron EL DORADO durante 300 años… y nunca lo encontraron",
+    "El hombre de oro que dio origen a la leyenda de El Dorado",
+    "¿Por qué los españoles buscaron una ciudad de oro que no existía?",
+    "Oro y esmeraldas en el fondo de una laguna: la historia real 😱",
+    "Lo que de verdad pasaba en la laguna de Guatavita"
+   ],
+   "descripcion_youtube": "Un cacique cubierto de oro, una balsa y una laguna sagrada en Colombia. Así nació la leyenda que los españoles persiguieron durante siglos.\n#historiasreales #misterio #ridmer",
+   "etiquetas": [
+    "El Dorado",
+    "Guatavita",
+    "muiscas",
+    "oro",
+    "Colombia",
+    "historias reales",
+    "Ridmer"
+   ],
+   "texto_facebook": "Se cubría el cuerpo de ORO y lanzaba tesoros a esta laguna… los españoles la buscaron 300 años 😱 #HistoriasReales #ElDorado #DatosCuriosos",
+   "texto_tiktok": "Se cubría el cuerpo de ORO… y lanzaba tesoros a esta laguna 😱 La ceremonia muisca de Guatavita hizo que los españoles buscaran El Dorado durante más de 300 años. Nunca lo encontraron. #eldorado #colombia #historiasreales #tesoro #datoscuriosos #ridmer",
+   "musica": "misterio",
+   "miniatura": {
+    "texto": "LAGUNA DE ORO"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Se cubría el cuerpo de oro.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "LAGUNA DE GUATAVITA",
+      "sub": "Colombia"
+     }
+    },
+    {
+     "texto": "Esta es la laguna de Guatavita, en Colombia.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=9ccH-XSjNbo",
+      "desde": 25,
+      "dur": 6,
+      "buscar_video": [
+       "Lake Guatavita",
+       "Guatavita Colombia aerial"
+      ]
+     }
+    },
+    {
+     "texto": "Según las crónicas, antes de gobernar, cada nuevo cacique muisca era cubierto totalmente con polvo de oro.",
+     "escena": {
+      "tipo": "foto",
+      "img": 9
+     }
+    },
+    {
+     "texto": "Subía a una balsa, navegaba hasta el centro de la laguna… y arrojaba al agua objetos de oro y esmeraldas.",
+     "escena": {
+      "tipo": "foto",
+      "img": 16
+     }
+    },
+    {
+     "texto": "Era una ofrenda sagrada.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=zxuqeJq5Iiw",
+      "desde": 30,
+      "dur": 6,
+      "buscar_video": [
+       "Lake Guatavita",
+       "Guatavita lagoon"
+      ]
+     }
+    },
+    {
+     "texto": "Cuando los españoles oyeron la historia, imaginaron un reino entero hecho de oro: El Dorado.",
+     "escena": {
+      "tipo": "foto",
+      "img": 11
+     }
+    },
+    {
+     "texto": "Salieron expediciones desde Quito, desde Santa Marta y desde Coro, en Venezuela.",
+     "escena": {
+      "tipo": "foto",
+      "img": 5
+     }
+    },
+    {
+     "texto": "Cruzaron selvas, ríos y montañas buscándolo.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Lo buscaron durante más de trescientos años, hasta el siglo diecinueve.",
+     "escena": {
+      "tipo": "foto",
+      "img": 7
+     }
+    },
+    {
+     "texto": "Nunca lo encontraron.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "NUNCA LO ENCONTRARON",
+      "sub": "Más de 300 años de búsqueda"
+     }
+    },
+    {
+     "texto": "Pero la ceremonia sí existió: en el Museo del Oro de Bogotá hay una balsa de oro muisca que la muestra.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=HNN13eVY7cw",
+      "desde": 15,
+      "dur": 6,
+      "buscar_video": [
+       "Muisca raft gold museum",
+       "Museo del Oro Bogota"
+      ]
+     }
+    },
+    {
+     "texto": "¿Crees que aún queda oro en el fondo? Comparte esta historia y sigue a Ridmer.",
+     "escena": {
+      "tipo": "foto",
+      "img": 15
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb2s",
+   "tipo": "short",
+   "encargo": "fb2",
+   "hora_youtube": "19:00",
+   "articulo": "El Dorado",
+   "fuente": "https://es.wikipedia.org/wiki/El_Dorado",
+   "titulo_video": " ",
+   "titulo_youtube": "Se cubría el cuerpo de ORO… y lanzaba tesoros a esta laguna #shorts",
+   "titulos_opciones": [
+    "Se cubría el cuerpo de ORO… y lanzaba tesoros a esta laguna #shorts",
+    "La laguna de Colombia que podría estar llena de ORO #shorts",
+    "Buscaron EL DORADO durante 300 años… y nunca lo encontraron #shorts",
+    "El hombre de oro que dio origen a la leyenda de El Dorado #shorts",
+    "¿Por qué los españoles buscaron una ciudad de oro que no existía? #shorts",
+    "Oro y esmeraldas en el fondo de una laguna: la historia real 😱 #shorts"
+   ],
+   "descripcion_youtube": "La ceremonia muisca de la laguna de Guatavita dio origen a la leyenda de El Dorado.\n#shorts #historiasreales #ridmer",
+   "etiquetas": [
+    "El Dorado",
+    "Guatavita",
+    "shorts"
+   ],
+   "musica": "misterio",
+   "miniatura": {
+    "texto": "CUBIERTO DE ORO"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Se cubría el cuerpo de oro.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "LAGUNA DE GUATAVITA",
+      "sub": "Colombia"
+     }
+    },
+    {
+     "texto": "Según las crónicas, en la laguna de Guatavita, en Colombia, cada nuevo cacique muisca era cubierto de polvo de oro.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=9ccH-XSjNbo",
+      "desde": 25,
+      "dur": 6,
+      "buscar_video": [
+       "Lake Guatavita",
+       "Guatavita Colombia aerial"
+      ]
+     }
+    },
+    {
+     "texto": "En una balsa, iba al centro de la laguna y arrojaba oro y esmeraldas al agua.",
+     "escena": {
+      "tipo": "foto",
+      "img": 16
+     }
+    },
+    {
+     "texto": "Los españoles imaginaron un reino de oro: El Dorado.",
+     "escena": {
+      "tipo": "foto",
+      "img": 11
+     }
+    },
+    {
+     "texto": "Lo buscaron por selvas y ríos durante más de trescientos años… y nunca lo encontraron.",
+     "escena": {
+      "tipo": "foto",
+      "img": 3
+     }
+    },
+    {
+     "texto": "Hoy una balsa de oro muisca, en el Museo del Oro de Bogotá, muestra esa ceremonia. Sígueme en Ridmer para más.",
+     "escena": {
+      "tipo": "foto",
+      "img": 13
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb3",
+   "tipo": "fb",
+   "hora_fb": "21:00",
+   "articulo": "Accidente de Virgin Galactic (2014)",
+   "fuente": "https://es.wikipedia.org/wiki/Accidente_a%C3%A9reo_de_Virgin_Galactic_de_2014",
+   "titulo_video": " ",
+   "titulo_youtube": "Su nave se ROMPIÓ a 15 kilómetros de altura… y sobrevivió",
+   "titulos_opciones": [
+    "Su nave se ROMPIÓ a 15 kilómetros de altura… y sobrevivió",
+    "Cayó atado a su asiento desde 15.000 metros… y vivió para contarlo",
+    "El primer hombre en sobrevivir a la destrucción de una nave espacial",
+    "Sin traje de presión y casi sin oxígeno: así sobrevivió Peter Siebold",
+    "¿Qué pasó con la nave de Virgin Galactic en 2014?",
+    "Un error de 2 segundos destrozó esta nave espacial 😱",
+    "La nave se desintegró en el aire… pero el piloto se salvó"
+   ],
+   "descripcion_youtube": "31 de octubre de 2014: la nave VSS Enterprise se desintegró sobre el desierto de Mojave. El piloto cayó atado a su asiento desde unos 15.000 metros… y sobrevivió.\n#supervivencia #historiasreales #ridmer",
+   "etiquetas": [
+    "Virgin Galactic",
+    "SpaceShipTwo",
+    "Peter Siebold",
+    "supervivencia",
+    "historias reales",
+    "Ridmer"
+   ],
+   "texto_facebook": "Su nave espacial se ROMPIÓ a 15 kilómetros de altura… y él cayó atado a su asiento 😱 #HistoriasReales #Supervivencia #DatosCuriosos",
+   "texto_tiktok": "Su nave se ROMPIÓ a 15 kilómetros de altura… y sobrevivió 😱 Peter Siebold cayó atado a su asiento, casi sin oxígeno y sin traje de presión. Fue el primero en la historia en lograrlo. #supervivencia #virgingalactic #espacio #historiasreales #ridmer",
+   "musica": "tension",
+   "miniatura": {
+    "texto": "SE ROMPIÓ EN EL AIRE"
+   },
+   "gancho": 1,
+   "segmentos": [
+    {
+     "texto": "Su nave se rompió a quince kilómetros.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "31 DE OCTUBRE DE 2014",
+      "sub": "Desierto de Mojave · California"
+     }
+    },
+    {
+     "texto": "Treinta y uno de octubre de dos mil catorce. Desierto de Mojave, California.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=3ESYYCEscho",
+      "desde": 10,
+      "dur": 6,
+      "buscar_video": [
+       "Mojave desert",
+       "SpaceShipTwo"
+      ]
+     }
+    },
+    {
+     "texto": "La nave espacial VSS Enterprise, de Virgin Galactic, despega colgada de un avión nodriza.",
+     "escena": {
+      "tipo": "foto",
+      "img": 15
+     }
+    },
+    {
+     "texto": "A gran altura la sueltan, y enciende su nuevo motor cohete.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=khbFF3a3XWs",
+      "desde": 20,
+      "dur": 6,
+      "buscar_video": [
+       "SpaceShipTwo rocket",
+       "rocket plane flight"
+      ]
+     }
+    },
+    {
+     "texto": "En la cabina van dos pilotos: Peter Siebold y Michael Alsbury.",
+     "escena": {
+      "tipo": "foto",
+      "img": 1
+     }
+    },
+    {
+     "texto": "Pero el copiloto desbloquea demasiado pronto el freno de la cola.",
+     "escena": {
+      "tipo": "fecha",
+      "texto": "DEMASIADO PRONTO",
+      "sub": "El freno de la cola"
+     }
+    },
+    {
+     "texto": "Dos segundos después, la nave se desintegra en el aire.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=khbFF3a3XWs",
+      "desde": 40,
+      "dur": 6,
+      "buscar_video": [
+       "SpaceShipTwo breakup",
+       "explosion sky"
+      ]
+     }
+    },
+    {
+     "texto": "Siebold sigue atado a su asiento, cayendo desde unos quince mil metros, casi sin oxígeno y sin traje de presión.",
+     "escena": {
+      "tipo": "foto",
+      "img": 14
+     }
+    },
+    {
+     "texto": "Se suelta las correas… y su paracaídas se abre solo.",
+     "escena": {
+      "tipo": "foto",
+      "img": 10
+     }
+    },
+    {
+     "texto": "Sobrevivió con heridas graves. Su compañero, Michael Alsbury, murió.",
+     "escena": {
+      "tipo": "foto",
+      "img": 2
+     }
+    },
+    {
+     "texto": "Fue el primero en la historia en sobrevivir a la destrucción de una nave espacial en pleno vuelo.",
+     "escena": {
+      "tipo": "video",
+      "url": "https://www.youtube.com/watch?v=83Xu3LTbKs4",
+      "desde": 20,
+      "dur": 6,
+      "buscar_video": [
+       "SpaceShipTwo debris",
+       "NTSB investigators desert"
+      ]
+     }
+    },
+    {
+     "texto": "¿Tú habrías subido a esa nave? Comparte esta historia y sigue a Ridmer.",
+     "escena": {
+      "tipo": "foto",
+      "img": 7
+     }
+    }
+   ]
+  },
+  {
+   "eid": "fb1f",
+   "tipo": "foto",
+   "omitir": true,
+   "hora_foto": "15:30",
+   "titulo_youtube": "Abrió su manta frente al obispo… y apareció la Virgen",
+   "texto_foto": "Abrió su manta frente al obispo… y nadie pudo explicar lo que apareció.\n\nSegún la tradición guadalupana, en diciembre de 1531 un indígena llamado Juan Diego caminaba por el cerro del Tepeyac, en lo que hoy es Ciudad de México, cuando una señora lo llamó. Era la Virgen María, y le pidió que fuera con el obispo, fray Juan de Zumárraga, para que le construyeran un templo en ese lugar.\n\nEl obispo no le creyó y le pidió una prueba.\n\nEl 12 de diciembre, la Virgen le dijo que subiera a la cima del cerro. Era pleno invierno y la tierra estaba seca… pero allí encontró rosas de Castilla. Las guardó en su ayate, su manta, y se las llevó al obispo.\n\nAl abrir la manta, las rosas cayeron al suelo y en la tela apareció la imagen de la Virgen de Guadalupe. Según la tradición, es la misma tela que hoy se exhibe en la Basílica, y millones de personas la visitan cada año.\n\n¿Tú ya la visitaste o te gustaría ir?\n#HistoriasReales #VirgenDeGuadalupe #Mexico"
+  },
+  {
+   "eid": "fb2f",
+   "tipo": "foto",
+   "omitir": true,
+   "hora_foto": "20:00",
+   "titulo_youtube": "Su nave se rompió a 15 kilómetros de altura… y sobrevivió",
+   "texto_foto": "Su nave espacial se rompió a 15 kilómetros de altura… y él sobrevivió.\n\nEl 31 de octubre de 2014, la nave VSS Enterprise de Virgin Galactic hacía un vuelo de prueba sobre el desierto de Mojave, en California. Iba colgada de un avión nodriza. A gran altura la soltaron y encendió su nuevo motor cohete.\n\nPero unos segundos después, el copiloto desbloqueó demasiado pronto el sistema de frenado de la cola. La nave se desintegró en el aire y dejó restos a lo largo de decenas de kilómetros.\n\nEl piloto, Peter Siebold, seguía atado a su asiento, cayendo desde unos 15.000 metros, una altura casi sin oxígeno, y sin traje de presión. Se soltó las correas y su paracaídas se abrió solo. Sobrevivió con heridas graves. Su compañero, Michael Alsbury, murió.\n\nFue la primera vez en la historia que alguien sobrevivió a la destrucción de una nave espacial en pleno vuelo mientras otros a bordo morían.\n\n¿Tú te subirías a una nave así?\n#HistoriasReales #Supervivencia #DatosCuriosos"
+  }
+ ],
+ "notas": "Sin noticias urgentes (no hubo encargo de noticia). Sin largo hoy (hay_largo=false). Encargos usados tal cual: fb1 Virgen de Guadalupe, fb2 El Dorado, fb3 Virgin Galactic 2014."
+}
