@@ -49,7 +49,7 @@
      "escena": {
       "tipo": "video",
       "url": "https://www.youtube.com/watch?v=ZAjPiZ9UWCA",
-      "desde": 20,
+      "desde": 3,
       "dur": 6,
       "buscar_video": [
        "Basilica of Our Lady of Guadalupe",
@@ -115,7 +115,7 @@
      "escena": {
       "tipo": "video",
       "url": "https://www.youtube.com/watch?v=IVp-JukoGt4",
-      "desde": 30,
+      "desde": 3,
       "dur": 6,
       "buscar_video": [
        "Basilica of Our Lady of Guadalupe",
@@ -129,7 +129,7 @@
      "escena": {
       "tipo": "video",
       "url": "https://www.youtube.com/watch?v=moKoIFw2g5w",
-      "desde": 20,
+      "desde": 3,
       "dur": 6,
       "buscar_video": [
        "Basílica de Guadalupe",
@@ -219,7 +219,7 @@
      "escena": {
       "tipo": "video",
       "url": "https://www.youtube.com/watch?v=moKoIFw2g5w",
-      "desde": 20,
+      "desde": 3,
       "dur": 6,
       "buscar_video": [
        "Basílica de Guadalupe",
