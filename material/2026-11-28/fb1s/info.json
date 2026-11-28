@@ -1,0 +1,517 @@
+{
+ "eid": "fb1s",
+ "hook_fin": 2.83,
+ "duracion_voz": 37.726,
+ "segmentos": [
+  {
+   "texto": "Abrió su manta… y nadie pudo explicarlo.",
+   "t0": 0.0,
+   "img": "esc_00.jpg",
+   "escena": {
+    "tipo": "fecha",
+    "texto": "12 DE DICIEMBRE DE 1531",
+    "sub": "Ciudad de México"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Mil quinientos treinta y uno. Según la tradición, en el cerro del Tepeyac, una señora le habla al indígena Juan Diego.",
+   "t0": 2.83,
+   "img": "esc_01.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 17
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Le pide un templo, pero el obispo no le cree y exige una prueba.",
+   "t0": 12.96,
+   "img": "esc_02.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 22
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "En pleno invierno, Juan Diego encuentra rosas en la cima del cerro y las guarda en su manta.",
+   "t0": 16.66,
+   "img": "esc_03.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 15
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Ante el obispo, la abre: caen las rosas… y en la tela aparece la imagen de la Virgen.",
+   "t0": 23.54,
+   "img": "esc_04.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 23
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Hoy esa tela está en la Basílica de Guadalupe. Sígueme en Ridmer para más.",
+   "t0": 31.18,
+   "img": null,
+   "escena": {
+    "tipo": "video",
+    "url": "https://www.youtube.com/watch?v=moKoIFw2g5w",
+    "desde": 20,
+    "dur": 6,
+    "buscar_video": [
+     "pilgrims Guadalupe Mexico",
+     "Basilica Guadalupe crowd"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  }
+ ],
+ "palabras": [
+  [
+   0.08,
+   0.42,
+   "Abrió"
+  ],
+  [
+   0.42,
+   0.66,
+   "su"
+  ],
+  [
+   0.66,
+   1.0,
+   "manta"
+  ],
+  [
+   1.0,
+   2.0,
+   "y"
+  ],
+  [
+   2.0,
+   2.46,
+   "nadie"
+  ],
+  [
+   2.46,
+   2.83,
+   "pudo"
+  ],
+  [
+   2.91,
+   3.59,
+   "1531."
+  ],
+  [
+   4.73,
+   5.09,
+   "Según"
+  ],
+  [
+   5.09,
+   5.21,
+   "la"
+  ],
+  [
+   5.21,
+   5.73,
+   "tradición,"
+  ],
+  [
+   6.51,
+   6.63,
+   "en"
+  ],
+  [
+   6.63,
+   6.77,
+   "el"
+  ],
+  [
+   6.77,
+   7.11,
+   "Cerro"
+  ],
+  [
+   7.11,
+   7.23,
+   "del"
+  ],
+  [
+   7.23,
+   7.83,
+   "Tepeyac,"
+  ],
+  [
+   8.41,
+   8.65,
+   "una"
+  ],
+  [
+   8.65,
+   8.99,
+   "señora"
+  ],
+  [
+   8.99,
+   9.23,
+   "le"
+  ],
+  [
+   9.23,
+   9.47,
+   "habla"
+  ],
+  [
+   9.47,
+   9.65,
+   "al"
+  ],
+  [
+   9.65,
+   10.17,
+   "indígena"
+  ],
+  [
+   10.17,
+   10.37,
+   "Juan"
+  ],
+  [
+   10.37,
+   10.67,
+   "Diego."
+  ],
+  [
+   10.67,
+   11.83,
+   "Le"
+  ],
+  [
+   11.83,
+   12.01,
+   "pide"
+  ],
+  [
+   12.01,
+   12.15,
+   "un"
+  ],
+  [
+   12.15,
+   12.63,
+   "templo,"
+  ],
+  [
+   13.21,
+   13.39,
+   "pero"
+  ],
+  [
+   13.39,
+   13.51,
+   "el"
+  ],
+  [
+   13.51,
+   13.87,
+   "obispo"
+  ],
+  [
+   13.87,
+   13.99,
+   "no"
+  ],
+  [
+   13.99,
+   14.13,
+   "le"
+  ],
+  [
+   14.13,
+   14.35,
+   "cree"
+  ],
+  [
+   14.35,
+   14.77,
+   "y"
+  ],
+  [
+   14.77,
+   15.23,
+   "exige"
+  ],
+  [
+   15.23,
+   15.41,
+   "una"
+  ],
+  [
+   15.41,
+   15.71,
+   "prueba."
+  ],
+  [
+   16.91,
+   17.23,
+   "En"
+  ],
+  [
+   17.23,
+   17.55,
+   "pleno"
+  ],
+  [
+   17.55,
+   18.01,
+   "invierno,"
+  ],
+  [
+   18.59,
+   18.71,
+   "Juan"
+  ],
+  [
+   18.71,
+   18.93,
+   "Diego"
+  ],
+  [
+   18.93,
+   19.23,
+   "encuentra"
+  ],
+  [
+   19.23,
+   19.83,
+   "rosas"
+  ],
+  [
+   19.83,
+   20.03,
+   "en"
+  ],
+  [
+   20.03,
+   20.17,
+   "la"
+  ],
+  [
+   20.17,
+   20.47,
+   "cima"
+  ],
+  [
+   20.47,
+   20.69,
+   "del"
+  ],
+  [
+   20.69,
+   21.09,
+   "Cerro"
+  ],
+  [
+   21.09,
+   21.79,
+   "y"
+  ],
+  [
+   21.79,
+   21.97,
+   "las"
+  ],
+  [
+   21.97,
+   22.27,
+   "guarda"
+  ],
+  [
+   22.27,
+   22.35,
+   "en"
+  ],
+  [
+   22.35,
+   22.47,
+   "su"
+  ],
+  [
+   22.47,
+   22.77,
+   "manta."
+  ],
+  [
+   23.79,
+   24.09,
+   "Ante"
+  ],
+  [
+   24.09,
+   24.17,
+   "el"
+  ],
+  [
+   24.17,
+   24.57,
+   "obispo,"
+  ],
+  [
+   25.15,
+   25.27,
+   "la"
+  ],
+  [
+   25.27,
+   25.51,
+   "abre,"
+  ],
+  [
+   26.31,
+   26.69,
+   "caen"
+  ],
+  [
+   26.69,
+   26.85,
+   "las"
+  ],
+  [
+   26.85,
+   27.35,
+   "rosas"
+  ],
+  [
+   27.35,
+   28.25,
+   "y"
+  ],
+  [
+   28.25,
+   28.35,
+   "en"
+  ],
+  [
+   28.35,
+   28.47,
+   "la"
+  ],
+  [
+   28.47,
+   28.65,
+   "tela"
+  ],
+  [
+   28.65,
+   29.13,
+   "aparece"
+  ],
+  [
+   29.13,
+   29.35,
+   "la"
+  ],
+  [
+   29.35,
+   29.73,
+   "imagen"
+  ],
+  [
+   29.73,
+   29.91,
+   "de"
+  ],
+  [
+   29.91,
+   30.03,
+   "la"
+  ],
+  [
+   30.03,
+   30.43,
+   "virgen."
+  ],
+  [
+   31.43,
+   31.67,
+   "Hoy"
+  ],
+  [
+   31.67,
+   32.43,
+   "esa"
+  ],
+  [
+   32.43,
+   32.65,
+   "tela"
+  ],
+  [
+   32.65,
+   32.87,
+   "está"
+  ],
+  [
+   32.87,
+   32.97,
+   "en"
+  ],
+  [
+   32.97,
+   33.07,
+   "la"
+  ],
+  [
+   33.07,
+   33.61,
+   "vacílica"
+  ],
+  [
+   33.61,
+   33.77,
+   "de"
+  ],
+  [
+   33.77,
+   34.25,
+   "Guadalupe."
+  ],
+  [
+   35.59,
+   35.85,
+   "Sigue"
+  ],
+  [
+   35.85,
+   35.99,
+   "en"
+  ],
+  [
+   35.99,
+   36.39,
+   "Ritmer"
+  ],
+  [
+   36.39,
+   36.77,
+   "para"
+  ],
+  [
+   36.77,
+   36.95,
+   "más."
+  ]
+ ]
+}

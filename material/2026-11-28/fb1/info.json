@@ -1,0 +1,860 @@
+{
+ "eid": "fb1",
+ "hook_fin": 3.69,
+ "duracion_voz": 59.259,
+ "segmentos": [
+  {
+   "texto": "Abrió su manta… y nadie pudo explicarlo.",
+   "t0": 0.0,
+   "img": "esc_00.jpg",
+   "escena": {
+    "tipo": "fecha",
+    "texto": "12 DE DICIEMBRE DE 1531",
+    "sub": "Ciudad de México"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Mil quinientos treinta y uno. Cerro del Tepeyac, hoy Ciudad de México.",
+   "t0": 3.69,
+   "img": null,
+   "escena": {
+    "tipo": "video",
+    "url": "https://www.youtube.com/watch?v=ZAjPiZ9UWCA",
+    "desde": 20,
+    "dur": 6,
+    "buscar_video": [
+     "Basilica of Guadalupe Mexico City",
+     "Tepeyac"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Según la tradición, el indígena Juan Diego camina al amanecer… y una señora lo llama.",
+   "t0": 10.5,
+   "img": "esc_02.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 17
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Le pide ir con el obispo para que le construyan un templo allí.",
+   "t0": 15.48,
+   "img": "esc_03.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 22
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "El obispo no le cree. Le pide una prueba.",
+   "t0": 19.86,
+   "img": "esc_04.jpg",
+   "escena": {
+    "tipo": "fecha",
+    "texto": "NO LE CREYÓ",
+    "sub": "El obispo pidió una prueba"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Juan Diego sube a la cima en pleno invierno… y encuentra rosas de Castilla.",
+   "t0": 23.36,
+   "img": "esc_05.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 15
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Las guarda en su manta y las lleva al obispo.",
+   "t0": 28.86,
+   "img": "esc_06.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 1
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Abre la manta. Las rosas caen al suelo… y en la tela aparece la imagen de la Virgen.",
+   "t0": 33.76,
+   "img": "esc_07.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 23
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Según la tradición, es la misma tela que hoy se exhibe en la Basílica de Guadalupe.",
+   "t0": 39.46,
+   "img": "esc_08.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 21
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Especialistas de muchos países la han estudiado durante siglos.",
+   "t0": 45.14,
+   "img": null,
+   "escena": {
+    "tipo": "video",
+    "url": "https://www.youtube.com/watch?v=IVp-JukoGt4",
+    "desde": 30,
+    "dur": 6,
+    "buscar_video": [
+     "Basilica of Guadalupe interior"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Y cada doce de diciembre, millones de personas llegan a verla.",
+   "t0": 49.01,
+   "img": null,
+   "escena": {
+    "tipo": "video",
+    "url": "https://www.youtube.com/watch?v=moKoIFw2g5w",
+    "desde": 20,
+    "dur": 6,
+    "buscar_video": [
+     "pilgrims Guadalupe Mexico",
+     "Basilica Guadalupe crowd"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "¿Tú la has visitado? Comparte esta historia y sigue a Ridmer.",
+   "t0": 54.2,
+   "img": "esc_11.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 13
+   },
+   "short": false,
+   "rotulo": ""
+  }
+ ],
+ "palabras": [
+  [
+   0.08,
+   0.84,
+   "abrió"
+  ],
+  [
+   0.84,
+   1.12,
+   "su"
+  ],
+  [
+   1.12,
+   1.48,
+   "manta"
+  ],
+  [
+   1.48,
+   2.78,
+   "y"
+  ],
+  [
+   2.78,
+   3.2,
+   "nadie"
+  ],
+  [
+   3.2,
+   3.69,
+   "pudo"
+  ],
+  [
+   3.77,
+   4.53,
+   "1531,"
+  ],
+  [
+   5.35,
+   5.87,
+   "Cerro"
+  ],
+  [
+   5.87,
+   6.01,
+   "del"
+  ],
+  [
+   6.01,
+   6.15,
+   "de"
+  ],
+  [
+   6.15,
+   6.51,
+   "Bellac,"
+  ],
+  [
+   7.05,
+   7.37,
+   "hoy"
+  ],
+  [
+   7.37,
+   7.95,
+   "Ciudad"
+  ],
+  [
+   7.95,
+   8.07,
+   "de"
+  ],
+  [
+   8.07,
+   8.37,
+   "México"
+  ],
+  [
+   9.01,
+   9.61,
+   "Según"
+  ],
+  [
+   9.61,
+   9.73,
+   "la"
+  ],
+  [
+   9.73,
+   10.19,
+   "tradición,"
+  ],
+  [
+   10.75,
+   10.79,
+   "el"
+  ],
+  [
+   10.79,
+   11.23,
+   "indígena"
+  ],
+  [
+   11.23,
+   11.43,
+   "Juan"
+  ],
+  [
+   11.43,
+   11.77,
+   "Diego"
+  ],
+  [
+   11.77,
+   12.45,
+   "camina"
+  ],
+  [
+   12.45,
+   12.63,
+   "al"
+  ],
+  [
+   12.63,
+   13.07,
+   "amanecer"
+  ],
+  [
+   13.07,
+   13.89,
+   "y"
+  ],
+  [
+   13.89,
+   14.07,
+   "una"
+  ],
+  [
+   14.07,
+   14.39,
+   "señora"
+  ],
+  [
+   14.39,
+   14.71,
+   "lo"
+  ],
+  [
+   14.71,
+   14.93,
+   "llama."
+  ],
+  [
+   15.73,
+   15.89,
+   "Le"
+  ],
+  [
+   15.89,
+   16.07,
+   "pide"
+  ],
+  [
+   16.07,
+   16.23,
+   "ir"
+  ],
+  [
+   16.23,
+   16.45,
+   "con"
+  ],
+  [
+   16.45,
+   16.55,
+   "el"
+  ],
+  [
+   16.55,
+   16.99,
+   "obispo"
+  ],
+  [
+   16.99,
+   17.41,
+   "para"
+  ],
+  [
+   17.41,
+   17.51,
+   "que"
+  ],
+  [
+   17.51,
+   17.63,
+   "le"
+  ],
+  [
+   17.63,
+   18.25,
+   "construyan"
+  ],
+  [
+   18.25,
+   18.43,
+   "un"
+  ],
+  [
+   18.43,
+   18.97,
+   "templo"
+  ],
+  [
+   18.97,
+   19.17,
+   "allí."
+  ],
+  [
+   20.11,
+   20.29,
+   "El"
+  ],
+  [
+   20.29,
+   20.63,
+   "obispo"
+  ],
+  [
+   20.63,
+   20.93,
+   "no"
+  ],
+  [
+   20.93,
+   21.05,
+   "le"
+  ],
+  [
+   21.05,
+   21.21,
+   "cree,"
+  ],
+  [
+   21.83,
+   22.01,
+   "le"
+  ],
+  [
+   22.01,
+   22.23,
+   "pide"
+  ],
+  [
+   22.23,
+   22.41,
+   "una"
+  ],
+  [
+   22.41,
+   22.73,
+   "prueba."
+  ],
+  [
+   23.61,
+   23.91,
+   "Juan"
+  ],
+  [
+   23.91,
+   24.15,
+   "Diego"
+  ],
+  [
+   24.15,
+   24.43,
+   "sube"
+  ],
+  [
+   24.43,
+   24.53,
+   "a"
+  ],
+  [
+   24.53,
+   24.57,
+   "la"
+  ],
+  [
+   24.57,
+   24.89,
+   "cima"
+  ],
+  [
+   24.89,
+   25.13,
+   "en"
+  ],
+  [
+   25.13,
+   25.51,
+   "pleno"
+  ],
+  [
+   25.51,
+   25.97,
+   "invierno"
+  ],
+  [
+   25.97,
+   26.53,
+   "y"
+  ],
+  [
+   26.53,
+   26.97,
+   "encuentra"
+  ],
+  [
+   26.97,
+   27.53,
+   "rosas"
+  ],
+  [
+   27.53,
+   27.65,
+   "de"
+  ],
+  [
+   27.65,
+   28.13,
+   "castilla."
+  ],
+  [
+   29.11,
+   29.21,
+   "Las"
+  ],
+  [
+   29.21,
+   29.53,
+   "guarda"
+  ],
+  [
+   29.53,
+   29.61,
+   "en"
+  ],
+  [
+   29.61,
+   29.75,
+   "su"
+  ],
+  [
+   29.75,
+   30.05,
+   "manta"
+  ],
+  [
+   30.05,
+   30.63,
+   "y"
+  ],
+  [
+   30.63,
+   30.77,
+   "las"
+  ],
+  [
+   30.77,
+   31.01,
+   "lleva"
+  ],
+  [
+   31.01,
+   31.17,
+   "al"
+  ],
+  [
+   31.17,
+   31.49,
+   "obispo."
+  ],
+  [
+   31.49,
+   32.73,
+   "Abre"
+  ],
+  [
+   32.73,
+   32.87,
+   "la"
+  ],
+  [
+   32.87,
+   33.11,
+   "manta,"
+  ],
+  [
+   34.01,
+   34.15,
+   "las"
+  ],
+  [
+   34.15,
+   34.55,
+   "rosas"
+  ],
+  [
+   34.55,
+   34.89,
+   "caen"
+  ],
+  [
+   34.89,
+   35.05,
+   "al"
+  ],
+  [
+   35.05,
+   35.37,
+   "suelo"
+  ],
+  [
+   35.37,
+   36.13,
+   "y"
+  ],
+  [
+   36.13,
+   36.23,
+   "en"
+  ],
+  [
+   36.23,
+   36.35,
+   "la"
+  ],
+  [
+   36.35,
+   36.57,
+   "tela"
+  ],
+  [
+   36.57,
+   37.55,
+   "aparece"
+  ],
+  [
+   37.55,
+   37.81,
+   "la"
+  ],
+  [
+   37.81,
+   38.21,
+   "imagen"
+  ],
+  [
+   38.21,
+   38.45,
+   "de"
+  ],
+  [
+   38.45,
+   38.57,
+   "la"
+  ],
+  [
+   38.57,
+   38.93,
+   "virgen."
+  ],
+  [
+   39.71,
+   40.31,
+   "Según"
+  ],
+  [
+   40.31,
+   40.47,
+   "la"
+  ],
+  [
+   40.47,
+   40.93,
+   "tradición"
+  ],
+  [
+   40.93,
+   41.51,
+   "es"
+  ],
+  [
+   41.51,
+   41.63,
+   "la"
+  ],
+  [
+   41.63,
+   41.93,
+   "misma"
+  ],
+  [
+   41.93,
+   42.23,
+   "tela"
+  ],
+  [
+   42.23,
+   42.47,
+   "que"
+  ],
+  [
+   42.47,
+   42.67,
+   "hoy"
+  ],
+  [
+   42.67,
+   42.83,
+   "se"
+  ],
+  [
+   42.83,
+   43.15,
+   "exhibe"
+  ],
+  [
+   43.15,
+   43.25,
+   "en"
+  ],
+  [
+   43.25,
+   43.35,
+   "la"
+  ],
+  [
+   43.35,
+   43.89,
+   "vacílica"
+  ],
+  [
+   43.89,
+   44.03,
+   "de"
+  ],
+  [
+   44.03,
+   44.53,
+   "Guadalupe."
+  ],
+  [
+   45.39,
+   46.03,
+   "Especialistas"
+  ],
+  [
+   46.03,
+   46.29,
+   "de"
+  ],
+  [
+   46.29,
+   46.65,
+   "muchos"
+  ],
+  [
+   46.65,
+   47.15,
+   "países"
+  ],
+  [
+   47.15,
+   47.43,
+   "la"
+  ],
+  [
+   47.43,
+   47.55,
+   "han"
+  ],
+  [
+   47.55,
+   48.07,
+   "estudiado"
+  ],
+  [
+   48.07,
+   48.35,
+   "durante"
+  ],
+  [
+   48.35,
+   48.99,
+   "siglos"
+  ],
+  [
+   48.99,
+   49.77,
+   "y"
+  ],
+  [
+   49.77,
+   50.03,
+   "cada"
+  ],
+  [
+   50.03,
+   50.37,
+   "12"
+  ],
+  [
+   50.37,
+   50.57,
+   "de"
+  ],
+  [
+   50.57,
+   51.01,
+   "diciembre"
+  ],
+  [
+   51.01,
+   51.85,
+   "millones"
+  ],
+  [
+   51.85,
+   52.21,
+   "de"
+  ],
+  [
+   52.21,
+   52.53,
+   "personas"
+  ],
+  [
+   52.53,
+   53.07,
+   "llegan"
+  ],
+  [
+   53.07,
+   53.19,
+   "a"
+  ],
+  [
+   53.19,
+   53.47,
+   "verla."
+  ],
+  [
+   54.45,
+   54.59,
+   "¿Tú"
+  ],
+  [
+   54.59,
+   54.73,
+   "la"
+  ],
+  [
+   54.73,
+   54.83,
+   "has"
+  ],
+  [
+   54.83,
+   55.27,
+   "visitado?"
+  ],
+  [
+   56.05,
+   56.47,
+   "Comparte"
+  ],
+  [
+   56.47,
+   56.67,
+   "esta"
+  ],
+  [
+   56.67,
+   57.01,
+   "historia"
+  ],
+  [
+   57.01,
+   57.71,
+   "y"
+  ],
+  [
+   57.71,
+   57.95,
+   "sigue"
+  ],
+  [
+   57.95,
+   58.33,
+   "Ritmer."
+  ]
+ ]
+}

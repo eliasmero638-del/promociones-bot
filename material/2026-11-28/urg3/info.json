@@ -1,0 +1,1052 @@
+{
+ "eid": "urg3",
+ "hook_fin": 6.23,
+ "duracion_voz": 73.893,
+ "segmentos": [
+  {
+   "texto": "Una explosión junto a una escuela en Afganistán... dejó al menos diez estudiantes muertos.",
+   "t0": 0.0,
+   "img": "esc_00.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "Kunar province Afghanistan",
+     "Asadabad Kunar",
+     "Kunar valley"
+    ],
+    "buscar_video": [
+     "Kunar Afghanistan",
+     "Afghanistan mountain valley"
+    ]
+   },
+   "short": true,
+   "rotulo": ""
+  },
+  {
+   "texto": "Pasó este sábado, cerca de las diez de la mañana, en la provincia de Kunar, en el este del país.",
+   "t0": 6.23,
+   "img": "esc_01.jpg",
+   "escena": {
+    "tipo": "mapa",
+    "lat": 34.87,
+    "lon": 71.15,
+    "lugar": "Kunar · Afganistán",
+    "km": 30
+   },
+   "short": true,
+   "rotulo": ""
+  },
+  {
+   "texto": "Kunar es una provincia de montañas, en la frontera con Pakistán.",
+   "t0": 13.08,
+   "img": "esc_02.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "Kunar river valley mountains",
+     "Kunar River",
+     "Hindu Kush Kunar"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "El estallido ocurrió en una casa pegada a una escuela secundaria, en la zona de Andar Ser.",
+   "t0": 18.04,
+   "img": "esc_03.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "Afghanistan village school",
+     "school in Kunar Afghanistan",
+     "Afghan schoolchildren classroom"
+    ]
+   },
+   "short": true,
+   "rotulo": ""
+  },
+  {
+   "texto": "Según las autoridades de la provincia, en esa casa vivían personas dedicadas a la minería... y guardaban dinamita.",
+   "t0": 24.76,
+   "img": "esc_04.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "dynamite sticks",
+     "mining explosives"
+    ]
+   },
+   "short": true,
+   "rotulo": "DINAMITA"
+  },
+  {
+   "texto": "Por eso, varios medios la describen como una explosión accidental.",
+   "t0": 32.82,
+   "img": "esc_05.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "Afghanistan mountain village houses",
+     "Kunar village"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Las primeras cifras hablaban de seis o siete muertos y casi cien heridos.",
+   "t0": 37.5,
+   "img": "esc_06.jpg",
+   "escena": {
+    "tipo": "fecha",
+    "texto": "28 DE NOVIEMBRE",
+    "sub": "Kunar, Afganistán"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Pero horas después, los funcionarios elevaron el balance: al menos diez estudiantes muertos y unos ciento diez heridos.",
+   "t0": 42.7,
+   "img": null,
+   "escena": {
+    "tipo": "contador",
+    "n": 10,
+    "texto": "ESTUDIANTES MUERTOS",
+    "sub": "y unos 110 heridos"
+   },
+   "short": true,
+   "rotulo": ""
+  },
+  {
+   "texto": "Los heridos fueron llevados al hospital provincial de Kunar. Su director advirtió que las cifras todavía pueden cambiar.",
+   "t0": 51.42,
+   "img": "esc_08.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "Asadabad hospital",
+     "Afghanistan hospital ward",
+     "ambulance Afghanistan"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Equipos de investigación de la provincia ya están en el lugar.",
+   "t0": 58.72,
+   "img": "esc_09.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "Asadabad city",
+     "Asadabad Afghanistan"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Hasta ahora, las autoridades no han hablado de un ataque.",
+   "t0": 62.28,
+   "img": "esc_10.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "Kunar province landscape",
+     "Pech valley"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Nuestros pensamientos están con las familias de las víctimas. Suscríbete a Ridmer para más noticias como esta.",
+   "t0": 66.16,
+   "img": "esc_11.jpg",
+   "escena": {
+    "tipo": "foto",
+    "buscar": [
+     "Kunar River",
+     "Afghanistan mountains sunset"
+    ]
+   },
+   "short": true,
+   "rotulo": ""
+  }
+ ],
+ "palabras": [
+  [
+   0.08,
+   0.72,
+   "Una"
+  ],
+  [
+   0.72,
+   1.36,
+   "explosión"
+  ],
+  [
+   1.36,
+   1.7,
+   "junto"
+  ],
+  [
+   1.7,
+   1.98,
+   "a"
+  ],
+  [
+   1.98,
+   2.14,
+   "una"
+  ],
+  [
+   2.14,
+   2.5,
+   "escuela"
+  ],
+  [
+   2.5,
+   2.74,
+   "en"
+  ],
+  [
+   2.74,
+   3.42,
+   "Afganistán"
+  ],
+  [
+   3.42,
+   4.66,
+   "dejó"
+  ],
+  [
+   4.66,
+   4.78,
+   "al"
+  ],
+  [
+   4.78,
+   5.0,
+   "menos"
+  ],
+  [
+   5.0,
+   5.48,
+   "10"
+  ],
+  [
+   5.48,
+   6.23,
+   "estudiantes"
+  ],
+  [
+   6.31,
+   6.95,
+   "Pasó"
+  ],
+  [
+   6.95,
+   7.17,
+   "este"
+  ],
+  [
+   7.17,
+   7.65,
+   "sábado,"
+  ],
+  [
+   8.03,
+   8.33,
+   "cerca"
+  ],
+  [
+   8.33,
+   8.55,
+   "de"
+  ],
+  [
+   8.55,
+   8.69,
+   "las"
+  ],
+  [
+   8.69,
+   8.89,
+   "10"
+  ],
+  [
+   8.89,
+   9.07,
+   "de"
+  ],
+  [
+   9.07,
+   9.15,
+   "la"
+  ],
+  [
+   9.15,
+   9.49,
+   "mañana,"
+  ],
+  [
+   9.89,
+   10.01,
+   "en"
+  ],
+  [
+   10.01,
+   10.13,
+   "la"
+  ],
+  [
+   10.13,
+   10.71,
+   "provincia"
+  ],
+  [
+   10.71,
+   10.85,
+   "de"
+  ],
+  [
+   10.85,
+   11.29,
+   "Kunar,"
+  ],
+  [
+   11.67,
+   11.73,
+   "en"
+  ],
+  [
+   11.73,
+   11.87,
+   "el"
+  ],
+  [
+   11.87,
+   12.11,
+   "este"
+  ],
+  [
+   12.11,
+   12.31,
+   "del"
+  ],
+  [
+   12.31,
+   12.57,
+   "país."
+  ],
+  [
+   13.33,
+   14.05,
+   "Kunar"
+  ],
+  [
+   14.05,
+   14.21,
+   "es"
+  ],
+  [
+   14.21,
+   14.37,
+   "una"
+  ],
+  [
+   14.37,
+   14.85,
+   "provincia"
+  ],
+  [
+   14.85,
+   14.99,
+   "de"
+  ],
+  [
+   14.99,
+   15.69,
+   "montañas,"
+  ],
+  [
+   16.03,
+   16.11,
+   "en"
+  ],
+  [
+   16.11,
+   16.21,
+   "la"
+  ],
+  [
+   16.21,
+   16.63,
+   "frontera"
+  ],
+  [
+   16.63,
+   16.87,
+   "con"
+  ],
+  [
+   16.87,
+   17.37,
+   "Pakistán."
+  ],
+  [
+   18.29,
+   18.47,
+   "El"
+  ],
+  [
+   18.47,
+   19.01,
+   "estallido"
+  ],
+  [
+   19.01,
+   19.49,
+   "ocurrió"
+  ],
+  [
+   19.49,
+   19.69,
+   "en"
+  ],
+  [
+   19.69,
+   19.87,
+   "una"
+  ],
+  [
+   19.87,
+   20.25,
+   "casa"
+  ],
+  [
+   20.25,
+   20.83,
+   "pegada"
+  ],
+  [
+   20.83,
+   20.99,
+   "a"
+  ],
+  [
+   20.99,
+   21.15,
+   "una"
+  ],
+  [
+   21.15,
+   21.57,
+   "escuela"
+  ],
+  [
+   21.57,
+   22.33,
+   "secundaria,"
+  ],
+  [
+   22.77,
+   22.85,
+   "en"
+  ],
+  [
+   22.85,
+   22.95,
+   "la"
+  ],
+  [
+   22.95,
+   23.31,
+   "zona"
+  ],
+  [
+   23.31,
+   23.53,
+   "de"
+  ],
+  [
+   23.53,
+   24.03,
+   "Andarcer."
+  ],
+  [
+   25.01,
+   25.51,
+   "Según"
+  ],
+  [
+   25.51,
+   25.67,
+   "las"
+  ],
+  [
+   25.67,
+   26.25,
+   "autoridades"
+  ],
+  [
+   26.25,
+   26.47,
+   "de"
+  ],
+  [
+   26.47,
+   26.57,
+   "la"
+  ],
+  [
+   26.57,
+   27.09,
+   "provincia,"
+  ],
+  [
+   27.57,
+   27.63,
+   "en"
+  ],
+  [
+   27.63,
+   27.79,
+   "esa"
+  ],
+  [
+   27.79,
+   28.11,
+   "casa"
+  ],
+  [
+   28.11,
+   28.55,
+   "vivían"
+  ],
+  [
+   28.55,
+   28.97,
+   "personas"
+  ],
+  [
+   28.97,
+   29.65,
+   "dedicadas"
+  ],
+  [
+   29.65,
+   29.87,
+   "a"
+  ],
+  [
+   29.87,
+   29.93,
+   "la"
+  ],
+  [
+   29.93,
+   30.41,
+   "minería"
+  ],
+  [
+   30.41,
+   31.05,
+   "y"
+  ],
+  [
+   31.05,
+   31.63,
+   "guardaban"
+  ],
+  [
+   31.63,
+   32.19,
+   "dinamita."
+  ],
+  [
+   33.07,
+   33.31,
+   "Por"
+  ],
+  [
+   33.31,
+   33.49,
+   "eso"
+  ],
+  [
+   33.49,
+   33.83,
+   "varios"
+  ],
+  [
+   33.83,
+   34.29,
+   "medios"
+  ],
+  [
+   34.29,
+   34.55,
+   "la"
+  ],
+  [
+   34.55,
+   34.99,
+   "describen"
+  ],
+  [
+   34.99,
+   35.23,
+   "como"
+  ],
+  [
+   35.23,
+   35.53,
+   "una"
+  ],
+  [
+   35.53,
+   36.21,
+   "explosión"
+  ],
+  [
+   36.21,
+   36.75,
+   "accidental."
+  ],
+  [
+   37.75,
+   37.99,
+   "Las"
+  ],
+  [
+   37.99,
+   38.35,
+   "primeras"
+  ],
+  [
+   38.35,
+   38.77,
+   "cifras"
+  ],
+  [
+   38.77,
+   39.23,
+   "hablaban"
+  ],
+  [
+   39.23,
+   39.39,
+   "de"
+  ],
+  [
+   39.39,
+   39.75,
+   "seis"
+  ],
+  [
+   39.75,
+   39.99,
+   "o"
+  ],
+  [
+   39.99,
+   40.21,
+   "siete"
+  ],
+  [
+   40.21,
+   40.69,
+   "muertos"
+  ],
+  [
+   40.69,
+   41.21,
+   "y"
+  ],
+  [
+   41.21,
+   41.41,
+   "casi"
+  ],
+  [
+   41.41,
+   41.79,
+   "100"
+  ],
+  [
+   41.79,
+   42.23,
+   "heridos."
+  ],
+  [
+   42.95,
+   43.13,
+   "Pero"
+  ],
+  [
+   43.13,
+   43.43,
+   "horas"
+  ],
+  [
+   43.43,
+   43.79,
+   "después,"
+  ],
+  [
+   44.33,
+   44.43,
+   "los"
+  ],
+  [
+   44.43,
+   44.99,
+   "funcionarios"
+  ],
+  [
+   44.99,
+   45.59,
+   "elevaron"
+  ],
+  [
+   45.59,
+   45.79,
+   "el"
+  ],
+  [
+   45.79,
+   46.13,
+   "balance."
+  ],
+  [
+   46.79,
+   46.97,
+   "Al"
+  ],
+  [
+   46.97,
+   47.13,
+   "menos"
+  ],
+  [
+   47.13,
+   47.55,
+   "diez"
+  ],
+  [
+   47.55,
+   48.19,
+   "estudiantes"
+  ],
+  [
+   48.19,
+   48.71,
+   "muertos"
+  ],
+  [
+   48.71,
+   49.27,
+   "y"
+  ],
+  [
+   49.27,
+   49.47,
+   "unos"
+  ],
+  [
+   49.47,
+   50.01,
+   "110"
+  ],
+  [
+   50.01,
+   50.71,
+   "heridos."
+  ],
+  [
+   51.67,
+   51.87,
+   "Los"
+  ],
+  [
+   51.87,
+   52.15,
+   "heridos"
+  ],
+  [
+   52.15,
+   52.41,
+   "fueron"
+  ],
+  [
+   52.41,
+   52.79,
+   "llevados"
+  ],
+  [
+   52.79,
+   52.97,
+   "al"
+  ],
+  [
+   52.97,
+   53.25,
+   "hospital"
+  ],
+  [
+   53.25,
+   53.83,
+   "provincial"
+  ],
+  [
+   53.83,
+   54.09,
+   "de"
+  ],
+  [
+   54.09,
+   54.49,
+   "Kunar."
+  ],
+  [
+   55.03,
+   55.15,
+   "Su"
+  ],
+  [
+   55.15,
+   55.39,
+   "director"
+  ],
+  [
+   55.39,
+   55.97,
+   "advirtió"
+  ],
+  [
+   55.97,
+   56.09,
+   "que"
+  ],
+  [
+   56.09,
+   56.23,
+   "las"
+  ],
+  [
+   56.23,
+   56.51,
+   "cifras"
+  ],
+  [
+   56.51,
+   57.05,
+   "todavía"
+  ],
+  [
+   57.05,
+   57.53,
+   "pueden"
+  ],
+  [
+   57.53,
+   57.87,
+   "cambiar."
+  ],
+  [
+   58.97,
+   59.35,
+   "Equipos"
+  ],
+  [
+   59.35,
+   59.43,
+   "de"
+  ],
+  [
+   59.43,
+   59.87,
+   "investigación"
+  ],
+  [
+   59.87,
+   60.19,
+   "de"
+  ],
+  [
+   60.19,
+   60.29,
+   "la"
+  ],
+  [
+   60.29,
+   60.83,
+   "provincia"
+  ],
+  [
+   60.83,
+   61.03,
+   "ya"
+  ],
+  [
+   61.03,
+   61.39,
+   "están"
+  ],
+  [
+   61.39,
+   61.55,
+   "en"
+  ],
+  [
+   61.55,
+   61.67,
+   "el"
+  ],
+  [
+   61.67,
+   61.89,
+   "lugar."
+  ],
+  [
+   62.53,
+   62.77,
+   "Hasta"
+  ],
+  [
+   62.77,
+   63.05,
+   "ahora,"
+  ],
+  [
+   63.45,
+   63.59,
+   "las"
+  ],
+  [
+   63.59,
+   64.09,
+   "autoridades"
+  ],
+  [
+   64.09,
+   64.43,
+   "no"
+  ],
+  [
+   64.43,
+   64.65,
+   "han"
+  ],
+  [
+   64.65,
+   65.03,
+   "hablado"
+  ],
+  [
+   65.03,
+   65.15,
+   "de"
+  ],
+  [
+   65.15,
+   65.31,
+   "un"
+  ],
+  [
+   65.31,
+   65.59,
+   "ataque."
+  ],
+  [
+   66.41,
+   67.05,
+   "Nuestros"
+  ],
+  [
+   67.05,
+   67.65,
+   "pensamientos"
+  ],
+  [
+   67.65,
+   67.97,
+   "están"
+  ],
+  [
+   67.97,
+   68.13,
+   "con"
+  ],
+  [
+   68.13,
+   68.29,
+   "las"
+  ],
+  [
+   68.29,
+   68.85,
+   "familias"
+  ],
+  [
+   68.85,
+   68.93,
+   "de"
+  ],
+  [
+   68.93,
+   69.05,
+   "las"
+  ],
+  [
+   69.05,
+   69.49,
+   "víctimas."
+  ],
+  [
+   70.29,
+   70.93,
+   "Suscríbete"
+  ],
+  [
+   70.93,
+   71.01,
+   "a"
+  ],
+  [
+   71.01,
+   71.27,
+   "Rhymer"
+  ],
+  [
+   71.27,
+   71.75,
+   "para"
+  ],
+  [
+   71.75,
+   71.97,
+   "más"
+  ],
+  [
+   71.97,
+   72.43,
+   "noticias"
+  ],
+  [
+   72.43,
+   72.65,
+   "como"
+  ],
+  [
+   72.65,
+   72.93,
+   "esta."
+  ]
+ ]
+}

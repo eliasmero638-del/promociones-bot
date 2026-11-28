@@ -1,0 +1,507 @@
+{
+ "eid": "fb2s",
+ "hook_fin": 2.27,
+ "duracion_voz": 40.425,
+ "segmentos": [
+  {
+   "texto": "Se cubría el cuerpo de oro.",
+   "t0": 0.0,
+   "img": "esc_00.jpg",
+   "escena": {
+    "tipo": "fecha",
+    "texto": "LAGUNA DE GUATAVITA",
+    "sub": "Colombia"
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Según las crónicas, en la laguna de Guatavita, en Colombia, cada nuevo cacique muisca era cubierto de polvo de oro.",
+   "t0": 2.27,
+   "img": null,
+   "escena": {
+    "tipo": "video",
+    "url": "https://www.youtube.com/watch?v=9ccH-XSjNbo",
+    "desde": 25,
+    "dur": 6,
+    "buscar_video": [
+     "Lake Guatavita",
+     "Guatavita Colombia aerial"
+    ]
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "En una balsa, iba al centro de la laguna y arrojaba oro y esmeraldas al agua.",
+   "t0": 12.2,
+   "img": "esc_02.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 16
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Los españoles imaginaron un reino de oro: El Dorado.",
+   "t0": 18.86,
+   "img": "esc_03.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 11
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Lo buscaron por selvas y ríos durante más de trescientos años… y nunca lo encontraron.",
+   "t0": 23.8,
+   "img": "esc_04.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 3
+   },
+   "short": false,
+   "rotulo": ""
+  },
+  {
+   "texto": "Hoy una balsa de oro muisca, en el Museo del Oro de Bogotá, muestra esa ceremonia. Sígueme en Ridmer para más.",
+   "t0": 31.24,
+   "img": "esc_05.jpg",
+   "escena": {
+    "tipo": "foto",
+    "img": 13
+   },
+   "short": false,
+   "rotulo": ""
+  }
+ ],
+ "palabras": [
+  [
+   0.08,
+   0.84,
+   "Se"
+  ],
+  [
+   0.84,
+   1.38,
+   "cubría"
+  ],
+  [
+   1.38,
+   1.58,
+   "el"
+  ],
+  [
+   1.58,
+   2.02,
+   "cuerpo"
+  ],
+  [
+   2.02,
+   2.27,
+   "de"
+  ],
+  [
+   2.35,
+   3.07,
+   "Según"
+  ],
+  [
+   3.07,
+   3.25,
+   "las"
+  ],
+  [
+   3.25,
+   3.73,
+   "crónicas,"
+  ],
+  [
+   4.51,
+   4.61,
+   "en"
+  ],
+  [
+   4.61,
+   4.73,
+   "la"
+  ],
+  [
+   4.73,
+   5.07,
+   "laguna"
+  ],
+  [
+   5.07,
+   5.27,
+   "de"
+  ],
+  [
+   5.27,
+   6.05,
+   "Guatavita,"
+  ],
+  [
+   6.51,
+   6.55,
+   "en"
+  ],
+  [
+   6.55,
+   6.93,
+   "Colombia,"
+  ],
+  [
+   7.73,
+   7.97,
+   "cada"
+  ],
+  [
+   7.97,
+   8.25,
+   "nuevo"
+  ],
+  [
+   8.25,
+   8.79,
+   "casique"
+  ],
+  [
+   8.79,
+   9.51,
+   "muisca"
+  ],
+  [
+   9.51,
+   9.99,
+   "era"
+  ],
+  [
+   9.99,
+   10.57,
+   "cubierto"
+  ],
+  [
+   10.57,
+   10.79,
+   "de"
+  ],
+  [
+   10.79,
+   11.31,
+   "polvo"
+  ],
+  [
+   11.31,
+   11.45,
+   "de"
+  ],
+  [
+   11.45,
+   11.67,
+   "oro."
+  ],
+  [
+   12.45,
+   13.17,
+   "En"
+  ],
+  [
+   13.17,
+   13.37,
+   "una"
+  ],
+  [
+   13.37,
+   13.71,
+   "balsa"
+  ],
+  [
+   13.71,
+   14.21,
+   "iba"
+  ],
+  [
+   14.21,
+   14.43,
+   "al"
+  ],
+  [
+   14.43,
+   14.85,
+   "centro"
+  ],
+  [
+   14.85,
+   15.05,
+   "de"
+  ],
+  [
+   15.05,
+   15.15,
+   "la"
+  ],
+  [
+   15.15,
+   15.55,
+   "laguna"
+  ],
+  [
+   15.55,
+   16.11,
+   "y"
+  ],
+  [
+   16.11,
+   16.49,
+   "arrojaba"
+  ],
+  [
+   16.49,
+   16.77,
+   "oro"
+  ],
+  [
+   16.77,
+   16.99,
+   "y"
+  ],
+  [
+   16.99,
+   17.65,
+   "esmeraldas"
+  ],
+  [
+   17.65,
+   17.81,
+   "al"
+  ],
+  [
+   17.81,
+   18.07,
+   "agua."
+  ],
+  [
+   19.11,
+   19.37,
+   "Los"
+  ],
+  [
+   19.37,
+   19.87,
+   "españoles"
+  ],
+  [
+   19.87,
+   20.51,
+   "imaginaron"
+  ],
+  [
+   20.51,
+   20.87,
+   "un"
+  ],
+  [
+   20.87,
+   21.33,
+   "reino"
+  ],
+  [
+   21.33,
+   21.49,
+   "de"
+  ],
+  [
+   21.49,
+   21.73,
+   "oro,"
+  ],
+  [
+   22.41,
+   22.55,
+   "el"
+  ],
+  [
+   22.55,
+   22.99,
+   "dorado."
+  ],
+  [
+   24.05,
+   24.15,
+   "Lo"
+  ],
+  [
+   24.15,
+   24.59,
+   "buscaron"
+  ],
+  [
+   24.59,
+   24.73,
+   "por"
+  ],
+  [
+   24.73,
+   25.23,
+   "selvas"
+  ],
+  [
+   25.23,
+   25.63,
+   "y"
+  ],
+  [
+   25.63,
+   26.07,
+   "ríos"
+  ],
+  [
+   26.07,
+   26.29,
+   "durante"
+  ],
+  [
+   26.29,
+   26.73,
+   "más"
+  ],
+  [
+   26.73,
+   26.91,
+   "de"
+  ],
+  [
+   26.91,
+   27.23,
+   "300"
+  ],
+  [
+   27.23,
+   27.95,
+   "años,"
+  ],
+  [
+   28.73,
+   28.95,
+   "y"
+  ],
+  [
+   28.95,
+   29.25,
+   "nunca"
+  ],
+  [
+   29.25,
+   29.47,
+   "lo"
+  ],
+  [
+   29.47,
+   30.11,
+   "encontraron."
+  ],
+  [
+   31.49,
+   31.73,
+   "Hoy"
+  ],
+  [
+   31.73,
+   32.27,
+   "una"
+  ],
+  [
+   32.27,
+   32.55,
+   "balsa"
+  ],
+  [
+   32.55,
+   32.75,
+   "de"
+  ],
+  [
+   32.75,
+   32.91,
+   "oro"
+  ],
+  [
+   32.91,
+   33.53,
+   "muisca"
+  ],
+  [
+   33.53,
+   33.99,
+   "en"
+  ],
+  [
+   33.99,
+   34.09,
+   "el"
+  ],
+  [
+   34.09,
+   34.47,
+   "Museo"
+  ],
+  [
+   34.47,
+   34.63,
+   "del"
+  ],
+  [
+   34.63,
+   34.81,
+   "Oro"
+  ],
+  [
+   34.81,
+   34.95,
+   "de"
+  ],
+  [
+   34.95,
+   35.45,
+   "Bogotá"
+  ],
+  [
+   35.45,
+   36.39,
+   "muestra"
+  ],
+  [
+   36.39,
+   36.75,
+   "esa"
+  ],
+  [
+   36.75,
+   37.33,
+   "ceremonia."
+  ],
+  [
+   38.43,
+   38.85,
+   "Sigmen"
+  ],
+  [
+   38.85,
+   39.19,
+   "Ritmer"
+  ],
+  [
+   39.19,
+   39.45,
+   "para"
+  ],
+  [
+   39.45,
+   39.61,
+   "más."
+  ]
+ ]
+}
